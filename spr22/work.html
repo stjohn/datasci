@@ -1,0 +1,1043 @@
+<!DOCTYPE doctype PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <title>Coursework, CSci 39542: Data Science, Hunter College</title>
+</head>
+<STYLE>A {text-decoration: none;}
+th, td { padding: 5px; }
+code {
+  background-color: #eeeeee;
+}
+.inline {
+  padding: 1px;
+}
+.blockcode {
+  border: 1px solid #999999;
+  display: block;
+  padding-left: 10px;
+  padding-top : 2px;
+  padding-bottom : 2px;
+  margin: 5px;
+}
+.datablock {
+  border: 1px solid #eeeeee;
+  display: block;
+  padding: 7px;
+  padding-top : 0px;
+  margin: 5px;
+}
+</STYLE>
+<body>
+
+
+<div style="margin: 15px;width=100%;">
+    <span style= "float: left;font-size:larger"><a href="index.html">CSci 39542</a></span>
+    <span style= "float: right">
+      <a href="syl.html">Syllabus</a>&nbsp;&nbsp;&nbsp;
+      <a href="resources.html">Resources</a>&nbsp;&nbsp;&nbsp;
+      <a href="work.html">Coursework</a><!--&nbsp;&nbsp;&nbsp;
+      <a href="faq.html">FAQ</a>-->
+    </span>
+</div>
+
+<br>
+<br>
+<hr>
+
+<div style="margin:50px">
+
+
+<h2>Coursework
+  <br>CSci 39542: Introduction to Data Science<br>
+<a href="http://www.hunter.cuny.edu/csci">Department of Computer Science</a><br>
+<a href="https://hunter.cuny.edu">Hunter College</a>, <a href="https://www.cuny.edu">City University of New York</a><br>
+Spring 2022<br><br>
+</h2>
+
+
+<hr>
+<a href="work.html#cw">Classwork</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#quizzes">Quizzes</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#hw">Homework</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#project">Project</a>&nbsp;&nbsp;&nbsp;
+<hr>
+
+<a name="cw">
+<h2>Classwork</h2>
+</a>
+
+
+<p>
+Unless otherwise noted, classwork is submitted via Gradescope.
+Access information is given during the corresponding lecture.
+
+<p>Due to the internet issues in the lecture hall, for Classwork 2 onward, the classwork will be available until midnight.  If you attended class that day, there is an option to earn 0.5 points for attendance and space to include the row and seat number.  If you were not able to attend a given lecture, you can still work through the classwork at home and we will replace the fractional point for that classwork with the grade you earned on the final exam.
+<b>Do not say you were in the room if you did not attend. </b>
+<ul>
+  <li> First, the attendance is used in case of contact tracing for covid. The college and health officials need an accurate information for isolation and quarantine planning.  You will have to explain your misrepresenting your class presense to the department chair, the dean, and the administrators responsible for student affairs and health, as well as possible isolation for you and your close contacts.
+  <li> Second, lying about attendance obtains an unfair advantage and will be submitted to the Office of Student Conduct.  It is not worth 0.5 points (that would have been replaced anyway by your final exam score) for a record of academic dishonesty that is kept by both the department and college.  The suggested sanction for lying is a 0 on this classwork and the loss of the replacement policy for missed lecture grades.  Note:  while we suggest a sanction, the final decision about the severity of the sanction is by the Office of Student Conduct.
+</ul>
+<p>
+
+  <p><a name="cw0"><b>Classwork 0: </b> &emsp; <i>Due midnight, Monday, 31 January.</i> &emsp;
+    Available on Gradescope, this classwork focuses on the course
+    <a href="syl.html">syllabus.</a>
+
+    <br><i>If you do have access to the course on Gradescope, write to <code class="inline">datasci@hunter.cuny.edu</code>.  Include in your email that you not receive a Gradescope invitation, your preferred email, and we will manually generate an invitation.</i>
+
+  <p><a name="cw1"><b>Classwork 1: </b> &emsp; <i>Due 4pm, Monday, 31 January.</i> &emsp;
+    Available during Lecture 1 on Gradescope (paper version also available for those without a phone or laptop at lecture), this classwork complements the exploratory data analysis of names and foreshadows the sampling of data in Lecture 2.
+
+  <p><a name="cw2"><b>Classwork 2: </b> &emsp; <i>Due midnight, Thursday, 3 February.</i> &emsp;
+    Available during Lecture 2 on Gradescope, this classwork introduces the autograder that is used for the programming assignments.  The structure of the sample program mirrors the structure and content of the upcoming <a href="#p1">Program 1</a>.  To get the most out of this exercise, bring a laptop with you to lecture with a development environment (IDE) that has Python 3+ to work through in lecture.  <br>
+    <i>Note:  Hunter College is committed to all students having the technology needed for their courses.  If you are in need of technology, see
+    <a href="https://ww2.hunter.cuny.edu/students/student-life/emergency-support-and-resources">Student Life's Support & Resources Page</a>.</i>
+
+    <p>Write a function that takes the name of a file and makes a dictionary of the lines of the file.
+      <ul>
+        <li> <code class = "inline">make_dict(file_name, sep=': ')</code>:  Takes a name of a file, <code class = "inline">file_name</code> and a delimiter <code class = "inline">sep</code>.  The default value is <code class = "inline">': '</code>.  If a line of the file does not include <code class = "inline">sep</code>, the line should be ignored.   Otherwise, for each line, the string preceding the delimiter <code class = "inline">sep</code> is the key, and the string after <code class = "inline">sep</code> is the value.  Your function returns the dictionary.
+      </ul>
+
+    <p>For example, assuming these functions are in a file, <code class="inline">cw2.py</code> and run on a file containing names that start with 'A', <a href="contacts.txt">contacts.txt</a>:
+
+    <pre><code class="blockcode">contacts = cw2.make_dict('contacts.txt')
+who = 'CS Department'
+print(f'Contact info for {who} is {contacts[who]}.')</pre></code>
+  </pre></code>
+      will print:
+  <pre><code class="datablock">Contact info for CS Department is 10th Floor HN, x5213.</pre></code>
+
+  <p>Another example with <a href="nick_names.txt">nick_names.txt</a>:
+
+  <pre><code class="blockcode">nick_names = cw2.make_dict('nick_names.txt', sep = ' ')
+names = ['Beth','Lisa','Meg','Greta','Amy','Mia']
+for n in names:
+    print(f'Full name for {n} is {nick_names[n]}.')</pre></code>
+  </pre></code>
+  will print:
+  <pre><code class="datablock">Full name for Beth is Elizabeth.
+Full name for Lisa is Elizabeth.
+Full name for Meg is Margaret.
+Full name for Greta is Margaret.
+Full name for Amy is Amelia.
+Full name for Mia is Amelia.</pre></code>
+
+      <p>If you attended lecture, include the last three lines to the the introductory comment:
+        <pre><code class="blockcode">"""
+Name:  YOUR_NAME
+Email: YOUR_EMAIL
+Resources:  RESOURCES USED
+I attended lecture today.
+Row:  YOUR_ROW
+Seat:  YOUR_SEAT
+"""</pre></code>
+
+        If you did not attend lecture, do not include the above lines.
+
+
+
+  <p><a name="cw3"><b>Classwork 3: </b> &emsp; <i>Due midnight, Monday, 7 February.</i> &emsp;
+    Available during Lecture 3 on Gradescope, this classwork asks that you write a program using Pandas and its file I/O.  To get the most out of this exercise, bring a laptop with you to lecture with a development environment (IDE) that has Python 3+ to work through in lecture.  <br>
+
+    <p>
+    Write a program that asks the user for the name of an input CSV file and the name of an output CSV file.  The program should open the file name provided by the user.
+    Next, the program should select rows where the field <code class="inline">Grade</code> is equal to 3 and the <code class="inline">Year</code> is equal to 2019 and write all rows that match that criteria to a new CSV file.
+
+    <p>
+    Then a sample run of the program:
+  <pre><code class="blockcode">Enter input file name: school-ela-results-2013-2019.csv
+Enter output file name:  ela2013.csv</code></pre>
+    where the file <code class="inline">school-ela-results-2013-2019.csv</code> is extracted from <a href="https://infohub.nyced.org/reports/academics/test-results">NYC Schools Test Results</a> (and <a href="../fall21/school_ELA_2013_2019_truncated.csv">truncated version</a> of roughly the first 1000 lines for testing).  The first lines of the output file would be:
+
+  <pre><code class="datablock">School,Name,Grade,Year,Category,Number Tested,Mean Scale Score,# Level 1,% Level 1,# Level 2,% Level 2,# Level 3,% Level 3,# Level 4,% Level 4,# Level 3+4,% Level 3+4
+01M015,P.S. 015 ROBERTO CLEMENTE,3,2019,All Students,27,606,1,3.7,7,25.9,18,66.7,1,3.7,19,70.4
+01M019, P.S. 019 ASHER LEVY,3,2019,All Students,24,606,0,0.0,8,33.3,15,62.5,1,4.2,16,66.7
+01M020,P.S. 020 ANNA SILVER,3,2019,All Students,57,593,13,22.8,24,42.1,18,31.6,2,3.5,20,35.1</code></pre>
+
+  <p>Hints:
+    <ul>
+      <li> Since the <code class=inline>Grade</code> column contains a mixtures of numbers (e.g. 3) and strings ("All Grades"), the column is stored as strings.
+    </ul>
+
+  <p><a name="cw4"><b>Classwork 4: </b> &emsp; <i>Due midnight, Thursday, 10 February.</i> &emsp;
+    Available during Lecture 4 on HackerRank, this classwork introduces the timed coding environment used for quizzes. This classwork mirrors the structure and content of the upcoming <a href="#q1">Quiz 1</a>.
+    To get the most out of this exercise, bring an electronic device on which you can easily type into a web-based IDE (possible on a phone, but much easier with the bigger screen and keyboards on some tablets and most laptops.
+      <br>
+      <i>Note:  Hunter College is committed to all students having the technology needed for their courses.  If you are in need of technology, see
+      <a href="https://ww2.hunter.cuny.edu/students/student-life/emergency-support-and-resources">Student Life's Support & Resources Page</a>.</i>
+
+  <p><a name="cw5"><b>Classwork 5: </b> &emsp; <i>Due midnight, Monday, 14 February.</i> &emsp;
+     Available during Lecture 5 on Gradescope, this classwork focuses on the structure and topics for the optional project, based on the project overview in lecture.
+
+  <p><a name="cw6"><b>Classwork 6: </b> &emsp; <i>Due midnight, Thursday, 17 February.</i> &emsp;
+    Available during Lecture 6 on Gradescope, this on-line assignment reviews the different ways to merge DataFrames in Pandas.
+
+  <p><a name="cw7"><b>Classwork 7: </b> &emsp; <i>Due midnight, Thursday, 24 February.</i> &emsp;
+    Available during Lecture 7 on Gradescope, this classwork introduces regular expressions for data cleaning.  To get the most out of this exercise, bring a laptop with you to lecture with a development environment (IDE) that has Python 3+ to work through in lecture.
+
+    <p>
+    Write a program that asks the user for the name of an input HTML file and the name of an output CSV file.  Your program should use regular expressions (see <a href="http://www.textbook.ds100.org/ch/12/text_re.html">Chapter 12.4</a> for using the <code class="inline">re</code> package in Python) to find all links in the input file and store the link text and URL as columns:  <code class="inline">Title</code> and <code class="inline">URL</code> in the CSV file specified by the user.  For the URL, strip off the leading <code class="inline">https://</code> or <code class="inline">http://</code> and any trailing slashes (<code class="inline">/</code>):
+
+    <p>For example, if the input file is:
+
+  <pre><code class="datablock">
+&lt;html>
+&lt;head>&lt;title>Simple HTML File&lt;/title>&lt;/head>
+
+&lt;body>
+  &lt;p> Here's a link for &lt;a href="http://www.hunter.</i>cuny.edu/csci">Hunter CS Department&lt;/a>
+  and for &lt;a href="https://stjohn.github.io/teaching/data/fall21/index.html">CSci 39542&lt;/a>.  &lt;/p>
+
+  &lt;p> And for &lt;a href="https://www.google.com/">google&lt;/a>
+&lt;/body>
+&lt;/html>
+  </code></pre>
+
+    Then a sample run of the program:
+<pre><code class="blockcode">Enter input file name: simple.html
+Enter output file name:  links.csv</code></pre>
+
+    And the <code class="inline">links.csv</code> would be:
+  <pre><code class="datablock">Title,URL
+Hunter CS Department,www.hunter.</i>cuny.edu/csci
+CSci 39542,stjohn.github.io/teaching/data/fall21/index.html
+google,www.google.com</code></pre>
+  </p>
+
+
+
+
+  <p><a name="cw8"><b>Classwork 8: </b> &emsp; <i>Due midnight, Monday, 28 February.</i> &emsp;
+    Available during Lecture 6 on Gradescope, this classwork introduces the <code class=inline>datetime</code> package.  To get the most out of this exercise, bring a laptop with you to lecture with a development environment (IDE) that has Python 3+ to work through in lecture.
+    <p> Use the <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#overview">date time functionality</a> of Pandas to write the following functions:
+    <ul>
+      <li> <code class = "inline">tripTime(start,end)</code>:  This function takes two variables of type <code class = "inline">datetime</code> and returns the difference between them.
+      <li> <code class = "inline">weekdays(df,col)</code>:  This function takes a DataFrame, <code class = "inline">df</code>, containing the column name, <code class = "inline">col</code>, and returns a DataFrame containing only times that fall on a weekday (i.e. Monday through Friday).
+    </ul>
+
+    <p>
+    For example, using the <a href="https://github.com/mwaskom/seaborn-data">Seaborn's Green Taxi Data Set</a> and assuming your functions are in the <code class="inline">cw6.py</code>:
+    <pre><code class="blockcode">import seaborn as sns
+taxi = sns.load_dataset('taxis')
+print(taxi.iloc[0:10])
+taxi['tripTime'] = taxi.apply(lambda x: cw6.tripTime(x['pickup'], x['dropoff']), axis=1)
+print(taxi.iloc[0:10])
+</code></pre>
+    Would give output:
+<pre><code class="datablock">                pickup              dropoff  ...  pickup_borough  dropoff_borough
+0  2019-03-23 20:21:09  2019-03-23 20:27:24  ...       Manhattan        Manhattan
+1  2019-03-04 16:11:55  2019-03-04 16:19:00  ...       Manhattan        Manhattan
+2  2019-03-27 17:53:01  2019-03-27 18:00:25  ...       Manhattan        Manhattan
+3  2019-03-10 01:23:59  2019-03-10 01:49:51  ...       Manhattan        Manhattan
+4  2019-03-30 13:27:42  2019-03-30 13:37:14  ...       Manhattan        Manhattan
+5  2019-03-11 10:37:23  2019-03-11 10:47:31  ...       Manhattan        Manhattan
+6  2019-03-26 21:07:31  2019-03-26 21:17:29  ...       Manhattan        Manhattan
+7  2019-03-22 12:47:13  2019-03-22 12:58:17  ...       Manhattan        Manhattan
+8  2019-03-23 11:48:50  2019-03-23 12:06:14  ...       Manhattan        Manhattan
+9  2019-03-08 16:18:37  2019-03-08 16:26:57  ...       Manhattan        Manhattan
+
+[10 rows x 14 columns]
+                pickup              dropoff  ...  dropoff_borough        tripTime
+0  2019-03-23 20:21:09  2019-03-23 20:27:24  ...        Manhattan 0 days 00:06:15
+1  2019-03-04 16:11:55  2019-03-04 16:19:00  ...        Manhattan 0 days 00:07:05
+2  2019-03-27 17:53:01  2019-03-27 18:00:25  ...        Manhattan 0 days 00:07:24
+3  2019-03-10 01:23:59  2019-03-10 01:49:51  ...        Manhattan 0 days 00:25:52
+4  2019-03-30 13:27:42  2019-03-30 13:37:14  ...        Manhattan 0 days 00:09:32
+5  2019-03-11 10:37:23  2019-03-11 10:47:31  ...        Manhattan 0 days 00:10:08
+6  2019-03-26 21:07:31  2019-03-26 21:17:29  ...        Manhattan 0 days 00:09:58
+7  2019-03-22 12:47:13  2019-03-22 12:58:17  ...        Manhattan 0 days 00:11:04
+8  2019-03-23 11:48:50  2019-03-23 12:06:14  ...        Manhattan 0 days 00:17:24
+9  2019-03-08 16:18:37  2019-03-08 16:26:57  ...        Manhattan 0 days 00:08:20
+
+[10 rows x 15 columns]
+</code></pre>
+
+  <p> Using the function our second function:
+<pre><code class="blockcode">taxi = sns.load_dataset('taxis')
+weekdays = cw6.weekdays(taxi,'pickup')
+print(weekdays.iloc[0:10])
+</code></pre>
+  will give output:
+<pre><code class="datablock">
+  pickup              dropoff  ...  pickup_borough  dropoff_borough
+1   2019-03-04 16:11:55  2019-03-04 16:19:00  ...       Manhattan        Manhattan
+2   2019-03-27 17:53:01  2019-03-27 18:00:25  ...       Manhattan        Manhattan
+5   2019-03-11 10:37:23  2019-03-11 10:47:31  ...       Manhattan        Manhattan
+6   2019-03-26 21:07:31  2019-03-26 21:17:29  ...       Manhattan        Manhattan
+7   2019-03-22 12:47:13  2019-03-22 12:58:17  ...       Manhattan        Manhattan
+9   2019-03-08 16:18:37  2019-03-08 16:26:57  ...       Manhattan        Manhattan
+11  2019-03-20 19:39:42  2019-03-20 19:45:36  ...       Manhattan        Manhattan
+12  2019-03-18 21:27:14  2019-03-18 21:34:16  ...       Manhattan        Manhattan
+13  2019-03-19 07:55:25  2019-03-19 08:09:17  ...       Manhattan        Manhattan
+14  2019-03-27 12:13:34  2019-03-27 12:25:48  ...       Manhattan        Manhattan
+
+[10 rows x 14 columns]
+</code></pre>
+    note that rows 0,4,8, and 10 have been dropped from the original DataFrame since those corresponded to weekend days.
+    </p>
+
+<p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
+
+
+    <i>Hints:
+        <ul>
+          <li> When read in from the CSV, the columns may be stored as a string.  Cast as a <code class = "inline">datetime</code> object (e.g. <code class = "inline">pd.to_datetime(start)</code>) to use the functionality.
+          <li> For datetime objects, you can access properties such as day of the week using <code class = "inline">dt</code> prefix, similar to <code class = "inline">.str</code> similar to .str to use string methods and properties (e.g. <code class = "inline">dt.dayofweek</code>).
+          See the Python Docs: <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#overview">date time functionality</a> for more details.
+        </ul>
+    </i>
+
+
+    </p>
+
+
+
+  <p><a name="cw9"><b>Classwork 9: </b> &emsp; <i>Due midnight, Thursday, 3 March.</i> &emsp;
+      Available during Lecture 9 on Gradescope, this classwork focuses on the <a href="https://geojson.org">GeoJSON</a> format, including hands-on activity with <a href="https://geojson.io">GeoJSON visual editor</a>. To get the most out of this exercise, bring a laptop with you to lecture with a development environment (IDE) that has Python 3+ to work through in lecture.
+
+<!--
+      Available during Lecture 9 on Gradescope, this classwork is builds focuses on parsing GIS data.  To get the most out of this exercise, bring a laptop with you to lecture with a development environment (IDE) that has Python 3+ to work through in lecture.
+
+      <p>
+      Write two functions that will be used to clean the OpenData NYC dataset of <a href="https://data.cityofnewyork.us/Business/Library/p4pf-fyc4">Libraries in New York City</a> (downloaded as CSV file).  The first three lines of the CSV file look like:
+
+    <pre><code class="datablock">the_geom,NAME,STREETNAME,HOUSENUM,CITY,ZIP,URL,BIN,BBL,X,Y,SYSTEM,BOROCODE
+  POINT (-73.95353074430393 40.80297988196676),115th Street,West 115th Street,203,New York,10026,http://www.nypl.org/locations/115th-street,1055236,1018310026,997115.12977,231827.652864,NYPL,1
+  POINT (-73.9348475633247 40.80301816141575),125th Street,East 125th Street,224,New York,10035,http://www.nypl.org/locations/125th-street,1054674,1017890037,1002287.604,231844.894956,NYPL,1</code></pre>
+
+      Each function takes as input a row of the table:
+      <ul>
+        <li> <code class = "inline">extractLatLon(row)</code>:  This function takes the values from the column <code class = "inline">the_geom</code> and extracts the longitude and latitude from the string (they are surrounded by parenthesis and separated by a space, and returns the two as numerical values.  For example, the function would return -73.95353074430393, 40.80297988196676 when applied to the first row of data.
+        <li> <code class = "inline">extractTitle(row)</code>:  This function concatenates the values from the columns <code class = "inline">NAME</code>, <code class = "inline">CITY</code>, and <code class = "inline">ZIP</code> code into a single string, separated by a comma and space, and returns the string (to be used as the title for our visualizations).
+        For example, when applying this function to the first data row, the return value would be:
+        <code class = "inline">115th Street, New York, 10026</code>.
+      </ul>
+-->
+
+<br><br><br><br>
+<hr>
+
+<a name="quizzes">
+<h2>Quizzes</h2>
+</a>
+
+Unless otherwise noted, quizzes focus on the corresponding programming assignment.  The quizzes are 30 minutes long and cannot be repeated.  They are available for the 24 hours after lecture and assess your programming skill using HackerRank. Access information for each quiz will be available under the Quizzes menu on  Blackboard.
+
+
+<p><a name="q1"><b>Quiz 1: Core Python</b> &emsp; <i>Due 4pm, Friday, 11 February.</i> &emsp;
+  Link to access HackerRank available at the end of Lecture 4 (and posted on Blackboard).
+  <br>This first coding challenge focuses on reading and processing data from a file using core Python 3.6+ as in <a href="#p1">Program 1</a>.
+
+<p><a name="q2"><b>Quiz 2: Pandas Basics</b> &emsp; <i>Due 4pm, Friday, 11 February.</i> &emsp;
+  Link to access HackerRank available at the end of Lecture 4 (and posted on Blackboard).
+  <br>This is the first quiz using Pandas and focuses on manipulating and creating new columns in DataFrames as in <a href="#p2">Program 2</a>.
+
+
+<!--
+  This quiz covers data representation from Lecture #5 and <a href=
+  "http://www.textbook.ds100.org/ch/07/repr_intro.html">DS 100, Chapter 7</a> (Data Representation).</p>
+
+-->
+<br><br><br><br>
+<hr>
+
+<a name="hw">
+<h2>Homework</h2>
+</a>
+
+Unless otherwise noted, programs are submitted on the course's Gradescope site and are written in Python.  The autograders expect a <code class="inline">.py</code> file and do not accept iPython notebooks.
+Also, to receive full credit, the code should be compatible with Python 3.6 (the default for the Gradescope autograders).
+
+<p>All students registered by Monday, 26 January are sent a registration invitation to the email on record on their Blackboard account.  If you did not receive the email or would like to use a different account, write to <code class="inline">datasci@hunter.cuny.edu</code>.  Include in your email that you not receive a Gradescope invitation, your preferred email, and we will manually generate an invitation.  As a default, we use your name as it appears in Blackboard/CUNYFirst (to update CUNYFirst, see <a href="https://hunter.</i>cuny.edu/students/registration/records-and-transcripts/changing-your-personal-information/">changing your personal information</a>).  If you prefer a different name for Gradescope, include it, and we will update the Gradescope registration.
+
+<p>To encourage starting early on programs, bonus points are given for early submission.  A point a day, up to a total of 3 bonus points (10% of the program grade), are possible.  The points are prorated by hour.  For example, if you turn in the program 36 hours early, then the bonus poins are: (36 hours/3 days)*3 points = (36 hours/72 hours)*3 points = 1.5 points.
+
+<p>
+To get full credit for a program, the file must include in the opening comment:
+<ul>
+    <li> Your name, as it appears in your Gradescope registration.
+    <li> The email you are using for Gradescope.
+    <li> A list of any resources you used for the program.  Include classmates and tutors that you worked with, along with any websites or tutorials that you used.  If you used no resources (other than the class notes and textbooks), then you should include the line:  "No resources used."
+</ul>
+
+For example, for the student, Thomas Hunter, the opening comment of his first program might be:
+<pre><code class="blockcode">
+"""
+Name:  Thomas Hunter
+Email: thomas.hunter.</i>1870@hunter.</i>cuny.edu
+Resources:  Used python.org as a reminder of Python 3 print statements.
+"""
+</pre></code>
+and then followed by his Python program.
+
+
+
+<br>
+<br>
+<br>
+<hr>
+
+<p></p><p><a name="p1"><b>Program 1: Popular Names.</b></b> &emsp; <i>Due noon, Thursday, 10 February.
+  <br>Learning Objective: to build competency with string and file I/O functionality of core Python.
+  <br>Available Libraries:  Core Python 3.6+ only.</i>
+
+  <p>
+  In lecture and <a href="">Chapter 1</a> of the textbook, we looked at first names for students taking data science at UC Berkeley as well as the <a href="https://www.ssa.gov/oact/babynames/index.html">baby names data set</a> from the Social Security Administration.  We explored properties such as the lengths of names:
+
+  <p><img src="namesNumChars.png" height=300>
+
+  <p>For this program, we will focus on the most common names in a given file, as well the names that make up a fixed fraction of the names. To allow for unit testing, the assignment is broken into the following functions:</p>
+  <ul>
+    <li> <code class = "inline">extract_names(file_name, sep = ["\n"])</code>:  Returns a list of names.  Assumes that the names are separated by the separators listed in <code class = "inline">sep</code>.  The default value is <code class = "inline">["\n"]</code> but the possible inputs are 1 or more separators.  Your function should remove any empty strings from the list.
+    <li> <code class = "inline">count_names(names_lst)</code>:
+      Returns a dictionary of names with values the number of times each name occurs in the input, <code class = "inline">names_lst</code>.
+    <li> <code class = "inline">popular_names(names_dict,num = 3)</code>:
+      Returns a list of the <code class="inline">num</code> most popular names as a list of strings.  If no value is passed for <code class="inline">num</code>, the default value of 3 is used (that is, it returns the 3 most popular names).
+    <li> <code class = "inline">percent_captured(names_dict,threshold = 75)</code>:
+      Returns the number of names needed to have at least <code class="inline">threshold</code> percent of all the names in the dictionary.  If no value is passed for <code class="inline">percent</code>, the default value of 75 is used (that is, it returns the number of names needed to have 75 percent (or more) of the total occurrances of names).
+  </ul>
+
+  <p>For example, assuming these functions are in a file, <code class="inline">p1.py</code> and run on a file containing names that start with 'A', <a href="a_names.txt">a_names.txt</a>:
+
+<pre><code class="blockcode">lst = p1.extract_names('a_names.txt')
+print(f'The list is:\n{lst}')
+dict = p1.count_names(lst)
+print(f'The dictionary is:\n{dict}')
+lstTop = p1.popular_names(dict)
+print(f'The top 3 names are: {lstTop}.')
+num = p1.percent_captured(dict, threshold = 50)
+print(f'The top {num} names make up 50% of the list.')
+</code></pre>
+gives the output:
+<pre><code class="datablock">The list is:
+['Alex', 'Andy', 'Amy', 'Alani', 'Alex', 'Ana', 'Angela', 'Ai', 'Asia', 'Alex', 'Anna', 'Ana', 'Asami', 'Andrea', 'Alex', 'Ana', 'Anya', 'Aiko', 'Ana', 'Angela', 'Ai', 'Alexander', 'Alex', 'Ana', 'Andy']
+The dictionary is:
+{'Alex': 5, 'Andy': 2, 'Amy': 1, 'Alani': 1, 'Ana': 5, 'Angela': 2, 'Ai': 2, 'Asia': 1, 'Anna': 1, 'Asami': 1, 'Andrea': 1, 'Anya': 1, 'Aiko': 1, 'Alexander': 1}
+The top 3 names are: ['Alex', 'Ana', 'Andy'].
+The top 4 names make up 50% of the list.
+</code></pre>
+
+<p>Another example with a file <a href="korea_most_pop2019.txt">korea_most_pop2019.txt</a>, containing the most popular names in South Korea in 2019, separated by both newlines and spaces:
+
+<pre><code class="blockcode">lst = p1.extract_names('korea_most_pop2019.txt',sep=["\n"," "])
+print(lst)
+</code></pre>
+gives the output:
+<pre><code class="datablock">['Ji-an', 'Ha-yoon', 'Seo-ah', 'Ha-eun', 'Seo-yun', 'Ha-rin', 'Ji-yoo', 'Ji-woo', 'Soo-ah', 'Ji-a', 'Seo-jun', 'Ha-joon', 'Do-yun', 'Eun-woo', 'Si-woo', 'Ji-ho', 'Ye-jun', 'Yu-jun', 'Ju-won', 'Min-jun']
+</code></pre>
+
+
+<br>
+  <p>Notes:  you should submit a file with only the standard comments at the top, and these functions.  The grading scripts will then import the file for testing and expect the functions to match in name and return values to above:
+  <pre><code class="blockcode">
+"""
+Name:  YOUR NAME
+Email: YOUR EMAIL
+Resources:  RESOURCES USED
+"""
+
+def extract_names(file_name, sep = ["\n"]):
+    """
+    Opens and reads from file_name, and returns a list of names.
+
+    Keyword arguments:
+    sep -- the deliminators for splitting up the data (default ['\n'])
+    """
+
+    #Placeholder-- replace with your code
+    lst = []
+    return lst
+
+def count_names(names_lst):
+    """
+    Returns a dictionary of names with values the number of times
+    each name occurs in the input, names_lst.
+    """
+
+    #Placeholder-- replace with your code
+    dict = {}
+    return dict
+
+def popular_names(names_dict,num = 3):
+    """
+    Returns a list of the num most popular names as a list of strings.
+
+    Keyword arguments:
+    sep -- the number of names to return (default is 3)
+    """
+
+    #Placeholder-- replace with your code
+    lst = []
+    return lst
+
+
+def percent_captured(names_dict,threshold = 75):
+    """
+    Returns the number of names needed to have at least threshold percent of
+    all the names in the dictionary.
+
+    Keyword arguments:
+    threshold -- the percent used for threshold (default 75)
+    """
+
+    #Placeholder-- replace with your code
+    count = 0
+    return count
+
+    </pre></code>
+  If your file includes code outside of these functions, either comment the code out before submitting or use a main function that is conditionally executed (see <a href="https://runestone.academy/ns/books/published//thinkcspy/Functions/mainfunction.html">Think CS: Section 6.8</a> for details).
+
+
+</p>
+
+<br><br>
+<p></p><p><a name="p2"><b>Program 2: Parking Tickets.</b></b> &emsp; <i>Due noon, Thursday, 17 February.
+  <br>Learning Objective: to refresh students' knowledge of Pandas' functionality to manipulate and create columns from formatted data.
+  <br>Available Libraries: Pandas and core Python 3.6+.</i>
+
+  <p> Recent <a href="https://nyc.streetsblog.org/2021/10/13/out-of-state-drivers-are-just-the-worst-at-paying-their-nyc-summonses/">news articles</a> focused on the significantly higher percentage of parking tickets that are unpaid for cars with out-of-state plates:
+
+  <p><img src="../fall21/streetsblog_unpaid_tickets_20211013.png" height=300px>
+
+  <p>The data is aggregated across the whole city. Does the same occur when the datasets are focused on individual neighborhoods?  To answer that question, as well as what are the most common reasons for tickets, we will use the parking ticket data from OpenData NYC.   In Lecture 3, we started data cleaning efforts on the parking ticket data.  We will continue the data cleaning efforts for this program, as well as introduce auxiliary files that link the codes stored with a short explanation of the violation.  The assignment is broken into the following functions to allow for unit testing:
+
+  <ul>
+    <li> <code class = "inline">make_df(file_name)</code>:
+    This function takes one input:
+          <ul>
+              <li> <code class = "inline">file_name</code>: the name of a CSV file containing Parking Ticket Data from OpenData NYC.
+          </ul>
+    The function should open the file <code class = "inline">file_name</code> as DataFrame, drop all but the columns:
+<pre><code class = "datablock">Summons Number,Plate ID,Registration State,Plate Type,Issue Date,Violation Code,Violation Time,
+Violation In Front Of Or Opposite,House Number,Street Name,Vehicle Color
+</code></pre>
+    and return the resulting DataFrame.
+
+    <li> <code class = "inline">filter_reg(df, keep = ["COM", "PAS"])</code>:
+    This function takes two inputs:
+          <ul>
+              <li> <code class = "inline">df</code>: a DataFrame that
+                    including the <code class = "inline">Plate Type</code> column.
+              <li> <code class = "inline">keep</code>: a list of values for the
+                    <code class = "inline">Plate Type</code> column.
+                    The default value is <code class = "inline">["COM", "PAS"]</code>.
+          </ul>
+    The function returns the DataFrame with only rows that have <code class = "inline">Plate Type</code> with a value from the list <code class = "inline">keep</code>.  All rows where the <code class = "inline">Plate Type</code> column contains a different value are dropped.
+
+    <li> <code class = "inline">add_indicator(reg_state)</code>:
+    This function takes one input:
+          <ul>
+              <li> <code class = "inline">reg_state</code>: a string containing the state of registation.
+          </ul>
+
+    The function should return <code class = "inline">1</code> when <code class = "inline">reg_state</code> is in <code class = "inline">["NY","NJ","CT"]</code> and <code class = "inline">0</code> otherwise.
+
+    <li> <code class = "inline">find_tickets(df, plate_id)</code>:
+    This function takes two inputs:
+    <ul>
+        <li> <code class = "inline">df</code>: a DataFrame that
+              including the <code class = "inline">Plate ID</code> column.
+        <li> <code class = "inline">plate_id</code>: a string containing a license plate (combination of letters, numbers and spaces).
+    </ul>
+    returns, as a list, the <code class = "inline">Violation Code</code> for all tickets issued to that <code class = "inline">plate_id</code>.  If that <code class = "inline">plate_id</code> has no tickets in the DataFrame, then an empty list is returned.
+
+    <li> <code class = "inline">make_dict(file_name, skip_rows = 1)</code>:
+    This function takes two inputs:
+    <ul>
+        <li> <code class = "inline">file_name</code>: a string containing the name of a file.
+        <li> <code class = "inline">skip_rows</code>: the number of rows to skip at the beginning of file.
+        The default value is <code class = "inline">1</code>.
+    </ul>
+    Make a dictionary from a text file named <code class = "inline">file_name</code>, where each line, after those that are skipped, makes a dictionary entry.  The key for each entry is the string upto the first comma (',') and the value is the string between the first and second commas.  All characters after the second comma on a line are ignored.
+  </ul>
+
+
+  <p>
+  For example, assuming your functions are in the <code class="inline">p2.py</code>:
+  <pre><code class="blockcode">df = p2.make_df('Parking_Violations_Issued_Precinct_19_2021.csv')
+print(df)</code></pre>
+  will print:
+          <pre><code class="datablock">        Summons Number Plate ID  ...     Street Name Vehicle Color
+0           1474094223  KDT3875  ...            E 75         BLACK
+1           1474094600  GTW5034  ...  EAST 70 STREET            BK
+2           1474116280  HXM6089  ...         E 72 ST            BK
+3           1474116310  HRW4832  ...         E 72 ST           GRY
+4           1474143209  JPR6583  ...  EAST 94 STREET         BLACK
+...                ...      ...  ...             ...           ...
+451504      8954357854  JRF3892  ...         5th Ave            GR
+451505      8955665040   199VP4  ...       E 74th St         BLACK
+451506      8955665064   196WL7  ...       E 78th St         BLACK
+451507      8970451729  CNK4113  ...        York Ave            GY
+451508      8998400418   XJWV98  ...        York Ave         WHITE
+
+[451509 rows x 11 columns]</code></pre>
+
+        Note that all the rows are included (451,509) but that only the 11 specified columns are retained in the DataFrame.
+
+    <p>Looking at the registration types (<code class=inline>Plate Type</code>):
+        <pre><code class=blockcode>print(f"Registration: {df['Plate Type'].unique()}")
+print(f"\n10 Most Common:  {df['Plate Type'].value_counts()[:10]}")</code></pre>
+        prints many different types of registrations and abbreviations:
+        <pre><code class=datablock>Registration: ['PAS' 'SRF' 'OMS' 'COM' '999' 'SPO' 'OMT' 'MOT' 'RGL' 'PHS' 'MED' 'TRC'
+ 'APP' 'SRN' 'OML' 'ITP' 'CMB' 'ORG' 'AMB' 'DLR' 'IRP' 'TOW' 'MCL' 'CBS'
+ 'LMB' 'USC' 'CME' 'RGC' 'VAS' 'ORC' 'HIS' 'STG' 'AGR' 'TRA' 'CHC' 'SOS'
+ 'BOB' 'OMR' 'TRL' 'AGC' 'CSP' 'PSD' 'SPC' 'MCD' 'NLM' 'CMH' 'LMA' 'JCA'
+ 'SCL' 'HAM' 'AYG' 'NYA' 'OMV']
+
+10 Most Common:  PAS    262875
+COM    168827
+SRF      2834
+APP      2800
+OMT      2603
+OMS      2464
+MED      1433
+999      1352
+CMB      1208
+LMB      1135
+Name: Plate Type, dtype: int64</code></pre>
+
+    The two registration types that are the most common:
+          <pre><code class=blockcode>count = len(df)
+pasCount = len(df[df['Plate Type'] == 'PAS'])
+comCount = len(df[df['Plate Type'] == 'COM'])
+print(f'{count} different vehicles, {100*(pasCount+comCount)/count} percent are passenger or commercial plates.')</code></pre>
+    <p>And for the Precinct District 19 dataset that contains almost a half million tickets:
+    <pre><code class=datablock>451509 different vehicles, 95.61315499801776 percent are passenger or commercial plates.</code></pre>
+
+    Our function will filter for just passenger and commercial plates:
+    <pre><code class="blockcode">dff = p2.filter_reg(df)
+print(f'The length of the filtered data frame is {len(dff)}.')</code></pre>
+
+    will print:
+    <pre><code class=datablock>The length of the filtered data frame is 431702.</code></pre>
+
+    By specifying different registration types with the keyword argument, we can filter for other registration (<a href="https://dmv.ny.gov/registration/registration-class-codes">DMV's Registration Types</a>) such as motocycles:
+    <pre><code class="blockcode">df2 = p2.filter_reg(df,keep=['MOT','HSM','LMA','LMB'])
+print(f'The length of the filtered data frame is {len(df2)}.')</code></pre>
+
+    will print:
+    <pre><code class=datablock>The length of the filtered data frame is 2095.</code></pre>
+
+    Working the the motocycle DataFrame, we can add a column for if the vehicle is registered in New York:
+    <pre><code class="blockcode">df2['NYPlates'] = df2['Registration State'].apply(p2.add_indicator)
+print(df2.head())</code></pre>
+
+    will print:
+    <pre><code class=datablock>      Summons Number Plate ID  ... Vehicle Color NYPlates
+3888      8778381423   MD677M  ...         SILVE        1
+5967      1475041184   92BF34  ...           BLK        1
+6177      1477342850   40TZ78  ...            RD        1
+6985      8514394770   16UD95  ...         BLACK        1
+7221      8624098440   77BD79  ...         BLACK        1</code></pre>
+
+    We can also look up the tickets that were given, by <code class=inline>Plate ID</code> and use the dictionary of the violation code to find out what the tickets were for:
+    <pre><code class="blockcode">print(f'Motorcycles with most tickets:\n {df2["Plate ID"].value_counts()[:5]}')
+code_lookup = p2.make_dict('ticket_codes.csv')
+ticket_codes = p2.find_tickets(df2,'19UB23')
+descrip = [code_lookup[str(t)] for t in ticket_codes]
+print(f'The motocycle with plate 19UB23 got the following tickets: {descrip}')</code></pre>
+
+    will print:
+    <pre><code class=datablock>Motorcycles with most tickets:
+19UB23    14
+80BD05    10
+38SV33     9
+66TZ74     8
+70TW50     8
+Name: Plate ID, dtype: int64
+The motocycle with plate 19UB23 got the following tickets: ['NO PARKING-STREET CLEANING', 'REG. STICKER-EXPIRED/MISSING', 'REG. STICKER-EXPIRED/MISSING', 'INSP. STICKER-EXPIRED/MISSING', 'REG. STICKER-EXPIRED/MISSING', 'REG. STICKER-EXPIRED/MISSING', 'REG. STICKER-EXPIRED/MISSING', 'REG. STICKER-EXPIRED/MISSING', 'INSP. STICKER-EXPIRED/MISSING', 'REG. STICKER-EXPIRED/MISSING', 'REG. STICKER-EXPIRED/MISSING', 'REG. STICKER-EXPIRED/MISSING', 'REG. STICKER-EXPIRED/MISSING', 'REG. STICKER-EXPIRED/MISSING']</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.
+    If your file includes code outside of functions, either comment the code out before submitting or use a main function that is conditionally executed (see <a href="https://runestone.academy/ns/books/published//thinkcspy/Functions/mainfunction.html">Think CS: Section 6.8</a> for details).
+    </p>
+
+    <i>Hints:
+      <ul>
+        <li> Parking ticket data can be found at:  <a href="https://data.cityofnewyork.us/City-Government/Parking-Violations-Issued-Fiscal-Year-2021/kvfd-bves">NYC OpenData</a>.
+        <li> Some datasets for testing:
+            <ul>
+              <li> <a href="parking_test_100.csv">parking_test_100.csv</a>: A truncated file for testing-- first 100 rows of the 2021 UES parking tickets (described below).
+              <li> <a href="Parking_Violations_Issued_Precinct_19_2021.csv">Parking_Violations_Issued_Precinct_19_2021.csv</a>:  ~450,000 line file of parking violations issues in 2021 for the Upper East Side (District 19)
+            </ul>
+        <li> Parking ticket violation codes (<a href="https://www1.nyc.gov/site/finance/vehicles/services-violation-codes.page">summary of codes & fines</a>) are the basis for the dictionary.
+        <ul>
+          <li> <a href="ticket_codes.csv">ticket_codes.csv</a> from <a href="https://data.cityofnewyork.us/widgets/ncbg-6agr">OpenData NYC</a>.
+        </ul>
+
+        <li> You may get a warning such as:
+          <code class = "datablock">sys:1: DtypeWarning: Columns (39) have mixed types.Specify dtype option on import or set low_memory=False.
+          </code>
+
+          when reading in the parking ticket data. Pandas tries to infer the data type (<code class = "inline">dtype</code>) of the columns from the values.  Since some columns are a mixture of numeric and character types this can be difficult.  If the file is read in with <code class = "inline">pd.read_csv(file_name, low_memory=False)</code>, the entire column is read in and used to determine type.
+      </ul>
+    </i>
+
+    <br><br>
+    <p><a name="p3"><b>Program 3: Restaurant Rankings.</b></b> &emsp; <i>Due noon, Thursday, 24 February.
+      <br>Learning Objective: students can successfully filter formatted data using standard Pandas operations for selecting and joining data.
+      <br>Available Libraries: Pandas and core Python 3.6+.</i>
+
+      <p>
+        The NYC Department of Health & Mental Health regularly inspects restaurants and releases the results:
+        <p>
+        <iframe src="https://a816-health.nyc.gov/ABCEatsRestaurants/#!/Search" style="width: 80%; height: 500px" name="internal"></iframe>
+
+
+        <p>These results are also available in CSV files at
+        <a href="OpenData NYC">https://data.cityofnewyork.us/Health/DOHMH-New-York-City-Restaurant-Inspection-Results/43nn-pn8j</a>.  This programming assignment focuses on predicting letter grades for restaurants, yet to be graded, as well computing summary statistics by neighborhood.
+        The assignment is broken into the following functions to allow for unit testing:
+
+        <ul>
+          <li> <code class = "inline">make_insp_df(file_name)</code>:
+            This function takes one input:
+              <ul>
+                  <li> <code class = "inline">file_name</code>: the name of a CSV file containing <a href="https://data.cityofnewyork.us/Health/DOHMH-New-York-City-Restaurant-Inspection-Results/43nn-pn8j/data">Restaurant Inspection Data</a> from OpenData NYC.
+              </ul>
+              The function should open the file <code class = "inline">file_name</code> as DataFrame, keeping only the columns:
+              <pre><code class = "datablock">'CAMIS', 'DBA', 'BORO', 'BUILDING', 'STREET', 'ZIPCODE', 'SCORE', 'GRADE', 'NTA'</code></pre>
+              If the <code class=inline>SCORE</code> is null for a row, that row should be dropped.  The resulting DataFrame is returned.
+          <li> <code class = "inline">predict_grade(num_violations)</code>:
+            This function takes one input:
+              <ul>
+                  <li> <code class = "inline">num_violations</code>: the number of violations points.
+              </ul>
+              The function should then return the letter grade that corresponds to the number of violation points <code class = "inline">num_violations</code>:
+              <ul>
+                <li>"A" grade: 0 to 13 points
+                <li>"B" grade: 14 to 27 points
+                <li>"C" grade: 28 or more points
+              </ul>
+              (from NYC Department of Health
+              <a href="https://a816-health.nyc.gov/ABCEatsRestaurants/#!/faq">Restaurant Grading</a>).
+          <li> <code class = "inline">grade2num(grade)</code>:
+            This function takes one input:
+              <ul>
+                  <li> <code class = "inline">grade</code>: a letter grade or null value.
+              </ul>
+              and returns the grade on a 4.0 scale for <code class = "inline">grade</code> = 'A', 'B', or 'C' (i.e. 4.0, 3.0, or 2.0, respectively).  If <code class = "inline">grade</code> is <code class = "inline">None</code> or some other value,
+              return <code class = "inline">None</code>.
+
+          <li> <code class = "inline">make_nta_df(file_name)</code>:
+            This function takes one input:
+              <ul>
+                  <li> <code class = "inline">file_name</code>: the name of a CSV file containing neighborhood tabulation areas (<a href="../fall21/nynta.csv">nynta.csv</a>).
+              </ul>
+              The function should open the file <code class = "inline">file_name</code> as DataFrame, returns a DataFrame
+              containing only the columns, <code class = "inline">NTACode</code> and <code class = "inline">NTAName</code>.
+          <li> <code class = "inline">compute_ave_grade(df,col)</code>:
+              This function takes two inputs:
+              <ul>
+                  <li> <code class = "inline">df</code>: a DataFrame containing Parking Ticket Data from OpenData NYC.
+                  <li> <code class = "inline">col</code>: the name of a numeric-valued col in the DataFrame.
+                  </ul>
+              This function returns a DataFrame and returns a DataFrame with two columns, the <code class = "inline">NTACode</code> and the average of <code class = "inline">col</code> for each NTA.
+              <li> <code class = "inline">neighborhood_grades(ave_df,nta_df)</code>:
+                  This function takes two inputs:
+                  <ul>
+                      <li> <code class = "inline">ave_df</code>: a DataFrame with containing the column 'NTACode'
+                      <li> <code class = "inline">nta_df</code>: a DataFrame with two columns, 'NTACode' and 'NTAName'.
+                      </ul>
+                  This function returns a DataFrame and returns a DataFrame with the neighborhood codes and names ('NTAName') and the columns from ave_df
+                  This function takes a df containing NTACode and the nta_df containing
+                  NTA and returns the joins on these two columns, dropping both before returning.
+
+      </ul>
+
+
+        <p>
+        For example, assuming your functions are in the <code class="inline">p3.py</code>:
+        <pre><code class="blockcode">df = p3.make_insp_df('restaurants1Aug21.csv')
+print(df)</code></pre>
+        will print:
+            <pre><code class="datablock">        CAMIS                         DBA           BORO  ... SCORE GRADE   NTA
+0    41178124                     CAFE 57      Manhattan  ...   4.0     A  MN15
+1    50111450              CASTLE CHICKEN          Bronx  ...  41.0     N  BX29
+2    40699339     NICK GARDEN COFFEE SHOP          Bronx  ...  31.0   NaN  BX05
+3    41181395                     DUNKIN'       Brooklyn  ...  10.0     A  BK25
+4    50052976           ZON BAKERY & CAFE      Manhattan  ...  72.0   NaN  MN36
+..        ...                         ...            ...  ...   ...   ...   ...
+240  50052976           ZON BAKERY & CAFE      Manhattan  ...  72.0   NaN  MN36
+241  41525768               THE WEST CAFE       Brooklyn  ...  10.0     A  BK73
+242  50111132  BUONASERA RESTAURANT PIZZA       Brooklyn  ...  16.0     N  BK30
+243  40399672         BAGELS & CREAM CAFE         Queens  ...  12.0     A  QN06
+244  50104259           ROYAL COFFEE SHOP  Staten Island  ...  69.0     N  SI22
+
+[243 rows x 9 columns]</code></pre>
+
+          Note that all the rows are included (243) but that only the 9 specified columns are retained in the DataFrame.  Several rows have null entries for <code class=inline>GRADE</code> (e.g. row 2, 4, and 240) while others have letter grades (such as 'N') that are not on the list of possible grades.
+
+          <p>Using the <code class=inline>SCORE</code> to compute the likely grade for each inspection, as both a letter and its equivalent on a 4.0 grading scale, yields:
+              <pre><code class=blockcode>df['NUM'] = df['GRADE'].apply(p3.grade2num)
+df['PREDICTED'] = df['SCORE'].apply(p3.predict_grade)
+df['PRE NUM'] = df['PREDICTED'].apply(p3.grade2num)
+print(df[ ['DBA','SCORE','GRADE','NUM','PREDICTED','PRE NUM'] ])</code></pre>
+              prints many the predicted grade and equivalent numeric grade on the 4.0 scale:
+              <pre><code class=datablock>                           DBA  SCORE GRADE  NUM PREDICTED  PRE NUM
+0                       CAFE 57    4.0     A  4.0         A      4.0
+1                CASTLE CHICKEN   41.0     N  NaN         C      2.0
+2       NICK GARDEN COFFEE SHOP   31.0   NaN  NaN         C      2.0
+3                       DUNKIN'   10.0     A  4.0         A      4.0
+4             ZON BAKERY & CAFE   72.0   NaN  NaN         C      2.0
+..                          ...    ...   ...  ...       ...      ...
+240           ZON BAKERY & CAFE   72.0   NaN  NaN         C      2.0
+241               THE WEST CAFE   10.0     A  4.0         A      4.0
+242  BUONASERA RESTAURANT PIZZA   16.0     N  NaN         B      3.0
+243         BAGELS & CREAM CAFE   12.0     A  4.0         A      4.0
+244           ROYAL COFFEE SHOP   69.0     N  NaN         C      2.0
+
+[243 rows x 6 columns]</code></pre>
+
+    <p>We can use the numeric grade to compute the averages for neighborhoods for both provided and predicted scores:
+    <pre><code class=blockcode>actual_scores = p3.compute_ave_grade(df,'NUM')
+predicted_scores = p3.compute_ave_grade(df,'PRE NUM')
+scores = actual_scores.join(predicted_scores, on='NTA')
+print(scores.head())</code></pre>
+          The first couple of rows are:
+          <pre><code class=datablock>      NUM   PRE NUM
+NTA
+BK09  4.0  4.000000
+BK17  4.0  4.000000
+BK25  4.0  4.000000
+BK26  NaN  2.000000
+BK28  4.0  3.250000</code></pre>
+
+
+          <p>To make it easier to find scores for neighborhoods we combine with the NTA table:
+          <pre><code class=blockcode>nta_df = p3.make_nta_df('nynta.csv')
+scores_with_nbhd_names = p3.neighborhood_grades(scores,nta_df)
+print(scores_with_nbhd_names.head())</code></pre>
+
+          The first couple of rows are:
+          <pre><code class=datablock>    NUM   PRE NUM                                         NTAName
+0   4.0  4.000000                    Brooklyn Heights-Cobble Hill
+1   4.0  4.000000  Sheepshead Bay-Gerritsen Beach-Manhattan Beach
+2   4.0  4.000000                                       Homecrest
+3   NaN  2.000000                                       Gravesend
+4   4.0  3.250000                                Bensonhurst West</code></pre>
+    Our predicted scores are the same but almost always decrease when we include the predicted grades from the scores reported.
+
+    <p>
+      <i>Hints:
+        <ul>
+          <li> You should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.
+          If your file includes code outside of functions, either comment the code out before submitting or use a main function that is conditionally executed (see <a href="https://runestone.academy/ns/books/published//thinkcspy/Functions/mainfunction.html">Think CS: Section 6.8</a> for details).
+          <li> Restaurant inspection data can be found at:  <a href="https://data.cityofnewyork.us/Health/DOHMH-New-York-City-Restaurant-Inspection-Results/43nn-pn8j/data">NYC OpenData</a>.
+            <li> Some datasets for testing:
+                  <ul>
+                    <li> <a href= "../fall21/restaurants1Aug21.csv">restaurants1Aug21.csv</a>
+                    <li> <a href = "../fall21/restaurants30July.csv">restaurants30July.csv</a>
+                  </ul>
+          <li> <a href="https://data.cityofnewyork.us/City-Government/NTA-map/d3qk-pfyz">Neigborhood Tabulation Areas</a> designate neighborhoods in New York City.  The complete NTA file is:
+              <ul>
+                <li> <a href="../fall21/nynta.csv">nynta.csv</a>
+              </ul>
+
+          <li> You may get a warning such as:
+            <code class = "datablock">sys:1: DtypeWarning: Columns (39) have mixed types.Specify dtype option on import or set low_memory=False.
+            </code>
+                when reading in the parking ticket data. Pandas tries to infer the data type (<code class = "inline">dtype</code>) of the columns from the values.  Since some columns are a mixture of numeric and character types this can be difficult.  If the file is read in with <code class = "inline">pd.read_csv(file_name, low_memory=False)</code>, the entire column is read in and used to determine type.
+            </ul>
+            <li> Most aggregation functions have the option to ignore non-numeric data in the calculation.  See for example, averaging only the numerical data in a <a href="https://pandas.pydata.org/docs/reference/api/pandas.core.groupby.GroupBy.mean.html">pd.groupby</a>
+            using the keyword argument <code class = "inline">numeric_only = True</code>.
+          </i>
+
+
+
+
+
+<br><br>
+
+    <i>More to come...</i>
+
+<br><br><br><br>
+<hr>
+<a name="project">
+<h2>Project</h2>
+</a>
+
+A final project is optional for this course.
+Projects should synthesize the skills acquired in the course to analyze and visualize data on a topic of your choosing.  It is your chance to demonstrate what you have learned, your creativity, and a project that you are passionate about.  The intended audience for your project is your classmates as well as tech recruiters and potential employers.
+
+<p>
+The grade for the project is a combination of grades earned on the milestones (e.g. deadlines during the semester to keep the projects on track) and the overall submitted program. If you choose not to complete the project, your final exam grade will replace its portion of the overall grade.
+
+
+
+<h3>Milestones</h3>
+
+The project is broken down into smaller pieces that must be submitted by the deadlines below.  For details of each milestone, see the links.  The project is worth 20% of the final grade.  The point breakdown is listed as well as the submission windows and deadlines.  All components of the project are submitted via Gradescope unless other noted.
+
+
+<p>
+<table class="handouts" border="1">
+<tr>
+	<th>Deadline:</th><th>Deliverables:</th><th>Points:</th>
+  <th>Submission Window Opens:</th>
+</tr>
+<tr>
+	<td>Monday, 28 February, noon</td>
+  <td><a href="#opt_in">Opt-In</a></td>
+  <td></td>
+  <td>14 February</td>
+</tr>
+<tr>
+	<td>Monday, 7 March, noon </td>
+  <td><a href="#proposal">Proposal</a></td>
+  <td>50</td>
+  <td>1 March</td>
+</tr>
+<tr>
+	<td>Monday, 4 April, noon</td>
+  <td><a href="#check_in">Interim Check-In</a></td>
+  <td>25</strike></td>
+  <td>14 March</td>
+</tr>
+
+<tr>
+	<td>Monday, 25 April, noon</td>
+  <td><a href="#complete">Complete Project & Website</a></td>
+  <td>100</td>
+  <td>5 April</td>
+</tr>
+
+
+<tr>
+	<td>Monday, 9 May, noon</td><td><a href="#presentation">Presentation Slides</a></td>
+  <td>25</td>
+  <td>14 April</td>
+</tr>
+<tr>
+	<th colspan=2>Total Points:</th>
+  <td>200</td>
+  <td></td>
+</tr>
+
+
+</table>
+
+
+<br><br><br><br>
+<h3>Project Opt-In</h3>
+<a name="opt_in"></a>
+
+Review the following FAQs before filling out the Project Opt-In form (available on Gradescope on 14 February).
+
+<ul>
+  <li> <b>Is the final project mandatory?</b><br>
+No, the final project is optional for this course.
+
+  <li> <b>Will the project be difficult?</b><br>
+Expect the project to be time consuming because we will hold you to a high standard.  However, in turn, we hope that this will produce a high quality project that you could proudly add to your coding portfolio, to showcase when seeking internships and full-time jobs.
+
+  <li> <b>What counts as "opting in" to the project?</b><br>
+That's easy.  Your response to this Gradescope assignment counts as your "opt in".  If you respond "No" or do not submit this assignment before the deadline due date, we will count you as having "opted out".
+
+  <li> <b>What happens after I "opt in"?</b><br>
+If you "opt in", we will continue to send you information on completing the next steps for the final project via Gradescope.  If you "opt out", you will no longer receive follow up assignments for the project.
+
+  <li> <b>Does "opting in" place me under obligation to complete the project?</b><br>
+Yes and no.  We would like you to seriously consider your availability before making this commitment.  Likewise, we would like to focus our time to help those who are serious about doing this project.  That being said, if you decide midway through the process that you no longer have the time nor capacity to complete the project, no harm no foul, your final written exam will once again be weighted 40% of your cumulative grade (see more in the question below).
+
+  <li> <b>How does the final project factor into my final grade?</b><br>
+If you choose to do the project, your Written Exam will be worth 20% of your overall course grade:
+  <ul>
+      <li> Optional Project: 20%
+      <li> Final Exam - Written Exam: 20%
+      <li> Final Exam - Coding Exam: 20%
+  </ul>
+If you choose not to do the project, your Written Exam will be worth 40% of your overall course grade:
+
+<ul>
+    <li> Final Exam - Written Exam: 40%
+    <li> Final Exam - Coding Exam: 20%
+</ul>
+For more details, see the <a href="syl.html">syllabus.</a>
+</ul>
+
+<br>
+<h3>Project Proposal</h3>
+<a name="proposal"></a>
+
+<p>
+
+The window for submitting proposals opens 1 March.  If you would like feedback and the opportunity to resubmit for a higher grade, submit early in the window.  Feel free to re-submit as many times as you like, up until the assignment deadline.  The instructing team will work hard to give feedback on your submission as quickly as possible, and we will grade them in the order they were received.
+
+<p>The proposal is split into the following sections:
+  <ul>
+    <li> <b>Overview:</b> (10 Points)<br>
+    Think of the overview section as the equivalent of an abstract in a research paper or an
+    <a href="https://en.wikipedia.org/wiki/Elevator_pitch">elevator pitch</a> for the project.  The following questions will help you frame your thoughts if you ever have to succinctly describe your project in an interview:
+    <p>
+    <ul>
+      <li>Title:  should capture the topic/theme of your project.
+      <li>Objective:  In 1 to 2 sentences, succinctly describe what you are hoping to accomplish in this project in simple, non technical English.
+      <li>Importance:  In 1 to 2 sentences, describe why this project has personal significance to you.
+      <li>Originality: In 1 to 2 sentences, describe why you believe this project idea is unique and original.
+    </ul>
+    <br>
+    <li><b>Background Research:</b> (10 Points)<br>
+      In this section, please prove to us that you have already done research in the project you are proposing by answering the questions below.
+      <p>
+      <ul>
+          <li>Key Term Definitions:  What are some terms specific to your project that someone else might not know?  List and define these terms here.
+          <li> Existing Solutions: What are some existing solutions (if any) that are already available for your problem.  What are the drawbacks to these solutions?
+      </ul>
+      <br>
+      <li><b>Data:</b> (10 points)<br>
+        In order to write a successful proposal, you must already have obtained the data and done basic exploratory analysis on it, enough so that you feel confident you have enough data to answer the questions you wish to explore. We cannot stress this enough:  <b>You must use NYC specific data that is publicly available.</b>  If your data does not fit this criteria, your proposal will be rejected.
+
+        <p> The following questions will guide you through some criteria you should be using to assess if the data you have is enough for a successful project.
+          <ul>
+              <li>Data Source: Include a list of your planned data source(s), complete with URL(s) for downloading.  All data must be NYC specific and must be publicly available.
+
+              <li> Data Volume: How many columns in your dataset?  How many rows?  If you are joining multiple datasets together, please tell us how many rows and columns remain after the data has been merged into a single dataset.
+
+              <li> Data Richness: What type of data is in your dataset?  You don't need to describe every column.  A generalized overview is fine.  (e.g. "My data contains 311 complaint types, the date the complaints are created and closed, as well as a description of the complaint").  If you found a data dictionary, feel free to link us to that as well.
+            </ul><br>
+        <li><b>The Predictive Model:</b> (10 Points)<br>
+
+            A strong data science project should demonstrate your knowledge of predictive modeling.  We will be covering models extensively in the latter half of the course.  At this stage of the proposal writing, we will not have covered all the modeling techniques yet, so it's okay to be a bit vague here.
+
+            <p> Hint: Look ahead in the textbook at the chapters on "Linear Modeling" and "Multiple Linear Modeling" for the running examples of models.
+
+            <ul>
+                <li> The Predicted (Y):  Which column in the dataset are you interested in predicting?
+                <li> The Predictors (X's): Which column(s) in the dataset will be used to predict the column listed above?
+                <li> Python Dependencies: What Python libraries and dependencies will you be using?
+                <li> Security and Privacy Considerations: Will you be working with personal identifiable information (PII)? Can your model be mis-used for evil, not good? If so, how do you plan to mitigate that?
+           </ul>
+           <br>
+       <li><b>The Visualization:</b> (10 Points)<br>
+          A key part of making a great data science portfolio are the visualizations.  This is a quick and elegant way of showcasing your work during the job hunting process, even to a non-technical audience.
+
+          <p>Thus, a major part of this final project will center around making the following three types of visualizations with the data you choose.
+          If your data cannot support all three types of visualizations, then please, reconsider choosing another dataset.
+
+          <ul>
+            <li>Summary Statistics Plots: Write out in detail at least 3 types of summary statistics graphs you plan to make with your data (e.g. "I plan to make a histogram using the column X").
+            <li>Map Graphs: Write out in detail how you plan to make at least 1 map data visualization using your data (e.g. "I plan to create a choropleth map to visualize the volume of 311 service requests in NYC in 2021").
+            <li>Model Performance Plots: At the time of writing this proposal, we would not have covered how to visualize model accuracy yet.  So, no worries if this part is still confusing to you.  Give it your best shot on explaining what kind of visualization you think will best showcase that your model is "successful" and "accurate".
+        </ul>
+        <br>
+<p>
+  <i>More to come...</i>
+
+  <br><br><br><br><br><br>
+
+</div>
+</body>
+</html>
