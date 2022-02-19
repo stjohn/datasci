@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_aa45bdb6dd894c18a47992404af74a08 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+</head>
+<body>    
+    
+            <div class="folium-map" id="map_aa45bdb6dd894c18a47992404af74a08" ></div>
+        
+</body>
+<script>    
+    
+            var map_aa45bdb6dd894c18a47992404af74a08 = L.map(
+                "map_aa45bdb6dd894c18a47992404af74a08",
+                {
+                    center: [40.7678398, -73.9645291],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_f9d5c9cbfc5a4aedbee06f56fdcf411b = L.tileLayer(
+                "https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg",
+                {"attribution": "Map tiles by \u003ca href=\"http://stamen.com\"\u003eStamen Design\u003c/a\u003e, under \u003ca href=\"http://creativecommons.org/licenses/by/3.0\"\u003eCC BY 3.0\u003c/a\u003e. Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://creativecommons.org/licenses/by-sa/3.0\"\u003eCC BY SA\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_aa45bdb6dd894c18a47992404af74a08);
+        
+    
+            var marker_108c0e5030fc4c589654c6a7bd58e154 = L.marker(
+                [40.7484405, -73.98566439999999],
+                {}
+            ).addTo(map_aa45bdb6dd894c18a47992404af74a08);
+        
+    
+        var popup_fbeebcf8ca5d4ff287d719554cd17a02 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_a4d55d7324a6426fb9b6cb5b05a7e340 = $(`<div id="html_a4d55d7324a6426fb9b6cb5b05a7e340" style="width: 100.0%; height: 100.0%;">Empire State Building</div>`)[0];
+            popup_fbeebcf8ca5d4ff287d719554cd17a02.setContent(html_a4d55d7324a6426fb9b6cb5b05a7e340);
+        
+
+        marker_108c0e5030fc4c589654c6a7bd58e154.bindPopup(popup_fbeebcf8ca5d4ff287d719554cd17a02)
+        ;
+
+        
+    
+    
+            var marker_0ebb017659cf4440b6479e745d3a5b01 = L.marker(
+                [40.8505949, -73.8769982],
+                {}
+            ).addTo(map_aa45bdb6dd894c18a47992404af74a08);
+        
+    
+        var popup_7fa96cb82d154338a71f47fd603f3922 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_c10a6de2447f474f831194a060a033a6 = $(`<div id="html_c10a6de2447f474f831194a060a033a6" style="width: 100.0%; height: 100.0%;">Bronx Zoo</div>`)[0];
+            popup_7fa96cb82d154338a71f47fd603f3922.setContent(html_c10a6de2447f474f831194a060a033a6);
+        
+
+        marker_0ebb017659cf4440b6479e745d3a5b01.bindPopup(popup_7fa96cb82d154338a71f47fd603f3922)
+        ;
+
+        
+    
+    
+            var marker_481b3c43b0254bf7a77f06b53ad449a6 = L.marker(
+                [40.6407436, -74.07348759999999],
+                {}
+            ).addTo(map_aa45bdb6dd894c18a47992404af74a08);
+        
+    
+        var popup_92f2847e53a747a8b2fe23aa17f111fb = L.popup({"maxWidth": "100%"});
+
+        
+            var html_c314a5a55db144d89882a6abbd80192c = $(`<div id="html_c314a5a55db144d89882a6abbd80192c" style="width: 100.0%; height: 100.0%;">National Lighthouse Museum</div>`)[0];
+            popup_92f2847e53a747a8b2fe23aa17f111fb.setContent(html_c314a5a55db144d89882a6abbd80192c);
+        
+
+        marker_481b3c43b0254bf7a77f06b53ad449a6.bindPopup(popup_92f2847e53a747a8b2fe23aa17f111fb)
+        ;
+
+        
+    
+    
+            var marker_5b7120b464eb4fc0a96c0cdbcd30fa4d = L.marker(
+                [40.7506105, -73.96052399999999],
+                {}
+            ).addTo(map_aa45bdb6dd894c18a47992404af74a08);
+        
+    
+        var popup_18c3fc0f4cce45e884d0152438083184 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_d14c7ccc2bf6479ca77878e42ebe7c59 = $(`<div id="html_d14c7ccc2bf6479ca77878e42ebe7c59" style="width: 100.0%; height: 100.0%;">FDR Four Freedom State Park</div>`)[0];
+            popup_18c3fc0f4cce45e884d0152438083184.setContent(html_d14c7ccc2bf6479ca77878e42ebe7c59);
+        
+
+        marker_5b7120b464eb4fc0a96c0cdbcd30fa4d.bindPopup(popup_18c3fc0f4cce45e884d0152438083184)
+        ;
+
+        
+    
+    
+            var marker_96d6e6b37b984eb0b7f2e650db23959e = L.marker(
+                [40.7570877, -73.8458213],
+                {}
+            ).addTo(map_aa45bdb6dd894c18a47992404af74a08);
+        
+    
+        var popup_f8c6e565ebcf4f8e8e8b97798a9c2503 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_8c506852755d438a98fc8d618171a65a = $(`<div id="html_8c506852755d438a98fc8d618171a65a" style="width: 100.0%; height: 100.0%;">Citi Field</div>`)[0];
+            popup_f8c6e565ebcf4f8e8e8b97798a9c2503.setContent(html_8c506852755d438a98fc8d618171a65a);
+        
+
+        marker_96d6e6b37b984eb0b7f2e650db23959e.bindPopup(popup_f8c6e565ebcf4f8e8e8b97798a9c2503)
+        ;
+
+        
+    
+    
+            var marker_be9b9cd06b50415cb5219a46390d59f6 = L.marker(
+                [40.5755438, -73.9707016],
+                {}
+            ).addTo(map_aa45bdb6dd894c18a47992404af74a08);
+        
+    
+        var popup_dc5124ac252a4477953a7868f62da5cb = L.popup({"maxWidth": "100%"});
+
+        
+            var html_927875320fa24fe9b959d9b71e9cb04e = $(`<div id="html_927875320fa24fe9b959d9b71e9cb04e" style="width: 100.0%; height: 100.0%;">Coney Island</div>`)[0];
+            popup_dc5124ac252a4477953a7868f62da5cb.setContent(html_927875320fa24fe9b959d9b71e9cb04e);
+        
+
+        marker_be9b9cd06b50415cb5219a46390d59f6.bindPopup(popup_dc5124ac252a4477953a7868f62da5cb)
+        ;
+
+        
+    
+    
+            var marker_e2e61e0706104431b6349095f864f06d = L.marker(
+                [40.7678398, -73.9645291],
+                {}
+            ).addTo(map_aa45bdb6dd894c18a47992404af74a08);
+        
+    
+        var popup_d8d09ed402584130aa510cb6dafe8319 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_4a1b22020a2e4a309633e599d99088ba = $(`<div id="html_4a1b22020a2e4a309633e599d99088ba" style="width: 100.0%; height: 100.0%;">Hunter College</div>`)[0];
+            popup_d8d09ed402584130aa510cb6dafe8319.setContent(html_4a1b22020a2e4a309633e599d99088ba);
+        
+
+        marker_e2e61e0706104431b6349095f864f06d.bindPopup(popup_d8d09ed402584130aa510cb6dafe8319)
+        ;
+
+        
+    
+</script>

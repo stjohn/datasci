@@ -1,0 +1,628 @@
+<!DOCTYPE doctype PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <title>CSci 39542: Data Science, Hunter College</title>
+</head>
+<STYLE>A {text-decoration: none;}
+th, td { padding: 5px; border: 1px solid black}
+table { border: 1px solid black; border-collapse: collapse}</STYLE>
+<body>
+
+
+<div style="margin: 15px;width=100%;">
+    <span style= "float: left;font-size:larger"><a href="index.html">CSci 39542</a></span>
+    <span style= "float: right">
+      <a href="syl.html">Syllabus</a>&nbsp;&nbsp;&nbsp;
+      <a href="resources.html">Resources</a>&nbsp;&nbsp;&nbsp;
+      <a href="work.html">Coursework</a>
+<!--&nbsp;&nbsp;&nbsp;
+      <a href="faq.html">FAQ</a>-->
+    </span>
+</div>
+
+<br>
+<br>
+<hr>
+
+<div style="margin:50px">
+
+
+<h2>CSci 39542: Introduction to Data Science<br>
+<a href="http://www.hunter.cuny.edu/csci">Department of Computer Science</a><br>
+<a href="https://hunter.cuny.edu">Hunter College</a>, <a href="https://www.cuny.edu">City University of New York</a><br>
+Fall 2021<br><br>
+</h2>
+
+
+
+<h3>Announcements:</h3>
+<ul>
+  <li> The <a href="projects.html">projects</a> (with consent of authors).
+  <li> The course is full, and we do not expect additional seats to become available for the fall term.  We anticipate that the course will be offered again in the spring.   <!--Enrollment for the course is via CUNYFirst.  If the course is at capacity, sign up for the wait list.  Those on the wait list have first priority when seats become available.--></li>
+  <li> Enrolled Students:  for the quickest response to questions, use the links on the course Blackboard page:
+      <ul>
+          <li> For questions of general interest, use <code class="inline">Help::General Questions</code>.
+          <li> For questions specific to you (e.g. resending Gradescope invitations, questions about grading, etc.), use <code class="inline">Help::Individual Questions</code>.
+      </ul>
+</ul>
+
+
+
+
+<br>
+<h3>Calendar:</h3>
+
+<table >
+	<tr>
+		<th style="text-align: left">&nbsp;<b>Theme:</b></th>
+		<th style="text-align: left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+		<th style="text-align: left"><b>Topics:</b></th>
+		<th style="text-align: left"><b>Coursework:</b></th>
+		<th style="text-align: left"><b>Reading:</b></th>
+
+	</tr>
+	<tr>
+		<td rowspan=2><b>Data Science Overview</b></td>
+		<td><b>#1: </b>Thursday, <br>26 August</td>
+		<td><a href="syl.html">Syllabus</a> & Class Policies;<br>
+      <!--Overview & Gallery;<br>-->
+      Data Science Lifecycle:  Question Formulation,
+        Data Acquisition and Cleaning,
+        Exploratory Data Analysis,
+        Prediction and Inference<br><br>
+      Code Demo:  Textbook:  Predicting Ages from SSN Data<br><br>
+    Code Demo:
+      Python Recap: basics & standard packages (pandas, numpy,  matplotlib, & seaborn), zips and list comprehensions
+					</td>
+
+		<td><a href="work.html#q1">Q1: Academic Integrity</a><br><br>
+    <a href="work.html#p1">P1: Hello, world</a><br>
+    <a href="work.html#p2">P2: Senators' Names</a></td>
+		<td><a href="http://www.textbook.ds100.org/ch/01/lifecycle_intro.html">DS 100: Chapter 1</a> (Data Science Lifecycle)</td>
+	</tr>
+	<tr>
+		<td><b>#2: </b>Monday,<br>30 August</td>
+		<td>
+      Guest Speaker:  <a href="https://www.linkedin.com/in/eharris9876/">Elise Harris</a>, Coordinator for Tech Internships and External Partnerships:  Tech Internships<br><br>
+
+      Exploratory Data Analysis, Generalizing from Data, Data Sampling, Probability Sampling
+
+      <br><br>
+      Classwork:  Are Senators older than Representatives?
+      <br><br>Code Demo: Python string methods<!--, Documentation Strings-->
+		<td>
+      <a href="work.html#q2">Q2: Python Recap</a><br><br>
+      <a href="work.html#p3">P3: Senators' Ages</a><br>
+      <a href="work.html#p4">P4: ELA Proficiency</a>
+		</td>
+		<td><a href="http://www.textbook.ds100.org/ch/02/data_scope_intro.html">DS 100: Chapter 2</a> (Data Scope),<br>
+    <a href="http://www.textbook.ds100.org/ch/03/theory_intro.html">DS 100: Chapter 3</a> (Data Design),<br>
+      <a href="http://www.textbook.ds100.org/ch/13/text_strings.html">DS 100: Section 13.1</a> (Python String Methods)</td>
+	</tr>
+
+
+
+	<tr>
+    <td rowspan=6><b>Rectangular Data</b></td>
+		<td><b>#3: </b>Thursday,<br> 2 September</td>
+		<td>Data Representation:  standard primitive types, rectangular data, data tables in Python (Pandas)
+
+      <br><br>Code Demo:  Regular Expressions
+      <br><br>Guest Speaker:  Provost <a href="https://hunter.cuny.edu/people/dr-valeda-dent/">Valeda Dent</a>:  The
+      <a href="http://www.rurallibrariesresearchnetwork.net">Rural Village Libraries Research Network</a> project
+      <br><br>Classwork:  Measuring impact of libraries in NYC communities
+
+
+
+    </td>
+    <td>
+        <a href="work.html#q3">Q3: Data Sampling</a><br><br>
+        <a href="work.html#p5">P5: URL Collection</a><br>
+        <a href="work.html#p6">P6: Regex on Restaurant Inspection Data</a>
+    </td>
+  		<td rowspan=1>
+        <a href="http://www.textbook.ds100.org/ch/07/pandas_intro.html">DS 100: Chapter 7</a> (Data Tables in Python)<br>
+        <a href="http://www.textbook.ds100.org/ch/13/text_regex.html">DS 100: Sections 13.2-3</a> (Regular Expressions)
+
+          </td>
+
+  	</tr>
+
+    <tr>
+  		<td>6 September</td>
+  		<td colspan = 3><span style="color:darkblue">Labor Day:  College Closed</span></td>
+  	</tr>
+
+	<tr>
+		<td><b>#4: </b>Thursday,<br> 9 September</td>
+		<td>
+      Relational Databases and SQL<br><br>
+      Code Demo: SQL in Python: setting up a database, basic SQL
+      <br><br>
+
+    <!--Classwork:  work with code developed/distributed prior to class-->
+
+
+
+    </td>
+		<td><a href="work.html#q4">Q4:  Python Strings & Data Types</a><br><br>
+      <a href="work.html#p7">P7: Neighborhood Tabulation Areas</a><br>
+      <a href="work.html#p8">P8: Restaurant SQL Queries</a>
+		</td>
+    <td>
+      <a href="http://www.textbook.ds100.org/ch/06/sql_intro.html">DS 100: Chapter 6</a> (Relational Databases & SQL)</td>
+
+
+    </td>
+
+	</tr>
+
+
+
+
+
+	<tr>
+		<td><b>#5: </b>Monday,<br> 13 September</td>
+
+		<td>Aggregating Data in SQL and Pandas:  <br><br>
+
+      Code Demo:
+              Revisiting Python Functions:  Applying Functions to Tables
+
+
+
+    </td>
+    <td><a href="work.html#q5">Q5: Coding Quiz</a><br><br>
+      <a href="work.html#p9">P9: Aggregating Restaurant Data (SQL) </a><br>
+      <a href="work.html#p10">P10: Extracting Districts</a></td>
+    <td>
+      <a href="http://www.textbook.ds100.org/ch/06/sql_intro.html">DS 100: Chapter 6</a> (Relational Databases & SQL),<br>
+      <a href="http://www.textbook.ds100.org/ch/07/pandas_intro.html">DS 100: Chapter 7</a> (Data Tables in Python), <br>
+      <a href="https://docs.python.org/3/tutorial/controlflow.html#more-on-defining-functions?">python.org: Section 4.7</a> (More on Defining Functions)
+
+              </td>
+	</tr>
+
+  <tr>
+		<td>16 September</td>
+		<td colspan = 3><span style="color:darkblue">No Class</span></td>
+	</tr>
+
+
+
+	<tr>
+
+    <td><b>#6: </b>Monday,<br> 20 September</td>
+		<td>Joining Data in SQL and Pandas
+      <br><br>
+      Classwork:  Combining NYC schools data
+      <br><br>
+      Code Demo:  Lambda Expressions
+      <br><br>  Project Overview
+</td>
+		<td>
+      <a href="work.html#q6">Q6: Regular Expressions <br><br>
+        <a href="work.html#p11">P11: Joining Restaurant & NTA Data</a><br>
+        <a href="work.html#preproposal">Project Pre-Proposal Window Opens</a><br>
+        <a href="work.html#p12">P12: MTA Ridership</a></a>
+		</td>
+    <td>
+      <a href="http://www.textbook.ds100.org/ch/06/sql_intro.html">DS 100: Chapter 6</a> (Relational Databases & SQL),<br>
+      <a href="http://www.textbook.ds100.org/ch/07/pandas_intro.html">DS 100: Chapter 7</a> (Data Tables in Python),<br>
+      <a href="https://docs.python.org/3/tutorial/controlflow.html#more-on-defining-functions?">python.org: Section 4.7</a> (More on Defining Functions)
+
+	</tr>
+
+
+
+
+	<tr>
+    <td rowspan=3><b>Data Visualization</td>
+		<td><b>#7: </b>Thursday,<br>23 September</td>
+		<td>Plotting Numerical & Categorical Data, Time-Series Data<br>
+  <br>
+  Code Demo:  Customizing Plots in matplotlib & seaborn
+  <br><br>
+  Classwork:  Plotting MTA Ridership Data
+  <br><br>
+  Code Demo:  Revisiting Python Functions:  Defaults, Keywords, Unpacking Argument Lists
+      </td>
+		<td><a href="work.html#q7">Q7: SQL</a><br><br>
+      <a href="work.html#p13">P13: Column Summaries</a><br>
+      <a href="work.html#p14">P14: Library Cleaning</a></a></td>
+		<td rowspan=1>
+      <a href=
+      "http://www.textbook.ds100.org/ch/08/repr_intro.html">DS 100, Chapter 8</a> (Data Representation)
+      <br>
+      <a href="http://www.textbook.ds100.org/ch/09/quality_intro.html">DS 100: Chapter 9</a> (Data Quality),<br>
+      <a href="http://www.textbook.ds100.org/ch/11/viz_intro.html">DS 100: Sections 11.1-11.3</a> (Data Visualization)<br>
+      <a href="https://github.com/ageron/handson-ml2/blob/master/tools_matplotlib.ipynb">Matplotlib Tools (Hands On ML)</a>
+    </td>
+
+          </td>
+	</tr>
+	<tr>
+		<td><b>#8: </b>Monday, <br>27 September</td>
+		<td>
+      Visualizing GIS Data, GeoJSON, Choropleth Maps, Voronoi Diagrams
+
+      <br><br>Code Demo:  Interactive Library Maps, School District Choropleth Maps
+      <br><br>Classwork:  GeoJSON Editor
+</td>
+		<td><a href="work.html#q8">Q8:  Data Frames (Python)</a>
+      <br><br>
+        <a href="work.html#p15">P15: Plotting Challenge</a><br>
+
+        <a href="work.html#p16">P16: Choropleth Attendance Cleaning</a></a></td>
+    <td>       <a href="http://www.textbook.ds100.org/ch/11/viz_intro.html">DS 100: Sections 11.1-11.3</a> (Data Visualization)<br><a href="https://pypi.org/project/folium/">Folium documentation</a>,<br>
+    <a href="http://geojson.io/">GeoJSON Editor</a>
+ </td>
+	</tr>
+
+
+	<tr>
+		<td><b>#9: </b>Thursday,<br>30 September</td>
+		<td>Visualization Principles<br><br>
+      Code Demo:  Voronoi Diagrams, <br><br>
+      Classwork:  Altair: declarative visualization techniques</td>
+		<td><a href="work.html#q9">Q9: Python Functions</a>      <br><br>
+            <a href="work.html#p17">P17: Grouping ELA/Math by Districts</a><br>
+            <a href="work.html#p18">P18: Log Scale</a></a></td>
+		<td>      <a href="http://www.textbook.ds100.org/ch/11/viz_intro.html">DS 100: Chapter 11</a> (Data Visualization),<br>
+        <a href="https://altair-viz.github.io/getting_started/overview.html">Altair overview</a><br>
+        <a href="https://altair-viz.github.io/gallery/index.html?highlight=maps#maps">Altair maps</a> (gallery of case studies)
+</td>
+	</tr>
+
+	<tr>
+<td rowspan=5><b>Models & Loss Functions</b></td>
+		<td><b>#10: </b>Monday,<br>4 October</td>
+		<td>
+
+
+      Probability Distributions<br><br>
+      Loss Functions: Mean Squared and Mean Absolute Error
+        <br><br>Code Demo:
+            Textbook:  Restaurant Tips
+      </td>
+    <td><a href="work.html#q10">Q10: Coding Quiz </a>
+      <br><br>
+        <a href="work.html#p19">P19: Smoothing with Gaussians</a><br>
+        <a href="work.html#preproposal">Project Pre-Proposal</a><br>
+        <a href="work.html#p20">P20: Loss Functions for Tips</a></a></td>
+		<td rowspan=1>
+      <a href=
+      "http://www.textbook.ds100.org/ch/04/modeling_loss_functions.html">DS 100, Sections 4.2-3</a> (Loss Functions),<br>
+      <a href="https://seeing-theory.brown.edu/index.html">Seeing Theory</a> (Brown U),<br>
+      <a href="https://www.zoology.ubc.ca/~whitlock/Kingfisher/SamplingNormal.htm"> Sampling from a Normally Distributed Population</a> (UBC)
+
+
+	</tr>
+
+
+
+
+
+	<tr>
+
+		<td><b>#11: </b>Thursday, <br>7 October</td>
+		<td>
+      More on Loss Functions:  Huber Loss, Properties of Different Loss Functions<br><br>
+
+      Correlation, Linear Regression, <!--Least Squares,--> Residuals
+</td>
+		<td><a href="work.html#q11">Q11: Data Visualization</a>
+      <br><br>
+        <a href="work.html#p21">P21: Taxi Cleaning</a><br>
+        <a href="work.html#p22">P22: Dice Simulator</a></td>
+    <td>
+      <a href="http://www.textbook.ds100.org/ch/04/modeling_intro.html">DS 100: Chapter 4</a> (Modeling Intro),<br>
+      <a href="http://www.textbook.ds100.org/ch/15/linear_models.html">DS 100: Chapter 15</a> (Linear Models),<br>
+      <a href="https://inferentialthinking.com/chapters/15/Prediction.html">DS 8: Chapter 15</a> (Prediction),<br>
+      <a href="https://shiney.zoology.ubc.ca/whitlock/Guessing_correlation/">Guessing Correlation Coefficients</a> (UBC),<br>
+      <a href="https://shiney.zoology.ubc.ca/whitlock/Residuals/">Residuals</a> (UBC)
+    </td>
+
+
+      	</tr>
+
+  <tr>
+		<td>11 October</td>
+		<td colspan = 3><span style="color:darkblue">No Class</span></td>
+	</tr>
+
+	<tr>
+
+		<td><b>#12: </b>Thursday,<br>14 October</td>
+    <td>
+      Least Squares<br><br>
+      Probability Overview: Distributions<br><br>
+      Probability Mass Functions,
+      Central Limit Theorem<br><br>
+
+      <br><br>Classwork: Predicting taxi tips & costs (NYC OpenData Yellow Taxi Data)
+        <!--https://data.cityofnewyork.us/Transportation/2019-Yellow-Taxi-Trip-Data/2upf-qytp-->
+      </td>
+		<td><a href="work.html#q12">Q12: Loss Functions</a>      <br><br>
+            <a href="work.html#p23">P23: Correlation Coefficients </a><br>
+            <a href="work.html#p24">P24: Enrollments</a></td>
+    <td><a href="https://inferentialthinking.com/chapters/09/Randomness.html">DS 8: Chapter 9</a> (Randomness), <br>
+      <a href="http://www.textbook.ds100.org/ch/16/prob_and_gen.html">DS 100: Chapter 16</a> (Probability & Generalization)<br>
+      <a href="https://www.zoology.ubc.ca/~whitlock/Kingfisher/CLT.htm">Central Limit Theorem</a> (UBC),<br>
+      <a href="http://www.textbook.ds100.org/ch/17/gradient_descent.html">DS 100: Chapter 17</a> (Gradient Descent)</td>
+</td>
+	</tr>
+
+	<tr>
+
+		<td><b>#13: </b>Monday, <br>18 October</td>
+		<td>Recap:  Confidence Intervals;<br><br>
+      Gradient Descent, Convexity, Fitting Models<br><br>
+
+      Classwork:  Gradient Descent</td>
+		<td><a href="work.html#q13">Q13: Probability & Risk</a>      <br><br>
+            <a href="work.html#p25">P25:  PMF of Senators' Ages</a><br>
+            <a href="work.html#proposal">Project: Title & Proposal</a><br>
+            <a href="work.html#p26">P26: Weekday Entries </a></td>
+		<td><a href="http://www.textbook.ds100.org/ch/17/gradient_descent.html">DS 100: Chapter 17</a> (Gradient Descent),<br>
+      <a href="https://www.zoology.ubc.ca/~whitlock/Kingfisher/CIMean.htm">Confidence Intervals</a> (UBC)
+    </td></tr>
+
+	<tr>
+    <td rowspan=3><b>Multiple Linear Modeling</b></td>
+		<td><b>#14: </b>Thursday,<br>21 October</td>
+    <td>Multiple Linear Regression; More on Gradient Descent</td>
+		<td><a href="work.html#q14">Q14: Linear Models & Gradient Descent</a><br><br>
+            <a href="work.html#p27">P27: Fitting OLS</a><br>
+            <a href="work.html#p28">P28: CS Courses</a> </td>
+		<td><a href="http://www.textbook.ds100.org/ch/19/mult_intro.html">DS 100: Chapter 19</a> (Multiple Linear Regression)<br>
+    <a href="https://github.com/lilipads/gradient_descent_viz">Gradient Descent Visualization (Lili Jiang)</td>
+
+    	</tr>
+
+	<tr>
+
+		<td><b>#15: </b>Monday,<br>25 October</td>
+    <td>Feature Engineering Overview<br><br>
+Code Demo:  Walmart Sales
+    </td>
+		<td><a href="work.html#q15">Q15: Coding Quiz</a>
+      <br><br>
+              <a href="work.html#p29">P29: Predictions with MLM's</a><br>
+              <a href="work.html#peerReview">Project: Peer Review #1</a><br>
+              <a href="work.html#p30">P30: Computing Ranges</a></td>
+    <td><a href="http://www.textbook.ds100.org/ch/20/feature_engineering.html">DS 100: Chapter 20</a> (Feature Engineering)
+    </td>
+	</tr>
+
+	<tr>
+
+		<td><b>#16: </b>Thursday,<br>28 October</td>
+    <td>Feature Engineering: Variable Transformations;
+      Bias-Variance Tradeoff<br><br>
+      Classwork:  Friday Attendance<br><br>
+      Code Demo:  Ice Cream Ratings</td>
+		<td><a href="work.html#q16">Q16: Review</a> <br><br>
+            <a href="work.html#p31">P31: Sampling Distributions</a><br>
+            <a href="work.html#p32">P32: Attendance</a></td>
+		<td><a href="http://www.textbook.ds100.org/ch/20/feature_engineering.html">DS 100: Chapter 20</a> (Feature Engineering)
+    <br>
+    <a href="http://www.textbook.ds100.org/ch/21/bias_intro.html">DS 100: Chapter 21</a> (Bias-Variance Tradeoff)
+
+    </td>
+	</tr>
+
+
+
+	<tr>
+    <td rowspan=4><b>Classification</b></td>
+		<td><b>#17: </b>Monday,<br>1 November</td>
+		<td>Feature Engineering: Categorical Encoding; Overview of Regularization; Regression on Probabililities; The Logistic Model & Loss Function;
+      <br><br>Classwork:  311 Pothole Dataset
+
+    </td>
+		<td><a href="work.html#q17">Q17: Feature Engineering</a> <br><br>
+            <a href="work.html#p33">P33: Confidence Intervals</a><br>
+            <a href="work.html#p34">P34:  Polynomial Features</a></td>
+		<td>    <a href="http://www.textbook.ds100.org/ch/22/reg_intro.html">DS 100: Chapter 22</a> (Regularization)
+        <br><a href="http://www.textbook.ds100.org/ch/24/classification_intro.html">DS 100: Chapter 24</a> (Classification)
+    </td>
+	</tr>
+	<tr>
+
+		<td><b>#18: </b>Thursday,<br>4 November</td>
+		<td>Using Logistic Models: Approximating the Empirical Probability Distribution; Fitting & Evaluating a Logistic Model;
+            <br><br>Code Demo:  Free Throws
+    </td>
+    <td><a href="work.html#q18">Q18: Logistic Model</a> <br><br>
+            <a href="work.html#p35">P35: Parking Tickets</a><br>
+            <a href="work.html#p36">P36: Multiple Locations</a></td>
+		<td><a href="http://www.textbook.ds100.org/ch/24/classification_intro.html">DS 100: Chapter 24</a> (Classification)
+		</td>
+	</tr>
+
+	<tr>
+
+		<td><b>#19: </b>Monday,<br>8 November</td>
+		<td>Evaluating Logistic Models; Confusion Matrices <br><br>
+      Classwork:  Binary Digit Classifier <br><br>
+      Support Vector Machines (SVM)</td>
+		<td><a href="work.html#q19">Q19: Logistic Regression</a><br><br>
+            <a href="work.html#p37">P37: Score Predictor</a><br>
+            <a href="work.html#dataCollection">Project Check-in #1 (Data Collection)</a><br>
+            <a href="work.html#p38">P38: Ticket Prep</a> </td>
+		<td rowspan=1><a href="http://www.textbook.ds100.org/ch/24/classification_intro.html">DS 100: Chapter 24</a> (Classification)<br>
+          <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.07-support-vector-machines.html">Python DS Handbook Chapter 5</a> (SVMs)<br>
+
+          <a href="https://cs.stanford.edu/~karpathy/svmjs/demo/">Karparthy's SVM Demo</a> (Stanford)
+</td>
+
+	</tr>
+	<tr>
+		<td><b>#20: </b>Thursday,<br>11 November</td>
+		<td>More on SVM's; One-Versus-Rest (OVR) Classification; Survey of Classifier Techniques<br><br>
+      Classwork: Iris Classification</td>
+		<td><a href="work.html#q20">Q20: Coding Quiz</a> <br><br>
+            <a href="work.html#p39">P39: Binary Digit Classifier</a><br>
+            <a href="work.html#p40">P40: Enrollment by Courses</a></td>
+        <td rowspan=1>          <a href="https://www.datacamp.com/community/tutorials/svm-classification-scikit-learn-python">Data Camp Tutorial</a> (SVM's)<br>
+                  <a href="https://scikit-learn.org/stable/modules/svm.html">SVM's</a> (sklearn)<br>
+                  <a href="https://scikit-learn.org/stable/auto_examples/classification/plot_digits_classification.html#sphx-glr-auto-examples-classification-plot-digits-classification-py">SKLearn</a> (Recognizing Hand-Written Digits)
+        </td>
+	</tr>
+
+
+
+	<tr>
+    <td rowspan=4><b>Dimensionality Reduction</b></td>
+		<td><b>#21: </b>Monday,<br>15 November</td>
+		<td>Linear Algebra Recap; Principal Components Analysis<br><br>
+      Code Demo: Explained Visually: Eigenvectors & Eigenvalues</td>
+		<td><a href="work.html#q21">Q21: Classification</a> <br><br>
+            <a href="work.html#p41">41: Classifier Misses</a><br>
+            <a href="work.html#analysis">Project Check-in #2 (Analysis)</a><br>
+            <a href="work.html#p42">P42: Ticket Predictor</a></td>
+		<td>
+      <a href="https://setosa.io/ev/eigenvectors-and-eigenvalues/">Explained Visually</a> (Eigenvectors and Eigenvalues)<br>
+      <a href="https://setosa.io/ev/principal-component-analysis/">Explained Visually</a> (Principal Components Analysis)<br>
+      <a href="https://math.mit.edu/~gs/linearalgebra/ila0601.pdf">Linear Algebra Review</a> (MIT)<br>
+      <a href="http://www.textbook.ds100.org/ch/26/pca_dims.html">DS 100: Section 26.1</a> (PCA Dimensions)
+</td>
+	</tr>
+	<tr>
+
+		<td><b>#22: </b>Thursday,<br>18 November</td>
+		<td>PCA as Dimensionality Reduction; Optimal Number of Components<br><br>
+    Multiple Dimensional Scaling
+    </td>
+		<td><a href="work.html#q22">Q22: Linear Algebra</a> <br><br>
+            <a href="work.html#p43">P43: Moving</a><br>
+            <a href="work.html#p44">P44: Model Comparison</a></td>
+    <td>
+      <a href="http://www.textbook.ds100.org/ch/26/pca_intro.html">DS 100: Chapter 26</a> (PCA)<br>
+      <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.09-principal-component-analysis.html">Python Data Science Handbook: Section 5.9</a> (PCA)<br>
+
+    </td>
+	</tr>
+
+
+
+
+
+	<tr>
+
+		<td><b>#23: </b>Monday,<br>22 November
+		</td>
+		<td>Non-Linear Dimensionality Reduction:  t-SNE, UMAP
+    <br><br>
+
+    Project Update:  Presentation Details:  Abstract, Website, and Presentation</td>
+		<td><a href="work.html#q23">Q23: PCA</a> <br><br>
+            <a href="work.html#p45">P45:  Component Retention</a><br>
+            <a href="work.html#visualization">Project Check-in #3 (Visualization)</a><br>
+            <a href="work.html#p46">P46: Digits Components</a></td>
+		<td rowspan=1>
+      <a href="https://scikit-learn.org/stable/auto_examples/manifold/plot_lle_digits.html#sphx-glr-auto-examples-manifold-plot-lle-digits-py">Manifold Learning</a> (sklearn)
+		</td>
+	</tr>
+
+  <tr>
+    <td>25-26 November</td>
+    <td colspan = 4><span style="color:darkblue">Thanksgiving Break:  College Closed</span></td>
+  </tr>
+
+	<tr>
+    <td rowspan=3><b>Clustering</b></td>
+		<td><b>#24: </b>Monday,<br>29 November</td>
+		<td>Recap:  Dimensionality Reduction;<br><br>
+      Code Demo:  transit vs. Euclidean distances<br><br>
+      K-Means Clustering</td>
+    <td><a href="work.html#q24">Q24: MDS</a> <br><br>
+            <a href="work.html#p47">P47: Voting MDS</a><br>
+          <a href="work.html#slides">Project: Draft Abstract & Website</a><br>
+        <a href="work.html#p48">P48: Transit Distances</a></td>
+		<td><a href="http://www.textbook.ds100.org/ch/28/clustering_intro.html">DS 100: Chapter 28</a> (clustering)
+    <br>
+    <a href="https://en.wikipedia.org/wiki/K-means_clustering#/media/File:K-means_convergence.gif">Wiki K-Means</a> (gif)<br>
+    <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.11-k-means.html">Python Data Science Handbook: Section 5.11</a> (K-Means)
+    </td>
+	</tr>
+
+
+	<tr>
+
+		<td><b>#25: </b>Thursday,<br>2 December
+		</td>
+		<td>K-Means:  Clustering Complexity, Lloyd's Algorithm (Naive K-Means), MiniBatch K-Means<br></td>
+		<td><a href="work.html#q25">Q25: Coding Quiz</a> <br><br>
+      <a href="work.html#p49">P49: Toy Clusters</a><br>
+      <a href="work.html#peerReview2">Project: Peer Review #2</a>
+    </td>
+    <td><a href="http://www.textbook.ds100.org/ch/28/clustering_intro.html">DS 100: Chapter 28</a> (clustering)
+      <br>
+      <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.11-k-means.html">Python Data Science Handbook: Section 5.9</a> (K-Means)
+
+		</td>
+	</tr>
+	<tr>
+
+		<td><b>#26: </b>Monday,<br>6 December</td>
+		<td>Other Clustering Approaches; <br><br>
+      Supervised vs. Unsupervised Learning</td>
+		<td><a href="work.html#q26">Q26: K-Means Clustering</a><br><br>
+      <a href="work.html#p50">P50: 4-Coloring</a><br>
+      <a href="work.html#abstract">Project: Abstract</a><br>
+    </td>
+    <td><a href="http://www.textbook.ds100.org/ch/28/clustering_intro.html">DS 100: Chapter 28</a> (clustering)
+      <br>
+      <a href="https://en.wikipedia.org/wiki/Cluster_analysis">Wiki Cluster Analysis</a>
+      <br>
+      <a href="https://www.ibm.com/cloud/blog/supervised-vs-unsupervised-learning">Supervised vs. Unsupervised Learning</a> (IBM)
+</td>
+	</tr>
+	<tr>
+    <td rowspan=1><b>Replicability</b></td>
+		<td><b>#27: </b>Thursday,<br>9 December
+		</td>
+		<td>Replicability, P-Hacking, A/B testing
+    <br><br>
+    Classwork:  Coding Challenges (Core Python Recap)</td>
+		<td><a href="work.html#q27">Q27: Review</a> <br>
+        <br>
+
+        <a href="work.html#completeSite">Project: Website</a><br>
+        <a href="work.html#presentation">Project: Presentation Slides</a>
+        <br>
+      </td>
+
+		<td rowspan=1><a href="http://www.textbook.ds100.org/ch/25/repl_intro.html">DS Chapter 25</a> (Replicability)
+		</td>
+
+
+	</tr>
+
+	<tr>
+    <td rowspan=1><b>Review</b></td>
+		<td><b>#28: </b>Monday,<br>13 December</td>
+		<td> Review
+    </td>
+		<td><a href="work.html#q28">Q28: End-of-semester Survey</a><br>
+      <br>
+
+     </td>
+		<td></td>
+	</tr>
+
+	<tr>
+		<td colspan=2><span style="color:darkblue"><b>Monday, 20 December,<br> 1:45-3:45pm</b></span></td><td colspan = 4><span style="color:darkblue">Final Exam</span></td>
+	</tr>
+</table>
+
+
+</div>
+
+<div>
+<i style="float:right">(This file was last modified on 14 February 2022.)</i><br>
+</div>
