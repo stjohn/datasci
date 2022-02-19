@@ -1,0 +1,649 @@
+<!DOCTYPE doctype PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <title>CSci 39542: Data Science, Hunter College</title>
+</head>
+<STYLE>A {text-decoration: none;}
+th, td { padding: 5px; border: 1px solid black}
+table { border: 1px solid black; border-collapse: collapse}</STYLE>
+<body>
+
+
+<div style="margin: 15px;width=100%;">
+    <span style= "float: left;font-size:larger"><a href="index.html">CSci 39542</a></span>
+    <span style= "float: right">
+      <a href="syl.html">Syllabus</a>&nbsp;&nbsp;&nbsp;
+      <a href="resources.html">Resources</a>&nbsp;&nbsp;&nbsp;
+      <a href="work.html">Coursework</a>
+<!--&nbsp;&nbsp;&nbsp;
+      <a href="faq.html">FAQ</a>-->
+    </span>
+</div>
+
+<br>
+<br>
+<hr>
+
+<div style="margin:50px">
+
+
+<h2>CSci 39542: Introduction to Data Science<br>
+<a href="http://www.hunter.cuny.edu/csci">Department of Computer Science</a><br>
+<a href="https://hunter.cuny.edu">Hunter College</a>, <a href="https://www.cuny.edu">City University of New York</a><br>
+Spring 2022<br><br>
+</h2>
+
+
+
+<h3>Announcements:</h3>
+<ul>
+  <li> For questions about the course, write to: <tt>datasci AT hunter cuny edu</tt>.
+  <li> January 14:  We have a new room (West Building W714) and the enrollment capacity has been increased.  If you were on the waiting list, you should receive notification and permission to enroll.
+  <li> January 4:  Due to the high enrollments, we have requested a larger room.  As the room and enrollment caps are adjusted, the course may temporarily disappear from CUNYFirst.  With the larger room, we expect enough seats for all interested students.
+  <li> December 8:  We have a classroom (1036HN) for the spring semester and will be <b>in-person</b>!  Thank you to President Raab for making this possible.
+
+    <!--Due to limited space on-campus for large lectures, this course
+    does not yet have a classroom and is currently listed as "on-line" on CUNYFirst.  We hope that a room will be found soon and that we will be in-person.
+  -->
+  <li> The course prerequisites for this programming-intensive class are:
+      <p>
+      <ul>
+          <li> a year of college-level programming in the same language (CSci 127 & 133) or (CSci 135 & 235)),
+          <li> at least one semester in Python (i.e. CSci 127), and
+          <li> a course in statistics (i.e. Stat 213 or equivalent).
+      </ul>
+      <!--<p>
+      There is a lot of material to cover, so, we start programming during the first lecture and missing the programming prerequisites will make it extremely difficult to complete the programming component and pass the class.  We assume familiarity with statistics from the first week onward and integrate it into examples, quizzes, and programs.  Given its use throughout the course, lack of statistical familiarity will lower your grade by at least a letter grade.
+    -->
+  <p> If you are interested in the course and have a year of programming, Python proficiency, and taken statistics, you can enroll directly via CUNYFirst without additional permissions.  If you took the courses elsewhere, reach out to a computer science advisors about what's needed to align your previous courses to Hunter courses on your CUNYFirst record.
+
+<!--
+  <p> If you haven't take a year of programming, or lack proficiency in Python or statistics, it is unfair to admit a student into a course that they are unlikely to pass, and we hope that you will join the course in a future semester when you have completed the prerequisites.
+-->
+
+  <!--
+  <li> Enrollment for the course is via CUNYFirst.  Spring enrollment
+    opens in mid-November.
+
+  <li> The course is full, and we do not expect additional seats to become available for the fall term.  We anticipate that the course will be offered again in the spring.
+  Enrollment for the course is via CUNYFirst.  If the course is at capacity, sign up for the wait list.  Those on the wait list have first priority when seats become available.</li>
+  <li> Enrolled Students:  for the quickest response to questions, use the links on the course Blackboard page:
+      <ul>
+          <li> For questions of general interest, use <code class="inline">Help::General Questions</code>.
+          <li> For questions specific to you (e.g. resending Gradescope invitations, questions about grading, etc.), use <code class="inline">Help::Individual Questions</code>.
+      </ul>
+  -->
+</ul>
+
+
+<br>
+<h3>Calendar:</h3>
+
+<table >
+	<tr>
+		<th style="text-align: left">&nbsp;<b>Theme:</b></th>
+		<th style="text-align: left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+		<th style="text-align: left"><b>Topics:</b></th>
+		<th style="text-align: left"><b>Coursework:</b></th>
+		<th style="text-align: left"><b>Reading:</b></th>
+
+	</tr>
+	<tr>
+		<td rowspan=4><b>Data Science Overview</b></td>
+		<td><b>#1: </b>Monday, <br>31 January</td>
+		<td><a href="syl.html">Syllabus</a> & Class Policies;<br><br>
+      <!--Overview & Gallery;<br>-->
+      Data Science Lifecycle:  Question Formulation,
+        Data Acquisition and Cleaning,
+        Exploratory Data Analysis,
+        Prediction and Inference<br><br>
+
+      Python Recap: basics, dictionaries, & keyword parameters
+
+        <!--
+      Code Demo:  Textbook:  Predicting Ages from SSN Data<br><br>
+    Code Demo:
+      Python Recap: basics & standard packages (pandas, numpy,  matplotlib, & seaborn), zips and list comprehensions
+    -->
+					</td>
+
+		<td><a href="work.html#cw1">CW1</a><br></td>
+
+		<td><a href="http://www.textbook.ds100.org/ch/01/lifecycle_intro.html">DS 100: Chapter 1</a> (Data Science Lifecycle),<br>
+    <a href="https://runestone.academy/ns/books/published//thinkcspy/Dictionaries/toctree.html">Think CS: Chapter 12</a> (Dictionaries),<br>
+    <a href="https://docs.python.org/3/tutorial/controlflow.html#more-on-defining-functions?">python.org: Section 4.7</a> (Functions)
+
+    </td>
+	</tr>
+	<tr>
+		<td><b>#2: </b>Thursday,<br>3 February</td>
+		<td>
+      Data Scope, Big Data, Accuracy<br><br>
+
+      Python Recap:  file I/O and string methods
+
+		<td>
+      <a href="work.html#cw2">CW2</a><br>
+		</td>
+		<td><a href="http://www.textbook.ds100.org/ch/02/data_scope_intro.html">DS 100: Chapter 2</a> (Data Scope),<br>
+
+      <a href="http://www.textbook.ds100.org/ch/12/text_strings.html">DS 100: Section 12.1</a> (String Methods),
+    <br>
+    <a href="https://runestone.academy/ns/books/published//thinkcspy/Files/toctree.html">Think CS: Chapter 11</a> (Files)
+</td>
+
+	</tr>
+
+
+
+	<tr>
+		<td><b>#3: </b>Monday,<br> 7 February</td>
+		<td>
+      Theory for Data Design, Sampling Variation, Measurement Error<br><br>
+
+      Data Representation, DataFrames (Pandas),
+      Lambda Expressions & Applying Functions
+
+
+
+      <!--
+      <br><br>Code Demo:  Regular Expressions
+      <br><br>Guest Speaker:  Provost <a href="https://hunter.cuny.edu/people/dr-valeda-dent/">Valeda Dent</a>:  The
+      <a href="http://www.rurallibrariesresearchnetwork.net">Rural Village Libraries Research Network</a> project
+      <br><br>Classwork:  Measuring impact of libraries in NYC communities
+    -->
+    </td>
+    <td>
+        <a href="work.html#cw3">CW3</a>
+    </td>
+  		<td rowspan=1>
+        <a href="http://www.textbook.ds100.org/ch/03/theory_intro.html">DS 100: Chapter 3</a> (Data Design),<br>
+      <a href="http://www.textbook.ds100.org/ch/06/pandas_intro.html">DS 100: Chapter 6</a> (DataFrames),<br>
+      <a href="https://docs.python.org/3/tutorial/controlflow.html#more-on-defining-functions?">python.org: Section 4.7</a> (Functions)
+          </td>
+
+  	</tr>
+
+
+	<tr>
+		<td><b>#4: </b>Thursday,<br> 10 February</td>
+		<td>
+      Modeling and Estimation<br><br>
+
+      DataFrame Basics, List comprehensions & zips
+
+
+    </td>
+		<td><a href="work.html#cw4">CW4</a><br><br>
+      <a href="work.html#p1">Program 1</a><br>
+      <a href="work.html#quizzes">Quiz 1</a>
+		</td>
+    <td>
+      <a href="http://www.textbook.ds100.org/ch/04/modeling_intro.html">DS 100: Chapter 4</a> (Modeling and Estimation),<br>
+      <a href="http://www.textbook.ds100.org/ch/06/pandas_intro.html">DS 100: Chapter 6</a> (DataFrames), <br>
+      <a href="https://runestone.academy/ns/books/published//thinkcspy/Lists/ListComprehensions.html">Think CS: Section 10.23</a> (List Comprehensions)<br>
+      <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html">Constructing DF</a> (pydata.org)
+
+    </td>
+
+	</tr>
+
+
+
+	<tr>
+
+		<td rowspan=6><b>Representation & Visualization</b></td>
+		<td><b>#5: </b>Monday,<br> 14 February</td>
+
+		<td>
+      Data Representation:  Structure & Granularity<br><br>
+      Manipulating Data in Pandas:  More on Subsetting & Aggregating DataFrames<br><br>
+      Project Overview
+    </td>
+    <td><a href="work.html#cw5">CW5</a><br><br>
+    </td>
+    <td>
+
+      <a href="http://www.textbook.ds100.org/ch/06/pandas_intro.html">DS 100: Chapter 6</a> (DataFrames), <br>
+      <a href="http://www.textbook.ds100.org/ch/08/repr_intro.html">DS 100: Chapter 8</a> (Data Representation), <br>
+
+
+              </td>
+	</tr>
+
+
+
+
+
+	<tr>
+
+    <td><b>#6: </b>Thursday,<br> 17 February</td>
+		<td>
+      Data Quality & Wrangling<br><br>
+      Joining & Transforming Data in Pandas
+</td>
+		<td>
+      <a href="work.html#cw6">CW6<br><br>
+        <a href="work.html#p2">Program 2</a><br>
+        <a href="work.html#quizzes">Quiz 2</a><br>
+
+        </a>
+		</td>
+    <td>
+      <a href="http://www.textbook.ds100.org/ch/06/pandas_intro.html">DS 100: Chapter 6</a> (DataFrames),<br>
+      <a href="http://www.textbook.ds100.org/ch/08/wrangling_intro.html">DS 100: Chapter 8</a> (Data Wrangling),<br>
+	</tr>
+
+  <tr>
+    <td>21 February</td>
+    <td colspan = 3><span style="color:darkblue">President Day:  College Closed</span></td>
+  </tr>
+
+
+
+
+
+
+	<tr>
+		<td><b>#7: </b>Thursday,<br>24 February</td>
+		<td>
+
+      Features & Exploratory Data Analysis<br>
+      Visualizing Qualitative & Quantitative Data<br>
+      <br>
+
+
+  Regular Expressions
+
+      </td>
+		<td><a href="work.html#cw7">CW7</a><br><br>
+      <a href="work.html#p3">Program 3</a><br>
+      <a href="work.html#quizzes">Quiz 3</a></a></td>
+		<td rowspan=1>
+      <a href="http://www.textbook.ds100.org/ch/09/eda_intro.html">DS 100: Chapter 9</a> (Exploratory Data Analysis), <br>
+      <a href="http://www.textbook.ds100.org/ch/10/viz_intro.html">DS 100: Sections 10.1-10.3</a> (Data Visualization),<br>
+      <a href="http://www.textbook.ds100.org/ch/12/text_regex.html">DS 100: Sections 12.2-3</a> (Regular Expressions)
+    </td>
+
+          </td>
+	</tr>
+	<tr>
+		<td><b>#8: </b>Monday, <br>28 February</td>
+		<td>
+      Customizing Plots in matplotlib & seaborn<br><br>
+
+      Plotting Numerical & Categorical Data, Time-Series Data<br>
+
+</td>
+		<td><a href="work.html#cw8">CW8</a><br><br>
+            <!--<a href="work.html#preproposal">Project Pre-Proposal Window Opens</a></td>-->
+    <td>
+    <a href="http://www.textbook.ds100.org/ch/10/viz_intro.html">DS 100: Sections 10.1-10.3</a> (Data Visualization),<br>
+    <a href="https://github.com/ageron/handson-ml2/blob/master/tools_matplotlib.ipynb">Hands On ML</a> (Matplotlib Tools)
+ </td>
+	</tr>
+
+
+	<tr>
+
+		<td><b>#9: </b>Thursday,<br>3 March</td>
+		<td>Visualization Principles<br><br>
+
+      Visualizing GIS Data: GeoJSON Format, Choropleth Maps, Voronoi Diagrams
+    </td>
+
+		<td><a href="work.html#cw9">CW9</a>      <br><br>
+            <a href="work.html#p4">Program 4</a><br>
+            <a href="work.html#quizzes">Quiz 4</a></a></td>
+		<td>      <a href="http://www.textbook.ds100.org/ch/10/viz_intro.html">DS 100: Chapter 10</a> (Data Visualization), <br>
+    <a href="https://pypi.org/project/folium/">Folium documentation</a>,<br>
+    <a href="http://geojson.io/">GeoJSON Editor</a>
+        <!--,<br>
+        <a href="https://altair-viz.github.io/getting_started/overview.html">Altair overview</a><br>
+        <a href="https://altair-viz.github.io/gallery/index.html?highlight=maps#maps">Altair maps</a> (gallery of case studies)-->
+</td>
+	</tr>
+
+	<tr>
+    <td rowspan=3><b>Models & Loss Functions</b></td>
+		<td><b>#10: </b>Monday,<br>7 March</td>
+		<td>
+      Linear Models, Loss Functions:  Mean Squared and Mean Absolute Error, Predicting Tip Amounts
+        <br><br>Statistics Recap:  Expectation, Variance, Correlation, & Sampling
+      </td>
+    <td><a href="work.html#cw10">CW10</a></td>
+		<td rowspan=1>
+      <a href="http://www.textbook.ds100.org/ch/14/linear_models.html">DS 100: Chapter 14</a> (Linear Models),<br>
+      <a href=
+      "http://www.textbook.ds100.org/ch/04/modeling_loss_functions.html">DS 100, Sections 4.2-3</a> (Loss Functions),<br>
+      <a href="https://seeing-theory.brown.edu/index.html">Seeing Theory</a> (Brown U),<br>
+      <a href="https://shiney.zoology.ubc.ca/whitlock/Guessing_correlation/">Guessing Correlation Coefficients</a> (UBC),<br>
+      <a href="https://www.zoology.ubc.ca/~whitlock/Kingfisher/SamplingNormal.htm"> Sampling from a Normally Distributed Population</a> (UBC),<br>
+	</tr>
+
+
+	<tr>
+		<td><b>#11: </b>Thursday, <br>10 March</td>
+		<td>
+      Probability and Generalization:  Distributions, Probability Mass Functions<br><br>
+
+      Demos: Confidence Intervals, & the Central Limit Theorem
+    </td>
+		<td><a href="work.html#cw11">CW11</a>
+      <br><br>
+        <a href="work.html#p5">Program 5</a><br>
+        <a href="work.html#quizzes">Quiz 5</a></td>
+    <td>
+      <a href="http://www.textbook.ds100.org/ch/15/prob_and_gen.html">DS 100: Chapter 15</a> (Probability & Generalization),<br>
+      <a href="https://inferentialthinking.com/chapters/15/Prediction.html">DS 8: Chapter 15</a> (Prediction),<br>
+
+
+
+
+      ,<br>
+        <a href="https://www.zoology.ubc.ca/~whitlock/Kingfisher/CIMean.htm">Confidence Intervals</a> (UBC)
+
+      <a href="https://shiney.zoology.ubc.ca/whitlock/Residuals/">Residuals</a> (UBC),<br>
+      <a href="https://www.zoology.ubc.ca/~whitlock/Kingfisher/CLT.htm">Central Limit Theorem</a> (UBC)
+    </td>
+
+
+      	</tr>
+
+
+	<tr>
+
+		<td><b>#12: </b>Monday,<br>14 March</td>
+    <td>
+      Fitting Models:  Convexity, Least Squares, & Gradient Descent<br><br>
+
+      Demo:  Gradient Descent
+
+      <!--<br><br>Classwork: Predicting taxi tips & costs (NYC OpenData Yellow Taxi Data)
+        https://data.cityofnewyork.us/Transportation/2019-Yellow-Taxi-Trip-Data/2upf-qytp-->
+      </td>
+		<td><a href="work.html#cw12">CW12</a>  </td>
+    <td><a href="https://inferentialthinking.com/chapters/09/Randomness.html">DS 8: Chapter 9</a> (Randomness), <br>
+      <a href="http://www.textbook.ds100.org/ch/16/prob_and_gen.html">DS 100: Chapter 15</a> (Probability & Generalization)<br>
+      <a href="http://www.textbook.ds100.org/ch/17/gradient_descent.html">DS 100: Chapter 16</a> (Gradient Descent),<br>
+      <a href="https://github.com/lilipads/gradient_descent_viz">Gradient Descent Visualization</a>  (Lili Jiang)
+    </td>
+	</tr>
+
+	<tr>
+    <td rowspan=3><b>Multiple Linear Modeling</b></td>
+		<td><b>#13: </b>Thursday, <br>17 March</td>
+
+		<td>Multiple Linear Regression; More on Gradient Descent</td>
+		<td><a href="work.html#cw13">CW13</a>      <br><br>
+            <a href="work.html#p6">Program 6</a><br>
+            <!--<a href="work.html#proposal">Project: Title & Proposal</a><br>-->
+            <a href="work.html#quizzes">Quiz 6</a></td>
+		<td><a href="http://www.textbook.ds100.org/ch/18/mult_intro.html">DS 100: Chapter 18</a> (Multiple Linear Regression),<br>
+      <a href="http://www.textbook.ds100.org/ch/16/gradient_descent.html">DS 100: Chapter 16</a> (Gradient Descent)
+    </td></tr>
+
+	<tr>
+
+		<td><b>#14: </b>Monday,<br>21 March</td>
+    <td>Feature Engineering: Variable Transformations;
+      Bias-Variance Tradeoff, & Categorical Encoding<br><br>
+Code Demo:  Walmart Sales
+    </td>
+		<td><a href="work.html#cw14">CW14</a></td>
+
+    <td><a href="http://www.textbook.ds100.org/ch/19/feature_engineering.html">DS 100: Chapter 19</a> (Feature Engineering)
+    </td>
+    	</tr>
+
+	<tr>
+
+		<td><b>#15: </b>Thursday,<br>24 March</td>
+    <td>Overview of Regularization; Bias-Variance Tradeoff
+
+      <br><br>Classwork:  311 Pothole Dataset
+    </td>
+		<td><a href="work.html#cw15">CW15</a>
+      <br><br>
+              <a href="work.html#p7">Program 7</a><br>
+              <a href="work.html#quizzes">Quiz 7</a></td>
+    <td><a href="http://www.textbook.ds100.org/ch/19/feature_engineering.html">DS 100: Chapter 19</a> (Feature Engineering)
+    <br>
+    <a href="http://www.textbook.ds100.org/ch/20/bias_intro.html">DS 100: Chapter 20</a> (Bias-Variance Tradeoff),<br>
+    <a href="http://www.textbook.ds100.org/ch/21/reg_intro.html">DS 100: Chapter 21</a> (Regularization)
+    </td>
+	</tr>
+
+	<tr>
+    <td rowspan=3><b>Classification</b></td>
+		<td><b>#16: </b>Monday,<br>28 March</td>
+    <td>
+      Regression on Probabililities; The Logistic Model & Loss Function;
+
+              <br><br>Code Demo:  Free Throws & Confusion Matrices
+    </td>
+		<td><a href="work.html#cw16">CW16</a> </td>
+		<td>
+        <br><a href="http://www.textbook.ds100.org/ch/23/classification_intro.html">DS 100: Chapter 23</a> (Classification)
+
+    </td>
+	</tr>
+
+
+
+	<tr>
+
+		<td><b>#17: </b>Thursday,<br>31 March</td>
+		<td>      Using Logistic Models: Approximating the Empirical Probability Distribution; Fitting & Evaluating a Logistic Model;
+
+      <br><br>Classwork:  Binary Digit Classifier
+    </td>
+		<td><a href="work.html#cw17">CW17</a> <br><br>
+            <a href="work.html#p8">Program 8</a><br>
+            <a href="work.html#quizzes">Quiz 8</a></td>
+		<td> <a href="http://www.textbook.ds100.org/ch/23/classification_intro.html">DS 100: Chapter 23</a> (Classification),<br>
+        <a href="https://scikit-learn.org/stable/auto_examples/classification/plot_digits_classification.html#sphx-glr-auto-examples-classification-plot-digits-classification-py">SKLearn</a> (Recognizing Hand-Written Digits)
+    </td>
+	</tr>
+	<tr>
+
+		<td><b>#18: </b>Monday,<br>4 April</td>
+		<td>Support Vector Machines (SVM)s, One-Versus-Rest (OVR) Classification <br><br>
+      Classwork: Iris Classifier <br><br>
+
+    </td>
+    <td><a href="work.html#cw18">CW18</a> </td>
+		<td>
+            <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.07-support-vector-machines.html">Python DS Handbook Chapter 5</a> (SVMs),<br>
+
+            <a href="https://cs.stanford.edu/~karpathy/svmjs/demo/">Karparthy's SVM Demo</a> (Stanford),<br>
+
+            <a href="https://www.datacamp.com/community/tutorials/svm-classification-scikit-learn-python">Data Camp Tutorial</a> (SVM's)<br>
+            <a href="https://scikit-learn.org/stable/modules/svm.html">SVM's</a> (sklearn)<br>
+
+		</td>
+	</tr>
+
+	<tr>
+    <td rowspan=4><b>Dimensionality Reduction</b></td>
+		<td><b>#19: </b>Thursday,<br>7 April</td>
+		<td>Linear Algebra Recap; Principal Components Analysis<br><br>
+      Code Demo: Explained Visually: Eigenvectors & Eigenvalues</td>
+		<td><a href="work.html#cw19">CW19</a><br><br>
+            <a href="work.html#p9">Program 9</a><br>
+            <!--<a href="work.html#dataCollection">Project Check-in #1 (Data Collection)</a><br>-->
+            <a href="work.html#quizzes">Quiz 9</a> </td>
+		<td>
+      <a href="https://setosa.io/ev/eigenvectors-and-eigenvalues/">Explained Visually</a> (Eigenvectors and Eigenvalues)<br>
+      <a href="https://setosa.io/ev/principal-component-analysis/">Explained Visually</a> (Principal Components Analysis)<br>
+      <a href="https://math.mit.edu/~gs/linearalgebra/ila0601.pdf">Linear Algebra Review</a> (MIT)<br>
+      <a href="http://www.textbook.ds100.org/ch/25/pca_dims.html">DS 100: Section 25.1</a> (PCA Dimensions)
+    </td>
+
+	</tr>
+	<tr>
+
+		<td><b>#20: </b>Monday,<br>11 April</td>
+		<td>PCA as Dimensionality Reduction; Optimal Number of Components<br><br>
+    Multiple Dimensional Scaling</td>
+		<td><a href="work.html#cw20">CW20</a></td>
+    <td>      <a href="http://www.textbook.ds100.org/ch/25/pca_intro.html">DS 100: Chapter 25</a> (PCA)<br>
+          <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.09-principal-component-analysis.html">Python Data Science Handbook: Section 5.9</a> (PCA)<br></td>
+	</tr>
+
+	<tr>
+
+		<td><b>#21: </b>Thursday,<br>14 April</td>
+		<td>Non-Linear Dimensionality Reduction:  t-SNE, UMAP
+    <br><br>
+
+    Project Update:  Presentation Details:  Abstract, Website, and Presentation</td>
+		<td><a href="work.html#cw21">CW21</a> <br><br>
+            <a href="work.html#p10">Program 10</a><br>
+            <!--<a href="work.html#analysis">Project Check-in #2 (Analysis)</a><br>-->
+            <a href="work.html#quizzes">Quiz 10</a></td>
+		<td>
+      <a href="http://www.textbook.ds100.org/ch/27/clustering_intro.html">DS 100: Chapter 27</a> (clustering),<br>
+
+      <a href="https://scikit-learn.org/stable/auto_examples/manifold/plot_lle_digits.html#sphx-glr-auto-examples-manifold-plot-lle-digits-py">Manifold Learning</a> (sklearn)
+</td>
+	</tr>
+
+  <tr>
+    <td>15-22 April</td>
+    <td colspan = 3><span style="color:darkblue">Spring Break:  No Classes</span></td>
+  </tr>
+
+
+	<tr>
+    <td rowspan=3><b>Clustering</b></td>
+		<td><b>#22: </b>Monday,<br>25 April</td>
+		<td>Recap:  Dimensionality Reduction;<br><br>
+      Code Demo:  transit vs. Euclidean distances<br><br>
+      K-Means Clustering
+    </td>
+		<td><a href="work.html#cw22">CW22</a> </td>
+    <td>
+      <a href="http://www.textbook.ds100.org/ch/27/clustering_intro.html">DS 100: Chapter 27</a> (clustering)
+      <br>
+      <a href="https://en.wikipedia.org/wiki/K-means_clustering#/media/File:K-means_convergence.gif">Wiki K-Means</a> (gif)<br>
+      <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.11-k-means.html">Python Data Science Handbook: Section 5.11</a> (K-Means)
+    </td>
+	</tr>
+
+
+
+
+
+	<tr>
+
+		<td><b>#23: </b>Thursday,<br>29 April
+		</td>
+		<td>      K-Means:  Clustering Complexity, Lloyd's Algorithm (Naive K-Means), MiniBatch K-Means<br></td>
+		<td><a href="work.html#cw23">CW 23</a> <br><br>
+            <a href="work.html#p11">Program 11</a><br>
+            <!--<a href="work.html#visualization">Project Check-in #3 (Visualization)</a><br>-->
+            <a href="work.html#quizzes">Quiz 11</a></td>
+		<td>
+      <a href="http://www.textbook.ds100.org/ch/27/clustering_intro.html">DS 100: Chapter 27</a> (clustering)
+      <br>
+      <a href="https://en.wikipedia.org/wiki/K-means_clustering#/media/File:K-means_convergence.gif">Wiki K-Means</a> (gif)<br>
+      <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.11-k-means.html">Python Data Science Handbook: Section 5.11</a> (K-Means)
+
+		</td>
+	</tr>
+
+
+	<tr>
+
+		<td><b>#24: </b>Monday,<br>2 May</td>
+		<td>Other Clustering Approaches; <br><br>
+      Supervised vs. Unsupervised Learning<br>
+
+      Replicability, P-Hacking, A/B testing</td>
+    <td><a href="work.html#cw24">CW24</a><br><br>
+          <!--<a href="work.html#slides">Project: Draft Abstract & Website</a></td>-->
+		<td>       <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.11-k-means.html">Python Data Science Handbook: Section 5.9</a> (K-Means),<br>
+
+        <a href="https://en.wikipedia.org/wiki/Cluster_analysis">Wiki Cluster Analysis</a>,
+        <br>
+        <a href="https://www.ibm.com/cloud/blog/supervised-vs-unsupervised-learning">Supervised vs. Unsupervised Learning</a> (IBM)<br>
+        <a href="http://www.textbook.ds100.org/ch/25/repl_intro.html">DS Chapter 25</a> (Replicability)
+   </td>
+	</tr>
+
+
+	<tr>
+    <td rowspan=2><b>More on Structured Data</b></td>
+		<td><b>#25: </b>Thursday,<br>5 May
+		</td>
+		<td>
+      Relational Databases and SQL<br><br>
+      Code Demo: SQL in Python: setting up a database, basic SQL
+
+</td>
+		<td><a href="work.html#cw25">CW25</a> <br><br>
+      <a href="work.html#p12">Program 12</a><br>
+      <a href="work.html#quizzes">Quiz 12</a><br>
+      <!--<a href="work.html#completeSite">Project: Website</a><br>
+      <a href="work.html#presentation">Project: Presentation Slides</a>-->
+      <br>
+    </td>
+    <td>
+      <a href="http://www.textbook.ds100.org/ch/07/sql_intro.html">DS 100: Chapter 7</a> (Relational Databases & SQL)
+
+      <br>
+
+		</td>
+	</tr>
+	<tr>
+
+		<td><b>#26: </b>Monday,<br>9 May</td>
+		<td>Relational Databases:  Subsetting, Aggregating, Joining, & Transforming Data</td>
+		<td><a href="work.html#cw26">CW26</a><br><br>
+      <!--<a href="work.html#abstract">Project: Abstract</a><br>-->
+    </td>
+    <td>      <a href="http://www.textbook.ds100.org/ch/07/sql_intro.html">DS 100: Chapter 7</a> (Relational Databases & SQL)
+</td>
+	</tr>
+	<tr>
+    <td rowspan=1><b>Review</b></td>
+		<td><b>#27: </b>Thursday,<br>12 May
+		</td>
+		<td>Semester Review <br><br>
+      Project Showcase</td>
+		<td><a href="work.html#cw27">CW27 </a> <br><br>
+      <a href="work.html#p13">Program 13</a><br>
+      <a href="work.html#quizzes">Quiz 13: End-of-semester Survey</a><br>
+        <br>
+
+
+      </td>
+
+		<td rowspan=1>
+		</td>
+
+
+	</tr>
+
+	<tr>
+    <td colspan=2><span style="color:darkblue"><b>Monday, 16 May, 2:45-4pm</b></span></td>
+		<td colspan = 4> <span style="color:darkblue">Coding Exam</span>
+    </td>
+	</tr>
+
+	<tr>
+		<td colspan=2><span style="color:darkblue"><b>Monday, 23 May, 1:45-3:45pm</b></span></td><td colspan = 4><span style="color:darkblue">Final Exam</span></td>
+	</tr>
+</table>
+
+
+</div>
+
+
+
+<div>
+<i style="float:right">(This file was last modified on 14 February 2022.)</i><br>
+</div>
