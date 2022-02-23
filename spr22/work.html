@@ -861,9 +861,171 @@ print(scores_with_nbhd_names.head())</code></pre>
             </code>
                 when reading in the parking ticket data. Pandas tries to infer the data type (<code class = "inline">dtype</code>) of the columns from the values.  Since some columns are a mixture of numeric and character types this can be difficult.  If the file is read in with <code class = "inline">pd.read_csv(file_name, low_memory=False)</code>, the entire column is read in and used to determine type.
             </ul>
-            <li> Most aggregation functions have the option to ignore non-numeric data in the calculation.  See for example, averaging only the numerical data in a <a href="https://pandas.pydata.org/docs/reference/api/pandas.core.groupby.GroupBy.mean.html">pd.groupby</a>
-            using the keyword argument <code class = "inline">numeric_only = True</code>.
-          </i>
+        <li> Most aggregation functions have the option to ignore non-numeric data in the calculation.  See for example, averaging only the numerical data in a <a href="https://pandas.pydata.org/docs/reference/api/pandas.core.groupby.GroupBy.mean.html">pd.groupby</a>
+        using the keyword argument <code class = "inline">numeric_only = True</code>.
+        </i>
+
+
+    <br><br>
+    <p><a name="p4"><b>Program 4: Restaurant Cleaning.</b></b> &emsp; <i>Due noon, Thursday, 3 March.
+      <br>Learning Objective: to use regular expressions (pattern matching) with simple patterns to filter data from files.
+      <br>Available Libraries: Regular expressions (re), pandas, and core Python 3.6+.
+    </i>
+
+      <p>This program continues with the Restaurant Inspection Data Set, and uses regular expressions (covered in Lecture 7 & <a href="http://www.textbook.ds100.org/ch/12/text_regex.html">DS 100: Sections 12.2-3</a>) to clean <a href="https://data.cityofnewyork.us/Health/DOHMH-New-York-City-Restaurant-Inspection-Results/43nn-pn8j/data">restaurant inspection</a> datasets for later use.
+      The assignment is broken into the following functions to allow for unit testing:
+
+        <ul>
+          <li> <code class = "inline">make_insp_df(file_name)</code>:
+            This function takes one input:
+              <ul>
+                  <li> <code class = "inline">file_name</code>: the name of a CSV file containing <a href="https://data.cityofnewyork.us/Health/DOHMH-New-York-City-Restaurant-Inspection-Results/43nn-pn8j/data">Restaurant Inspection Data</a> from OpenData NYC.
+              </ul>
+              The function should open the file <code class = "inline">file_name</code> as DataFrame, keeping only the columns:
+              <pre><code class = "datablock">'CAMIS', 'DBA', 'BORO', 'PHONE', 'CUISINE DESCRIPTION', 'INSPECTION DATE', 'RECORD DATE', 'GRADE'</code></pre>
+              If the <code class=inline>GRADE</code> is null for a row, that row should be dropped.  The resulting DataFrame is returned.
+          <li> <code class = "inline">clean_phone(phone_str)</code>:
+            This function takes one input:
+            <ul>
+              <li> <code class = "inline">date_str</code>: a string containing a phone number.
+            </ul>
+            If <code class = "inline">date_str</code> is a 10 digit number, <code class = "inline">NNNNNNNNNN</code>, return the number formatted with parenthesis and dashes:  <code class = "inline">(NNN)-NNN-NNNN</code>.  If <code class = "inline">date_str</code> does not contain a 10 digit number, return <code class = "inline">None</code>.
+         <li> <code class = "inline">convert_dates(df)</code>:
+            This function takes one input:
+            <ul>
+              <li> <code class = "inline">df</code>: a DataFrame containing the columns <code class = "inline">INSPECTION DATE</code> and <code class = "inline">RECORD DATE</code>.
+            </ul>
+            The function converts the columns, the columns <code class = "inline">INSPECTION DATE</code> and <code class = "inline">RECORD DATE</code>, using the format string <code class = "inline">MM/DD/YYYY</code> and returns the resulting DataFrame.
+
+          <li> <code class = "inline">insp_day_of_week(insp)</code>:
+            This function takes one input:
+            <ul>
+              <li> <code class = "inline">insp</code>: a <code class = "inline">datetime</code> object.
+            </ul>
+            The function should then return the number corresponding to the day of the week of the inspection:  0 for Monday, 1 for Tuesday, ... 6 for Sunday.  If the date is January 1, 1900, then the establishment has not yet had an inspection, and your function should return <code class = "inline">None</code>.
+          <li> <code class = "inline">days_since(insp_date, record_date)</code>:
+            This function takes two input:
+            <ul>
+              <li> <code class = "inline">insp_date</code>: a <code class = "inline">datetime</code> object.
+              <li> <code class = "inline">record_date_str</code>: a <code class = "inline">datetime</code> object.
+            </ul>
+            If <code class = "inline">insp_date</code> is January 1, 1900, then the establishment has not yet had an inspection, and your function should return <code class = "inline">None</code>.
+            If either input is <code class = "inline">None</code>, you should return <code class = "inline">None</code>.
+            Otherwise, return an integer representing the number of days between <code class = "inline">insp_date</code> and <code class = "inline">record_date</code>.
+
+          <li> <code class = "inline">group_df(df,categories=['INSP DAY','BORO'])</code>:
+              This function takes two inputs:
+              <ul>
+                  <li> <code class = "inline">df</code>: a DataFrame containing the columns <code class = "inline">categories</code>.
+                  <li> <code class = "inline">categories</code>: a list of column names in <code class = "inline">df</code>.
+                  </ul>
+              This function groups by the categories (using <code class = "inline">.size()</code> to aggregate) and returns the result as a DataFrame (i.e. applies <code class = "inline">.to_frame()</code> before returning).
+
+      </ul>
+
+      <p>For example, if the file was <a href="../fall21/restaurants30July.csv">restaurants30July.csv</a> with the first 3 lines of:
+
+          <pre><code class="datablock">CAMIS,DBA,BORO,BUILDING,STREET,ZIPCODE,PHONE,CUISINE DESCRIPTION,INSPECTION DATE,ACTION,VIOLATION CODE,VIOLATION DESCRIPTION,CRITICAL FLAG,SCORE,GRADE,GRADE DATE,RECORD DATE,INSPECTION TYPE,Latitude,Longitude,Community Board,Council District,Census Tract,BIN,BBL,NTA
+41178124,CAFE 57,Manhattan,300,WEST   57 STREET,10019,2126492729,American,7/30/2021,Violations were cited in the following area(s).,09C,Food contact surface not properly maintained.,Not Critical,4,A,7/30/2021,8/1/2021,Cycle Inspection / Initial Inspection,40.76643902,-73.98332508,104,3,13900,1025451,1010477502,MN15
+50111450,CASTLE CHICKEN,Bronx,5987A,BROADWAY,10471,9178562047,Chicken,7/30/2021,Violations were cited in the following area(s).,05D,Hand washing facility not provided in or near food preparation area and toilet room. Hot and cold running water at adequate pressure to enable cleanliness of employees not provided at facility. Soap and an acceptable hand-drying device not provided.,Critical,41,N,,8/1/2021,Pre-permit (Operational) / Initial Inspection,40.88993027,-73.89805316,208,11,28500,2084208,2058011033,BX29
+40699339,NICK GARDEN COFFEE SHOP,Bronx,2953,WEBSTER AVENUE,10458,7183652277,Coffee/Tea,7/30/2021,Violations were cited in the following area(s).,08A,Facility not vermin proof. Harborage or conditions conducive to attracting vermin to the premises and/or allowing vermin to exist.,Not Critical,31,,,8/1/2021,Cycle Inspection / Initial Inspection,40.86759042,-73.88308647,207,11,41500,2016446,2032800061,BX05</code></pre>
+
+          Then a sample run of the program:
+          <pre><code class="blockcode">df = p4.make_insp_df('restaurants30July.csv')
+    print(df.head())</code></pre>
+
+          And the first lines would be:
+        <pre><code class="datablock">      CAMIS                      DBA  ... GRADE DATE GRADE
+0  41178124                  CAFE 57  ...  7/30/2021     A
+3  41181395                  DUNKIN'  ...  7/30/2021     A
+6  50106274                BURGER IM  ...  7/30/2021     A
+7  41485121     BOHEMIAN BEER GARDEN  ...  7/30/2021     A
+8  50104841  STARBUCKS COFFEE #14090  ...  7/30/2021     A
+
+[5 rows x 8 columns]</code></pre>
+      Note that we printed the indices, and some of the initial rows were dropped due to null values.
+
+    <p>
+      We can apply the next three functions to clean up the data:
+      <pre><code class="blockcode">df = df.assign( PHONE = df['PHONE'].apply(p4.clean_phone) )
+df = p4.convert_dates(df)
+df['INSP DAY'] = df['INSPECTION DATE'].apply(p4.insp_day_of_week)
+print(df[ ['PHONE','INSPECTION DATE','GRADE DATE','INSP DAY'] ].head())</code></pre>
+
+      And the first lines of those columns would be:
+    <pre><code class="datablock">            PHONE INSPECTION DATE GRADE DATE  INSP DAY
+0  (212)-649-2729      2021-07-30 2021-07-30         4
+3  (718)-627-2450      2021-07-30 2021-07-30         4
+6  (718)-673-6066      2021-07-30 2021-07-30         4
+7  (718)-274-4925      2021-07-30 2021-07-30         4
+8  (212)-615-9700      2021-07-30 2021-07-30         4</code></pre>
+
+    <p>
+      The next function computes the time between the inspection and the grade being reported:
+      <pre><code class="blockcode">df['GRADING TIME'] = df.apply(lambda row: p4.grading_time(row['INSPECTION DATE'], row['GRADE DATE']),axis=1)
+print(df[ ['INSPECTION DATE','GRADE DATE','GRADING TIME'] ].head())
+    </code></pre>
+    For current restaurant inspection data, if the restaurant passes, a grade is reported on the same day as the inspection:
+    <pre><code class="datablock">  INSPECTION DATE GRADE DATE  GRADING TIME
+0      2021-07-30 2021-07-30             0
+3      2021-07-30 2021-07-30             0
+6      2021-07-30 2021-07-30             0
+7      2021-07-30 2021-07-30             0
+8      2021-07-30 2021-07-30             0</code></pre>
+
+    <p>
+      Looking at a larger data set (<a href="Restaurant_Inspection_Results_Coffee_2021.csv">inspections of Coffee/Tea establishments in 2021</a>), we can see what are the most common day for inspections, by boroughs:
+      <pre><code class="blockcode">df_day_boro = p4.group_df(df)
+print(df_day_boro)</code></pre>
+
+      Prints out:
+    <pre><code class="datablock">INSP DAY BORO
+0        Bronx            2
+         Brooklyn        56
+         Manhattan       81
+         Queens          52
+         Staten Island    3
+1        Bronx            4
+         Brooklyn       113
+         Manhattan      131
+         Queens          37
+2        Bronx           20
+         Brooklyn        88
+         Manhattan      121
+         Queens          36
+         Staten Island   13
+3        Bronx            5
+         Brooklyn        77
+         Manhattan      130
+         Queens          25
+4        Bronx            9
+         Brooklyn        55
+         Manhattan       73
+         Queens          48
+         Staten Island    2
+5        Brooklyn         7
+         Queens           4</code></pre>
+
+      Using <a href="http://www.textbook.ds100.org/ch/10/viz_matplotlib.html">Chapter 10.3</a> and <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/visualization.html">matplotlib.pyplot documentation</a> for customizing plots yields:
+
+      <p><img src="insp_by_boro_day.png" height=400>
+      <p>The code to generate this is:
+      <pre><code class="blockcode">import seaborn as sns
+import matplotlib.pyplot as plt
+df_day_boro.unstack().plot.area(stacked=False,colormap='ocean')
+plt.title('Inspections by Borough & Weekday')
+plt.xlabel('Day of the Week')
+plt.ylabel('Number of Inspections')
+plt.xticks([0,1,2,3,4,5],['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'])
+plt.legend(labels=['Bronx','Brooklyn','Manhattan','Queens','Staten Island'])
+plt.show()</code></pre>
+
+
+    <i>Hints:
+      <ul>
+        <li>  See Lecture 6 or <a href="http://www.textbook.ds100.org/ch/08/wrangling_transformations.html">Chapter 8.8</a> for working with dates and times.  Additional information on <code class = "inline">strptime(date_string, format)</code> can be found at <a href="https://docs.python.org/3/library/datetime.html#strftime-strptime-behavior">Python Docs, datetime</a>.
+        <li>  See <a href="http://www.textbook.ds100.org/ch/10/viz_intro.html">Chapter 10</a> for details on the plots included in the examples.
+      </ul>
 
 
 
