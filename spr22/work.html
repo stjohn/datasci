@@ -1027,8 +1027,136 @@ plt.show()</code></pre>
         <li>  See <a href="http://www.textbook.ds100.org/ch/10/viz_intro.html">Chapter 10</a> for details on the plots included in the examples.
       </ul>
 
+<br><br>
+<p><a name="p5"><b>Program 5: .</b></b> &emsp; <i>Due noon, Thursday, 10 March.</i>
+      <br>Learning Objective: to use regular expressions to parse from log data.
+       <br>Available Libraries: Regular expressions (re) and core Python 3.6+.
+
+       </i>
+
+       <p>This program applies regular expressions
+         (covered in Lecture 7 & <a href="http://www.textbook.ds100.org/ch/12/text_regex.html">DS 100: Sections 12.2-3</a>) to parse information from Python logs.
+         The assignment is broken into the following functions to allow for unit testing:
+
+         <ul>
+           <li> <code class = "inline">parse_date_from_one_line_log(file_name)</code>:
+             This function takes in a text file containing one line of log and parses out the log date, returning the log date as string.
+               <ul>
+                   <li> input:  <code class = "inline">file_name</code>, the name of a text file which contains one line of log
+                   <li> output: the log date string formatted as <code class = "inline">YYYY-MM-DD</code>
+                   <li> test file: <a href="../spring22/program05/one_liner_log.txt">one_liner_log.txt</a>
+                     contains the log in the following format:
+                     <pre><code class="blockcode">2022-02-22 21:05:13,191 read_data - ERROR:[Errno 2] No such file or directory: 'inputfile_1.txt'</code></pre>
+                   <li> applying the function to the test log file so that the following:
+                     <pre><code class="blockcode">log_date = parse_date_from_one_line_log('one_liner_log.txt')
+       print(logdate)</code></pre>
+                       will return:
+                     <pre><code class="blockcode">2022-02-22</code></pre>
+                     <br>
+               </ul>
+
+       <br>
+
+           <li> <code class = "inline">parse_min_max_date_from_one_line_logs(file_name)</code>:
+             This function takes in a text file containing multiple lines of logs and parses out the first and last log date, stored as two string variables.
+               <ul>
+                   <li> input:  <code class = "inline">file_name</code>,  the name of a text file which contains multiple lines of log
+                   <li> output: the first (minimum) log date and the last (maximum) log date, returned as two string variables, formatted as <code class = "inline">YYYY-MM-DD</code>
+                   <li> test file <a href="../spring22/program05/multi_liner_log.txt">multi_liner_log.txt</a> contains the logs in the following format:
+                     <pre><code class="blockcode">2022-01-22 01:01:11,121 read_data - ERROR:[Errno 2] No such file or directory: 'inputfile.txt'
+2022-01-23 01:01:11,121 read_data - ERROR:[Errno 2] No such file or directory: 'inputfile.txt'
+2022-01-23 01:01:11,121 read_data - ERROR:[Errno 2] No such file or directory: 'inputfile.txt'
+...</code></pre>
+                   <li> applying the function to the test log file so that the following:
+                     <pre><code class="blockcode">min_log_date, max_log_date = parse_min_max_date_from_one_line_logs('multi_liner_log.txt')
+print(min_log_date)
+print(max_log_date)</code></pre>
+                       will return:
+                     <pre><code class="blockcode">2022-01-22
+2022-02-14</code></pre>
+                     <br>
+               </ul>
+
+       <br>
+
+           <li> <code class = "inline">parse_missing_filename_from_one_line_log(file_name)</code>:
+             This function takes in a text file containing one line of log and parses out the missing filename stored as string
+               <ul>
+                   <li> input:  <code class = "inline">file_name</code>, the name of a text file which contains one line of log
+                   <li> output: the missing file name, stored as a string variable
+                     <li> test file: <a href="../spring22/program05/one_liner_log.txt">one_liner_log.txt</a>
+                       contains the log in the following format:
+                       <pre><code class="blockcode">2022-02-22 21:05:13,191 read_data - ERROR:[Errno 2] No such file or directory: 'inputfile_1.txt'</code></pre>
+                   <li> applying the function to the test log file so that the following:
+                     <pre><code class="blockcode">missing_filename = parse_missing_filename_from_one_line_log('one_liner_log.txt')
+print(missing_filename)</code></pre>
+                       will return:
+                     <pre><code class="blockcode">inputfile_1.txt</code></pre>
+                     <br>
+                   </ul>
+
+       <br>
+
+           <li> <code class = "inline">parse_filepath_linenum_from_traceback_log(file_name)</code>:
+             For a typical Python traceback, the first line contains the file name, line number, and module name.
+             The second line contains the actual code that is executed (and subsequently errored out).
+             This function takes in a text file containing an example of a multi-line Python traceback error and parses out the filepath and line number of the error.
+               <ul>
+                   <li> input:  <code class = "inline">file_name</code>, the name of a text file which contains a single Python traceback error log spanning multiple lines
+                   <li> output:
+                     <ul>
+                       <li>the filepath of the Python script where the error occurred, stored as string
+                       <li>the line number in the Python script where the error occurred, stored as an integer
+                     </ul>
+                     <li> test file: <a href="../spring22/program05/traceback_log_simple.txt">traceback_log_simple.txt</a>
+                       contains the log in the following format:
+                       <pre><code class="blockcode">Traceback (most recent call last):
+File "/home/datascience/logs/read_data.py", line 1, in word_count
+  with open(filename) as f:
+    FileNotFoundError: [Errno 2] No such file or directory: 'inputfile.txt'</code></pre>
+                   <li> applying the function to the test log file so that the following:
+                     <pre><code class="blockcode">log_filepath, log_linenum = parse_filepath_linenum_from_traceback_log('one_liner_log.txt')
+print(log_filepath)
+print(log_linenum)</code></pre>
+                       will return:
+                     <pre><code class="blockcode">/home/datascience/logs/read_data.py
+1</code></pre>
+                     <br>
+               </ul>
 
 
+       <br>
+
+           <li> <code class = "inline">parse_last_linenum_from_traceback_log(file_name)</code>:
+             Unlike stack traces in other programming languages, a Python trace back should be read from bottom to top.
+             In the case where there are multiple errors in a Python trace back log, always look for the most recent call, which is the last line.
+             This function takes in a text file containing an example of a multi-line Python traceback error and parses out the filepath and line number of the most recent call.
+               <ul>
+                   <li> input:  <code class = "inline">file_name</code>, the name of a text file which contains a multiple Python traceback error logs spanning multiple lines
+                   <li> output: the latest line number in the Python script where the error occurred (most recent call), stored as an integer
+                     <li> test file: <a href="../spring22/program05/traceback_log_complex.txt">traceback_log_complex.txt</a>
+                       contains the log in the following format:
+                       <pre><code class="blockcode">Traceback (most recent call last):
+File "build_model.py", line 52, in build_model
+  LogisticRegression()
+File "clean_data.py", line 40, in create_dummies
+  create_dummies()
+File "clean_data.py", line 22, in read_csv
+  df = read_csv(filename)
+File "data/import_data.py", line 10, in process_data
+  with open(filename) as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'inputfile.txt'</code></pre>
+                   <li> applying the function to the test log file so that the following:
+                     <pre><code class="blockcode">last_linenum = parse_filepath_linenum_from_traceback_log('traceback_log_complex.txt')
+print(last_linenum)</code></pre>
+                       will return:
+                     <pre><code class="blockcode">10</code></pre>
+                     <br>
+               </ul>
+
+
+
+         </ul>
 
 
 <br><br>
