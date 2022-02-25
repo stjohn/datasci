@@ -895,7 +895,7 @@ print(scores_with_nbhd_names.head())</code></pre>
             <ul>
               <li> <code class = "inline">df</code>: a DataFrame containing the columns <code class = "inline">INSPECTION DATE</code> and <code class = "inline">RECORD DATE</code>.
             </ul>
-            The function converts the columns, the columns <code class = "inline">INSPECTION DATE</code> and <code class = "inline">RECORD DATE</code> to <code class = "inline">datetime</code> object, using the format <code class = "inline">MM/DD/YYYY</code> and returns the resulting DataFrame.
+            The function converts the columns, the columns <code class = "inline">INSPECTION DATE</code> and <code class = "inline">RECORD DATE</code> which are read in as strings to <code class = "inline">datetime</code> object (hint: you may need to use a format string when converting) and returns the resulting DataFrame.
 
           <li> <code class = "inline">insp_day_of_week(insp)</code>:
             This function takes one input:
