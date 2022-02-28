@@ -872,7 +872,7 @@ print(scores_with_nbhd_names.head())</code></pre>
       <br>Available Libraries: Regular expressions (re), timedate, pandas, and core Python 3.6+.
     </i>
 
-      <p>This program continues with the Restaurant Inspection Data Set, and uses regular expressions (covered in Lecture 7 & <a href="http://www.textbook.ds100.org/ch/12/text_regex.html">DS 100: Sections 12.2-3</a>) to clean <a href="https://data.cityofnewyork.us/Health/DOHMH-New-York-City-Restaurant-Inspection-Results/43nn-pn8j/data">restaurant inspection</a> datasets for later use.
+      <p>This program continues with the Restaurant Inspection Data Set, and uses regular expressions (covered in Lecture 7 & <a href="http://www.textbook.ds100.org/ch/13/text_regex.html">DS 100: Sections 13.2-3</a>) to clean <a href="https://data.cityofnewyork.us/Health/DOHMH-New-York-City-Restaurant-Inspection-Results/43nn-pn8j/data">restaurant inspection</a> datasets for later use.
       The assignment is broken into the following functions to allow for unit testing:
 
         <ul>
@@ -1005,7 +1005,7 @@ print(df_day_boro)</code></pre>
 5        Brooklyn         7
          Queens           4</code></pre>
 
-      Using <a href="http://www.textbook.ds100.org/ch/10/viz_matplotlib.html">Chapter 10.3</a> and <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/visualization.html">matplotlib.pyplot documentation</a> for customizing plots yields:
+      Using <a href="http://www.textbook.ds100.org/ch/11/viz_intro.html">DS 100 Chapter 11</a> and <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/visualization.html">matplotlib.pyplot documentation</a> for customizing plots yields:
 
       <p><img src="insp_by_boro_day.png" height=400>
       <p>The code to generate this is:
@@ -1022,8 +1022,8 @@ plt.show()</code></pre>
 
     <i>Hints:
       <ul>
-        <li>  See Lecture 6 or <a href="http://www.textbook.ds100.org/ch/08/wrangling_transformations.html">Chapter 8.8</a> for working with dates and times.  Additional information on <code class = "inline">strptime(date_string, format)</code> can be found at <a href="https://docs.python.org/3/library/datetime.html#strftime-strptime-behavior">Python Docs, datetime</a>.
-        <li>  See <a href="http://www.textbook.ds100.org/ch/10/viz_intro.html">Chapter 10</a> for details on the plots included in the examples.
+        <li>  See Lecture 6 or <a href="http://www.textbook.ds100.org/ch/09/wrangling_transformations.html">DS 100: Section 9.4</a> for working with dates and times.  Additional information on <code class = "inline">strptime(date_string, format)</code> can be found at <a href="https://docs.python.org/3/library/datetime.html#strftime-strptime-behavior">Python Docs, datetime</a>.
+        <li>  See <a href="http://www.textbook.ds100.org/ch/11/viz_intro.html">DS 100:  Chapter 11</a> for details on the plots included in the examples.
       </ul>
 
 <br><br>
@@ -1034,7 +1034,7 @@ plt.show()</code></pre>
        </i>
 
        <p>This program applies regular expressions
-         (covered in Lecture 7 & <a href="http://www.textbook.ds100.org/ch/12/text_regex.html">DS 100: Sections 12.2-3</a>) to parse information from Python logs.
+         (covered in Lecture 7 & <a href="http://www.textbook.ds100.org/ch/13/text_regex.html">DS 100: Sections 13.2-3</a>) to parse information from Python logs.
          The assignment is broken into the following functions to allow for unit testing:
 
          <ul>
@@ -1043,7 +1043,7 @@ plt.show()</code></pre>
                <ul>
                    <li> input:  <code class = "inline">file_name</code>, the name of a text file which contains one line of log
                    <li> output: the log date string formatted as <code class = "inline">YYYY-MM-DD</code>
-                   <li> test file: <a href="../spring22/program05/one_liner_log.txt">one_liner_log.txt</a>
+                   <li> test file: <a href="one_liner_log.txt">one_liner_log.txt</a>
                      contains the log in the following format:
                      <pre><code class="datablock">2022-02-22 21:05:13,191 read_data - ERROR:[Errno 2] No such file or directory: 'inputfile_1.txt'</code></pre>
                    <li> applying the function to the test log file so that the following:
@@ -1061,7 +1061,7 @@ print(logdate)</code></pre>
                <ul>
                    <li> input:  <code class = "inline">file_name</code>,  the name of a text file which contains multiple lines of log
                    <li> output: the first (minimum) log date and the last (maximum) log date, returned as two string variables, formatted as <code class = "inline">YYYY-MM-DD</code>
-                   <li> test file <a href="../spring22/program05/multi_liner_log.txt">multi_liner_log.txt</a> contains the logs in the following format:
+                   <li> test file <a href="multi_liner_log.txt">multi_liner_log.txt</a> contains the logs in the following format:
                      <pre><code class="datablock">2022-01-22 01:01:11,121 read_data - ERROR:[Errno 2] No such file or directory: 'inputfile.txt'
 2022-01-23 01:01:11,121 read_data - ERROR:[Errno 2] No such file or directory: 'inputfile.txt'
 2022-01-23 01:01:11,121 read_data - ERROR:[Errno 2] No such file or directory: 'inputfile.txt'
@@ -1083,7 +1083,7 @@ print(max_log_date)</code></pre>
                <ul>
                    <li> input:  <code class = "inline">file_name</code>, the name of a text file which contains one line of log
                    <li> output: the missing file name, stored as a string variable
-                     <li> test file: <a href="../spring22/program05/one_liner_log.txt">one_liner_log.txt</a>
+                     <li> test file: <a href="one_liner_log.txt">one_liner_log.txt</a>
                        contains the log in the following format:
                        <pre><code class="datablock">2022-02-22 21:05:13,191 read_data - ERROR:[Errno 2] No such file or directory: 'inputfile_1.txt'</code></pre>
                    <li> applying the function to the test log file so that the following:
@@ -1107,7 +1107,7 @@ print(missing_filename)</code></pre>
                        <li>the filepath of the Python script where the error occurred, stored as string
                        <li>the line number in the Python script where the error occurred, stored as an integer
                      </ul>
-                     <li> test file: <a href="../spring22/program05/traceback_log_simple.txt">traceback_log_simple.txt</a>
+                     <li> test file: <a href="traceback_log_simple.txt">traceback_log_simple.txt</a>
                        contains the log in the following format:
                        <pre><code class="datablock">Traceback (most recent call last):
 File "/home/datascience/logs/read_data.py", line 1, in word_count
@@ -1133,7 +1133,7 @@ print(log_linenum)</code></pre>
                <ul>
                    <li> input:  <code class = "inline">file_name</code>, the name of a text file which contains a multiple Python traceback error logs spanning multiple lines
                    <li> output: the latest line number in the Python script where the error occurred (most recent call), stored as an integer
-                     <li> test file: <a href="../spring22/program05/traceback_log_complex.txt">traceback_log_complex.txt</a>
+                     <li> test file: <a href="traceback_log_complex.txt">traceback_log_complex.txt</a>
                        contains the log in the following format:
                        <pre><code class="datablock">Traceback (most recent call last):
 File "build_model.py", line 52, in build_model
