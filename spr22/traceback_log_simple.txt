@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/home/datascience/logs/read_data.py", line 1, in word_count
+    with open(filename) as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'inputfile.txt'

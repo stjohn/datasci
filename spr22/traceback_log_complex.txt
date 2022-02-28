@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "build_model.py", line 52, in build_model
+    LogisticRegression()
+  File "clean_data.py", line 40, in create_dummies
+    create_dummies()
+  File "clean_data.py", line 22, in read_csv
+    df = read_csv(filename)
+  File "data/import_data.py", line 10, in process_data
+    with open(filename) as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'inputfile.txt'
