@@ -1,0 +1,259 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Structured Data:  Hunter College OpenData Week Showcase</title>
+    <!--<link type="text/css" rel="stylesheet" href="../../../lehman.css" />-->
+</head>
+<body>
+
+<body style = "background-color: #dddddd">
+
+
+<div>
+		<img width="105%" height=150 src = "vorLibrariesCropped.png" style = "position:absolute">
+
+    <div class="bar" style="position:relative">
+    	<h2>
+    	Hunter College OpenData Showcase:<br>
+    	Structured Data & Pandas</h2>
+    </div>
+    <br><br><br><br>
+</div>
+
+<div style="background-color: white;padding: 10px;margin: 10px;">
+<h3>Reading Structured Data:  Parking Tickets</h3>
+
+In this section, we will 
+<ul>
+	<li> run Python locally on the laptop, starting with print "Hello World",
+	<li> explore the <a href="">NYC OpenData</a> data for parking tickets given in the city, 
+	<li> in particular, who got the most for 20th District?
+	<li> and which color car gets the most?
+</ul>
+
+
+</div>
+
+<div style="background-color: white;padding: 10px;margin: 10px;">
+<h3>Using Python</h3>
+
+<p>We will be using the <tt>IDLE</tt> programming environment for Python, since it is very simple and comes with all distributions of Python (if you would prefer to use another programming environment, <tt>Spyder</tt> is loaded on the Hunter machines).
+
+<p>To launch <tt>IDLE</tt>: 
+
+
+<ul>
+	<li> Click the icon on the left for the terminal.  It will launch a terminal window in which you can type commands.
+	<li> In the terminal window, type:
+	
+<pre style = "background-color:lavender;width:400px">idle3</pre>
+	(followed by an enter/return).
+	
+	<li> A new window will launch for <tt>IDLE</tt>.
+
+
+	<li> To see that it works, type at the <tt>IDLE</tt> prompt:
+
+<pre style = "background-color:lavender;width:400px">
+print("Hello, World!")
+</pre>
+
+</ul>
+
+
+<p>
+Instead of using
+the shell window (where we can try things immediately), let's use a text window, where
+we can save our program for later.
+
+<ol>
+	<li> First, open up a text window:  on the menu bar, choose "File" and from that menu, choose "New File"<!-- (you can also type "&#8984;N")-->.
+	<li> In that window, type:
+<pre style = "background-color:lavender;width:400px">
+#Name:  ...your name here...
+#Date: August 25, 2017
+#This program prints: Hello, World!
+
+print("Hello, World!")</pre>
+	<li> Save the program (using the "Save" under the "File" menu). When you save it, name it something that you will be remember for the future and end it in <tt>.py</tt>.  For example, <tt>ps1.py</tt>.  If you would like to have the programs you write for later, you can save your programs to a USB drive, DropBox, or mail them to yourself.
+	<li> Run your program (using the "Run Module" from the "Run" menu).  
+	<li> If it prints "Hello, World!" to the screen, you're program was successful!
+</ol>
+</div>
+
+
+
+
+
+
+
+
+<div style="background-color: white;padding: 10px;margin: 10px;">
+<h3>Binning Data:  Parking Tickets</h3>
+
+<a href="https://data.cityofnewyork.us"><img height=200 src="openDataLogo.png"></a>
+
+
+
+
+
+<p>
+Via the <a href="https://data.cityofnewyork.us">NYC Open Data</a> project, you can access data from almost every city agency.  Today, we will look at the parking tickets issues by New York City.  We will use a small version (1000 lines), but you are welcome to also use any neighborhood in the city.  To download data for a given neighborhood (and restricted to just fiscal year 2018, since the data sets can be quite large):
+<ul>
+	<li> Instead of neighborhood name or zipcode, parking tickets are classified by the police precinct that issued the ticket.  First, figure out the precinct (here's a <a href="http://www1.nyc.gov/site/nypd/bureaus/patrol/find-your-precinct.page">useful tool</a>).
+	<li>  
+	<a href= "https://data.cityofnewyork.us/City-Government/Parking-Violations-Issued-Fiscal-Year-2018/pvqr-7yc4/data">Fiscal year 2018 (FY2018) parking tickets</a> for your precinct:  download the data set as a CSV, filtering by "Violation Precinct". For example, Hunter College is located in the 19th Precinct, so, you would enter <tt>19</tt> on the filter.
+
+</ul>
+
+<p>A simple, but very powerful, technique is "binning data"-- that is grouping data into the number of occurrences for each categories.  The category values can often show patterns that individual data points do not.  For example, binning population by zipcode can show patterns in density that's difficult to see with individual data points.  
+</div>
+
+<div style="background-color: white;padding: 10px;margin: 10px;">
+<h3>CSV Data Files</h3>
+
+<p>
+To make reading files easier, we will use the Pandas library that lets you read in structured data files very efficiently.  <a href="http://pandas.pydata.org">Pandas</a>, Python Data Analysis Library, is an elegant, open-source package for extracting, manipulating, and analyzing data, especially those stored in 2D arrays (like spreadsheets).  
+<p>(Pandas is installed on all the Hunter machines.  If you are using your own machine, see these <a href="https://stjohn.github.io/teaching/csci127/s18/lab1.html#install">directions</a> 
+for installing packages for Python.)
+
+
+<p>
+In Pandas, the basic structure is a <tt>DataFrame</tt>
+which stored data in rectangular grids.
+The Comma-Separated-Values (CSV) files, we saw in the previous section, store tabular information in readable text files.  The files downloaded above have information separated by commas (using tabs as delimiters is also common).  Here is a sample line:
+<pre style = "background-color:lavender;width:1300px">
+1335632335,L040HZ,FL,PAS,06/09/2015,46,SUBN,NISSA,X,35430,14510,15710,0,0020,20,74,921167,E074,0000,1213P,1207P,NY,O,4,WEST 83 ST,,0,408,C,,BBBBBBB,ALL,ALL,RED,0,0,-,0,,,,,
+</pre>
+<p>
+All lines are formatted similarly: they start with the 
+summons number, then the license plate, registration state, plate Type, date, and continue with the information about the location and type of violation, and sometimes additional information such as the who issued the ticket and the color of the car. The first line of the file gives the entries in the order they occur in the rows. 
+
+<p>
+The sample entry above gives details for a ticket issues on June 9, 2015 to a passenger car with Florida plates, L040HZ.  The red Nissan SUV received the ticket on West 83rd Street.  Each entry also begins with a unique identifier that can be used to look up the parking ticket.
+
+<p>Since there were over 196,000 tickets for the FY 2016 for the 20th precinct, the file for today's classwork is the first 1000 lines:  <a href="tickets.csv">tickets.csv</a>.
+
+
+<p>
+Here are some questions we can ask about the data:
+<ul>
+	<li> Which car got the most tickets?
+	<li> What color of car is most likely to get a ticket?
+	<li> What type of license gets the most tickets?
+	<li> Which location yields the most tickets?
+</ul>
+	
+For each of these questions, we can traverse the file and count the occurrences as we go.  
+
+</div>
+
+<div style="background-color: white;padding: 10px;margin: 10px;">
+<h3>Counting Tickets per Car</h3>
+
+<p> How can tell which car got the most tickets?  First, we need to figure out a unique way to identify different cars.  Luckily, cars almost always have license plates-- with each state having a unique number.  (For this simple exercise, we'll assume that each license plate is unique on its own-- not an unreasonable assumption since every state has a different schema for assigning numbers, but to be more accurate we should keep track of license plate number and issuing state.)
+
+<p>Open up the CSV file and look at the columns.  Which column contains the license plate number?  Here's all the column names (first line of <a href="tickets.csv">tickets.csv</a>):
+<pre style = "background-color:lavender;width:1300px">
+Summons Number,Plate ID,Registration State,Plate Type,Issue Date,Violation Code,Vehicle Body Type,Vehicle Make,Issuing Agency,Street Code1,Street Code2,Street Code3,Vehicle Expiration Date,Violation Location,Violation Precinct,Issuer Precinct,Issuer Code,Issuer Command,Issuer Squad,Violation Time,Time First Observed,Violation County,Violation In Front Of Or Opposite,House Number,Street Name,Intersecting Street,Date First Observed,Law Section,Sub Division,Violation Legal Code,Days Parking In Effect    ,From Hours In Effect,To Hours In Effect,Vehicle Color,Unregistered Vehicle?,Vehicle Year,Meter Number,Feet From Curb,Violation Post Code,Violation Description,No Standing or Stopping Violation,Hydrant Violation,Double Parking Violation
+</pre>
+
+It's the second column:  <tt>Plate ID</tt>.  Scanning the CSV file, it looks like most cars got one or two tickets.  How can we get the worst offenders (i.e. those cars that got the most parking tickets)?
+
+<p> Let's use Pandas to read in the CSV file, following the same pattern as last lab:
+<pre style = "background-color:lavender;width:600px">
+#CSci 127 Teaching Staff
+#October 2017
+#Count which cars got the most parking tickets
+
+#Import pandas for reading and analyzing CSV data:
+import pandas as pd
+
+csvFile = "tickets.csv"			#Name of the CSV file
+tickets = pd.read_csv(csvFile)		#Read in the file to a dataframe
+print(tickets) 				#Print out the dataframe
+</pre>
+
+<p>
+Run your program (make sure that you have the file, <a href="tickets.csv">tickets.csv</a> in the same folder as your program).  It should print out all the information about all the tickets issued.  Let's focus in on just licence plates.  Change the last line of your program to be:
+<pre style = "background-color:lavender;width:600px">
+print(tickets["Plate ID"])	#Print out licence plates 
+</pre>
+<p>When you run the program again, you should just see the row number and licence plates.
+
+<p> We want to refine this further to print how many tickets each car got.  Pandas has a function just for counting occurrences, called <tt>value_counts()</tt>.  Let's modify our last line again to use it:
+<pre style = "background-color:lavender;width:650px">
+print(tickets["Plate ID"].value_counts())	#Print out plates & number of tickets each got
+</pre>
+<p>Rerunning the program, there are a lot of cars that got only a single ticket.  If you scroll back up the Python shell, you will see the cars with the most tickets are listed first.  Let's just print out the 10 cars that got the most tickets.  We can do this by slicing to <tt>[:10]</tt>:
+<pre style = "background-color:lavender;width:650px">
+print(tickets["Plate ID"].value_counts()[:10])	#Print 10 worst & number of tickets 
+</pre>
+<p>
+Even with only 1000 lines of ticket information, there is a car (with plate <tt>TOPHAT5</tt>) that got more than 5 tickets.  
+<p>Let's make our program a bit more general, to allow the user to enter their own file name:
+<pre style = "background-color:lavender;width:650px">
+#CSci 127 Teaching Staff
+#October 2017
+#Count which cars got the most parking tickets
+
+#Import pandas for reading and analyzing CSV data:
+import pandas as pd
+
+csvFile = input('Enter CSV file name: ')         #Name of the CSV file
+tickets = pd.read_csv(csvFile)     #Read in the file to a dataframe
+print("The 10 worst offenders are:")
+print(tickets["Plate ID"].value_counts()[:10]) #Print out the dataframe
+</pre>
+
+<p>And run it on all tickets for the 20th precinct for January 2016 (14,000 tickets):  
+<a href="Parking_Violations_Jan_2016.csv">Parking_Violations_Jan_2016.csv</a>.
+
+<p>You should see output:
+<pre style = "background-color:lavender;width:650px">
+Enter CSV file name: Parking_Violations_Jan_2016.csv
+The 10 worst offenders are:
+63044JM    52
+63277JM    46
+63540JM    42
+93503JT    36
+42816JM    35
+97223JE    35
+62150JM    35
+31420MG    32
+23246MA    31
+AP113R     30
+Name: Plate ID, dtype: int64
+</pre>
+<p>For just the month of January 2016, there were 9 cars that got more than a ticket a day.
+
+<div style = "background-color: #D0D0F0;padding: 15px;padding-top: 3px;margin: 10px">
+<h4>Challenges: Binning Other Data</h4>
+
+<p>Now that you have a program to use as a basic template, answer the following questions:
+<ul>
+	<li> What color of car is most likely to get a ticket?
+	<li> What type of license gets the most tickets?
+	<li> Which location yields the most tickets?
+</ul>	
+</div>
+
+</div>
+			
+<div style="background-color: white;padding: 10px;margin: 10px;">
+
+<h3>What's Next?</h3>
+
+Next, we'll combine pandas with folium to make HTML maps  (see <a href="foliumIntro.html">Making HTML Maps</a>).
+</div>
+
+
+<div style="font-size:12px;background-color: white;padding: 1px;margin: 10px">
+	<p style = "text-align:center"><i>Sponsored by the Hunter College 
+	<a href="http://www.hunter.cuny.edu/csci">Department of Computer Science</a>, <a href="http://www.hunter.cuny.edu/admissions/admissions-information/undergraduate">Undergraduate Admissions</a>, & 
+	<a href="https://www.facebook.com/groups/HunterWomenInCS/">Hunter Women in Computer Science.</a> 
+	</i>	
+</div>
+
+
+</body>

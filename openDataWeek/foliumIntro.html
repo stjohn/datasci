@@ -1,0 +1,254 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Hunter College OpenData Week Showcase</title>
+    <!--<link type="text/css" rel="stylesheet" href="../../../lehman.css" />-->
+</head>
+<body style = "background-color: #dddddd">
+
+
+<div>
+		<img width="105%" height=150 src = "vorLibrariesCropped.png" style = "position:absolute">
+
+    <div class="bar" style="position:relative">
+    	<h2>
+    	Hunter College OpenData Showcase:<br>
+    	Making HTML Maps</h2>
+    </div>
+    <br><br><br><br>
+</div>
+
+<div style="background-color: white;padding: 10px;margin: 10px;">
+
+<h3>Folium:  Mapping NYC OpenData</h3>
+
+For this section, we will running Python locally with the <a href="https://pypi.python.org/pypi/folium">folium</a> library to:
+<ul>
+	<li> create an HTML map of the publicly available WIFI across NYC,
+	<li> a map of 311 calls tallied by NYC OpenData, and 
+	<li> a subway stations from the GIS coordinates in NYC OpenData.
+</ul>
+
+
+</div>
+
+<div style="background-color: white;padding: 10px;margin: 10px;">
+<h3>Folium</h3>
+
+<p>
+<a href="https://pypi.python.org/pypi/folium">Folium</a> is a Python package that uses the javascript <a href="http://leafletjs.com">Leaflet.js</a> library to make beautiful interactive maps. Instead of popping up a <tt>matplotlib</tt> window, folium creates an <b>.html</b> file that you can open (and view interactively) with a browser.  After the program runs, open the corresponding html file in a web browser to see your map.
+
+<p>
+(Folium is installed on the Hunter machines,  To check to see if your home machine has it, type at the Python prompt:
+<tt>
+import folium
+</tt>
+<br>
+If you get an error, go to the terminal, and download it:
+<pre style = "background-color:lavender;width:450px">
+pip install folium
+</pre>
+and the package will download and install.)
+
+<h4>Our First Map</h4>
+
+<p>
+
+<iframe src="world.html" width="600" height="400" frameborder="0" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+
+
+
+<p>To make a map in folium, the process is:
+<ul>
+	<li> Write a program in Python, using the folium library.
+	<li> Run the program, which outputs an <tt>.html</tt> file.
+	<li> Open the <tt>.html</tt> file in a browser.
+</ul>
+
+<p> Here's our first program:
+<pre style = "background-color:lavender;width:450px">
+#Import the folium package for making maps
+import folium
+
+#Create a map, centered (0,0), and zoomed out a bit:
+mapWorld = folium.Map(location=[0, 0],zoom_start=3)
+
+#Save the map:
+mapWorld.save(outfile='tempMap.html')
+</pre>
+
+<p>
+Save this file and run it.  It will create a file called <tt>tempMap.html</tt>.
+Open your favorite browser (Chrome, Firefox, IE, etc.) and choose "Open File" and then choose the file <tt>tempMap.html</tt>.  You should see a map of the world.
+
+<h4>Map of New York City</h4>
+
+<!--<p>
+<img src="hunterMap.png" height=400>
+
+<p>
+<b>UPDATE!!</b>-->
+
+<p>
+Let's make another map, focused on New York City.  To do that, when we set up the map object, we need to reset the location to New York City and the increase the zoom level:
+<pre style = "background-color:lavender;width:500px">
+import folium
+
+mapCUNY = folium.Map(location=[40.75, -74.125], zoom_start=10)
+</pre>
+
+<p> Let's add in a marker for Hunter College:
+<pre style = "background-color:lavender;width:725px">
+folium.Marker(location = [40.768731, -73.964915], popup = "Hunter College").add_to(mapCUNY)
+</pre>
+
+<p>and create the .html file:
+<pre style = "background-color:lavender;width:450px">
+mapCUNY.save(outfile='nycMap.html')
+</pre>
+
+Save your commands to a file and run via IDLE.  Your program will create an .html file called, <tt>nycMap.html</tt>.  Open it in your favorite browser to make sure it creates a map of NYC with a marker for Hunter College.  
+
+</div>
+
+
+<div style="background-color: white;padding: 10px;margin: 10px;">
+<h3>Plotting from Files</h3>
+
+We can combine the mapping of folium with the tools we have used for CSV files.
+
+<p>
+<iframe width="600" height="400" frameborder="0" src="cunyLocations.html"></iframe>
+
+<p>Let's make an interactive map of the WiFi locations across the city.  We can 
+use <a href="wifiLocations.csv">wifiLocations.csv</a> or download a CSV file from NYC OpenData:
+<ul>
+	<li> <a href="https://data.cityofnewyork.us/City-Government/NYC-Wi-Fi-Hotspot-Locations/yjub-udmw/data">WiFi Locations</a>
+</ul>
+(Export as a <b>.csv</b> file and save in the same directory as your programs, as <tt>wifiLocations.csv</tt>).  Open the file to make sure you have all the lines and to check if the column headings occur in the first row (they do, so no need to skip rows when reading in the file).  
+
+<p>
+Let's use Pandas to read in the file.  We will need to import pandas and folium:
+<pre style = "background-color:lavender;width:450px">import folium
+import pandas as pd
+</pre>
+
+<p>To read in the CSV file, we'll use pandas' CSV reader.  We'll print out the campus locations to make sure that all were read in:
+<pre style = "background-color:lavender;width:450px">
+wifi = pd.read_csv('wifiLocations.csv')
+print (wifi["Location"])
+</pre>
+Note:  we saved our CSV file to 'wifiLocations.csv'.  If you saved it to a different name, change the input parameters for read_csv() to the name of your file. 
+
+
+<p>Next, let's set up a map, centered on Hunter College:
+<pre style = "background-color:lavender;width:450px">
+mapWIFI = folium.Map(location=[40.768731, -73.964915])
+</pre>
+
+<p>
+We need to add markers for each campus.  We're going to iterate through the rows of dataframe to create the markers:
+<pre style = "background-color:lavender;width:450px">
+for index,row in cuny.iterrows():
+    lat = row["Latitude"]
+    lon = row["Longitude"]
+    name = row["Location"]
+    newMarker = folium.Marker([lat, lon], popup=name)
+    newMarker.add_to(mapWIFI)
+</pre>
+For each row in the file, we find the latitude, longitude, and name of the campus, and use those to create a new marker which we add to our map.  We repeat for each row, until we have made markers for all 23 campuses in the file.
+<!--(Note:  we're using an older way to add markers (since it's simpler), and  some versions of folium will give a warning to use the newer version).
+(Note:  this isn't the most efficient way to plot points.  We'll discuss a better way-- creating a geoJSON layer-- next week.)-->
+
+<p>Lastly, let's save our map:
+<pre style = "background-color:lavender;width:450px">
+mapWIFI.save(outfile='wifiLocations.html')
+</pre>
+
+<p>
+To view your map, open a browser.  From the browser, open the file:  <tt>wifiLocations.html</tt>.
+
+</div>
+
+<div style="background-color: white;padding: 10px;margin: 10px;">
+
+<h3>311 Data</h3>
+
+<p>Many of the datasets in NYC OpenData have similar structure.  For example, the 311 calls recorded by the city also store the GIS location as "Latitude" and "Longitude".  So, our program above can be used, with minimal modification, to make a map of recent 311 calls.  
+
+<p>We have downloaded a small subset of the 311 calls in <a href="test311.csv">test311.csv</a> (200 calls from March 5, 2018). 
+
+<div style = "background-color: #D0D0F0;padding: 15px;padding-top: 3px;margin: 10px">
+<h4>Challenges</h4>
+
+<p>
+<ul>
+	<li> Make an HTML map of the <tt>test311.csv</tt> calls, replacing the name that pop-ups 'Location' with 'Complaint Type'.  
+	<li> Using the pandas' commands from the previous section, what is the most common 311 call for the test data?  
+	<li> Download <a href="https://data.cityofnewyork.us/Social-Services/311-Service-Requests-from-2010-to-Present/erm2-nwe9">311</a> data for your favorite neighborhood (filter on 'Incident Zip') and make a map.  Where do most complaints occur?  
+</ul>
+
+</div>
+
+</div>
+
+
+<div style="background-color: white;padding: 10px;margin: 10px;">
+<h3>Collision Data</h3>
+
+		<p><iframe src="th.html" width="800" height="400" frameborder="0" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>	
+
+	<p> NYC OpenData also has the data for all collisions reported to the police:
+		<blockquote>
+			<a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Motor-Vehicle-Collisions/h9gi-nx95">https://data.cityofnewyork.us/Public-Safety/NYPD-Motor-Vehicle-Collisions/h9gi-nx95</a>.
+	</blockquote>
+		Since the files are quite large, use the "Filter" option and choose your favorite date in 2017 and "Export" (in CSV format) all collisions for that day.  	
+		
+<div style = "background-color: #D0D0F0;padding: 15px;padding-top: 3px;margin: 10px">
+<h4>Challenges</h4>
+
+	<ul>		
+
+		<li> Write a program that uses pandas to find the  top three contributing factors for the primary vehichle of collisions ("CONTRIBUTING FACTOR VEHICLE 1") in your file.  
+		
+		<p>A sample run for New Years Day in 2016 is:
+<pre style = "background-color:lavender;width:400px">
+Enter CSV file name:  collisionsNewYears2016.csv
+Top three contributing factors for collisions:
+Driver Inattention/Distraction    136
+Unspecified                       119
+Following Too Closely              37
+Name: CONTRIBUTING FACTOR VEHICLE 1, dtype: int64
+</pre>
+	
+		<li>
+		Modify the folium  program above to create  a map with markers for all the traffic collisions from the input file.
+		
+		<p><i>Hint:  For this data set, the names of the columns are "LATITUDE" and "LONGITUDE" (unlike the previous map problem, where the data was stored with "Latitude" and "Longitude"). </i>
+	
+		
+		<p>(The map above is for March 18, 2016 using the time the collision occurred ("TIME") to label each marker and changed the underlying map with the option:  
+		<tt>tiles="Cartodb Positron"</tt> when creating the map.
+		 When creating datasets to test your program, you will need to filter for both date (to keep the files from being huge) and that there's a location entered.  The former is explained above; to check the latter, add the additional filter condition of "LONGITUDE is not blank".  )
+		
+
+</div>
+</div>
+
+
+<div style="background-color: white;padding: 10px;margin: 10px;">
+
+<h3>What's Next?</h3>
+
+Enjoyed the showcase?  Come join us at Hunter College!  We integrate NYC OpenData into our curriculum, starting with the <a href="https://stjohn.github.io/teaching/csci127/s18.html">first computer science course</a>.
+</div>
+
+
+<div style="font-size:12px;background-color: white;padding: 1px;margin: 10px">
+	<p style = "text-align:center"><i>Sponsored by the Hunter College 
+	<a href="http://www.hunter.cuny.edu/csci">Department of Computer Science</a>, <a href="http://www.hunter.cuny.edu/admissions/admissions-information/undergraduate">Undergraduate Admissions</a>, & 
+	<a href="https://www.facebook.com/groups/HunterWomenInCS/">Hunter Women in Computer Science.</a> 
+	</i>	
+</div>
+
+</body>

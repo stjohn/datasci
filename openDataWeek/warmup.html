@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Getting Started:  Hunter College OpenData Week Showcase</title>
+    <!--<link type="text/css" rel="stylesheet" href="../../../lehman.css" />-->
+</head>
+<body style = "background-color: #dddddd">
+
+
+<div>
+		<img width="105%" height=150 src = "vorLibrariesCropped.png" style = "position:absolute">
+
+    <div class="bar" style="position:relative">
+    	<h2>
+    	Hunter College OpenData Showcase:<br>
+    	Getting Started</h2>
+    </div>
+    <br><br><br><br>
+</div>
+
+<div style="background-color: white;padding: 10px;margin: 10px;">
+
+<h3>Warm-up:  Turtles & GIS Locations</h3>
+
+In this section, we will use <a href="">Trinkets</a>, an on-line version of Python,
+<ul>
+	<li> to get started with Python and its Turtles package,
+	<li> to make a world map using latitude and longitude of cities, and
+	<li> to make a map of New York City with selected <a href="https://data.cityofnewyork.us/Transportation/Subway-Stations/arq3-7z49/data">subway stops</a> from <a href="https://data.cityofnewyork.us/">NYC OpenData</a>.
+</ul>
+
+</div>
+
+<div style="background-color: white;padding: 10px;margin: 10px;">
+<h3>Hunter College Laptops</h3>
+
+<p>To borrow a laptop for today's workshop, hand a picture ID to undergraduate teaching assistant in exchange for a laptop computer.
+
+<p>The laptops run Ubuntu Linux operating system. When you open the laptop, choose the "Computer Science Guest" account (the password is:  <tt>1001E!88</tt>).  On the left hand side is a bar of icons, including icons for a browser (for accessing webpages) and the terminal window (for writing commands and launching programs).
+
+<p> When you launch the browser, you will see a HunterNet webpage.
+<ul>
+	<li>If you are a Hunter student, fill in the form with your Hunter credentials (the same that you would use to access the wifi from your own computer or phone) to access the internet.
+	<li>If you are visiting, fill in the form with the <b>username "" and password "".</b>
+	<li>If you get a message that you are not connected to the internet, click on the internet symbol (empty quarter circle) in the upper right corner of the toolbar.  Hover over the "More Networks" and then click on "HunterNet".  The wifi symbol will blink with concentric lines.  When it stops blinking and becomes solid lines, an internet connection has been established and you can then reload the webpage to type in the login information.
+</ul>
+</div>
+
+<div style="background-color: white;padding: 10px;margin: 10px;">
+<h3>Turtles</h3>
+
+<p>
+We'll start by drawing shapes with the turtle library of Python. A library is an extra chunk of code, on top of what Python already has in it. Some libraries are built-in to Python, and some are designed by users which you can download separately.
+
+<p>Click the right-facing triange (Run) button to see the program:
+
+<p>
+<iframe src="https://trinket.io/embed/python/a3bede6db8?start=result" width="100%" height="300" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+
+<p>
+The program has several parts:
+<ul>
+	<li> It imports the <tt>turtle</tt> library, so, that its functionality can be used to draw images.
+	<li> It sets up a <tt>turtle</tt>, named <tt>taylor</tt>, which is purple and turtle shaped.
+	<li> It has a loop that repeats the block of indented commands 6 times.
+	<li> The commands repeated move <tt>taylor</tt> forward 100 steps, stamps a turtle shape, and then turns left 60 degrees.  These are repeated since they are inside the <tt>for</tt>-loop.
+</ul>
+
+
+<div style = "background-color: #D0D0F0;padding: 15px;padding-top: 3px;margin: 10px">
+
+<h4>Challenges:</h4>
+
+<p>
+Try the following:
+<ul>
+	<li> Modify the program to make a square.
+	<li> Modify the program to make an octagon (8-sided polygon) that is blue.
+	<li> Make a red decagon (10-sided polygon)  with a triangle stamped on each corner.
+</ul>
+Harder:  write a program that makes a 5-pointed star.
+
+</div>
+
+</div>
+
+
+<div style="background-color: white;padding: 10px;margin: 10px;">
+<h3>World Maps</h3>
+
+<p>We are going to use Python to make maps.  Let's start by mapping cities of the world.
+Locations in the world are usually indicated by their longitude and latitude.
+<ul>
+	<li> <b>Longitude</b> measures the number of degrees east or west of the prime meridian.  When written as a number, it ranges from -180 to +180.
+  <li> <b>Latitude</b> measures the number of degrees north or south of the equator.  When written as a number, it ranges from -90 (the south pole) to +90 (the north pole).
+</ul>
+
+We will use those ranges to be our coordinates:  (-180, -90) to (180,90).  Let's map New York City (longitude: -74, latitude: 41):
+
+
+<p>
+<iframe src="https://trinket.io/embed/python/f47148f20e?start=result" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+
+<div style = "background-color: #D0D0F0;padding: 15px;padding-top: 3px;margin: 10px">
+<h4>Challenges:</h4>
+
+<p> In the trinket above, stamp the following cities (GIS coordinates are rounded to the nearest whole number):
+<ul>
+	<li> Los Angeles (longitude: -118, latitude: 34),
+	<li> Paris, France (longitude: 2, latitude:49),
+	<li> Tokyo, Japan (longitude: 140, latitude: 35), and
+	<li> Rio de Janeiro, Brazil (longitude: -43, latitude: -23).
+</ul>
+</div>
+
+</div>
+
+<div style="background-color: white;padding: 10px;margin: 10px;">
+
+<h3>NYC Maps</h3>
+
+<p>The same idea works for mapping at a local scale.  Here's a map with Hunter College (longitude: -73.964, latitude: 40.768):
+
+<p>
+<iframe src="https://trinket.io/embed/python/82dbaf2726?start=result"  width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+
+<p>Since we are working with very small differences in numbers, we wrote a separate function to convert the longitude and latitude into numbers large enough for the turtle package to use.  To plot a point with our map, we use
+
+<pre>
+	teddy.goto(scalePoints(lon,lat))
+</pre>
+where <tt>lon</tt> and <tt>lat</tt> are the GIS coordinates of our points.
+
+<div style = "background-color: #D0D0F0;padding: 15px;padding-top: 3px;margin: 10px">
+<h4>Challenges:</h4>
+
+<p> In the trinket above, stamp  the following locations in different colors:
+<ul>
+	<li> Empire State Building (longitude: -73.985664, latitude: 40.748441).
+	<li> Grand Central Terminal (longitude: -73.977229, latitude: 40.752726).
+	<li> Apollo Theatre (longitude: -73.950056, latitude: 40.810018).
+	<li> Lincoln Center (longitude: -73.983489, latitude: 40.772464).
+</ul>
+</div>
+
+</div>
+
+<div style="background-color: white;padding: 10px;margin: 10px;">
+
+<h3>Mapping NYC Library Locations</h3>
+
+<a href="https://opendata.cityofnewyork.us">NYC Open Data</a> stores the GIS coordinates for many datasets.  For example, the location of New York City libraries is stored in a format easily read by spreadsheet programs.  The "Comma Separated Values" (CSV) files have each column separated by columns.  Here's some of the <a href="https://data.cityofnewyork.us/Business/Library/p4pf-fyc4">library CSV</a>
+file from <a href="https://opendata.cityofnewyork.us">NYC Open Data</a>:
+
+<p><img height=100 src="librariesCSV.png">
+
+<p> The first column has the longitude and latitude of the library.  The next contains the name of the library.  Additional columns have more details about the address and location.
+
+<p>Let's use the GIS coordinates from this OpenData file to map the 115th Street Library.  It's at (-73.95353074430393, 40.80297988196676).  Our trinket maps do not have that precision, so, we can round to:  (-73.954, 40.803) and write:
+<pre>
+	teddy.goto(scalePoints(-73.954, 40.803))
+</pre>
+
+<p><iframe src="https://trinket.io/embed/python/55922ac485?start=result" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+
+<div style = "background-color: #D0D0F0;padding: 15px;padding-top: 3px;margin: 10px">
+<h4>Challenges</h4>
+
+<p>
+Stamp the locations of
+<ul>
+	<li> 125th Street Library,
+	<li> 53rd Street Library, and
+	<li> 58th Street Library
+</ul>
+onto a map of New York City.  The GIS coordinates are in the above image of the CSV file.
+
+</div>
+
+</div>
+
+
+
+<div style="background-color: white;padding: 10px;margin: 10px;">
+
+<h3>What's Next?</h3>
+
+Next, we'll explore ways to have Python work through the OpenData files with a fabulous package called <a href="https://pandas.pydata.org">Pandas</a> (see <a href="pandas.html">Using Structured Data</a>).
+</div>
+
+
+<div style="font-size:12px;background-color: white;padding: 1px;margin: 10px">
+	<p style = "text-align:center"><i>Sponsored by the Hunter College
+	<a href="http://www.hunter.cuny.edu/csci">Department of Computer Science</a>, <a href="http://www.hunter.cuny.edu/admissions/admissions-information/undergraduate">Undergraduate Admissions</a>, &
+	<a href="https://www.facebook.com/groups/HunterWomenInCS/">Hunter Women in Computer Science.</a>
+	</i>
+</div>
+</body>
