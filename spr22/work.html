@@ -1029,7 +1029,7 @@ plt.show()</code></pre>
 <br><br>
 <p><a name="p5"><b>Program 5: .</b></b> &emsp; <i>Due noon, Thursday, 10 March.</i>
       <br>Learning Objective: to use regular expressions to parse from log data.
-       <br>Available Libraries: Regular expressions (re) and core Python 3.6+.
+       <br>Available Libraries: Regular expressions (re) and core Python 3.6+.  (Note: not pandas)
 
        </i>
 
@@ -1048,7 +1048,7 @@ plt.show()</code></pre>
                      <pre><code class="datablock">2022-02-22 21:05:13,191 read_data - ERROR:[Errno 2] No such file or directory: 'inputfile_1.txt'</code></pre>
                    <li> applying the function to the test log file so that the following:
                      <pre><code class="blockcode">log_date = parse_date_from_one_line_log('one_liner_log.txt')
-print(logdate)</code></pre>
+print(log_date)</code></pre>
                        will return:
                      <pre><code class="datablock">2022-02-22</code></pre>
                      <br>
@@ -1073,6 +1073,7 @@ print(max_log_date)</code></pre>
                        will return:
                      <pre><code class="datablock">2022-01-22
 2022-02-14</code></pre>
+                   <li> if the test file has only one line of log, then both min and max date will be the same.
                      <br>
                </ul>
 
@@ -1114,7 +1115,7 @@ File "/home/datascience/logs/read_data.py", line 1, in word_count
   with open(filename) as f:
     FileNotFoundError: [Errno 2] No such file or directory: 'inputfile.txt'</code></pre>
                    <li> applying the function to the test log file so that the following:
-                     <pre><code class="blockcode">log_filepath, log_linenum = parse_filepath_linenum_from_traceback_log('one_liner_log.txt')
+                     <pre><code class="blockcode">log_filepath, log_linenum = parse_filepath_linenum_from_traceback_log('traceback_log_simple.txt')
 print(log_filepath)
 print(log_linenum)</code></pre>
                        will return:
@@ -1146,7 +1147,7 @@ File "data/import_data.py", line 10, in process_data
   with open(filename) as f:
 FileNotFoundError: [Errno 2] No such file or directory: 'inputfile.txt'</code></pre>
                    <li> applying the function to the test log file so that the following:
-                     <pre><code class="blockcode">last_linenum = parse_filepath_linenum_from_traceback_log('traceback_log_complex.txt')
+                     <pre><code class="blockcode">last_linenum = parse_last_linenum_from_traceback_log('traceback_log_complex.txt')
 print(last_linenum)</code></pre>
                        will return:
                      <pre><code class="datablock">10</code></pre>
