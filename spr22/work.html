@@ -1153,11 +1153,91 @@ print(last_linenum)</code></pre>
                      <pre><code class="datablock">10</code></pre>
                      <br>
                </ul>
-
-
-
          </ul>
 
+   <br><br>
+   <p><a name="p6"><b>Program 6: Housing Units.</b></b> &emsp; <i>Due noon, Thursday, 17 March.
+     <br>Learning Objective: to reinforce Pandas skills by aggregating and cleaning to use in map visualiation, and summary statistics methods in Pandas.
+     <br>Available Libraries: pandas and core Python 3.6+.</i>
+
+
+    <p> NYC Department of City Planning (DCP) <a href="https://www1.nyc.gov/site/planning/data-maps/open-data/dwn-housing-database.page#housingdevelopmentproject">Housing Database</a> contains all approved construction and demolition jobs since 2010.  Summary information about it are provided via OpenData NYC.  A summary, recorded as net housing units, by Neighborhood Tabulation Areas:
+    <ul>
+         <li> <a href="https://data.cityofnewyork.us/Housing-Development/Housing-Database-by-NTA/kyz5-72x5">https://data.cityofnewyork.us/Housing-Development/Housing-Database-by-NTA/kyz5-72x5</a>
+         </li>
+    </ul>
+    The DCP also provides a summary of population in New York City from the 2000 and 2010 censuses, organized by neighborhood tabulation areas (NTAs):
+    <ul>
+         <li> <a href="https://data.cityofnewyork.us/City-Government/New-York-City-Population-By-Neighborhood-Tabulatio/swpk-hqdp">https://data.cityofnewyork.us/City-Government/New-York-City-Population-By-Neighborhood-Tabulatio/swpk-hqdp</a>
+         </li>
+    </ul>
+
+    <p> This program focuses on the growth of neighborhoods, as witnessed by the net increase in housing units, and explore what factors are most correlated with the increase.
+      The assignment is broken into the following functions to allow for unit testing:
+
+        <ul>
+          <li> <code class = "inline">make_housing_df(file_name)</code>:
+            This function takes one input:
+              <ul>
+                  <li> <code class = "inline">file_name</code>: the name of a CSV file containing <a href="https://data.cityofnewyork.us/Housing-Development/Housing-Database-by-NTA/kyz5-72x5">housing units</a> from OpenData NYC.
+              </ul>
+              The function should open the file <code class = "inline">file_name</code> as a DataFrame.
+              If the <code class=inline>total</code> is null for a row, that row should be dropped.  The column <code class=inline>nta2010</code> should be renamed <code class=inline>NTA Code</code>.  The resulting DataFrame is returned.
+          <li> <code class = "inline">make_pop_df(file_name)</code>:
+            This function takes one input:
+              <ul>
+                  <li> <code class = "inline">file_name</code>: the name of a CSV file containing <a href="https://data.cityofnewyork.us/City-Government/New-York-City-Population-By-Neighborhood-Tabulatio/swpk-hqdp">population counts</a> from OpenData NYC.
+              </ul>
+              The function should open the file <code class = "inline">file_name</code> as a DataFrame.
+              Only rows containing data for <code class=inline>2010</code> should be kept.  The resulting DataFrame is returned.
+
+          <li> <code class = "inline">combine_df(housing_df, pop_df, cols)</code>:
+            This function takes three inputs:
+            <ul>
+              <li> <code class = "inline">housing_df</code>: a DataFrame containing the column <code class = "inline">NTA Code</code>.
+              <li> <code class = "inline">pop_df</code>: a DataFrame containing the column <code class = "inline">NTA Code</code>.
+              <li> <code class = "inline">cols</code>: a list containing a subset of columns of  <code class = "inline">housing_df</code> and <code class = "inline">pop_df</code>.
+            </ul>
+            Returns a DataFrame that merges the two inputted DataFrames on their common key, <code class = "inline">NTA Code</code>.  The returned DataFrame should include only the columns specified in <code class = "inline">cols</code>.
+         <li> <code class = "inline">compute_density(df, col = 'Density')</code>:
+            This function takes two inputs:
+            <ul>
+              <li> <code class = "inline">df</code>: a DataFrame containing the columns <code class = "inline">Population</code> and <code class = "inline">Shape__Area</code>.
+              <li> <code class = "inline">col</code>: a string.
+            </ul>
+            The function computes a new column, <code class = "inline">col</code>, that is the quotient of the columns <code class = "inline">Population</code> and <code class = "inline">Shape__Area</code>. The resulting DataFrame with this additional column is returned..
+
+          <li> <code class = "inline">most_corr(df, y = 'total', xes = ['Population','Shape__Area','Density','comp2010']):
+</code>:
+            This function takes three inputs:
+            <ul>
+              <li> <code class = "inline">df</code>: a DataFrame containing the columns listed in <code class = "inline">y</code> and <code class = "inline">xes</code>.
+              <li> <code class = "inline">xes</code>: list of column names in <code class = "inline">df</code>.
+              <li> <code class = "inline">y</code>:  the name of a column in <code class = "inline">df</code>.
+            </ul>
+            Returns the column name and Pearson's R correlation coefficient from <code class = "inline">xes</code> that has the highest absolute correlation
+            with <code class = "inline">y</code> (i.e. the absolute value of Pearson's R).
+          <li> <code class = "inline">convert_std_units(ser)</code>:
+            This function takes one input:
+            <ul>
+              <li> <code class = "inline">ser</code>: a Series.
+            </ul>
+            Takes a Series of numeric values and converts to standard units, that is, it computes the mean and standard deviation of <code class = "inline">ser</code>, and for
+each <code class = "inline">s</code> in <code class = "inline">ser</code>, computes <code class = "inline">(s - mean)/(standard deviation)</code> and returns the resulting series.
+      </ul>
+<!--
+      <p>For example, if the housing and population data files are downloaded:
+
+          <pre><code class="datablock"></code></pre>
+
+          Then a sample run of the program:
+          <pre><code class="blockcode"></code></pre>
+
+          And the first lines would be:
+        <pre><code class="datablock"></code></pre>
+      Note that we printed the indices, and some of the initial rows were dropped due to null values.
+
+-->
 
 <br><br>
 
