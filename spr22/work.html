@@ -207,116 +207,23 @@ google,www.google.com</code></pre>
   </p>
 
 
-<!--
-
   <p><a name="cw8"><b>Classwork 8: </b> &emsp; <i>Due midnight, Monday, 28 February.</i> &emsp;
 
-
-    Available during Lecture 6 on Gradescope, this classwork introduces the <code class=inline>datetime</code> package.  To get the most out of this exercise, bring a laptop with you to lecture with a development environment (IDE) that has Python 3+ to work through in lecture.
-    <p> Use the <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#overview">date time functionality</a> of Pandas to write the following functions:
-    <ul>
-      <li> <code class = "inline">tripTime(start,end)</code>:  This function takes two variables of type <code class = "inline">datetime</code> and returns the difference between them.
-      <li> <code class = "inline">weekdays(df,col)</code>:  This function takes a DataFrame, <code class = "inline">df</code>, containing the column name, <code class = "inline">col</code>, and returns a DataFrame containing only times that fall on a weekday (i.e. Monday through Friday).
-    </ul>
-
-    <p>
-    For example, using the <a href="https://github.com/mwaskom/seaborn-data">Seaborn's Green Taxi Data Set</a> and assuming your functions are in the <code class="inline">cw6.py</code>:
-    <pre><code class="blockcode">import seaborn as sns
-taxi = sns.load_dataset('taxis')
-print(taxi.iloc[0:10])
-taxi['tripTime'] = taxi.apply(lambda x: cw6.tripTime(x['pickup'], x['dropoff']), axis=1)
-print(taxi.iloc[0:10])
-</code></pre>
-    Would give output:
-<pre><code class="datablock">                pickup              dropoff  ...  pickup_borough  dropoff_borough
-0  2019-03-23 20:21:09  2019-03-23 20:27:24  ...       Manhattan        Manhattan
-1  2019-03-04 16:11:55  2019-03-04 16:19:00  ...       Manhattan        Manhattan
-2  2019-03-27 17:53:01  2019-03-27 18:00:25  ...       Manhattan        Manhattan
-3  2019-03-10 01:23:59  2019-03-10 01:49:51  ...       Manhattan        Manhattan
-4  2019-03-30 13:27:42  2019-03-30 13:37:14  ...       Manhattan        Manhattan
-5  2019-03-11 10:37:23  2019-03-11 10:47:31  ...       Manhattan        Manhattan
-6  2019-03-26 21:07:31  2019-03-26 21:17:29  ...       Manhattan        Manhattan
-7  2019-03-22 12:47:13  2019-03-22 12:58:17  ...       Manhattan        Manhattan
-8  2019-03-23 11:48:50  2019-03-23 12:06:14  ...       Manhattan        Manhattan
-9  2019-03-08 16:18:37  2019-03-08 16:26:57  ...       Manhattan        Manhattan
-
-[10 rows x 14 columns]
-                pickup              dropoff  ...  dropoff_borough        tripTime
-0  2019-03-23 20:21:09  2019-03-23 20:27:24  ...        Manhattan 0 days 00:06:15
-1  2019-03-04 16:11:55  2019-03-04 16:19:00  ...        Manhattan 0 days 00:07:05
-2  2019-03-27 17:53:01  2019-03-27 18:00:25  ...        Manhattan 0 days 00:07:24
-3  2019-03-10 01:23:59  2019-03-10 01:49:51  ...        Manhattan 0 days 00:25:52
-4  2019-03-30 13:27:42  2019-03-30 13:37:14  ...        Manhattan 0 days 00:09:32
-5  2019-03-11 10:37:23  2019-03-11 10:47:31  ...        Manhattan 0 days 00:10:08
-6  2019-03-26 21:07:31  2019-03-26 21:17:29  ...        Manhattan 0 days 00:09:58
-7  2019-03-22 12:47:13  2019-03-22 12:58:17  ...        Manhattan 0 days 00:11:04
-8  2019-03-23 11:48:50  2019-03-23 12:06:14  ...        Manhattan 0 days 00:17:24
-9  2019-03-08 16:18:37  2019-03-08 16:26:57  ...        Manhattan 0 days 00:08:20
-
-[10 rows x 15 columns]
-</code></pre>
-
-  <p> Using the function our second function:
-<pre><code class="blockcode">taxi = sns.load_dataset('taxis')
-weekdays = cw6.weekdays(taxi,'pickup')
-print(weekdays.iloc[0:10])
-</code></pre>
-  will give output:
-<pre><code class="datablock">
-  pickup              dropoff  ...  pickup_borough  dropoff_borough
-1   2019-03-04 16:11:55  2019-03-04 16:19:00  ...       Manhattan        Manhattan
-2   2019-03-27 17:53:01  2019-03-27 18:00:25  ...       Manhattan        Manhattan
-5   2019-03-11 10:37:23  2019-03-11 10:47:31  ...       Manhattan        Manhattan
-6   2019-03-26 21:07:31  2019-03-26 21:17:29  ...       Manhattan        Manhattan
-7   2019-03-22 12:47:13  2019-03-22 12:58:17  ...       Manhattan        Manhattan
-9   2019-03-08 16:18:37  2019-03-08 16:26:57  ...       Manhattan        Manhattan
-11  2019-03-20 19:39:42  2019-03-20 19:45:36  ...       Manhattan        Manhattan
-12  2019-03-18 21:27:14  2019-03-18 21:34:16  ...       Manhattan        Manhattan
-13  2019-03-19 07:55:25  2019-03-19 08:09:17  ...       Manhattan        Manhattan
-14  2019-03-27 12:13:34  2019-03-27 12:25:48  ...       Manhattan        Manhattan
-
-[10 rows x 14 columns]
-</code></pre>
-    note that rows 0,4,8, and 10 have been dropped from the original DataFrame since those corresponded to weekend days.
-    </p>
-
-<p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
-
-
-    <i>Hints:
-        <ul>
-          <li> When read in from the CSV, the columns may be stored as a string.  Cast as a <code class = "inline">datetime</code> object (e.g. <code class = "inline">pd.to_datetime(start)</code>) to use the functionality.
-          <li> For datetime objects, you can access properties such as day of the week using <code class = "inline">dt</code> prefix, similar to <code class = "inline">.str</code> similar to .str to use string methods and properties (e.g. <code class = "inline">dt.dayofweek</code>).
-          See the Python Docs: <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#overview">date time functionality</a> for more details.
-        </ul>
-    </i>
-
-
-    </p>
-
-
+      Available during Lecture 8 on Gradescope, this classwork focuses on the <a href="https://geojson.org">GeoJSON</a> format, including hands-on activity with <a href="https://geojson.io">GeoJSON visual editor</a>. To get the most out of this exercise, bring a laptop with you to lecture with a development environment (IDE) that has Python 3+ to work through in lecture.
 
   <p><a name="cw9"><b>Classwork 9: </b> &emsp; <i>Due midnight, Thursday, 3 March.</i> &emsp;
-      Available during Lecture 9 on Gradescope, this classwork focuses on the <a href="https://geojson.org">GeoJSON</a> format, including hands-on activity with <a href="https://geojson.io">GeoJSON visual editor</a>. To get the most out of this exercise, bring a laptop with you to lecture with a development environment (IDE) that has Python 3+ to work through in lecture.
--->
-<!--
-      Available during Lecture 9 on Gradescope, this classwork is builds focuses on parsing GIS data.  To get the most out of this exercise, bring a laptop with you to lecture with a development environment (IDE) that has Python 3+ to work through in lecture.
 
-      <p>
-      Write two functions that will be used to clean the OpenData NYC dataset of <a href="https://data.cityofnewyork.us/Business/Library/p4pf-fyc4">Libraries in New York City</a> (downloaded as CSV file).  The first three lines of the CSV file look like:
+      Available during Lecture 9 on Gradescope, this classwork is modeled on an analytic reasoning challenge of efficiently computing catchment areas (Voronoi diagrams) for NYC libraries.  To get the most out of this exercise, bring a device with you that can access Gradescope's online assignments.
 
-    <pre><code class="datablock">the_geom,NAME,STREETNAME,HOUSENUM,CITY,ZIP,URL,BIN,BBL,X,Y,SYSTEM,BOROCODE
-  POINT (-73.95353074430393 40.80297988196676),115th Street,West 115th Street,203,New York,10026,http://www.nypl.org/locations/115th-street,1055236,1018310026,997115.12977,231827.652864,NYPL,1
-  POINT (-73.9348475633247 40.80301816141575),125th Street,East 125th Street,224,New York,10035,http://www.nypl.org/locations/125th-street,1054674,1017890037,1002287.604,231844.894956,NYPL,1</code></pre>
+  <p><a name="cw10"><b>Classwork 10: </b> &emsp; <i>Due midnight, Thursday, 7 March.</i> &emsp;
 
-      Each function takes as input a row of the table:
-      <ul>
-        <li> <code class = "inline">extractLatLon(row)</code>:  This function takes the values from the column <code class = "inline">the_geom</code> and extracts the longitude and latitude from the string (they are surrounded by parenthesis and separated by a space, and returns the two as numerical values.  For example, the function would return -73.95353074430393, 40.80297988196676 when applied to the first row of data.
-        <li> <code class = "inline">extractTitle(row)</code>:  This function concatenates the values from the columns <code class = "inline">NAME</code>, <code class = "inline">CITY</code>, and <code class = "inline">ZIP</code> code into a single string, separated by a comma and space, and returns the string (to be used as the title for our visualizations).
-        For example, when applying this function to the first data row, the return value would be:
-        <code class = "inline">115th Street, New York, 10026</code>.
-      </ul>
--->
+      Available during Lecture 10 on Gradescope, this classwork builds intuition about how correlated datasets are.  To get the most out of this exercise, bring a device with you that can access Gradescope's online assignments.
+
+  <p><a name="cw11"><b>Classwork 11: </b> &emsp; <i>Due midnight, Thursday, 10 March.</i> &emsp;
+
+      Available during Lecture 11 on Gradescope, this classwork reviews probability distributions and sampling.  To get the most out of this exercise, bring a device with you that can access Gradescope's online assignments.
+
+
 
 <br><br><br><br>
 <hr>
@@ -344,9 +251,13 @@ Unless otherwise noted, quizzes focus on the corresponding programming assignmen
   Link to access HackerRank available at the end of Lecture 9 (posted on Blackboard).
   <br>This is the quiz focuses on aggegrating in Pandas as in <a href="#p4">Program 4</a>.
 
-<p><a name="q4"><b>Quiz 5: Regular Expressions</b> &emsp; <i>Due 4pm, Friday, 4 March.</i> &emsp;
+<p><a name="q5"><b>Quiz 5: Regular Expressions</b> &emsp; <i>Due 4pm, Friday, 4 March.</i> &emsp;
   Link to access HackerRank available at the end of Lecture 11 (posted on Blackboard).
   <br>This is the quiz focuses on regular expressions in Python as in <a href="#p5">Program 5</a>.
+
+  <p><a name="q6"><b>Quiz 6: Summary Statistics </b> &emsp; <i>Due 4pm, Friday, 4 March.</i> &emsp;
+    Link to access HackerRank available at the end of Lecture 11 (posted on Blackboard).
+    <br>This is the quiz focuses on computing statistical properties in Python as in <a href="#p6">Program 6</a>.
 
 <!--
   This quiz covers data representation from Lecture #5 and <a href=
@@ -1172,7 +1083,19 @@ print(last_linenum)</code></pre>
          </li>
     </ul>
 
-    <p> This program focuses on the growth of neighborhoods, as witnessed by the net increase in housing units, and explore what factors are most correlated with the increase.
+    Using the choropleth maps discussed in Lecture 8, we can visualize the growth in housing units:
+    <p>In lecture, we wrote a program, <a href="schoolsChoropleth.py">schoolsChoropleth.py</a>, using the school district files used in <a href="#p10">Programs 10 & 11</a> to make a choropleth map of top English Languange Arts scores, by <a href="https://data.cityofnewyork.us/Education/School-Districts/r8nu-ymqj">district</a>, in New York City:
+
+      <p>
+      <iframe src="netHousingUnits.html" style="width: 60%; height: 550px" name="internal"></iframe>
+
+      <p>
+      If you would like to create the map above, the code is
+      <a href="housingChoropleth.py">housingChoropleth.py</a>
+      using <a href="nta.geojson">nta.geojson</a> and
+      <a href="Housing_Database_by_NTA.csv">Housing_Database_by_NTA.csv</a>.
+
+    <p> What factors are most correlated with the increase in housing units?  This program explores which factors are most correlated with the net increase.
       The assignment is broken into the following functions to allow for unit testing:
 
         <ul>
@@ -1225,18 +1148,89 @@ print(last_linenum)</code></pre>
             Takes a Series of numeric values and converts to standard units, that is, it computes the mean and standard deviation of <code class = "inline">ser</code>, and for
 each <code class = "inline">s</code> in <code class = "inline">ser</code>, computes <code class = "inline">(s - mean)/(standard deviation)</code> and returns the resulting series.
       </ul>
-<!--
-      <p>For example, if the housing and population data files are downloaded:
 
-          <pre><code class="datablock"></code></pre>
-
-          Then a sample run of the program:
-          <pre><code class="blockcode"></code></pre>
+      <p>For example, if the housing and population data files are downloaded, then a sample run of the program:
+          <pre><code class="blockcode">housing_df = answer.make_housing_df('Housing_Database_by_NTA.csv')
+print('The housing DataFrame:')
+print(housing_df.head())
+pop_df = answer.make_pop_df('NYC_Population_By_NTA.csv')
+print('The housing DataFrame:')
+print(pop_df.head())</code></pre>
 
           And the first lines would be:
-        <pre><code class="datablock"></code></pre>
-      Note that we printed the indices, and some of the initial rows were dropped due to null values.
+        <pre><code class="datablock">The housing DataFrame:
+    Borough  Year  ...                         NTA Name Population
+195   Bronx  2010  ...               Claremont-Bathgate      31078
+196   Bronx  2010  ...  Eastchester-Edenwald-Baychester      34517
+197   Bronx  2010  ...       Bedford Park-Fordham North      54415
+198   Bronx  2010  ...                          Belmont      27378
+199   Bronx  2010  ...                        Bronxdale      35538
 
+[5 rows x 6 columns]
+     Borough  Year  FIPS County Code  ... comp2019  total   Shape__Area
+0  Manhattan  2010                61  ...      NaN  11240  5.582242e+06
+1      Bronx  2010                 5  ...    127.0  13998  1.937895e+07
+2      Bronx  2010                 5  ...      0.0  14622  1.518562e+07
+3   Brooklyn  2010                47  ...    457.0  21773  3.579958e+07
+4  Manhattan  2010                61  ...    -67.0  48481  1.360204e+07
+</code></pre>
+
+    We can use our next function to combine the DataFrames:
+    <pre><code class="blockcode">cols = list(pop_df.columns) + ['boro','comp2010','comp2015','comp2019','total','Shape__Area']
+df = answer.combine_df(housing_df,pop_df,cols)
+print(df.head())
+print(df.columns)</code></pre>
+
+    And the first lines would be:
+    <pre>     Borough  Year  FIPS County Code  ... comp2019  total   Shape__Area
+0  Manhattan  2010                61  ...      NaN  11240  5.582242e+06
+1      Bronx  2010                 5  ...    127.0  13998  1.937895e+07
+2      Bronx  2010                 5  ...      0.0  14622  1.518562e+07
+3   Brooklyn  2010                47  ...    457.0  21773  3.579958e+07
+4  Manhattan  2010                61  ...    -67.0  48481  1.360204e+07
+
+[5 rows x 12 columns]<code class="datablock">
+    </code></pre>
+
+    We can compute a new column, representing population density:
+    <pre><code class="blockcode">df = answer.compute_density(df)
+print(df[['NTA Code','Population','Density']])
+</code></pre>
+
+    And the relevant columns contain:
+    <pre><code class="datablock">    NTA Code  Population   Density
+0       MN50       21049  0.003771
+1       BX63       39282  0.002027
+2       BX07       35538  0.002340
+3       BK43       52835  0.001476
+4       MN32       77942  0.005730
+..       ...         ...       ...
+190     QN01       38894  0.000973
+191     BX37       29250  0.000806
+192     QN49       30773  0.000446
+193     SI48       25238  0.000501
+194     MN31       80771  0.003755
+
+[195 rows x 3 columns]</code></pre>
+
+    We can find the columns with the largest absolute correlation coefficient R:
+    <pre><code class="blockcode">most_c,r = answer.most_corr(df)
+print(f'For the default list of columns, the most correlated is {most_c} with r = {r}.')
+comp_y = ['comp2010','comp2015','comp2019']
+years_c,y_r =answer.most_corr(df, xes = comp_y)
+print(f'For {comp_y}, most correlated is {years_c} with r = {r}.')</code></pre>
+
+    And the first lines would be:
+    <pre><code class="datablock">For the default list of columns, the most correlated is Population with r = 0.4001044380137653.
+For ['comp2010', 'comp2015', 'comp2019'], most correlated is comp2010 with r = 0.4001044380137653.</code></pre>
+
+<!--
+We can use our next function to combine the DataFrames:
+<pre><code class="blockcode"></code></pre>
+
+And the first lines would be:
+<pre><code class="datablock">
+</code></pre>
 -->
 
 <br><br>
