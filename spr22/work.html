@@ -1224,13 +1224,36 @@ print(f'For {comp_y}, most correlated is {years_c} with r = {r}.')</code></pre>
     <pre><code class="datablock">For the default list of columns, the most correlated is Population with r = 0.4001044380137653.
 For ['comp2010', 'comp2015', 'comp2019'], most correlated is comp2010 with r = 0.4001044380137653.</code></pre>
 
-<!--
-We can use our next function to combine the DataFrames:
-<pre><code class="blockcode"></code></pre>
+  <p>A way to see the relationships is to plot the data.  Plotting the raw data with:
+<pre><code class="blockcode">import seaborn as sns
+import matplotlib.pyplot as plt
+plt.scatter(x=df["Population"],y=df['total'])
+plt.scatter(x=df["comp2010"],y=df['total'])
+plt.scatter(x=df["Density"],y=df['total'])
+#plt.scatter(x="comp2010",y='total',data=df)
+#sns.lmplot(x="Density",y='total',data=df)
+plt.title('Increase in Housing Units (2010-2019) by NTA')
+plt.ylabel('Change in Units by NTA')
+plt.legend(labels=['Population','Completed in 2010','Density'])
+plt.show()</code></pre>
 
-And the first lines would be:
-<pre><code class="datablock">
-</code></pre>
+    yields
+    <p><img src="p6_not_scaled.png" height=400>
+
+  <p>which is difficult to use for comparisons due to the difference in units between the different Series.  We can transform the Series into standard units:
+<pre><code class="blockcode">tot_scaled = p6.convert_std_units(df['total'])
+plt.scatter(x=p6.convert_std_units(df["Population"]),y=tot_scaled)
+plt.scatter(x=p6.convert_std_units(df["comp2010"]),y=tot_scaled)
+plt.scatter(x=p6.convert_std_units(df["Density"]),y=tot_scaled)
+#plt.scatter(x="comp2010",y='total',data=df)
+#sns.lmplot(x="Density",y='total',data=df)
+plt.title('Increase in Housing Units by NTA (Standard Units)')
+plt.ylabel('Change in Units, 2010-2019')
+plt.legend(labels=['Population','Completed in 2010','Density'])
+plt.show()</code></pre>
+
+  gives a plot where the relationships are clearer:
+<p><img src="p6_scaled.png" height=400>
 -->
 
 <br><br>
