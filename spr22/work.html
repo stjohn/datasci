@@ -1149,11 +1149,11 @@ print(last_linenum)</code></pre>
 each <code class = "inline">s</code> in <code class = "inline">ser</code>, computes <code class = "inline">(s - mean)/(standard deviation)</code> and returns the resulting series.
       </ul>
 
-      <p>For example, if the housing and population data files are downloaded, then a sample run of the program:
-          <pre><code class="blockcode">housing_df = answer.make_housing_df('Housing_Database_by_NTA.csv')
+      <p>For example, if the housing and population data files are downloaded (and your functions are imported from a file p6), then a sample run of the program:
+          <pre><code class="blockcode">housing_df = p6.make_housing_df('Housing_Database_by_NTA.csv')
 print('The housing DataFrame:')
 print(housing_df.head())
-pop_df = answer.make_pop_df('NYC_Population_By_NTA.csv')
+pop_df = p6.make_pop_df('NYC_Population_By_NTA.csv')
 print('The housing DataFrame:')
 print(pop_df.head())</code></pre>
 
@@ -1177,7 +1177,7 @@ print(pop_df.head())</code></pre>
 
     We can use our next function to combine the DataFrames:
     <pre><code class="blockcode">cols = list(pop_df.columns) + ['boro','comp2010','comp2015','comp2019','total','Shape__Area']
-df = answer.combine_df(housing_df,pop_df,cols)
+df = p6.combine_df(housing_df,pop_df,cols)
 print(df.head())
 print(df.columns)</code></pre>
 
@@ -1193,7 +1193,7 @@ print(df.columns)</code></pre>
     </code></pre>
 
     We can compute a new column, representing population density:
-    <pre><code class="blockcode">df = answer.compute_density(df)
+    <pre><code class="blockcode">df = p6.compute_density(df)
 print(df[['NTA Code','Population','Density']])
 </code></pre>
 
@@ -1214,10 +1214,10 @@ print(df[['NTA Code','Population','Density']])
 [195 rows x 3 columns]</code></pre>
 
     We can find the columns with the largest absolute correlation coefficient R:
-    <pre><code class="blockcode">most_c,r = answer.most_corr(df)
+    <pre><code class="blockcode">most_c,r = p6.most_corr(df)
 print(f'For the default list of columns, the most correlated is {most_c} with r = {r}.')
 comp_y = ['comp2010','comp2015','comp2019']
-years_c,y_r =answer.most_corr(df, xes = comp_y)
+years_c,y_r = p6.most_corr(df, xes = comp_y)
 print(f'For {comp_y}, most correlated is {years_c} with r = {r}.')</code></pre>
 
     And the first lines would be:
