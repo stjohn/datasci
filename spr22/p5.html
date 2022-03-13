@@ -1,0 +1,235 @@
+<!DOCTYPE doctype PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <title>Program 5, CSci 39542: Data Science, Hunter College</title>
+</head>
+<STYLE>A {text-decoration: none;}
+th, td { padding: 5px; }
+code {
+  background-color: #eeeeee;
+}
+.inline {
+  padding: 1px;
+}
+.blockcode {
+  border: 1px solid #999999;
+  display: block;
+  padding-left: 10px;
+  padding-top : 2px;
+  padding-bottom : 2px;
+  margin: 5px;
+}
+.datablock {
+  border: 1px solid #eeeeee;
+  display: block;
+  padding: 7px;
+  padding-top : 0px;
+  margin: 5px;
+}
+</STYLE>
+<body>
+
+
+<div style="margin: 15px;width=100%;">
+    <span style= "float: left;font-size:larger"><a href="index.html">CSci 39542</a></span>
+    <span style= "float: right">
+      <a href="syl.html">Syllabus</a>&nbsp;&nbsp;&nbsp;
+      <a href="resources.html">Resources</a>&nbsp;&nbsp;&nbsp;
+      <a href="work.html">Coursework</a><!--&nbsp;&nbsp;&nbsp;
+      <a href="faq.html">FAQ</a>-->
+    </span>
+</div>
+
+<br>
+<br>
+<hr>
+
+<div style="margin:50px">
+
+
+<h2>Program 5:  Regex Logs
+  <br>CSci 39542: Introduction to Data Science<br>
+<a href="http://www.hunter.cuny.edu/csci">Department of Computer Science</a><br>
+<a href="https://hunter.cuny.edu">Hunter College</a>, <a href="https://www.cuny.edu">City University of New York</a><br>
+Spring 2022<br><br>
+</h2>
+
+
+<hr>
+<a href="work.html#cw">Classwork</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#quizzes">Quizzes</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#hw">Homework</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#project">Project</a>&nbsp;&nbsp;&nbsp;
+<hr>
+
+<p>
+<h3>General Notes</h3>
+
+<p>This program builds on the concepts and code developed during lecture and through the reading.  Mastery of material is assessed via
+<ul>
+  <li> Autograding of the program submitted to Gradescope, and
+  <li> Completion of a timed coding quiz on the material.  See <a href="work.html#quizzes">Quizzes</a> for details.
+</ul>
+
+Solutions to both will be available on Blackboard (<tt>Course Materials : Solutions</tt>) an hour after their respective deadline.
+
+<h4>Autograder Notes</h4>
+
+<p> Submitted code must be in Python, using only the specified libraries.  The autograder expects a <code class="inline">.py</code> file and does not accept iPython notebooks.
+Also, to receive full credit, the code should be compatible with Python 3.6 (the default for the Gradescope autograders).
+
+<p>To encourage starting early on programs, bonus points are given for early submission.  A point a day, up to a total of 3 bonus points (10% of the program grade), are possible.  The points are prorated by hour.  For example, if you turn in the program 36 hours early, then the bonus poins are: (36 hours/3 days)*3 points = (36 hours/72 hours)*3 points = 1.5 points.
+
+<p>
+To get full credit for a program, the file must include in the opening comment:
+<ul>
+    <li> Your name, as it appears in your Gradescope registration.
+    <li> The email you are using for Gradescope.
+    <li> A list of any resources you used for the program.  Include classmates and tutors that you worked with, along with any websites or tutorials that you used.  If you used no resources (other than the class notes and textbooks), then you should include the line:  "No resources used."
+</ul>
+
+
+
+<br>
+<br>
+<br>
+<hr>
+
+<h2>Program Description</h2>
+
+<br><br>
+<p><a name="p5"><b>Program 5: Regex Logs.</b></b> &emsp; <i>Due noon, Thursday, 10 March.</i>
+      <br>Learning Objective: to use regular expressions to parse from log data.
+       <br>Available Libraries: Regular expressions (re) and core Python 3.6+.  (Note: not pandas)
+
+       </i>
+
+       <p>This program applies regular expressions
+         (covered in Lecture 7 & <a href="http://www.textbook.ds100.org/ch/13/text_regex.html">DS 100: Sections 13.2-3</a>) to parse information from Python logs.
+         The assignment is broken into the following functions to allow for unit testing:
+
+         <ul>
+           <li> <code class = "inline">parse_date_from_one_line_log(file_name)</code>:
+             This function takes in a text file containing one line of log and parses out the log date, returning the log date as string.
+               <ul>
+                   <li> input:  <code class = "inline">file_name</code>, the name of a text file which contains one line of log
+                   <li> output: the log date string formatted as <code class = "inline">YYYY-MM-DD</code>
+                   <li> test file: <a href="one_liner_log.txt">one_liner_log.txt</a>
+                     contains the log in the following format:
+                     <pre><code class="datablock">2022-02-22 21:05:13,191 read_data - ERROR:[Errno 2] No such file or directory: 'inputfile_1.txt'</code></pre>
+                   <li> applying the function to the test log file so that the following:
+                     <pre><code class="blockcode">log_date = parse_date_from_one_line_log('one_liner_log.txt')
+print(log_date)</code></pre>
+                       will return:
+                     <pre><code class="datablock">2022-02-22</code></pre>
+                     <br>
+               </ul>
+
+       <br>
+
+           <li> <code class = "inline">parse_min_max_date_from_one_line_logs(file_name)</code>:
+             This function takes in a text file containing multiple lines of logs and parses out the first and last log date, stored as two string variables.
+               <ul>
+                   <li> input:  <code class = "inline">file_name</code>,  the name of a text file which contains multiple lines of log
+                   <li> output: the first (minimum) log date and the last (maximum) log date, returned as two string variables, formatted as <code class = "inline">YYYY-MM-DD</code>
+                   <li> test file <a href="multi_liner_log.txt">multi_liner_log.txt</a> contains the logs in the following format:
+                     <pre><code class="datablock">2022-01-22 01:01:11,121 read_data - ERROR:[Errno 2] No such file or directory: 'inputfile.txt'
+2022-01-23 01:01:11,121 read_data - ERROR:[Errno 2] No such file or directory: 'inputfile.txt'
+2022-01-23 01:01:11,121 read_data - ERROR:[Errno 2] No such file or directory: 'inputfile.txt'
+...</code></pre>
+                   <li> applying the function to the test log file so that the following:
+                     <pre><code class="blockcode">min_log_date, max_log_date = parse_min_max_date_from_one_line_logs('multi_liner_log.txt')
+print(min_log_date)
+print(max_log_date)</code></pre>
+                       will return:
+                     <pre><code class="datablock">2022-01-22
+2022-02-14</code></pre>
+                   <li> if the test file has only one line of log, then both min and max date will be the same.
+                     <br>
+               </ul>
+
+       <br>
+
+           <li> <code class = "inline">parse_missing_filename_from_one_line_log(file_name)</code>:
+             This function takes in a text file containing one line of log and parses out the missing filename stored as string
+               <ul>
+                   <li> input:  <code class = "inline">file_name</code>, the name of a text file which contains one line of log
+                   <li> output: the missing file name, stored as a string variable
+                     <li> test file: <a href="one_liner_log.txt">one_liner_log.txt</a>
+                       contains the log in the following format:
+                       <pre><code class="datablock">2022-02-22 21:05:13,191 read_data - ERROR:[Errno 2] No such file or directory: 'inputfile_1.txt'</code></pre>
+                   <li> applying the function to the test log file so that the following:
+                     <pre><code class="blockcode">missing_filename = parse_missing_filename_from_one_line_log('one_liner_log.txt')
+print(missing_filename)</code></pre>
+                       will return:
+                     <pre><code class="datablock">inputfile_1.txt</code></pre>
+                     <br>
+                   </ul>
+
+       <br>
+
+           <li> <code class = "inline">parse_filepath_linenum_from_traceback_log(file_name)</code>:
+             For a typical Python traceback, the first line contains the file name, line number, and module name.
+             The second line contains the actual code that is executed (and subsequently errored out).
+             This function takes in a text file containing an example of a multi-line Python traceback error and parses out the filepath and line number of the error.
+               <ul>
+                   <li> input:  <code class = "inline">file_name</code>, the name of a text file which contains a single Python traceback error log spanning multiple lines
+                   <li> output:
+                     <ul>
+                       <li>the filepath of the Python script where the error occurred, stored as string
+                       <li>the line number in the Python script where the error occurred, stored as an integer
+                     </ul>
+                     <li> test file: <a href="traceback_log_simple.txt">traceback_log_simple.txt</a>
+                       contains the log in the following format:
+                       <pre><code class="datablock">Traceback (most recent call last):
+File "/home/datascience/logs/read_data.py", line 1, in word_count
+  with open(filename) as f:
+    FileNotFoundError: [Errno 2] No such file or directory: 'inputfile.txt'</code></pre>
+                   <li> applying the function to the test log file so that the following:
+                     <pre><code class="blockcode">log_filepath, log_linenum = parse_filepath_linenum_from_traceback_log('traceback_log_simple.txt')
+print(log_filepath)
+print(log_linenum)</code></pre>
+                       will return:
+                     <pre><code class="datablock">/home/datascience/logs/read_data.py
+1</code></pre>
+                     <br>
+               </ul>
+
+
+       <br>
+
+           <li> <code class = "inline">parse_last_linenum_from_traceback_log(file_name)</code>:
+             Unlike stack traces in other programming languages, a Python trace back should be read from bottom to top.
+             In the case where there are multiple errors in a Python trace back log, always look for the most recent call, which is the last line.
+             This function takes in a text file containing an example of a multi-line Python traceback error and parses out the filepath and line number of the most recent call.
+               <ul>
+                   <li> input:  <code class = "inline">file_name</code>, the name of a text file which contains a multiple Python traceback error logs spanning multiple lines
+                   <li> output: the latest line number in the Python script where the error occurred (most recent call), stored as an integer
+                     <li> test file: <a href="traceback_log_complex.txt">traceback_log_complex.txt</a>
+                       contains the log in the following format:
+                       <pre><code class="datablock">Traceback (most recent call last):
+File "build_model.py", line 52, in build_model
+  LogisticRegression()
+File "clean_data.py", line 40, in create_dummies
+  create_dummies()
+File "clean_data.py", line 22, in read_csv
+  df = read_csv(filename)
+File "data/import_data.py", line 10, in process_data
+  with open(filename) as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'inputfile.txt'</code></pre>
+                   <li> applying the function to the test log file so that the following:
+                     <pre><code class="blockcode">last_linenum = parse_last_linenum_from_traceback_log('traceback_log_complex.txt')
+print(last_linenum)</code></pre>
+                       will return:
+                     <pre><code class="datablock">10</code></pre>
+                     <br>
+               </ul>
+         </ul>
+
+
+
+</div>
+</body>
+</html>

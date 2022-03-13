@@ -1,0 +1,274 @@
+<!DOCTYPE doctype PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <title>Program 3, CSci 39542: Data Science, Hunter College</title>
+</head>
+<STYLE>A {text-decoration: none;}
+th, td { padding: 5px; }
+code {
+  background-color: #eeeeee;
+}
+.inline {
+  padding: 1px;
+}
+.blockcode {
+  border: 1px solid #999999;
+  display: block;
+  padding-left: 10px;
+  padding-top : 2px;
+  padding-bottom : 2px;
+  margin: 5px;
+}
+.datablock {
+  border: 1px solid #eeeeee;
+  display: block;
+  padding: 7px;
+  padding-top : 0px;
+  margin: 5px;
+}
+</STYLE>
+<body>
+
+
+<div style="margin: 15px;width=100%;">
+    <span style= "float: left;font-size:larger"><a href="index.html">CSci 39542</a></span>
+    <span style= "float: right">
+      <a href="syl.html">Syllabus</a>&nbsp;&nbsp;&nbsp;
+      <a href="resources.html">Resources</a>&nbsp;&nbsp;&nbsp;
+      <a href="work.html">Coursework</a><!--&nbsp;&nbsp;&nbsp;
+      <a href="faq.html">FAQ</a>-->
+    </span>
+</div>
+
+<br>
+<br>
+<hr>
+
+<div style="margin:50px">
+
+
+<h2>Program 3:  Restaurant Rankings
+  <br>CSci 39542: Introduction to Data Science<br>
+<a href="http://www.hunter.cuny.edu/csci">Department of Computer Science</a><br>
+<a href="https://hunter.cuny.edu">Hunter College</a>, <a href="https://www.cuny.edu">City University of New York</a><br>
+Spring 2022<br><br>
+</h2>
+
+
+<hr>
+<a href="work.html#cw">Classwork</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#quizzes">Quizzes</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#hw">Homework</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#project">Project</a>&nbsp;&nbsp;&nbsp;
+<hr>
+
+<p>
+<h3>General Notes</h3>
+
+<p>This program builds on the concepts and code developed during lecture and through the reading.  Mastery of material is assessed via
+<ul>
+  <li> Autograding of the program submitted to Gradescope, and
+  <li> Completion of a timed coding quiz on the material.  See <a href="work.html#quizzes">Quizzes</a> for details.
+</ul>
+
+Solutions to both will be available on Blackboard (<tt>Course Materials : Solutions</tt>) an hour after their respective deadline.
+
+<h4>Autograder Notes</h4>
+
+<p> Submitted code must be in Python, using only the specified libraries.  The autograder expects a <code class="inline">.py</code> file and does not accept iPython notebooks.
+Also, to receive full credit, the code should be compatible with Python 3.6 (the default for the Gradescope autograders).
+
+<p>To encourage starting early on programs, bonus points are given for early submission.  A point a day, up to a total of 3 bonus points (10% of the program grade), are possible.  The points are prorated by hour.  For example, if you turn in the program 36 hours early, then the bonus poins are: (36 hours/3 days)*3 points = (36 hours/72 hours)*3 points = 1.5 points.
+
+<p>
+To get full credit for a program, the file must include in the opening comment:
+<ul>
+    <li> Your name, as it appears in your Gradescope registration.
+    <li> The email you are using for Gradescope.
+    <li> A list of any resources you used for the program.  Include classmates and tutors that you worked with, along with any websites or tutorials that you used.  If you used no resources (other than the class notes and textbooks), then you should include the line:  "No resources used."
+</ul>
+
+
+
+<br>
+<br>
+<br>
+<hr>
+
+<h2>Program Description</h2>
+
+    <p><a name="p3"><b>Program 3: Restaurant Rankings.</b></b> &emsp; <i>Due noon, Thursday, 24 February.
+      <br>Learning Objective: students can successfully filter formatted data using standard Pandas operations for selecting and joining data.
+      <br>Available Libraries: Pandas and core Python 3.6+.</i>
+
+      <p>
+        The NYC Department of Health & Mental Health regularly inspects restaurants and releases the results:
+        <p>
+        <iframe src="https://a816-health.nyc.gov/ABCEatsRestaurants/#!/Search" style="width: 80%; height: 500px" name="internal"></iframe>
+
+
+        <p>These results are also available in CSV files at
+        <a href="OpenData NYC">https://data.cityofnewyork.us/Health/DOHMH-New-York-City-Restaurant-Inspection-Results/43nn-pn8j</a>.  This programming assignment focuses on predicting letter grades for restaurants, yet to be graded, as well computing summary statistics by neighborhood.
+        The assignment is broken into the following functions to allow for unit testing:
+
+        <ul>
+          <li> <code class = "inline">make_insp_df(file_name)</code>:
+            This function takes one input:
+              <ul>
+                  <li> <code class = "inline">file_name</code>: the name of a CSV file containing <a href="https://data.cityofnewyork.us/Health/DOHMH-New-York-City-Restaurant-Inspection-Results/43nn-pn8j/data">Restaurant Inspection Data</a> from OpenData NYC.
+              </ul>
+              The function should open the file <code class = "inline">file_name</code> as DataFrame, keeping only the columns:
+              <pre><code class = "datablock">'CAMIS', 'DBA', 'BORO', 'BUILDING', 'STREET', 'ZIPCODE', 'SCORE', 'GRADE', 'NTA'</code></pre>
+              If the <code class=inline>SCORE</code> is null for a row, that row should be dropped.  The resulting DataFrame is returned.
+          <li> <code class = "inline">predict_grade(num_violations)</code>:
+            This function takes one input:
+              <ul>
+                  <li> <code class = "inline">num_violations</code>: the number of violations points.
+              </ul>
+              The function should then return the letter grade that corresponds to the number of violation points <code class = "inline">num_violations</code>:
+              <ul>
+                <li>"A" grade: 0 to 13 points
+                <li>"B" grade: 14 to 27 points
+                <li>"C" grade: 28 or more points
+              </ul>
+              (from NYC Department of Health
+              <a href="https://a816-health.nyc.gov/ABCEatsRestaurants/#!/faq">Restaurant Grading</a>).
+          <li> <code class = "inline">grade2num(grade)</code>:
+            This function takes one input:
+              <ul>
+                  <li> <code class = "inline">grade</code>: a letter grade or null value.
+              </ul>
+              and returns the grade on a 4.0 scale for <code class = "inline">grade</code> = 'A', 'B', or 'C' (i.e. 4.0, 3.0, or 2.0, respectively).  If <code class = "inline">grade</code> is <code class = "inline">None</code> or some other value,
+              return <code class = "inline">None</code>.
+
+          <li> <code class = "inline">make_nta_df(file_name)</code>:
+            This function takes one input:
+              <ul>
+                  <li> <code class = "inline">file_name</code>: the name of a CSV file containing neighborhood tabulation areas (<a href="../fall21/nynta.csv">nynta.csv</a>).
+              </ul>
+              The function should open the file <code class = "inline">file_name</code> as DataFrame, returns a DataFrame
+              containing only the columns, <code class = "inline">NTACode</code> and <code class = "inline">NTAName</code>.
+          <li> <code class = "inline">compute_ave_grade(df,col)</code>:
+              This function takes two inputs:
+              <ul>
+                  <li> <code class = "inline">df</code>: a DataFrame containing Parking Ticket Data from OpenData NYC.
+                  <li> <code class = "inline">col</code>: the name of a numeric-valued col in the DataFrame.
+                  </ul>
+              This function returns a DataFrame with two columns, the <code class = "inline">NTACode</code> and the average of <code class = "inline">col</code> for each NTA.
+              <li> <code class = "inline">neighborhood_grades(ave_df,nta_df)</code>:
+                  This function takes two inputs:
+                  <ul>
+                      <li> <code class = "inline">ave_df</code>: a DataFrame with containing the column 'NTA'
+                      <li> <code class = "inline">nta_df</code>: a DataFrame with two columns, 'NTACode' and 'NTAName'.
+                      </ul>
+                  This function returns a DataFrame with the neighborhood names (i.e. <code class = "inline">NTAName</code>) and the columns from <code class = "inline">ave_df</code>.  The columns <code class = "inline">NTA</code> and <code class = "inline">NTACode</code> should be dropped before returning the DataFrame.
+      </ul>
+
+
+        <p>
+        For example, assuming your functions are in the <code class="inline">p3.py</code>:
+        <pre><code class="blockcode">df = p3.make_insp_df('restaurants1Aug21.csv')
+print(df)</code></pre>
+        will print:
+            <pre><code class="datablock">        CAMIS                         DBA           BORO  ... SCORE GRADE   NTA
+0    41178124                     CAFE 57      Manhattan  ...   4.0     A  MN15
+1    50111450              CASTLE CHICKEN          Bronx  ...  41.0     N  BX29
+2    40699339     NICK GARDEN COFFEE SHOP          Bronx  ...  31.0   NaN  BX05
+3    41181395                     DUNKIN'       Brooklyn  ...  10.0     A  BK25
+4    50052976           ZON BAKERY & CAFE      Manhattan  ...  72.0   NaN  MN36
+..        ...                         ...            ...  ...   ...   ...   ...
+240  50052976           ZON BAKERY & CAFE      Manhattan  ...  72.0   NaN  MN36
+241  41525768               THE WEST CAFE       Brooklyn  ...  10.0     A  BK73
+242  50111132  BUONASERA RESTAURANT PIZZA       Brooklyn  ...  16.0     N  BK30
+243  40399672         BAGELS & CREAM CAFE         Queens  ...  12.0     A  QN06
+244  50104259           ROYAL COFFEE SHOP  Staten Island  ...  69.0     N  SI22
+
+[243 rows x 9 columns]</code></pre>
+
+          Note that all the rows are included (243) but that only the 9 specified columns are retained in the DataFrame.  Several rows have null entries for <code class=inline>GRADE</code> (e.g. row 2, 4, and 240) while others have letter grades (such as 'N') that are not on the list of possible grades.
+
+          <p>Using the <code class=inline>SCORE</code> to compute the likely grade for each inspection, as both a letter and its equivalent on a 4.0 grading scale, yields:
+              <pre><code class=blockcode>df['NUM'] = df['GRADE'].apply(p3.grade2num)
+df['PREDICTED'] = df['SCORE'].apply(p3.predict_grade)
+df['PRE NUM'] = df['PREDICTED'].apply(p3.grade2num)
+print(df[ ['DBA','SCORE','GRADE','NUM','PREDICTED','PRE NUM'] ])</code></pre>
+              prints many the predicted grade and equivalent numeric grade on the 4.0 scale:
+              <pre><code class=datablock>                           DBA  SCORE GRADE  NUM PREDICTED  PRE NUM
+0                       CAFE 57    4.0     A  4.0         A      4.0
+1                CASTLE CHICKEN   41.0     N  NaN         C      2.0
+2       NICK GARDEN COFFEE SHOP   31.0   NaN  NaN         C      2.0
+3                       DUNKIN'   10.0     A  4.0         A      4.0
+4             ZON BAKERY & CAFE   72.0   NaN  NaN         C      2.0
+..                          ...    ...   ...  ...       ...      ...
+240           ZON BAKERY & CAFE   72.0   NaN  NaN         C      2.0
+241               THE WEST CAFE   10.0     A  4.0         A      4.0
+242  BUONASERA RESTAURANT PIZZA   16.0     N  NaN         B      3.0
+243         BAGELS & CREAM CAFE   12.0     A  4.0         A      4.0
+244           ROYAL COFFEE SHOP   69.0     N  NaN         C      2.0
+
+[243 rows x 6 columns]</code></pre>
+
+    <p>We can use the numeric grade to compute the averages for neighborhoods for both provided and predicted scores:
+    <pre><code class=blockcode>actual_scores = p3.compute_ave_grade(df,'NUM')
+predicted_scores = p3.compute_ave_grade(df,'PRE NUM')
+scores = actual_scores.join(predicted_scores, on='NTA')
+print(scores.head())</code></pre>
+          The first couple of rows are:
+          <pre><code class=datablock>      NUM   PRE NUM
+NTA
+BK09  4.0  4.000000
+BK17  4.0  4.000000
+BK25  4.0  4.000000
+BK26  NaN  2.000000
+BK28  4.0  3.250000</code></pre>
+
+
+          <p>To make it easier to find scores for neighborhoods we combine with the NTA table:
+          <pre><code class=blockcode>nta_df = p3.make_nta_df('nynta.csv')
+scores_with_nbhd_names = p3.neighborhood_grades(scores,nta_df)
+print(scores_with_nbhd_names.head())</code></pre>
+
+          The first couple of rows are:
+          <pre><code class=datablock>    NUM   PRE NUM                                         NTAName
+0   4.0  4.000000                    Brooklyn Heights-Cobble Hill
+1   4.0  4.000000  Sheepshead Bay-Gerritsen Beach-Manhattan Beach
+2   4.0  4.000000                                       Homecrest
+3   NaN  2.000000                                       Gravesend
+4   4.0  3.250000                                Bensonhurst West</code></pre>
+    Our predicted scores are the same but almost always decrease when we include the predicted grades from the scores reported.
+
+    <p>
+      <i>Hints:
+        <ul>
+          <li> You should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.
+          If your file includes code outside of functions, either comment the code out before submitting or use a main function that is conditionally executed (see <a href="https://runestone.academy/ns/books/published//thinkcspy/Functions/mainfunction.html">Think CS: Section 6.8</a> for details).
+          <li> Restaurant inspection data can be found at:  <a href="https://data.cityofnewyork.us/Health/DOHMH-New-York-City-Restaurant-Inspection-Results/43nn-pn8j/data">NYC OpenData</a>.
+            <li> Some datasets for testing:
+                  <ul>
+                    <li> <a href= "../fall21/restaurants1Aug21.csv">restaurants1Aug21.csv</a>
+                    <li> <a href = "../fall21/restaurants30July.csv">restaurants30July.csv</a>
+                  </ul>
+          <li> <a href="https://data.cityofnewyork.us/City-Government/NTA-map/d3qk-pfyz">Neigborhood Tabulation Areas</a> designate neighborhoods in New York City.  The complete NTA file is:
+              <ul>
+                <li> <a href="../fall21/nynta.csv">nynta.csv</a>
+              </ul>
+
+          <li> You may get a warning such as:
+            <code class = "datablock">sys:1: DtypeWarning: Columns (39) have mixed types.Specify dtype option on import or set low_memory=False.
+            </code>
+                when reading in the parking ticket data. Pandas tries to infer the data type (<code class = "inline">dtype</code>) of the columns from the values.  Since some columns are a mixture of numeric and character types this can be difficult.  If the file is read in with <code class = "inline">pd.read_csv(file_name, low_memory=False)</code>, the entire column is read in and used to determine type.
+            </ul>
+        <li> Most aggregation functions have the option to ignore non-numeric data in the calculation.  See for example, averaging only the numerical data in a <a href="https://pandas.pydata.org/docs/reference/api/pandas.core.groupby.GroupBy.mean.html">pd.groupby</a>
+        using the keyword argument <code class = "inline">numeric_only = True</code>.
+        </i>
+
+
+
+
+
+
+</div>
+</body>
+</html>

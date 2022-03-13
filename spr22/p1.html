@@ -1,0 +1,218 @@
+<!DOCTYPE doctype PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <title>Program 1, CSci 39542: Data Science, Hunter College</title>
+</head>
+<STYLE>A {text-decoration: none;}
+th, td { padding: 5px; }
+code {
+  background-color: #eeeeee;
+}
+.inline {
+  padding: 1px;
+}
+.blockcode {
+  border: 1px solid #999999;
+  display: block;
+  padding-left: 10px;
+  padding-top : 2px;
+  padding-bottom : 2px;
+  margin: 5px;
+}
+.datablock {
+  border: 1px solid #eeeeee;
+  display: block;
+  padding: 7px;
+  padding-top : 0px;
+  margin: 5px;
+}
+</STYLE>
+<body>
+
+
+<div style="margin: 15px;width=100%;">
+    <span style= "float: left;font-size:larger"><a href="index.html">CSci 39542</a></span>
+    <span style= "float: right">
+      <a href="syl.html">Syllabus</a>&nbsp;&nbsp;&nbsp;
+      <a href="resources.html">Resources</a>&nbsp;&nbsp;&nbsp;
+      <a href="work.html">Coursework</a><!--&nbsp;&nbsp;&nbsp;
+      <a href="faq.html">FAQ</a>-->
+    </span>
+</div>
+
+<br>
+<br>
+<hr>
+
+<div style="margin:50px">
+
+
+<h2>Program 1:  Popular Names
+  <br>CSci 39542: Introduction to Data Science<br>
+<a href="http://www.hunter.cuny.edu/csci">Department of Computer Science</a><br>
+<a href="https://hunter.cuny.edu">Hunter College</a>, <a href="https://www.cuny.edu">City University of New York</a><br>
+Spring 2022<br><br>
+</h2>
+
+
+<hr>
+<a href="work.html#cw">Classwork</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#quizzes">Quizzes</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#hw">Homework</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#project">Project</a>&nbsp;&nbsp;&nbsp;
+<hr>
+
+<p>
+<h3>General Notes</h3>
+
+<p>This program builds on the concepts and code developed during lecture and through the reading.  Mastery of material is assessed via
+<ul>
+  <li> Autograding of the program submitted to Gradescope, and
+  <li> Completion of a timed coding quiz on the material.  See <a href="work.html#quizzes">Quizzes</a> for details.
+</ul>
+
+Solutions to both will be available on Blackboard (<tt>Course Materials : Solutions</tt>) an hour after their respective deadline.
+
+<h4>Autograder Notes</h4>
+
+<p> Submitted code must be in Python, using only the specified libraries.  The autograder expects a <code class="inline">.py</code> file and does not accept iPython notebooks.
+Also, to receive full credit, the code should be compatible with Python 3.6 (the default for the Gradescope autograders).
+
+<p>To encourage starting early on programs, bonus points are given for early submission.  A point a day, up to a total of 3 bonus points (10% of the program grade), are possible.  The points are prorated by hour.  For example, if you turn in the program 36 hours early, then the bonus poins are: (36 hours/3 days)*3 points = (36 hours/72 hours)*3 points = 1.5 points.
+
+<p>
+To get full credit for a program, the file must include in the opening comment:
+<ul>
+    <li> Your name, as it appears in your Gradescope registration.
+    <li> The email you are using for Gradescope.
+    <li> A list of any resources you used for the program.  Include classmates and tutors that you worked with, along with any websites or tutorials that you used.  If you used no resources (other than the class notes and textbooks), then you should include the line:  "No resources used."
+</ul>
+
+
+
+<br>
+<br>
+<br>
+<hr>
+
+<h2>Program Description</h2>
+
+
+<p></p><p><a name="p1"><b>Program 1: Popular Names.</b></b> &emsp; <i>Due noon, Thursday, 10 February.
+  <br>Learning Objective: to build competency with string and file I/O functionality of core Python.
+  <br>Available Libraries:  Core Python 3.6+ only.</i>
+
+  <p>
+  In lecture and <a href="">Chapter 1</a> of the textbook, we looked at first names for students taking data science at UC Berkeley as well as the <a href="https://www.ssa.gov/oact/babynames/index.html">baby names data set</a> from the Social Security Administration.  We explored properties such as the lengths of names:
+
+  <p><img src="namesNumChars.png" height=300>
+
+  <p>For this program, we will focus on the most common names in a given file, as well the names that make up a fixed fraction of the names. To allow for unit testing, the assignment is broken into the following functions:</p>
+  <ul>
+    <li> <code class = "inline">extract_names(file_name, sep = ["\n"])</code>:  Returns a list of names.  Assumes that the names are separated by the separators listed in <code class = "inline">sep</code>.  The default value is <code class = "inline">["\n"]</code> but the possible inputs are 1 or more separators.  Your function should remove any empty strings from the list.
+    <li> <code class = "inline">count_names(names_lst)</code>:
+      Returns a dictionary of names with values the number of times each name occurs in the input, <code class = "inline">names_lst</code>.
+    <li> <code class = "inline">popular_names(names_dict,num = 3)</code>:
+      Returns a list of the <code class="inline">num</code> most popular names as a list of strings.  If no value is passed for <code class="inline">num</code>, the default value of 3 is used (that is, it returns the 3 most popular names).
+    <li> <code class = "inline">percent_captured(names_dict,threshold = 75)</code>:
+      Returns the number of names needed to have at least <code class="inline">threshold</code> percent of all the names in the dictionary.  If no value is passed for <code class="inline">percent</code>, the default value of 75 is used (that is, it returns the number of names needed to have 75 percent (or more) of the total occurrances of names).
+  </ul>
+
+  <p>For example, assuming these functions are in a file, <code class="inline">p1.py</code> and run on a file containing names that start with 'A', <a href="a_names.txt">a_names.txt</a>:
+
+<pre><code class="blockcode">lst = p1.extract_names('a_names.txt')
+print(f'The list is:\n{lst}')
+dict = p1.count_names(lst)
+print(f'The dictionary is:\n{dict}')
+lstTop = p1.popular_names(dict)
+print(f'The top 3 names are: {lstTop}.')
+num = p1.percent_captured(dict, threshold = 50)
+print(f'The top {num} names make up 50% of the list.')
+</code></pre>
+gives the output:
+<pre><code class="datablock">The list is:
+['Alex', 'Andy', 'Amy', 'Alani', 'Alex', 'Ana', 'Angela', 'Ai', 'Asia', 'Alex', 'Anna', 'Ana', 'Asami', 'Andrea', 'Alex', 'Ana', 'Anya', 'Aiko', 'Ana', 'Angela', 'Ai', 'Alexander', 'Alex', 'Ana', 'Andy']
+The dictionary is:
+{'Alex': 5, 'Andy': 2, 'Amy': 1, 'Alani': 1, 'Ana': 5, 'Angela': 2, 'Ai': 2, 'Asia': 1, 'Anna': 1, 'Asami': 1, 'Andrea': 1, 'Anya': 1, 'Aiko': 1, 'Alexander': 1}
+The top 3 names are: ['Alex', 'Ana', 'Andy'].
+The top 4 names make up 50% of the list.
+</code></pre>
+
+<p>Another example with a file <a href="korea_most_pop2019.txt">korea_most_pop2019.txt</a>, containing the most popular names in South Korea in 2019, separated by both newlines and spaces:
+
+<pre><code class="blockcode">lst = p1.extract_names('korea_most_pop2019.txt',sep=["\n"," "])
+print(lst)
+</code></pre>
+gives the output:
+<pre><code class="datablock">['Ji-an', 'Ha-yoon', 'Seo-ah', 'Ha-eun', 'Seo-yun', 'Ha-rin', 'Ji-yoo', 'Ji-woo', 'Soo-ah', 'Ji-a', 'Seo-jun', 'Ha-joon', 'Do-yun', 'Eun-woo', 'Si-woo', 'Ji-ho', 'Ye-jun', 'Yu-jun', 'Ju-won', 'Min-jun']
+</code></pre>
+
+
+<br>
+  <p>Notes:  you should submit a file with only the standard comments at the top, and these functions.  The grading scripts will then import the file for testing and expect the functions to match in name and return values to above:
+  <pre><code class="blockcode">
+"""
+Name:  YOUR NAME
+Email: YOUR EMAIL
+Resources:  RESOURCES USED
+"""
+
+def extract_names(file_name, sep = ["\n"]):
+    """
+    Opens and reads from file_name, and returns a list of names.
+
+    Keyword arguments:
+    sep -- the deliminators for splitting up the data (default ['\n'])
+    """
+
+    #Placeholder-- replace with your code
+    lst = []
+    return lst
+
+def count_names(names_lst):
+    """
+    Returns a dictionary of names with values the number of times
+    each name occurs in the input, names_lst.
+    """
+
+    #Placeholder-- replace with your code
+    dict = {}
+    return dict
+
+def popular_names(names_dict,num = 3):
+    """
+    Returns a list of the num most popular names as a list of strings.
+
+    Keyword arguments:
+    sep -- the number of names to return (default is 3)
+    """
+
+    #Placeholder-- replace with your code
+    lst = []
+    return lst
+
+
+def percent_captured(names_dict,threshold = 75):
+    """
+    Returns the number of names needed to have at least threshold percent of
+    all the names in the dictionary.
+
+    Keyword arguments:
+    threshold -- the percent used for threshold (default 75)
+    """
+
+    #Placeholder-- replace with your code
+    count = 0
+    return count
+
+    </pre></code>
+  If your file includes code outside of these functions, either comment the code out before submitting or use a main function that is conditionally executed (see <a href="https://runestone.academy/ns/books/published//thinkcspy/Functions/mainfunction.html">Think CS: Section 6.8</a> for details).
+
+
+</p>
+
+</div>
+</body>
+</html>

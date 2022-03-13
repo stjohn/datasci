@@ -1,0 +1,300 @@
+<!DOCTYPE doctype PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <title>Program 2, CSci 39542: Data Science, Hunter College</title>
+</head>
+<STYLE>A {text-decoration: none;}
+th, td { padding: 5px; }
+code {
+  background-color: #eeeeee;
+}
+.inline {
+  padding: 1px;
+}
+.blockcode {
+  border: 1px solid #999999;
+  display: block;
+  padding-left: 10px;
+  padding-top : 2px;
+  padding-bottom : 2px;
+  margin: 5px;
+}
+.datablock {
+  border: 1px solid #eeeeee;
+  display: block;
+  padding: 7px;
+  padding-top : 0px;
+  margin: 5px;
+}
+</STYLE>
+<body>
+
+
+<div style="margin: 15px;width=100%;">
+    <span style= "float: left;font-size:larger"><a href="index.html">CSci 39542</a></span>
+    <span style= "float: right">
+      <a href="syl.html">Syllabus</a>&nbsp;&nbsp;&nbsp;
+      <a href="resources.html">Resources</a>&nbsp;&nbsp;&nbsp;
+      <a href="work.html">Coursework</a><!--&nbsp;&nbsp;&nbsp;
+      <a href="faq.html">FAQ</a>-->
+    </span>
+</div>
+
+<br>
+<br>
+<hr>
+
+<div style="margin:50px">
+
+
+<h2>Program 2:  Parking Tickets
+  <br>CSci 39542: Introduction to Data Science<br>
+<a href="http://www.hunter.cuny.edu/csci">Department of Computer Science</a><br>
+<a href="https://hunter.cuny.edu">Hunter College</a>, <a href="https://www.cuny.edu">City University of New York</a><br>
+Spring 2022<br><br>
+</h2>
+
+
+<hr>
+<a href="work.html#cw">Classwork</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#quizzes">Quizzes</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#hw">Homework</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#project">Project</a>&nbsp;&nbsp;&nbsp;
+<hr>
+
+<p>
+<h3>General Notes</h3>
+
+<p>This program builds on the concepts and code developed during lecture and through the reading.  Mastery of material is assessed via
+<ul>
+  <li> Autograding of the program submitted to Gradescope, and
+  <li> Completion of a timed coding quiz on the material.  See <a href="work.html#quizzes">Quizzes</a> for details.
+</ul>
+
+Solutions to both will be available on Blackboard (<tt>Course Materials : Solutions</tt>) an hour after their respective deadline.
+
+<h4>Autograder Notes</h4>
+
+<p> Submitted code must be in Python, using only the specified libraries.  The autograder expects a <code class="inline">.py</code> file and does not accept iPython notebooks.
+Also, to receive full credit, the code should be compatible with Python 3.6 (the default for the Gradescope autograders).
+
+<p>To encourage starting early on programs, bonus points are given for early submission.  A point a day, up to a total of 3 bonus points (10% of the program grade), are possible.  The points are prorated by hour.  For example, if you turn in the program 36 hours early, then the bonus poins are: (36 hours/3 days)*3 points = (36 hours/72 hours)*3 points = 1.5 points.
+
+<p>
+To get full credit for a program, the file must include in the opening comment:
+<ul>
+    <li> Your name, as it appears in your Gradescope registration.
+    <li> The email you are using for Gradescope.
+    <li> A list of any resources you used for the program.  Include classmates and tutors that you worked with, along with any websites or tutorials that you used.  If you used no resources (other than the class notes and textbooks), then you should include the line:  "No resources used."
+</ul>
+
+
+
+<br>
+<br>
+<br>
+<hr>
+
+<h2>Program Description</h2>
+
+<p></p><p><a name="p2"><b>Program 2: Parking Tickets.</b></b> &emsp; <i>Due noon, Thursday, 17 February.
+  <br>Learning Objective: to refresh students' knowledge of Pandas' functionality to manipulate and create columns from formatted data.
+  <br>Available Libraries: Pandas and core Python 3.6+.</i>
+
+<p> Recent <a href="https://nyc.streetsblog.org/2021/10/13/out-of-state-drivers-are-just-the-worst-at-paying-their-nyc-summonses/">news articles</a> focused on the significantly higher percentage of parking tickets that are unpaid for cars with out-of-state plates:
+
+<p><img src="../fall21/streetsblog_unpaid_tickets_20211013.png" height=300px>
+
+<p>The data is aggregated across the whole city. Does the same occur when the datasets are focused on individual neighborhoods?  To answer that question, as well as what are the most common reasons for tickets, we will use the parking ticket data from OpenData NYC.   In Lecture 3, we started data cleaning efforts on the parking ticket data.  We will continue the data cleaning efforts for this program, as well as introduce auxiliary files that link the codes stored with a short explanation of the violation.  The assignment is broken into the following functions to allow for unit testing:
+
+<ul>
+  <li> <code class = "inline">make_df(file_name)</code>:
+  This function takes one input:
+        <ul>
+            <li> <code class = "inline">file_name</code>: the name of a CSV file containing Parking Ticket Data from OpenData NYC.
+        </ul>
+  The function should open the file <code class = "inline">file_name</code> as DataFrame, drop all but the columns:
+<pre><code class = "datablock">Summons Number,Plate ID,Registration State,Plate Type,Issue Date,Violation Code,Violation Time,
+Violation In Front Of Or Opposite,House Number,Street Name,Vehicle Color
+</code></pre>
+  and return the resulting DataFrame.
+
+  <li> <code class = "inline">filter_reg(df, keep = ["COM", "PAS"])</code>:
+  This function takes two inputs:
+        <ul>
+            <li> <code class = "inline">df</code>: a DataFrame that
+                  including the <code class = "inline">Plate Type</code> column.
+            <li> <code class = "inline">keep</code>: a list of values for the
+                  <code class = "inline">Plate Type</code> column.
+                  The default value is <code class = "inline">["COM", "PAS"]</code>.
+        </ul>
+  The function returns the DataFrame with only rows that have <code class = "inline">Plate Type</code> with a value from the list <code class = "inline">keep</code>.  All rows where the <code class = "inline">Plate Type</code> column contains a different value are dropped.
+
+  <li> <code class = "inline">add_indicator(reg_state)</code>:
+  This function takes one input:
+        <ul>
+            <li> <code class = "inline">reg_state</code>: a string containing the state of registation.
+        </ul>
+
+  The function should return <code class = "inline">1</code> when <code class = "inline">reg_state</code> is in <code class = "inline">["NY","NJ","CT"]</code> and <code class = "inline">0</code> otherwise.
+
+  <li> <code class = "inline">find_tickets(df, plate_id)</code>:
+  This function takes two inputs:
+  <ul>
+      <li> <code class = "inline">df</code>: a DataFrame that
+            including the <code class = "inline">Plate ID</code> column.
+      <li> <code class = "inline">plate_id</code>: a string containing a license plate (combination of letters, numbers and spaces).
+  </ul>
+  returns, as a list, the <code class = "inline">Violation Code</code> for all tickets issued to that <code class = "inline">plate_id</code>.  If that <code class = "inline">plate_id</code> has no tickets in the DataFrame, then an empty list is returned.
+
+  <li> <code class = "inline">make_dict(file_name, skip_rows = 1)</code>:
+  This function takes two inputs:
+  <ul>
+      <li> <code class = "inline">file_name</code>: a string containing the name of a file.
+      <li> <code class = "inline">skip_rows</code>: the number of rows to skip at the beginning of file.
+      The default value is <code class = "inline">1</code>.
+  </ul>
+  Make a dictionary from a text file named <code class = "inline">file_name</code>, where each line, after those that are skipped, makes a dictionary entry.  The key for each entry is the string upto the first comma (',') and the value is the string between the first and second commas.  All characters after the second comma on a line are ignored.
+</ul>
+
+
+<p>
+For example, assuming your functions are in the <code class="inline">p2.py</code>:
+<pre><code class="blockcode">df = p2.make_df('Parking_Violations_Issued_Precinct_19_2021.csv')
+print(df)</code></pre>
+will print:
+        <pre><code class="datablock">        Summons Number Plate ID  ...     Street Name Vehicle Color
+0           1474094223  KDT3875  ...            E 75         BLACK
+1           1474094600  GTW5034  ...  EAST 70 STREET            BK
+2           1474116280  HXM6089  ...         E 72 ST            BK
+3           1474116310  HRW4832  ...         E 72 ST           GRY
+4           1474143209  JPR6583  ...  EAST 94 STREET         BLACK
+...                ...      ...  ...             ...           ...
+451504      8954357854  JRF3892  ...         5th Ave            GR
+451505      8955665040   199VP4  ...       E 74th St         BLACK
+451506      8955665064   196WL7  ...       E 78th St         BLACK
+451507      8970451729  CNK4113  ...        York Ave            GY
+451508      8998400418   XJWV98  ...        York Ave         WHITE
+
+[451509 rows x 11 columns]</code></pre>
+
+      Note that all the rows are included (451,509) but that only the 11 specified columns are retained in the DataFrame.
+
+  <p>Looking at the registration types (<code class=inline>Plate Type</code>):
+      <pre><code class=blockcode>print(f"Registration: {df['Plate Type'].unique()}")
+print(f"\n10 Most Common:  {df['Plate Type'].value_counts()[:10]}")</code></pre>
+      prints many different types of registrations and abbreviations:
+      <pre><code class=datablock>Registration: ['PAS' 'SRF' 'OMS' 'COM' '999' 'SPO' 'OMT' 'MOT' 'RGL' 'PHS' 'MED' 'TRC'
+'APP' 'SRN' 'OML' 'ITP' 'CMB' 'ORG' 'AMB' 'DLR' 'IRP' 'TOW' 'MCL' 'CBS'
+'LMB' 'USC' 'CME' 'RGC' 'VAS' 'ORC' 'HIS' 'STG' 'AGR' 'TRA' 'CHC' 'SOS'
+'BOB' 'OMR' 'TRL' 'AGC' 'CSP' 'PSD' 'SPC' 'MCD' 'NLM' 'CMH' 'LMA' 'JCA'
+'SCL' 'HAM' 'AYG' 'NYA' 'OMV']
+
+10 Most Common:  PAS    262875
+COM    168827
+SRF      2834
+APP      2800
+OMT      2603
+OMS      2464
+MED      1433
+999      1352
+CMB      1208
+LMB      1135
+Name: Plate Type, dtype: int64</code></pre>
+
+  The two registration types that are the most common:
+        <pre><code class=blockcode>count = len(df)
+pasCount = len(df[df['Plate Type'] == 'PAS'])
+comCount = len(df[df['Plate Type'] == 'COM'])
+print(f'{count} different vehicles, {100*(pasCount+comCount)/count} percent are passenger or commercial plates.')</code></pre>
+  <p>And for the Precinct District 19 dataset that contains almost a half million tickets:
+  <pre><code class=datablock>451509 different vehicles, 95.61315499801776 percent are passenger or commercial plates.</code></pre>
+
+  Our function will filter for just passenger and commercial plates:
+  <pre><code class="blockcode">dff = p2.filter_reg(df)
+print(f'The length of the filtered data frame is {len(dff)}.')</code></pre>
+
+  will print:
+  <pre><code class=datablock>The length of the filtered data frame is 431702.</code></pre>
+
+  By specifying different registration types with the keyword argument, we can filter for other registration (<a href="https://dmv.ny.gov/registration/registration-class-codes">DMV's Registration Types</a>) such as motocycles:
+  <pre><code class="blockcode">df2 = p2.filter_reg(df,keep=['MOT','HSM','LMA','LMB'])
+print(f'The length of the filtered data frame is {len(df2)}.')</code></pre>
+
+  will print:
+  <pre><code class=datablock>The length of the filtered data frame is 2095.</code></pre>
+
+  Working the the motocycle DataFrame, we can add a column for if the vehicle is registered in New York:
+  <pre><code class="blockcode">df2['NYPlates'] = df2['Registration State'].apply(p2.add_indicator)
+print(df2.head())</code></pre>
+
+  will print:
+  <pre><code class=datablock>      Summons Number Plate ID  ... Vehicle Color NYPlates
+3888      8778381423   MD677M  ...         SILVE        1
+5967      1475041184   92BF34  ...           BLK        1
+6177      1477342850   40TZ78  ...            RD        1
+6985      8514394770   16UD95  ...         BLACK        1
+7221      8624098440   77BD79  ...         BLACK        1</code></pre>
+
+  We can also look up the tickets that were given, by <code class=inline>Plate ID</code> and use the dictionary of the violation code to find out what the tickets were for:
+  <pre><code class="blockcode">print(f'Motorcycles with most tickets:\n {df2["Plate ID"].value_counts()[:5]}')
+code_lookup = p2.make_dict('ticket_codes.csv')
+ticket_codes = p2.find_tickets(df2,'19UB23')
+descrip = [code_lookup[str(t)] for t in ticket_codes]
+print(f'The motocycle with plate 19UB23 got the following tickets: {descrip}')</code></pre>
+
+  will print:
+  <pre><code class=datablock>Motorcycles with most tickets:
+19UB23    14
+80BD05    10
+38SV33     9
+66TZ74     8
+70TW50     8
+Name: Plate ID, dtype: int64
+The motocycle with plate 19UB23 got the following tickets: ['NO PARKING-STREET CLEANING', 'REG. STICKER-EXPIRED/MISSING', 'REG. STICKER-EXPIRED/MISSING', 'INSP. STICKER-EXPIRED/MISSING', 'REG. STICKER-EXPIRED/MISSING', 'REG. STICKER-EXPIRED/MISSING', 'REG. STICKER-EXPIRED/MISSING', 'REG. STICKER-EXPIRED/MISSING', 'INSP. STICKER-EXPIRED/MISSING', 'REG. STICKER-EXPIRED/MISSING', 'REG. STICKER-EXPIRED/MISSING', 'REG. STICKER-EXPIRED/MISSING', 'REG. STICKER-EXPIRED/MISSING', 'REG. STICKER-EXPIRED/MISSING']</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.
+  If your file includes code outside of functions, either comment the code out before submitting or use a main function that is conditionally executed (see <a href="https://runestone.academy/ns/books/published//thinkcspy/Functions/mainfunction.html">Think CS: Section 6.8</a> for details).
+  </p>
+
+  <i>Hints:
+    <ul>
+      <li> Parking ticket data can be found at:  <a href="https://data.cityofnewyork.us/City-Government/Parking-Violations-Issued-Fiscal-Year-2021/kvfd-bves">NYC OpenData</a>.
+      <li> Some datasets for testing:
+          <ul>
+            <li> <a href="parking_test_100.csv">parking_test_100.csv</a>: A truncated file for testing-- first 100 rows of the 2021 UES parking tickets (described below).
+            <li> <a href="Parking_Violations_Issued_Precinct_19_2021.csv">Parking_Violations_Issued_Precinct_19_2021.csv</a>:  ~450,000 line file of parking violations issues in 2021 for the Upper East Side (District 19)
+          </ul>
+      <li> Parking ticket violation codes (<a href="https://www1.nyc.gov/site/finance/vehicles/services-violation-codes.page">summary of codes & fines</a>) are the basis for the dictionary.
+      <ul>
+        <li> <a href="ticket_codes.csv">ticket_codes.csv</a> from <a href="https://data.cityofnewyork.us/widgets/ncbg-6agr">OpenData NYC</a>.
+      </ul>
+
+      <li> You may get a warning such as:
+        <code class = "datablock">sys:1: DtypeWarning: Columns (39) have mixed types.Specify dtype option on import or set low_memory=False.
+        </code>
+
+        when reading in the parking ticket data. Pandas tries to infer the data type (<code class = "inline">dtype</code>) of the columns from the values.  Since some columns are a mixture of numeric and character types this can be difficult.  If the file is read in with <code class = "inline">pd.read_csv(file_name, low_memory=False)</code>, the entire column is read in and used to determine type.
+    </ul>
+  </i>
+
+
+
+
+</div>
+</body>
+</html>

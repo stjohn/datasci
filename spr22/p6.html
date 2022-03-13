@@ -1,0 +1,291 @@
+<!DOCTYPE doctype PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <title>Program 6, CSci 39542: Data Science, Hunter College</title>
+</head>
+<STYLE>A {text-decoration: none;}
+th, td { padding: 5px; }
+code {
+  background-color: #eeeeee;
+}
+.inline {
+  padding: 1px;
+}
+.blockcode {
+  border: 1px solid #999999;
+  display: block;
+  padding-left: 10px;
+  padding-top : 2px;
+  padding-bottom : 2px;
+  margin: 5px;
+}
+.datablock {
+  border: 1px solid #eeeeee;
+  display: block;
+  padding: 7px;
+  padding-top : 0px;
+  margin: 5px;
+}
+</STYLE>
+<body>
+
+
+<div style="margin: 15px;width=100%;">
+    <span style= "float: left;font-size:larger"><a href="index.html">CSci 39542</a></span>
+    <span style= "float: right">
+      <a href="syl.html">Syllabus</a>&nbsp;&nbsp;&nbsp;
+      <a href="resources.html">Resources</a>&nbsp;&nbsp;&nbsp;
+      <a href="work.html">Coursework</a><!--&nbsp;&nbsp;&nbsp;
+      <a href="faq.html">FAQ</a>-->
+    </span>
+</div>
+
+<br>
+<br>
+<hr>
+
+<div style="margin:50px">
+
+
+<h2>Program 6:  Housing Units
+  <br>CSci 39542: Introduction to Data Science<br>
+<a href="http://www.hunter.cuny.edu/csci">Department of Computer Science</a><br>
+<a href="https://hunter.cuny.edu">Hunter College</a>, <a href="https://www.cuny.edu">City University of New York</a><br>
+Spring 2022<br><br>
+</h2>
+
+
+<hr>
+<a href="work.html#cw">Classwork</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#quizzes">Quizzes</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#hw">Homework</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#project">Project</a>&nbsp;&nbsp;&nbsp;
+<hr>
+
+<p>
+<h3>General Notes</h3>
+
+<p>This program builds on the concepts and code developed during lecture and through the reading.  Mastery of material is assessed via
+<ul>
+  <li> Autograding of the program submitted to Gradescope, and
+  <li> Completion of a timed coding quiz on the material.  See <a href="work.html#quizzes">Quizzes</a> for details.
+</ul>
+
+Solutions to both will be available on Blackboard (<tt>Course Materials : Solutions</tt>) an hour after their respective deadline.
+
+<h4>Autograder Notes</h4>
+
+<p> Submitted code must be in Python, using only the specified libraries.  The autograder expects a <code class="inline">.py</code> file and does not accept iPython notebooks.
+Also, to receive full credit, the code should be compatible with Python 3.6 (the default for the Gradescope autograders).
+
+<p>To encourage starting early on programs, bonus points are given for early submission.  A point a day, up to a total of 3 bonus points (10% of the program grade), are possible.  The points are prorated by hour.  For example, if you turn in the program 36 hours early, then the bonus poins are: (36 hours/3 days)*3 points = (36 hours/72 hours)*3 points = 1.5 points.
+
+<p>
+To get full credit for a program, the file must include in the opening comment:
+<ul>
+    <li> Your name, as it appears in your Gradescope registration.
+    <li> The email you are using for Gradescope.
+    <li> A list of any resources you used for the program.  Include classmates and tutors that you worked with, along with any websites or tutorials that you used.  If you used no resources (other than the class notes and textbooks), then you should include the line:  "No resources used."
+</ul>
+
+
+
+<br>
+<br>
+<br>
+<hr>
+
+<h2>Program Description</h2>
+
+<br>
+   <p><a name="p6"><b>Program 6: Housing Units.</b></b> &emsp; <i>Due noon, Thursday, 17 March.
+     <br>Learning Objective: to reinforce Pandas skills by aggregating and cleaning to use in map visualiation, and summary statistics methods in Pandas.
+     <br>Available Libraries: pandas and core Python 3.6+.</i>
+
+         <p> NYC Department of City Planning (DCP) <a href="https://www1.nyc.gov/site/planning/data-maps/open-data/dwn-housing-database.page#housingdevelopmentproject">Housing Database</a> contains all approved construction and demolition jobs since 2010.  Summary information about it are provided via OpenData NYC.  A summary, recorded as net housing units, by Neighborhood Tabulation Areas:
+         <ul>
+              <li> <a href="https://data.cityofnewyork.us/Housing-Development/Housing-Database-by-NTA/kyz5-72x5">https://data.cityofnewyork.us/Housing-Development/Housing-Database-by-NTA/kyz5-72x5</a>
+              </li>
+         </ul>
+         The DCP also provides a summary of population in New York City from the 2000 and 2010 censuses, organized by neighborhood tabulation areas (NTAs):
+         <ul>
+              <li> <a href="https://data.cityofnewyork.us/City-Government/New-York-City-Population-By-Neighborhood-Tabulatio/swpk-hqdp">https://data.cityofnewyork.us/City-Government/New-York-City-Population-By-Neighborhood-Tabulatio/swpk-hqdp</a>
+              </li>
+         </ul>
+
+         Using the choropleth maps discussed in Lecture 8, we can visualize the growth in housing units:
+
+           <p>
+           <iframe src="netHousingUnits.html" style="width: 60%; height: 550px" name="internal"></iframe>
+
+           <p>
+           If you would like to create the map above, the code is
+           <a href="housingChoropleth.py">housingChoropleth.py</a>
+           using <a href="nta.geojson">nta.geojson</a> and
+           <a href="Housing_Database_by_NTA.csv">Housing_Database_by_NTA.csv</a>.
+
+         <p> What factors are most correlated with the increase in housing units?  This program explores which factors are most correlated with the net increase.
+           The assignment is broken into the following functions to allow for unit testing:
+
+             <ul>
+               <li> <code class = "inline">make_housing_df(file_name)</code>:
+                 This function takes one input:
+                   <ul>
+                       <li> <code class = "inline">file_name</code>: the name of a CSV file containing <a href="https://data.cityofnewyork.us/Housing-Development/Housing-Database-by-NTA/kyz5-72x5">housing units</a> from OpenData NYC.
+                   </ul>
+                   The function should open the file <code class = "inline">file_name</code> as a DataFrame.
+                   If the <code class=inline>total</code> is null for a row, that row should be dropped.  The column <code class=inline>nta2010</code> should be renamed <code class=inline>NTA Code</code>.  The resulting DataFrame is returned.
+               <li> <code class = "inline">make_pop_df(file_name)</code>:
+                 This function takes one input:
+                   <ul>
+                       <li> <code class = "inline">file_name</code>: the name of a CSV file containing <a href="https://data.cityofnewyork.us/City-Government/New-York-City-Population-By-Neighborhood-Tabulatio/swpk-hqdp">population counts</a> from OpenData NYC.
+                   </ul>
+                   The function should open the file <code class = "inline">file_name</code> as a DataFrame.
+                   Only rows containing data for <code class=inline>2010</code> should be kept.  The resulting DataFrame is returned.
+
+               <li> <code class = "inline">combine_df(housing_df, pop_df, cols)</code>:
+                 This function takes three inputs:
+                 <ul>
+                   <li> <code class = "inline">housing_df</code>: a DataFrame containing the column <code class = "inline">NTA Code</code>.
+                   <li> <code class = "inline">pop_df</code>: a DataFrame containing the column <code class = "inline">NTA Code</code>.
+                   <li> <code class = "inline">cols</code>: a list containing a subset of columns of  <code class = "inline">housing_df</code> and <code class = "inline">pop_df</code>.
+                 </ul>
+                 Returns a DataFrame that merges the two inputted DataFrames on their common key, <code class = "inline">NTA Code</code>.  The returned DataFrame should include only the columns specified in <code class = "inline">cols</code>.
+              <li> <code class = "inline">compute_density(df, col = 'Density')</code>:
+                 This function takes two inputs:
+                 <ul>
+                   <li> <code class = "inline">df</code>: a DataFrame containing the columns <code class = "inline">Population</code> and <code class = "inline">Shape__Area</code>.
+                   <li> <code class = "inline">col</code>: a string.
+                 </ul>
+                 The function computes a new column, <code class = "inline">col</code>, that is the quotient of the columns <code class = "inline">Population</code> and <code class = "inline">Shape__Area</code>. The resulting DataFrame with this additional column is returned..
+
+               <li> <code class = "inline">most_corr(df, y = 'total', xes = ['Population','Shape__Area','Density','comp2010']):
+     </code>:
+                 This function takes three inputs:
+                 <ul>
+                   <li> <code class = "inline">df</code>: a DataFrame containing the columns listed in <code class = "inline">y</code> and <code class = "inline">xes</code>.
+                   <li> <code class = "inline">xes</code>: list of column names in <code class = "inline">df</code>.
+                   <li> <code class = "inline">y</code>:  the name of a column in <code class = "inline">df</code>.
+                 </ul>
+                 Returns the column name and Pearson's R correlation coefficient from <code class = "inline">xes</code> that has the highest absolute correlation
+                 with <code class = "inline">y</code> (i.e. the absolute value of Pearson's R).
+               <li> <code class = "inline">convert_std_units(ser)</code>:
+                 This function takes one input:
+                 <ul>
+                   <li> <code class = "inline">ser</code>: a Series.
+                 </ul>
+                 Takes a Series of numeric values and converts to standard units, that is, it computes the mean and standard deviation of <code class = "inline">ser</code>, and for
+     each <code class = "inline">s</code> in <code class = "inline">ser</code>, computes <code class = "inline">(s - mean)/(standard deviation)</code> and returns the resulting series.
+           </ul>
+
+           <p>For example, if the housing and population data files are downloaded (and your functions are imported from a file p6), then a sample run of the program:
+               <pre><code class="blockcode">housing_df = p6.make_housing_df('Housing_Database_by_NTA.csv')
+     print('The housing DataFrame:')
+     print(housing_df.head())
+     pop_df = p6.make_pop_df('NYC_Population_By_NTA.csv')
+     print('The housing DataFrame:')
+     print(pop_df.head())</code></pre>
+
+               And the first lines would be:
+             <pre><code class="datablock">The housing DataFrame:
+         Borough  Year  ...                         NTA Name Population
+     195   Bronx  2010  ...               Claremont-Bathgate      31078
+     196   Bronx  2010  ...  Eastchester-Edenwald-Baychester      34517
+     197   Bronx  2010  ...       Bedford Park-Fordham North      54415
+     198   Bronx  2010  ...                          Belmont      27378
+     199   Bronx  2010  ...                        Bronxdale      35538
+
+     [5 rows x 6 columns]
+          Borough  Year  FIPS County Code  ... comp2019  total   Shape__Area
+     0  Manhattan  2010                61  ...      NaN  11240  5.582242e+06
+     1      Bronx  2010                 5  ...    127.0  13998  1.937895e+07
+     2      Bronx  2010                 5  ...      0.0  14622  1.518562e+07
+     3   Brooklyn  2010                47  ...    457.0  21773  3.579958e+07
+     4  Manhattan  2010                61  ...    -67.0  48481  1.360204e+07
+     </code></pre>
+
+         We can use our next function to combine the DataFrames:
+         <pre><code class="blockcode">cols = list(pop_df.columns) + ['boro','comp2010','comp2015','comp2019','total','Shape__Area']
+     df = p6.combine_df(housing_df,pop_df,cols)
+     print(df.head())
+     print(df.columns)</code></pre>
+
+         And the first lines would be:
+         <pre>     Borough  Year  FIPS County Code  ... comp2019  total   Shape__Area
+     0  Manhattan  2010                61  ...      NaN  11240  5.582242e+06
+     1      Bronx  2010                 5  ...    127.0  13998  1.937895e+07
+     2      Bronx  2010                 5  ...      0.0  14622  1.518562e+07
+     3   Brooklyn  2010                47  ...    457.0  21773  3.579958e+07
+     4  Manhattan  2010                61  ...    -67.0  48481  1.360204e+07
+
+     [5 rows x 12 columns]<code class="datablock">
+         </code></pre>
+
+         We can compute a new column, representing population density:
+         <pre><code class="blockcode">df = p6.compute_density(df)
+     print(df[['NTA Code','Population','Density']])
+     </code></pre>
+
+         And the relevant columns contain:
+         <pre><code class="datablock">    NTA Code  Population   Density
+     0       MN50       21049  0.003771
+     1       BX63       39282  0.002027
+     2       BX07       35538  0.002340
+     3       BK43       52835  0.001476
+     4       MN32       77942  0.005730
+     ..       ...         ...       ...
+     190     QN01       38894  0.000973
+     191     BX37       29250  0.000806
+     192     QN49       30773  0.000446
+     193     SI48       25238  0.000501
+     194     MN31       80771  0.003755
+
+     [195 rows x 3 columns]</code></pre>
+
+         We can find the columns with the largest absolute correlation coefficient R:
+         <pre><code class="blockcode">most_c,r = p6.most_corr(df)
+     print(f'For the default list of columns, the most correlated is {most_c} with r = {r}.')
+     comp_y = ['comp2010','comp2015','comp2019']
+     years_c,y_r = p6.most_corr(df, xes = comp_y)
+     print(f'For {comp_y}, most correlated is {years_c} with r = {r}.')</code></pre>
+
+         And the first lines would be:
+         <pre><code class="datablock">For the default list of columns, the most correlated is Population with r = 0.4001044380137653.
+     For ['comp2010', 'comp2015', 'comp2019'], most correlated is comp2010 with r = 0.4001044380137653.</code></pre>
+
+       <p>A way to see the relationships is to plot the data.  Plotting the raw data with:
+     <pre><code class="blockcode">import seaborn as sns
+     import matplotlib.pyplot as plt
+     plt.scatter(x=df["Population"],y=df['total'])
+     plt.scatter(x=df["comp2010"],y=df['total'])
+     plt.scatter(x=df["Density"],y=df['total'])
+     plt.title('Increase in Housing Units (2010-2019) by NTA')
+     plt.ylabel('Change in Units by NTA')
+     plt.legend(labels=['Population','Completed in 2010','Density'])
+     plt.show()</code></pre>
+
+         yields
+         <p><img src="p6_not_scaled.png" height=400>
+
+       <p>which is difficult to use for comparisons due to the difference in units between the different Series.  We can transform the Series into standard units:
+     <pre><code class="blockcode">tot_scaled = p6.convert_std_units(df['total'])
+     plt.scatter(x=p6.convert_std_units(df["Population"]),y=tot_scaled)
+     plt.scatter(x=p6.convert_std_units(df["comp2010"]),y=tot_scaled)
+     plt.scatter(x=p6.convert_std_units(df["Density"]),y=tot_scaled)
+     #plt.scatter(x="comp2010",y='total',data=df)
+     #sns.lmplot(x="Density",y='total',data=df)
+     plt.title('Increase in Housing Units by NTA (Standard Units)')
+     plt.ylabel('Change in Units, 2010-2019')
+     plt.legend(labels=['Population','Completed in 2010','Density'])
+     plt.show()</code></pre>
+
+       gives a plot where the relationships are clearer:
+     <p><img src="p6_scaled.png" height=400>
+
+
+
+</div>
+</body>
+</html>
