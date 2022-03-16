@@ -142,7 +142,7 @@ The assignment is broken into the following functions to allow for unit testing:
         <li> <code class = "inline">theta_0</code> is the y-intercept of the best fitting line for <code class = "inline">x</code> and <code class = "inline">y</code>.
         <li> <code class = "inline">theta_1</code> is the slope of the best fitting line for <code class = "inline">x</code> and <code class = "inline">y</code>.
       </ul>
-      computed using <code class = "inline">sklearn.linear_models</code> (see Lecture 12 for details).
+      computed where theta_1 is the slope (<code class = "inline">r*(std of x)/(std of y)</code>) and theta_0 is the y-intercept (<code class = "inline">(ave of y) - theta_1*(ave of x)</code>). (see Lecture 12 for details).
 
     <li> <code class = "inline">MSE_loss(y_actual,y_estimate):</code>:
       This function takes two inputs:
@@ -193,54 +193,20 @@ print(df.head())</code></pre>
    We can use our next function to compute a regression line for the <code class = "inline">Population</code> and <code class = "inline">total</code> columns:
 <pre><code class="blockcode">b,m = answer.compute_reg(df['Population'],df['total'])
 print(f'The regression line has slope {m} and y-intercept {b}.')</code></pre>
+  which prints:
+<pre><code class="datablock">The slope is 0.4536370834220062 and the y-intercept is -625.3358497794688.</code></pre>
+
   We can plot the original data with the regression line:
   <pre><code class="blockcode">xes = np.array([0,df['Population'].max()])
-yes = m*xes + b
+yes = theta_1*xes + theta_0
 plt.scatter(df['Population'],df['total'])
-plt.plot(xes,yes)
-plt.title(f'Regression line with m = {m:{4}.{2}} and y-intercept = {b:{4}.{2}}')
+plt.plot(xes,yes,color='r')
+plt.title(f'Regression line with m = {theta_1:{4}.{2}} and y-intercept = {theta_0:{4}.{4}}')
 plt.show()</code></pre>
   would give the plot:
 
-  <p><img height=300 src="rline_simple.png">
+  <p><img height=300 src="housing_reg.png">
 
-
-         And the first lines would be:
-     <pre>     Borough  Year  FIPS County Code  ... comp2019  total   Shape__Area
- 0  Manhattan  2010                61  ...      NaN  11240  5.582242e+06
- 1      Bronx  2010                 5  ...    127.0  13998  1.937895e+07
- 2      Bronx  2010                 5  ...      0.0  14622  1.518562e+07
- 3   Brooklyn  2010                47  ...    457.0  21773  3.579958e+07
- 4  Manhattan  2010                61  ...    -67.0  48481  1.360204e+07
-
- [5 rows x 12 columns]<code class="datablock">
-     </code></pre>
-
-         We can compute a new column, representing population density:
-         <pre><code class="blockcode">
-     </code></pre>
-
-         And the relevant columns contain:
-     <pre><code class="datablock"> </code></pre>
-
-         We can find the columns with the largest absolute correlation coefficient R:
-         <pre><code class="blockcode"></code></pre>
-
-         And the first lines would be:
-         <pre><code class="datablock">For the default list of columns, the most correlated is Population with r = 0.4001044380137653.
-     For ['comp2010', 'comp2015', 'comp2019'], most correlated is comp2010 with r = 0.4001044380137653.</code></pre>
-
-       <p>A way to see the relationships is to plot the data.  Plotting the raw data with:
-     <pre><code class="blockcode"></code></pre>
-
-         yields
-         <p><img src="p6_not_scaled.png" height=400>
-
-       <p>which is difficult to use for comparisons due to the difference in units between the different Series.  We can transform the Series into standard units:
-     <pre><code class="blockcode"></code></pre>
-
-       gives a plot where the relationships are clearer:
-     <p><img src="p6_scaled.png" height=400>
 
 
 
