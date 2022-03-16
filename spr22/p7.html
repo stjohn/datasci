@@ -180,7 +180,15 @@ print('The DataFrame:')
 print(df.head())</code></pre>
 
    And the first lines would be:
-<pre><code class="datablock"> </code></pre>
+<pre><code class="datablock">The DataFrame:
+   OBJECTID       boro  ...                        NTA Name Population
+1       195  Manhattan  ...  Stuyvesant Town-Cooper Village      21049
+3       166      Bronx  ...                  West Concourse      39282
+5        37      Bronx  ...                       Bronxdale      35538
+7        14   Brooklyn  ...                         Midwood      52835
+9        65  Manhattan  ...                       Yorkville      77942
+
+[5 rows x 32 columns]</code></pre>
 
    We can use our next function to compute a regression line for the <code class = "inline">Population</code> and <code class = "inline">total</code> columns:
 <pre><code class="blockcode">b,m = answer.compute_reg(df['Population'],df['total'])
