@@ -1,0 +1,241 @@
+<!DOCTYPE doctype PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <title>Program 7, CSci 39542: Data Science, Hunter College</title>
+</head>
+<STYLE>A {text-decoration: none;}
+th, td { padding: 5px; }
+code {
+  background-color: #eeeeee;
+}
+.inline {
+  padding: 1px;
+}
+.blockcode {
+  border: 1px solid #999999;
+  display: block;
+  padding-left: 10px;
+  padding-top : 2px;
+  padding-bottom : 2px;
+  margin: 5px;
+}
+.datablock {
+  border: 1px solid #eeeeee;
+  display: block;
+  padding: 7px;
+  padding-top : 0px;
+  margin: 5px;
+}
+</STYLE>
+<body>
+
+
+<div style="margin: 15px;width=100%;">
+    <span style= "float: left;font-size:larger"><a href="index.html">CSci 39542</a></span>
+    <span style= "float: right">
+      <a href="syl.html">Syllabus</a>&nbsp;&nbsp;&nbsp;
+      <a href="resources.html">Resources</a>&nbsp;&nbsp;&nbsp;
+      <a href="work.html">Coursework</a><!--&nbsp;&nbsp;&nbsp;
+      <a href="faq.html">FAQ</a>-->
+    </span>
+</div>
+
+<br>
+<br>
+<hr>
+
+<div style="margin:50px">
+
+
+<h2>Program 7:  Housing Model
+  <br>CSci 39542: Introduction to Data Science<br>
+<a href="http://www.hunter.cuny.edu/csci">Department of Computer Science</a><br>
+<a href="https://hunter.cuny.edu">Hunter College</a>, <a href="https://www.cuny.edu">City University of New York</a><br>
+Spring 2022<br><br>
+</h2>
+
+
+<hr>
+<a href="work.html#cw">Classwork</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#quizzes">Quizzes</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#hw">Homework</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#project">Project</a>&nbsp;&nbsp;&nbsp;
+<hr>
+
+<p>
+<h3>General Notes</h3>
+
+<p>This program builds on the concepts and code developed during lecture and through the reading.  Mastery of material is assessed via
+<ul>
+  <li> Autograding of the program submitted to Gradescope, and
+  <li> Completion of a timed coding quiz on the material.  See <a href="work.html#quizzes">Quizzes</a> for details.
+</ul>
+
+Solutions to both will be available on Blackboard (<tt>Course Materials : Solutions</tt>) an hour after their respective deadline.
+
+<h4>Autograder Notes</h4>
+
+<p> Submitted code must be in Python, using only the specified libraries.  The autograder expects a <code class="inline">.py</code> file and does not accept iPython notebooks.
+Also, to receive full credit, the code should be compatible with Python 3.6 (the default for the Gradescope autograders).
+
+<p>To encourage starting early on programs, bonus points are given for early submission.  A point a day, up to a total of 3 bonus points (10% of the program grade), are possible.  The points are prorated by hour.  For example, if you turn in the program 36 hours early, then the bonus poins are: (36 hours/3 days)*3 points = (36 hours/72 hours)*3 points = 1.5 points.
+
+<p>
+To get full credit for a program, the file must include in the opening comment:
+<ul>
+    <li> Your name, as it appears in your Gradescope registration.
+    <li> The email you are using for Gradescope.
+    <li> A list of any resources you used for the program.  Include classmates and tutors that you worked with, along with any websites or tutorials that you used.  If you used no resources (other than the class notes and textbooks), then you should include the line:  "No resources used."
+</ul>
+
+
+
+<br>
+<br>
+<br>
+<hr>
+
+<h2>Program Description</h2>
+
+<br>
+<p><a name="p7"><b>Program 7: Housing Model.</b></b> &emsp; <i>Due noon, Thursday, 17 March.
+<br>Learning Objective: to reinforce Pandas skills by aggregating and cleaning to use in map visualiation, and summary statistics methods in Pandas.
+<br>Available Libraries: pandas, sklearn and core Python 3.6+.</i>
+
+
+<p>This program continues the analysis from <a href="p6.html">Program 6</a> of the NYC Housing Database.
+<p> NYC Department of City Planning (DCP) <a href="https://www1.nyc.gov/site/planning/data-maps/open-data/dwn-housing-database.page#housingdevelopmentproject">Housing Database</a> contains all approved construction and demolition jobs since 2010.  Summary information about it are provided via OpenData NYC.  A summary, recorded as net housing units, by Neighborhood Tabulation Areas:
+<ul>
+    <li> <a href="https://data.cityofnewyork.us/Housing-Development/Housing-Database-by-NTA/kyz5-72x5">https://data.cityofnewyork.us/Housing-Development/Housing-Database-by-NTA/kyz5-72x5</a></li>
+</ul>
+The DCP also provides a summary of population in New York City from the 2000 and 2010 censuses, organized by neighborhood tabulation areas (NTAs):
+<ul>
+    <li> <a href="https://data.cityofnewyork.us/City-Government/New-York-City-Population-By-Neighborhood-Tabulatio/swpk-hqdp">https://data.cityofnewyork.us/City-Government/New-York-City-Population-By-Neighborhood-Tabulatio/swpk-hqdp</a></li>
+</ul>
+
+
+<p> In <a href="p6.html">Program 6</a>, we looked at which features are most correlated with the increase in housing units.  For this program, we will explore linear models for the dataset.
+The assignment is broken into the following functions to allow for unit testing:
+
+  <ul>
+    <li> <code class = "inline">make_df(housing_file, pop_file)</code>:
+      This function takes two inputs:
+      <ul>
+        <li> <code class = "inline">housing_file</code>: the name of a CSV file containing <a href="https://data.cityofnewyork.us/Housing-Development/Housing-Database-by-NTA/kyz5-72x5">housing units</a> from OpenData NYC.
+        <li> <code class = "inline">pop_file</code>: the name of a CSV file containing <a href="https://data.cityofnewyork.us/City-Government/New-York-City-Population-By-Neighborhood-Tabulatio/swpk-hqdp">population counts</a> from OpenData NYC.
+      </ul>
+      The data in the two files are read and merged into a single DataFrame using <code class = "inline">nta2010</code> and <code class = "inline">NTA Code</code> as the keys.
+      If the <code class = "inline">total</code> is null or <code class = "inline">Year</code>is not 2010, that row is dropped.
+      The columns <code class = "inline">the_geom</code> and <code class = "inline">nta2010</code> are dropped, and the resulting DataFrame is returned.
+
+    <li> <code class = "inline">compute_lin_reg(x,y)</code>:
+      This function takes two inputs:
+      <ul>
+            <li> <code class = "inline">x</code>:  a Series containing numeric values.
+            <li> <code class = "inline">y</code>:  a Series containing numeric values.
+      </ul>
+      The series are of the same length and contain numeric values only (all null and non-numeric values have been dropped).
+      The function returns two numeric values:  <code class = "inline">theta_0</code>,<code class = "inline">theta_1</code> where
+      <ul>
+        <li> <code class = "inline">theta_0</code> is the y-intercept of the best fitting line for <code class = "inline">x</code> and <code class = "inline">y</code>.
+        <li> <code class = "inline">theta_1</code> is the slope of the best fitting line for <code class = "inline">x</code> and <code class = "inline">y</code>.
+      </ul>
+      computed using <code class = "inline">sklearn.linear_models</code> (see Lecture 12 for details).
+
+    <li> <code class = "inline">MSE_loss(y_actual,y_estimate):</code>:
+      This function takes two inputs:
+      <ul>
+            <li> <code class = "inline">y_actual</code>:  a Series containing numeric values.
+            <li> <code class = "inline">y_estimate</code>:  a Series containing numeric values.
+      </ul>
+      The series are of the same length and contain numeric values only (all null and non-numeric values have been dropped).  The function returns the mean square error loss function between  <code class = "inline">y_actual</code> and <code class = "inline">y_estimate</code> (e.g. the sum of the squares of the differences).
+
+    <li> <code class = "inline">compute_error(y_actual,y_estimate,loss_fnc):</code>:
+         This function takes three inputs:
+         <ul>
+           <li> <code class = "inline">y_actual</code>:  a Series containing numeric values.
+           <li> <code class = "inline">y_estimate</code>:  a Series containing numeric values.
+           <li> <code class = "inline">loss_fnc</code>:  function that takes two numeric series as input parameters and returns a numeric value.
+         </ul>
+         The series are of the same length and contain numeric values only (all null and non-numeric values have been dropped).
+
+    <li> <code class = "inline">minimize(x,y,theta_0,theta_1,loss_fnc,step_fnc,num_steps=100):
+    </code>:
+         This function takes ?? input:
+         <ul>
+           <li> <code class = "inline">ser</code>: a Series.
+         </ul>
+         Takes a Series of numeric values and converts to standard units, that is, it computes the mean and standard deviation of <code class = "inline">ser</code>, and for
+  each <code class = "inline">s</code> in <code class = "inline">ser</code>, computes <code class = "inline">(s - mean)/(standard deviation)</code> and returns the resulting series.
+
+      Returns the slope and the y-intercept found after num_steps of minimization.
+
+   </ul>
+
+   <p>For example, if the housing and population data files are downloaded (and your functions are imported from a file answer), then a sample run of the program:
+<pre><code class="blockcode">df = answer.make_df('Housing_by_NTA.csv','NYC_Pop_By_NTA.csv')
+print('The DataFrame:')
+print(df.head())</code></pre>
+
+   And the first lines would be:
+<pre><code class="datablock"> </code></pre>
+
+   We can use our next function to compute a regression line for the <code class = "inline">Population</code> and <code class = "inline">total</code> columns:
+<pre><code class="blockcode">b,m = answer.compute_reg(df['Population'],df['total'])
+print(f'The regression line has slope {m} and y-intercept {b}.')</code></pre>
+  We can plot the original data with the regression line:
+  <pre><code class="blockcode">xes = np.array([0,df['Population'].max()])
+yes = m*xes + b
+plt.scatter(df['Population'],df['total'])
+plt.plot(xes,yes)
+plt.title(f'Regression line with m = {m:{4}.{2}} and y-intercept = {b:{4}.{2}}')
+plt.show()</code></pre>
+  would give the plot:
+
+  <p><img height=300 src="rline_simple.png">
+
+
+         And the first lines would be:
+     <pre>     Borough  Year  FIPS County Code  ... comp2019  total   Shape__Area
+ 0  Manhattan  2010                61  ...      NaN  11240  5.582242e+06
+ 1      Bronx  2010                 5  ...    127.0  13998  1.937895e+07
+ 2      Bronx  2010                 5  ...      0.0  14622  1.518562e+07
+ 3   Brooklyn  2010                47  ...    457.0  21773  3.579958e+07
+ 4  Manhattan  2010                61  ...    -67.0  48481  1.360204e+07
+
+ [5 rows x 12 columns]<code class="datablock">
+     </code></pre>
+
+         We can compute a new column, representing population density:
+         <pre><code class="blockcode">
+     </code></pre>
+
+         And the relevant columns contain:
+     <pre><code class="datablock"> </code></pre>
+
+         We can find the columns with the largest absolute correlation coefficient R:
+         <pre><code class="blockcode"></code></pre>
+
+         And the first lines would be:
+         <pre><code class="datablock">For the default list of columns, the most correlated is Population with r = 0.4001044380137653.
+     For ['comp2010', 'comp2015', 'comp2019'], most correlated is comp2010 with r = 0.4001044380137653.</code></pre>
+
+       <p>A way to see the relationships is to plot the data.  Plotting the raw data with:
+     <pre><code class="blockcode"></code></pre>
+
+         yields
+         <p><img src="p6_not_scaled.png" height=400>
+
+       <p>which is difficult to use for comparisons due to the difference in units between the different Series.  We can transform the Series into standard units:
+     <pre><code class="blockcode"></code></pre>
+
+       gives a plot where the relationships are clearer:
+     <p><img src="p6_scaled.png" height=400>
+
+
+
+</div>
+</body>
+</html>
