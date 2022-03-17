@@ -116,8 +116,14 @@ The DCP also provides a summary of population in New York City from the 2000 and
 </ul>
 
 
-<p> In <a href="p6.html">Program 6</a>, we looked at which features are most correlated with the increase in housing units.  For this program, we will explore linear models for the dataset.
-The assignment is broken into the following functions to allow for unit testing:
+<p> In <a href="p6.html">Program 6</a>, we looked at which features are most correlated with the increase in housing units.  For this program, we will explore linear models for the dataset, as well as the data separated by borough:
+
+<p><img width=24% src="housing_reg.png">
+<img width=24% src="housing_reg_si.png">
+<img width=24% src="housing_reg_q.png">
+<img width=24% src="housing_reg_b.png">
+
+<p>The assignment is broken into the following functions to allow for unit testing:
 
   <ul>
     <li> <code class = "inline">make_df(housing_file, pop_file)</code>:
@@ -127,8 +133,8 @@ The assignment is broken into the following functions to allow for unit testing:
         <li> <code class = "inline">pop_file</code>: the name of a CSV file containing <a href="https://data.cityofnewyork.us/City-Government/New-York-City-Population-By-Neighborhood-Tabulatio/swpk-hqdp">population counts</a> from OpenData NYC.
       </ul>
       The data in the two files are read and merged into a single DataFrame using <code class = "inline">nta2010</code> and <code class = "inline">NTA Code</code> as the keys.
-      If the <code class = "inline">total</code> is null or <code class = "inline">Year</code>is not 2010, that row is dropped.
-      The columns <code class = "inline">the_geom</code> and <code class = "inline">nta2010</code> are dropped, and the resulting DataFrame is returned.
+      If the <code class = "inline">total</code> is null or <code class = "inline">Year</code> differs from 2010, that row is dropped.
+      The columns <code class = "inline">the_geom</code>, <code class = "inline">boro</code>, and <code class = "inline">nta2010</code> are dropped, and the resulting DataFrame is returned.
 
     <li> <code class = "inline">compute_lin_reg(x,y)</code>:
       This function takes two inputs:
@@ -144,13 +150,39 @@ The assignment is broken into the following functions to allow for unit testing:
       </ul>
       computed where theta_1 is the slope (<code class = "inline">r*(std of x)/(std of y)</code>) and theta_0 is the y-intercept (<code class = "inline">(ave of y) - theta_1*(ave of x)</code>). (see Lecture 12 for details).
 
-    <li> <code class = "inline">MSE_loss(y_actual,y_estimate):</code>:
+    <li> <code class = "inline">compute_boro_lr(df,xcol,ycol,boro=["All"])</code>:
+        This function takes three inputs:
+        <ul>
+              <li> <code class = "inline">df</code>:  a DataFrame.
+              <li> <code class = "inline">xcol</code>:  a name of a column of <code class = "inline">df</code>.
+              <li> <code class = "inline">ycol</code>:  a name of a column of <code class = "inline">df</code>.
+              <li> <code class = "inline">boro</code>: a list containing either the names of boroughs or containing only the string <code class = "inline">'All'</code>.
+        </ul>
+        If <code class = "inline">boro</code> is <code class = "inline">['All']</code>, this function behaves identically to
+        <code class = "inline">compute_lin_reg(df[xcol],df[ycol])</code>.  Otherwise, the DataFrame is restricted to rows with
+        <code class = "inline">Borough</code> in <code class = "inline">boro</code> and the restricted DataFrame is used, with columns <code class = "inline">xcol</code> and <code class = "inline">ycol</code>, to compute a linear regression line, returning two numeric values:  <code class = "inline">theta_0</code>,<code class = "inline">theta_1</code> where
+        <ul>
+          <li> <code class = "inline">theta_0</code> is the y-intercept of the best fitting line for <code class = "inline">x</code> and <code class = "inline">y</code>.
+          <li> <code class = "inline">theta_1</code> is the slope of the best fitting line for <code class = "inline">x</code> and <code class = "inline">y</code>.
+        </ul>
+        computed where theta_1 is the slope (<code class = "inline">r*(std of x)/(std of y)</code>) and theta_0 is the y-intercept (<code class = "inline">(ave of y) - theta_1*(ave of x)</code>). (see Lecture 12 for details).
+
+
+            <li> <code class = "inline">MSE_loss(y_actual,y_estimate):</code>:
+              This function takes two inputs:
+              <ul>
+                    <li> <code class = "inline">y_actual</code>:  a Series containing numeric values.
+                    <li> <code class = "inline">y_estimate</code>:  a Series containing numeric values.
+              </ul>
+              The series are of the same length and contain numeric values only (all null and non-numeric values have been dropped).  The function returns the mean square error loss function between  <code class = "inline">y_actual</code> and <code class = "inline">y_estimate</code> (e.g. the sum of the squares of the differences).
+
+    <li> <code class = "inline">RMSE(y_actual,y_estimate):</code>:
       This function takes two inputs:
       <ul>
             <li> <code class = "inline">y_actual</code>:  a Series containing numeric values.
             <li> <code class = "inline">y_estimate</code>:  a Series containing numeric values.
       </ul>
-      The series are of the same length and contain numeric values only (all null and non-numeric values have been dropped).  The function returns the mean square error loss function between  <code class = "inline">y_actual</code> and <code class = "inline">y_estimate</code> (e.g. the sum of the squares of the differences).
+      The series are of the same length and contain numeric values only (all null and non-numeric values have been dropped).  The function returns the square root of the mean square error loss function between  <code class = "inline">y_actual</code> and <code class = "inline">y_estimate</code> (e.g. the square root of the sum of the squares of the differences).
 
     <li> <code class = "inline">compute_error(y_actual,y_estimate,loss_fnc):</code>:
          This function takes three inputs:
@@ -160,19 +192,7 @@ The assignment is broken into the following functions to allow for unit testing:
            <li> <code class = "inline">loss_fnc</code>:  function that takes two numeric series as input parameters and returns a numeric value.
          </ul>
          The series are of the same length and contain numeric values only (all null and non-numeric values have been dropped).
-
-    <li> <code class = "inline">minimize(x,y,theta_0,theta_1,loss_fnc,step_fnc,num_steps=100):
-    </code>:
-         This function takes ?? input:
-         <ul>
-           <li> <code class = "inline">ser</code>: a Series.
-         </ul>
-         Takes a Series of numeric values and converts to standard units, that is, it computes the mean and standard deviation of <code class = "inline">ser</code>, and for
-  each <code class = "inline">s</code> in <code class = "inline">ser</code>, computes <code class = "inline">(s - mean)/(standard deviation)</code> and returns the resulting series.
-
-      Returns the slope and the y-intercept found after num_steps of minimization.
-
-   </ul>
+</ul>
 
    <p>For example, if the housing and population data files are downloaded (and your functions are imported from a file answer), then a sample run of the program:
 <pre><code class="blockcode">df = answer.make_df('Housing_by_NTA.csv','NYC_Pop_By_NTA.csv')
@@ -196,6 +216,18 @@ print(f'The regression line has slope {m} and y-intercept {b}.')</code></pre>
   which prints:
 <pre><code class="datablock">The slope is 0.4536370834220062 and the y-intercept is -625.3358497794688.</code></pre>
 
+We can check if our function that computes this directly is returning the same values as the sklearn package:
+<pre><code class="blockcode">from sklearn import linear_model
+reg = linear_model.LinearRegression()
+X=pd.DataFrame(df['Population'])
+y = pd.DataFrame(df['total'])
+reg.fit(X,y)
+print(f'For sklearn, the slope is {reg.coef_[0][0]} with y-intercept: {reg.intercept_[0]}.')
+</code></pre>
+which prints:
+
+<pre><code class="datablock">For sklearn, the slope is 0.45363708342200604 with y-intercept: -625.3358497794616.</code></pre>
+
   We can plot the original data with the regression line:
   <pre><code class="blockcode">xes = np.array([0,df['Population'].max()])
 yes = theta_1*xes + theta_0
@@ -207,8 +239,54 @@ plt.show()</code></pre>
 
   <p><img height=300 src="housing_reg.png">
 
+<p>Next, let's test out the function that computes by borough.  We note that for the default value of <code class = "inline">boro = ['All']</code>, the function will be identical to <code class = "inline">compute_lin_reg</code>:
+
+  <pre><code class="blockcode">theta_0, theta_1 = answer.compute_boro_lr(df,'Population','total')
+print(f'The slope is {theta_1} and the y-intercept is {theta_0}.')
+</code></pre>
+  which prints, as expected:
+
+  <pre><code class="datablock">The slope is 0.4536370834220062 and the y-intercept is -625.3358497794688.</code></pre>
+
+For other values of <code class = "inline">boro</code>, it will restrict the data set to those boroughs:
+
+<pre><code class="blockcode">si_0, si_1 = answer.compute_boro_lr(df,'Population','total',boro=['Staten Island'])
+print(f'SI:  The slope is {si_1} and the y-intercept is {si_0}.')
+q_0, q_1 = answer.compute_boro_lr(df,'Population','total',boro=['Queens'])
+print(f'Queens: The slope is {q_1} and the y-intercept is {q_0}.')
+b_0, b_1 = answer.compute_boro_lr(df,'Population','total',boro=['Bronx','Brooklyn'])
+print(f'B&B: The slope is {b_1} and the y-intercept is {b_0}.')</code></pre>
+which prints:
+
+<pre><code class="datablock">SI:  The slope is 0.3892292629712051 and the y-intercept is -2.5490753943668096.
+Queens: The slope is 0.39404151495697937 and the y-intercept is -27.156488411430473.
+B&B: The slope is 0.3849458413516747 and the y-intercept is 1458.8043454328654.
+</code></pre>
+(Images corresponding to the various values of <code class = "inline">boro = ['All']</code> are above.)
 
 
+<p>
+Lastly, we have functions that will compute the error using different loss functions.  Let's start with identical columns, to make sure the functions return 0:
+<pre><code class="blockcode">loss =answer.compute_error(df['total'],df['total'])
+print(f'The loss is {loss} for total vs total.')
+</code></pre>
+which prints:
+
+<pre><code class="datablock">The loss is 0.0 for total vs total.
+</code></pre>
+
+Now, trying the function on our models:
+
+<pre><code class="blockcode">y_est = theta_0 + theta_1*df['Population']
+loss = answer.compute_error(df['total'],y_est)
+print(f'The loss is {loss} for default loss function: MSE.')
+loss = answer.compute_error(df['total'],y_est,loss_fnc= answer.RMSE)
+print(f'The loss is {loss} for RMSE.')
+</code></pre>
+which prints:
+
+<pre><code class="datablock">The loss is 28443412.98831634 for default loss function: MSE.
+The loss is 5333.23663344468 for RMSE.</code></pre>
 
 </div>
 </body>
