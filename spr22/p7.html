@@ -196,7 +196,7 @@ The DCP also provides a summary of population in New York City from the 2000 and
 </ul>
 
    <p>For example, if the housing and population data files are downloaded (and your functions are imported from a file answer), then a sample run of the program:
-<pre><code class="blockcode">df = answer.make_df('Housing_by_NTA.csv','NYC_Pop_By_NTA.csv')
+<pre><code class="blockcode">df = p7.make_df('Housing_Database_by_NTA.csv', 'New_York_City_Population_By_Neighborhood_Tabulation_Areas.csv')
 print('The DataFrame:')
 print(df.head())</code></pre>
 
@@ -212,7 +212,7 @@ print(df.head())</code></pre>
 [5 rows x 32 columns]</code></pre>
 
    We can use our next function to compute a regression line for the <code class = "inline">Population</code> and <code class = "inline">total</code> columns:
-<pre><code class="blockcode">b,m = answer.compute_lin_reg(df['Population'],df['total'])
+<pre><code class="blockcode">theta_0, theta_1 = p7.compute_lin_reg(df['Population'],df['total'])
 print(f'The regression line has slope {m} and y-intercept {b}.')</code></pre>
   which prints:
 <pre><code class="datablock">The slope is 0.4536370834220062 and the y-intercept is -625.3358497794688.</code></pre>
@@ -220,7 +220,7 @@ print(f'The regression line has slope {m} and y-intercept {b}.')</code></pre>
 We can check if our function that computes this directly is returning the same values as the sklearn package:
 <pre><code class="blockcode">from sklearn import linear_model
 reg = linear_model.LinearRegression()
-X=pd.DataFrame(df['Population'])
+X = pd.DataFrame(df['Population'])
 y = pd.DataFrame(df['total'])
 reg.fit(X,y)
 print(f'For sklearn, the slope is {reg.coef_[0][0]} with y-intercept: {reg.intercept_[0]}.')
@@ -230,7 +230,8 @@ which prints:
 <pre><code class="datablock">For sklearn, the slope is 0.45363708342200604 with y-intercept: -625.3358497794616.</code></pre>
 
   We can plot the original data with the regression line:
-  <pre><code class="blockcode">xes = np.array([0,df['Population'].max()])
+  <pre><code class="blockcode">import matplotlib.pyplot as plt
+xes = np.array([0,df['Population'].max()])
 yes = theta_1*xes + theta_0
 plt.scatter(df['Population'],df['total'])
 plt.plot(xes,yes,color='r')
@@ -242,7 +243,7 @@ plt.show()</code></pre>
 
 <p>Next, let's test out the function that computes by borough.  We note that for the default value of <code class = "inline">boro = ['All']</code>, the function will be identical to <code class = "inline">compute_lin_reg</code>:
 
-  <pre><code class="blockcode">theta_0, theta_1 = answer.compute_boro_lr(df,'Population','total')
+  <pre><code class="blockcode">theta_0, theta_1 = p7.compute_boro_lr(df,'Population','total')
 print(f'The slope is {theta_1} and the y-intercept is {theta_0}.')
 </code></pre>
   which prints, as expected:
@@ -251,11 +252,11 @@ print(f'The slope is {theta_1} and the y-intercept is {theta_0}.')
 
 For other values of <code class = "inline">boro</code>, it will restrict the data set to those boroughs:
 
-<pre><code class="blockcode">si_0, si_1 = answer.compute_boro_lr(df,'Population','total',boro=['Staten Island'])
+<pre><code class="blockcode">si_0, si_1 = p7.compute_boro_lr(df,'Population','total',boro=['Staten Island'])
 print(f'SI:  The slope is {si_1} and the y-intercept is {si_0}.')
-q_0, q_1 = answer.compute_boro_lr(df,'Population','total',boro=['Queens'])
+q_0, q_1 = p7.compute_boro_lr(df,'Population','total',boro=['Queens'])
 print(f'Queens: The slope is {q_1} and the y-intercept is {q_0}.')
-b_0, b_1 = answer.compute_boro_lr(df,'Population','total',boro=['Bronx','Brooklyn'])
+b_0, b_1 = p7.compute_boro_lr(df,'Population','total',boro=['Bronx','Brooklyn'])
 print(f'B&B: The slope is {b_1} and the y-intercept is {b_0}.')</code></pre>
 which prints:
 
@@ -268,7 +269,7 @@ B&B: The slope is 0.3849458413516747 and the y-intercept is 1458.8043454328654.
 
 <p>
 Lastly, we have functions that will compute the error using different loss functions.  Let's start with identical columns, to make sure the functions return 0:
-<pre><code class="blockcode">loss =answer.compute_error(df['total'],df['total'])
+<pre><code class="blockcode">loss = p7.compute_error(df['total'],df['total'])
 print(f'The loss is {loss} for total vs total.')
 </code></pre>
 which prints:
@@ -279,9 +280,9 @@ which prints:
 Now, trying the function on our models:
 
 <pre><code class="blockcode">y_est = theta_0 + theta_1*df['Population']
-loss = answer.compute_error(df['total'],y_est)
+loss = p7.compute_error(df['total'],y_est)
 print(f'The loss is {loss} for default loss function: MSE.')
-loss = answer.compute_error(df['total'],y_est,loss_fnc= answer.RMSE)
+loss = p7.compute_error(df['total'],y_est,loss_fnc= p7.RMSE)
 print(f'The loss is {loss} for RMSE.')
 </code></pre>
 which prints:
