@@ -211,7 +211,7 @@ print(df.head())</code></pre>
 [5 rows x 32 columns]</code></pre>
 
    We can use our next function to compute a regression line for the <code class = "inline">Population</code> and <code class = "inline">total</code> columns:
-<pre><code class="blockcode">b,m = answer.compute_reg(df['Population'],df['total'])
+<pre><code class="blockcode">b,m = answer.compute_lin_reg(df['Population'],df['total'])
 print(f'The regression line has slope {m} and y-intercept {b}.')</code></pre>
   which prints:
 <pre><code class="datablock">The slope is 0.4536370834220062 and the y-intercept is -625.3358497794688.</code></pre>
