@@ -184,12 +184,12 @@ The DCP also provides a summary of population in New York City from the 2000 and
       </ul>
       The series are of the same length and contain numeric values only (all null and non-numeric values have been dropped).  The function returns the square root of the mean square error loss function between  <code class = "inline">y_actual</code> and <code class = "inline">y_estimate</code> (e.g. the square root of the sum of the squares of the differences).
 
-    <li> <code class = "inline">compute_error(y_actual,y_estimate,loss_fnc):</code>:
+    <li> <code class = "inline">compute_error(y_actual,y_estimate,loss_fnc=MSE_loss)</code>:
          This function takes three inputs:
          <ul>
            <li> <code class = "inline">y_actual</code>:  a Series containing numeric values.
            <li> <code class = "inline">y_estimate</code>:  a Series containing numeric values.
-           <li> <code class = "inline">loss_fnc</code>:  function that takes two numeric series as input parameters and returns a numeric value.
+           <li> <code class = "inline">loss_fnc</code>:  function that takes two numeric series as input parameters and returns a numeric value.  It has a default value of MSE_loss.
          </ul>
          The series are of the same length and contain numeric values only (all null and non-numeric values have been dropped).
 </ul>
