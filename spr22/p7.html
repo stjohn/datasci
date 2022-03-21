@@ -134,8 +134,8 @@ The DCP also provides a summary of population in New York City from the 2000 and
       </ul>
       The data in the two files are read and merged into a single DataFrame using <code class = "inline">nta2010</code> and <code class = "inline">NTA Code</code> as the keys.
       If the <code class = "inline">total</code> is null or <code class = "inline">Year</code> differs from 2010, that row is dropped.
-      The columns <code class = "inline">the_geom</code>, <code class = "inline">boro</code>, and <code class = "inline">nta2010</code> are dropped, and the resulting DataFrame is returned.
-
+        The columns <code class = "inline">the_geom</code>, <code class = "inline">boro</code>, and <code class = "inline">nta2010</code> are dropped, and the resulting DataFrame is returned.
+        (Hint: if you are getting a <code class="inline">The DataFrame did not match expected output</code> error, check to make sure that your DataFrame columns are ordered in the same way as Gradescope's Autograder.)
     <li> <code class = "inline">compute_lin_reg(x,y)</code>:
       This function takes two inputs:
       <ul>
@@ -165,7 +165,7 @@ The DCP also provides a summary of population in New York City from the 2000 and
           <li> <code class = "inline">theta_0</code> is the y-intercept of the best fitting line for <code class = "inline">x</code> and <code class = "inline">y</code>.
           <li> <code class = "inline">theta_1</code> is the slope of the best fitting line for <code class = "inline">x</code> and <code class = "inline">y</code>.
         </ul>
-        computed where theta_1 is the slope (<code class = "inline">r*(std of x)/(std of y)</code>) and theta_0 is the y-intercept (<code class = "inline">(ave of y) - theta_1*(ave of x)</code>). (see Lecture 12 for details).
+        computed where theta_1 is the slope (<code class = "inline">r*(std of y)/(std of x)</code>) and theta_0 is the y-intercept (<code class = "inline">(ave of y) - theta_1*(ave of x)</code>). (see Lecture 12 for details).
 
 
             <li> <code class = "inline">MSE_loss(y_actual,y_estimate):</code>:
