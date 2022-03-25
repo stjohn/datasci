@@ -103,7 +103,7 @@ To get full credit for a program, the file must include in the opening comment:
    <p><a name="p9"><b>Program 9: Logistic Taxis.</b></b> &emsp; <i>Due noon, Thursday, 7 April.
      <br>Learning Objective:  to train and validate models, given quantitative and qualitative data, as well as assessing model quality.</i>.
      <br>Available Libraries: pandas, datetime, pickle, sklearn, and core Python 3.6+.<br>
-     Data Source: <a href="https://data.cityofnewyork.us/Transportation/2020-For-Hire-Vehicles-Trip-Data/m3yx-mvk4">Yellow Taxi Trip Data</a> And<a href="https://data.cityofnewyork.us/Transportation/NYC-Taxi-Zones/d3c5-ddgc">NYC Taxi Zones</a> from OpenData NYC.<br>
+     Data Source: <a href="https://data.cityofnewyork.us/Transportation/2020-For-Hire-Vehicles-Trip-Data/m3yx-mvk4">Yellow Taxi Trip Data</a> and <a href="https://data.cityofnewyork.us/Transportation/NYC-Taxi-Zones/d3c5-ddgc">NYC Taxi Zones</a> from OpenData NYC.<br>
      Sample Datasets:  <a href="../fall21/taxi_new_years_day_2020.csv">taxi_new_years_day_2020.csv</a>,
       <a href="../fall21/taxi_new_years_day_2020.csv">taxi_4July2020.csv</a>,
       <a href="taxi_jfk_june2020.csv">taxi_jfk_june2020.csv</a>, and
@@ -130,7 +130,7 @@ To get full credit for a program, the file must include in the opening comment:
 
 
 
-
+<p>In your program, include the following functions from <a href="p8.html">Program 8</a>.  You may use your earlier function or the Program 8 solution available on Blackboard:
 <ul>
     <li> <code class = "inline">import_data(file_name) -> pd.DataFrame:</code>
       This function takes as one input parameter:
@@ -139,50 +139,48 @@ To get full credit for a program, the file must include in the opening comment:
       </ul>
       The data in the file is read into a DataFrame, and the resulting DataFrame is returned.  <br>(Note this is identical to the function with the same name in <a href="p8.html">Program 8</a>.  You may use your earlier function or the Program 8 solution available on Blackboard.)
 
-      <li> <code class = "inline">add_tip_time_features(df) -> pd.DataFrame:</code>
-        This function takes one input:
+    <li> <code class = "inline">add_tip_time_features(df) -> pd.DataFrame:</code>
+      This function takes one input:
+      <ul>
+        <li> <code class = "inline">df</code>: a DataFrame containing <a href="https://data.cityofnewyork.us/Transportation/2020-For-Hire-Vehicles-Trip-Data/m3yx-mvk4">Yellow Taxi Trip Data</a> from OpenData NYC.
+      </ul>
+      The function computes 3 new columns:
+      <ul>
+        <li><code class = "inline">percent_tip</code>: which is <code class="inline">100*tip_amount/(total_amount-tip_amount)</code>
+        <li><code class = "inline">duration</code>: the time the trip took in seconds.
+        <li><code class = "inline">dayofweek</code>: the day of the week that the trip started, represented as 0 for Monday, 1 for Tuesday, ... 6 for Sunday.
+      </ul>
+      The original DataFrame with these additional three columns is returned.
+      <br> (Note this is identical to the function with the same name in <a href="p8.html">Program 8</a>.  You may use your earlier function or the Program 8 solution available on Blackboard.)
+      <li> <code class = "inline">impute_numeric_cols(df, x_num_cols) -> pd.DataFrame:</code>
+        This function takes two inputs:
         <ul>
+          <li> <code class = "inline">df</code>: a DataFrame containing Yellow Taxi Trip Data from OpenData NYC.
+          <li> <code class = "inline">x_num_cols</code>: a list of numerical columns in <code class = "inline">df</code>.
+        </ul>
+        Missing data in the columns <code class = "inline">x_num_cols</code> are replaced with the median of the column.  Returns a DataFrame containing only the imputed numerical columns from input <code class = "inline">df</code>.
+    <br>(Note this is identical to the function with the same name in <a href="p8.html">Program 8</a>.  You may use your earlier function or the Program 8 solution available on Blackboard.)
+  </ul>
+
+And write the following new functions:
+
+  <ul>
+    <li> <code class = "inline">add_boro(df, file_name) -> pd.DataFrame:</code>
+      This function takes as two input parameters:
+      <ul>
           <li> <code class = "inline">df</code>: a DataFrame containing <a href="https://data.cityofnewyork.us/Transportation/2020-For-Hire-Vehicles-Trip-Data/m3yx-mvk4">Yellow Taxi Trip Data</a> from OpenData NYC.
-        </ul>
-        The function computes 3 new columns:
-        <ul>
-          <li><code class = "inline">percent_tip</code>: which is <code class="inline">100*tip_amount/(total_amount-tip_amount)</code>
-          <li><code class = "inline">duration</code>: the time the trip took in seconds.
-          <li><code class = "inline">dayofweek</code>: the day of the week that the trip started, represented as 0 for Monday, 1 for Tuesday, ... 6 for Sunday.
-        </ul>
-        The original DataFrame with these additional three columns is returned.
-        <br> (Note this is identical to the function with the same name in <a href="p8.html">Program 8</a>.  You may use your earlier function or the Program 8 solution available on Blackboard.)
+          <li> <code class = "inline">file_name</code>: the name of a CSV file containing <a href="https://data.cityofnewyork.us/Transportation/NYC-Taxi-Zones/d3c5-ddgc">NYC Taxi Zones</a> from OpenData NYC.
+      </ul>
+      Makes a DataFrame, using <code class = "inline">file_name</code>, to use to add pick up and drop off boroughs to <code class = "inline">df</code>.
+      In particular, adds two new columns, <code class = "inline">PU_borough</code> and <code class = "inline">DO_borough</code>, to the <code class = "inline">df</code>, that contain the borough corresponding to the pick up taxi zone ID (stored in <code class = "inline">PULocationID</code>) and the borough corresponding to the drop off taxi zone (stored in <code class = "inline">DOLocationID</code>).  Returns <code class = "inline">df</code> with these two additional columns (<code class = "inline">PU_borough</code> and <code class = "inline">DO_borough</code>).
 
-    <li> ADD BORO
-
-
-    <li> <code class = "inline">split_columns_by_data_type(df) -> dict:</code>
-      """
-      Separate out raw df into y, numerical x columns, and categorical x columns
-      :param df: pandas dataframe, output of import_data()
-      :return: a dictionary of lists
-      """
-
-
-    <li> <code class = "inline">impute_numeric_cols(df, x_num_cols) -> pd.DataFrame:</code>
-      """
-      For numeric columns, impute missing data with the median
-      :param df: pandas dataframe, output of import_data()
-      :param x_num_cols: list of numerical X columns, output of application of split_columns_by_data_type()
-      :return: pandas dataframe containing imputed numerical columns from input df
-      """
-
-      FROM BEFORE-- move to top?
-
-    <li> <code class = "inline">transform_numeric_cols(df_num_imputed, degree_num=2) -> pd.DataFrame:</code>
-      """
-      :param df_num_imputed:
-      :param degree_num:
-      :return:
-      """
-
-      FROM BEFORE-- move to top?
-
+    <li> <code class = "inline">split_columns_by_data_type(df) -> list,list:</code>
+      This function takes as one input:
+      <ul>
+          <li> <code class = "inline">df</code>: a DataFrame containing columns with numeric values, string values, as well as other (e.g. datetimes).
+      </ul>
+      This function separates the columns of the DataFrame, <code class = "inline">df.columns</code> into three lists:  those that contain numeric values, those that include other formats (e.g. strings and datetimes).  Return both lists.  Pandas has a useful function
+      <code class = "inline">DataFrame.select_dtypes</code> (see <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.select_dtypes.html">documentation</a> for syntax and types recognized).
 
     <li> <code class = "inline">impute_categorical_cols(df, x_cat_cols) -> pd.DataFrame:</code>
       """
@@ -214,37 +212,17 @@ To get full credit for a program, the file must include in the opening comment:
       :return:
       """
 
+    <li> <code class = "inline">fit_logistic_regression(x_train, y_train,file=None):</code>
 
 
-    <li> <code class = "inline">fit_linear_regression(x_train, y_train):</code>
-      """
-      :param x_train:
-      :param y_train:
-      :return:
-      """
-
-
-    <li> <code class = "inline">predict_using_trained_model(mod, x, y):</code>
-      """
-      In testing code, run this twice!  to evaluate mse and r2 and see diff between
-      apply to training dataset versus testing dataset
-      :param mod:
-      :param x:
-      :param y:
-      :return:
-      """
-
-
-
-    <li> <code class = "inline">ouput_model(mod):</code>
-      # [SS] not sure how to write an Autograder test for this, thoughts?
-      dump(mod, 'mod.joblib')
-
-
-    <li> <code class = "inline">load_model(mod_filename):</code>
-      # [SS] not sure how to write an Autograder test for this, thoughts?
-      mod = load(mod_filename)
-      return mod
+    <li> <code class = "inline">predict_using_trained_model(file_name, x, y):</code>
+      This function takes three inputs:
+      <ul>
+        <li> <code class = "inline">file_name</code>: a trained model for the data.
+        <li> <code class = "inline">x</code>: an array or  DataFrame of numeric columns with no null values.
+        <li> <code class = "inline">y</code>: an array or DataFrame of numeric columns with no null values.
+      </ul>
+      Computes and returns the mean squared error and r2 score between the values predicted by the model (<code class = "inline">mod</code> on <code class = "inline">x</code>) and the actual values (<code class = "inline">y</code>).  Note that <code class = "inline">sklearn.metrics</code> contains two functions that may be of use:  <code class = "inline">mean_squared_error</code> and <code class = "inline">r2_score</code>.
 
 </ul>
 
