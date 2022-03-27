@@ -179,9 +179,9 @@ print(df[ ['trip_distance','duration','dayofweek','total_amount','percent_tip'] 
 
 
 <p>We can impute the missing data in numerical columns with their median value.  For example:
-  <pre><code class="blockcode">print(df[ ['passenger_count','trip_distance'] ])
+  <pre><code class="blockcode">print(df[ ['passenger_count','trip_distance'] ].head(10) )
 df['passenger_count'] = impute_numeric_cols(df,['passenger_count'])
-print( df[ ['passenger_count','trip_distance'] ].head() )</code></pre>
+print( df[ ['passenger_count','trip_distance'] ].head(10) )</code></pre>
 shows the <code class = "inline">passenger_count</code> the results of <code class = "inline">impute_numeric_cols</code>:
   <pre><code class="datablock">   passenger_count  trip_distance
 0              1.0          12.59
