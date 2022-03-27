@@ -64,44 +64,22 @@ Spring 2022<br><br>
 <a href="work.html#project">Project</a>&nbsp;&nbsp;&nbsp;
 <hr>
 
-<p>
-<h3>General Notes</h3>
-
-<p>This program builds on the concepts and code developed during lecture and through the reading.  Mastery of material is assessed via
-<ul>
-  <li> Autograding of the program submitted to Gradescope, and
-  <li> Completion of a timed coding quiz on the material.  See <a href="work.html#quizzes">Quizzes</a> for details.
-</ul>
-
-Solutions to both will be available on Blackboard (<tt>Course Materials : Solutions</tt>) an hour after their respective deadline.
-
-<h4>Autograder Notes</h4>
-
-<p> Submitted code must be in Python, using only the specified libraries.  The autograder expects a <code class="inline">.py</code> file and does not accept iPython notebooks.
-Also, to receive full credit, the code should be compatible with Python 3.6 (the default for the Gradescope autograders).
-
-<p>To encourage starting early on programs, bonus points are given for early submission.  A point a day, up to a total of 3 bonus points (10% of the program grade), are possible.  The points are prorated by hour.  For example, if you turn in the program 36 hours early, then the bonus poins are: (36 hours/3 days)*3 points = (36 hours/72 hours)*3 points = 1.5 points.
-
-<p>
-To get full credit for a program, the file must include in the opening comment:
-<ul>
-    <li> Your name, as it appears in your Gradescope registration.
-    <li> The email you are using for Gradescope.
-    <li> A list of any resources you used for the program.  Include classmates and tutors that you worked with, along with any websites or tutorials that you used.  If you used no resources (other than the class notes and textbooks), then you should include the line:  "No resources used."
-</ul>
-
-
-
-<br>
-<br>
-<br>
+<object width=100% height=50% type="text/html" data="generalNotes.html" border="0"
+   style="overflow: hidden;">
+</object>
 <hr>
 
 <h2>Program Description</h2>
 
     <p><a name="p3"><b>Program 3: Restaurant Rankings.</b></b> &emsp; <i>Due noon, Thursday, 24 February.
       <br>Learning Objective: students can successfully filter formatted data using standard Pandas operations for selecting and joining data.
-      <br>Available Libraries: Pandas and core Python 3.6+.</i>
+      <br>Available Libraries: Pandas and core Python 3.6+.
+      <br>Data Sources: <a href="https://data.cityofnewyork.us/City-Government/NTA-map/d3qk-pfyz">Neigborhood Tabulation Areas</a>, <a href="https://data.cityofnewyork.us/Health/DOHMH-New-York-City-Restaurant-Inspection-Results/43nn-pn8j">Restaurant Inspection Data @ OpenData NYC</a>, NYC Department of Health
+      <a href="https://a816-health.nyc.gov/ABCEatsRestaurants/#!/faq">Restaurant Grading</a>.
+      <br>Sample Datasets:  Neighborhood Tabulation Areas: <a href="../fall21/nynta.csv">nynta.csv</a>.<br>
+      Restaurant Inspections:
+      <a href= "../fall21/restaurants1Aug21.csv">restaurants1Aug21.csv</a>,
+      <a href = "../fall21/restaurants30July.csv">restaurants30July.csv</a>.</i>
 
       <p>
         The NYC Department of Health & Mental Health regularly inspects restaurants and releases the results:
@@ -110,7 +88,7 @@ To get full credit for a program, the file must include in the opening comment:
 
 
         <p>These results are also available in CSV files at
-        <a href="OpenData NYC">https://data.cityofnewyork.us/Health/DOHMH-New-York-City-Restaurant-Inspection-Results/43nn-pn8j</a>.  This programming assignment focuses on predicting letter grades for restaurants, yet to be graded, as well computing summary statistics by neighborhood.
+        <a href="https://data.cityofnewyork.us/Health/DOHMH-New-York-City-Restaurant-Inspection-Results/43nn-pn8j">OpenData NYC</a>.  This programming assignment focuses on predicting letter grades for restaurants, yet to be graded, as well computing summary statistics by neighborhood.
         The assignment is broken into the following functions to allow for unit testing:
 
         <ul>
