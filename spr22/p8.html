@@ -136,7 +136,7 @@ Spring 2022<br><br>
         <li> <code class = "inline">df_num</code>: a DataFrame of numeric columns with no null values.
         <li> <code class = "inline">degree_num</code>: the degree used for the polynomial encoding.
       </ul>
-      An object of <code class = "inline">sklearn.preprocessing.PolynomialFeatures</code> is instantiated with inputs <code class = "inline">degree=degree_num</code>.  The model is than fitted (using <code class = "inline">fit_transform</code>) to the numeric columns, <code class = "inline">df_num_imputed</code>, and the resulting array is returned.  (See <a href="http://www.textbook.ds100.org/ch/20/feature_polynomial.html">Chapter 20.2.2</a> for an example).
+      An object of <code class = "inline">sklearn.preprocessing.PolynomialFeatures</code> is instantiated with inputs <code class = "inline">degree=degree_num</code> and <code class = "inline">include_bias=False</code> (as discussed in lecture and textbook, we will not include bias when fitting these models).  The model is than fitted (using <code class = "inline">fit_transform</code>) to the numeric columns, <code class = "inline">df_num_imputed</code>, and the resulting array is returned.  (See <a href="http://www.textbook.ds100.org/ch/20/feature_polynomial.html">Chapter 20.2.2</a> for an example).
 
 
     <li> <code class = "inline">fit_linear_regression(x_train, y_train)</code>
@@ -145,7 +145,7 @@ Spring 2022<br><br>
         <li> <code class = "inline">x_train</code>: an array of numeric columns with no null values.
         <li> <code class = "inline">y_train</code>: an array of numeric columns with no null values.
       </ul>
-      Fits a linear model to <code class = "inline">x_train</code> and <code class = "inline">y_train</code> and returns the intercept, model coefficients, and model object.
+      Fits a linear model to <code class = "inline">x_train</code> and <code class = "inline">y_train</code>, using <code class = "inline">sklearn.linear_model.LinearRegression</code> (see lecture & textbook for details on setting up the model).  The function returns the intercept (<code class = "inline">intercept_</code>), the model coefficients (<code class = "inline">coef_</code>), and model object that you constructed.
 
     <li> <code class = "inline">predict_using_trained_model(mod, x, y):</code>
       This function takes three inputs:
