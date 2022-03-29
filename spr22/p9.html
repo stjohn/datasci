@@ -143,7 +143,12 @@ And write the following new functions:
           <li> <code class = "inline">file_name</code>: the name of a CSV file containing <a href="https://data.cityofnewyork.us/Transportation/NYC-Taxi-Zones/d3c5-ddgc">NYC Taxi Zones</a> from OpenData NYC.
       </ul>
       Makes a DataFrame, using <code class = "inline">file_name</code>, to add pick up and drop off boroughs to <code class = "inline">df</code>.
-      In particular, adds two new columns, <code class = "inline">PU_borough</code> and <code class = "inline">DO_borough</code>, to the <code class = "inline">df</code>, that contain the borough corresponding to the pick up taxi zone ID (stored in <code class = "inline">PULocationID</code>) and the borough corresponding to the drop off taxi zone (stored in <code class = "inline">DOLocationID</code>).  Returns <code class = "inline">df</code> with these two additional columns (<code class = "inline">PU_borough</code> and <code class = "inline">DO_borough</code>).
+      In particular, adds two new columns to the <code class = "inline">df</code>:
+      <ul>
+        <li> <code class = "inline">PU_borough</code> that contain the borough corresponding to the pick up taxi zone ID (stored in <code class = "inline">PULocationID</code>), and
+        <li> <code class = "inline">DO_borough</code> that contain the borough corresponding to the drop off taxi zone (stored in <code class = "inline">DOLocationID</code>)
+      </ul>
+      Returns <code class = "inline">df</code> with these two additional columns (<code class = "inline">PU_borough</code> and <code class = "inline">DO_borough</code>).
 
     <li> <code class = "inline">add_flags(df) -> pd.DataFrame:</code>
       This function takes one input parameter:
@@ -155,6 +160,7 @@ And write the following new functions:
         <li> <code class = "inline">paid_toll</code> which is 1 if a toll was paid on the trip and 0 in no tolls were paid.
         <li> <code class = "inline">cross_boro</code> which is 1 if the trip started and ended in different borough, and 0 if the trip started and ended in the same borough.
       </ul>
+      Returns <code class = "inline">df</code> with these two additional columns (<code class = "inline">paid_toll</code> and <code class = "inline">cross_boro</code>)
 
     <li> <code class = "inline">encode_categorical_cols(df) -> pd.DataFrame:</code>
       This function takes one input parameter:
@@ -163,11 +169,10 @@ And write the following new functions:
       </ul>
       Apply to the borough columns...  <code class = "inline">PU_borough</code> and <code class = "inline">DO_borough</code> Check for naming convention of get_dummies
 
-      """
       One hot encode categorical columns, remove first variable, to get k-1 dummies out of k categorical levels
       :param df_cat_imputed: pandas dataframe, output of impute_categorical_cols()
       :return: pandas dataframe containing the one hot encoded categorical dataframe
-      """
+
 
 
     <li> <code class = "inline">split_test_train(df, y_col_name, df_cat_encoded, df_num_imputed, df_num_transformed,
@@ -175,28 +180,24 @@ And write the following new functions:
       This function takes ??? input parameter:
        <ul>
            <li> <code class = "inline">df</code>: a DataFrame containing <a href="https://data.cityofnewyork.us/Transportation/2020-For-Hire-Vehicles-Trip-Data/m3yx-mvk4">Yellow Taxi Trip Data</a> from OpenData NYC to which <code class = "inline">add_boro()</code> has been applied.
-           <li>  ADD MORE
-       </ul>
+           <li>  <code class = "inline">y_col_name</code>:
+           <li>  <code class = "inline">df_cat_encoded</code>:
+           <li>  <code class = "inline">df_num_imputed</code>:
+           <li>  <code class = "inline">df_num_transformed</code>:
+           <li>  <code class = "inline">test_size</code>:
+           <li>  <code class = "inline">random_state</code>:
+      </ul>
 
-      """
-      :param df:
-      :param y_col_name:
-      :param df_cat_encoded:
-      :param df_num_imputed:
-      :param df_num_transformed:
-      :param test_size:
-      :param random_state:
-      :return:
-      """
 
     <li> <code class = "inline">fit_logistic_regression(x_train, y_train,regularization='none'):</code>
       This function takes three input parameter:
       <ul>
-          <li> <code class = "inline"></code>: .
-          <li> <code class = "inline"></code>: .
-          <li> <code class = "inline"></code>: .
+          <li> <code class = "inline">x_train</code>: .
+          <li> <code class = "inline">y_train</code>: .
+          <li> <code class = "inline">regularization</code>: .
       </ul>
-      Fit logistic regression, have the option to add in regularization-- options for default engine is l2, can also accept none.  Return the model as a pickle.
+      Fits a logistic regression model to the <code class = "inline">x_train</code> and
+      <code class = "inline">y_train</code> data, using the logistic model from <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html">sklearn.linear_model</a>.  The model should use the <code class = "inline">solver = 'saga'</code> to allow all the options for regularization (called <code class = "inline">penalty</code> as the option to the model) be any of <code class = "inline">'elasticnet'</code>, <code class = "inline">'l1'</code>, <code class = "inline">'l2'</code>, and <code class = "inline">'none'</code>).  The resulting model should be returned as bytestream, using <a href="https://docs.python.org/3/library/pickle.html">pickle</a>.
 
     <li> <code class = "inline">predict_using_trained_model(mod_pkl, x, y):</code>
       This function takes three inputs:
@@ -210,88 +211,48 @@ And write the following new functions:
 </ul>
 
 
+<br><br>
+<p>For example, let's start by setting up a DataFrame, as we did in <a href="p8.html">Program 8</a>, with the file, <a href="taxi_jfk_june2020.csv">taxi_jfk_june2020.csv</a>, add in the tip and time features, and imputing missing values for <code class = "inline">passenger_count</code>:
 
-
-
-
-
-    <p>For example, if the file, <a href="../fall21/taxi_new_years_day_2020.csv">taxi_new_years_day_2020.csv</a>, was the first of January 2020 entries downloaded from <a href="https://data.cityofnewyork.us/Transportation/2020-For-Hire-Vehicles-Trip-Data/m3yx-mvk4">Yellow Taxi Trip Data</a> (about 170,000 entries) with the first 3 lines of:
-      <pre><code class="datablock">VendorID,tpep_pickup_datetime,tpep_dropoff_datetime,passenger_count,trip_distance,RatecodeID,store_and_fwd_flag,PULocationID,DOLocationID,payment_type,fare_amount,extra,mta_tax,tip_amount,tolls_amount,improvement_surcharge,total_amount,congestion_surcharge
-      1,01/01/2020 12:00:00 AM,01/01/2020 12:13:03 AM,1,2.2,1,N,68,170,1,10.5,3,0.5,2.85,0,0.3,17.15,2.5
-      2,01/01/2020 12:00:00 AM,01/01/2020 01:08:55 AM,5,1.43,1,N,48,239,2,6.5,0.5,0.5,0,0,0.3,10.3,2.5
-      </code></pre>
-        Then a sample run of the program:
-      <pre><code class="blockcode">Enter input file name: taxi_new_years_day2020.csv
-      Enter output file name:  taxi_Jan2020_with_percents.csv
-      </code></pre>
-
-        And the first three lines of <tt>taxi_Jan2020_with_percents.csv</tt> would be:
-      <pre><code class="datablock">VendorID,tpep_pickup_datetime,tpep_dropoff_datetime,passenger_count,trip_distance,RatecodeID,store_and_fwd_flag,PULocationID,DOLocationID,payment_type,fare_amount,extra,mta_tax,tip_amount,tolls_amount,improvement_surcharge,total_amount,congestion_surcharge,percent_tip,percent_fare
-      1.0,01/01/2020 12:00:00 AM,01/01/2020 12:13:03 AM,1.0,2.2,1.0,N,68,170,1.0,10.5,3.0,0.5,2.85,0.0,0.3,17.15,2.5,27.1,61.2
-      2.0,01/01/2020 12:00:00 AM,01/01/2020 01:08:55 AM,5.0,1.43,1.0,N,48,239,2.0,6.5,0.5,0.5,0.0,0.0,0.3,10.3,2.5,0.0,63.1
-      </code></pre>
-        <p> You should round the values stored in your new columns to the nearest tenth and save your CSV file without the indexing (i.e. <code class="inline">index=False</code>).
-
-      </p>
-
-
-
-<p>Examples:
-    <li>  Start with adding indicator variables-- graphs how correlated cross_boro and paid_tolls are, as well as duration/distance and scatter plot of distance vs. duration.  Lin model for this, then building logistic model, wo Regularization and with regularization.  Then save models as pkl files to use/compare for later.  Do similar analysis with multiple inputs.
-
-
-
- <p>For example, the file, <a href="taxi_jfk_june2020.csv">taxi_jfk_june2020.csv</a>, contains all taxi trips, starting from JFK in June 2020 <a href="https://data.cityofnewyork.us/Transportation/2020-For-Hire-Vehicles-Trip-Data/m3yx-mvk4">Yellow Taxi Trip Data</a> (about 9,500 entries) with the first lines are:
-   <pre><code class="datablock">VendorID,tpep_pickup_datetime,tpep_dropoff_datetime,passenger_count,trip_distance,RatecodeID,store_and_fwd_flag,PULocationID,DOLocationID,payment_type,fare_amount,extra,mta_tax,tip_amount,tolls_amount,improvement_surcharge,total_amount,congestion_surcharge
-2,06/01/2020 12:00:31 AM,06/01/2020 12:31:43 AM,1,12.59,1,N,132,189,2,37,0.5,0.5,0,0,0.3,38.3,0
-2,06/01/2020 12:05:23 AM,06/01/2020 12:29:05 AM,1,15.8,1,N,132,255,1,42,0.5,0.5,8.66,0,0.3,51.96,0
-2,06/01/2020 12:06:27 AM,06/01/2020 12:36:26 AM,1,18.19,2,N,132,142,1,52,0,0.5,10,0,0.3,65.3,2.5
-2,06/01/2020 12:08:48 AM,06/01/2020 12:40:48 AM,2,19,2,N,132,113,1,52,0,0.5,13.82,0,0.3,69.12,2.5
-2,06/01/2020 12:13:46 AM,06/01/2020 12:25:29 AM,1,7.21,1,N,132,134,2,21,0.5,0.5,0,0,0.3,22.3,0</code></pre>
-   Then our first functions:
-   <pre><code class="blockcode">df = import_data('taxi_jfk_june2020.csv')
+<pre><code class="blockcode">df = import_data('taxi_jfk_june2020.csv')
 df = add_tip_time_features(df)
-print(df[ ['trip_distance','duration','dayofweek','total_amount','percent_tip'] ].head() )</code></pre>
-   prints:
-   <pre><code class="datablock">   trip_distance  duration  dayofweek  total_amount  percent_tip
-0          12.59    1872.0          0         38.30     0.000000
-1          15.80    1422.0          0         51.96    20.000000
-2          18.19    1799.0          0         65.30    18.083183
-3          19.00    1920.0          0         69.12    24.990958
-4           7.21     703.0          0         22.30     0.000000</code></pre>
-
-
-<p>We can impute the missing data in numerical columns with their median value.  For example:
-<pre><code class="blockcode">print(df[ ['passenger_count','trip_distance'] ])
 df['passenger_count'] = impute_numeric_cols(df,['passenger_count'])
-print( df[ ['passenger_count','trip_distance'] ].head() )</code></pre>
-shows the <code class = "inline">passenger_count</code> the results of <code class = "inline">impute_numeric_cols</code>:
-<pre><code class="datablock">   passenger_count  trip_distance
-0              1.0          12.59
-1              1.0          15.80
-2              1.0          18.19
-3              2.0          19.00
-4              1.0           7.21
-5              1.0           6.50
-6              2.0          13.90
-7              NaN           0.00
-8              NaN           0.00
-9              NaN           0.00
-passenger_count  trip_distance
-0              1.0          12.59
-1              1.0          15.80
-2              1.0          18.19
-3              2.0          19.00
-4              1.0           7.21
-5              1.0           6.50
-6              2.0          13.90
-7              1.0           0.00
-8              1.0           0.00
-9              1.0           0.00</code></pre>
+</code></pre>
+
+Next, let's use our new functions to add in boroughs for the pick up and drop off locations, as well as the indicators for if a toll was paid and if the trip started and ended in different boroughs:
+<pre><code class="blockcode">df = df.add_flags(df)
+SHOULD we split encode_categorical_cols-- split into pieces?
+</code></pre>
+prints:
+<pre><code class="datablock"></code></pre>
+
+<p>
+Make plots duration vs. distance and cross_boro vs. paid_toll
+<pre><code class="blockcode">#Explore some data:
+import matplotlib.pyplot as plt
+import seaborn as sns
+sns.set_theme(color_codes=True)
+
+sns.lmplot(x="total_amount", y="percent_tip", data=df)
+tot_r = df['total_amount'].corr(df['percent_tip'])
+plt.title(f'Taxi Trips from JFK, June 2020 with r = {tot_r:.2f}')
+plt.tight_layout()  #for nicer margins
+plt.show()
+sns.lmplot(x="trip_distance", y="percent_tip", data=df)
+dist_r = df['trip_distance'].corr(df['percent_tip'])
+plt.title(f'Taxi Trips from JFK, June 2020 with r = {dist_r:.2f}')
+plt.tight_layout()  #for nicer margins
+plt.show()</code></pre>
+
+
+<p>The resulting images:
+
+<p><img src="p8_jfk_total_tip.png" height = 300>
+<img src="p8_jfk_dist_tip.png" height = 300>
 
 
 <p>
-The running example in the textbook focuses on predicting restaurant tips.  A highly correlated feature with tips for restaurant meals is the total bill.  Let's look at the taxi data set to see if a similar correlation is suggested for tips on yellow taxi trips:
+Make a scatter plot of distace versus paid_toll:
 
 <pre><code class="blockcode">#Explore some data:
 import matplotlib.pyplot as plt
@@ -314,135 +275,58 @@ plt.show()</code></pre>
 <p><img src="p8_jfk_total_tip.png" height = 300>
 <img src="p8_jfk_dist_tip.png" height = 300>
 
-<p>
-Neither total amount or distance of the trip are strongly correlated, suggesting a linear regression model with a single input will not make a good predictor.  Let's build a more complicated model that uses multiple inputs, including the numerical columns:
 
-<pre><code class="blockcode">num_cols = ['passenger_count','trip_distance','RatecodeID','PULocationID','DOLocationID','payment_type','fare_amount','extra','mta_tax','tip_amount','tolls_amount','improvement_surcharge','total_amount','congestion_surcharge','duration','dayofweek']
-df_imputed = impute_numeric_cols(df,num_cols)
-df_x = df_imputed
-y = df['percent_tip']</code></pre>
+
+<p>
+Can we predict when someone pays a toll.  Note that paying a toll suggests crossing borough but not necessarily the reverse:
+
+<p>
+Build logistic model, wo Regularization and with regularization.  Then save models as pkl files to use/compare for later.  Do similar analysis with multiple inputs.
+
+
+
+
+
+
+
+
+<p>
+Let's build a more complicated model that uses multiple inputs, including the numerical columns:
+
+<pre><code class="blockcode"></code></pre>
 
 <p> With the missing numeric data imputed, we can fit the model on training sets (of size 25%):
 
-<pre><code class="blockcode">from sklearn.model_selection import train_test_split
-print('For numeric columns, training on 25% of data:')
-x_train,x_test,y_train,y_test = train_test_split(df_x,y)
-intercept, coeffs, mod = fit_linear_regression(x_train,y_train)
-print(f'intercept = {intercept} and coefficients = {coeffs}')
-tr_err,tr_r2 = predict_using_trained_model(mod, x_train,y_train)
-print(f'training:  RMSE = {tr_err} and r2 = {tr_r2}.')
-test_err,test_r2 = predict_using_trained_model(mod, x_test,y_test)
-print(f'testing:  RMSE = {test_err} and r2 = {test_r2}.')</code></pre>
+<pre><code class="blockcode"></code></pre>
 
 <p>the resulting model does a reasonable both with the training and testing data sets that we used to validate the model:
 
-<pre><code class="datablock">For numeric columns, training on 25% of data:
-intercept = 34.128603724366776 and coefficients = [-4.51251635e-02  1.42762012e-01 -2.13115277e-01  5.25968158e-15
--2.55903361e-03 -6.90080569e+00  4.14314789e-02  1.10260155e-02
--3.02379090e+00  1.29921229e+00  1.10123016e-01 -4.40906348e+01
--1.81824685e-01  5.12722540e-02 -3.16853791e-05  1.08447199e-02]
-training:  RMSE = 34.01017686662997 and r2 = 0.7350167925786109.
-testing:  RMSE = 23.9974484390634 and r2 = 0.798760914470428.
+<pre><code class="datablock">
 </code></pre>
 
 <p>We can use the model for other yellow taxi data sets to see how well our model does:
 
-<pre><code class="blockcode">print(f'Prediction for 4 July data:')
-df_july = pd.read_csv('taxi_4July2020.csv').head()
-df_july = add_tip_time_features(df_july)
-df_j_imp = impute_numeric_cols(df_july,num_cols)
-df_x = df_imputed
-y = df_july['percent_tip']
-df_july_imp = impute_numeric_cols(df_july,num_cols)
-july_err,july_r2 = predict_using_trained_model(mod, df_july_imp,df_july['percent_tip'])
-print(f'training:  RMSE = {tr_err} and r2 = {tr_r2}.')</code></pre>
+<pre><code class="blockcode"></code></pre>
 
 <p>The root mean squared error is higher, but still a reasonable fit:
-<pre><code class="datablock">Prediction for 4 July data:
-training:  RMSE = 34.01017686662997 and r2 = 0.7350167925786109.
+<pre><code class="datablock">
 </code></pre>
 
 <p>Do we need 25% of the data for training?  Let's try with just 10% of the data and see how well the model does on the training and testing data:
 
-<pre><code class="blockcode">print('For numeric columns, training on 10% of data:')
-df_x = df_imputed
-y = df['percent_tip']
-x_train,x_test,y_train,y_test = train_test_split(df_x,y,test_size=0.1,random_state=17)
-intercept, coeffs, mod = fit_linear_regression(x_train,y_train)
-print(f'intercept = {intercept} and coefficients = {coeffs}')
-tr_err,tr_r2 = predict_using_trained_model(mod, x_train,y_train)
-print(f'training:  RMSE = {tr_err} and r2 = {tr_r2}.')
-test_err,test_r2 = predict_using_trained_model(mod, x_test,y_test)
-print(f'testing:  RMSE = {test_err} and r2 = {test_r2}.')</code></pre>
+<pre><code class="blockcode"></code></pre>
 
-<pre><code class="datablock">For numeric columns, training on 10% of data:
-intercept = 31.93944365469102 and coefficients = [-6.96532365e-02  1.53416173e-01 -1.75092738e-01  4.35768088e-12
--2.11111185e-03 -6.89816662e+00 -2.41541506e-02  3.72953218e-02
--3.24270162e+00  1.26217702e+00  2.79494331e-02 -3.67595994e+01
--1.22350450e-01 -9.82610653e-02 -2.68681888e-05  1.17100065e-02]
-training:  RMSE = 31.839870447532608 and r2 = 0.7460779638992571.
-testing:  RMSE = 27.58958147548388 and r2 = 0.7913497106610776.
+<pre><code class="datablock">
 </code></pre>
 
 <p>Lastly, we can use quadratic features to build a model:
 
-<pre><code class="blockcode">print('For transformed columns, training on 25% of data:')
-df_transformed = transform_numeric_cols(df_imputed)
-df_x = df_transformed
-x_train,x_test,y_train,y_test = train_test_split(df_x,y)
-int_poly, co_poly, mod_poly = fit_linear_regression(x_train,y_train)
-print(f'intercept = {int_poly} and coefficients = {co_poly}')
-tr_err,tr_r2 = predict_using_trained_model(mod_poly, x_train,y_train)
-print(f'training:  RMSE = {tr_err} and r2 = {tr_r2}.')
-test_err,test_r2 = predict_using_trained_model(mod_poly, x_test,y_test)
-print(f'testing:  RMSE = {test_err} and r2 = {test_r2}.')
+<pre><code class="blockcode">
 </pre></code>
 
 <p>the resulting model produces the following parameters and does very well with the training data, but not as well on validation:
 
-<pre><code class="datablock">testing:  RMSE = 27.58958147548388 and r2 = 0.7913497106610776.
-For transformed columns, training on 25% of data:
-intercept = 98.72874163717195 and coefficients = [ 2.10419587e-05 -7.33813212e-05  3.36448376e-05 -1.14982704e-03
-3.21888112e-07 -1.44329284e-05 -8.69336745e-04  1.66712369e-04
-2.81695737e-04 -1.08879523e-03  3.41908316e-04  2.12645367e-04
--1.14415611e-02 -1.90864671e-04 -3.59725562e-05 -1.35384327e-07
-3.16192056e-05 -9.70729528e-03  4.68643310e-02  6.01985117e-03
--3.18255958e-03  1.30289584e-04 -2.68086479e-01 -3.84924504e-02
--1.65688146e-02  1.50481295e+00 -5.70407301e-02 -2.27108373e-02
-2.44141763e-02  2.50939438e-02 -1.76656859e-02  2.59647998e-05
--8.80232044e-04 -1.68208742e-03  4.63169427e-02  4.20433722e-03
-1.43176776e-04  1.06253564e-01 -6.34687088e-03 -5.11306022e-03
--4.48735254e-01 -1.76742277e-02 -2.67139991e-02 -1.77037894e+00
-4.89418246e-03  6.67734938e-02  2.61976357e-05  5.54436646e-03
-1.98243118e-01 -1.51783343e-01  1.30845509e-03 -3.03937419e-01
--2.56107583e-01  6.41789127e-03  2.86357901e-01 -3.85596590e-01
--3.39876707e-01  5.92648639e+01  2.73192850e-01 -2.66978945e-01
--8.89359192e-05 -6.07624881e-02  2.58565114e-11 -1.84421817e-03
--1.14789591e-01  2.19810468e-02  3.71806539e-02 -1.43718154e-01
-4.51344132e-02  2.80868768e-02 -1.51028036e+00 -2.52000297e-02
--4.74896197e-03 -6.65332251e-06  4.16021836e-03  6.31572545e-08
-2.15564627e-03  2.64693081e-04  2.21420140e-05  3.08987702e-02
-6.24975144e-04  2.75875164e-04  7.32510247e-01 -1.97699408e-04
--9.16773789e-04 -1.59614030e-06 -2.89070057e-04  1.24237417e+00
--1.54267635e-01 -2.27724946e-01  5.13635975e+00  3.41927378e-04
--3.14913649e-01 -2.31439213e-02  3.06565666e-01 -6.16213488e-01
--1.47606798e-04 -8.65390190e-02  3.68778339e-02  1.26272255e-01
-4.81095283e-01  1.45582565e-01  1.27227451e-01 -7.45844272e-02
--1.05134981e-01 -4.77707890e-01  1.19878534e-04 -1.60477785e-02
-8.79743756e-02 -3.46596353e+00  1.55694466e-01  1.62418563e-01
--2.61367204e-01 -1.59647359e-01 -3.77665930e-01  1.09330543e-04
-1.09208554e-02 -5.44386948e-04  6.14354603e-01  4.03678198e-01
--2.39788549e-02 -3.80000807e-01  1.60567166e+00  5.47130715e-05
--7.00781561e-01  1.16678588e-01  1.72987001e-01  1.02578238e-04
--1.81873085e-01 -5.69410563e-01  6.15174164e-05 -5.18682465e-02
-8.35896110e-02  6.38338090e-05 -1.52328411e-01 -4.96025702e-01
-1.11070132e-04 -3.21976800e-02 -3.43245537e-03 -3.59795585e-01
--1.07930916e-05  4.00086335e-03 -4.81844771e-01  6.89662685e-02
-4.69985663e-01 -1.22753069e-04  1.91297859e-02 -8.99424477e-05
-2.04662228e-04  6.33667804e-02  5.53689326e-09  1.30022472e-05
-5.53118040e-03]
-training:  RMSE = 13.088491006521934 and r2 = 0.8967712162338656.
-testing:  RMSE = 84.80328619938028 and r2 = 0.31582057991135126.
+<pre><code class="datablock">
 </code></pre>
 
 
