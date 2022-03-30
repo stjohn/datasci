@@ -187,16 +187,19 @@ And write the following new functions:
       Calls <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">sklearn's train_test_split</a> function to split the data set into a training and testing subsets:  x_train, x_test, y_train, y_test.  The resulting 4 subsets are returned.<br>
       Hint:  see the examples for <a href="p8.html">Program 8</a> for a similar splitting of data into training and testing datasets.
 
-    <li> <code class = "inline">fit_logistic_regression(x_train, y_train,penalty='none'): -> object</code>
-      This function takes three input parameter:
+    <li> <code class = "inline">fit_logistic_regression(x_train, y_train,penalty='none',max_iter=1000): -> object</code>
+      This function takes four input parameter:
       <ul>
           <li> <code class = "inline">x_train</code>: the indepenent variable(s) for the analysis.
           <li> <code class = "inline">y_train</code>: the dependent variable for the analysis.
           <li> <code class = "inline">penalty</code>: the type of regularization applied.  The default value for this parameter is 'none'.
+          <li> <code class = "inline">max_iter</code>: number of iterations allowed when fitting model.  The default value for this parameter is 1000.
       </ul>
       Fits a logistic regression model to the <code class = "inline">x_train</code> and
       <code class = "inline">y_train</code> data, using the logistic model from <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html">sklearn.linear_model</a>.  The model should use the <code class = "inline">solver = 'saga'</code> to allow all the options for regularization (called <code class = "inline">penalty</code> as the option to the model) be any of <code class = "inline">'elasticnet'</code>, <code class = "inline">'l1'</code>,
-      <code class = "inline">'l2'</code>, and <code class = "inline">'none'</code>).  The resulting model should be returned as bytestream, using <a href="https://docs.python.org/3/library/pickle.html">pickle</a>.
+      <code class = "inline">'l2'</code>, and <code class = "inline">'none'</code>).
+      The parameter <code class = "inline">max_iter</code> should also be used when fitting the model.
+      The resulting model should be returned as bytestream, using <a href="https://docs.python.org/3/library/pickle.html">pickle</a>.
 
     <li> <code class = "inline">predict_using_trained_model(mod_pkl, x, y): -> float,float</code>
       This function takes three inputs:
@@ -261,29 +264,43 @@ prints:
 [14417 rows x 5 columns]</code></pre>
 
 <p>
-Let's explore the data some, by making scatter plots of some of features:
+Let's explore the data some:
 <pre><code class="blockcode">import matplotlib.pyplot as plt
 import seaborn as sns
 sns.set_theme(color_codes=True)
 
 sns.lmplot(x="trip_distance", y="duration", data=df)
 tot_r = df['trip_distance'].corr(df['duration'])
+plt.title(f'All Taxi Trips from 4 July 2020 with r = {tot_r:.2f}')
+plt.tight_layout()  #for nicer margins
+plt.show()</code></pre>
+
+<p>The resulting plot:
+<p><img src="taxi_all_dist_v_duration.png" height = 300>
+
+<p>There are some extremely long trips in there-- some over 100 miles.  To focus on trips that stay within the city, let's limit our data to trips that are less than 50 miles in distance, and explore the data by making scatter plots of some of the features:
+
+<pre><code class="blockcode">df = df[df['trip_distance'] < 50]
+
+sns.lmplot(x="trip_distance", y="duration", data=df)
+tot_r = df['trip_distance'].corr(df['duration'])
 plt.title(f'Taxi Trips from 4 July 2020 with r = {tot_r:.2f}')
 plt.tight_layout()  #for nicer margins
 plt.show()
-sns.lmplot(x="trip_distance", y="paid_toll", data=df,fit_reg=False)
+sns.lmplot(x="trip_distance", y="paid_toll", data=df,fit_reg=False,y_jitter=0.1,
+           scatter_kws={'alpha': 0.3})
 dist_r = df['trip_distance'].corr(df['paid_toll'])
 plt.title(f'Taxi Trips from 4 July 2020 with r = {dist_r:.2f}')
 plt.tight_layout()  #for nicer margins
 plt.show()
-sns.lmplot(x="trip_distance", y="cross_boro", data=df,fit_reg=False)
+sns.lmplot(x="trip_distance", y="cross_boro", data=df,fit_reg=False,y_jitter=0.1,
+           scatter_kws={'alpha': 0.3})
 dist_r = df['trip_distance'].corr(df['cross_boro'])
 plt.title(f'Taxi Trips from 4 July 2020 with r = {dist_r:.2f}')
 plt.tight_layout()  #for nicer margins
 plt.show()</code></pre>
 
-
-<p>The resulting images:
+<p>As discussed in Lecture 16 and <a href="http://www.textbook.ds100.org/ch/24/classification_cost.html">Chapter 24</a>, we added jitter to the y-values to better visualize the data since so much has similar values:
 
 <p><img src="taxi_dist_v_duration.png" height = 300>
 <img src="taxi_dist_v_paid_toll.png" height = 300>
@@ -291,66 +308,114 @@ plt.show()</code></pre>
 
 
 <p>
-Interestingly, in our left image, the distance traveled and the duration of the trip are not strongly correlated.  The middle image show negative correlation between trip distance and paying tolls, with outliers influencing the relationship.  While the right images shows the trip distance positively correlated with trips that start and end in different boroughs.
-
-<br><br><i>More details to follow...</i>
-<!--
-Let's build a logistic model on just these two features:  trip_distance and cross_boro.
+Interestingly, in our left image, the distance traveled and the duration of the trip are not strongly correlated.  The middle image show negative correlation between trip distance and paying tolls.  While the right images shows the trip distance positively correlated with trips that start and end in different boroughs.
 
 <p>
 Next, let's encode the categorical columns for pick up and drop off boroughs so we can use them as inputs for our model.
 
-<pre><code class="blockcode"></code></pre>
+<pre><code class="blockcode">df_pu = answer.encode_categorical_col(df['PU_borough'],'PU_')
+print(df_pu.head())
+df_do = answer.encode_categorical_col(df['DO_borough'],'DO_')
+print(df_do.head())</code></pre>
 
-<p>
+<p>The first few lines of the resulting DataFrames:
 
-<pre><code class="datablock"></code></pre>
+<pre><code class="datablock">   PU_Bronx  PU_Brooklyn  PU_Manhattan  PU_Queens
+0         0            0             1          0
+1         1            0             0          0
+2         0            0             1          0
+3         0            0             1          0
+4         0            0             1          0
+   DO_Bronx  DO_Brooklyn  DO_EWR  DO_Manhattan  DO_Queens
+0         0            0       0             1          0
+1         1            0       0             0          0
+2         0            0       0             0          1
+3         0            0       0             1          0
+4         0            0       0             1          0</code></pre>
 
-<p>We'll split our data into training and testing data sets:
+<p>Let's combine all the DataFrames into one (using <a href="https://pandas.pydata.org/docs/reference/api/pandas.concat.html">concat</a> along column axis):
 
-<pre><code class="blockcode"></code></pre>
+<pre><code class="blockcode">df_all = pd.concat( [df,df_pu,df_do], axis=1)
+print(f'The combined DataFrame has columns: {df_all.columns}')
+</code></pre>
 
-<p>
+<p>The combined DataFrame has the columns:
 
-<pre><code class="datablock"></code></pre>
+<pre><code class="datablock">The combined DataFrame has columns:
+Index(['VendorID', 'tpep_pickup_datetime', 'tpep_dropoff_datetime',
+       'passenger_count', 'trip_distance', 'RatecodeID', 'store_and_fwd_flag',
+       'PULocationID', 'DOLocationID', 'payment_type', 'fare_amount', 'extra',
+       'mta_tax', 'tip_amount', 'tolls_amount', 'improvement_surcharge',
+       'total_amount', 'congestion_surcharge', 'percent_tip', 'duration',
+       'dayofweek', 'PU_borough', 'DO_borough', 'paid_toll', 'cross_boro',
+       'PU_Bronx', 'PU_Brooklyn', 'PU_Manhattan', 'PU_Queens', 'DO_Bronx',
+       'DO_Brooklyn', 'DO_EWR', 'DO_Manhattan', 'DO_Queens'],
+      dtype='object')</code></pre>
 
-<p>Now, we're ready to fit some models to our data.  We'll try first just a single independent variable, trip_distance, and build a logistic model without regularization, to predict when trips start in one borough and end in another:
+For the taxi data, there is a special zone for trips to Newark Airport, and as such we have a drop off borough location of 'DO_EWR'.
+We'll focus on the numeric columns, split our data into training and testing data sets:
+
+<pre><code class="blockcode">x_col_names = ['passenger_count', 'trip_distance', 'RatecodeID', 'PULocationID',
+          'DOLocationID', 'payment_type', 'fare_amount', 'extra', 'mta_tax',
+          'tip_amount', 'tolls_amount', 'improvement_surcharge', 'total_amount',
+          'congestion_surcharge', 'percent_tip', 'duration', 'dayofweek',
+          'paid_toll', 'PU_Bronx', 'PU_Brooklyn', 'PU_Manhattan', 'PU_Queens',
+          'DO_Bronx', 'DO_Brooklyn', 'DO_EWR', 'DO_Manhattan', 'DO_Queens']
+y_col_name = 'cross_boro'
+x_train, x_test, y_train, y_test = answer.split_test_train(df_all, x_col_names, y_col_name)
+</code></pre>
 
 
-<pre><code class="blockcode"></code></pre>
-
-<p>
-
-<pre><code class="datablock"></code></pre>
+<p>Now, we're ready to fit some models to our data.  We'll try first just a single independent variable, <code class = "inline">trip_distance</code>, and build a logistic model without regularization, to predict when trips start in one borough and end in another (when <code class = "inline">cross_boro</code> is 1):
 
 
-<p>Let's add in different regularization approaches:
+<pre><code class="blockcode">for p in ['none','l1','l2']:
+print(f'Fitting a model with regression = {p}:')
+    mod = answer.fit_logistic_regression(x_train[['trip_distance']],y_train,penalty=p)
+    mse_tr, r2_tr = answer.predict_using_trained_model(mod,x_train[['trip_distance']],y_train)
+    print(f'\ttraining data: mean squared error = {mse_tr:8.8} and r2 = {r2_tr:4.4}.')
+    mse_val, r2_val = answer.predict_using_trained_model(mod,x_test[['trip_distance']],y_test)
+    print(f'\ttesting data: mean squared error = {mse_val:8.8} and r2 = {r2_val:4.4}.')</code></pre>
 
-<pre><code class="blockcode"></code></pre>
+<p>Our training set of 75% of the data, does well both on both training and testing.  For this data, regularization does not significantly affect the results:
 
-<p>
+<pre><code class="datablock">Fitting a model with regression = none:
+	training data: mean squared error = 0.10751295 and r2 = 0.3152.
+	testing data: mean squared error = 0.1110186 and r2 = 0.2984.
+Fitting a model with regression = l1:
+	training data: mean squared error = 0.10751295 and r2 = 0.3152.
+	testing data: mean squared error = 0.1110186 and r2 = 0.2984.
+Fitting a model with regression = l2:
+	training data: mean squared error = 0.10751295 and r2 = 0.3152.
+	testing data: mean squared error = 0.1110186 and r2 = 0.2984.</code></pre>
 
-<pre><code class="datablock"></code></pre>
 
-<p>
-  And now try with additional features:
-Build logistic model, wo Regularization and with regularization.  Then save models as pkl files to use/compare for later.  Do similar analysis with multiple inputs.
+<p>Let's use more of the numeric columns for a model, as well as different regularization approaches, and evaluate the results.  We increased the number of iterations to allow the model to converge.
 
-<pre><code class="blockcode"></code></pre>
+<pre><code class="blockcode">x_cols = ['trip_distance','dayofweek','paid_toll', 'PU_Bronx', 'PU_Brooklyn','PU_Manhattan', 'PU_Queens']
+print(f'For independent variables:  {x_cols}:')
+for p in ['none','l1','l2']:
+    print(f'Fitting a model with regression = {p}:')
+    mod = answer.fit_logistic_regression(x_train[x_cols],y_train,penalty=p,max_iter=2000)
+    mse_tr, r2_tr = answer.predict_using_trained_model(mod,x_train[x_cols],y_train)
+    print(f'\ttraining data: mean squared error = {mse_tr:8.8} and r2 = {r2_tr:4.4}.')
+    mse_val, r2_val = answer.predict_using_trained_model(mod,x_test[x_cols],y_test)
+    print(f'\ttesting data: mean squared error = {mse_val:8.8} and r2 = {r2_val:4.4}.')
+</code></pre>
 
-<p>
+<p>All of the models do better with the training subset than the testing subset.  Adding regularization did not help the mean squared error, but showed some improvement for the r2 measure:
 
-<pre><code class="datablock"></code></pre>
+<pre><code class="datablock">For independent variables:  ['trip_distance', 'dayofweek', 'paid_toll', 'PU_Bronx', 'PU_Brooklyn', 'PU_Manhattan', 'PU_Queens']:
+Fitting a model with regression = none:
+	training data: mean squared error = 0.092801628 and r2 = 0.4089.
+	testing data: mean squared error = 0.095198446 and r2 = 0.3983.
+Fitting a model with regression = l1:
+	training data: mean squared error = 0.093079201 and r2 = 0.4071.
+	testing data: mean squared error = 0.096031085 and r2 = 0.3931.
+Fitting a model with regression = l2:
+	training data: mean squared error = 0.093541821 and r2 = 0.4042.
+	testing data: mean squared error = 0.096586178 and r2 = 0.3896.</code></pre>
 
-<p>
-Let's build a more complicated model that uses multiple inputs, including the numerical columns:
-
-<pre><code class="blockcode"></code></pre>
-
-<p>
-
-<pre><code class="datablock"></code></pre>
--->
 </div>
 </body>
 </html>
