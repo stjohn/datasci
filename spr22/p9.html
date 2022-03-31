@@ -108,7 +108,7 @@ The function specifications are below:
       <ul>
         <li> <code class = "inline">file_name</code>: the name of a CSV file containing <a href="https://data.cityofnewyork.us/Transportation/2020-For-Hire-Vehicles-Trip-Data/m3yx-mvk4">Yellow Taxi Trip Data</a> from OpenData NYC.
       </ul>
-      The data in the file is read into a DataFrame, any rows with non-positive <code class = "inline">total_amount</code> are dropped.  The resulting DataFrame is returned.  <br>(Note this is identical to the function with the same name in <a href="p8.html">Program 8</a>.  You may use your earlier function or the Program 8 solution available on Blackboard.)
+      The data in the file is read into a DataFrame, and the resulting DataFrame is returned.  <br>(Note this is identical to the function with the same name in <a href="p8.html">Program 8</a>.  You may use your earlier function or the Program 8 solution available on Blackboard.)
       <br>
     <li> <code class = "inline">add_tip_time_features(df) -> pd.DataFrame:</code>
       This function takes one input:
@@ -140,7 +140,7 @@ And write the following new functions:
     <li> <code class = "inline">add_boro(df, file_name) -> pd.DataFrame:</code>
       This function takes as two input parameters:
       <ul>
-          <li> <code class = "inline">df</code>: a DataFrame containing <a href="https://data.cityofnewyork.us/Transportation/2020-For-Hire-Vehicles-Trip-Data/m3yx-mvk4">Yellow Taxi Trip Data</a> from OpenData NYC to which <code class = "inline">import_data()</code> has been applied.
+          <li> <code class = "inline">df</code>: a DataFrame containing <a href="https://data.cityofnewyork.us/Transportation/2020-For-Hire-Vehicles-Trip-Data/m3yx-mvk4">Yellow Taxi Trip Data</a> from OpenData NYC.
           <li> <code class = "inline">file_name</code>: the name of a CSV file containing <a href="https://data.cityofnewyork.us/Transportation/NYC-Taxi-Zones/d3c5-ddgc">NYC Taxi Zones</a> from OpenData NYC.
       </ul>
       Makes a DataFrame, using <code class = "inline">file_name</code>, to add pick up and drop off boroughs to <code class = "inline">df</code>.
@@ -175,7 +175,7 @@ And write the following new functions:
       <br>
 
     <li> <code class = "inline">split_test_train(df, xes_col_names, y_col_name,
-                       test_size=0.25, random_state=12345) -> Union[np.array, np.array, list, list]:</code>
+                       test_size=0.25, random_state=12345) -> Union[pd.DataFrame, pd.DataFrame, pd.Series(), pd.Series()]:</code>
       This function takes 5 input parameters:
        <ul>
            <li> <code class = "inline">df</code>: a DataFrame containing <a href="https://data.cityofnewyork.us/Transportation/2020-For-Hire-Vehicles-Trip-Data/m3yx-mvk4">Yellow Taxi Trip Data</a> from OpenData NYC to which <code class = "inline">add_boro()</code> has been applied.
@@ -187,7 +187,7 @@ And write the following new functions:
       Calls <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">sklearn's train_test_split</a> function to split the data set into a training and testing subsets:  x_train, x_test, y_train, y_test.  The resulting 4 subsets are returned.<br>
       Hint:  see the examples for <a href="p8.html">Program 8</a> for a similar splitting of data into training and testing datasets.
 
-    <li> <code class = "inline">fit_logistic_regression(x_train, y_train, penalty='none', max_iter=1000) -> object:</code>
+    <li> <code class = "inline">fit_logistic_regression(x_train, y_train,penalty='none',max_iter=1000) -> object:</code>
       This function takes four input parameter:
       <ul>
           <li> <code class = "inline">x_train</code>: the indepenent variable(s) for the analysis.
@@ -201,7 +201,7 @@ And write the following new functions:
       The parameter <code class = "inline">max_iter</code> should also be used when fitting the model.
       The resulting model should be returned as bytestream, using <a href="https://docs.python.org/3/library/pickle.html">pickle</a>.
 
-    <li> <code class = "inline">predict_using_trained_model(mod_pkl, x, y) -> Tuple[float, float]:</code>
+    <li> <code class = "inline">predict_using_trained_model(mod_pkl, x, y) -> Union[float, float]: </code>
       This function takes three inputs:
       <ul>
         <li> <code class = "inline">mod_pkl</code>: a trained model for the data, stored in pickle format.
