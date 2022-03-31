@@ -175,7 +175,7 @@ And write the following new functions:
       <br>
 
     <li> <code class = "inline">split_test_train(df, xes_col_names, y_col_name,
-                       test_size=0.25, random_state=12345) -> Union[pd.DataFrame, pd.Series()]:</code>
+                       test_size=0.25, random_state=12345) -> Union[pd.DataFrame, pd.DataFrame, pd.Series(), pd.Series()]:</code>
       This function takes 5 input parameters:
        <ul>
            <li> <code class = "inline">df</code>: a DataFrame containing <a href="https://data.cityofnewyork.us/Transportation/2020-For-Hire-Vehicles-Trip-Data/m3yx-mvk4">Yellow Taxi Trip Data</a> from OpenData NYC to which <code class = "inline">add_boro()</code> has been applied.
@@ -187,7 +187,7 @@ And write the following new functions:
       Calls <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">sklearn's train_test_split</a> function to split the data set into a training and testing subsets:  x_train, x_test, y_train, y_test.  The resulting 4 subsets are returned.<br>
       Hint:  see the examples for <a href="p8.html">Program 8</a> for a similar splitting of data into training and testing datasets.
 
-    <li> <code class = "inline">fit_logistic_regression(x_train, y_train,penalty='none',max_iter=1000): -> object</code>
+    <li> <code class = "inline">fit_logistic_regression(x_train, y_train,penalty='none',max_iter=1000) -> object:</code>
       This function takes four input parameter:
       <ul>
           <li> <code class = "inline">x_train</code>: the indepenent variable(s) for the analysis.
@@ -201,7 +201,7 @@ And write the following new functions:
       The parameter <code class = "inline">max_iter</code> should also be used when fitting the model.
       The resulting model should be returned as bytestream, using <a href="https://docs.python.org/3/library/pickle.html">pickle</a>.
 
-    <li> <code class = "inline">predict_using_trained_model(mod_pkl, x, y): -> float,float</code>
+    <li> <code class = "inline">predict_using_trained_model(mod_pkl, x, y) -> Union[float, float]: </code>
       This function takes three inputs:
       <ul>
         <li> <code class = "inline">mod_pkl</code>: a trained model for the data, stored in pickle format.
@@ -222,26 +222,27 @@ df['passenger_count'] = impute_numeric_cols(df,['passenger_count'])
 </code></pre>
 
 Next, let's use our new functions to add in boroughs for the pick up and drop off locations:
-<pre><code class="blockcode">df = answer.add_boro(df,'taxi_zones.csv')
+<pre><code class="blockcode">df = add_boro(df,'taxi_zones.csv')
 print('\nThe locations and borough columns:')
 print(f"{df[['PULocationID','PU_borough','DOLocationID','DO_borough']]}")</code></pre>
 
 <p>which prints out the new columns:
 <pre><code class="datablock">The locations and borough columns:
-       PULocationID PU_borough  DOLocationID DO_borough
-0               100  Manhattan           249  Manhattan
-1               235      Bronx           213      Bronx
-2               141  Manhattan            82     Queens
-3                90  Manhattan            90  Manhattan
-4                79  Manhattan           263  Manhattan
-...             ...        ...           ...        ...
-14412           163  Manhattan           162  Manhattan
-14413            74  Manhattan            41  Manhattan
-14414           162  Manhattan           238  Manhattan
-14415           138     Queens           107  Manhattan
-14416            48  Manhattan            74  Manhattan
+        PULocationID PU_borough  DOLocationID DO_borough
+0                 68  Manhattan           170  Manhattan
+1                 48  Manhattan           239  Manhattan
+2                142  Manhattan           264        NaN
+3                 48  Manhattan            68  Manhattan
+4                186  Manhattan            79  Manhattan
+...              ...        ...           ...        ...
+168930           138     Queens           231  Manhattan
+168931            90  Manhattan           244  Manhattan
+168932           229  Manhattan           140  Manhattan
+168933           138     Queens           143  Manhattan
+168934           132     Queens            25   Brooklyn
 
-[14417 rows x 4 columns]</code></pre>
+[168935 rows x 4 columns]
+</code></pre>
 
 <p>We can add the indicators for if a toll was paid and if the trip started and ended in different boroughs:
 <pre><code class="blockcode">df = add_flags(df)
@@ -249,19 +250,20 @@ print(df[['trip_distance','PU_borough','DO_borough','paid_toll','cross_boro']])
 </code></pre>
 prints:
 <pre><code class="datablock">       trip_distance PU_borough DO_borough  paid_toll  cross_boro
-0               1.70  Manhattan  Manhattan          1           0
-1               5.25      Bronx      Bronx          1           0
-2               5.50  Manhattan     Queens          1           1
-3               0.40  Manhattan  Manhattan          1           0
-4               4.50  Manhattan  Manhattan          1           0
-...              ...        ...        ...        ...         ...
-14412           1.78  Manhattan  Manhattan          1           0
-14413           0.92  Manhattan  Manhattan          1           0
-14414           4.60  Manhattan  Manhattan          1           0
-14415          11.10     Queens  Manhattan          0           1
-14416           5.08  Manhattan  Manhattan          1           0
+0                2.20  Manhattan  Manhattan          0           0
+1                1.43  Manhattan  Manhattan          0           0
+2                1.74  Manhattan        NaN          0           1
+3                1.35  Manhattan  Manhattan          0           0
+4                2.33  Manhattan  Manhattan          0           0
+...               ...        ...        ...        ...         ...
+168930           9.28     Queens  Manhattan          0           1
+168931           9.10  Manhattan  Manhattan          0           0
+168932           0.80  Manhattan  Manhattan          0           0
+168933           9.55     Queens  Manhattan          1           1
+168934          18.72     Queens   Brooklyn          0           1
 
-[14417 rows x 5 columns]</code></pre>
+[168935 rows x 5 columns]
+</code></pre>
 
 <p>
 Let's explore the data some:
@@ -313,25 +315,26 @@ Interestingly, in our left image, the distance traveled and the duration of the 
 <p>
 Next, let's encode the categorical columns for pick up and drop off boroughs so we can use them as inputs for our model.
 
-<pre><code class="blockcode">df_pu = answer.encode_categorical_col(df['PU_borough'],'PU_')
+<pre><code class="blockcode">df_pu = encode_categorical_col(df['PU_borough'],'PU_')
 print(df_pu.head())
-df_do = answer.encode_categorical_col(df['DO_borough'],'DO_')
+df_do = encode_categorical_col(df['DO_borough'],'DO_')
 print(df_do.head())</code></pre>
 
 <p>The first few lines of the resulting DataFrames:
 
-<pre><code class="datablock">   PU_Bronx  PU_Brooklyn  PU_Manhattan  PU_Queens
-0         0            0             1          0
-1         1            0             0          0
-2         0            0             1          0
-3         0            0             1          0
-4         0            0             1          0
+<pre><code class="datablock">   PU_Bronx  PU_Brooklyn  DO_EWR  PU_Manhattan  PU_Queens
+0         0            0       0             1          0
+1         0            0       0             1          0
+2         0            0       0             1          0
+3         0            0       0             1          0
+4         0            0       0             1          0
    DO_Bronx  DO_Brooklyn  DO_EWR  DO_Manhattan  DO_Queens
 0         0            0       0             1          0
-1         1            0       0             0          0
-2         0            0       0             0          1
+1         0            0       0             1          0
+2         0            0       0             0          0
 3         0            0       0             1          0
-4         0            0       0             1          0</code></pre>
+4         0            0       0             1          0
+</code></pre>
 
 <p>Let's combine all the DataFrames into one (using <a href="https://pandas.pydata.org/docs/reference/api/pandas.concat.html">concat</a> along column axis):
 
@@ -347,9 +350,9 @@ Index(['VendorID', 'tpep_pickup_datetime', 'tpep_dropoff_datetime',
        'PULocationID', 'DOLocationID', 'payment_type', 'fare_amount', 'extra',
        'mta_tax', 'tip_amount', 'tolls_amount', 'improvement_surcharge',
        'total_amount', 'congestion_surcharge', 'percent_tip', 'duration',
-       'dayofweek', 'PU_borough', 'DO_borough', 'paid_toll', 'cross_boro',
-       'PU_Bronx', 'PU_Brooklyn', 'PU_Manhattan', 'PU_Queens', 'DO_Bronx',
-       'DO_Brooklyn', 'DO_EWR', 'DO_Manhattan', 'DO_Queens'],
+       'dayofweek', 'DO_borough', 'PU_borough', 'paid_toll', 'cross_boro',
+       'PU_Bronx', 'PU_Brooklyn', 'PU_EWR', 'PU_Manhattan', 'PU_Queens',
+       'DO_Bronx', 'DO_Brooklyn', 'DO_EWR', 'DO_Manhattan', 'DO_Queens'],
       dtype='object')</code></pre>
 
 For the taxi data, there is a special zone for trips to Newark Airport, and as such we have a drop off borough location of 'DO_EWR'.
@@ -362,7 +365,7 @@ We'll focus on the numeric columns, split our data into training and testing dat
           'paid_toll', 'PU_Bronx', 'PU_Brooklyn', 'PU_Manhattan', 'PU_Queens',
           'DO_Bronx', 'DO_Brooklyn', 'DO_EWR', 'DO_Manhattan', 'DO_Queens']
 y_col_name = 'cross_boro'
-x_train, x_test, y_train, y_test = answer.split_test_train(df_all, x_col_names, y_col_name)
+x_train, x_test, y_train, y_test = split_test_train(df_all, x_col_names, y_col_name)
 </code></pre>
 
 
@@ -371,23 +374,23 @@ x_train, x_test, y_train, y_test = answer.split_test_train(df_all, x_col_names, 
 
 <pre><code class="blockcode">for p in ['none','l1','l2']:
 print(f'Fitting a model with regression = {p}:')
-    mod = answer.fit_logistic_regression(x_train[['trip_distance']],y_train,penalty=p)
-    mse_tr, r2_tr = answer.predict_using_trained_model(mod,x_train[['trip_distance']],y_train)
+    mod = fit_logistic_regression(x_train[['trip_distance']],y_train,penalty=p)
+    mse_tr, r2_tr = predict_using_trained_model(mod,x_train[['trip_distance']],y_train)
     print(f'\ttraining data: mean squared error = {mse_tr:8.8} and r2 = {r2_tr:4.4}.')
-    mse_val, r2_val = answer.predict_using_trained_model(mod,x_test[['trip_distance']],y_test)
+    mse_val, r2_val = predict_using_trained_model(mod,x_test[['trip_distance']],y_test)
     print(f'\ttesting data: mean squared error = {mse_val:8.8} and r2 = {r2_val:4.4}.')</code></pre>
 
 <p>Our training set of 75% of the data, does well both on both training and testing.  For this data, regularization does not significantly affect the results:
 
 <pre><code class="datablock">Fitting a model with regression = none:
-	training data: mean squared error = 0.10751295 and r2 = 0.3152.
-	testing data: mean squared error = 0.1110186 and r2 = 0.2984.
+        training data: mean squared error = 0.08759994 and r2 = 0.3548.
+        testing data: mean squared error = 0.087015201 and r2 = 0.3617.
 Fitting a model with regression = l1:
-	training data: mean squared error = 0.10751295 and r2 = 0.3152.
-	testing data: mean squared error = 0.1110186 and r2 = 0.2984.
+        training data: mean squared error = 0.087663081 and r2 = 0.3543.
+        testing data: mean squared error = 0.087038879 and r2 = 0.3616.
 Fitting a model with regression = l2:
-	training data: mean squared error = 0.10751295 and r2 = 0.3152.
-	testing data: mean squared error = 0.1110186 and r2 = 0.2984.</code></pre>
+        training data: mean squared error = 0.08759994 and r2 = 0.3548.
+        testing data: mean squared error = 0.087015201 and r2 = 0.3617.</code></pre>
 
 
 <p>Let's use more of the numeric columns for a model, as well as different regularization approaches, and evaluate the results.  We increased the number of iterations to allow the model to converge.
@@ -396,25 +399,26 @@ Fitting a model with regression = l2:
 print(f'For independent variables:  {x_cols}:')
 for p in ['none','l1','l2']:
     print(f'Fitting a model with regression = {p}:')
-    mod = answer.fit_logistic_regression(x_train[x_cols],y_train,penalty=p,max_iter=2000)
-    mse_tr, r2_tr = answer.predict_using_trained_model(mod,x_train[x_cols],y_train)
+    mod = fit_logistic_regression(x_train[x_cols],y_train,penalty=p,max_iter=2000)
+    mse_tr, r2_tr = predict_using_trained_model(mod,x_train[x_cols],y_train)
     print(f'\ttraining data: mean squared error = {mse_tr:8.8} and r2 = {r2_tr:4.4}.')
-    mse_val, r2_val = answer.predict_using_trained_model(mod,x_test[x_cols],y_test)
+    mse_val, r2_val = predict_using_trained_model(mod,x_test[x_cols],y_test)
     print(f'\ttesting data: mean squared error = {mse_val:8.8} and r2 = {r2_val:4.4}.')
 </code></pre>
 
 <p>All of the models do better with the training subset than the testing subset.  Adding regularization did not help the mean squared error, but showed some improvement for the r2 measure:
 
-<pre><code class="datablock">For independent variables:  ['trip_distance', 'dayofweek', 'paid_toll', 'PU_Bronx', 'PU_Brooklyn', 'PU_Manhattan', 'PU_Queens']:
+<pre><code class="datablock">For independent variables:
+    ['trip_distance', 'dayofweek', 'paid_toll', 'PU_Bronx', 'PU_Brooklyn', 'PU_Manhattan', 'PU_Queens']:
 Fitting a model with regression = none:
-	training data: mean squared error = 0.092801628 and r2 = 0.4089.
-	testing data: mean squared error = 0.095198446 and r2 = 0.3983.
+        training data: mean squared error = 0.072974957 and r2 = 0.4625.
+        testing data: mean squared error = 0.072003599 and r2 = 0.4719.
 Fitting a model with regression = l1:
-	training data: mean squared error = 0.093079201 and r2 = 0.4071.
-	testing data: mean squared error = 0.096031085 and r2 = 0.3931.
+        training data: mean squared error = 0.072974957 and r2 = 0.4625.
+        testing data: mean squared error = 0.072003599 and r2 = 0.4719.
 Fitting a model with regression = l2:
-	training data: mean squared error = 0.093541821 and r2 = 0.4042.
-	testing data: mean squared error = 0.096586178 and r2 = 0.3896.</code></pre>
+        training data: mean squared error = 0.072959172 and r2 = 0.4626.
+        testing data: mean squared error = 0.071956244 and r2 = 0.4722.</code></pre>
 
 </div>
 </body>
