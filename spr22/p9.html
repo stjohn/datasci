@@ -222,7 +222,7 @@ df['passenger_count'] = impute_numeric_cols(df,['passenger_count'])
 </code></pre>
 
 Next, let's use our new functions to add in boroughs for the pick up and drop off locations:
-<pre><code class="blockcode">df = answer.add_boro(df,'taxi_zones.csv')
+<pre><code class="blockcode">df = add_boro(df,'taxi_zones.csv')
 print('\nThe locations and borough columns:')
 print(f"{df[['PULocationID','PU_borough','DOLocationID','DO_borough']]}")</code></pre>
 
@@ -313,9 +313,9 @@ Interestingly, in our left image, the distance traveled and the duration of the 
 <p>
 Next, let's encode the categorical columns for pick up and drop off boroughs so we can use them as inputs for our model.
 
-<pre><code class="blockcode">df_pu = answer.encode_categorical_col(df['PU_borough'],'PU_')
+<pre><code class="blockcode">df_pu = encode_categorical_col(df['PU_borough'],'PU_')
 print(df_pu.head())
-df_do = answer.encode_categorical_col(df['DO_borough'],'DO_')
+df_do = encode_categorical_col(df['DO_borough'],'DO_')
 print(df_do.head())</code></pre>
 
 <p>The first few lines of the resulting DataFrames:
@@ -362,7 +362,7 @@ We'll focus on the numeric columns, split our data into training and testing dat
           'paid_toll', 'PU_Bronx', 'PU_Brooklyn', 'PU_Manhattan', 'PU_Queens',
           'DO_Bronx', 'DO_Brooklyn', 'DO_EWR', 'DO_Manhattan', 'DO_Queens']
 y_col_name = 'cross_boro'
-x_train, x_test, y_train, y_test = answer.split_test_train(df_all, x_col_names, y_col_name)
+x_train, x_test, y_train, y_test = split_test_train(df_all, x_col_names, y_col_name)
 </code></pre>
 
 
@@ -371,10 +371,10 @@ x_train, x_test, y_train, y_test = answer.split_test_train(df_all, x_col_names, 
 
 <pre><code class="blockcode">for p in ['none','l1','l2']:
 print(f'Fitting a model with regression = {p}:')
-    mod = answer.fit_logistic_regression(x_train[['trip_distance']],y_train,penalty=p)
-    mse_tr, r2_tr = answer.predict_using_trained_model(mod,x_train[['trip_distance']],y_train)
+    mod = fit_logistic_regression(x_train[['trip_distance']],y_train,penalty=p)
+    mse_tr, r2_tr = predict_using_trained_model(mod,x_train[['trip_distance']],y_train)
     print(f'\ttraining data: mean squared error = {mse_tr:8.8} and r2 = {r2_tr:4.4}.')
-    mse_val, r2_val = answer.predict_using_trained_model(mod,x_test[['trip_distance']],y_test)
+    mse_val, r2_val = predict_using_trained_model(mod,x_test[['trip_distance']],y_test)
     print(f'\ttesting data: mean squared error = {mse_val:8.8} and r2 = {r2_val:4.4}.')</code></pre>
 
 <p>Our training set of 75% of the data, does well both on both training and testing.  For this data, regularization does not significantly affect the results:
@@ -396,10 +396,10 @@ Fitting a model with regression = l2:
 print(f'For independent variables:  {x_cols}:')
 for p in ['none','l1','l2']:
     print(f'Fitting a model with regression = {p}:')
-    mod = answer.fit_logistic_regression(x_train[x_cols],y_train,penalty=p,max_iter=2000)
-    mse_tr, r2_tr = answer.predict_using_trained_model(mod,x_train[x_cols],y_train)
+    mod = fit_logistic_regression(x_train[x_cols],y_train,penalty=p,max_iter=2000)
+    mse_tr, r2_tr = predict_using_trained_model(mod,x_train[x_cols],y_train)
     print(f'\ttraining data: mean squared error = {mse_tr:8.8} and r2 = {r2_tr:4.4}.')
-    mse_val, r2_val = answer.predict_using_trained_model(mod,x_test[x_cols],y_test)
+    mse_val, r2_val = predict_using_trained_model(mod,x_test[x_cols],y_test)
     print(f'\ttesting data: mean squared error = {mse_val:8.8} and r2 = {r2_val:4.4}.')
 </code></pre>
 
