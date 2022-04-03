@@ -187,11 +187,8 @@ And write the following new functions:
       Calls <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">sklearn's train_test_split</a> function to split the data set into a training and testing subsets:  x_train, x_test, y_train, y_test.  The resulting 4 subsets are returned.<br>
       Hint:  see the examples for <a href="p8.html">Program 8</a> for a similar splitting of data into training and testing datasets.
 
-<<<<<<< Updated upstream
     <li> <code class = "inline">fit_logistic_regression(x_train, y_train,penalty='none',max_iter=1000) -> object:</code>
-=======
-    <li> <code class = "inline">fit_logistic_regression(x_train, y_train,penalty='none',max_iter=1000): -> object:</code>
->>>>>>> Stashed changes
+
       This function takes four input parameter:
       <ul>
           <li> <code class = "inline">x_train</code>: the indepenent variable(s) for the analysis.
@@ -205,11 +202,9 @@ And write the following new functions:
       The parameter <code class = "inline">max_iter</code> should also be used when fitting the model.
       The resulting model should be returned as bytestream, using <a href="https://docs.python.org/3/library/pickle.html">pickle</a>.
 
-<<<<<<< Updated upstream
+
     <li> <code class = "inline">predict_using_trained_model(mod_pkl, x, y) -> Union[float, float]: </code>
-=======
-    <li> <code class = "inline">predict_using_trained_model(mod_pkl, x, y): -> float,float:</code>
->>>>>>> Stashed changes
+
       This function takes three inputs:
       <ul>
         <li> <code class = "inline">mod_pkl</code>: a trained model for the data, stored in pickle format.
