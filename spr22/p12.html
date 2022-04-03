@@ -49,7 +49,7 @@ code {
 <div style="margin:50px">
 
 
-<h2>Program 12:
+<h2>Program 12: EMS Stations
   <br>CSci 39542: Introduction to Data Science<br>
 <a href="http://www.hunter.cuny.edu/csci">Department of Computer Science</a><br>
 <a href="https://hunter.cuny.edu">Hunter College</a>, <a href="https://www.cuny.edu">City University of New York</a><br>
@@ -64,47 +64,133 @@ Spring 2022<br><br>
 <a href="work.html#project">Project</a>&nbsp;&nbsp;&nbsp;
 <hr>
 
-<p>
-<h3>General Notes</h3>
-
-<p>This program builds on the concepts and code developed during lecture and through the reading.  Mastery of material is assessed via
-<ul>
-  <li> Autograding of the program submitted to Gradescope, and
-  <li> Completion of a timed coding quiz on the material.  See <a href="work.html#quizzes">Quizzes</a> for details.
-</ul>
-
-Solutions to both will be available on Blackboard (<tt>Course Materials : Solutions</tt>) an hour after their respective deadline.
-
-<h4>Autograder Notes</h4>
-
-<p> Submitted code must be in Python, using only the specified libraries.  The autograder expects a <code class="inline">.py</code> file and does not accept iPython notebooks.
-Also, to receive full credit, the code should be compatible with Python 3.6 (the default for the Gradescope autograders).
-
-<p>To encourage starting early on programs, bonus points are given for early submission.  A point a day, up to a total of 3 bonus points (10% of the program grade), are possible.  The points are prorated by hour.  For example, if you turn in the program 36 hours early, then the bonus poins are: (36 hours/3 days)*3 points = (36 hours/72 hours)*3 points = 1.5 points.
-
-<p>
-To get full credit for a program, the file must include in the opening comment:
-<ul>
-    <li> Your name, as it appears in your Gradescope registration.
-    <li> The email you are using for Gradescope.
-    <li> A list of any resources you used for the program.  Include classmates and tutors that you worked with, along with any websites or tutorials that you used.  If you used no resources (other than the class notes and textbooks), then you should include the line:  "No resources used."
-</ul>
-
-
-
-<br>
-<br>
-<br>
+<object width=100% height=50% type="text/html" data="generalNotes.html" border="0"
+   style="overflow: hidden;">
+</object>
 <hr>
 
 <h2>Program Description</h2>
 
 <br>
-   <p><a name="p12"><b>Program 12: .</b></b> &emsp; <i>Due noon, Thursday, 5 May.
+   <p><a name="p12"><b>Program 12: EMS Stations.</b></b> &emsp; <i>Due noon, Thursday, 5 May.
      <br>Learning Objective: .
-     <br>Available Libraries: .<i>
+     <br>Available Libraries: .
+     <br>Data Sources: <a href="https://data.cityofnewyork.us/Public-Safety/Emergency-Response-Incidents/pasr-j7fb">Emergency Response Incidents @ OpenData</a>
+     <br>Sample Datasets:.<br><i>
 
-Clustering
+<p> Improving ambulance response times improves outcomes.
+  Article about strategic placement of ambulance stations and overall allocation from Jan 2020:
+  https://www.sciencedirect.com/science/article/pii/S1386505619303491
+Clustering:
+
+In Lecture #25 and <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.11-k-means.html">Python Data Science Handbook: Section 5.11</a>, we clustered the digits data set using K-means clustering and used t-SNE to improve accuracy.  The digits data set is one of 7 <a href="https://scikit-learn.org/stable/datasets/toy_dataset.html">toy datasets</a> included in <a href="https://scikit-learn.org/stable/index.html">sklearn</a> that can be quickly loaded to  try different algorithms.
+
+<p>
+For this program, modify the code from lecture to write a function that allows you to run three different preprocessing of a toy dataset ("none", "TSNE", or "MDS"), applies K-Means clustering, takes the mode of each cluster as the predicted label, and then returns the accuracy of the prediction.
+
+From P9:  data in P9 didn't play well with this (time stamps in particular & not enough
+categorical data to encode), but
+important concept/tool-- can we make it work here?
+
+<li> <code class = "inline">split_columns_by_data_type(df) -> list,list:</code>
+  This function takes as one input:
+  <ul>
+      <li> <code class = "inline">df</code>: a DataFrame containing columns with numeric values, string values, as well as other (e.g. datetimes).
+  </ul>
+  This function separates the columns of the DataFrame, <code class = "inline">df.columns</code> into three lists:  those that contain numeric values, those that include other formats (e.g. strings and datetimes).  Return both lists.  Pandas has a useful function
+  <code class = "inline">DataFrame.select_dtypes</code> (see <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.select_dtypes.html">documentation</a> for syntax and types recognized).
+
+
+  <li> <code class = "inline">impute_categorical_cols(df, x_cat_cols) -> pd.DataFrame:</code>
+    This function takes as two input parameters:
+    <ul>
+        <li> <code class = "inline">df</code>: a DataFrame containing <a href="https://data.cityofnewyork.us/Transportation/2020-For-Hire-Vehicles-Trip-Data/m3yx-mvk4">Yellow Taxi Trip Data</a> from OpenData NYC to which <code class = "inline">add_boro</code> has been applied.
+        <li> <code class = "inline">x_cat_cols</code>: a list of categorical columns in <code class = "inline">df</code>.
+    </ul>
+
+    """
+    For categorical columns, impute missing data with the most common value
+    :param df: pandas dataframe, output of import_data()
+    :param x_cat_cols: list of categorical X columns, output of application of split_columns_by_data_type()
+    :return: pandas dataframe containing imputed categorical columns from input df
+    """
+
+
+<ul>
+<li> <code class = "inline">clusterDemo(toy_dataset, n_components = 2, n_clusters = 3, method = "none", random_state=0):</code>
+    This function has five inputs and returns the accuracy (value between 0 and 1):
+    <ul>
+        <li> <code class = "inline">toy_dataset</code>: a dataset from the sklearn toy datasets (see above).  Assumes that the dataset is of type
+        <code class = "inline">sklearn.utils.Bunch</code> and has fields
+        <code class = "inline">data</code> and
+        <code class = "inline">target</code>.
+        <li> <code class = "inline">n_components</code>: the number of components for the MDS or t-SNE analysis.  The default value is <code class = "inline">2</code>.
+        <li> <code class = "inline">n_clusters</code>: the number of components for the K-Means analysis.  The default value is <code class = "inline">3</code>.
+        <li> <code class = "inline">method</code>: the method used for preprocessing the data.  Possible values are <code class = "inline">"none"</code> (which does no preprocessing), <code class = "inline">"MDS"</code> (which uses MDS to preprocess), and
+        <code class = "inline">"TSNE"</code>.The default value is <code class = "inline">"none"</code>.
+        <li> <code class = "inline">random_state</code>: the random seed for MDS, TSNE, and K-Means clustering methods.  The default value is <code class = "inline">0</code>.
+      </ul>
+      The function should:
+      <ol>
+          <li> Preprocess the dataset via the method specified.  If method is <code class = "inline">"none"</code>, then the original data is used.
+          <li> Run the K-means clustering method on the data.
+          <li> Label each element by the most common label for its cluster (i.e. the mode of the labels).
+          <li> Return the accuracy of the predicted labels versus the actual labels in the dataset.
+  </ul>
+
+  <p>For example, assuming your functions are in <code class=inline>p49</code> and the appropriate libraries are loaded, we can run the function on the relatively small datasets of iris species and wine classifications:
+  <pre><code class="blockcode">iris = datasets.load_iris()
+no_preproc = p49.clusterDemo(iris)
+print(f'Iris:  The accuracy with no-preprocessing is {no_preproc}.')
+tsne_proc = p49.clusterDemo(iris, method = "TSNE")
+print(f'Iris: The accuracy with TSNE preprocessing is {tsne_proc}.')
+mds_proc = p49.clusterDemo(iris, method = "MDS")
+print(f'Iris: The accuracy with MDS preprocessing is {mds_proc}.')
+
+wine = datasets.load_wine()
+no_preproc = p49.clusterDemo(wine, n_components = 3, random_state=10)
+print(f'Wine:  The accuracy with no-preprocessing is {no_preproc}.')
+tsne_proc = p49.clusterDemo(wine, n_components = 3, method = "TSNE", random_state=10)
+print(f'Wine: The accuracy with TSNE preprocessing is {tsne_proc}.')</code></pre>
+
+  would print:
+  <pre><code class="datablock">Iris:  The accuracy with no-preprocessing is 0.8933333333333333.
+Iris: The accuracy with TSNE preprocessing is 0.9133333333333333.
+Iris: The accuracy with MDS preprocessing is 0.9.
+Wine:  The accuracy with no-preprocessing is 0.702247191011236.
+Wine: The accuracy with TSNE preprocessing is 0.6797752808988764.</code></pre>
+
+  <p>We can also run on the digits dataset.  It's larger and the t-SNE and MDS methods will take a bit of time to return their answers:
+  <pre><code class="blockcode">digits = datasets.load_digits()
+no_preproc = p49.clusterDemo(digits, n_clusters = 10, method = "none", random_state=20)
+print(f'Digits: The accuracy with no-preprocessing is {no_preproc}.')
+tsne_proc = p49.clusterDemo(digits, n_clusters = 10, method = "TSNE", random_state=20)
+print(f'Digits: The accuracy with TSNE preprocessing is {tsne_proc}.')
+mds_proc = p49.clusterDemo(digits, n_clusters = 10, method = "MDS", random_state=20)
+print(f'Digits: The accuracy with MDS preprocessing is {mds_proc}.')</code></pre>
+
+  would print:
+  <pre><code class="datablock">Digits: The accuracy with no-preprocessing is 0.7946577629382304.
+Digits: The accuracy with TSNE preprocessing is 0.9432387312186978.
+Digits: The accuracy with MDS preprocessing is 0.676126878130217.</code></pre>
+
+
+<p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
+
+<p><i>Hints:
+  <ul>
+    <li> The import statements needed for the function are:
+      <pre><code class="blockcode">import pandas as pd
+import numpy as np
+from sklearn.manifold import TSNE, MDS
+from sklearn.cluster import KMeans
+from scipy.stats import mode
+from sklearn.metrics import accuracy_score</code></pre>
+    <li> Both the MDS and t-SNE methods use the <code class=inline>n_components</code> when instantiating the model.  Not passing this parameter to the functions will give different answers.
+    <li> The <code class=inline>random_state</code> parameter is used by both the preprocessing steps (MDS and t-SNE) as well as for the K-Means clustering.  Not passing this parameter to the functions will give different answers.
+  </ul>
+</i>
+
 
 </div>
 </body>

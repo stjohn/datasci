@@ -49,7 +49,7 @@ code {
 <div style="margin:50px">
 
 
-<h2>Program 11:
+<h2>Program 11: Digit Dimensions
   <br>CSci 39542: Introduction to Data Science<br>
 <a href="http://www.hunter.cuny.edu/csci">Department of Computer Science</a><br>
 <a href="https://hunter.cuny.edu">Hunter College</a>, <a href="https://www.cuny.edu">City University of New York</a><br>
@@ -64,50 +64,131 @@ Spring 2022<br><br>
 <a href="work.html#project">Project</a>&nbsp;&nbsp;&nbsp;
 <hr>
 
-<p>
-<h3>General Notes</h3>
-
-<p>This program builds on the concepts and code developed during lecture and through the reading.  Mastery of material is assessed via
-<ul>
-  <li> Autograding of the program submitted to Gradescope, and
-  <li> Completion of a timed coding quiz on the material.  See <a href="work.html#quizzes">Quizzes</a> for details.
-</ul>
-
-Solutions to both will be available on Blackboard (<tt>Course Materials : Solutions</tt>) an hour after their respective deadline.
-
-<h4>Autograder Notes</h4>
-
-<p> Submitted code must be in Python, using only the specified libraries.  The autograder expects a <code class="inline">.py</code> file and does not accept iPython notebooks.
-Also, to receive full credit, the code should be compatible with Python 3.6 (the default for the Gradescope autograders).
-
-<p>To encourage starting early on programs, bonus points are given for early submission.  A point a day, up to a total of 3 bonus points (10% of the program grade), are possible.  The points are prorated by hour.  For example, if you turn in the program 36 hours early, then the bonus poins are: (36 hours/3 days)*3 points = (36 hours/72 hours)*3 points = 1.5 points.
-
-<p>
-To get full credit for a program, the file must include in the opening comment:
-<ul>
-    <li> Your name, as it appears in your Gradescope registration.
-    <li> The email you are using for Gradescope.
-    <li> A list of any resources you used for the program.  Include classmates and tutors that you worked with, along with any websites or tutorials that you used.  If you used no resources (other than the class notes and textbooks), then you should include the line:  "No resources used."
-</ul>
-
-
-
-<br>
-<br>
-<br>
+<object width=100% height=50% type="text/html" data="generalNotes.html" border="0"
+   style="overflow: hidden;">
+</object>
 <hr>
 
 <h2>Program Description</h2>
 
 <br>
-   <p><a name="p11"><b>Program 11: .</b></b> &emsp; <i>Due noon, Thursday, 29 April.
-     <br>Learning Objective: .
-     <br>Available Libraries: .</i>
+   <p><a name="p11"><b>Program 11: Digit Dimensions.</b></b> &emsp; <i>Due noon, Thursday, 29 April.
+     <br>Learning Objective: to increase facility with standard linear algebra approaches for high dimensional data.
+     <br>Available Libraries: pandas, pickle, sklearn, and core Python 3.6+.
+     <br>Data Sources: <a href="https://en.wikipedia.org/wiki/MNIST_database">MNIST dataset of hand-written digits</a>, available in <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_digits.html">sklearn digits dataset</a>.
+     <br>Sample Datasets: <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_digits.html">sklearn digits dataset</a>.<br></i>
 
-
+<p>
 PCA
 
 P45 Compute captured variance, scree plots for PCA
+
+
+Use dim red to show results of classifer, can print the labels as the points, and color by classifer?
+
+compute instrinsic dimension in various ways.
+
+<p>
+In Lecture 22 and (also in <a href="http://www.textbook.ds100.org/ch/25/pca_in_practice.html">Chapter 25</a>), we used scree plots to provide a visualization of the captured variance.  This assignment asks you to implement two other popular ways of determining the number of dimensions to retain.
+
+<ul>
+  <li> <code class="inline">captures85(arr):</code> Takes an array <code class="inline">arr</code> (in decreasing order), computes
+          the captured variance (<code class="inline">cv = (arr**2)/sum(arr**2)</code>) and returns the number of elements needed to capture more than 85% of the variance.
+      <li> <code class="inline">averageEigenvalue(arr):</code> Takes an array
+        <code class="inline">arr</code> (in decreasing order), computes
+          the average (<code class="inline">avg = sum(arr)/len(arr)</code>) and returns the number of elements greater than <code class="inline">avg</code>.
+    </ul>
+    </p>
+
+    Using the example from the textbook, if <code class="inline">arr</code> is
+    <pre><code class="datablock">a = np.array([585.57, 261.06, 166.31,  57.14,  48.16,  39.79,  31.71,  28.91,
+    24.23,  22.23,  20.51,  18.96,  17.01,  15.73,   7.72,   4.3 ,
+    1.95,   0.04])</code></pre>
+    Then <code class="inline">cv</code> would be:
+    <pre><code class="datablock">array([0.76, 0.15, 0.06, 0.01, 0.01, 0.  , 0.  , 0.  ,   0.  , 0.  , 0.  ,
+    0.  , 0.  , 0.  , 0.  , 0.  , 0.  , 0.  ])</code></pre>
+    and the function, <code class="inline">capture85(a)</code>, would return 2 since the first coordinate captures 76% of the variance which is less than 85%, the first 2 coordinates capture 76 + 15 = 91% of the variance.
+
+    <p>
+    For the second function, again using the example from the textbook, for the array <code class="inline">a</code>, the <code class="inline">avg</code> would be 75.07,
+    and the function, <code class="inline">averageEigenvalue(a)</code> would return 3 since the first three coordinates are larger than the average.
+
+    <p>
+    Note:  you should submit a file with only the standard comments at the top, and these two functions.  The grading scripts will then import the file for testing.
+
+
+<p></p><p><a name="p46"><b>Program 46: Digits Components.</b></b> &emsp; <i>Due noon, Monday, 29 November.</i>
+
+  <br>(Learning Objective: to strengthen understanding of intrinistic dimensions of data sets via exploration of the classic digits dataset.)</p>
+  <p>
+  In Lecture #21, we introduced Principal Components Analysis and the number of components needed to capture the intrinistic dimension of the data set.  For this program, write a function that allows the user to explore how many dimensions are needed to see the underlying structure of images from the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_digits.html">sklearn digits dataset</a> (inspired by <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.09-principal-component-analysis.html">Python Data Science Handbook: Section 5.9</a> (PCA)).
+
+  <p> Write a function that approximates an image by summing up a fixed number of its components:
+
+    <ul>
+    <li> <code class = "inline">approxDigits(numComponents, coefficients, mean, components):</code>
+        This function has four inputs and returns an array containing the approximation:
+        <ul>
+            <li> <code class = "inline">numComponents</code>: the number of componets used in the approximation.  Expecting a value between 0 and 64.
+            <li> <code class = "inline">coefficients</code>: an array of coefficients, outputted from <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">PCA()</a>.
+            <li> <code class = "inline">mean</code>: an array representing the mean of the dataset.
+            <li> <code class = "inline">components</code>:  an array of the components computed by <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">PCA()</a> analysis.
+          </ul>
+
+          The function returns the approximation image (flattened array) of the mean and sum of the first <code class = "inline">numComponents</code>
+          terms (i.e. <code class = "inline">coefficients[i] * components[i]</code>).
+      </ul>
+
+
+
+
+
+  As discussed in <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.09-principal-component-analysis.html">Python Data Science Handbook: Section 5.9</a>, we can view the images as sums of the components.  For our
+  flattened images, we have 1D arrays of length 64.  Here's the first one from the dataset:
+  <pre><code class="datablock">[[ 0.  0.  5. 13.  9.  1.  0.  0.  0.  0. 13. 15. 10. 15.  5.  0.  0.  3. 15.  2.  0. 11.  8.  0.  0.  4. 12.  0.  0.  8.  8.  0.  0.  5.  8.  0.  0.  9.  8.  0.  0.  4. 11.  0.  1. 12.  7.  0.  0.  2. 14.  5. 10. 12.  0.  0.  0.  0.  6. 13. 10.  0.  0.  0.]</code></pre>
+  <p>
+  If we let <code class=inline>x1 = [1 0 ... 0]</code>,
+  <code class=inline>x2 = [0 1 0 ... 0]</code>, ...,
+  <code class=inline>x64 = [0 ... 0 1]</code> (vectors corresponding to the axis), then we can write our images, <code class=inline>im = [i1 i2 ... i64]</code>, as:
+  <pre><code class="datablock">im = x1*i1 + x2*i2 + ... + x64*i64
+      x1*0 + x2*0 + x3*5 + ... + x64*0</code></pre>
+  plugging in the values of <code class=inline>im</code> into the equation.
+
+  <p>
+  In a similar fashion, we can represent the image in terms of the axis,<code class=inline>c1, c2, ... c64</code>,  that the PCA analysis returns:
+  <pre><code class="datablock">im = mean + c1*i1 + c2*i2 + ... + c64*i64</code></pre>
+  since the axis of PCA are chosen so that the first one captures the most variance, the second the next most, etc.  The later axis capture very little variance and likely add litte to the image.  (For technical reasons, we include the mean.  The reason is similar to when we "center" multidimensional data at 0).
+
+  This can be very useful for reducing the dimension of the data set, for example, here is the first image from above on the left:
+  <p>
+  <img src = "../fall21/digit_adding_comps.png" width=90%>
+  <br>
+  The next image is the overall mean, and each subsequent image is adding another component to the previous.  For this particular scan, the mean plus its first component is enough to see that it's a 0.
+
+
+  <p> For example, assuming the function  is in <code class=inline>p46</code> and the appropriate libraries are loaded:
+    <pre><code class="blockcode">from sklearn.decomposition import PCA
+pca = PCA()
+Xproj = pca.fit_transform(digits.data)
+showDigit(pca.mean_, f"Mean for digits")
+plt.imshow(pca.mean_.reshape(8,8),cmap='binary', interpolation='nearest',clim=(0, 16))
+plt.title("Mean for digits")
+plt.show()
+approxAnswer = p46.approxDigits(8,Xproj[1068], pca.mean_, pca.components_)
+plt.imshow(approxAnswer.reshape(8,8),cmap='binary', interpolation='nearest',clim=(0, 16))
+plt.title("mean + 8 components for digits[1068]")
+plt.show()</code></pre>
+
+    would show the mean and summed with the first 8 components for
+    <code class=inline>digits[1068]</code>:
+
+    <p>
+    <img src="../fall21/digits_mean.png" height=200>
+    <img src="../fall21/digits_1068_8.png" height=200>
+</p>
+
+      <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
+
 
 
 </div>
