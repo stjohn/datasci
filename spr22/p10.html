@@ -64,48 +64,249 @@ Spring 2022<br><br>
 <a href="work.html#project">Project</a>&nbsp;&nbsp;&nbsp;
 <hr>
 
-<p>
-<h3>General Notes</h3>
+<object width=100% height=50% type="text/html" data="generalNotes.html" border="0"
+   style="overflow: hidden;">
+</object>
 
-<p>This program builds on the concepts and code developed during lecture and through the reading.  Mastery of material is assessed via
-<ul>
-  <li> Autograding of the program submitted to Gradescope, and
-  <li> Completion of a timed coding quiz on the material.  See <a href="work.html#quizzes">Quizzes</a> for details.
-</ul>
-
-Solutions to both will be available on Blackboard (<tt>Course Materials : Solutions</tt>) an hour after their respective deadline.
-
-<h4>Autograder Notes</h4>
-
-<p> Submitted code must be in Python, using only the specified libraries.  The autograder expects a <code class="inline">.py</code> file and does not accept iPython notebooks.
-Also, to receive full credit, the code should be compatible with Python 3.6 (the default for the Gradescope autograders).
-
-<p>To encourage starting early on programs, bonus points are given for early submission.  A point a day, up to a total of 3 bonus points (10% of the program grade), are possible.  The points are prorated by hour.  For example, if you turn in the program 36 hours early, then the bonus poins are: (36 hours/3 days)*3 points = (36 hours/72 hours)*3 points = 1.5 points.
-
-<p>
-To get full credit for a program, the file must include in the opening comment:
-<ul>
-    <li> Your name, as it appears in your Gradescope registration.
-    <li> The email you are using for Gradescope.
-    <li> A list of any resources you used for the program.  Include classmates and tutors that you worked with, along with any websites or tutorials that you used.  If you used no resources (other than the class notes and textbooks), then you should include the line:  "No resources used."
-</ul>
-
-
-
-<br>
-<br>
-<br>
 <hr>
 
 <h2>Program Description</h2>
 
 <br>
-   <p><a name="p10"><b>Program 10: Classifying.</b></b> &emsp; <i>Due noon, Thursday, 14 April.
-     <br>Learning Objective: .
-     <br>Available Libraries: pandas, pickle, sklearn, and core Python 3.6+.</i>
+   <p><a name="p10"><b>Program 10: Classifying Digits.</b></b> &emsp; <i>Due noon, Thursday, 14 April.
+     <br>Learning Objective: to enhance model building and comparison skills, using standard packages.
+     <br>Available Libraries: pandas, pickle, sklearn, and core Python 3.6+.
+     <br>Data Sources: <a href="https://en.wikipedia.org/wiki/MNIST_database">MNIST dataset of hand-written digits</a>, available in <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_digits.html">sklearn digits dataset</a>.
+     <br>Sample Datasets: <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_digits.html">sklearn digits dataset</a>.<br></i>
+
+<p>
+This program uses the canonical <a href="https://en.wikipedia.org/wiki/MNIST_database">MNIST dataset of hand-written digits</a> discussed in Lecture #18 and available in <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_digits.html">sklearn digits dataset</a>:
+      <br>
+<a href="https://scikit-learn.org/stable/auto_examples/manifold/plot_lle_digits.html#sphx-glr-auto-examples-manifold-plot-lle-digits-py">
+  <img src="../fall21/sklearn_digits.png" height=400>
+</a>
+
+<br>
+The dataset has 1797 scans of hand-written digits.
+Each entry has the digit represented (<code class=inline>target</code>) as well as the 64 values representing the gray scale for the 8 x 8 image.  The first 5 entries are:
+<br>
+<img src = "../fall21/mnist_first5.png", height = 100>
+<br>
+The gray scales for the first 5 entries, flattened to one dimensional array:
+<pre><code class="datablock">[[ 0.  0.  5. 13.  9.  1.  0.  0.  0.  0. 13. 15. 10. 15.  5.  0.  0.  3. 15.  2.  0. 11.  8.  0.  0.  4. 12.  0.  0.  8.  8.  0.  0.  5.  8.  0.  0.  9.  8.  0.  0.  4. 11.  0.  1. 12.  7.  0.  0.  2. 14.  5. 10. 12.  0.  0.  0.  0.  6. 13. 10.  0.  0.  0.]
+[ 0.  0.  0. 12. 13.  5.  0.  0.  0.  0.  0. 11. 16.  9.  0.  0.  0.  0.  3. 15. 16.  6.  0.  0.  0.  7. 15. 16. 16.  2.  0.  0.  0.  0.  1. 16. 16.  3.  0.  0.  0.  0.  1. 16. 16.  6.  0.  0.  0.  0.  1. 16. 16.  6.  0.  0.  0.  0.  0. 11. 16. 10.  0.  0.]
+[ 0.  0.  0.  4. 15. 12.  0.  0.  0.  0.  3. 16. 15. 14.  0.  0.  0.  0.  8. 13.  8. 16.  0.  0.  0.  0.  1.  6. 15. 11.  0.  0.  0.  1.  8. 13. 15.  1.  0.  0.  0.  9. 16. 16.  5.  0.  0.  0.  0.  3. 13. 16. 16. 11.  5.  0.  0.  0.  0.  3. 11. 16.  9.  0.]
+[ 0.  0.  7. 15. 13.  1.  0.  0.  0.  8. 13.  6. 15.  4.  0.  0.  0.  2.  1. 13. 13.  0.  0.  0.  0.  0.  2. 15. 11.  1.  0.  0.  0.  0.  0.  1. 12. 12.  1.  0.  0.  0.  0.  0.  1. 10.  8.  0.  0.  0.  8.  4.  5. 14.  9.  0.  0.  0.  7. 13. 13.  9.  0.  0.]
+[ 0.  0.  0.  1. 11.  0.  0.  0.  0.  0.  0.  7.  8.  0.  0.  0.  0.  0.  1. 13.  6.  2.  2.  0.  0.  0.  7. 15.  0.  9.  8.  0.  0.  5. 16. 10.  0. 16.  6.  0.  0.  4. 15. 16. 13. 16.  1.  0.  0.  0.  0.  3. 15. 10.  0.  0.  0.  0.  0.  2. 16.  4.  0.  0.]]</code></pre>
+
+<p>Our goal is to predict what number is represented by a vector in the data set.  For example, the last line contains a handwritten number '4'.   Each entry in the dataset is labeled by the number represented in its gray scale images.  The labels ranges from 0 to 9.
+We will first build binary classifers for the data when restricted to entries whose are labeled 0 or 1, and then classify more diverse subsets.
+<br>To start, we will focus on entries that represent 0's and 1's.  The first 10 from the dataset are displayed below:
+<br>
+  <img src = "../fall21/mnist_binary10.png", height = 175>
+<br>
+Restricting to just 0's and 1's allows us to build binary classifiers:  those distinguishing between two classes.  This program employs some of the canonical techiques implemented in <a href="">sci-kit learn</a>: logistic regression, naive Bayes, support vector machines, and random forests.  We will then extend our classifications to larger sets.
+The function specifications are below:
+
+<ul>
+    <li> <code class = "inline">select_data(data, target, labels = [0,1]):</code>
+
+      This function takes as three input parameters:
+      <ul>
+        <li> <code class = "inline">data</code>: a numpy array that
+              includes rows of equal size flattened arrays,
+        <li> <code class = "inline">target</code> a numpy array that contains the labels for each row in <code class = "inline">data</code>.
+        <li> <code class = "inline">labels</code>: the labels from <code class = "inline">target</code> that the rows to be selected.  The default value is [0,1].
+      </ul>
+      Returns the rows of <code class = "inline">data</code> and
+      <code class = "inline">target</code> where the value of <code class = "inline">target</code> is in <code class = "inline">labels</code>.
+
+    <li> <code class = "inline">split_data(data, target, test_size = 0.25, random_state = 21):</code>
+        This function has four inputs:
+        <ul>
+            <li> <code class = "inline">data</code>: a numpy array that
+                  includes rows of equal size flattened arrays,
+            <li> <code class = "inline">target</code> a numpy array that takes values 0 or 1 corresponding to the rows of <code class = "inline">data</code>.
+            <li> <code class = "inline">test_size</code>: the size of the test set created when the data is divided into test and training sets with <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">train_test_split</a>. The default value is <code class = "inline">0.25</code>.
+            <li> <code class = "inline">random_state</code>: the random seed used when the data is divided into test and training sets with <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">train_test_split</a>. The default value is <code class = "inline">21</code>.
+        </ul>
+        Returns the data split into 4 subsets, corresponding to those returned by <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">train_test_split</a>:
+        <code class = "inline">x_train</code>,
+        <code class = "inline">x_test</code>,
+        <code class = "inline">y_train</code>, and
+        <code class = "inline">y_test</code>.
+
+    <li> <code class = "inline">fit_model(x_train, y_train, model='logreg'): -> object:</code>
+    This function takes four input parameter:
+      <ul>
+        <li> <code class = "inline">x_train</code>: the independent variable(s) for the analysis.
+        <li> <code class = "inline">y_train</code>: the dependent variable for the analysis.
+        <li> <code class = "inline">model</code>: the type of model to use.  Possible values are 'logreg', 'svm', 'nbayes', and 'rforest'.  See below for the specified parameters for each model.  The default value for this parameter is 'logreg'.
+
+      </ul>
+      Fits the specifed model to the <code class = "inline">x_train</code> and
+      <code class = "inline">y_train</code> data, using <a href="https://scikit-learn.org">sklearn</a>.  Additional notes for each model:
+      <ul>
+          <li> <code class = "inline">logreg</code>: Logistic Regression:  For logistic regression, use the <code class = "inline">solver = 'saga'</code>  to allow all the options for regularization (called <code class = "inline">penalty</code> as the option to the model) be any of <code class = "inline">'elasticnet'</code>, <code class = "inline">'l1'</code>,
+          <li> <code class = "inline">nbayes</code>: Naive Bayes:
+          <li> <code class = "inline">svm</code>: Support Vector Machine:
+          <li> <code class = "inline">rforest</code>: Random Forest:
+      <code class = "inline">'l2'</code>, and <code class = "inline">'none'</code>).
+          <li> For SVM, use the SVM classifier to set up the model, <code class = "inline">svm.SVC()</code>
+          <li> For random forests, FILL IN
+            <li> <code class = "inline">penalty</code>: the type of regularization applied.  The default value for this parameter is 'none'.
+            <li> <code class = "inline">max_iter</code>: number of iterations allowed when fitting model.  The default value for this parameter is 1000.
+      </ul>
+      The resulting model should be returned as bytestream, using <a href="https://docs.python.org/3/library/pickle.html">pickle</a>.
+
+  <li> ADD IN MULTICLASS?
+
+  <li> <code class = "inline">predict_model(model, xes):</code>
+          <ul>
+              <li> <code class = "inline">model</code>: a object serialization of a trained model.  The possible model approaches are logistic regression, support vector machine, 'nbayes' for naive Bayes, and 'rforest' for random forest.
+            <li> <code class = "inline">xes</code>: the independent variable(s) for the analysis with the same dimensions as which the model was trained.
+          </ul>
+          Returns the values that the model predicts for the inputted independent variables (that is, the `y_estimate` gives the xes).
+
+  <li> <code class = "inline">score_model():</code>
+          <ul>
+              <li> <code class = "inline">model</code>: a object serialization of a trained model.  The possible model approaches are logistic regression, support vector machine, 'nbayes' for naive Bayes, and 'rforest' for random forest.
+                      <li> <code class = "inline"></code>:
+          </ul>
+          Returns a list of the resulting scores of each of the models...
+
+      </ul>
 
 
-P44:  Model comparison for iris, reuse for this dataset.
+
+      <p>
+      For example, let's flatten the entries and restrict the dataset to just binary digits, as we did in lecture:
+      <pre><code class="blockcode">#Import datasets, classifiers and performance metrics:
+from sklearn import datasets, svm, metrics
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+#Using the digits data set from sklearn:
+from sklearn import datasets
+digits = datasets.load_digits()
+print(digits.target)
+print(type(digits.target), type(digits.data))
+#flatten the images
+n_samples = len(digits.images)
+data = digits.images.reshape((n_samples, -1))
+print(data[0:5])
+print(f'The targets for the first 5 entries: {digits.target[:5]}')
+#Make a DataFrame with just the binary digits:
+binaryDigits = [(d,t) for (d,t) in zip(data,digits.target) if t <= 1]
+bd,bt = zip(*binaryDigits)
+print(f'The targets for the first 5 binary entries: {bt[:5]}')</code></pre>
+      which will print:
+<pre><code class="datablock">
+[0 1 2 ... 8 9 8]
+<class 'numpy.ndarray'> <class 'numpy.ndarray'>
+[[ 0.  0.  5. 13.  9.  1.  0.  0.  0.  0. 13. 15. 10. 15.  5.  0.  0.  3.
+15.  2.  0. 11.  8.  0.  0.  4. 12.  0.  0.  8.  8.  0.  0.  5.  8.  0.
+0.  9.  8.  0.  0.  4. 11.  0.  1. 12.  7.  0.  0.  2. 14.  5. 10. 12.
+0.  0.  0.  0.  6. 13. 10.  0.  0.  0.]
+[ 0.  0.  0. 12. 13.  5.  0.  0.  0.  0.  0. 11. 16.  9.  0.  0.  0.  0.
+3. 15. 16.  6.  0.  0.  0.  7. 15. 16. 16.  2.  0.  0.  0.  0.  1. 16.
+16.  3.  0.  0.  0.  0.  1. 16. 16.  6.  0.  0.  0.  0.  1. 16. 16.  6.
+0.  0.  0.  0.  0. 11. 16. 10.  0.  0.]
+[ 0.  0.  0.  4. 15. 12.  0.  0.  0.  0.  3. 16. 15. 14.  0.  0.  0.  0.
+8. 13.  8. 16.  0.  0.  0.  0.  1.  6. 15. 11.  0.  0.  0.  1.  8. 13.
+15.  1.  0.  0.  0.  9. 16. 16.  5.  0.  0.  0.  0.  3. 13. 16. 16. 11.
+5.  0.  0.  0.  0.  3. 11. 16.  9.  0.]
+[ 0.  0.  7. 15. 13.  1.  0.  0.  0.  8. 13.  6. 15.  4.  0.  0.  0.  2.
+1. 13. 13.  0.  0.  0.  0.  0.  2. 15. 11.  1.  0.  0.  0.  0.  0.  1.
+12. 12.  1.  0.  0.  0.  0.  0.  1. 10.  8.  0.  0.  0.  8.  4.  5. 14.
+9.  0.  0.  0.  7. 13. 13.  9.  0.  0.]
+[ 0.  0.  0.  1. 11.  0.  0.  0.  0.  0.  0.  7.  8.  0.  0.  0.  0.  0.
+1. 13.  6.  2.  2.  0.  0.  0.  7. 15.  0.  9.  8.  0.  0.  5. 16. 10.
+0. 16.  6.  0.  0.  4. 15. 16. 13. 16.  1.  0.  0.  0.  0.  3. 15. 10.
+0.  0.  0.  0.  0.  2. 16.  4.  0.  0.]]
+The targets for the first 5 entries: [0 1 2 3 4]
+The targets for the first 5 binary entries: (0, 1, 0, 1, 0)
+</code></pre>
+
+      <p>We can then use the restricted data and targets datasets as input to our function, assuming your function <code class="inline">binary_digit_clf()</code> was in the <code class="inline">answer.py</code>:
+<pre><code class="blockcode">confuse_mx = answer.binary_digit_clf(bd,bt,test_size=0.95)
+print(f'Confusion matrix:\n{confuse_mx}')
+disp = metrics.ConfusionMatrixDisplay(confusion_matrix=confuse_mx)
+#Use a different color map since the default is garish:
+disp.plot(cmap = "Purples")
+plt.title("Logistic Regression Classifier for Binary Digits")
+plt.show()</code></pre>
+        which will print:
+<pre><code class="datablock">Confusion matrix:
+[[172   0]
+[  4 166]]</code></pre>
+      and display:
+      <br>
+      <img src="../fall21/logReg_clf_confuse.png" height = 300>
+
+      <p>Another example with the same data, but different size for the data reserved for testing:
+        <pre><code class="blockcode">confuse_mx = answer.binary_digit_clf(bd,bt)
+print(f'Confusion matrix:\n{confuse_mx}')</code></pre>
+        would print:
+        <pre><code class="datablock">Confusion matrix:
+[[43  0]
+[ 0 47]]</code></pre>
+
+<code class = "inline">round_vs_straight(data, target, test_size = 0.25, random_state = 21):</code>
+
+
+         add an indicator for roundish numbers (0,2,3,5,6,8,9) and not (1,4,7)--
+         run the classifer using that label- how well do you do?
+         This function takes as two input parameters:
+         <ul>
+             <li> <code class = "inline"></code>:
+             <li> <code class = "inline"></code>:
+         </ul>
+         Returns
+
+
+
+  <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
+
+  In Lectures #21 and #22 and <a href="http://www.textbook.ds100.org/ch/24/classification_multiclass.html">Chapter 24</a>, we build classifiers for the iris dataset.  Write a function that fits a Logistic Regression model and a Support Vector Machine to the same training data and returns the score of each on the same testing data.
+
+  <ul>
+  <li> <code class = "inline">compare_clf(xes, y, test_size = 0.20, random_state=66,max_iter=500):</code>
+      This function has five inputs and returns a linear regression classifier:
+      <ul>
+          <li> <code class = "inline">xes</code>: a array of the depedendent variables for the model.
+          <li> <code class = "inline">y</code>: the independent variable for the model.
+          <li> <code class = "inline">test_size</code>: the size of the test set created when the data is divided into test and training sets with <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">train_test_split</a>. The default value is <code class = "inline">0.20</code>.
+          <li> <code class = "inline">random_state</code>: the random seed used when the data is divided into test and training sets with <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">train_test_split</a>. The default value is <code class = "inline">66</code>.
+          <li> <code class = "inline">max_iter</code>: the maximum number of iterations flag used for <code class = "inline">LogisticRegression</code>.The default value is <code class = "inline">500</code>.
+        </ul>
+
+        The function returns the score of the model score computed on the test data by each classifier.
+    </ul>
+
+    <p>For example, assuming your functions are in <code class=inline>p44</code> and the appropriate libraries are loaded:
+    <pre><code class="blockcode">iris = datasets.load_iris()
+l_40,s_40 = p44.compare_clf(iris.data,iris.target,test_size=.4)
+print(f'With a 40% test set, LogReg classifer has score {l_40}.\nSVM classifier had score {s_40}.')
+
+xes = list(range(5,100,5))
+runs = [p44.compare_clf(iris.data,iris.target,test_size=x/100) for x in xes]
+lr_runs, svm_runs = zip(*runs)
+plt.plot(xes, lr_runs, label="LogReg")
+plt.plot(xes, svm_runs, label= "SVM")
+plt.xlabel('Test Size (Percent)')
+plt.ylabel('Score')
+plt.title('Iris Dataset:  Test Size vs Score')
+plt.legend()
+plt.show()</code></pre>
+
+    would print:
+    <pre><code class="datablock">With a 40% test set, LogReg classifer has score 0.9833333333333333.
+SVM classifier had score 0.9833333333333333.</code></pre>
+
+    and display:
+    <p>
+    <img src = "../fall21/iris_logR_svm.png" height=300>
+
 
 
 
