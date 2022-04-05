@@ -235,44 +235,44 @@ Seat:  YOUR_SEAT
 
 
 
-  <p><a name="cw8"><b>Classwork 8: </b> &emsp; <i>Due midnight, Monday, 28 February.</i> &emsp;
+<p><a name="cw8"><b>Classwork 8: </b> &emsp; <i>Due midnight, Monday, 28 February.</i> &emsp;
 
-      Available during Lecture 8 on Gradescope, this classwork focuses on the <a href="https://geojson.org">GeoJSON</a> format, including hands-on activity with <a href="https://geojson.io">GeoJSON visual editor</a>. To get the most out of this exercise, bring a laptop with you to lecture with a development environment (IDE) that has Python 3+ to work through in lecture.
+    Available during Lecture 8 on Gradescope, this classwork focuses on the <a href="https://geojson.org">GeoJSON</a> format, including hands-on activity with <a href="https://geojson.io">GeoJSON visual editor</a>. To get the most out of this exercise, bring a laptop with you to lecture with a development environment (IDE) that has Python 3+ to work through in lecture.
 
-  <p><a name="cw9"><b>Classwork 9: </b> &emsp; <i>Due midnight, Thursday, 3 March.</i> &emsp;
+<p><a name="cw9"><b>Classwork 9: </b> &emsp; <i>Due midnight, Thursday, 3 March.</i> &emsp;
 
-      Available during Lecture 9 on Gradescope, this classwork is modeled on an analytic reasoning challenge of efficiently computing catchment areas (Voronoi diagrams) for NYC libraries.  To get the most out of this exercise, bring a device with you that can access Gradescope's online assignments.
+    Available during Lecture 9 on Gradescope, this classwork is modeled on an analytic reasoning challenge of efficiently computing catchment areas (Voronoi diagrams) for NYC libraries.  To get the most out of this exercise, bring a device with you that can access Gradescope's online assignments.
 
-  <p><a name="cw10"><b>Classwork 10: </b> &emsp; <i>Due midnight, Monday, 7 March.</i> &emsp;
+<p><a name="cw10"><b>Classwork 10: </b> &emsp; <i>Due midnight, Monday, 7 March.</i> &emsp;
 
-      Available during Lecture 10 on Gradescope, this classwork builds intuition about how correlated datasets are.  To get the most out of this exercise, bring a device with you that can access Gradescope's online assignments.
+    Available during Lecture 10 on Gradescope, this classwork builds intuition about how correlated datasets are.  To get the most out of this exercise, bring a device with you that can access Gradescope's online assignments.
 
-  <p><a name="cw11"><b>Classwork 11: </b> &emsp; <i>Due midnight, Thursday, 10 March.</i> &emsp;
+<p><a name="cw11"><b>Classwork 11: </b> &emsp; <i>Due midnight, Thursday, 10 March.</i> &emsp;
 
-      Available during Lecture 11 on Gradescope, this classwork reviews probability distributions and sampling.  To get the most out of this exercise, bring a device with you that can access Gradescope's online assignments.
+    Available during Lecture 11 on Gradescope, this classwork reviews probability distributions and sampling.  To get the most out of this exercise, bring a device with you that can access Gradescope's online assignments.
 
-  <p><a name="cw12"><b>Classwork 12: </b> &emsp; <i>Due midnight, Monday, 14 March.</i> &emsp;
-    Available during Lecture 12 on Gradescope, this classwork focuses on empirical analysis of random variables.  To get the most out of this exercise, bring a laptop with you to lecture with a development environment (IDE) that has Python 3+ to work through in lecture.
+<p><a name="cw12"><b>Classwork 12: </b> &emsp; <i>Due midnight, Monday, 14 March.</i> &emsp;
+  Available during Lecture 12 on Gradescope, this classwork focuses on empirical analysis of random variables.  To get the most out of this exercise, bring a laptop with you to lecture with a development environment (IDE) that has Python 3+ to work through in lecture.
 
-    <p>
-      Write a function:
-      <ul>
-          <li> <code class="inline">diceSim(D1,D2,trials)</code> that takes as input the number of sides on die 1 (<code class="inline">D1</code>) and
-          die2 (<code class="inline">D2</code>) and the number of trials.  Your function should repeatedly sum pairs of random numbers between 1 and <code class="inline">D1</code> and 1 and <code class="inline">D2</code> and keep track of how many times each sum occurs. The function returns a numpy array with the fraction each sum of rolls occured.
-        </ul>
+  <p>
+    Write a function:
+    <ul>
+        <li> <code class="inline">diceSim(D1,D2,trials)</code> that takes as input the number of sides on die 1 (<code class="inline">D1</code>) and
+        die2 (<code class="inline">D2</code>) and the number of trials.  Your function should repeatedly sum pairs of random numbers between 1 and <code class="inline">D1</code> and 1 and <code class="inline">D2</code> and keep track of how many times each sum occurs. The function returns a numpy array with the fraction each sum of rolls occured.
+      </ul>
 
-        <p>
-        Since the numbers are chosen at random, the fractions will differ some from run to run. One run of the function <code class="inline">print(p22.diceSim(6,6,10000))</code> resulted in:
-  <pre><code class="datablock">
-    [0.     0.     0.0259 0.0615 0.0791 0.1086 0.139  0.1633 0.1385 0.114  0.0833 0.0587 0.0281]</code></pre>
+      <p>
+      Since the numbers are chosen at random, the fractions will differ some from run to run. One run of the function <code class="inline">print(p22.diceSim(6,6,10000))</code> resulted in:
+<pre><code class="datablock">
+  [0.     0.     0.0259 0.0615 0.0791 0.1086 0.139  0.1633 0.1385 0.114  0.0833 0.0587 0.0281]</code></pre>
 
-        or displayed using the code from <a href="http://www.textbook.ds100.org/ch/16/prob_random_vars.html">Section 16.1.1.</a>:
-        <p>
-        <img src="../fall21/dice_6_6.png" height=200>
-      </p>
+      or displayed using the code from <a href="http://www.textbook.ds100.org/ch/16/prob_random_vars.html">Section 16.1.1.</a>:
+      <p>
+      <img src="../fall21/dice_6_6.png" height=200>
+    </p>
 
-      <p>If you attended lecture, include the last three lines to the the introductory comment:
-        <pre><code class="blockcode">"""
+    <p>If you attended lecture, include the last three lines to the the introductory comment:
+      <pre><code class="blockcode">"""
 Name:  YOUR_NAME
 Email: YOUR_EMAIL
 Resources:  RESOURCES USED
@@ -281,29 +281,38 @@ Row:  YOUR_ROW
 Seat:  YOUR_SEAT
 """</pre></code>
 
-        If you did not attend lecture, do not include the above lines.
+      If you did not attend lecture, do not include the above lines.
 
-  <p><a name="cw13"><b>Classwork 13: </b> &emsp; <i>Due midnight, Thursday, 17 March.</i> &emsp;
-      Available during Lecture 13 on Gradescope, this classwork focuses on gradient descent.  To get the most out of this exercise, bring a device with you that can access Gradescope's online assignments.
+<p><a name="cw13"><b>Classwork 13: </b> &emsp; <i>Due midnight, Thursday, 17 March.</i> &emsp;
+    Available during Lecture 13 on Gradescope, this classwork focuses on gradient descent.  To get the most out of this exercise, bring a device with you that can access Gradescope's online assignments.
 
-  <p><a name="cw14"><b>Classwork 14: </b> &emsp; <i>Due 4pm, Monday, 21 March.</i> &emsp;
-      Available during Lecture 14 on Gradescope, this classwork was a reviewed the first half of the course, following the topics in <a href="https://ds100.org/sp22/resources/assets/exams/fa19/fa19midterm1.pdf">DS100 Fall 19 Midterm</a>.  To get the most out of this exercise, bring a device with you that can access Gradescope's online assignments.
+<p><a name="cw14"><b>Classwork 14: </b> &emsp; <i>Due 4pm, Monday, 21 March.</i> &emsp;
+    Available during Lecture 14 on Gradescope, this classwork was a reviewed the first half of the course, following the topics in <a href="https://ds100.org/sp22/resources/assets/exams/fa19/fa19midterm1.pdf">DS100 Fall 19 Midterm</a>.  To get the most out of this exercise, bring a device with you that can access Gradescope's online assignments.
 
-  <p><a name="cw15"><b>Classwork 15: </b> &emsp; <i>Due 4pm, Thursday, 24 March.</i> &emsp;
-      Available during Lecture 15 on Gradescope, this classwork focuses on regularization.  To get the most out of this exercise, bring a device with you that can access Gradescope's online assignments.
+<p><a name="cw15"><b>Classwork 15: </b> &emsp; <i>Due 4pm, Thursday, 24 March.</i> &emsp;
+    Available during Lecture 15 on Gradescope, this classwork focuses on regularization.  To get the most out of this exercise, bring a device with you that can access Gradescope's online assignments.
 
-  <p><a name="cw16"><b>Classwork 16: </b> &emsp; <i>Due 4pm, Monday, 28 March.</i> &emsp;
-      Available during Lecture 16 on Gradescope, this classwork focuses on computing loss functions.  To get the most out of this exercise, bring a device with you that can access Gradescope's online assignments.
+<p><a name="cw16"><b>Classwork 16: </b> &emsp; <i>Due 4pm, Monday, 28 March.</i> &emsp;
+    Available during Lecture 16 on Gradescope, this classwork focuses on computing loss functions.  To get the most out of this exercise, bring a device with you that can access Gradescope's online assignments.
 
-  <p><a name="cw17"><b>Classwork 17: </b> &emsp; <i>Due 4pm, Thursday, 31 March.</i> &emsp;
-      Available during Lecture 17 on Gradescope, this classwork focuses on nominal data.  To get the most out of this exercise, bring a device with you that can access Gradescope's online assignments.
+<p><a name="cw17"><b>Classwork 17: </b> &emsp; <i>Due 4pm, Thursday, 31 March.</i> &emsp;
+    Available during Lecture 17 on Gradescope, this classwork focuses on nominal data.  To get the most out of this exercise, bring a device with you that can access Gradescope's online assignments.
 
-  <p><a name="cw18"><b>Classwork 18: </b> &emsp; <i>Due 4pm, Monday, 4 April.</i> &emsp;
-      Available during Lecture 18 on Gradescope, this classwork focuses on classification.  To get the most out of this exercise, bring a device with you that can access Gradescope's online assignments.
+<p><a name="cw18"><b>Classwork 18: </b> &emsp; <i>Due 4pm, Monday, 4 April.</i> &emsp;
+    Available during Lecture 18 on Gradescope, this classwork focuses on linear separability and classification.  To get the most out of this exercise, bring a device with you that can access Gradescope's online assignments.
 
-  <p><a name="cw19"><b>Classwork 19: </b> &emsp; <i>Due 4pm, Thursday, 7 April.</i> &emsp;
-      Available during Lecture 18 on Gradescope, this classwork focuses on linear algebra.  To get the most out of this exercise, bring a device with you that can access Gradescope's online assignments.
-      <br><br>
+<p><a name="cw19"><b>Classwork 19: </b> &emsp; <i>Due 4pm, Thursday, 7 April.</i> &emsp;
+    Available during Lecture 19 on Gradescope, this classwork focuses on linear algebra.  To get the most out of this exercise, bring a device with you that can access Gradescope's online assignments.
+
+
+<p><a name="cw20"><b>Classwork 20: </b> &emsp; <i>Due 4pm, Monday, 11 April.</i> &emsp;
+    Available during Lecture 20 on Gradescope, this classwork focuses on intrinsic dimensionality.  To get the most out of this exercise, bring a device with you that can access Gradescope's online assignments.
+
+
+<p><a name="cw21"><b>Classwork 21: </b> &emsp; <i>Due 4pm, Thursday, 14 April.</i> &emsp;
+    Available during Lecture 21 on Gradescope, this classwork focuses on distance metrics.  To get the most out of this exercise, bring a device with you that can access Gradescope's online assignments.
+    <br><br>
+
 
           <i>More to come...</i>
 
@@ -350,15 +359,17 @@ Unless otherwise noted, quizzes focus on the corresponding programming assignmen
     Link to access HackerRank available at the end of Lecture 17 (posted on Blackboard).
     <br>This is the quiz focuses on computing errors with loss functions in Python as in <a href="#p8">Program 8</a>.
 
-<p><a name="q9"><b>Quiz 9: Categorical Encoding & Fitting Models.</b> &emsp; <i>Due 4pm, Friday, 1 April.</i> &emsp;
+<p><a name="q9"><b>Quiz 9: Categorical Encoding & Fitting Models.</b> &emsp; <i>Due 4pm, Friday, 8 April.</i> &emsp;
     Link to access HackerRank available at the end of Lecture 19 (posted on Blackboard).
-    <br>This is the quiz focuses on computing errors with loss functions in Python as in <a href="#p9">Program 9</a>.
+    <br>This is the quiz focuses on categorical encoding and fitting models in Python as in <a href="#p9">Program 9</a>.
 
-<p><a name="q10"><b>Quiz 10: Classification & Evaluating Models.</b> &emsp; <i>Due 4pm, Friday, 8 April.</i> &emsp;
-    Link to access HackerRank available at the end of Lecture 19 (posted on Blackboard).
+<p><a name="q10"><b>Quiz 10: Linear Separability & Classifiers.</b> &emsp; <i>Due 4pm, Friday, 15 April.</i> &emsp;
+    <i>Due to the holiday on April 15, the link to access HackerRank will be available at 8am on Thursday, 14 April to allow students who are observing the holiday to be able to complete the quiz on Thursday.</i>
     <br>This is the quiz focuses on computing errors with loss functions in Python as in <a href="#p10">Program 10</a>.
 
-
+<p><a name="q11"><b>Quiz 11: Dimensionality Reduction</b> &emsp; <i>Due 4pm, Friday, 30 April.</i> &emsp;
+    Link to access HackerRank available at the end of Lecture 23 (posted on Blackboard).
+    <br>This is the quiz focuses on instrinsic dimensions and dimensionality reduction techniques in Python as in <a href="#p11">Program 11</a>.
 
 <br><br>
 
@@ -450,11 +461,12 @@ and then followed by his Python program.
   <p><a name="p9"><b><b><a href="p9.html">Program 9: Logistic Taxi.</a></b></b> &emsp; <i>Due noon, Thursday, 7 April.
     <br>Learning Objective:  to train and validate models, given quantitative and qualitative data, as well as assessing model quality.</i>
 
-<!--
+
 <br>
   <p><a name="p10"><b><b><a href="p10.html">Program 10: Classifying Digits.</a></b></b> &emsp; <i>Due noon, Thursday, 14 April.
     <br>Learning Objective:  to train and validate models, given quantitative and qualitative data, as well as assessing model quality.</i>
 
+<!--
 <br>
   <p><a name="p11"><b>Program 11: Digit Dimensions.</b></b> &emsp; <i>Due noon, Thursday, 28 April.
     <br>Learning Objective: .</i>

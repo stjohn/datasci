@@ -127,7 +127,7 @@ The function specifications are below:
         <ul>
             <li> <code class = "inline">data</code>: a numpy array that
                   includes rows of equal size flattened arrays,
-            <li> <code class = "inline">target</code> a numpy array that takes values 0 or 1 corresponding to the rows of <code class = "inline">data</code>.
+            <li> <code class = "inline">target</code> a numpy array corresponding to the rows of <code class = "inline">data</code>.
             <li> <code class = "inline">test_size</code>: the size of the test set created when the data is divided into test and training sets with <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">train_test_split</a>. The default value is <code class = "inline">0.25</code>.
             <li> <code class = "inline">random_state</code>: the random seed used when the data is divided into test and training sets with <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">train_test_split</a>. The default value is <code class = "inline">21</code>.
         </ul>
@@ -136,6 +136,7 @@ The function specifications are below:
         <code class = "inline">x_test</code>,
         <code class = "inline">y_train</code>, and
         <code class = "inline">y_test</code>.
+        To ensure good representation across the classes, the <code class = "inline">stratify</code> parameter should be used with the data labels (i.e. <code class = "inline">stratify=target</code> included in the call to <code class = "inline">train_test_split</code>).
 
     <li> <code class = "inline">fit_model(x_train, y_train, model_type='logreg'):</code>
     This function takes four input parameters:
@@ -148,13 +149,13 @@ The function specifications are below:
       Fits the specifed model to the <code class = "inline">x_train</code> and
       <code class = "inline">y_train</code> data, using <a href="https://scikit-learn.org">sklearn</a>.  Additional notes for each model:
       <ul>
-          <li> <code class = "inline">logreg</code>: Logistic Regression:  For logistic regression, use the <code class = "inline">solver = 'saga'</code>  with <code class = "inline">penalty='l2'</code>.
-          <li> <code class = "inline">nbayes</code>: Naive Bayes:
-          <li> <code class = "inline">svm</code>: Support Vector Machine:  use the SVM classifier to set up the model, <code class = "inline">svm.SVC()</code>
-          <li> <code class = "inline">rforest</code>: Random Forest:
+          <li> <code class = "inline">logreg</code>: Logistic Regression:  For logistic regression, use the SVM classifier to set up the model, <code class = "inline">sklearn.linear_model.LogisticRegression</code> with solver <code class = "inline">solver = 'saga'</code>, regularization <code class = "inline">penalty='l2'</code>, and max iterations <code class = "inline">max_iter=5000</code>.
+          <li> <code class = "inline">nbayes</code>: Naive Bayes:  use the Gaussian Naive Bayes classifier to set up the model, <code class = "inline">sklearn.naive_bayes.GaussianNB</code>.
+          <li> <code class = "inline">svm</code>: Support Vector Machine:  use the SVM classifier to set up the model, <code class = "inline">sklearn.svm.SVC</code> with the radial basis function kernel RBF <code class = "inline">kernel='rbf'</code>.
+          <li> <code class = "inline">rforest</code>: Random Forest: use the random forest classifier to set up the model, <code class = "inline">sklearn.ensemble.RandomForestClassifier</code> with 100 estimators and the random state set to 0  (i.e. <code class = "inline">n_estimators=100, random_state=0</code>).
       </ul>
       The resulting model should be returned as bytestream, using <a href="https://docs.python.org/3/library/pickle.html">pickle</a>.
-
+      <i>Hint: for more details on setting up each of these models, see Lecture 18 and the associated notebooks and reading.</i>
   <li> <code class = "inline">predict_model(mod_pkl, xes):</code>
       This function takes two input parameters:
           <ul>
@@ -172,138 +173,147 @@ The function specifications are below:
           </ul>
           Returns the confusion matrix for the model.
 
+    <li> <code class = "inline">compare_models(data, target, test_size = 0.25, random_state = 21, models = ['logreg','nbayes','svm','rforest']):</code>
+        This function has five inputs:
+        <ul>
+            <li> <code class = "inline">data</code>: a numpy array that
+                  includes rows of equal size flattened arrays,
+            <li> <code class = "inline">target</code> a numpy array that takes values 0 or 1 corresponding to the rows of <code class = "inline">data</code>.
+            <li> <code class = "inline">test_size</code>: the size of the test set created when the data is divided into test and training sets with <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">train_test_split</a>. The default value is <code class = "inline">0.25</code>.
+            <li> <code class = "inline">random_state</code>: the random seed used when the data is divided into test and training sets with <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">train_test_split</a>. The default value is <code class = "inline">21</code>.
+            <li> <code class = "inline">models</code>: a list of names of models that <code class = "inline">fit_model</code> accepts.  The default value is <code class = "inline">['logreg','nbayes','svm','rforest']</code>.
+        </ul>
+        This function calls <code class = "inline">split_data</code> with the first four parameters to create four subsets:
+        <code class = "inline">x_train</code>,
+        <code class = "inline">x_test</code>,
+        <code class = "inline">y_train</code>, and
+        <code class = "inline">y_test</code>.
+        For each of the specified models in <code class = "inline">models</code>, calls the function above to fit each model to the training data, and computes the accuracy (which can be computed from the sum of the diagonal of the confusion matrix, or more simply using the <code class = "inline">score()</code> function of each model).  The function returns the name of the model with highest accuracy score and its accuracy score.  In case of ties for the best score, return the first one that has that value.
+
       </ul>
 
 
 
-      <p>
-      For example, let's flatten the entries and restrict the dataset to just binary digits, as we did in lecture:
-      <pre><code class="blockcode">#Import datasets, classifiers and performance metrics:
-from sklearn import datasets, svm, metrics
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LogisticRegression
-#Using the digits data set from sklearn:
+<p>
+For the examples, we first load in the digits dataset from sklearn:
+<pre><code class="blockcode">#Using the digits data set from sklearn:
 from sklearn import datasets
 digits = datasets.load_digits()
 print(digits.target)
 print(type(digits.target), type(digits.data))
-#flatten the images
-n_samples = len(digits.images)
-data = digits.images.reshape((n_samples, -1))
-print(data[0:5])
-print(f'The targets for the first 5 entries: {digits.target[:5]}')
-#Make a DataFrame with just the binary digits:
-binaryDigits = [(d,t) for (d,t) in zip(data,digits.target) if t <= 1]
-bd,bt = zip(*binaryDigits)
-print(f'The targets for the first 5 binary entries: {bt[:5]}')</code></pre>
-      which will print:
-<pre><code class="datablock">
-[0 1 2 ... 8 9 8]
-<class 'numpy.ndarray'> <class 'numpy.ndarray'>
-[[ 0.  0.  5. 13.  9.  1.  0.  0.  0.  0. 13. 15. 10. 15.  5.  0.  0.  3.
-15.  2.  0. 11.  8.  0.  0.  4. 12.  0.  0.  8.  8.  0.  0.  5.  8.  0.
-0.  9.  8.  0.  0.  4. 11.  0.  1. 12.  7.  0.  0.  2. 14.  5. 10. 12.
-0.  0.  0.  0.  6. 13. 10.  0.  0.  0.]
-[ 0.  0.  0. 12. 13.  5.  0.  0.  0.  0.  0. 11. 16.  9.  0.  0.  0.  0.
-3. 15. 16.  6.  0.  0.  0.  7. 15. 16. 16.  2.  0.  0.  0.  0.  1. 16.
-16.  3.  0.  0.  0.  0.  1. 16. 16.  6.  0.  0.  0.  0.  1. 16. 16.  6.
-0.  0.  0.  0.  0. 11. 16. 10.  0.  0.]
-[ 0.  0.  0.  4. 15. 12.  0.  0.  0.  0.  3. 16. 15. 14.  0.  0.  0.  0.
-8. 13.  8. 16.  0.  0.  0.  0.  1.  6. 15. 11.  0.  0.  0.  1.  8. 13.
-15.  1.  0.  0.  0.  9. 16. 16.  5.  0.  0.  0.  0.  3. 13. 16. 16. 11.
-5.  0.  0.  0.  0.  3. 11. 16.  9.  0.]
-[ 0.  0.  7. 15. 13.  1.  0.  0.  0.  8. 13.  6. 15.  4.  0.  0.  0.  2.
-1. 13. 13.  0.  0.  0.  0.  0.  2. 15. 11.  1.  0.  0.  0.  0.  0.  1.
-12. 12.  1.  0.  0.  0.  0.  0.  1. 10.  8.  0.  0.  0.  8.  4.  5. 14.
-9.  0.  0.  0.  7. 13. 13.  9.  0.  0.]
-[ 0.  0.  0.  1. 11.  0.  0.  0.  0.  0.  0.  7.  8.  0.  0.  0.  0.  0.
-1. 13.  6.  2.  2.  0.  0.  0.  7. 15.  0.  9.  8.  0.  0.  5. 16. 10.
-0. 16.  6.  0.  0.  4. 15. 16. 13. 16.  1.  0.  0.  0.  0.  3. 15. 10.
-0.  0.  0.  0.  0.  2. 16.  4.  0.  0.]]
-The targets for the first 5 entries: [0 1 2 3 4]
-The targets for the first 5 binary entries: (0, 1, 0, 1, 0)
 </code></pre>
 
-      <p>We can then use the restricted data and targets datasets as input to our function, assuming your function <code class="inline">binary_digit_clf()</code> was in the <code class="inline">answer.py</code>:
-<pre><code class="blockcode">confuse_mx = answer.binary_digit_clf(bd,bt,test_size=0.95)
-print(f'Confusion matrix:\n{confuse_mx}')
-disp = metrics.ConfusionMatrixDisplay(confusion_matrix=confuse_mx)
-#Use a different color map since the default is garish:
-disp.plot(cmap = "Purples")
-plt.title("Logistic Regression Classifier for Binary Digits")
-plt.show()</code></pre>
-        which will print:
-<pre><code class="datablock">Confusion matrix:
-[[172   0]
-[  4 166]]</code></pre>
-      and display:
-      <br>
-      <img src="../fall21/logReg_clf_confuse.png" height = 300>
+As we saw in lecture, the data set is labeled with the digit represented and the types of
+these labels and the data is numpy arrays:
+<pre><code class="datablock">[0 1 2 ... 8 9 8]
+&lt;class 'numpy.ndarray'&gt; &lt;class 'numpy.ndarray'&gt;
+</code></pre>
 
-      <p>Another example with the same data, but different size for the data reserved for testing:
-        <pre><code class="blockcode">confuse_mx = answer.binary_digit_clf(bd,bt)
-print(f'Confusion matrix:\n{confuse_mx}')</code></pre>
-        would print:
-        <pre><code class="datablock">Confusion matrix:
-[[43  0]
-[ 0 47]]</code></pre>
+Let's flatten the entries, using the numpy's reshape function:
+<pre><code class="blockcode">n_samples = len(digits.images)
+data = digits.images.reshape((n_samples, -1))
+print(f'The labels for the first 5 entries: {digits.target[:5]}')
+print(data[0:5])
+</code></pre>
 
-<code class = "inline">round_vs_straight(data, target, test_size = 0.25, random_state = 21):</code>
+The labels of the first five elements in our dataset and their flattened representation:
+<pre><code class="datablock">The targets for the first 5 entries: [0 1 2 3 4]
+[[ 0.  0.  5. 13.  9.  1.  0.  0.  0.  0. 13. 15. 10. 15.  5.  0.  0.  3.
+  15.  2.  0. 11.  8.  0.  0.  4. 12.  0.  0.  8.  8.  0.  0.  5.  8.  0.
+   0.  9.  8.  0.  0.  4. 11.  0.  1. 12.  7.  0.  0.  2. 14.  5. 10. 12.
+   0.  0.  0.  0.  6. 13. 10.  0.  0.  0.]
+ [ 0.  0.  0. 12. 13.  5.  0.  0.  0.  0.  0. 11. 16.  9.  0.  0.  0.  0.
+   3. 15. 16.  6.  0.  0.  0.  7. 15. 16. 16.  2.  0.  0.  0.  0.  1. 16.
+  16.  3.  0.  0.  0.  0.  1. 16. 16.  6.  0.  0.  0.  0.  1. 16. 16.  6.
+   0.  0.  0.  0.  0. 11. 16. 10.  0.  0.]
+ [ 0.  0.  0.  4. 15. 12.  0.  0.  0.  0.  3. 16. 15. 14.  0.  0.  0.  0.
+   8. 13.  8. 16.  0.  0.  0.  0.  1.  6. 15. 11.  0.  0.  0.  1.  8. 13.
+  15.  1.  0.  0.  0.  9. 16. 16.  5.  0.  0.  0.  0.  3. 13. 16. 16. 11.
+   5.  0.  0.  0.  0.  3. 11. 16.  9.  0.]
+ [ 0.  0.  7. 15. 13.  1.  0.  0.  0.  8. 13.  6. 15.  4.  0.  0.  0.  2.
+   1. 13. 13.  0.  0.  0.  0.  0.  2. 15. 11.  1.  0.  0.  0.  0.  0.  1.
+  12. 12.  1.  0.  0.  0.  0.  0.  1. 10.  8.  0.  0.  0.  8.  4.  5. 14.
+   9.  0.  0.  0.  7. 13. 13.  9.  0.  0.]
+ [ 0.  0.  0.  1. 11.  0.  0.  0.  0.  0.  0.  7.  8.  0.  0.  0.  0.  0.
+   1. 13.  6.  2.  2.  0.  0.  0.  7. 15.  0.  9.  8.  0.  0.  5. 16. 10.
+   0. 16.  6.  0.  0.  4. 15. 16. 13. 16.  1.  0.  0.  0.  0.  3. 15. 10.
+   0.  0.  0.  0.  0.  2. 16.  4.  0.  0.]]</code></pre>
 
+We can restrict the dataset to just binary digits:
+<pre><code class="blockcode">binaryDigits = [(d,t) for (d,t) in zip(data,digits.target) if t <= 1]
+bd,bt = zip(*binaryDigits)
+print(f'The targets for the first 5 binary entries: {bt[:5]}')</code></pre>
+which will print out the labels for the first 5 binary entries:
+<pre><code class="datablock">The targets for the first 5 binary entries: (0, 1, 0, 1, 0)</code></pre>
 
-         add an indicator for roundish numbers (0,2,3,5,6,8,9) and not (1,4,7)--
-         run the classifer using that label- how well do you do?
-         This function takes as two input parameters:
-         <ul>
-             <li> <code class = "inline"></code>:
-             <li> <code class = "inline"></code>:
-         </ul>
-         Returns
+Let's do the same with our function:
+<pre><code class="blockcode">bin_dig, bin_tar = answer.select_data(data,digits.target)
+print(f'The targets for the first 5 binary entries: {bin_tar[:5]}')</code></pre>
+which will print out the labels for the first 5 binary entries:
+<pre><code class="datablock">The targets for the first 5 binary entries: (0, 1, 0, 1, 0)</code></pre>
 
+We can also select for other sets of labels:
+<pre><code class="blockcode">#Selecting on 6's and 7's:
+dig67,tar67 = answer.select_data(data,digits.target,labels=[6,7])
+print(f"The targets for the first 5 6's & 7's entries: {tar67[:5]}")
+#Selecting on evens:
+dig_even,tar_even = answer.select_data(data,digits.target,labels=[0,2,4,6,8])
+print(f"The targets for the first 5 even entries: {tar_even[:5]}")</code></pre>
+which will print:
+<pre><code class="datablock">The targets for the first 5 6's & 7's entries: (6, 7, 6, 7, 6)
+The targets for the first 5 even entries: (0, 2, 4, 6, 8)</code></pre>
 
+<p>Using our functions to restrict the data and targets datasets to 0's and 1's, we can split the data and fit and test the various models:
+<pre><code class="blockcode">x_train,x_test,y_train,y_test = answer.split_data(bin_dig,bin_tar,test_size=0.5)
+log_pkl = answer.fit_model(x_train,y_train)
+y_predict = answer.predict_model(log_pkl,x_train)
+log_cmatrix = answer.score_model(log_pkl,x_test,y_test)
+print(f'prediction: y_predict\nconfusion matrix:\n log_cmatrix)</code></pre>
 
-  <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
+will print:
+<pre><code class="datablock">prediction: [1 1 1 1 0 0 0 1 0 0 0 0 0 1 1 1 0 1 0 0 0 0 1 1 0 1 1 0 0 1 0 1]
+confusion matrix:  
+[[89  0]
+ [ 1 90]]</code></pre>
 
-  In Lectures #21 and #22 and <a href="http://www.textbook.ds100.org/ch/24/classification_multiclass.html">Chapter 24</a>, we build classifiers for the iris dataset.  Write a function that fits a Logistic Regression model and a Support Vector Machine to the same training data and returns the score of each on the same testing data.
+The logistic regression model does extremely well, making only one wrong prediction.
+Let's see how each of the other models does with the same training and testing subsets:
 
-  <ul>
-  <li> <code class = "inline">compare_clf(xes, y, test_size = 0.20, random_state=66,max_iter=500):</code>
-      This function has five inputs and returns a linear regression classifier:
-      <ul>
-          <li> <code class = "inline">xes</code>: a array of the depedendent variables for the model.
-          <li> <code class = "inline">y</code>: the independent variable for the model.
-          <li> <code class = "inline">test_size</code>: the size of the test set created when the data is divided into test and training sets with <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">train_test_split</a>. The default value is <code class = "inline">0.20</code>.
-          <li> <code class = "inline">random_state</code>: the random seed used when the data is divided into test and training sets with <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">train_test_split</a>. The default value is <code class = "inline">66</code>.
-          <li> <code class = "inline">max_iter</code>: the maximum number of iterations flag used for <code class = "inline">LogisticRegression</code>.The default value is <code class = "inline">500</code>.
-        </ul>
+<pre><code class="blockcode">for m in ['nbayes','svm','rforest']:
+    log_pkl = answer.fit_model(x_train,y_train, model_type=m)
+    log_cmatrix = answer.score_model(log_pkl,x_test,y_test)
+    print(f'The confusion matrix for {m} is:\n {log_cmatrix}')
+</code></pre>
 
-        The function returns the score of the model score computed on the test data by each classifier.
-    </ul>
+will print:
+<pre><code class="datablock">The confusion matrix for nbayes is:
+ [[88  1]
+ [ 1 90]]
+The confusion matrix for svm is:
+ [[89  0]
+ [ 0 91]]
+The confusion matrix for rforest is:
+ [[89  0]
+ [ 0 91]]</code></pre>
 
-    <p>For example, assuming your functions are in <code class=inline>p44</code> and the appropriate libraries are loaded:
-    <pre><code class="blockcode">iris = datasets.load_iris()
-l_40,s_40 = p44.compare_clf(iris.data,iris.target,test_size=.4)
-print(f'With a 40% test set, LogReg classifer has score {l_40}.\nSVM classifier had score {s_40}.')
+ <p>All of these models do very well also.  Lowering the training set to just 10% of the available input data, we can see which model does the best with for a dataset of those with labels 6 and 7 (in case of ties, return the first one that has that value).
 
-xes = list(range(5,100,5))
-runs = [p44.compare_clf(iris.data,iris.target,test_size=x/100) for x in xes]
-lr_runs, svm_runs = zip(*runs)
-plt.plot(xes, lr_runs, label="LogReg")
-plt.plot(xes, svm_runs, label= "SVM")
-plt.xlabel('Test Size (Percent)')
-plt.ylabel('Score')
-plt.title('Iris Dataset:  Test Size vs Score')
-plt.legend()
-plt.show()</code></pre>
+<pre><code class="blockcode">best_mod, best_score = answer.compare_models(dat67,tar67,test_size=0.9,random_state=22)
+print(f"The best model for the 6 and 7's dataset is {best_mod} with score {best_score}.")
+</code></pre>
 
-    would print:
-    <pre><code class="datablock">With a 40% test set, LogReg classifer has score 0.9833333333333333.
-SVM classifier had score 0.9833333333333333.</code></pre>
+will print:
+<pre><code class="datablock">The best model for the 6 and 7's dataset is logreg with score 1.0.</code></pre>
 
-    and display:
-    <p>
-    <img src = "../fall21/iris_logR_svm.png" height=300>
+While we have focused on binary datasets, the classifiers from sklearn can also be trained for multiclass datasets.  Let's try the classifiers on all digits and a training set of 10% of the data:
 
+<pre><code class="blockcode">best_mod, best_score = answer.compare_models(data,digits.target,test_size=0.9,random_state=22)
+print(f"The best model for the 6 and 7's dataset is {best_mod} with score {best_score}.")
+</code></pre>
+
+The SVM classifer did the best with:
+
+<pre><code class="datablock">The best model for the full dataset is svm with score 0.9375772558714462.</code></pre>
 
 
 
