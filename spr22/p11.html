@@ -73,33 +73,78 @@ Spring 2022<br><br>
 
 <br>
    <p><a name="p11"><b>Program 11: Digit Dimensions.</b></b> &emsp; <i>Due noon, Thursday, 29 April.
-     <br>Learning Objective: to increase facility with standard linear algebra approaches for high dimensional data.
+     <br>Learning Objective: to increase facility with standard linear algebra approaches and strengthen understanding of intrinistic dimensions of data sets via exploration of the classic digits dataset).
      <br>Available Libraries: pandas, pickle, sklearn, and core Python 3.6+.
      <br>Data Sources: <a href="https://en.wikipedia.org/wiki/MNIST_database">MNIST dataset of hand-written digits</a>, available in <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_digits.html">sklearn digits dataset</a>.
      <br>Sample Datasets: <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_digits.html">sklearn digits dataset</a>.<br></i>
 
 <p>
-In Lecture 22 and (also in <a href="http://www.textbook.ds100.org/ch/25/pca_in_practice.html">Chapter 25</a>), we applied Principal Components Analysis as a dimensionality reduction techniqe and used scree plots to provide a visualization of the captured variance.  This assignment continues our analysis of the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_digits.html">sklearn digits dataset</a>, focusing on visualization and intrinsic dimenion of the data.
-
-
-<p>
-PCA
-
-P45 Compute captured variance, scree plots for PCA
-
-
-Use dim red to show results of classifer, can print the labels as the points, and color by classifer?
-
-compute instrinsic dimension in various ways.
+In Lecture 22 and (also in <a href="http://www.textbook.ds100.org/ch/25/pca_in_practice.html">Chapter 25</a>), we applied Principal Components Analysis as a dimensionality reduction technique and used scree plots to provide a visualization of the captured variance.  This assignment continues our analysis of the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_digits.html">sklearn digits dataset</a>, focusing on visualization and intrinsic dimenion of the data.
+In addition, we will write a function that allows the user to explore how many dimensions are needed to see the underlying structure of images from the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_digits.html">sklearn digits dataset</a> (inspired by <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.09-principal-component-analysis.html">Python Data Science Handbook: Section 5.9</a> (PCA)).
 
 
 
-<ul>
+<p>As in Program 10, we can view our images as "flattened" 1D arrays of length 64.  Here's the first one from the dataset:
+  <pre><code class="datablock">[ 0.  0.  5. 13.  9.  1.  0.  0.  0.  0. 13. 15. 10. 15.  5.  0.  0.  3. 15.  2.  0. 11.  8.  0.  0.  4. 12.  0.  0.  8.  8.  0.  0.  5.  8.  0.  0.  9.  8.  0.  0.  4. 11.  0.  1. 12.  7.  0.  0.  2. 14.  5. 10. 12.  0.  0.  0.  0.  6. 13. 10.  0.  0.  0.]</code></pre>
+  <p>
+  As discussed in <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.09-principal-component-analysis.html">Python Data Science Handbook: Section 5.9</a>, we can view the images as sums of the components.
+  If we let <code class=inline>x1 = [1 0 ... 0]</code>,
+  <code class=inline>x2 = [0 1 0 ... 0]</code>, ...,
+  <code class=inline>x64 = [0 ... 0 1]</code> (vectors corresponding to the axis), then we can write our images, <code class=inline>im = [i1 i2 ... i64]</code>, as:
+  <pre><code class="datablock">im = x1*i1 + x2*i2 + ... + x64*i64
+      = x1*0 + x2*0 + x3*5 + ... + x64*0</code></pre>
+  plugging in the values of <code class=inline>im</code> into the equation.
+
+  <p>
+  In a similar fashion, we can represent the image in terms of the axis,<code class=inline>c1, c2, ... c64</code>,  that the PCA analysis returns:
+  <pre><code class="datablock">im = mean + c1*i1 + c2*i2 + ... + c64*i64</code></pre>
+  since the axis of PCA are chosen so that the first one captures the most variance, the second the next most, etc.  The later axis capture very little variance and likely add litte to the image.  (For technical reasons, we include the mean.  The reason is similar to when we "center" multidimensional data at 0).
+
+  This can be very useful for reducing the dimension of the data set, for example, here is the first image from above on the left:
+  <p>
+  <img src = "../fall21/digit_adding_comps.png" width=90%>
+  <br>
+  The next image is the overall mean, and each subsequent image is adding another component to the previous.  For this particular scan, the mean plus its first component is enough to see that it's a 0.
+
+
+
+
+<p>The function specifications are:
+
+  The function specifications are below:
+
+  <ul>
+      <li> <code class = "inline">select_data(data, target, labels = [0,1]):</code>
+
+        This function takes as three input parameters:
+        <ul>
+          <li> <code class = "inline">data</code>: a numpy array that
+                includes rows of equal size flattened arrays,
+          <li> <code class = "inline">target</code> a numpy array that contains the labels for each row in <code class = "inline">data</code>.
+          <li> <code class = "inline">labels</code>: the labels from <code class = "inline">target</code> that the rows to be selected.  The default value is [0,1].
+        </ul>
+        Returns the rows of <code class = "inline">data</code> and
+        <code class = "inline">target</code> where the value of <code class = "inline">target</code> is in <code class = "inline">labels</code>.
+        <i>Hint:  run through the examples at the end of this program description to see ways to work with this dataset.</i>
+
   <li> <code class="inline">captures85(arr):</code> Takes an array <code class="inline">arr</code> (in decreasing order), computes
           the captured variance (<code class="inline">cv = (arr**2)/sum(arr**2)</code>) and returns the number of elements needed to capture more than 85% of the variance.
       <li> <code class="inline">averageEigenvalue(arr):</code> Takes an array
         <code class="inline">arr</code> (in decreasing order), computes
           the average (<code class="inline">avg = sum(arr)/len(arr)</code>) and returns the number of elements greater than <code class="inline">avg</code>.
+          <li> <code class = "inline">approxDigits(numComponents, coefficients, mean, components):</code>
+              This function has four inputs and returns an array containing the approximation:
+              <ul>
+                  <li> <code class = "inline">numComponents</code>: the number of componets used in the approximation.  Expecting a value between 0 and 64.
+                  <li> <code class = "inline">coefficients</code>: an array of coefficients, outputted from <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">PCA()</a>.
+                  <li> <code class = "inline">mean</code>: an array representing the mean of the dataset.
+                  <li> <code class = "inline">components</code>:  an array of the components computed by <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">PCA()</a> analysis.
+                </ul>
+
+                The function returns the approximation image (flattened array) of the mean and sum of the first <code class = "inline">numComponents</code>
+                terms (i.e. <code class = "inline">coefficients[i] * components[i]</code>).
+            </ul>
+
     </ul>
     </p>
 
@@ -120,53 +165,15 @@ compute instrinsic dimension in various ways.
     Note:  you should submit a file with only the standard comments at the top, and these two functions.  The grading scripts will then import the file for testing.
 
 
-<p></p><p><a name="p46"><b>Program 46: Digits Components.</b></b> &emsp; <i>Due noon, Monday, 29 November.</i>
-
-  <br>(Learning Objective: to strengthen understanding of intrinistic dimensions of data sets via exploration of the classic digits dataset.)</p>
-  <p>
-  In Lecture #21, we introduced Principal Components Analysis and the number of components needed to capture the intrinistic dimension of the data set.  For this program, write a function that allows the user to explore how many dimensions are needed to see the underlying structure of images from the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_digits.html">sklearn digits dataset</a> (inspired by <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.09-principal-component-analysis.html">Python Data Science Handbook: Section 5.9</a> (PCA)).
-
-  <p> Write a function that approximates an image by summing up a fixed number of its components:
-
-    <ul>
-    <li> <code class = "inline">approxDigits(numComponents, coefficients, mean, components):</code>
-        This function has four inputs and returns an array containing the approximation:
-        <ul>
-            <li> <code class = "inline">numComponents</code>: the number of componets used in the approximation.  Expecting a value between 0 and 64.
-            <li> <code class = "inline">coefficients</code>: an array of coefficients, outputted from <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">PCA()</a>.
-            <li> <code class = "inline">mean</code>: an array representing the mean of the dataset.
-            <li> <code class = "inline">components</code>:  an array of the components computed by <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">PCA()</a> analysis.
-          </ul>
-
-          The function returns the approximation image (flattened array) of the mean and sum of the first <code class = "inline">numComponents</code>
-          terms (i.e. <code class = "inline">coefficients[i] * components[i]</code>).
-      </ul>
 
 
 
 
+<p>Use dim red to show results of classifer, can print the labels as the points, and color by classifer?
 
-  As discussed in <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.09-principal-component-analysis.html">Python Data Science Handbook: Section 5.9</a>, we can view the images as sums of the components.  For our
-  flattened images, we have 1D arrays of length 64.  Here's the first one from the dataset:
-  <pre><code class="datablock">[[ 0.  0.  5. 13.  9.  1.  0.  0.  0.  0. 13. 15. 10. 15.  5.  0.  0.  3. 15.  2.  0. 11.  8.  0.  0.  4. 12.  0.  0.  8.  8.  0.  0.  5.  8.  0.  0.  9.  8.  0.  0.  4. 11.  0.  1. 12.  7.  0.  0.  2. 14.  5. 10. 12.  0.  0.  0.  0.  6. 13. 10.  0.  0.  0.]</code></pre>
-  <p>
-  If we let <code class=inline>x1 = [1 0 ... 0]</code>,
-  <code class=inline>x2 = [0 1 0 ... 0]</code>, ...,
-  <code class=inline>x64 = [0 ... 0 1]</code> (vectors corresponding to the axis), then we can write our images, <code class=inline>im = [i1 i2 ... i64]</code>, as:
-  <pre><code class="datablock">im = x1*i1 + x2*i2 + ... + x64*i64
-      x1*0 + x2*0 + x3*5 + ... + x64*0</code></pre>
-  plugging in the values of <code class=inline>im</code> into the equation.
+      compute instrinsic dimension in various ways.
 
-  <p>
-  In a similar fashion, we can represent the image in terms of the axis,<code class=inline>c1, c2, ... c64</code>,  that the PCA analysis returns:
-  <pre><code class="datablock">im = mean + c1*i1 + c2*i2 + ... + c64*i64</code></pre>
-  since the axis of PCA are chosen so that the first one captures the most variance, the second the next most, etc.  The later axis capture very little variance and likely add litte to the image.  (For technical reasons, we include the mean.  The reason is similar to when we "center" multidimensional data at 0).
 
-  This can be very useful for reducing the dimension of the data set, for example, here is the first image from above on the left:
-  <p>
-  <img src = "../fall21/digit_adding_comps.png" width=90%>
-  <br>
-  The next image is the overall mean, and each subsequent image is adding another component to the previous.  For this particular scan, the mean plus its first component is enough to see that it's a 0.
 
 
   <p> For example, assuming the function  is in <code class=inline>p46</code> and the appropriate libraries are loaded:

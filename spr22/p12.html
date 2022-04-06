@@ -76,14 +76,21 @@ Spring 2022<br><br>
      <br>Learning Objective: to enhance data cleaning skills and build understanding of clustering algorithms.
      <br>Available Libraries: pandas, numpy, sklearn, and core Python 3.6+.
      <br>Data Sources: <a href="https://data.cityofnewyork.us/Public-Safety/Emergency-Response-Incidents/pasr-j7fb">Emergency Response Incidents @ OpenData</a>
-     <br>Sample Datasets:.<br><i>
+     <br>Sample Datasets:.<br></i>
+
+Calls for 911 service:
+https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd
+
+Can get time of incident and date, get day of week?
+
+https://data.cityofnewyork.us/Public-Safety/EMS-Incident-Dispatch-Data/76xm-jjuj
 
 <p> Improving ambulance response times improves outcomes.
   Article about strategic placement of ambulance stations and overall allocation from Jan 2020:
   https://www.sciencedirect.com/science/article/pii/S1386505619303491
 Clustering:
 
-In Lecture #25 and <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.11-k-means.html">Python Data Science Handbook: Section 5.11</a>, we clustered the digits data set using K-means clustering and used t-SNE to improve accuracy.  The digits data set is one of 7 <a href="https://scikit-learn.org/stable/datasets/toy_dataset.html">toy datasets</a> included in <a href="https://scikit-learn.org/stable/index.html">sklearn</a> that can be quickly loaded to  try different algorithms.
+In Lecture #25 and <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.11-k-means.html">Python Data Science Handbook: Section 5.11</a>, we clustered the digits data set using K-means clustering and used t-SNE to improve accuracy.
 
 <p>
 For this program, modify the code from lecture to write a function that allows you to run three different preprocessing of a toy dataset ("none", "TSNE", or "MDS"), applies K-Means clustering, takes the mode of each cluster as the predicted label, and then returns the accuracy of the prediction.
@@ -91,6 +98,23 @@ For this program, modify the code from lecture to write a function that allows y
 From P9:  data in P9 didn't play well with this (time stamps in particular & not enough
 categorical data to encode), but
 important concept/tool-- can we make it work here?
+
+
+<p>The assignment is broken into the following functions to allow for unit testing:
+
+  <ul>
+    <li> <code class = "inline">make_df(housing_file, pop_file)</code>:
+      This function takes two inputs:
+      <ul>
+        <li> <code class = "inline">housing_file</code>: the name of a CSV file containing <a href="https://data.cityofnewyork.us/Housing-Development/Housing-Database-by-NTA/kyz5-72x5">housing units</a> from OpenData NYC.
+        <li> <code class = "inline">pop_file</code>: the name of a CSV file containing <a href="https://data.cityofnewyork.us/City-Government/New-York-City-Population-By-Neighborhood-Tabulatio/swpk-hqdp">population counts</a> from OpenData NYC.
+      </ul>
+      The data in the two files are read and merged into a single DataFrame using <code class = "inline">nta2010</code> and <code class = "inline">NTA Code</code> as the keys.
+      If the <code class = "inline">total</code> is null or <code class = "inline">Year</code> differs from 2010, that row is dropped.
+        The columns <code class = "inline">the_geom</code>, <code class = "inline">boro</code>, and <code class = "inline">nta2010</code> are dropped, and the resulting DataFrame is returned.
+        (Hint: if you are getting a <code class="inline">The DataFrame did not match expected output</code> error, check to make sure that your DataFrame columns are ordered in the same way as Gradescope's Autograder.)
+
+    <li> make_df:  pull in EMS data, and clean
 
 <li> <code class = "inline">split_columns_by_data_type(df) -> list,list:</code>
   This function takes as one input:
