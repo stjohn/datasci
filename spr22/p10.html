@@ -149,7 +149,7 @@ The function specifications are below:
       Fits the specifed model to the <code class = "inline">x_train</code> and
       <code class = "inline">y_train</code> data, using <a href="https://scikit-learn.org">sklearn</a>.  Additional notes for each model:
       <ul>
-          <li> <code class = "inline">logreg</code>: Logistic Regression:  For logistic regression, use the SVM classifier to set up the model, <code class = "inline">sklearn.linear_model.LogisticRegression</code> with solver <code class = "inline">solver = 'saga'</code>, regularization <code class = "inline">penalty='l2'</code>, and max iterations <code class = "inline">max_iter=5000</code>.
+          <li> <code class = "inline">logreg</code>: Logistic Regression:  For logistic regression, use the SVM classifier to set up the model, <code class = "inline">sklearn.linear_model.LogisticRegression</code> with solver <code class = "inline">solver = 'saga'</code>, regularization <code class = "inline">penalty='l2'</code>, and max iterations <code class = "inline">max_iter=5000</code> (Note that it's the letter L in 'l2', not a 1.).
           <li> <code class = "inline">nbayes</code>: Naive Bayes:  use the Gaussian Naive Bayes classifier to set up the model, <code class = "inline">sklearn.naive_bayes.GaussianNB</code>.
           <li> <code class = "inline">svm</code>: Support Vector Machine:  use the SVM classifier to set up the model, <code class = "inline">sklearn.svm.SVC</code> with the radial basis function kernel RBF <code class = "inline">kernel='rbf'</code>.
           <li> <code class = "inline">rforest</code>: Random Forest: use the random forest classifier to set up the model, <code class = "inline">sklearn.ensemble.RandomForestClassifier</code> with 100 estimators and the random state set to 0  (i.e. <code class = "inline">n_estimators=100, random_state=0</code>).
@@ -268,7 +268,7 @@ The targets for the first 5 even entries: (0, 2, 4, 6, 8)</code></pre>
 log_pkl = answer.fit_model(x_train,y_train)
 y_predict = answer.predict_model(log_pkl,x_train)
 log_cmatrix = answer.score_model(log_pkl,x_test,y_test)
-print(f'prediction: y_predict\nconfusion matrix:\n log_cmatrix)</code></pre>
+print(f'prediction: y_predict\nconfusion matrix:\n log_cmatrix')</code></pre>
 
 will print:
 <pre><code class="datablock">prediction: [1 1 1 1 0 0 0 1 0 0 0 0 0 1 1 1 0 1 0 0 0 0 1 1 0 1 1 0 0 1 0 1]
