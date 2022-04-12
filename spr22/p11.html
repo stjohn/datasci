@@ -177,7 +177,7 @@ n_samples = len(digits.images)
 data = digits.images.reshape((n_samples, -1))
 target = digits.target
 print(f'The targets for the first 5 entries: {target[:5]}')
-bin_dig, bin_tar = answer.select_data(data,digits.target)
+bin_dig, bin_tar = select_data(data,digits.target)
 print(f'The targets for the first 5 binary entries: {bin_tar[:5]}')</code></pre>
 which prints:
 <pre><code class="datablock">pca = PCA().fit(digits.data)
@@ -186,8 +186,8 @@ The targets for the first 5 binary entries: (0, 1, 0, 1, 0)</code></pre>
 <p>
 Using our function from <a href="p10.html">Program 10</a>, we can select the binary digits and then fit the PCA model to those.  Our function returns the model as well as the transformed values:
 
-<pre><code class="blockcode">bin_data,bin_target = answer.select_data(data,target)
-bin_mod, bin_proj = answer.run_pca(bin_data)
+<pre><code class="blockcode">bin_data,bin_target = select_data(data,target)
+bin_mod, bin_proj = run_pca(bin_data)
 scatter = plt.scatter(bin_proj[:, 0], bin_proj[:, 1], c=bin_target, alpha=0.5,
             cmap=plt.cm.get_cmap('rainbow', 10))
 plt.title('PCA for digits')
@@ -202,7 +202,7 @@ The resulting image shows two distinct clusters for the images labeled 0 and tho
 
 <p>We can fit the model to all the digits:
 
-<pre><code class="blockcode">all_mod, all_proj = answer.run_pca(data)
+<pre><code class="blockcode">all_mod, all_proj = run_pca(data)
 scatter = plt.scatter(all_proj[:, 0], all_proj[:, 1], c=digits.target, alpha=0.5,
             cmap=plt.cm.get_cmap('rainbow', 10))
 plt.title('PCA for digits')
@@ -230,8 +230,8 @@ The resulting image shows that much of the variance is captured by the first 10 
 <p>We can use our functions to look at ways to measure this, via the captured variance and average eigenvalues:
 <pre><code class="blockcode">np.set_printoptions(suppress=True)  #Turn off scientific notation
 print(f'The explained variance: {all_mod.explained_variance_}')
-print(f'The number of components needed to capture 85% of the variance is {answer.captures85(all_mod)}.')
-print(f'The number of eigenvalues larger than the average is {answer.averageEigenvalue(all_mod)}.')
+print(f'The number of components needed to capture 85% of the variance is {captures85(all_mod)}.')
+print(f'The number of eigenvalues larger than the average is {averageEigenvalue(all_mod)}.')
 </code></pre>
 
 prints out the explained variance as well as the numbers computed by our functions:
@@ -252,14 +252,35 @@ The number of components needed to capture 85% of the variance is 5.
 The number of eigenvalues larger than the average is 14.</code></pre>
 
 <p> Lastly, let's look at how many components are needed to recover a given image:
-<pre><code class="blockcode"></code></pre>
+<pre><code class="blockcode">plt.imshow(all_mod.mean_.reshape(8,8), cmap='binary', interpolation='nearest', clim=(0, 16))
+plt.title("Mean for digits")
+plt.show()
+
+print(f'The original image: {data[1068]}.')
+approxAnswer = approxDigits(all_mod, all_proj[1068],numComponents=4)
+print(f'The first 4 components: {approxAnswer}')
+plt.imshow(approxAnswer.reshape(8,8),cmap='binary', interpolation='nearest',clim=(0, 16))
+plt.title("mean + 4 components for digits[1068]")
+plt.show()
+approxAnswer = approxDigits(all_mod, all_proj[1068])
+print(f'The first 8 components: {approxAnswer}')
+plt.imshow(approxAnswer.reshape(8,8),cmap='binary', interpolation='nearest',clim=(0, 16))
+plt.title("mean + 8 components for digits[1068]")
+plt.show()
+approxAnswer = approxDigits(all_mod, all_proj[1068],numComponents=12)
+print(f'The first 12 components: {approxAnswer}')
+plt.imshow(approxAnswer.reshape(8,8),cmap='binary', interpolation='nearest',clim=(0, 16))
+plt.title("mean + 12 components for digits[1068]")
+plt.show()</code></pre>
 
 Below we have the mean of all the images and the result of adding the first 4 components,
 the first 8 components, and the first 12 components for <code class=inline>data[1068]</code>:
 
     <p>
-    <img src="../fall21/digits_mean.png" height=200>
-    <img src="../fall21/digits_1068_8.png" height=200>
+    <img src="digits_mean.png" height=150>
+    <img src="digits_1068_4.png" height=150>
+    <img src="digits_1068_8.png" height=150>
+    <img src="digits_1068_12.png" height=150>
 </p>
 
 
