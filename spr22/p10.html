@@ -240,34 +240,34 @@ The labels of the first five elements in our dataset and their flattened represe
    0.  0.  0.  0.  0.  2. 16.  4.  0.  0.]]</code></pre>
 
 We can restrict the dataset to just binary digits:
-<pre><code class="blockcode">binaryDigits = [(d,t) for (d,t) in zip(data,digits.target) if t <= 1]
+<pre><code class="blockcode">binaryDigits = [(d,t) for (d,t) in zip(data, target) if t <= 1]
 bd,bt = zip(*binaryDigits)
 print(f'The targets for the first 5 binary entries: {bt[:5]}')</code></pre>
 which will print out the labels for the first 5 binary entries:
 <pre><code class="datablock">The targets for the first 5 binary entries: (0, 1, 0, 1, 0)</code></pre>
 
 Let's do the same with our function:
-<pre><code class="blockcode">bin_dig, bin_tar = answer.select_data(data,digits.target)
+<pre><code class="blockcode">bin_dig, bin_tar = select_data(data,digits.target)
 print(f'The targets for the first 5 binary entries: {bin_tar[:5]}')</code></pre>
 which will print out the labels for the first 5 binary entries:
 <pre><code class="datablock">The targets for the first 5 binary entries: (0, 1, 0, 1, 0)</code></pre>
 
 We can also select for other sets of labels:
 <pre><code class="blockcode">#Selecting on 6's and 7's:
-dig67,tar67 = answer.select_data(data,digits.target,labels=[6,7])
+dig67, tar67 = select_data(data, digits.target, labels=[6, 7])
 print(f"The targets for the first 5 6's & 7's entries: {tar67[:5]}")
 #Selecting on evens:
-dig_even,tar_even = answer.select_data(data,digits.target,labels=[0,2,4,6,8])
+dig_even, tar_even = select_data(data, digits.target,labels=[0, 2, 4, 6, 8])
 print(f"The targets for the first 5 even entries: {tar_even[:5]}")</code></pre>
 which will print:
 <pre><code class="datablock">The targets for the first 5 6's & 7's entries: (6, 7, 6, 7, 6)
 The targets for the first 5 even entries: (0, 2, 4, 6, 8)</code></pre>
 
 <p>Using our functions to restrict the data and targets datasets to 0's and 1's, we can split the data and fit and test the various models:
-<pre><code class="blockcode">x_train,x_test,y_train,y_test = answer.split_data(bin_dig,bin_tar,test_size=0.5)
-log_pkl = answer.fit_model(x_train,y_train)
-y_predict = answer.predict_model(log_pkl,x_train)
-log_cmatrix = answer.score_model(log_pkl,x_test,y_test)
+<pre><code class="blockcode">x_train, x_test, y_train, y_test = split_data(bin_dig, bin_tar, test_size=0.5)
+log_pkl = fit_model(x_train, y_train)
+y_predict = predict_model(log_pkl, x_train)
+log_cmatrix = score_model(log_pkl, x_test, y_test)
 print(f'prediction: y_predict\nconfusion matrix:\n log_cmatrix')</code></pre>
 
 will print:
@@ -280,8 +280,8 @@ The logistic regression model does extremely well, making only one wrong predict
 Let's see how each of the other models does with the same training and testing subsets:
 
 <pre><code class="blockcode">for m in ['nbayes','svm','rforest']:
-    log_pkl = answer.fit_model(x_train,y_train, model_type=m)
-    log_cmatrix = answer.score_model(log_pkl,x_test,y_test)
+    log_pkl = fit_model(x_train,y_train, model_type=m)
+    log_cmatrix = score_model(log_pkl,x_test,y_test)
     print(f'The confusion matrix for {m} is:\n {log_cmatrix}')
 </code></pre>
 
@@ -298,7 +298,7 @@ The confusion matrix for rforest is:
 
  <p>All of these models do very well also.  Lowering the training set to just 10% of the available input data, we can see which model does the best with for a dataset of those with labels 6 and 7 (in case of ties, return the first one that has that value).
 
-<pre><code class="blockcode">best_mod, best_score = answer.compare_models(dat67,tar67,test_size=0.9,random_state=22)
+<pre><code class="blockcode">best_mod, best_score = compare_models(dig67,tar67,test_size=0.9,random_state=22)
 print(f"The best model for the 6 and 7's dataset is {best_mod} with score {best_score}.")
 </code></pre>
 
@@ -307,7 +307,7 @@ will print:
 
 While we have focused on binary datasets, the classifiers from sklearn can also be trained for multiclass datasets.  Let's try the classifiers on all digits and a training set of 10% of the data:
 
-<pre><code class="blockcode">best_mod, best_score = answer.compare_models(data,digits.target,test_size=0.9,random_state=22)
+<pre><code class="blockcode">best_mod, best_score = compare_models(data,digits.target,test_size=0.9,random_state=22)
 print(f"The best model for the 6 and 7's dataset is {best_mod} with score {best_score}.")
 </code></pre>
 
