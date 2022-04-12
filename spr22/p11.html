@@ -74,130 +74,194 @@ Spring 2022<br><br>
 <br>
    <p><a name="p11"><b>Program 11: Digit Dimensions.</b></b> &emsp; <i>Due noon, Thursday, 29 April.
      <br>Learning Objective: to increase facility with standard linear algebra approaches and strengthen understanding of intrinistic dimensions of data sets via exploration of the classic digits dataset).
-     <br>Available Libraries: pandas, pickle, sklearn, and core Python 3.6+.
+     <br>Available Libraries: pandas, numpy, pickle, sklearn, and core Python 3.6+.
      <br>Data Sources: <a href="https://en.wikipedia.org/wiki/MNIST_database">MNIST dataset of hand-written digits</a>, available in <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_digits.html">sklearn digits dataset</a>.
      <br>Sample Datasets: <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_digits.html">sklearn digits dataset</a>.<br></i>
 
 <p>
-In Lecture 22 and (also in <a href="http://www.textbook.ds100.org/ch/25/pca_in_practice.html">Chapter 25</a>), we applied Principal Components Analysis as a dimensionality reduction technique and used scree plots to provide a visualization of the captured variance.  This assignment continues our analysis of the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_digits.html">sklearn digits dataset</a>, focusing on visualization and intrinsic dimenion of the data.
+In Lecture 22 and <a href="http://www.textbook.ds100.org/ch/25/pca_in_practice.html">Chapter 25</a>, we applied Principal Components Analysis as a dimensionality reduction technique and used scree plots to provide a visualization of the captured variance.  This assignment continues our analysis of the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_digits.html">sklearn digits dataset</a>, focusing on visualization and intrinsic dimenion of the data.
 In addition, we will write a function that allows the user to explore how many dimensions are needed to see the underlying structure of images from the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_digits.html">sklearn digits dataset</a> (inspired by <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.09-principal-component-analysis.html">Python Data Science Handbook: Section 5.9</a> (PCA)).
 
 
+<p>As in Program 10, we can view our images as "flattened" 1D arrays of length 64.
+As discussed in <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.09-principal-component-analysis.html">Python Data Science Handbook: Section 5.9</a>, we can view the images as sums of the components.
+If we let <code class=inline>x1 = [1 0 ... 0]</code>,
+<code class=inline>x2 = [0 1 0 ... 0]</code>, ...,
+<code class=inline>x64 = [0 ... 0 1]</code> (vectors corresponding to the axis), then we can write our images, <code class=inline>im = [i1 i2 ... i64]</code>, as: <code class="inline">im = x1*i1 + x2*i2 + x3*i3 + ... + x64*i64</code>.
+For example, if we take the first entry from the dataset:
+<pre><code class="datablock">[ 0.  0.  5. 13.  9.  1.  0.  0.  0.  0. 13. 15. 10. 15.  5.  0.  0.  3. 15.  2.  0. 11.  8.  0.  0.  4. 12.  0.  0.  8.  8.  0.  0.  5.  8.  0.  0.  9.  8.  0.  0.  4. 11.  0.  1. 12.  7.  0.  0.  2. 14.  5. 10. 12.  0.  0.  0.  0.  6. 13. 10.  0.  0.  0.]</code></pre>
+We can write it as:
+<pre><code class="datablock">im = x1*i1 + x2*i2 + x3*i3 + ... + x64*i64
+   = x1*0  + x2*0  + x3*5  + ... + x64*0</code></pre>
+plugging in the values for a given image (in this case the first image in the dataset)  into the equation.
 
-<p>As in Program 10, we can view our images as "flattened" 1D arrays of length 64.  Here's the first one from the dataset:
-  <pre><code class="datablock">[ 0.  0.  5. 13.  9.  1.  0.  0.  0.  0. 13. 15. 10. 15.  5.  0.  0.  3. 15.  2.  0. 11.  8.  0.  0.  4. 12.  0.  0.  8.  8.  0.  0.  5.  8.  0.  0.  9.  8.  0.  0.  4. 11.  0.  1. 12.  7.  0.  0.  2. 14.  5. 10. 12.  0.  0.  0.  0.  6. 13. 10.  0.  0.  0.]</code></pre>
-  <p>
-  As discussed in <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.09-principal-component-analysis.html">Python Data Science Handbook: Section 5.9</a>, we can view the images as sums of the components.
-  If we let <code class=inline>x1 = [1 0 ... 0]</code>,
-  <code class=inline>x2 = [0 1 0 ... 0]</code>, ...,
-  <code class=inline>x64 = [0 ... 0 1]</code> (vectors corresponding to the axis), then we can write our images, <code class=inline>im = [i1 i2 ... i64]</code>, as:
-  <pre><code class="datablock">im = x1*i1 + x2*i2 + ... + x64*i64
-      = x1*0 + x2*0 + x3*5 + ... + x64*0</code></pre>
-  plugging in the values of <code class=inline>im</code> into the equation.
+<p>
+In a similar fashion, we can represent the image in terms of the axis,<code class=inline>c1, c2, ... c64</code>,  that the PCA analysis returns:
+<pre><code class="datablock">im = mean + c1*i1 + c2*i2 + ... + c64*i64</code></pre>
+since the axis of PCA are chosen so that the first one captures the most variance, the second the next most, etc.  The later axis capture very little variance and likely add litte to the image.  For technical reasons, we include the mean (the reason is similar to when we "center" multidimensional data at 0).
+This can be very useful for reducing the dimension of the data set, for example, here is the first image from above on the left:
+<p>
+<img src = "../fall21/digit_adding_comps.png" width=90%>
+<br>
+The next image is the overall mean, and each subsequent image is adding another component to the previous.  For this particular scan, the mean plus its first component is enough to see that it's a 0.
 
-  <p>
-  In a similar fashion, we can represent the image in terms of the axis,<code class=inline>c1, c2, ... c64</code>,  that the PCA analysis returns:
-  <pre><code class="datablock">im = mean + c1*i1 + c2*i2 + ... + c64*i64</code></pre>
-  since the axis of PCA are chosen so that the first one captures the most variance, the second the next most, etc.  The later axis capture very little variance and likely add litte to the image.  (For technical reasons, we include the mean.  The reason is similar to when we "center" multidimensional data at 0).
+<p>In your program, include the following functions from <a href="p10.html">Program 10</a>.  You may use your earlier function or the Program 8 solution available on Blackboard:
+<ul>
+  <li> <code class = "inline">select_data(data, target, labels = [0,1]):</code>
 
-  This can be very useful for reducing the dimension of the data set, for example, here is the first image from above on the left:
-  <p>
-  <img src = "../fall21/digit_adding_comps.png" width=90%>
-  <br>
-  The next image is the overall mean, and each subsequent image is adding another component to the previous.  For this particular scan, the mean plus its first component is enough to see that it's a 0.
+    This function takes as three input parameters:
+    <ul>
+      <li> <code class = "inline">data</code>: a numpy array that
+            includes rows of equal size flattened arrays,
+      <li> <code class = "inline">target</code> a numpy array that contains the labels for each row in <code class = "inline">data</code>.
+      <li> <code class = "inline">labels</code>: the labels from <code class = "inline">target</code> that the rows to be selected.  The default value is [0,1].
+    </ul>
+    Returns the rows of <code class = "inline">data</code> and
+    <code class = "inline">target</code> where the value of <code class = "inline">target</code> is in <code class = "inline">labels</code>.
+</ul>
+
+And write the following new functions:
 
 
+<ul>
 
 
-<p>The function specifications are:
+  <li> <code class="inline">run_pca(xes):</code>
+      This function takes as one input parameter:
+      <ul>
+          <li> <code class = "inline">xes</code>: a numpy array that
+                  includes rows of equal size flattened arrays,
+      </ul>
+      It fits a model of <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">sklearn.decomposition.PCA</a> to the
+      <code class = "inline">xes</code>.  The function returns the model and the transformed values.
 
-  The function specifications are below:
+  <li> <code class="inline">capture_85(mod):</code>
+    This function takes as one input parameter:
+    <ul>
+        <li> <code class = "inline">mod</code>: a model of <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">sklearn.decomposition.PCA</a> that has been fitted to a dataset.
+    </ul>
+    Using the array of the amount of varianace of each component, <code class="inline">explained_variance_</code>,
+    computes the captured variance (see <a href="http://www.textbook.ds100.org/ch/26/pca_in_practice.html">Chapter 26.3.1.1 Captured Variance and Scree Plots</a>). Returns the number of elements needed to capture more than 85% of the variance.
 
-  <ul>
-      <li> <code class = "inline">select_data(data, target, labels = [0,1]):</code>
+  <li> <code class="inline">average_eigenvalue(mod):</code>
+    This function takes as one input parameter:
+    <ul>
+        <li> <code class = "inline">mod</code>: a model of <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">sklearn.decomposition.PCA</a> that has been fitted to a dataset.
+    </ul>
+    For the <code class = "inline">mod</code>,
+    computes the average of the eigenvalues and returns the number of elements greater than the average.  See <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">sklearn.decomposition.PCA</a> for attributes of the model.
 
-        This function takes as three input parameters:
-        <ul>
-          <li> <code class = "inline">data</code>: a numpy array that
-                includes rows of equal size flattened arrays,
-          <li> <code class = "inline">target</code> a numpy array that contains the labels for each row in <code class = "inline">data</code>.
-          <li> <code class = "inline">labels</code>: the labels from <code class = "inline">target</code> that the rows to be selected.  The default value is [0,1].
-        </ul>
-        Returns the rows of <code class = "inline">data</code> and
-        <code class = "inline">target</code> where the value of <code class = "inline">target</code> is in <code class = "inline">labels</code>.
-        <i>Hint:  run through the examples at the end of this program description to see ways to work with this dataset.</i>
-
-  <li> <code class="inline">captures85(arr):</code> Takes an array <code class="inline">arr</code> (in decreasing order), computes
-          the captured variance (<code class="inline">cv = (arr**2)/sum(arr**2)</code>) and returns the number of elements needed to capture more than 85% of the variance.
-      <li> <code class="inline">averageEigenvalue(arr):</code> Takes an array
-        <code class="inline">arr</code> (in decreasing order), computes
-          the average (<code class="inline">avg = sum(arr)/len(arr)</code>) and returns the number of elements greater than <code class="inline">avg</code>.
-          <li> <code class = "inline">approxDigits(numComponents, coefficients, mean, components):</code>
-              This function has four inputs and returns an array containing the approximation:
-              <ul>
-                  <li> <code class = "inline">numComponents</code>: the number of componets used in the approximation.  Expecting a value between 0 and 64.
-                  <li> <code class = "inline">coefficients</code>: an array of coefficients, outputted from <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">PCA()</a>.
-                  <li> <code class = "inline">mean</code>: an array representing the mean of the dataset.
-                  <li> <code class = "inline">components</code>:  an array of the components computed by <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">PCA()</a> analysis.
-                </ul>
-
-                The function returns the approximation image (flattened array) of the mean and sum of the first <code class = "inline">numComponents</code>
-                terms (i.e. <code class = "inline">coefficients[i] * components[i]</code>).
+  <li> <code class = "inline">approx_digits(mod, img, numComponents=8):</code>
+    This function has three inputs:
+    <ul>
+        <li> <code class = "inline">mod</code>: a model of <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">sklearn.decomposition.PCA</a> that has been fitted to a dataset.
+        <li> <code class = "inline">img</code>: a flattened image from the dataset.
+        <li> <code class = "inline">numComponents</code>: the number of componets used in the approximation.  Expecting a value between 0 and 64.  The default value is 8.
+    </ul>
+    The function transforms the image, <code class = "inline">img</code>, and uses the resulting coefficents to compute an approximation of the image,  The approximation image (flattened array) is the mean plus the sum of the first <code class = "inline">numComponents</code>
+    terms (i.e. <code class = "inline">coefficients[i] * components[i]</code> where <code class = "inline">coefficients</code> are from the transform (i.e. FILL IN MORE DETAILS) and <code class = "inline">components</code> are an array of the components computed by <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">PCA()</a> analysis).  Note that the mean of the dataset does not have to be computed since it is stored as an attribute of the models of <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">PCA()</a>.
+    Returns the computed approximation image as a flattened array.
             </ul>
 
     </ul>
     </p>
 
-    Using the example from the textbook, if <code class="inline">arr</code> is
-    <pre><code class="datablock">a = np.array([585.57, 261.06, 166.31,  57.14,  48.16,  39.79,  31.71,  28.91,
-    24.23,  22.23,  20.51,  18.96,  17.01,  15.73,   7.72,   4.3 ,
-    1.95,   0.04])</code></pre>
-    Then <code class="inline">cv</code> would be:
-    <pre><code class="datablock">array([0.76, 0.15, 0.06, 0.01, 0.01, 0.  , 0.  , 0.  ,   0.  , 0.  , 0.  ,
-    0.  , 0.  , 0.  , 0.  , 0.  , 0.  , 0.  ])</code></pre>
-    and the function, <code class="inline">capture85(a)</code>, would return 2 since the first coordinate captures 76% of the variance which is less than 85%, the first 2 coordinates capture 76 + 15 = 91% of the variance.
+<br>
+<p>
+Let's run through a few examples.  We can start with our binary digits from
+<a href="p10.html">Program 10</a>:
 
-    <p>
-    For the second function, again using the example from the textbook, for the array <code class="inline">a</code>, the <code class="inline">avg</code> would be 75.07,
-    and the function, <code class="inline">averageEigenvalue(a)</code> would return 3 since the first three coordinates are larger than the average.
+<pre><code class="blockcode">from sklearn import datasets
+digits = datasets.load_digits()
+n_samples = len(digits.images)
+data = digits.images.reshape((n_samples, -1))
+target = digits.target
+print(f'The targets for the first 5 entries: {target[:5]}')
+bin_dig, bin_tar = answer.select_data(data,digits.target)
+print(f'The targets for the first 5 binary entries: {bin_tar[:5]}')</code></pre>
+which prints:
+<pre><code class="datablock">pca = PCA().fit(digits.data)
+The targets for the first 5 binary entries: (0, 1, 0, 1, 0)</code></pre>
 
-    <p>
-    Note:  you should submit a file with only the standard comments at the top, and these two functions.  The grading scripts will then import the file for testing.
+<p>
+Using our function from <a href="p10.html">Program 10</a>, we can select the binary digits and then fit the PCA model to those.  Our function returns the model as well as the transformed values:
 
-
-
-
-
-
-<p>Use dim red to show results of classifer, can print the labels as the points, and color by classifer?
-
-      compute instrinsic dimension in various ways.
-
-
-
-
-  <p> For example, assuming the function  is in <code class=inline>p46</code> and the appropriate libraries are loaded:
-    <pre><code class="blockcode">from sklearn.decomposition import PCA
-pca = PCA()
-Xproj = pca.fit_transform(digits.data)
-showDigit(pca.mean_, f"Mean for digits")
-plt.imshow(pca.mean_.reshape(8,8),cmap='binary', interpolation='nearest',clim=(0, 16))
-plt.title("Mean for digits")
-plt.show()
-approxAnswer = p46.approxDigits(8,Xproj[1068], pca.mean_, pca.components_)
-plt.imshow(approxAnswer.reshape(8,8),cmap='binary', interpolation='nearest',clim=(0, 16))
-plt.title("mean + 8 components for digits[1068]")
+<pre><code class="blockcode">bin_data,bin_target = answer.select_data(data,target)
+bin_mod, bin_proj = answer.run_pca(bin_data)
+scatter = plt.scatter(bin_proj[:, 0], bin_proj[:, 1], c=bin_target, alpha=0.5,
+            cmap=plt.cm.get_cmap('rainbow', 10))
+plt.title('PCA for digits')
+plt.xlabel('Component 1')
+plt.ylabel('Component 2')
+plt.legend(*scatter.legend_elements())
 plt.show()</code></pre>
 
-    would show the mean and summed with the first 8 components for
-    <code class=inline>digits[1068]</code>:
+The resulting image shows two distinct clusters for the images labeled 0 and those labeled 1:
+
+<p><img src="digits_bin_pca.png" height = 350>
+
+<p>We can fit the model to all the digits:
+
+<pre><code class="blockcode">all_mod, all_proj = answer.run_pca(data)
+scatter = plt.scatter(all_proj[:, 0], all_proj[:, 1], c=digits.target, alpha=0.5,
+            cmap=plt.cm.get_cmap('rainbow', 10))
+plt.title('PCA for digits')
+plt.xlabel('Component 1')
+plt.ylabel('Component 2')
+plt.legend(*scatter.legend_elements())
+plt.show()</code></pre>
+
+When looking at the complete data set, the projection to the first coordinates has some grouping of the images by labels:
+
+<p><img src="digits_all_pca.png" height = 400>
+
+
+<p>Plotting the explained variance ratio of our model:
+
+<pre><code class="blockcode">plt.plot(np.cumsum(all_mod.explained_variance_ratio_))
+plt.xlabel('number of components')
+plt.ylabel('cumulative explained variance');
+plt.show()
+</code></pre>
+The resulting image shows that much of the variance is captured by the first 10 components:
+
+<p><img src="digits_all_pca_ev_ratio.png" height = 400>
+
+<p>We can use our functions to look at ways to measure this, via the captured variance and average eigenvalues:
+<pre><code class="blockcode">np.set_printoptions(suppress=True)  #Turn off scientific notation
+print(f'The explained variance: {all_mod.explained_variance_}')
+print(f'The number of components needed to capture 85% of the variance is {answer.captures85(all_mod)}.')
+print(f'The number of eigenvalues larger than the average is {answer.averageEigenvalue(all_mod)}.')
+</code></pre>
+
+prints out the explained variance as well as the numbers computed by our functions:
+<pre><code class="datablock">The explained variance: [179.0069301  163.71774688 141.78843909 101.1003752   69.51316559
+  59.10852489  51.88453911  44.01510667  40.31099529  37.0117984
+  28.51904118  27.32116981  21.90148814  21.32435654  17.63672222
+  16.94686385  15.85138991  15.00446022  12.23447318  10.88685932
+  10.69356625   9.58259779   9.2264026    8.69036872   8.3656119
+   7.16577961   6.91973881   6.19295508   5.88499123   5.1558669
+   4.49129656   4.24687799   4.04743883   3.94340334   3.70647245
+   3.53165306   3.08457409   2.73780002   2.67210896   2.54170563
+   2.28298744   1.90724229   1.81716569   1.68996439   1.4019722
+   1.29221888   1.15893419   0.93122001   0.66985059   0.48606522
+   0.25235043   0.09915279   0.06313078   0.06073776   0.03966623
+   0.01495056   0.00847307   0.00362366   0.00127705   0.00066127
+   0.00041222   0.           0.           0.        ]
+The number of components needed to capture 85% of the variance is 5.
+The number of eigenvalues larger than the average is 14.</code></pre>
+
+<p> Lastly, let's look at how many components are needed to recover a given image:
+<pre><code class="blockcode"></code></pre>
+
+Below we have the mean of all the images and the result of adding the first 4 components,
+the first 8 components, and the first 12 components for <code class=inline>data[1068]</code>:
 
     <p>
     <img src="../fall21/digits_mean.png" height=200>
     <img src="../fall21/digits_1068_8.png" height=200>
 </p>
 
-      <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
 
 
 

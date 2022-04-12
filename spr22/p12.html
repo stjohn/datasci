@@ -75,20 +75,36 @@ Spring 2022<br><br>
    <p><a name="p12"><b>Program 12: EMS Stations.</b></b> &emsp; <i>Due noon, Thursday, 5 May.
      <br>Learning Objective: to enhance data cleaning skills and build understanding of clustering algorithms.
      <br>Available Libraries: pandas, numpy, sklearn, and core Python 3.6+.
-     <br>Data Sources: <a href="https://data.cityofnewyork.us/Public-Safety/Emergency-Response-Incidents/pasr-j7fb">Emergency Response Incidents @ OpenData</a>
+     <br>Data Sources: <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd
+">911 System Calls (NYC OpenData)</a>
      <br>Sample Datasets:.<br></i>
 
+<!--
+https://data.cityofnewyork.us/Public-Safety/Emergency-Response-Incidents/pasr-j7fb
 Calls for 911 service:
 https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd
 
 Can get time of incident and date, get day of week?
 
 https://data.cityofnewyork.us/Public-Safety/EMS-Incident-Dispatch-Data/76xm-jjuj
+-->
 
-<p> Improving ambulance response times improves outcomes.
-  Article about strategic placement of ambulance stations and overall allocation from Jan 2020:
-  https://www.sciencedirect.com/science/article/pii/S1386505619303491
-Clustering:
+<p> For this program, we are focusing on ambulance calls in New York City.
+Decreasing ambulance response times improves outcomes and
+<a href="https://www.sciencedirect.com/science/article/pii/S1386505619303491">strategic placement</a> of ambulance stations and overall allocation has been shown an effective approach.
+
+<p>IMAGE/folium of ambulances over one night.
+
+<p>To decide on where to "pre-place" ambulances, we will use K-means clustering, where "K" is the number of ambulances available for that shift.  For example, if there 8 ambulances available to be placed in eastern Queens, we will look at previous ambulance calls for that shift and form 8 clusters and station each ambulance at the mean of the cluster.  If two more ambulances become available, we can recompute the K-means algorithm for K=10, and place those 10 ambulances, each at the mean of the cluster found.
+
+
+<p>functions:  make_df needs to pull out ambulance calls,
+<p>filter data by time stamps-- use only calls during shift?
+<p>pre-compute distance matrix using haversine
+<p>call k-means
+<p>make predictions-- and correct via haversine corrections
+<p>measure accuracy?
+
 
 In Lecture #25 and <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.11-k-means.html">Python Data Science Handbook: Section 5.11</a>, we clustered the digits data set using K-means clustering and used t-SNE to improve accuracy.
 
@@ -198,8 +214,6 @@ print(f'Digits: The accuracy with MDS preprocessing is {mds_proc}.')</code></pre
 Digits: The accuracy with TSNE preprocessing is 0.9432387312186978.
 Digits: The accuracy with MDS preprocessing is 0.676126878130217.</code></pre>
 
-
-<p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
 
 <p><i>Hints:
   <ul>
