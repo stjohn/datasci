@@ -105,7 +105,7 @@ This can be very useful for reducing the dimension of the data set, for example,
 <br>
 The next image is the overall mean, and each subsequent image is adding another component to the previous.  For this particular scan, the mean plus its first component is enough to see that it's a 0.
 
-<p>In your program, include the following functions from <a href="p10.html">Program 10</a>.  You may use your earlier function or the Program 8 solution available on Blackboard:
+<p>In your program, include the following functions from <a href="p10.html">Program 10</a>.  You may use your earlier function or the Program 10 solution available on Blackboard:
 <ul>
   <li> <code class = "inline">select_data(data, target, labels = [0,1]):</code>
 
@@ -141,7 +141,8 @@ And write the following new functions:
         <li> <code class = "inline">mod</code>: a model of <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">sklearn.decomposition.PCA</a> that has been fitted to a dataset.
     </ul>
     Using the array of the amount of varianace of each component, <code class="inline">explained_variance_</code>,
-    computes the captured variance (see <a href="http://www.textbook.ds100.org/ch/26/pca_in_practice.html">Chapter 26.3.1.1 Captured Variance and Scree Plots</a>). Returns the number of elements needed to capture more than 85% of the variance.
+    computes the captured variance (see <a href="http://www.textbook.ds100.org/ch/26/pca_in_practice.html">Chapter 26.3.1.1 Captured Variance and Scree Plots</a>).
+    Returns the number of elements needed to capture more than 85% of the variance.
 
   <li> <code class="inline">average_eigenvalue(mod):</code>
     This function takes as one input parameter:
@@ -158,9 +159,11 @@ And write the following new functions:
         <li> <code class = "inline">img</code>: a flattened image from the dataset.
         <li> <code class = "inline">numComponents</code>: the number of components used in the approximation.  Expecting a value between 0 and 64.  The default value is 8.
     </ul>
-    The function transforms the image, <code class = "inline">img</code>, and uses the resulting coefficents to compute an approximation of the image,  The approximation image (flattened array) is the mean plus the sum of the first <code class = "inline">numComponents</code>
-    terms (i.e. <code class = "inline">coefficients[i] * components[i]</code> where <code class = "inline">coefficients</code> are from the transform and <code class = "inline">components</code> are an array of the components computed by <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">PCA()</a> analysis).  Note that the mean of the dataset does not have to be computed since it is stored as an attribute of the models of <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">PCA()</a>.
+    The function transforms the image, <code class = "inline">img</code>, and uses the resulting coefficents to compute an approximation of the image.  The approximation image (flattened array) is the mean plus the sum of the first <code class = "inline">numComponents</code>
+    terms (i.e. <code class = "inline">coefficients[i] * components[i]</code> where the <code class = "inline">coefficients</code> are returned from the transform and <code class = "inline">components</code> are an array of the components computed by <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">PCA()</a> analysis).
+    Note that the mean of the dataset does not have to be computed since it is stored as an attribute of the models of <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">PCA()</a>.
     Returns the computed approximation image as a flattened array.
+    <i>Hint:  see the discussion in <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.09-principal-component-analysis.html">DS Handbook 5.09 (PCA)</a> and in Lecture 21</i>.
             </ul>
 
     </ul>
