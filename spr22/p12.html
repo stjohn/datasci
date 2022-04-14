@@ -97,64 +97,42 @@ Decreasing ambulance response times improves outcomes and
 
 <p>To decide on where to "pre-place" ambulances, we will use K-means clustering, where "K" is the number of ambulances available for that shift.  For example, if there 8 ambulances available to be placed in eastern Queens, we will look at previous ambulance calls for that shift and form 8 clusters and station each ambulance at the mean of the cluster.  If two more ambulances become available, we can recompute the K-means algorithm for K=10, and place those 10 ambulances, each at the mean of the cluster found.
 
-
-<p>functions:  make_df needs to pull out ambulance calls,
-<p>filter data by time stamps-- use only calls during shift?
-<p>pre-compute distance matrix using haversine
-<p>call k-means
-<p>make predictions-- and correct via haversine corrections
-<p>measure accuracy?
-
-
+<p>
 In Lecture #25 and <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.11-k-means.html">Python Data Science Handbook: Section 5.11</a>, we clustered the digits data set using K-means clustering and used t-SNE to improve accuracy.
 
 <p>
 For this program, modify the code from lecture to write a function that allows you to run three different preprocessing of a toy dataset ("none", "TSNE", or "MDS"), applies K-Means clustering, takes the mode of each cluster as the predicted label, and then returns the accuracy of the prediction.
 
-From P9:  data in P9 didn't play well with this (time stamps in particular & not enough
-categorical data to encode), but
-important concept/tool-- can we make it work here?
-
-
 <p>The assignment is broken into the following functions to allow for unit testing:
 
   <ul>
-    <li> <code class = "inline">make_df(housing_file, pop_file)</code>:
-      This function takes two inputs:
+    <li> <code class = "inline">make_df(file_name)</code>:
+      This function takes one input:
       <ul>
-        <li> <code class = "inline">housing_file</code>: the name of a CSV file containing <a href="https://data.cityofnewyork.us/Housing-Development/Housing-Database-by-NTA/kyz5-72x5">housing units</a> from OpenData NYC.
-        <li> <code class = "inline">pop_file</code>: the name of a CSV file containing <a href="https://data.cityofnewyork.us/City-Government/New-York-City-Population-By-Neighborhood-Tabulatio/swpk-hqdp">population counts</a> from OpenData NYC.
+        <li> <code class = "inline">file_name</code>: the name of a CSV file containing <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd">911 System Calls</a> from OpenData NYC.
       </ul>
-      The data in the two files are read and merged into a single DataFrame using <code class = "inline">nta2010</code> and <code class = "inline">NTA Code</code> as the keys.
-      If the <code class = "inline">total</code> is null or <code class = "inline">Year</code> differs from 2010, that row is dropped.
-        The columns <code class = "inline">the_geom</code>, <code class = "inline">boro</code>, and <code class = "inline">nta2010</code> are dropped, and the resulting DataFrame is returned.
-        (Hint: if you are getting a <code class="inline">The DataFrame did not match expected output</code> error, check to make sure that your DataFrame columns are ordered in the same way as Gradescope's Autograder.)
+      The data is read into DataFrame.  Rows that are have null values for the type description, incident date, and latitue and longitude are dropped.
+      Only rows that contain <code class = "inline">AMBULANCE</code> as part of the <code class = "inline">TYP_DESC</code> are kept differs from 2010, that row is dropped.  An additional column <code class = "inline">WEEK_DAY</code> is added with the day of the week, 0 for Monday, 1 for Tuesday, ..., 6 for Sunday, of the date in <code class = "inline">INCIDENT_DATE</code> is added.  The resulting DataFrame is returned.
 
-    <li> make_df:  pull in EMS data, and clean
-
-<li> <code class = "inline">split_columns_by_data_type(df) -> list,list:</code>
-  This function takes as one input:
-  <ul>
-      <li> <code class = "inline">df</code>: a DataFrame containing columns with numeric values, string values, as well as other (e.g. datetimes).
-  </ul>
-  This function separates the columns of the DataFrame, <code class = "inline">df.columns</code> into three lists:  those that contain numeric values, those that include other formats (e.g. strings and datetimes).  Return both lists.  Pandas has a useful function
-  <code class = "inline">DataFrame.select_dtypes</code> (see <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.select_dtypes.html">documentation</a> for syntax and types recognized).
-
-
-  <li> <code class = "inline">impute_categorical_cols(df, x_cat_cols) -> pd.DataFrame:</code>
-    This function takes as two input parameters:
+    <li> <code class = "inline">filter_by_time(df,days=None,times=[0,1439])</code>:
+      This function takes three inputs:
+      <ul>
+        <li> <code class = "inline">df</code>: a DataFrame containing <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd">911 System Calls</a> from OpenData NYC.
+        <li> <code class = "inline">days</code>:  a list of integers ranging from 0 to 6, representing the days of the week.  The default value is <code class = "inline">None</code> and is equivalent to the list containing all days:
+        <code class = "inline">[0,1,2,3,4,5,6]</code>.
+        <li> <code class = "inline">times</code>:  a list of two non-negative integer values representing the range for the time, in minutes, that should be selected.  The default value is <code class = "inline">[0,1440]</code> which ranges from midnight (<code class = "inline">0</code> minutes) to (<code class = "inline">1439</code> representing 11:59 since 11 hours + 59 minutes = 1439 minutes).
+      </ul>
+       filter data by time stamps and day of the week-- use only calls during shift?
+    <li> <code class = "inline">compute_dist_mx(df)</code>:
+      This function takes one input:
     <ul>
-        <li> <code class = "inline">df</code>: a DataFrame containing <a href="https://data.cityofnewyork.us/Transportation/2020-For-Hire-Vehicles-Trip-Data/m3yx-mvk4">Yellow Taxi Trip Data</a> from OpenData NYC to which <code class = "inline">add_boro</code> has been applied.
-        <li> <code class = "inline">x_cat_cols</code>: a list of categorical columns in <code class = "inline">df</code>.
+      <li> <code class = "inline">df</code>: a DataFrame containing <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd">911 System Calls</a> from OpenData NYC.
     </ul>
+    Compute distances with Haversine correction.  Assumes no null entries in latitudes and longitudes.  Returns the computed distance matrx as a numpy array.  The ordering of the distances between entries is the same order as the entries appear in the DataFrame.
+    <li> <code class = "inline">compute_means(dist_mx)</code>:  Compute distances with Haversine correction.
 
-    """
-    For categorical columns, impute missing data with the most common value
-    :param df: pandas dataframe, output of import_data()
-    :param x_cat_cols: list of categorical X columns, output of application of split_columns_by_data_type()
-    :return: pandas dataframe containing imputed categorical columns from input df
-    """
-
+        <p>make predictions-- and correct via haversine corrections
+        <p>measure accuracy?
 
 <ul>
 <li> <code class = "inline">clusterDemo(toy_dataset, n_components = 2, n_clusters = 3, method = "none", random_state=0):</code>

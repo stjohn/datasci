@@ -159,7 +159,7 @@ And write the following new functions:
         <li> <code class = "inline">numComponents</code>: the number of components used in the approximation.  Expecting a value between 0 and 64.  The default value is 8.
     </ul>
     The function transforms the image, <code class = "inline">img</code>, and uses the resulting coefficents to compute an approximation of the image,  The approximation image (flattened array) is the mean plus the sum of the first <code class = "inline">numComponents</code>
-    terms (i.e. <code class = "inline">coefficients[i] * components[i]</code> where <code class = "inline">coefficients</code> are from the transform (i.e. FILL IN MORE DETAILS) and <code class = "inline">components</code> are an array of the components computed by <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">PCA()</a> analysis).  Note that the mean of the dataset does not have to be computed since it is stored as an attribute of the models of <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">PCA()</a>.
+    terms (i.e. <code class = "inline">coefficients[i] * components[i]</code> where <code class = "inline">coefficients</code> are from the transform and <code class = "inline">components</code> are an array of the components computed by <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">PCA()</a> analysis).  Note that the mean of the dataset does not have to be computed since it is stored as an attribute of the models of <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">PCA()</a>.
     Returns the computed approximation image as a flattened array.
             </ul>
 

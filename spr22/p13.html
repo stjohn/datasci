@@ -81,6 +81,22 @@ Spring 2022<br><br>
 SQL on 911 calls...
 
 Also include cross validation to tune parameters-- maybe poly features?
+
+<li> <code class = "inline">impute_categorical_cols(df, x_cat_cols) -> pd.DataFrame:</code>
+  This function takes as two input parameters:
+  <ul>
+      <li> <code class = "inline">df</code>: a DataFrame containing <a href="https://data.cityofnewyork.us/Transportation/2020-For-Hire-Vehicles-Trip-Data/m3yx-mvk4">Yellow Taxi Trip Data</a> from OpenData NYC to which <code class = "inline">add_boro</code> has been applied.
+      <li> <code class = "inline">x_cat_cols</code>: a list of categorical columns in <code class = "inline">df</code>.
+  </ul>
+
+  """
+  For categorical columns, impute missing data with the most common value
+  :param df: pandas dataframe, output of import_data()
+  :param x_cat_cols: list of categorical X columns, output of application of split_columns_by_data_type()
+  :return: pandas dataframe containing imputed categorical columns from input df
+  """
+
+
 </div>
 </body>
 </html>
