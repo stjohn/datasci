@@ -79,7 +79,7 @@ Spring 2022<br><br>
      <br>Sample Datasets: <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_digits.html">sklearn digits dataset</a>.<br></i>
 
 <p>
-In Lecture 22 and <a href="http://www.textbook.ds100.org/ch/25/pca_in_practice.html">Chapter 25</a>, we applied Principal Components Analysis as a dimensionality reduction technique and used scree plots to provide a visualization of the captured variance.  This assignment continues our analysis of the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_digits.html">sklearn digits dataset</a>, focusing on visualization and intrinsic dimenion of the data.
+In Lecture 22 and <a href="http://www.textbook.ds100.org/ch/26/pca_in_practice.html">Chapter 26</a>, we applied Principal Components Analysis as a dimensionality reduction technique and used scree plots to provide a visualization of the captured variance.  This assignment continues our analysis of the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_digits.html">sklearn digits dataset</a>, focusing on visualization and intrinsic dimenion of the data.
 In addition, we will write a function that allows the user to explore how many dimensions are needed to see the underlying structure of images from the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_digits.html">sklearn digits dataset</a> (inspired by <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.09-principal-component-analysis.html">Python Data Science Handbook: Section 5.9</a> (PCA)).
 
 
@@ -140,9 +140,17 @@ And write the following new functions:
     <ul>
         <li> <code class = "inline">mod</code>: a model of <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">sklearn.decomposition.PCA</a> that has been fitted to a dataset.
     </ul>
-    Using the array of the amount of varianace of each component, <code class="inline">explained_variance_</code>,
-    computes the captured variance (see <a href="http://www.textbook.ds100.org/ch/26/pca_in_practice.html">Chapter 26.3.1.1 Captured Variance and Scree Plots</a>).
+    From the array of the amount of varianace of each component, (stored in <code class="inline">mod.singular_values_</code>),
+    compute fraction of the variance of each component.  That is, if <code class="inline">sv = mod.singular_values_</code>, then <code class="inline">sv**2/sum(sv**2)</code> (see <a href="http://www.textbook.ds100.org/ch/26/pca_in_practice.html">Chapter 26.3.1.1 Captured Variance and Scree Plots</a>).
     Returns the number of elements needed to capture more than 85% of the variance.
+    For example, if <code class="inline">s</code> is:
+    <pre><code class="datablock">array([585.57, 261.06, 166.31,  57.14,  48.16,  39.79,  31.71,  28.91,
+        24.23,  22.23,  20.51,  18.96,  17.01,  15.73,   7.72,   4.3 ,
+         1.95,   0.04])</code></pre>
+    then <code class="inline">sv</code> is
+    <pre><code class="datablock">array([0.76, 0.15, 0.06, 0.01, 0.01, 0.  , 0.  , 0.  , 0.  , 0.  , 0.  ,
+       0.  , 0.  , 0.  , 0.  , 0.  , 0.  , 0.  ])</code></pre>.
+    The first component captures 76% of the variance which is lower than that 85% threshold.  The first and second components capture (76+15)% = 91% of the variance, so, your function would return 2.
 
   <li> <code class="inline">average_eigenvalue(mod):</code>
     This function takes as one input parameter:
@@ -234,26 +242,39 @@ The resulting image shows that much of the variance is captured by the first 10 
 
 <p>We can use our functions to look at ways to measure this, via the captured variance and average eigenvalues:
 <pre><code class="blockcode">np.set_printoptions(suppress=True)  #Turn off scientific notation
-print(f'The explained variance: {all_mod.explained_variance_}')
-print(f'The number of components needed to capture 85% of the variance is {capture_85(all_mod)}.')
-print(f'The number of eigenvalues larger than the average is {average_eigenvalue(all_mod)}.')
+sv = all_mod.singular_values_
+print(f'The singular values are: {sv}')
+print(f'The fraction variance: {sv**2/sum(sv**2)}')
+print(f'The number of components needed to capture 85% of the variance is {answer.captures85(all_mod)}.')
+print(f'The number of eigenvalues larger than the average is {answer.averageEigenvalue(all_mod)}.')
 </code></pre>
 
 prints out the explained variance as well as the numbers computed by our functions:
-<pre><code class="datablock">The explained variance: [179.0069301  163.71774688 141.78843909 101.1003752   69.51316559
-  59.10852489  51.88453911  44.01510667  40.31099529  37.0117984
-  28.51904118  27.32116981  21.90148814  21.32435654  17.63672222
-  16.94686385  15.85138991  15.00446022  12.23447318  10.88685932
-  10.69356625   9.58259779   9.2264026    8.69036872   8.3656119
-   7.16577961   6.91973881   6.19295508   5.88499123   5.1558669
-   4.49129656   4.24687799   4.04743883   3.94340334   3.70647245
-   3.53165306   3.08457409   2.73780002   2.67210896   2.54170563
-   2.28298744   1.90724229   1.81716569   1.68996439   1.4019722
-   1.29221888   1.15893419   0.93122001   0.66985059   0.48606522
-   0.25235043   0.09915279   0.06313078   0.06073776   0.03966623
-   0.01495056   0.00847307   0.00362366   0.00127705   0.00066127
-   0.00041222   0.           0.           0.        ]
-The number of components needed to capture 85% of the variance is 5.
+<pre><code class="datablock">The singular values are: [567.0065665  542.25185421 504.63059421 426.11767608 353.3350328
+ 325.82036569 305.26158002 281.16033073 269.06978193 257.82395143
+ 226.31879719 221.5148324  198.33071545 195.70013887 177.9762712
+ 174.46079067 168.72787641 164.15849219 148.23330876 139.83132462
+ 138.58443271 131.1882069  128.72691665 124.93159016 122.57503405
+ 113.44487728 111.48027133 105.46348813 102.80780243  96.22856616
+  89.81296469  87.33494649  85.25960437  84.15671337  81.58936529
+  79.64200462  74.43047136  70.12195688  69.27559227  67.56406817
+  64.03315896  58.52697795  57.12818557  55.09243185  50.17909986
+  48.1749428   45.62286487  40.89585718  34.68503519  29.5461187
+  21.28899661  13.34460261  10.64814019  10.44437712   8.44041164
+   5.18181553   3.90097916   2.55109635   1.51445826   1.08979014
+   0.86043771   0.           0.           0.        ]
+The fraction variance: [0.14890594 0.13618771 0.11794594 0.08409979 0.05782415 0.0491691
+ 0.04315987 0.03661373 0.03353248 0.03078806 0.02372341 0.02272697
+ 0.01821863 0.01773855 0.01467101 0.01409716 0.01318589 0.01248138
+ 0.01017718 0.00905617 0.00889538 0.00797123 0.00767493 0.00722904
+ 0.00695889 0.00596081 0.00575615 0.00515158 0.0048954  0.00428888
+ 0.00373606 0.00353274 0.00336684 0.0032803  0.00308321 0.00293779
+ 0.00256589 0.00227742 0.00222278 0.0021143  0.00189909 0.00158653
+ 0.0015116  0.00140579 0.00116622 0.00107493 0.00096405 0.00077463
+ 0.00055721 0.00040433 0.00020992 0.00008248 0.00005251 0.00005052
+ 0.000033   0.00001244 0.00000705 0.00000301 0.00000106 0.00000055
+ 0.00000034 0.         0.         0.        ]
+The number of components needed to capture 85% of the variance is 17.
 The number of eigenvalues larger than the average is 14.</code></pre>
 
 <p> Lastly, let's look at how many components are needed to recover a given image:
