@@ -141,15 +141,15 @@ And write the following new functions:
         <li> <code class = "inline">mod</code>: a model of <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">sklearn.decomposition.PCA</a> that has been fitted to a dataset.
     </ul>
     From the array of the amount of varianace of each component, (stored in <code class="inline">mod.singular_values_</code>),
-    compute fraction of the variance of each component.  That is, if <code class="inline">sv = mod.singular_values_</code>, then <code class="inline">sv**2/sum(sv**2)</code> (see <a href="http://www.textbook.ds100.org/ch/26/pca_in_practice.html">Chapter 26.3.1.1 Captured Variance and Scree Plots</a>).
+    compute fraction of the variance of each component.  That is, if <code class="inline">sv = mod.singular_values_</code>, then <code class="inline">s=sv**2/sum(sv**2)</code> (see <a href="http://www.textbook.ds100.org/ch/26/pca_in_practice.html">Chapter 26.3.1.1 Captured Variance and Scree Plots</a>).
     Returns the number of elements needed to capture more than 85% of the variance.
-    For example, if <code class="inline">s</code> is:
+    For example, if <code class="inline">sv</code> is:
     <pre><code class="datablock">array([585.57, 261.06, 166.31,  57.14,  48.16,  39.79,  31.71,  28.91,
         24.23,  22.23,  20.51,  18.96,  17.01,  15.73,   7.72,   4.3 ,
          1.95,   0.04])</code></pre>
-    then <code class="inline">sv</code> is
+    then <code class="inline">s</code> is
     <pre><code class="datablock">array([0.76, 0.15, 0.06, 0.01, 0.01, 0.  , 0.  , 0.  , 0.  , 0.  , 0.  ,
-       0.  , 0.  , 0.  , 0.  , 0.  , 0.  , 0.  ])</code></pre>.
+       0.  , 0.  , 0.  , 0.  , 0.  , 0.  , 0.  ])</code></pre>
     The first component captures 76% of the variance which is lower than that 85% threshold.  The first and second components capture (76+15)% = 91% of the variance, so, your function would return 2.
 
   <li> <code class="inline">average_eigenvalue(mod):</code>
@@ -158,7 +158,7 @@ And write the following new functions:
         <li> <code class = "inline">mod</code>: a model of <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">sklearn.decomposition.PCA</a> that has been fitted to a dataset.
     </ul>
     For the <code class = "inline">mod</code>,
-    computes the average of the eigenvalues and returns the number of elements greater than the average.  See <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">sklearn.decomposition.PCA</a> for attributes of the model.
+    computes the average of the eigenvalues (i.e. the average of <code class="inline">sv = mod.singular_values_</code>) and returns the number of elements greater than the average.  See <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">sklearn.decomposition.PCA</a> for attributes of the model.
 
   <li> <code class = "inline">approx_digits(mod, img, numComponents=8):</code>
     This function has three inputs:
@@ -275,7 +275,7 @@ The fraction variance: [0.14890594 0.13618771 0.11794594 0.08409979 0.05782415 0
  0.000033   0.00001244 0.00000705 0.00000301 0.00000106 0.00000055
  0.00000034 0.         0.         0.        ]
 The number of components needed to capture 85% of the variance is 17.
-The number of eigenvalues larger than the average is 14.</code></pre>
+The number of eigenvalues larger than the average is 23.</code></pre>
 
 <p> Lastly, let's look at how many components are needed to recover a given image:
 <pre><code class="blockcode">plt.imshow(all_mod.mean_.reshape(8, 8), cmap='binary', interpolation='nearest', clim=(0, 16))
