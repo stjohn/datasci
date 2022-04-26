@@ -74,34 +74,38 @@ Spring 2022<br><br>
 <br>
    <p><a name="p12"><b>Program 12: EMS Stations.</b></b> &emsp; <i>Due noon, Thursday, 5 May.
      <br>Learning Objective: to enhance data cleaning skills and build understanding of clustering algorithms.
-     <br>Available Libraries: pandas, numpy, sklearn, and core Python 3.6+.
+     <br>Available Libraries: pandas, datetime, numpy, sklearn, and core Python 3.6+.
      <br>Data Sources: <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd
 ">911 System Calls (NYC OpenData)</a>
-     <br>Sample Datasets:.<br></i>
+     <br>Sample Datasets:
+      <ul>
+          <li> Small dataset (1 day of calls for 1 borough): <a href="NYPD_Calls_Manhattan_4Jul2021.csv">NYPD_Calls_Manhattan_4Jul2021.csv</a>,
+          <li> Larger dataset (1 month of calls for Queens): <a href="NYPD_Calls_Queens_Jan2021.csv">NYPD_Calls_Queens_Jan2021.csv</a>
+      </ul><br></i>
 
 <!--
 https://data.cityofnewyork.us/Public-Safety/Emergency-Response-Incidents/pasr-j7fb
 Calls for 911 service:
 https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd
-
 Can get time of incident and date, get day of week?
-
 https://data.cityofnewyork.us/Public-Safety/EMS-Incident-Dispatch-Data/76xm-jjuj
 -->
 
 <p> For this program, we are focusing on ambulance calls in New York City.
 Decreasing ambulance response times improves outcomes and
-<a href="https://www.sciencedirect.com/science/article/pii/S1386505619303491">strategic placement</a> of ambulance stations and overall allocation has been shown an effective approach.
-
-<p>IMAGE/folium of ambulances over one night.
-
-<p>To decide on where to "pre-place" ambulances, we will use K-means clustering, where "K" is the number of ambulances available for that shift.  For example, if there 8 ambulances available to be placed in eastern Queens, we will look at previous ambulance calls for that shift and form 8 clusters and station each ambulance at the mean of the cluster.  If two more ambulances become available, we can recompute the K-means algorithm for K=10, and place those 10 ambulances, each at the mean of the cluster found.
-
+<a href="https://www.sciencedirect.com/science/article/pii/S1386505619303491">strategic placement</a> of ambulance stations and overall allocation has been shown an effective approach.  For example, here are all the calls for ambulances on 4 July 2021 in Manhattan (using Folium/Leaflet to create an interactive map):
 <p>
-In Lecture #25 and <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.11-k-means.html">Python Data Science Handbook: Section 5.11</a>, we clustered the digits data set using K-means clustering and used t-SNE to improve accuracy.
+<iframe src="4_July_map.html" style="width: 60%; height: 550px" name="internal"></iframe>
 
-<p>
-For this program, modify the code from lecture to write a function that allows you to run three different preprocessing of a toy dataset ("none", "TSNE", or "MDS"), applies K-Means clustering, takes the mode of each cluster as the predicted label, and then returns the accuracy of the prediction.
+
+<p>To decide on where to "pre-place" ambulances, we will use K-means clustering, where "K" is the number of ambulances available for that shift.  For example, if there 2 ambulances available to be placed in Manhattan, we will look at previous ambulance calls for that shift and form 2 clusters and station each ambulance at the mean of the cluster.  If two more ambulances become available, we can recompute the K-means algorithm for K=4, and place those 4 ambulances, each at the mean of the cluster found, and similarly for K=8:
+
+
+<p><img src="july4_clusters2.png" height="500">
+  <img src="july4_clusters4.png" height="500">
+  <img src="july4_clusters8.png" height="500">
+
+
 
 <p>The assignment is broken into the following functions to allow for unit testing:
 
@@ -111,8 +115,18 @@ For this program, modify the code from lecture to write a function that allows y
       <ul>
         <li> <code class = "inline">file_name</code>: the name of a CSV file containing <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd">911 System Calls</a> from OpenData NYC.
       </ul>
-      The data is read into DataFrame.  Rows that are have null values for the type description, incident date, and latitue and longitude are dropped.
-      Only rows that contain <code class = "inline">AMBULANCE</code> as part of the <code class = "inline">TYP_DESC</code> are kept differs from 2010, that row is dropped.  An additional column <code class = "inline">WEEK_DAY</code> is added with the day of the week, 0 for Monday, 1 for Tuesday, ..., 6 for Sunday, of the date in <code class = "inline">INCIDENT_DATE</code> is added.  The resulting DataFrame is returned.
+      The data is read into DataFrame.  Rows that are have null values for the type description, incident date, incident time, latitute and longitude are dropped.
+      Only rows that contain <code class = "inline">AMBULANCE</code> as part of the <code class = "inline">TYP_DESC</code> are kept.  The resulting DataFrame is returned.
+      <br><i>Hint: see <a href="http://www.textbook.ds100.org/ch/13/text_strings.html">DS 100: Chapter 13</a> for using string methods within pandas.</i>
+
+    <li> <code class = "inline">add_date_time_features(df)</code>:
+      This function takes one input:
+        <ul>
+          <li> <code class = "inline">df</code>: a DataFrame containing <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd">911 System Calls</a> from OpenData NYC created by <code class = "inline">make_df</code>.
+        </ul>
+        An additional column <code class = "inline">WEEK_DAY</code> is added with the day of the week (0 for Monday, 1 for Tuesday, ..., 6 for Sunday) of the date in <code class = "inline">INCIDENT_DATE</code> is added.
+        Another column, <code class = "inline">INCIDENT_MIN</code>, that takes the time from <code class = "inline">INCIDENT_TIME</code> and stores it as the number of minutes since midnight.  The resulting DataFrame is returned.
+        <br><i>Hint: see Lecture 7 for using datetime methods with pandas, including computing the day of the week (of <code class = "inline">datetime</code> objects) and the total seconds (of <code class = "inline">timedelta</code> objects).</i>
 
     <li> <code class = "inline">filter_by_time(df,days=None,times=[0,1439])</code>:
       This function takes three inputs:
@@ -120,94 +134,185 @@ For this program, modify the code from lecture to write a function that allows y
         <li> <code class = "inline">df</code>: a DataFrame containing <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd">911 System Calls</a> from OpenData NYC.
         <li> <code class = "inline">days</code>:  a list of integers ranging from 0 to 6, representing the days of the week.  The default value is <code class = "inline">None</code> and is equivalent to the list containing all days:
         <code class = "inline">[0,1,2,3,4,5,6]</code>.
-        <li> <code class = "inline">times</code>:  a list of two non-negative integer values representing the range for the time, in minutes, that should be selected.  The default value is <code class = "inline">[0,1440]</code> which ranges from midnight (<code class = "inline">0</code> minutes) to (<code class = "inline">1439</code> representing 11:59 since 11 hours + 59 minutes = 1439 minutes).
+        <li> <code class = "inline">times</code>:  a list of two non-negative integer values representing the range, inclusive, for the time, in minutes, that should be selected.  The default value is <code class = "inline">[0,1439]</code> which ranges from midnight (<code class = "inline">0</code> minutes) to (<code class = "inline">1439</code> representing 23:59 since 23 hours + 59 minutes = 23*60+59 minutes = 1439 minutes).
       </ul>
-       filter data by time stamps and day of the week-- use only calls during shift?
-    <li> <code class = "inline">compute_dist_mx(df)</code>:
-      This function takes one input:
-    <ul>
-      <li> <code class = "inline">df</code>: a DataFrame containing <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd">911 System Calls</a> from OpenData NYC.
-    </ul>
-    Compute distances with Haversine correction.  Assumes no null entries in latitudes and longitudes.  Returns the computed distance matrx as a numpy array.  The ordering of the distances between entries is the same order as the entries appear in the DataFrame.
-    <li> <code class = "inline">compute_means(dist_mx)</code>:  Compute distances with Haversine correction.
+      Returns a DataFrame with entries restricted to weekdays in <code class = "inline">days</code> (or all weekdays if <code class = "inline">None</code> is given) and incident times in <code class = "inline">times</code> inclusive (e.g. contains the endpoints).
 
-        <p>make predictions-- and correct via haversine corrections
-        <p>measure accuracy?
 
-<ul>
-<li> <code class = "inline">clusterDemo(toy_dataset, n_components = 2, n_clusters = 3, method = "none", random_state=0):</code>
-    This function has five inputs and returns the accuracy (value between 0 and 1):
-    <ul>
-        <li> <code class = "inline">toy_dataset</code>: a dataset from the sklearn toy datasets (see above).  Assumes that the dataset is of type
-        <code class = "inline">sklearn.utils.Bunch</code> and has fields
-        <code class = "inline">data</code> and
-        <code class = "inline">target</code>.
-        <li> <code class = "inline">n_components</code>: the number of components for the MDS or t-SNE analysis.  The default value is <code class = "inline">2</code>.
-        <li> <code class = "inline">n_clusters</code>: the number of components for the K-Means analysis.  The default value is <code class = "inline">3</code>.
-        <li> <code class = "inline">method</code>: the method used for preprocessing the data.  Possible values are <code class = "inline">"none"</code> (which does no preprocessing), <code class = "inline">"MDS"</code> (which uses MDS to preprocess), and
-        <code class = "inline">"TSNE"</code>.The default value is <code class = "inline">"none"</code>.
-        <li> <code class = "inline">random_state</code>: the random seed for MDS, TSNE, and K-Means clustering methods.  The default value is <code class = "inline">0</code>.
+    <li> <code class = "inline">compute_locations(df, num_clusters = 8, random_state = 2022)</code>:
+      This function takes three input:
+      <ul>
+        <li> <code class = "inline">df</code>: a DataFrame containing <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd">911 System Calls</a> from OpenData NYC.
+          <li> <code class = "inline">num_clusters</code>:  a list of integers ranging from 0 to 6, representing the days of the week.  The default value is <code class = "inline">None</code> and is equivalent to the list containing all days:
+          <code class = "inline">[0,1,2,3,4,5,6]</code>.
+          <li> <code class = "inline">random_state</code>: the random seed used for <a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html">KMeans</a>. The default value is <code class = "inline">2022</code>.
+
+        </ul>
+        Runs the KMeans model with <code class = "inline">num_clusters</code> on the latitude and longitude data of the provided DataFrame.  Returns the cluster centers and predicted labels computed via the model.
+
+    <li> <code class = "inline">compute_explained_variance(df, K =[1,2,3,4,5], random_state = 55)</code>:
+      This function takes three inputs:
+      <ul>
+        <li> <code class = "inline">df</code>: a DataFrame containing <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd">911 System Calls</a> from OpenData NYC.
+        <li> <code class = "inline">K</code>:  a list of integers representing values for the number of clusters.  The default value is <code class = "inline">[1,2,3,4,5]</code>.
+        <li> <code class = "inline">random_state</code>: the random seed used for <a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html">KMeans</a>. The default value is <code class = "inline">55</code>.
       </ul>
-      The function should:
-      <ol>
-          <li> Preprocess the dataset via the method specified.  If method is <code class = "inline">"none"</code>, then the original data is used.
-          <li> Run the K-means clustering method on the data.
-          <li> Label each element by the most common label for its cluster (i.e. the mode of the labels).
-          <li> Return the accuracy of the predicted labels versus the actual labels in the dataset.
-  </ul>
+      Returns a list of the sum of squared distances of samples to their closest cluster center for each value of <code class = "inline">K</code>.  This can be computed manually or via the <code class = "inline">inertia_</code> attribute of the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html">KMeans</a> model.
+</ul>
 
-  <p>For example, assuming your functions are in <code class=inline>p49</code> and the appropriate libraries are loaded, we can run the function on the relatively small datasets of iris species and wine classifications:
-  <pre><code class="blockcode">iris = datasets.load_iris()
-no_preproc = p49.clusterDemo(iris)
-print(f'Iris:  The accuracy with no-preprocessing is {no_preproc}.')
-tsne_proc = p49.clusterDemo(iris, method = "TSNE")
-print(f'Iris: The accuracy with TSNE preprocessing is {tsne_proc}.')
-mds_proc = p49.clusterDemo(iris, method = "MDS")
-print(f'Iris: The accuracy with MDS preprocessing is {mds_proc}.')
+<br>
+<p>For example, if we use the small dataset from 4 July 2021:
+  <pre><code class="blockcode">df = make_df('NYPD_Calls_Manhattan_4Jul2021.csv')
+print(df[['INCIDENT_TIME','TYP_DESC','Latitude','Longitude']])
+</code></pre>
+  would print:
+  <pre><code class="datablock">     INCIDENT_TIME                             TYP_DESC   Latitude  Longitude
+7         00:01:51      AMBULANCE CASE: CARDIAC/OUTSIDE  40.724578 -73.992519
+27        00:06:12       AMBULANCE CASE: CARDIAC/INSIDE  40.807719 -73.964240
+51        00:12:12      AMBULANCE CASE: SERIOUS/TRANSIT  40.732019 -74.000734
+53        00:12:38           AMBULANCE CASE: EDP/INSIDE  40.789348 -73.947352
+54        00:12:38           AMBULANCE CASE: EDP/INSIDE  40.789348 -73.947352
+...            ...                                  ...        ...        ...
+5175      23:50:02         AMBULANCE CASE: WATER RESCUE  40.711839 -74.011234
+5176      23:50:02         AMBULANCE CASE: WATER RESCUE  40.711839 -74.011234
+5205      23:57:11  AMBULANCE CASE: UNCONSCIOUS/TRANSIT  40.732019 -74.000734
+5211      23:57:59           AMBULANCE CASE: EDP/INSIDE  40.827547 -73.937461
+5212      23:57:59           AMBULANCE CASE: EDP/INSIDE  40.827547 -73.937461
 
-wine = datasets.load_wine()
-no_preproc = p49.clusterDemo(wine, n_components = 3, random_state=10)
-print(f'Wine:  The accuracy with no-preprocessing is {no_preproc}.')
-tsne_proc = p49.clusterDemo(wine, n_components = 3, method = "TSNE", random_state=10)
-print(f'Wine: The accuracy with TSNE preprocessing is {tsne_proc}.')</code></pre>
+[459 rows x 4 columns]</code></pre>
+
+Note that the original CSV file had over 5000 lines, only 459 of those were for ambulances calls.  The indices were not reset and refer to the line numbers of the original file.
+
+<p>Let's add in the date and time features:
+  <pre><code class="blockcode">df = answer.add_date_time_features(df)
+print(df[['INCIDENT_DATE','WEEK_DAY','INCIDENT_TIME','INCIDENT_MIN']])</code></pre>
+  would print:
+  <pre><code class="datablock">     INCIDENT_DATE  WEEK_DAY INCIDENT_TIME  INCIDENT_MIN
+7       07/04/2021         6      00:01:51      1.850000
+27      07/04/2021         6      00:06:12      6.200000
+51      07/04/2021         6      00:12:12     12.200000
+53      07/04/2021         6      00:12:38     12.633333
+54      07/04/2021         6      00:12:38     12.633333
+...            ...       ...           ...           ...
+5175    07/04/2021         6      23:50:02   1430.033333
+5176    07/04/2021         6      23:50:02   1430.033333
+5205    07/04/2021         6      23:57:11   1437.183333
+5211    07/04/2021         6      23:57:59   1437.983333
+5212    07/04/2021         6      23:57:59   1437.983333
+
+[459 rows x 4 columns]
+[Finished in 2.294s]</code></pre>
+
+Since all the incidents are from a single day (i.e. 4 July 2021) the <code class = "inline">WEEK_DAY</code> column has the same value (i.e. <code class = "inline">6</code>) for every row.
+
+
+
+
+<p>Let's add in the date and time features:
+<pre><code class="blockcode">df_early_am = answer.filter_by_time(df,times=[0,360])
+print(df_early_am[['INCIDENT_DATE','WEEK_DAY','INCIDENT_TIME','INCIDENT_MIN']])</code></pre>
+would print:
+<pre><code class="datablock">     INCIDENT_DATE  WEEK_DAY INCIDENT_TIME  INCIDENT_MIN
+7       07/04/2021         6      00:01:51      1.850000
+27      07/04/2021         6      00:06:12      6.200000
+51      07/04/2021         6      00:12:12     12.200000
+53      07/04/2021         6      00:12:38     12.633333
+54      07/04/2021         6      00:12:38     12.633333
+...            ...       ...           ...           ...
+1041    07/04/2021         6      05:08:49    308.816667
+1068    07/04/2021         6      05:21:49    321.816667
+1075    07/04/2021         6      05:24:21    324.350000
+1079    07/04/2021         6      05:28:13    328.216667
+1111    07/04/2021         6      05:41:34    341.566667
+
+[76 rows x 4 columns]
+</code></pre>
+
+<p>We can build a map with the calls for ambulances shaded by the time of the call:
+
+  <pre><code class="blockcode">import folium
+import matplotlib.colors
+def cc(minute,scale):
+    return(matplotlib.colors.to_hex( (minute/scale,0,minute/scale) ))
+
+m = folium.Map(location=[40.7678,-73.9645],zoom_start=13,tiles="cartodbpositron")
+df.apply( lambda row: folium.CircleMarker(location=[row["Latitude"], row["Longitude"]],
+                                        radius=5, popup=(row['INCIDENT_TIME']+": "+row['TYP_DESC']),
+                                        color=cc(row['INCIDENT_MIN'],2000))
+                                        .add_to(m) ,
+        axis=1)
+m.save('4_July_map.html')</code></pre>
+
+displayed above.  Note that we used the time to shade the incidents.  The popups provide the exact time as well as the description.
+
+<p>We can also make maps with the computed clusters.  We use the <code class = "inline">compute_locations</code> function with different values of <code class = "inline">num_clusters</code>.  Since we are repeating the same actions for <code class = "inline">K = 2, 4, 6</code>, we wrote a helper function to create the HTML maps:
+
+<pre><code class="blockcode">def make_map(df, num_clusters, out_file):
+    centers,labels = compute_locations(df,num_clusters = num_clusters)
+    df_map = df[ ['Latitude','Longitude','INCIDENT_TIME','INCIDENT_MIN','TYP_DESC'] ]
+    df_map = df_map.assign(Labels = labels)
+    m = folium.Map(location=[40.7678,-73.9645],zoom_start=13,tiles="cartodbpositron")
+    df_map.apply( lambda row: folium.CircleMarker(location=[row["Latitude"], row["Longitude"]],
+                                        radius=5, popup=(row['INCIDENT_TIME']+": "+row['TYP_DESC']),
+                                        color=cc(row['Labels'],num_clusters))
+                                        .add_to(m), axis=1)
+    for i in range(num_clusters):
+        x,y = centers[i]
+        folium.Marker(location=[x,y],popup = "Cluster "+str(i)).add_to(m)
+    m.save(out_file)
+
+make_map(df,2,'map_4_July_2clusters.html')
+make_map(df,4,'map_4_July_4clusters.html')
+make_map(df,8,'map_4_July_8clusters.html')</code></pre>
+
+Screenshots of the maps are displayed above.
+
+
+<p>Another function can be used to filter the dataset by day of the week and time of day.  For example, still working with the 4 July data set:
+
+  <pre><code class="blockcode">df_mondays = filter_by_time(df, days = [0])
+print(df_mondays)</code></pre>
+
+This will return an empty DataFrame since only 4 of July in this data set (which was a Sunday and we filtered for 0 or Monday):
+  <pre><code class="datablock">Empty DataFrame
+Columns: [CAD_EVNT_ID, CREATE_DATE, INCIDENT_DATE, INCIDENT_TIME, NYPD_PCT_CD, BORO_NM, PATRL_BORO_NM, GEO_CD_X, GEO_CD_Y, RADIO_CODE, TYP_DESC, CIP_JOBS, ADD_TS, DISP_TS, ARRIVD_TS, CLOSNG_TS, Latitude, Longitude, WEEK_DAY, INCIDENT_MIN]
+Index: []</code></pre>
+
+<p>Let's next filter for early morning times:
+
+  <pre><code class="blockcode">df_early_am = answer.filter_by_time(df,times=[0,360])
+print(df_early_am[['INCIDENT_DATE','WEEK_DAY','INCIDENT_TIME','INCIDENT_MIN']])</code></pre>
 
   would print:
-  <pre><code class="datablock">Iris:  The accuracy with no-preprocessing is 0.8933333333333333.
-Iris: The accuracy with TSNE preprocessing is 0.9133333333333333.
-Iris: The accuracy with MDS preprocessing is 0.9.
-Wine:  The accuracy with no-preprocessing is 0.702247191011236.
-Wine: The accuracy with TSNE preprocessing is 0.6797752808988764.</code></pre>
+  <pre><code class="datablock">     INCIDENT_DATE  WEEK_DAY INCIDENT_TIME  INCIDENT_MIN
+7       07/04/2021         6      00:01:51      1.850000
+27      07/04/2021         6      00:06:12      6.200000
+51      07/04/2021         6      00:12:12     12.200000
+53      07/04/2021         6      00:12:38     12.633333
+54      07/04/2021         6      00:12:38     12.633333
+...            ...       ...           ...           ...
+1041    07/04/2021         6      05:08:49    308.816667
+1068    07/04/2021         6      05:21:49    321.816667
+1075    07/04/2021         6      05:24:21    324.350000
+1079    07/04/2021         6      05:28:13    328.216667
+1111    07/04/2021         6      05:41:34    341.566667
 
-  <p>We can also run on the digits dataset.  It's larger and the t-SNE and MDS methods will take a bit of time to return their answers:
-  <pre><code class="blockcode">digits = datasets.load_digits()
-no_preproc = p49.clusterDemo(digits, n_clusters = 10, method = "none", random_state=20)
-print(f'Digits: The accuracy with no-preprocessing is {no_preproc}.')
-tsne_proc = p49.clusterDemo(digits, n_clusters = 10, method = "TSNE", random_state=20)
-print(f'Digits: The accuracy with TSNE preprocessing is {tsne_proc}.')
-mds_proc = p49.clusterDemo(digits, n_clusters = 10, method = "MDS", random_state=20)
-print(f'Digits: The accuracy with MDS preprocessing is {mds_proc}.')</code></pre>
+[76 rows x 4 columns]</code></pre>
 
-  would print:
-  <pre><code class="datablock">Digits: The accuracy with no-preprocessing is 0.7946577629382304.
-Digits: The accuracy with TSNE preprocessing is 0.9432387312186978.
-Digits: The accuracy with MDS preprocessing is 0.676126878130217.</code></pre>
+<p>Lastly, we can use the function <code class = "inline">compute_explained_variance</code> to assess the best number of clusters:
 
+  <pre><code class="blockcode">k_vals = list(range(1,20))
+ev = answer.compute_explained_variance(df,K=k_vals)
+sns.lineplot(k_vals,ev)
+plt.title('Explained Variance for KMeans for Manhattan, 4 July 2021')
+plt.show()
+</code></pre>
 
-<p><i>Hints:
-  <ul>
-    <li> The import statements needed for the function are:
-      <pre><code class="blockcode">import pandas as pd
-import numpy as np
-from sklearn.manifold import TSNE, MDS
-from sklearn.cluster import KMeans
-from scipy.stats import mode
-from sklearn.metrics import accuracy_score</code></pre>
-    <li> Both the MDS and t-SNE methods use the <code class=inline>n_components</code> when instantiating the model.  Not passing this parameter to the functions will give different answers.
-    <li> The <code class=inline>random_state</code> parameter is used by both the preprocessing steps (MDS and t-SNE) as well as for the K-Means clustering.  Not passing this parameter to the functions will give different answers.
-  </ul>
-</i>
+will display:
 
+<p><img src="july4_ev.png" height=400>
 
+<p>showing a sharp drop-off to <code class = "inline">K=5</code> that quickly flattens, showing that additional clusters, beyond 10, do not significantly improve the average distance to the assigned means.  This suggests that a reasonable number of clusters is around 8.
 </div>
 </body>
 </html>
