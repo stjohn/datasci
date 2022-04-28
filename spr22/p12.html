@@ -80,6 +80,7 @@ Spring 2022<br><br>
      <br>Sample Datasets:
       <ul>
           <li> Small dataset (1 day of calls for 1 borough): <a href="NYPD_Calls_Manhattan_4Jul2021.csv">NYPD_Calls_Manhattan_4Jul2021.csv</a>,
+          <li> Midnight calls in January 2021 (all boroughs): <a href="NYPD_Calls_midnight_Jan2021.csv">NYPD_Calls_midnight_Jan2021.csv</a>,
           <li> Larger dataset (1 month of calls for Queens): <a href="NYPD_Calls_Queens_Jan2021.csv">NYPD_Calls_Queens_Jan2021.csv</a>
       </ul><br></i>
 
@@ -115,7 +116,7 @@ Decreasing ambulance response times improves outcomes and
       <ul>
         <li> <code class = "inline">file_name</code>: the name of a CSV file containing <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd">911 System Calls</a> from OpenData NYC.
       </ul>
-      The data is read into DataFrame.  Rows that are have null values for the type description, incident date, incident time, latitute and longitude are dropped.
+      The data is read into a DataFrame.  Rows that are have null values for the type description, incident date, incident time, latitute and longitude are dropped.
       Only rows that contain <code class = "inline">AMBULANCE</code> as part of the <code class = "inline">TYP_DESC</code> are kept.  The resulting DataFrame is returned.
       <br><i>Hint: see <a href="http://www.textbook.ds100.org/ch/13/text_strings.html">DS 100: Chapter 13</a> for using string methods within pandas.</i>
 

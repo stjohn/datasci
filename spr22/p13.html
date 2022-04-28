@@ -73,37 +73,217 @@ Spring 2022<br><br>
 
 <br>
    <p><a name="p13"><b>Program 13: EMS Queries.</b></b> &emsp; <i>Due noon, Thursday, 17 March.
-     <br>Learning Objective: .
-     <br>Available Libraries: .
-     <br>Data Sources: <a href="https://data.cityofnewyork.us/Public-Safety/Emergency-Response-Incidents/pasr-j7fb">Emergency Response Incidents @ OpenData</a>
-     <br>Sample Datasets:.<br></i>
+     <br>Learning Objective: To reinforce new SQL skills to query and aggregate data.
+     <br>Available Libraries: pandas, pandasql, and core Python 3.6+.
+     <br>Data Sources: <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd
+     ">911 System Calls (NYC OpenData)</a>
+     <br>Sample Datasets:
+      <ul>
+          <li> Small dataset (1 day of calls for 1 borough): <a href="NYPD_Calls_Manhattan_4Jul2021.csv">NYPD_Calls_Manhattan_4Jul2021.csv</a>,
+          <li> Midnight calls in January 2021 (all boroughs): <a href="NYPD_Calls_midnight_Jan2021.csv">NYPD_Calls_midnight_Jan2021.csv</a>,
+          <li> Larger dataset (1 month of calls for Queens): <a href="NYPD_Calls_Queens_Jan2021.csv">NYPD_Calls_Queens_Jan2021.csv</a>
+      </ul><br></i>
 
-SQL on 911 calls...
+<p>This program continues the analysis of the emergency services calls that was introduced in <a href="p12.html">Program 12</a>.
+<p>
+<iframe src="4_July_map.html" style="width: 60%; height: 550px" name="internal"></iframe>
 
 <p>
+We will be using Structured Query Language (SQL) to subset and aggregate data (see Lectures 25 & 26 and <a href="http://www.textbook.ds100.org/ch/07/sql_intro.html">DS 100: Chapter 7</a>).  For this program, we will use the <a href="https://pypi.org/project/pandasql/">pandasql</a> that provides an easy way to query pandas DataFrames using SQL syntax.  To use it, you may need to install it on your machine (e.g. <code class = "inline">pip install pandasql</code>).  See <a href="https://pypi.org/project/pandasql/">pandasql</a> for installation details.
 
+<p>
+The package <a href="https://pypi.org/project/pandasql/">pandasql</a> provides an easy way to use SQL queries directly on a Pandas DataFrame.  (You may need to install it in your hierarchy (e.g. <code class="inline">pip install pandasql</code> or <code class="inline">pip install pandasql</code>).
 
-<p>In your program, include the following functions from <a href="p12.html">Program 12</a>.  You may use your earlier function or the Program 12 solution available on Blackboard:
+<p>
+Once installed, you can run queries via the function  <code class="inline">sqldf(queryName)</code>.  For example, you could filter for all students in the <a href="https://raw.githubusercontent.com/DS-100/textbook/master/content/ch/01/roster.csv">roster.csv</a> on the waitlist by:
+
+<pre><code class=blockcode>import pandas as pd
+import pandasql as psql
+roster = pd.read_csv('roster.csv')
+
+q = 'SELECT * FROM roster WHERE Role = "Waitlist Student"'
+waitList = psql.sqldf(q)
+
+print(waitList)</code>
+</pre>
+
+<p>Note that strings need to be surrounded by quotes in your query
+  (e.g. <code class = "inline">"Waitlist Student"</code>).  To set up your queries, you may find Formatted Literal Strings ("f-strings") useful (see the <a href="https://docs.python.org/3/tutorial/inputoutput.html">python tutorial</a> or Lecture 2 for more details).
+
+<p>The assignment is broken into the following functions to allow for unit testing:
+
   <ul>
-    <li> make_df and add_date_time_features
-  </ul>
-Or do we want to impute missing values?
+    <li> <code class = "inline">make_df(file_name)</code>:
+      This function takes one input:
+      <ul>
+        <li> <code class = "inline">file_name</code>: the name of a CSV file containing <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd">911 System Calls</a> from OpenData NYC.
+      </ul>
+      The data is read into a DataFrame.  Rows that are have null values for the type description, incident date, incident time, borough name are dropped.
+      The resulting DataFrame is returned.
+      <br><i>Hint: this is slightly <b>different</b> than the function from <a href="p12.html">Program 12</a> in that different rows are dropped and it does not restrict to only ambulance calls.</i>
 
-Also include cross validation to tune parameters-- maybe poly features?
+    <li> <code class = "inline">select_boro_column(df)</code>:
+      This function takes one input:
+      <ul>
+          <li> <code class = "inline">df</code>: a DataFrame containing <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd">911 System Calls</a> from OpenData NYC created by <code class = "inline">make_df</code>.
+      </ul>
+      Selects and returns the <code class = "inline">BORO_NM</code> from <code class = "inline">df</code>.
 
-<li> <code class = "inline">impute_categorical_cols(df, x_cat_cols) -> pd.DataFrame:</code>
-  This function takes as two input parameters:
-  <ul>
-      <li> <code class = "inline">df</code>: a DataFrame containing <a href="https://data.cityofnewyork.us/Transportation/2020-For-Hire-Vehicles-Trip-Data/m3yx-mvk4">Yellow Taxi Trip Data</a> from OpenData NYC to which <code class = "inline">add_boro</code> has been applied.
-      <li> <code class = "inline">x_cat_cols</code>: a list of categorical columns in <code class = "inline">df</code>.
-  </ul>
+    <li> <code class = "inline">select_by_boro(df, boro_name)</code>:
+      This function takes two inputs:
+      <ul>
+          <li> <code class = "inline">df</code>: a DataFrame containing <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd">911 System Calls</a> from OpenData NYC created by <code class = "inline">make_df</code>.
+          <li> <code class = "inline">boro_name</code>: a string containing the name of a borough.  Can be lower or upper case.
+      </ul>
+      Return all rows from the DataFrame, <code class = "inline">df</code>, where the borough is <code class = "inline">boro_name</code>.
+      <br><i>Hint: Since the <code class = "inline">boro_name</code> can be upper or lower case, convert it to upper case to match the way the borough names are stored.</i>
 
-  """
-  For categorical columns, impute missing data with the most common value
-  :param df: pandas dataframe, output of import_data()
-  :param x_cat_cols: list of categorical X columns, output of application of split_columns_by_data_type()
-  :return: pandas dataframe containing imputed categorical columns from input df
-  """
+    <li> <code class = "inline">select_new_years(df, boro_name)</code>:
+      This function takes two inputs:
+      <ul>
+          <li> <code class = "inline">df</code>: a DataFrame containing <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd">911 System Calls</a> from OpenData NYC created by <code class = "inline">make_df</code>.
+          <li> <code class = "inline">boro_name</code>: a string containing the name of a borough.  Can be lower or upper case.
+      </ul>
+      Returns the number of incidents from <code class = "inline">df</code>, called in on New Year's Day (Jan 1, 2021) in the specified borough, <code class = "inline">boro_name</code>.
+      <br><i>Hint: Since the <code class = "inline">boro_name</code> can be upper or lower case, convert it to upper case to match the way the borough names are stored.</i>
+
+
+    <li> <code class = "inline">incident_counts(df)</code>:
+      This function takes one inputs:
+      <ul>
+          <li> <code class = "inline">df</code>: a DataFrame containing <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd">911 System Calls</a> from OpenData NYC created by <code class = "inline">make_df</code>.
+      </ul>
+      Returns the incident counts per radio code (TYP_DESC), sorted alphabetically by radio code.
+
+    <li> <code class = "inline">top_10(df, boro_name)</code>:
+      This function takes two inputs:
+      <ul>
+          <li> <code class = "inline">df</code>: a DataFrame containing <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd">911 System Calls</a> from OpenData NYC created by <code class = "inline">make_df</code>.
+          <li> <code class = "inline">boro_name</code>: a string containing the name of a borough.  Can be lower or upper case.
+      </ul>
+      Returns the top 10 most commonly occurring incidence by radio code, and the number of incident occurrences, in specified borough.
+      <br><i>Hint: Since the <code class = "inline">boro_name</code> can be upper or lower case, convert it to upper case to match the way the borough names are stored.</i>
+
+</ul>
+
+  <br>
+<p>For example, if we use the dataset of midnight calls from January 2021:
+<pre><code class="blockcode">df = answer.make_df('NYPD_Calls_midnight_Jan2021.csv')
+print(df[['BORO_NM','RADIO_CODE','TYP_DESC']])</code></pre>
+would print:
+<pre><code class="datablock">        BORO_NM RADIO_CODE                                         TYP_DESC
+0      BROOKLYN       10S2  INVESTIGATE/POSSIBLE CRIME: SHOTS FIRED/OUTSIDE
+1        QUEENS       68Q1                    SEE COMPLAINANT: OTHER/INSIDE
+2         BRONX       54E1                       AMBULANCE CASE: EDP/INSIDE
+3         BRONX       54E1                       AMBULANCE CASE: EDP/INSIDE
+4      BROOKLYN       24Q6                     ASSAULT (PAST): OTHER/FAMILY
+...         ...        ...                                              ...
+5582  MANHATTAN       54E1                       AMBULANCE CASE: EDP/INSIDE
+5583  MANHATTAN       54E1                       AMBULANCE CASE: EDP/INSIDE
+5584  MANHATTAN        75D                      VISIBILITY PATROL: DIRECTED
+5585   BROOKLYN        75D                      VISIBILITY PATROL: DIRECTED
+5586     QUEENS        75D                      VISIBILITY PATROL: DIRECTED
+
+[5587 rows x 3 columns]</code></pre>
+
+
+<p> The first function uses SQL to select the column containing the borough name:
+<pre><code class="blockcode">boros = answer.select_boro_column(df)
+print(boros)</code></pre>
+would print:
+<pre><code class="datablock">        BORO_NM
+0      BROOKLYN
+1        QUEENS
+2         BRONX
+3         BRONX
+4      BROOKLYN
+...         ...
+5582  MANHATTAN
+5583  MANHATTAN
+5584  MANHATTAN
+5585   BROOKLYN
+5586     QUEENS
+
+[5587 rows x 1 columns]</code></pre>
+
+<p> The next function, takes the DataFrame and the name of a borough and uses SQL to select all rows with that borough name.  For example, we can select <code class="inline">Bronx</code>
+<pre><code class="blockcode">df_bx = answer.select_by_boro(df, "Bronx")
+print(df_bx)</code></pre>
+would print:
+<pre><code class="datablock">      CAD_EVNT_ID CREATE_DATE  ...   Latitude  Longitude
+0        73973992  01/01/2021  ...  40.830860 -73.902887
+1        73973992  01/01/2021  ...  40.830860 -73.902887
+2        73974010  01/01/2021  ...  40.840868 -73.925150
+3        73974019  01/01/2021  ...  40.870439 -73.890847
+4        73974033  01/01/2021  ...  40.856654 -73.843872
+...           ...         ...  ...        ...        ...
+1007     74629410  02/01/2021  ...  40.859192 -73.900677
+1008     74629421  02/01/2021  ...  40.834562 -73.915443
+1009     74630917  02/01/2021  ...  40.825472 -73.892941
+1010     74642928  02/01/2021  ...  40.859640 -73.863235
+1011     74643746  02/01/2021  ...  40.870371 -73.851975
+
+[1012 rows x 18 columns]</code></pre>
+
+<p> We can use SQL to calculate how many incidents were called in on New Year's Day in Queens:
+<pre><code class="blockcode">df_nyd_q = answer.select_new_years(df, "Queens")
+print(df_nyd_q)</code></pre>
+would print:
+<pre><code class="datablock">   COUNT(*)
+0        40</code></pre>
+
+<p> We can calculate summary counts for the DataFrame:
+<pre><code class="blockcode">df_inc = answer.incident_counts(df)
+print(df_inc)</code></pre>
+would print:
+<pre><code class="datablock">                                              TYP_DESC  COUNT(*)
+0                               ALARMS: AUDIBLE/INSIDE         1
+1                              ALARMS: AUDIBLE/OUTSIDE         6
+2                              ALARMS: AUDIBLE/TRANSIT         5
+3                                ALARMS: BANK/BURGLARY         3
+4                          ALARMS: COMMERCIAL/BURGLARY       146
+..                                                 ...       ...
+181                        VISIBILITY PATROL: DIRECTED      1334
+182               VISIBILITY PATROL: FAMILY/HOME VISIT        44
+183                        VISIBILITY PATROL: INTERIOR        61
+184  VISIBILITY PATROL:PUBLIC/PRIVATE EDUCATIONAL F...         4
+185                                   YOUTH HOME VISIT         5
+
+[186 rows x 2 columns]</code></pre>
+
+<p> As well which are the 10 most common for Brooklyn and Staten Island:
+<pre><code class="blockcode">df_si = answer.top_10(df, "Staten Island")
+print('Top 10 for Staten Island:')
+print(df_si)
+df_bk = answer.top_10(df, "Brooklyn")
+print('\nTop 10 for Brooklyn:')
+print(df_bk)</code></pre>
+would print:
+<pre><code class="datablock">Top 10 for Staten Island:
+                                    TYP_DESC  COUNT(*)
+0                VISIBILITY PATROL: DIRECTED        97
+1                             COMMUNITY TIME        19
+2              SEE COMPLAINANT: OTHER/INSIDE        18
+3                 AMBULANCE CASE: EDP/INSIDE        10
+4  INVESTIGATE/POSSIBLE CRIME: SERIOUS/OTHER         8
+5                            DISPUTE: INSIDE         8
+6                          BUS INVESTIGATION         7
+7             AMBULANCE CASE: SERIOUS/INSIDE         7
+8                            DISPUTE: FAMILY         5
+9                  DISORDERLY: GROUP/OUTSIDE         5
+
+Top 10 for Brooklyn:
+                                            TYP_DESC  COUNT(*)
+0                        VISIBILITY PATROL: DIRECTED       503
+1     STATION INSPECTION BY TRANSIT BUREAU PERSONNEL       189
+2                      SEE COMPLAINANT: OTHER/INSIDE       189
+3           TRAIN RUN/MOBILE ORDER MAINTENANCE SWEEP        72
+4                         AMBULANCE CASE: EDP/INSIDE        60
+5   INVESTIGATE/POSSIBLE CRIME: SUSP VEHICLE/OUTSIDE        52
+6  INVESTIGATE/POSSIBLE CRIME: CALLS FOR HELP/INSIDE        48
+7                        ALARMS: COMMERCIAL/BURGLARY        44
+8                        VISIBILITY PATROL: INTERIOR        39
+9          INVESTIGATE/POSSIBLE CRIME: SERIOUS/OTHER        36</code></pre>
 
 
 </div>
