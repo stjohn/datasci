@@ -138,7 +138,7 @@ print(waitList)</code>
       Return all rows from the DataFrame, <code class = "inline">df</code>, where the borough is <code class = "inline">boro_name</code>.
       <br><i>Hint: Since the <code class = "inline">boro_name</code> can be upper or lower case, convert it to upper case to match the way the borough names are stored.</i>
 
-    <li> <code class = "inline">select_new_years(df, boro_name)</code>:
+    <li> <code class = "inline">new_years_count(df, boro_name)</code>:
       This function takes two inputs:
       <ul>
           <li> <code class = "inline">df</code>: a DataFrame containing <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd">911 System Calls</a> from OpenData NYC created by <code class = "inline">make_df</code>.
@@ -168,7 +168,7 @@ print(waitList)</code>
 
   <br>
 <p>For example, if we use the dataset of midnight calls from January 2021:
-<pre><code class="blockcode">df = answer.make_df('NYPD_Calls_midnight_Jan2021.csv')
+<pre><code class="blockcode">df = make_df('NYPD_Calls_midnight_Jan2021.csv')
 print(df[['BORO_NM','RADIO_CODE','TYP_DESC']])</code></pre>
 would print:
 <pre><code class="datablock">        BORO_NM RADIO_CODE                                         TYP_DESC
@@ -188,7 +188,7 @@ would print:
 
 
 <p> The first function uses SQL to select the column containing the borough name:
-<pre><code class="blockcode">boros = answer.select_boro_column(df)
+<pre><code class="blockcode">boros = select_boro_column(df)
 print(boros)</code></pre>
 would print:
 <pre><code class="datablock">        BORO_NM
@@ -207,7 +207,7 @@ would print:
 [5587 rows x 1 columns]</code></pre>
 
 <p> The next function, takes the DataFrame and the name of a borough and uses SQL to select all rows with that borough name.  For example, we can select <code class="inline">Bronx</code>
-<pre><code class="blockcode">df_bx = answer.select_by_boro(df, "Bronx")
+<pre><code class="blockcode">df_bx = select_by_boro(df, "Bronx")
 print(df_bx)</code></pre>
 would print:
 <pre><code class="datablock">      CAD_EVNT_ID CREATE_DATE  ...   Latitude  Longitude
@@ -226,14 +226,14 @@ would print:
 [1012 rows x 18 columns]</code></pre>
 
 <p> We can use SQL to calculate how many incidents were called in on New Year's Day in Queens:
-<pre><code class="blockcode">df_nyd_q = answer.select_new_years(df, "Queens")
+<pre><code class="blockcode">df_nyd_q = new_years_count(df, "Queens")
 print(df_nyd_q)</code></pre>
 would print:
 <pre><code class="datablock">   COUNT(*)
 0        40</code></pre>
 
 <p> We can calculate summary counts for the DataFrame:
-<pre><code class="blockcode">df_inc = answer.incident_counts(df)
+<pre><code class="blockcode">df_inc = incident_counts(df)
 print(df_inc)</code></pre>
 would print:
 <pre><code class="datablock">                                              TYP_DESC  COUNT(*)
@@ -252,10 +252,10 @@ would print:
 [186 rows x 2 columns]</code></pre>
 
 <p> As well which are the 10 most common for Brooklyn and Staten Island:
-<pre><code class="blockcode">df_si = answer.top_10(df, "Staten Island")
+<pre><code class="blockcode">df_si = top_10(df, "Staten Island")
 print('Top 10 for Staten Island:')
 print(df_si)
-df_bk = answer.top_10(df, "Brooklyn")
+df_bk = top_10(df, "Brooklyn")
 print('\nTop 10 for Brooklyn:')
 print(df_bk)</code></pre>
 would print:
