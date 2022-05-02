@@ -144,8 +144,7 @@ Decreasing ambulance response times improves outcomes and
       This function takes three input:
       <ul>
         <li> <code class = "inline">df</code>: a DataFrame containing <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd">911 System Calls</a> from OpenData NYC.
-          <li> <code class = "inline">num_clusters</code>:  a list of integers ranging from 0 to 6, representing the days of the week.  The default value is <code class = "inline">None</code> and is equivalent to the list containing all days:
-          <code class = "inline">[0,1,2,3,4,5,6]</code>.
+          <li> <code class = "inline">num_clusters</code>:  an integer representing the number of clusters.  The default value is <code class = "inline">8</code>.
           <li> <code class = "inline">random_state</code>: the random seed used for <a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html">KMeans</a>. The default value is <code class = "inline">2022</code>.
 
         </ul>
