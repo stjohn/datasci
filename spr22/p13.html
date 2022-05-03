@@ -89,24 +89,31 @@ Spring 2022<br><br>
 <iframe src="4_July_map.html" style="width: 60%; height: 550px" name="internal"></iframe>
 
 <p>
-We will be using Structured Query Language (SQL) to subset and aggregate data (see Lectures 25 & 26 and <a href="http://www.textbook.ds100.org/ch/07/sql_intro.html">DS 100: Chapter 7</a>).  For this program, we will use the <a href="https://pypi.org/project/pandasql/">pandasql</a> that provides an easy way to query pandas DataFrames using SQL syntax.  To use it, you may need to install it on your machine (e.g. <code class = "inline">pip install pandasql</code>).  See <a href="https://pypi.org/project/pandasql/">pandasql</a> for installation details.
+We will be using Structured Query Language (SQL) to subset and aggregate data (see Lectures 25 & 26 and <a href="http://www.textbook.ds100.org/ch/07/sql_intro.html">DS 100: Chapter 7</a>).  For this program, we will use the <a href="https://pypi.org/project/pandasql/">pandasql</a> that provides an easy way to query pandas DataFrames using SQL syntax.  To use it, you may need to install it on your machine (e.g. <code class = "inline">pip install pandasql</code> or <code class = "inline">pip3q install pandasql</code>).  See <a href="https://pypi.org/project/pandasql/">pandasql</a> for installation details.
 
 <p>
 The package <a href="https://pypi.org/project/pandasql/">pandasql</a> provides an easy way to use SQL queries directly on a Pandas DataFrame.  (You may need to install it in your hierarchy (e.g. <code class="inline">pip install pandasql</code> or <code class="inline">pip install pandasql</code>).
 
 <p>
-Once installed, you can run queries via the function  <code class="inline">sqldf(queryName)</code>.  For example, you could filter for all students in the <a href="https://raw.githubusercontent.com/DS-100/textbook/master/content/ch/01/roster.csv">roster.csv</a> on the waitlist by:
+Once installed, you can run queries via the function  <code class="inline">sqldf(queryName)</code>.  For example, you could filter for all the neighborhood tabulation areas in the Bronx in the <a href="NYC_population_by_NTA.csv">NYC_population_by_NTA.csv</a> on the waitlist by:
 
 <pre><code class=blockcode>import pandas as pd
 import pandasql as psql
-roster = pd.read_csv('roster.csv')
-
-q = 'SELECT * FROM roster WHERE Role = "Waitlist Student"'
-waitList = psql.sqldf(q)
-
-print(waitList)</code>
+pop = pd.read_csv('NYC_population_by_NTA.csv')
+q = 'SELECT * FROM pop WHERE Borough = "Bronx"'
+bronx = psql.sqldf(q)
+print(bronx.head())</code>
 </pre>
+which prints:
+<pre><code class=datablock>  Borough  Year  ...                         NTA Name Population
+0   Bronx  2000  ...               Claremont-Bathgate      28149
+1   Bronx  2000  ...  Eastchester-Edenwald-Baychester      35422
+2   Bronx  2000  ...       Bedford Park-Fordham North      55329
+3   Bronx  2000  ...                          Belmont      25967
+4   Bronx  2000  ...                        Bronxdale      34309
 
+[5 rows x 6 columns]</code>
+</pre>
 <p>Note that strings need to be surrounded by quotes in your query
   (e.g. <code class = "inline">"Waitlist Student"</code>).  To set up your queries, you may find Formatted Literal Strings ("f-strings") useful (see the <a href="https://docs.python.org/3/tutorial/inputoutput.html">python tutorial</a> or Lecture 2 for more details).
 
