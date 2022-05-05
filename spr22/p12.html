@@ -184,7 +184,7 @@ print(df[['INCIDENT_TIME','TYP_DESC','Latitude','Longitude']])
 Note that the original CSV file had over 5000 lines, only 459 of those were for ambulances calls.  The indices were not reset and refer to the line numbers of the original file.
 
 <p>Let's add in the date and time features:
-  <pre><code class="blockcode">df = answer.add_date_time_features(df)
+  <pre><code class="blockcode">df = add_date_time_features(df)
 print(df[['INCIDENT_DATE','WEEK_DAY','INCIDENT_TIME','INCIDENT_MIN']])</code></pre>
   would print:
   <pre><code class="datablock">     INCIDENT_DATE  WEEK_DAY INCIDENT_TIME  INCIDENT_MIN
@@ -209,7 +209,7 @@ Since all the incidents are from a single day (i.e. 4 July 2021) the <code class
 
 
 <p>Let's add in the date and time features:
-<pre><code class="blockcode">df_early_am = answer.filter_by_time(df,times=[0,360])
+<pre><code class="blockcode">df_early_am = filter_by_time(df,times=[0,360])
 print(df_early_am[['INCIDENT_DATE','WEEK_DAY','INCIDENT_TIME','INCIDENT_MIN']])</code></pre>
 would print:
 <pre><code class="datablock">     INCIDENT_DATE  WEEK_DAY INCIDENT_TIME  INCIDENT_MIN
@@ -280,7 +280,7 @@ Index: []</code></pre>
 
 <p>Let's next filter for early morning times:
 
-  <pre><code class="blockcode">df_early_am = answer.filter_by_time(df,times=[0,360])
+  <pre><code class="blockcode">df_early_am = filter_by_time(df,times=[0,360])
 print(df_early_am[['INCIDENT_DATE','WEEK_DAY','INCIDENT_TIME','INCIDENT_MIN']])</code></pre>
 
   would print:
@@ -302,7 +302,7 @@ print(df_early_am[['INCIDENT_DATE','WEEK_DAY','INCIDENT_TIME','INCIDENT_MIN']])<
 <p>Lastly, we can use the function <code class = "inline">compute_explained_variance</code> to assess the best number of clusters:
 
   <pre><code class="blockcode">k_vals = list(range(1,20))
-ev = answer.compute_explained_variance(df,K=k_vals)
+ev = compute_explained_variance(df,K=k_vals)
 sns.lineplot(k_vals,ev)
 plt.title('Explained Variance for KMeans for Manhattan, 4 July 2021')
 plt.show()
