@@ -134,7 +134,7 @@ which prints:
       <ul>
           <li> <code class = "inline">df</code>: a DataFrame containing <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd">911 System Calls</a> from OpenData NYC created by <code class = "inline">make_df</code>.
       </ul>
-      Selects and returns the <code class = "inline">BORO_NM</code> from <code class = "inline">df</code>.
+      Selects and returns a DataFrame containing the <code class = "inline">BORO_NM</code> from <code class = "inline">df</code>.
 
     <li> <code class = "inline">select_by_boro(df, boro_name)</code>:
       This function takes two inputs:
@@ -142,7 +142,7 @@ which prints:
           <li> <code class = "inline">df</code>: a DataFrame containing <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd">911 System Calls</a> from OpenData NYC created by <code class = "inline">make_df</code>.
           <li> <code class = "inline">boro_name</code>: a string containing the name of a borough.  Can be lower or upper case.
       </ul>
-      Return all rows from the DataFrame, <code class = "inline">df</code>, where the borough is <code class = "inline">boro_name</code>.
+      Returns a DataFrame containing all rows from the DataFrame, <code class = "inline">df</code>, where the borough is <code class = "inline">boro_name</code>.
       <br><i>Hint: Since the <code class = "inline">boro_name</code> can be upper or lower case, convert it to upper case to match the way the borough names are stored.</i>
 
     <li> <code class = "inline">new_years_count(df, boro_name)</code>:
@@ -151,7 +151,7 @@ which prints:
           <li> <code class = "inline">df</code>: a DataFrame containing <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd">911 System Calls</a> from OpenData NYC created by <code class = "inline">make_df</code>.
           <li> <code class = "inline">boro_name</code>: a string containing the name of a borough.  Can be lower or upper case.
       </ul>
-      Returns the number of incidents from <code class = "inline">df</code>, called in on New Year's Day (Jan 1, 2021) in the specified borough, <code class = "inline">boro_name</code>.
+      Returns a DataFrame containing the number of incidents from <code class = "inline">df</code>, called in on New Year's Day (Jan 1, 2021) in the specified borough, <code class = "inline">boro_name</code>.
       <br><i>Hint: Since the <code class = "inline">boro_name</code> can be upper or lower case, convert it to upper case to match the way the borough names are stored.</i>
 
 
@@ -160,7 +160,7 @@ which prints:
       <ul>
           <li> <code class = "inline">df</code>: a DataFrame containing <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd">911 System Calls</a> from OpenData NYC created by <code class = "inline">make_df</code>.
       </ul>
-      Returns the incident counts per radio code (<code class = "inline">TYP_DESC</code>), sorted alphabetically by radio code (<code class = "inline">TYP_DESC</code>).
+      Returns a DataFrame containing the incident counts per radio code (<code class = "inline">TYP_DESC</code>), sorted alphabetically by radio code (<code class = "inline">TYP_DESC</code>).
 
     <li> <code class = "inline">top_10(df, boro_name)</code>:
       This function takes two inputs:
@@ -168,7 +168,7 @@ which prints:
           <li> <code class = "inline">df</code>: a DataFrame containing <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd">911 System Calls</a> from OpenData NYC created by <code class = "inline">make_df</code>.
           <li> <code class = "inline">boro_name</code>: a string containing the name of a borough.  Can be lower or upper case.
       </ul>
-      Returns the top 10 most commonly occurring incidence by radio code, and the number of incident occurrences, in specified borough.
+      Returns a DataFrame containing the top 10 most commonly occurring incidence by radio code, and the number of incident occurrences, in specified borough.
       <br><i>Hint: Since the <code class = "inline">boro_name</code> can be upper or lower case, convert it to upper case to match the way the borough names are stored.</i>
 
 </ul>
