@@ -23,4 +23,22 @@ To get full credit for a program, the file must include in the opening comment:
     <li> A list of any resources you used for the program.  Include classmates and tutors that you worked with, along with any websites or tutorials that you used.  If you used no resources (other than the class notes and textbooks), then you should include the line:  "No resources used."
 </ul>
 
-<p>Good style accounts for 5% of the program grade.  We are following the standard <a href="https://peps.python.org/pep-0008/">PEP 8</a> style guide for Python code.  As part of the autograder scripts, your program is run through a static code analyser (aka a "linter").  We are using <a href="https://pylint.pycqa.org/">Pylint</a> which reports warnings and errors, including message codes, and then scores the code on a scale from 0 to 10.  See the <a href="https://pylint.pycqa.org/">Pylint</a> website for tutorials, FAQ's and standard warnings.  Most IDE's have linting available:  for example, see <a href="https://plugins.jetbrains.com/plugin/11084-pylint">pylint in PyCharm</a> and <a href="https://code.visualstudio.com/docs/python/linting">Linting Python in VSCode</a>.</p>
+For example, for the student, Thomas Hunter, the opening comment of his first program might be:
+<pre><code class="blockcode">
+"""
+Name:  Thomas Hunter
+Email: thomas.hunter1870@hunter.cuny.edu
+Resources:  Used python.org as a reminder of Python 3 print statements.
+"""
+</pre></code>
+and then followed by his Python program.
+
+
+<p>Good style accounts for 5% of the program grade.  We are following the standard <a href="https://peps.python.org/pep-0008/">PEP 8</a> style guide for Python code.  As part of the autograder scripts, your program is run through a static code analyser (aka a "linter").  
+<ul> 
+  <li> We are using <a href="https://pylint.pycqa.org/">Pylint</a> which reports warnings and errors, including message codes, and then scores the code on a scale from 0 to 10.  We multiply your percentage score by 1.5 (5% of the total) to determine the style grade.  For example, if pylint scores your program 9, your style grade is (9/10) * 1.5 = 1.35.</li>   
+  <li>See the <a href="https://pylint.pycqa.org/">Pylint</a> website for tutorials, FAQ's and standard warnings.  </li> 
+  <li><a href="https://peps.python.org/pep-0008/">PEP 8</a> specifies that variable names should be at least 3 characters long, but it is long standing convention that DataFrames are named <code class=inline>df</code>.  For the autograders, we have included <code class=inline>df</code> in the ``good-names'' that are accepted.  This can be done locally with <code class=inline>.pylintrc</code> files or using the command-line option <code class=inline>pylint --good-names=df</code>.</li>
+  <li>Most IDE's have linting available:  for example, see <a href="https://plugins.jetbrains.com/plugin/11084-pylint">pylint in PyCharm</a> and <a href="https://code.visualstudio.com/docs/python/linting">Linting Python in VSCode</a>.</li>
+</ul>
+</p>
