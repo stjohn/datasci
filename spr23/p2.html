@@ -1,0 +1,339 @@
+<!DOCTYPE doctype PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <title>Program 2, CSci 39542: Data Science, Hunter College</title>
+</head>
+<STYLE>A {text-decoration: none;}
+th, td { padding: 5px; }
+code {
+  background-color: #eeeeee;
+}
+.inline {
+  padding: 1px;
+}
+.blockcode {
+  border: 1px solid #999999;
+  display: block;
+  padding-left: 10px;
+  padding-top : 2px;
+  padding-bottom : 2px;
+  margin: 5px;
+}
+.datablock {
+  border: 1px solid #eeeeee;
+  display: block;
+  padding: 7px;
+  padding-top : 0px;
+  margin: 5px;
+}
+</STYLE>
+<body>
+
+
+<div style="margin: 15px;width:100%;">
+    <span style= "float: left;font-size:larger"><a href="index.html">CSci 39542</a></span>
+    <span style= "float: right">
+      <a href="syl.html">Syllabus</a>&nbsp;&nbsp;&nbsp;
+      <a href="resources.html">Resources</a>&nbsp;&nbsp;&nbsp;
+      <a href="work.html">Coursework</a><!--&nbsp;&nbsp;&nbsp;
+      <a href="faq.html">FAQ</a>-->
+    </span>
+</div>
+
+<br>
+<br>
+<hr>
+
+<div style="margin:50px">
+
+
+<h2>Program 2:  Trees Census
+  <br>CSci 39542: Introduction to Data Science<br>
+<a href="http://www.hunter.cuny.edu/csci">Department of Computer Science</a><br>
+<a href="https://hunter.cuny.edu">Hunter College</a>, <a href="https://www.cuny.edu">City University of New York</a><br>
+Spring 2023<br><br>
+</h2>
+
+
+<hr>
+<a href="work.html#cw">Classwork</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#quizzes">Quizzes</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#hw">Homework</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#project">Project</a>&nbsp;&nbsp;&nbsp;
+<hr>
+
+
+<object width=100% height=50% type="text/html" data="generalNotes.html" border="0"
+   style="overflow: hidden;">
+</object>
+<hr>
+
+<h2>Program Description</h2>
+
+
+<p></p><p><a name="p2"><b>Program 2: Tree Census.</b></b> &emsp; <i>Due 10am, Wednesday, 9 February.
+  <br>Learning Objective:  to refresh students' knowledge of Pandas' functionality to manipulate and create columns from formatted data.
+  <br>Available Libraries:  Pandas and core Python 3.6+. 
+  <br>Data Sources: <a href="https://www.nycgovparks.org/trees/treescount">The New York City Street TreesCount Project</a>
+  <br>
+  <br>Sample Datasets: 
+    <ul>
+      <li> 2015:  <a href="https://data.cityofnewyork.us/Environment/2015-Street-Tree-Census-Tree-Data/uvpi-gqnh">https://data.cityofnewyork.us/Environment/2015-Street-Tree-Census-Tree-Data/uvpi-gqnh</a></li>
+      <li> 2005:  <a href="https://data.cityofnewyork.us/Environment/2005-Street-Tree-Census/29bw-z7pj">https://data.cityofnewyork.us/Environment/2005-Street-Tree-Census/29bw-z7pj</a></li>
+      <li> 1995:  <a href="https://data.cityofnewyork.us/Environment/1995-Street-Tree-Census/kyad-zm4j">https://data.cityofnewyork.us/Environment/1995-Street-Tree-Census/kyad-zm4j</a></li>
+    </ul>
+  </i>
+
+  <p><b>Note on data access:</b> The data for this program comes from the <a href="https://opendata.cityofnewyork.us">NYC OpenData</a> initiative which gives free access to public data published by New York City agencies.  If you have not used NYC OpenData before, see the 
+  <a href="https://opendata.cityofnewyork.us/how-to/">How To</a> page.  Access to the data is free, but some functionality (such as multiple direct requests in very short amount of time might require a login).  The examples below demonstrate using the data using the Socrata Open Data API (SODA) which allows you to pull data directly from the public repository (more details at <a href="https://dev.socrata.com/consumers/getting-started.html">Getting Started with SODA Consumer API</a>) as well as reading from the CSV files that have already been downloaded to your computer or repo.
+  </p>
+ 
+  <br><br>
+  <p><a href="https://www.nycgovparks.org/trees/treescount">The New York City Street Tree Map</a><br>
+    <a href="https://www.nycgovparks.org/trees/treescount"><img src = "https://www.nycgovparks.org/pagefiles/109/tree-census-map__58330133825a7.jpg" width="80%"></a></p>
+  
+    <p>Every ten years, New York City does a census of all street trees in the city.  The <a href="https://www.nycgovparks.org/trees/treescount">most recent survey</a> in 2015 mapped over 666,000 trees and included the location, size, species, and health of the trees.  Similar data was collected each year but was stored slightly differently, most notably:  some of the column names differ form 1995 to 2005 to 2015.  
+      
+    <p></p>The first task of this program is to write a function that will drop extraneous columns and rename column names so that they are the same, simplifying the subsequent functions and analysis.  
+    <p></p>The remaining functions filter the data and compute the number of trees in an area of differing granuality, (e.g. from boroughs and zip codes down to Neighborhood Tabulation Areas (NTA)-- see <a href="p3.html">Program 3</a> for more on NTA's).  
+
+  <br><br><br><br>
+    <p></p>Your program should have the following functions:</p>
+    
+<ul>
+<li> <code class = "inline">clean_df(df, year = 2015)</code>:
+  This function takes two inputs:
+  <br>
+  <ul>
+    <li> <code class = "inline">df</code>: the name of a DataFrame containing TreesCount Data from OpenData NYC.
+    <li><code class = "inline">year</code>: the year of the data set.  There are three possible years <code class = "inline">1995</code>, <code class = "inline">2005</code>, or <code class = "inline">2015</code>.  The default value is <code class = "inline">2015</code>.</li>
+  </ul>
+  <br>
+  The function does the following:
+  <br>
+  <ul>
+    <li>If the specified year is <code class = "inline">2015</code>, the function should take <code class = "inline">df</code> and drop all columns except:
+    <pre><code class = "datablock">['tree_dbh', 'health', 'spc_latin', 'spc_common', 'address', 'zipcode', 'boroname', 'nta', 'latitude', 'longitude', 
+'council_district', 'census_tract']</code></pre> </li>
+  
+    <li>If the specified year is <code class = "inline">2005</code>, the function should take <code class = "inline">df</code> and drop all columns except:
+    <pre><code class = "datablock">['tree_dbh', 'status', 'spc_latin', 'spc_common', 'address', 'zipcode', 'boroname', 'nta', 'latitude', 'longitude', 
+'cncldist', 'census_tract']</code></pre> 
+    and rename the corresponding columns that differ from 2015 to the 2015 names.  For example, <code class = "inline">status</code> is renamed to <code class = "inline">health</code>.</li>
+    <br>
+    <li>If the specified year is <code class = "inline">1995</code>, the function should take <code class = "inline">df</code> and drop all columns except:
+    <pre><code class = "datablock">['diameter', 'condition', 'spc_latin', 'spc_common', 'address', 'zip_original', 'borough', 'nta_2010', 'latitude', 'longitude', 
+'council_district', 'censustract_2010']</code></pre> 
+    and rename the corresponding columns that differ from 2015 to the 2015 names.  For example, <code class = "inline">diameter</code> is renamed to <code class = "inline">tree_dbh</code>.</li>
+  <br>
+    <li>Irregardless of the specified year, the function should return the resulting DataFrame.</li>
+  </ul>    
+
+<br><br>
+
+<li> <code class = "inline">filter_health(df, keep)</code>:
+  This function takes two inputs:
+  <ul>
+    <li> <code class = "inline">df</code>: a DataFrame that includes the <code class = "inline">health</code> column.
+    <li> <code class = "inline">keep</code>: a list of values for the
+      <code class = "inline">health</code> column.
+  </ul>
+  The function returns the DataFrame with only rows that where the column <code class = "inline">health</code> contains a value from the list <code class = "inline">keep</code>.  All rows where the <code class = "inline">health</code> column contains a different value are dropped.
+  </li>
+
+<br><br>
+
+<li> <code class = "inline">add_indicator(row)</code>:
+  This function takes one input:
+  <ul>
+        <li> <code class = "inline">row</code>: a Series (a row) containing values for <code class = "inline">tree_dbh</code> and <code class = "inline">health</code>.
+  </ul>
+  The function should return <code class = "inline">1</code> if <code class = "inline">health</code> is not <code class = "inline">Poor</code> and <code class = "inline">tree_dbh</code> is larger than <code class = "inline">10</code>.  Otherwise, it should return <code class = "inline">0</code>.
+  </li>
+
+<br><br>
+
+<li> <code class = "inline">find_trees(df, species)</code>:
+  This function takes two inputs:
+  <ul>
+    <li> <code class = "inline">df</code>: a DataFrame that includes the <code class = "inline">spc_latin</code> column and the <code class = "inline">address</code> column.
+    <li> <code class = "inline">species</code>: a string containing the Latin name of a tree.
+  </ul>
+  The function should return, as a list, the <code class = "inline">address</code> for all trees of that <code class = "inline">species</code> in <code class = "inline">spc_latin</code>.  If that <code class = "inline">species</code> does not occur in the DataFrame, then an empty list is returned.
+  </li>
+
+<br><br>
+
+<li> <code class = "inline">count_by_area(df, area = "boroname")</code>:
+  This function takes two inputs:
+  <ul>
+    <li> <code class = "inline">df</code>: a DataFrame that includes the <code class = "inline">area</code> column.
+    <li> <code class = "inline">area</code>: the name of a column in <code class = "inline">df</code>.
+      The default value is <code class = "inline">"boroname"</code>.
+  </ul>
+  The function should return the sum of the number of trees, grouped by <code class = "inline">area</code>.  For example if <code class = "inline">area = "boroname"</code>, your function should group by <code class = "inline">boroname</code> and return the number of each trees in each of the boroughs.  
+</ul>
+
+<br><br><br>
+<p>
+Let's run through some testing code to check if your program is written correctly.  </p>
+<p>For example, to open the 2015 dataset, let's use the SODA API to directly pull the data.  We can also download the file, but since it has about a half million records, it is quite large (220MB), so, working with just the first 10,000 lines:
+<pre><code class="blockcode">url = 'https://data.cityofnewyork.us/resource/uvpi-gqnh.json?$limit=10000'
+data = pd.read_json(url)
+print(data)</code></pre>
+will print:
+    <pre><code class="datablock">      tree_id  block_id created_at  tree_dbh  stump_diam  ...         y_sp council_district census_tract        bin           bbl
+0      180683    348711 2015-08-27         3           0  ...  202756.7687             29.0        739.0  4052307.0  4.022210e+09
+1      200540    315986 2015-09-03        21           0  ...  228644.8374             19.0        973.0  4101931.0  4.044750e+09
+2      204026    218365 2015-09-05         3           0  ...  200716.8913             34.0        449.0  3338310.0  3.028870e+09
+3      204337    217969 2015-09-05        10           0  ...  199244.2531             34.0        449.0  3338342.0  3.029250e+09
+4      189565    223043 2015-08-30        21           0  ...  182202.4260             39.0        165.0  3025654.0  3.010850e+09
+...       ...       ...        ...       ...         ...  ...          ...              ...          ...        ...           ...
+9995   213226    107016 2015-09-10         3           0  ...  227105.0006              6.0        175.0  1033301.0  1.012360e+09
+9996   207273    222814 2015-09-06        16           0  ...  196176.2566             37.0        443.0  3074614.0  3.032720e+09
+9997   207274    222814 2015-09-06        11           0  ...  196116.3506             37.0        443.0  3074610.0  3.032720e+09
+9998   208443    225537 2015-09-07         6           0  ...  180013.4704             38.0        149.0  3016810.0  3.008750e+09
+9999   195808    105937 2015-09-01        11           0  ...  215863.8898              5.0      10601.0  1078278.0  1.013700e+09
+
+[10000 rows x 45 columns]</code></pre>
+
+Note that the default only pulls the first 1000 lines.  We have increased the limit to 10,000.  See <a href="https://dev.socrata.com/consumers/getting-started.html">Getting Started with SODA API</a> for more details.
+
+<p>
+Let's test the <code class=inline>clean_df()</code> function with the first 10,000 entries of the 2015 data:
+<pre><code class="blockcode">df = clean_df(data)
+print(f'The new columns are: {df.columns}.')</code></pre>
+will print:
+<pre><code class="datablock">The new columns are: Index(['tree_dbh', 'health', 'spc_latin', 'spc_common', 'address', 'zipcode',
+  'boroname', 'nta', 'latitude', 'longitude', 'council_district',
+  'census_tract'],</code></pre>
+</p>
+<br>
+<p>Next, let's use the first 1000 entries (default is 1000 entries if limit is not specified) of the 2005 Tree Census:
+<pre><code class="blockcode">url05 = 'https://data.cityofnewyork.us/resource/29bw-z7pj.json'
+data05= pd.read_json(url05)
+df05 = clean_df(data05, year = 2005)
+print(f'The new columns are: {df05.columns}.')</code></pre>
+will print:
+<pre><code class="datablock">The new columns are: Index(['tree_dbh', 'health', 'spc_latin', 'spc_common', 'address', 'zipcode',
+  'boroname', 'nta', 'latitude', 'longitude', 'council_district',
+  'census_tract'],
+ dtype='object').</code></pre>
+
+<br>
+
+<p>Similarly, for the first 1000 entries of the 1995 Tree Census:
+<pre><code class="blockcode">url95 = 'https://data.cityofnewyork.us/resource/kyad-zm4j.json'
+data95= pd.read_json(url95)
+df95 = clean_df(data95, year = 1995)
+print(df95)</code></pre>
+will print:
+<pre><code class="datablock">     tree_dbh     health              spc_latin            spc_common        address  zipcode   boroname   nta   latitude  longitude  council_district  census_tract
+  0           8    Unknown    PLATANUS ACERIFOLIA      LONDON PLANETREE    245 E 17 ST    10003  Manhattan  MN21  40.734551 -73.984235               2.0            48
+  1           7       Good       ACER PLATANOIDES         MAPLE, NORWAY  80 N MOORE ST    10013  Manhattan  MN24  40.720159 -74.010532               1.0            39
+  2           6       Good       ACER PLATANOIDES         MAPLE, NORWAY  80 N MOORE ST    10013  Manhattan  MN24  40.720159 -74.010532               1.0            39
+  3           7  Excellent       ACER PLATANOIDES         MAPLE, NORWAY  80 N MOORE ST    10013  Manhattan  MN24  40.720159 -74.010532               1.0            39
+  4           6       Good       ACER PLATANOIDES         MAPLE, NORWAY  80 N MOORE ST    10013  Manhattan  MN24  40.720159 -74.010532               1.0            39
+  ..        ...        ...                    ...                   ...            ...      ...        ...   ...        ...        ...               ...           ...
+  995         4       Good    AILANTHUS ALTISSIMA        TREE OF HEAVEN    342 E 13 ST    10003  Manhattan  MN22  40.731228 -73.984424               2.0            40
+  996         9       Good       SOPHORA JAPONICA  JAPANESE PAGODA TREE   21 SPRING ST    10003  Manhattan  MN24  40.721486 -73.995137               1.0            43
+  997         3       Good             CORNUS MAS     CHERRY, CORNELIAN    344 E 13 ST    10003  Manhattan  MN22  40.731209 -73.984378               2.0            40
+  998        10       Poor       SOPHORA JAPONICA  JAPANESE PAGODA TREE   21 SPRING ST    10003  Manhattan  MN24  40.721486 -73.995137               1.0            43
+  999         1       Poor  GLEDITSIA TRIACANTHOS           HONEYLOCUST    339 E 13 ST    10003  Manhattan  MN22  40.731268 -73.984518               2.0            40
+  
+  [1000 rows x 12 columns]</code></pre>
+</p>
+
+<br>
+
+<p>
+Continuing with our 2015 dataset, let's filter by health and compute the percentage of healthy trees: 
+<pre><code class="blockcode">df_h = filter_health(df, ['Fair','Good', 'Excellent'])
+healthy = 100*len(df_h)/len(df)
+print(f"In 2015, {healthy}% trees were healthy.")
+</code></pre>
+will print:
+<pre><code class="datablock">In 2015, 88.54% trees were healthy.</code></pre>
+
+<br>
+
+<p>Adding a new column using <code class=inline>add_indicator()</code>
+  <pre><code class="blockcode">print(df.iloc[0])
+print(f'First tree has indicator {add_indicator(df.iloc[0])}'
+df['Mature Trees'] = df.apply(add_indicator, axis=1)
+print(f"New column:\n {df['Mature Trees']}")</code></pre>
+  will print:
+  <pre><code class="datablock">First tree has indicator 0   
+  New column:
+    0       0
+    1       1
+    2       0
+    3       0
+    4       1
+           ..
+    9995    0
+    9996    1
+    9997    1
+    9998    0
+    9999    1
+    Name: Mature Trees, Length: 10000, dtype: int64</code></pre>
+  
+  <br>
+
+  <p>Using the <code class=inline>find_trees()</code>, we can locate all the American elm trees in the 2015 sample: 
+  <pre><code class="blockcode">print('American elm trees in our 2015 sample:')
+print(find_trees(df, "Ulmus americana"))</code></pre>
+  will print:
+  <pre><code class="datablock">American elm trees in our 2015 sample:
+    ['75 FEATHERBED LANE', '1840 GRAND CONCOURSE', '13 WEST 61 STREET', '15 WEST 81 STREET', '475 RIVERSIDE DRIVE', '70 EAST 183 STREET', '1936 ANTHONY AVENUE', '110-022 COLONIAL AVENUE', '87-019 162 AVENUE', '415 RIVERSIDE DRIVE', '315 LEXINGTON AVENUE', '408 COLUMBUS AVENUE', '13 WEST 61 STREET', '485 OCEAN AVENUE', '515 OCEAN AVENUE', '127 EAST 38 STREET', '520 4 STREET', '505 OCEAN AVENUE', '220 CARLTON AVENUE', '21 HETT AVENUE', '133 PITT STREET', '34 DOVER STREET', '128 PITT STREET', '116-003 85 AVENUE', '499 OCEAN AVENUE', '1 WEST 81 STREET', '316 WEST 95 STREET', '135 WOLVERINE STREET', '318 WEST 90 STREET', '315 LEXINGTON AVENUE', '156 EAST 100 STREET', '51 WEST 81 STREET', '520 4 STREET', '97-033 DREW STREET', '33 HETT AVENUE', '49 8 AVENUE', '1 WEST 81 STREET', '4201 9 AVENUE', '471 OCEAN AVENUE', '1 WEST 85 STREET', '1 DUNHAM PLACE', '248 COURT STREET', '51 WEST 81 STREET', '1 WEST 81 STREET', '305 PARK AVENUE', '116-002 85 AVENUE', '1940 ADAM C POWELL BOULEVARD', '471 OCEAN AVENUE', '11 WEST 81 STREET', '4201 9 AVENUE', '1660 DEKALB AVENUE', '1332 METROPOLITAN AVENUE', '646 39 STREET', '70 WEST 93 STREET', '211-007 82 AVENUE', '305 PARK AVENUE', '50-062 45 STREET', '54-002 32 AVENUE', '277 WEST 4 STREET', '55 MONTGOMERY PLACE', '170 RIVERSIDE DRIVE', '31-021 90 STREET', '1681 DEKALB AVENUE', '30 FINLEY AVENUE', '4301 9 AVENUE', '31-033 90 STREET', '1 LEWIS AVENUE', '300 WEST 115 STREET', '328 WEST 115 STREET', '34 FINLEY AVENUE']</code></pre>
+</p>
+
+  <br>
+  
+  <p>The function <code class=inline>count_by_area()</code> can be called with different granularities of areas.  For example, here is the number of trees by borough (boroname) and by neighborhood (NTA):
+    <pre><code class="blockcode">print('In 2015, the number of trees by borough')
+print(count_by_area(df))
+print()
+print('In 2015, the number of trees by NTA')
+print(count_by_area(df, area = 'nta'))</code></pre>
+    will print:
+    <pre><code class="datablock">In 2015, the number of trees by borough
+boroname
+Bronx             889
+Brooklyn         2930
+Manhattan        1812
+Queens           3262
+Staten Island    1107
+dtype: int64
+
+In 2015, the number of trees by NTA
+nta
+BK09      3
+BK17     49
+BK19     24
+BK21     21
+BK23      7
+        ... 
+SI36     57
+SI37     12
+SI45    155
+SI48    131
+SI54     70
+Name: nta, Length: 179, dtype: int64</code></pre>
+
+</p>
+
+<br>
+<br>
+  <p>Notes:  
+  
+  <ul>
+    <li> You should submit a .py file with only the standard comments at the top, the specified functions, and any helper functions you have written. The grading scripts will then import the file for testing.
+      If your file includes code outside of functions, either comment the code out before submitting or use a main function that is conditionally executed (see <a href="https://runestone.academy/ns/books/published//thinkcspy/Functions/mainfunction.html">Think CS: Section 6.8</a> for details).</li>
+  </ul>
+</div>
+</body>
+</html>
+
