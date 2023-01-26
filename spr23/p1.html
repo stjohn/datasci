@@ -90,7 +90,7 @@ Spring 2023<br><br>
   <p>Write a program that will compute the number of entries at subway stations using the MTA turnstile dataset.  To allow for unit testing, your program should have the following functions:</p>
     
   <ul>
-    <li> <code class = "inline">make_dictionary(data, type = "min")</code>:  Depending on the type specified (<code class = "inline">min</code>, <code class = "inline">max</code>, or <code class = "inline">station</code>), the resulting dictionary will store the minimum entry number seen (as an integer), the maximum entry number seen (as an integer), or the station name (as a string).  Returns the resulting dictionary.
+    <li> <code class = "inline">make_dictionary(data, kind = "min")</code>:  Depending on the kind specified (<code class = "inline">min</code>, <code class = "inline">max</code>, or <code class = "inline">station</code>), the resulting dictionary will store the minimum entry number seen (as an integer), the maximum entry number seen (as an integer), or the station name (as a string).  Returns the resulting dictionary.
     <li> <code class = "inline">get_turnstiles(station_dict, stations = None)</code>:
       Returns a dictionary of names with values the number of times each name occurs in the input, <code class = "inline">names_lst</code>.
 
@@ -167,7 +167,7 @@ def make_dictionary(data, kind = "min"):
     Returns the resulting dictionary.
 
     Keyword arguments:
-    type -- type of dictionary to be created:  min, max, station
+    kind -- kind of dictionary to be created:  min, max, station
     """
 
     #Placeholder-- replace with your code
