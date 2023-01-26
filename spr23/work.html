@@ -103,7 +103,7 @@ Access information is given during the corresponding lecture.
         <li> <code class = "inline">make_dict(file_name, sep=': ')</code>:  Takes a name of a file, <code class = "inline">file_name</code> and a delimiter <code class = "inline">sep</code>.  The default value is <code class = "inline">': '</code>.  If a line of the file does not include <code class = "inline">sep</code>, the line should be ignored.   Otherwise, for each line, the string preceding the delimiter <code class = "inline">sep</code> is the key, and the string after <code class = "inline">sep</code> is the value.  Your function returns the dictionary.
       </ul>
 
-    <p>For example, assuming these functions are in a file, <code class="inline">cw2.py</code> and run on a file containing names that start with 'A', <a href="contacts.txt">contacts.txt</a>:
+    <p>For example, assuming these functions are in a file, <code class="inline">cw2.py</code> and run on a file containing names that start with 'A', <a href="../spr22/contacts.txt">contacts.txt</a>:
 
     <pre><code class="blockcode">contacts = cw2.make_dict('contacts.txt')
 who = 'CS Department'
@@ -112,7 +112,7 @@ print(f'Contact info for {who} is {contacts[who]}.')</pre></code>
       will print:
   <pre><code class="datablock">Contact info for CS Department is 10th Floor HN, x5213.</pre></code>
 
-  <p>Another example with <a href="nick_names.txt">nick_names.txt</a>:
+  <p>Another example with <a href="../spr22/nick_names.txt">nick_names.txt</a>:
 
   <pre><code class="blockcode">nick_names = cw2.make_dict('nick_names.txt', sep = ' ')
 names = ['Beth','Lisa','Meg','Greta','Amy','Mia']
