@@ -1,0 +1,382 @@
+<!DOCTYPE doctype PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <title>Program 3, CSci 39542: Data Science, Hunter College</title>
+</head>
+<STYLE>A {text-decoration: none;}
+th, td { padding: 5px; }
+code {
+  background-color: #eeeeee;
+}
+.inline {
+  padding: 1px;
+}
+.blockcode {
+  border: 1px solid #999999;
+  display: block;
+  padding-left: 10px;
+  padding-top : 2px;
+  padding-bottom : 2px;
+  margin: 5px;
+}
+.datablock {
+  border: 1px solid #eeeeee;
+  display: block;
+  padding: 7px;
+  padding-top : 0px;
+  margin: 5px;
+}
+</STYLE>
+<body>
+
+
+<div style="margin: 15px;width:100%;">
+    <span style= "float: left;font-size:larger"><a href="index.html">CSci 39542</a></span>
+    <span style= "float: right">
+      <a href="syl.html">Syllabus</a>&nbsp;&nbsp;&nbsp;
+      <a href="resources.html">Resources</a>&nbsp;&nbsp;&nbsp;
+      <a href="work.html">Coursework</a><!--&nbsp;&nbsp;&nbsp;
+      <a href="faq.html">FAQ</a>-->
+    </span>
+</div>
+
+<br>
+<br>
+<hr>
+
+<div style="margin:50px">
+
+
+<h2>Program 3:  Trees & Neighborhoods
+  <br>CSci 39542: Introduction to Data Science<br>
+<a href="http://www.hunter.cuny.edu/csci">Department of Computer Science</a><br>
+<a href="https://hunter.cuny.edu">Hunter College</a>, <a href="https://www.cuny.edu">City University of New York</a><br>
+Spring 2022<br><br>
+</h2>
+
+
+<hr>
+<a href="work.html#cw">Classwork</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#quizzes">Quizzes</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#hw">Homework</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#project">Project</a>&nbsp;&nbsp;&nbsp;
+<hr>
+
+<object width=100% height=50% type="text/html" data="generalNotes.html" border="0"
+   style="overflow: hidden;">
+</object>
+<hr>
+
+<h2>Program Description</h2>
+
+<p><a name="p3"><b>Program 3: Trees & Neighborhoods.</b></b> &emsp; <i>Due 10am, Wednesday, 15 February.
+<br>Learning Objective: to successfully filter formatted data using standard Pandas operations for selecting and joining data and evaluate simple (constant) models using loss functions. 
+<br>Available Libraries: Pandas and core Python 3.6+.
+<br>Data Sources: <a href="https://www.nycgovparks.org/trees/treescount">The New York City Street TreesCount Project</a>,
+<a href="https://data.cityofnewyork.us/City-Government/NTA-map/d3qk-pfyz">Neigborhood Tabulation Areas</a>.
+<br>
+<br>Sample Datasets: 
+  <ul>
+    <li><a href="https://nycopendata.socrata.com/City-Government/Census-Demographics-at-the-Neighborhood-Tabulation/rnsn-acs2/data">Census Demographics for Neighborhood Tabulation Areas</a></li>
+    <li>Tree Census:
+      <ul>
+        <li> 2015:  <a href="https://data.cityofnewyork.us/Environment/2015-Street-Tree-Census-Tree-Data/uvpi-gqnh">https://data.cityofnewyork.us/Environment/2015-Street-Tree-Census-Tree-Data/uvpi-gqnh</a></li>
+        <li> 2005:  <a href="https://data.cityofnewyork.us/Environment/2005-Street-Tree-Census/29bw-z7pj">https://data.cityofnewyork.us/Environment/2005-Street-Tree-Census/29bw-z7pj</a></li>
+        <li> 1995:  <a href="https://data.cityofnewyork.us/Environment/1995-Street-Tree-Census/kyad-zm4j">https://data.cityofnewyork.us/Environment/1995-Street-Tree-Census/kyad-zm4j</a></li>
+      </ul>
+    </li>
+  </ul> 
+</i>
+
+
+<br><br>
+<p><b>Is there a neighborhood in New York City with more trees than people?</b></p>
+
+<p>In <a href="p2.html">Program 2</a> we looked at the number of trees that <a href="https://www.nycgovparks.org/trees/treescount">The New York City Street TreesCount Project</a> counted by areas of differing levels of granuality:  from boroughs to zipcodes to council districts to neighborhood tabulation areas.  <a href="https://data.cityofnewyork.us/City-Government/2010-Neighborhood-Tabulation-Areas-NTAs-/cpf4-rkhq">New York City Neighborhood Tabulation Areas (NTAs)</a> are areas in the city that roughly corresponding to neighborhoods.  Each has an assigned code and name with non-residential areas such as large parks or airports having the borough code followed by '99'.  For example, the neighborhood for Hunter College 69th Street Campus has the code 'MN40' and the name 'Upper East Side-Carnegie Hill'.  Adjacent, Central Park is assigned the non-residential code for Manhattan: 'MN99' and name 'park-cemetery-etc-Manhattan'.<br>
+<a href="https://data.cing of ityofnewyork.us/City-Government/2010-Neighborhood-Tabulation-Areas-NTAs-/cpf4-rkhq"><img src = "https://www1.nyc.gov/assets/planning/download/pdf/data-maps/nyc-population/census2010/ntas.pdf" width="80%"></a></p>
+    
+<p>This programming assignment focuses on the number of trees per capita in each neighborhood.  Following Chapter 4, we will also compute summary statistics by neighborhood (e.g. the mean and median) and evaluate how well they model the tree population using two common loss functions.</p>
+<br>
+<p>The assignment is broken into the following functions to allow for unit testing:</p>
+
+<ul>
+  <li> <code class = "inline">clean_df(df, year = 2015)</code>:
+  This function takes two inputs:
+  <br>
+  <ul>
+    <li> <code class = "inline">df</code>: the name of a DataFrame containing TreesCount Data from OpenData NYC.
+    <li><code class = "inline">year</code>: the year of the data set.  There are three possible years <code class = "inline">1995</code>, <code class = "inline">2005</code>, or <code class = "inline">2015</code>.  The default value is <code class = "inline">2015</code>.</li>
+  </ul>
+  <br>
+  The function does the following:
+  <br>
+  <ul>
+    <li>If the specified year is <code class = "inline">2015</code>, the function should take <code class = "inline">df</code> and drop all columns except:
+      <pre><code class = "datablock">['tree_dbh', 'health', 'spc_latin', 'spc_common', 'nta', 'latitude', 'longitude']</code></pre> </li>     
+    <li>If the specified year is <code class = "inline">2005</code>, the function should take <code class = "inline">df</code> and drop all columns except:
+      <pre><code class = "datablock">['tree_dbh', 'status', 'spc_latin', 'spc_common', 'nta', 'latitude', 'longitude']</code></pre> 
+    and rename the corresponding columns that differ from 2015 to the 2015 names.  For example, <code class = "inline">status</code> is renamed to <code class = "inline">health</code>.</li>
+    <br>
+    <li>If the specified year is <code class = "inline">1995</code>, the function should take <code class = "inline">df</code> and drop all columns except:
+      <pre><code class = "datablock">['diameter', 'condition', 'spc_latin', 'spc_common', 'nta_2010', 'latitude', 'longitude']</code></pre> 
+    and rename the corresponding columns that differ from 2015 to the 2015 names.  For example, <code class = "inline">diameter</code> is renamed to <code class = "inline">tree_dbh</code>.</li>
+    <br>
+    <li>Irregardless of the specified year, the function should return the resulting DataFrame.</li>
+  </ul>   
+  <br>
+  <i>Hint:  This is slightly different than the function from <a href="p2.html">Program 2</a> in that different columns are dropped.</i>  </li>
+  
+  <br><br>
+
+  <li> <code class = "inline">make_nta_df(file_name)</code>:
+  This function takes one input:
+  <ul>
+    <li> <code class = "inline">file_name</code>: the name of a CSV file containing population and names for neighborhood tabulation areas (<a href="https://nycopendata.socrata.com/City-Government/Census-Demographics-at-the-Neighborhood-Tabulation/rnsn-acs2/data">NYC OpenData NTA Demographics</a>).
+  </ul>
+  The function should open the file <code class = "inline">file_name</code> as DataFrame, returns a DataFrame
+  containing only the columns containing the NTA code 
+  (labeled as <code class = "inline">nta_code</code>), the neigborhood name (labeled as <code class = "inline">nta_name</code>), and the 2010 population (labeled as <code class = "inline">population</code>).</li>      
+  
+  <br><br>
+
+  <li> <code class = "inline">count_by_area(df)</code>:
+  This function takes one inputs:
+  <ul>
+    <li> <code class = "inline">df</code>: a DataFrame that includes the <code class = "inline">nta</code> column.
+  </ul>
+  The function should return a DataFrame that has two columns, <code class = "inline">[nta, num_trees]</code> where <code class = "inline">nta</code> is the code of the Neighborhood Tabulation Area and <code class = "inline">num_trees</code> is the sum of the number of trees, grouped by <code class = "inline">nta</code>.  
+  
+  <br><br>
+
+  <i>Hint: <code class = "inline">count_by_area</code> is similar to the one written in <a href="p2.html">Program 2</a>, but a DataFrame (not a groupby object) is expected.  See <a href="https://learningds.org/ch/06/pandas_aggregating.html">Chapter 6.2</a> on aggregating, resetting indices, and converting groupby objects into DataFrames.</i>
+  </li>
+
+  <br><br>
+
+  <li> <code class = "inline">neighborhood_trees(tree_df, nta_df)</code>:
+    This function takes two inputs:
+    <ul>
+        <li> <code class = "inline">tree_df</code>: a DataFrame containing the column <code class = "inline">nta</code>
+        <li> <code class = "inline">nta_df</code>: a DataFrame with two columns, 'NTACode' and 'NTAName'.
+    </ul>
+  This function returns a DataFrame as a result of joining the two input dataframes, with <code class = "inline">tree_df</code> as the left table.  The join should be on NTA code.  
+  The resulting dataframe should contain the following columns, in the following order: 
+  <ul>
+    <li> <code class = "inline">nta</code>
+    <li> <code class = "inline">num_trees</code>
+    <li> <code class = "inline">nta_name</code>
+    <li> <code class = "inline">population</code>
+    <li> <code class = "inline">trees_per_capita</code>: this is a newly calculated column, calculated by dividing the number of trees by the population in each neighborhood. 
+</ul>  
+
+  
+  <br><br>
+
+  <li> <code class = "inline">compute_summary_stats(df, col)</code>:
+  This function takes two inputs:
+  <ul>
+    <li> <code class = "inline">df</code>: a DataFrame containing a column <code class = "inline">col</code>.
+    <li> <code class = "inline">col</code>: the name of a numeric-valued col in the DataFrame.
+  </ul>
+  This function returns the mean and median of the Series <code class = "inline">df[col]</code>.
+  Note that since <code class = "inline">numpy</code> is not one of the libraries for this assignment, your function should compute these statistics without using <code class = "inline">numpy</code>.
+  </li>
+  
+  <br><br>
+          
+  <li> <code class = "inline">mse_loss(theta,y_vals):</code>:
+    This function takes two inputs:
+    <ul>
+          <li> <code class = "inline">theta</code>: a numeric value.
+          <li> <code class = "inline">y_vals</code>:  a Series containing numeric values.
+    </ul>
+    Computes the Mean Squared Error of the parameter <code class = "inline">theta</code> and a Series, <code class = "inline">y_vals</code>.  See <a href="https://learningds.org/ch/04/modeling_loss_functions.html">Section 4.2:  Modeling Loss Functions</a> where this function is implemented using <code class = "inline">numpy</code>.  Note that <code class = "inline">numpy</code> is not one of the libraries for this assignment and your function should compute MSE without using <code class = "inline">numpy</code>.
+
+  <br><br><br>
+
+  <li> <code class = "inline">mae_loss(theta,y_vals):</code>:
+    This function takes two inputs:
+    <ul>
+          <li> <code class = "inline">theta</code>: a numeric value.
+          <li> <code class = "inline">y_vals</code>:  a Series containing numeric values.
+    </ul>
+    Computes the Mean Absolute Error of the parameter <code class = "inline">theta</code> and a Series, <code class = "inline">y_vals</code>.  See <a href="https://learningds.org/ch/04/modeling_loss_functions.html">Section 4.2:  Modeling Loss Functions</a> where this function is implemented using <code class = "inline">numpy</code>.  Note that <code class = "inline">numpy</code> is not one of the libraries for this assignment and your function should compute MAE without using <code class = "inline">numpy</code>.
+
+  <br><br><br>
+
+  <li> <code class = "inline">test_mse(loss_fnc=mse_loss)</code>:
+    This test function takes one input:
+    <ul>
+      <li> <code class = "inline">loss_fnc</code>: a function that takes in two input parameters (a numeric value and a Series of numeric values) and returns a numeric value.  It has a default value of <code class = "inline">mse_loss</code>.
+    </ul>
+    This is a test function, used to test whether the <code class = "inline">loss_fnc</code> returning <code class = "inline">True</code> if the <code class = "inline">loss_fnc</code> performs correctly (e.g. computes Mean Squared Error) and <code class = "inline">False</code> otherwise.
+</ul>
+
+
+
+
+<br><br><br>
+Let's run through some testing code to check if your program is written correctly.
+
+<p>
+For example, let's set up a DataFrame using the Tree Census restricted to Staten Island:
+<pre><code class="blockcode">df_si = pd.read_csv('trees_si_2015.csv')
+df_si = clean_df(df_si)
+print(df_si)</code></pre>
+
+will print:
+<pre><code class="datablock">        tree_dbh health                           spc_latin        spc_common   nta   latitude  longitude
+0              6   Good  Gleditsia triacanthos var. inermis       honeylocust  SI14  40.596579 -74.076255
+1             13   Fair               Platanus x acerifolia  London planetree  SI54  40.557103 -74.162670
+2              9   Good                 Acer pseudoplatanus    sycamore maple  SI25  40.568821 -74.138563
+3              4   Good  Gleditsia triacanthos var. inermis       honeylocust  SI36  40.588107 -74.086678
+4             12   Fair               Platanus x acerifolia  London planetree  SI25  40.568825 -74.139062
+...          ...    ...                                 ...               ...   ...        ...        ...
+105313         8   Fair                    Pyrus calleryana      Callery pear  SI01  40.526324 -74.165559
+105314         9   Good                              Prunus            cherry  SI01  40.555569 -74.170760
+105315         7   Fair                              Prunus            cherry  SI36  40.583082 -74.085256
+105316         1   Good                               Malus        crab apple  SI05  40.595459 -74.184460
+105317        12   Good                         Acer rubrum         red maple  SI07  40.620762 -74.136517
+
+[105318 rows x 7 columns]</code></pre>
+
+There are 105,318 trees recorded on Staten Island, and we have kept their diameter, health, species, NTA, and latitude and longitude.
+
+<br><br>
+
+<p> Next, we'll make a DataFrame with the demographic information organized by neighborhood:
+<pre><code class="blockcode">nta_df = make_nta_df('Census_Demographics_NTA.csv')
+print(nta_df)</code></pre>
+
+will print:
+<pre><code class="datablock">    nta_code                         nta_name  population
+0       BX01               Claremont-Bathgate     31078.0
+1       BX03  Eastchester-Edenwald-Baychester     34517.0
+2       BX05       Bedford Park-Fordham North     54415.0
+3       BX06                          Belmont     27378.0
+4       BX07                        Bronxdale     35538.0
+..       ...                              ...         ...
+192     SI48                    Arden Heights     25238.0
+193     SI54                      Great Kills     40720.0
+194     SI99  park-cemetery-etc-Staten Island         0.0
+
+[195 rows x 3 columns]
+ </code></pre>
+
+<br>
+
+<p>Using the <code class=inline>counts_by_area</code> function:
+    <pre><code class=blockcode>df_si_counts = count_by_area(df_si)
+print(df_si_counts)</code></pre>
+will print a row for each neighborhood in Staten Island:
+<pre><code class=datablock>     nta  num_trees
+0   SI01      12969
+1   SI05       8446
+2   SI07       4954
+3   SI08       2505
+4   SI11       8216
+5   SI12       3776
+6   SI14       2133
+7   SI22       3970
+8   SI24       4823
+9   SI25       5675
+10  SI28       3084
+11  SI32       9251
+12  SI35       3539
+13  SI36       4952
+14  SI37       3840
+15  SI45       5452
+16  SI48       6999
+17  SI54      10734</code></pre>
+
+<br>
+
+<p>Combining the two DataFrames:
+  <pre><code class=blockcode>df = neighborhood_trees(df_si_counts, nta_df)
+print(df)</code></pre>
+will print:
+<pre><code class=datablock>     nta  num_trees                                           nta_name  population  trees_per_capita
+  0   SI01      12969         Annadale-Huguenot-Prince's Bay-Eltingville       27770          0.467015
+  1   SI05       8446                  New Springville-Bloomfield-Travis       39597          0.213299
+  2   SI07       4954                                        Westerleigh       24102          0.205543
+  3   SI08       2505                      Grymes Hill-Clifton-Fox Hills       22460          0.111532
+  4   SI11       8216             Charleston-Richmond Valley-Tottenville       23313          0.352421
+  5   SI12       3776  Mariner's Harbor-Arlington-Port Ivory-Granitev...       31474          0.119972
+  6   SI14       2133                    Grasmere-Arrochar-Ft. Wadsworth       16079          0.132658
+  7   SI22       3970          West New Brighton-New Brighton-St. George       33551          0.118327
+  8   SI24       4823  Todt Hill-Emersn Hill-Heartland Villg-Lighthse...       30714          0.157029
+  9   SI25       5675                              Oakwood-Oakwood Beach       22049          0.257381
+  10  SI28       3084                                      Port Richmond       20191          0.152741
+  11  SI32       9251                                  Rossville-Woodrow       20763          0.445552
+  12  SI35       3539                           New Brighton-Silver Lake       17525          0.201940
+  13  SI36       4952                  Old Town-Dongan Hills-South Beach       24835          0.199396
+  14  SI37       3840                                 Stapleton-Rosebank       26453          0.145163
+  15  SI45       5452                             New Dorp-Midland Beach       21896          0.248995
+  16  SI48       6999                                      Arden Heights       25238          0.277320
+  17  SI54      10734                                        Great Kills       40720          0.263605
+</code></pre>
+
+  Note that there are only entries for neighborhoods in the DataFrames of trees and that neighborhoods for which there is no tree count information are dropped from the table.  Also, a new column with the per capita tree count is part of the resulting DataFrame.
+
+
+<br><br>
+
+<p>Plotting the results: 
+<pre><code class="blockcode">import matplotlib.pyplot as plt
+import seaborn as sns
+sns.histplot(df['trees_per_capita'], bins=5)
+plt.show()</code></pre>
+
+  would give the plot:
+
+<p><img height=200 src="trees_per_capita_si.png">
+
+<br><br>
+
+<p>We can summary statistics for trees per capita on Staten Island:
+<pre><code class=blockcode>si_mu, si_med = compute_summary_stats(df, 'trees_per_capita')
+print(f'For the Staten Island tree counts, mean = {si_mu}, median = {si_med}.')</code></pre>
+The first couple of rows are:
+<pre><code class=datablock>For the Staten Island tree counts, mean = 0.22610502138533586, median = 0.20374159702387062.</code></pre>
+
+<br><br>
+
+<p>When using Mean Squared Loss:
+<pre><code class=blockcode>print(f'For MSE, mean has loss of {mse_loss(si_mu,df["trees_per_capita"])} and median has loss of {mse_loss(si_med,df["trees_per_capita"])}.')</code></pre>
+we have:
+<pre><code class=datablock>For MSE, mean has loss of 0.01061171643360503 and median has loss of 0.011111839182776008.</code></pre>
+
+<p>When using Mean Absolute Loss:
+<pre><code class=blockcode>print(f'For MAE, mean has loss of {mae_loss(si_mu,df["trees_per_capita"])} and median has loss of {mae_loss(si_med,df["trees_per_capita"])}.')</code></pre>
+we have:
+<pre><code class=datablock>For MAE, mean has loss of 0.08106163936390469 and median has loss of 0.07735408969524642.</code></pre>
+
+<p>What we've built are constant models, models that summarize all of the data by a single value.  Based on our choice of loss function, we get a different minimizing value.  By choosing to minimize MSE (mean squared error), calculating a model using the mean will minimize the error.  Likewise, if we choose to minimize the MAE (averabe absolute error), then a constant model using the median will perform better. </p>
+
+<br><br>
+<p>What we have built here is a tester function, not unlike the ones used to grade assignments in Gradescope Autograder.  To test if our test function is working as expected, try the following:
+<pre><code class=blockcode>print(f'Testing mse_loss:  {test_mse(mse_loss)}')
+print(f'Testing mae_loss:  {test_mse(mae_loss)}')</code></pre>
+will print:
+<pre><code class=datablock>Testing mse_loss:  True
+Testing mae_loss:  False</code></pre>
+
+
+<br><br>
+
+<p><i>Hints:
+<ul>
+  <li>The only library loaded by the autograder is <code class = "inline">pandas</code>.  If you include others (such as the ones for plotting), comment those out before submitting to the autograder.  Similar to trying to use libraries that are not loaded on HackerRank or codio, the autograder will crash since those are not available.  
+
+ 
+  <li> You should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.
+  If your file includes code outside of functions, either comment the code out before submitting or use a main function that is conditionally executed (see <a href="https://runestone.academy/ns/books/published//thinkcspy/Functions/mainfunction.html">Think CS: Section 6.8</a> for details).
+
+</ul>
+</i>
+
+</div>
+</body>
+</html>
