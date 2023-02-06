@@ -1,0 +1,2922 @@
+UniqueID,DateOfBite,Species,Breed,Age,Gender,SpayNeuter,Borough,ZipCode
+2055,January 01 2021,DOG,MIXED BREED,5,F,false,Brooklyn,11228
+4308,January 01 2021,DOG,LARGE MIXED BREED,2,M,false,Bronx,10468
+4309,January 01 2021,DOG,LARGE MIXED BREED,2,M,false,Bronx,10463
+4310,January 01 2021,DOG,LARGE MIXED BREED,2,M,false,Bronx,10463
+6963,January 01 2021,DOG,Pomeranian,,U,false,Manhattan,10038
+10598,January 01 2021,DOG,SHEPHERD / HOUND MIX,3,F,true,Queens,11358
+10600,January 01 2021,DOG,Siberian Husky,5,M,false,Queens,11372
+2051,January 02 2021,DOG,UNKNOWN,,U,false,Brooklyn,
+2064,January 02 2021,DOG,BASSET HOUND X,12,F,true,Brooklyn,11209
+6964,January 02 2021,DOG,UNKNOWN,,U,false,Manhattan,
+8053,January 02 2021,DOG,KING KORSO,2Y,M,false,Other,
+10599,January 02 2021,DOG,German Shepherd,,U,false,Queens,11368
+2049,January 03 2021,DOG,FRENCH BULL DOG & PIT BULL X,4,F,false,Brooklyn,11210
+2056,January 03 2021,DOG,MIXED,5,M,true,Brooklyn,11232
+4311,January 03 2021,DOG,LARGE MIXED BREED,2,M,false,Bronx,10454
+8054,January 03 2021,DOG,Bichon Frise,11,M,false,Other,
+12176,January 03 2021,DOG,MEDIUM MIXED BREED,2,M,false,Staten Island,10309
+6965,January 04 2021,DOG,"Bull Dog, English",4,F,true,Manhattan,10029
+6966,January 04 2021,DOG,Pit Bull,4,M,false,Manhattan,10025
+2052,January 05 2021,DOG,Rhodesian Ridgeback,10,M,false,Brooklyn,11222
+6967,January 05 2021,DOG,UNKNOWN,,U,false,Manhattan,
+6969,January 05 2021,DOG,UNKNOWN,2,F,false,Manhattan,10029
+10602,January 05 2021,DOG,MIXED,,U,false,Queens,11412
+10603,January 05 2021,DOG,American Pit Bull Mix / Pit Bull Mix,7,M,false,Queens,11414
+10604,January 05 2021,DOG,AMERICAN BULLY,1,M,false,Queens,11375
+10605,January 05 2021,DOG,UNKNOWN,,U,false,Queens,
+2097,January 06 2021,DOG,Pit Bull,4-6MOS,M,false,Brooklyn,11207
+4688,January 06 2021,DOG,Pit Bull,,U,false,Bronx,10466
+6971,January 06 2021,DOG,UNKNOWN,2,F,false,Manhattan,10029
+2057,January 07 2021,DOG,Chihuahua Crossbreed,5,M,false,Brooklyn,11225
+4322,January 07 2021,DOG,MEDIUM MIXED BREED,7,F,false,Bronx,10469
+6972,January 07 2021,DOG,,,U,false,Manhattan,10033
+11368,January 07 2021,DOG,"Schnauzer, Miniature",,U,false,Queens,11416
+4313,January 08 2021,DOG,Rottweiler,,U,false,Bronx,10462
+6970,January 08 2021,DOG,Golden Retriever,12,F,true,Manhattan,10040
+6973,January 08 2021,DOG,UNKNOWN,5,M,false,Manhattan,10023
+8056,January 08 2021,DOG,Pit Bull,,U,false,Other,
+10606,January 08 2021,DOG,MIXED,,U,false,Queens,
+12179,January 08 2021,DOG,TERRIER MIX,2,M,true,Staten Island,10314
+2059,January 09 2021,DOG,Pit Bull,,U,false,Brooklyn,
+2060,January 09 2021,DOG,Maltese,6,M,false,Brooklyn,11220
+2061,January 09 2021,DOG,MIXED BREED,3,F,true,Brooklyn,11215
+2063,January 09 2021,DOG,MIXED,1,F,true,Brooklyn,11221
+4314,January 09 2021,DOG,Pit Bull,3,M,false,Bronx,10460
+4315,January 09 2021,DOG,Pit Bull,,U,false,Bronx,10468
+10607,January 09 2021,DOG,PIT BULL / AMERICAN STAFFORDSHIRE,3,F,false,Queens,11004
+12177,January 09 2021,DOG,MIXED LAB DOG,7,M,true,Staten Island,
+12178,January 09 2021,DOG,Pit Bull,5,M,true,Staten Island,
+2058,January 10 2021,DOG,Beagle,9M,M,false,Brooklyn,11209
+8057,January 10 2021,DOG,UNKNOWN,,U,false,Other,
+2062,January 11 2021,DOG,Shih Tzu,13,M,true,Brooklyn,
+2066,January 11 2021,DOG,BLUE LACY,8,F,true,Brooklyn,11216
+4316,January 11 2021,DOG,Shih Tzu,,U,false,Bronx,10462
+7195,January 11 2021,DOG,PITBULL MIX,2,F,false,Manhattan,
+10608,January 11 2021,DOG,MIXED,2,F,true,Queens,11104
+2067,January 12 2021,DOG,SHIH TZU X,5,M,true,Brooklyn,11201
+6974,January 12 2021,DOG,,13 WKS,F,false,Manhattan,10025
+6975,January 12 2021,DOG,LABRADOR,17,F,false,Manhattan,10065
+6976,January 12 2021,DOG,BULLDOG,,U,false,Manhattan,
+12180,January 12 2021,DOG,UNKNOWN,,U,false,Staten Island,
+2068,January 13 2021,DOG,MALTIPOO,6,M,true,Brooklyn,11206
+2069,January 13 2021,DOG,SHEPHERD / PIT BULL MIX,11,M,true,Brooklyn,11233
+4329,January 13 2021,DOG,Shih Tzu,1,U,true,Bronx,10460
+4333,January 13 2021,DOG,,,U,false,Bronx,
+10609,January 13 2021,DOG,Pit Bull,,U,false,Queens,11105
+10610,January 13 2021,DOG,Pit Bull,,U,false,Queens,11419
+2070,January 14 2021,DOG,Pit Bull,2,F,false,Brooklyn,11221
+6977,January 14 2021,DOG,UNKNOWN,,U,false,Manhattan,
+10611,January 14 2021,DOG,MALTIPOO MIX,5,F,false,Queens,11102
+10612,January 14 2021,DOG,FRENCH POODLE,,U,false,Queens,11378
+10613,January 14 2021,DOG,MIXED,15,M,true,Queens,11385
+2071,January 15 2021,DOG,Yorkshire Terrier Crossbreed,3,F,false,Brooklyn,11226
+4320,January 15 2021,DOG,LARGE MIX BREED,4,F,false,Bronx,10465
+4323,January 15 2021,DOG,Siberian Husky,,U,false,Bronx,
+6980,January 15 2021,DOG,Yorkshire Terrier,,U,false,Manhattan,
+2073,January 16 2021,DOG,TERRIER MIX,5,M,true,Brooklyn,11216
+4321,January 16 2021,DOG,LARGE MIX BREED,4,F,false,Bronx,10457
+4336,January 16 2021,DOG,,,U,false,Bronx,10461
+6982,January 16 2021,DOG,UNKNOWN,,U,false,Manhattan,
+6983,January 16 2021,DOG,UNKNOWN,7MTHS,M,false,Manhattan,10029
+10615,January 16 2021,DOG,UNKNOWN,,U,false,Queens,
+4319,January 17 2021,DOG,LARGE MIX BREED,4,F,false,Bronx,104
+4324,January 17 2021,DOG,Pit Bull,,U,false,Bronx,10453
+6979,January 17 2021,DOG,DACHSHUND,5,M,true,Manhattan,
+6981,January 17 2021,DOG,CORGI,,U,false,Manhattan,10013
+10614,January 17 2021,DOG,SHIH TZU / POODLE MIX,5,M,true,Queens,11435
+10616,January 17 2021,DOG,Siberian Husky,5,M,false,Queens,11418
+10618,January 17 2021,DOG,MIXED,,U,false,Queens,
+10619,January 17 2021,DOG,Pit Bull,,U,false,Queens,11378
+2072,January 18 2021,DOG,Bull Terrier,,U,false,Brooklyn,
+4325,January 18 2021,DOG,Pit Bull,,U,false,Bronx,10456
+4330,January 18 2021,DOG,LARGE MIX BREED,7 MOS,F,false,Bronx,10473
+6978,January 18 2021,DOG,Pit Bull,,U,false,Manhattan,
+8059,January 18 2021,DOG,Pit Bull,5,M,false,Other,11590
+10617,January 18 2021,DOG,AMERICAN BULL TERRIER,6,M,true,Queens,11104
+11367,January 18 2021,DOG,Pit Bull,,U,false,Queens,11373
+12181,January 18 2021,DOG,Pit Bull,,U,false,Staten Island,10304
+6988,January 19 2021,DOG,UNKNOWN,5,M,false,Manhattan,
+6991,January 19 2021,DOG,UNKNOWN,7,M,false,Manhattan,10009
+10620,January 19 2021,DOG,Bull dog,,U,false,Queens,11101
+4331,January 20 2021,DOG,LARGE MIX BREED,7 MOS,F,false,Bronx,10473
+6984,January 20 2021,DOG,UNKNOWN,,U,false,Manhattan,10006
+8060,January 20 2021,DOG,Belgian Malinois,,U,false,Other,
+8061,January 20 2021,DOG,UNKNOWN,,U,false,Other,
+10621,January 20 2021,DOG,Beagle,,U,false,Queens,11104
+2074,January 21 2021,DOG,German Shepherd,1,M,false,Brooklyn,11207
+2076,January 21 2021,DOG,UNKNOWN,,U,false,Brooklyn,
+4326,January 21 2021,DOG,German Shepherd,,M,false,Bronx,10461
+6985,January 21 2021,DOG,Pomeranian,4,F,true,Manhattan,10025
+10622,January 21 2021,DOG,Beagle,3,F,false,Queens,11356
+4337,January 22 2021,DOG,,,U,false,Bronx,
+6986,January 22 2021,DOG,Golden Retriever,3,M,false,Manhattan,10002
+10624,January 22 2021,DOG,Pit Bull,,U,false,Queens,
+6987,January 23 2021,DOG,Shih Tzu,,U,false,Manhattan,
+10623,January 23 2021,DOG,UNKNOWN,,U,false,Queens,11377
+10625,January 23 2021,DOG,Pit Bull,,U,false,Queens,11433
+10630,January 23 2021,DOG,German Shepherd,4,F,false,Queens,11435
+2075,January 24 2021,DOG,UNKNOWN,,U,false,Brooklyn,
+4328,January 24 2021,DOG,UNKNOWN,,U,false,Bronx,
+4334,January 24 2021,DOG,UNKNOWN,,U,false,Bronx,10452
+10626,January 24 2021,DOG,Beagle,12,M,true,Queens,11356
+2077,January 25 2021,DOG,BASSETT MIX,2,M,true,Brooklyn,11238
+4327,January 25 2021,DOG,Pit Bull,2,M,false,Bronx,10462
+4335,January 25 2021,DOG,Yorkshire Terrier,11 MOS,F,false,Bronx,10455
+10627,January 25 2021,DOG,Pit Bull,9M,M,false,Queens,11421
+12182,January 25 2021,DOG,UNKNOWN,,U,false,Staten Island,
+6989,January 26 2021,DOG,LABRADOR,,U,false,Manhattan,
+10628,January 26 2021,DOG,Pit Bull,,U,false,Queens,11374
+12183,January 26 2021,DOG,UNKNOWN,,U,false,Staten Island,
+6990,January 27 2021,DOG,,,U,false,Manhattan,
+6992,January 27 2021,DOG,"Bull Dog, French",6,F,true,Manhattan,
+10629,January 27 2021,DOG,Pit Bull,,U,false,Queens,
+10631,January 27 2021,DOG,German Shepherd,,U,false,Queens,
+12184,January 27 2021,DOG,Chihuahua,,U,false,Staten Island,10306
+12185,January 27 2021,DOG,UNKNOWN,,U,false,Staten Island,
+10632,January 28 2021,DOG,Golden Retriever,,U,false,Queens,11374
+10633,January 28 2021,DOG,MIXED,3,M,false,Queens,11103
+4339,January 29 2021,DOG,Siberian Husky,,U,false,Bronx,
+4345,January 29 2021,DOG,Siberian Husky,,U,false,Bronx,10461
+6993,January 29 2021,DOG,Pit Bull,1,M,false,Manhattan,
+4340,January 30 2021,DOG,American Pit Bull Terrier/Pit Bull,,U,false,Bronx,10461
+6994,January 30 2021,DOG,UNKNOWN,,U,false,Manhattan,
+6995,January 30 2021,DOG,UNKNOWN,,U,false,Manhattan,
+6996,January 30 2021,DOG,POODLE,16,F,true,Manhattan,
+8063,January 30 2021,DOG,UNKNOWN,,U,false,Other,12468
+10634,January 30 2021,DOG,Pit Bull,,U,false,Queens,11377
+10636,January 30 2021,DOG,Maltese,10,M,true,Queens,11412
+12188,January 30 2021,DOG,UNKNOWN,,U,false,Staten Island,10306
+4338,January 31 2021,DOG,BULL DOG MIX PUG,11 MOS,M,false,Bronx,10473
+8062,January 31 2021,DOG,Chow Chow,,M,true,Other,
+10635,January 31 2021,DOG,Chow Chow,1,M,false,Queens,11379
+2079,February 01 2021,DOG,BOXER X,3,F,true,Brooklyn,11222
+2080,February 01 2021,DOG,Labrador Retriever Crossbreed,,U,false,Brooklyn,11233
+2081,February 01 2021,DOG,Pit Bull,,U,false,Brooklyn,11221
+2082,February 01 2021,DOG,SHEPERD,,U,false,Brooklyn,
+4342,February 01 2021,DOG,Pit Bull,9,F,true,Bronx,10463
+4346,February 01 2021,DOG,Pit Bull,,U,false,Bronx,10468
+6997,February 01 2021,DOG,Pit Bull,,U,false,Manhattan,10025
+6998,February 01 2021,DOG,SHEPERD,,U,false,Manhattan,10019
+10637,February 01 2021,DOG,Chihuahua,1,M,false,Queens,11101
+2083,February 02 2021,DOG,DOBERMAN/PIT BULL X,8,M,true,Brooklyn,11216
+2084,February 02 2021,DOG,MIXED BREED,8,M,true,Brooklyn,11238
+4343,February 02 2021,DOG,SMALL MIXED BREED,5,M,false,Bronx,10452
+4344,February 02 2021,DOG,Pit Bull,,U,false,Bronx,10460
+6999,February 02 2021,DOG,UNKNOWN,,U,false,Manhattan,10011
+7002,February 02 2021,DOG,Pit Bull,,U,false,Manhattan,
+10638,February 02 2021,DOG,Australian Shepherd,1,M,true,Queens,11106
+10639,February 02 2021,DOG,Pit Bull,,U,false,Queens,
+7000,February 03 2021,DOG,,,U,false,Manhattan,
+7001,February 03 2021,DOG,,,U,false,Manhattan,
+7005,February 03 2021,DOG,Jack Russ,5,F,true,Manhattan,10075
+10644,February 03 2021,DOG,MIXED,2,M,true,Queens,11421
+2085,February 04 2021,DOG,UNKNOWN,,U,false,Brooklyn,11234
+4350,February 04 2021,DOG,Pit Bull,6,F,true,Bronx,10467
+10640,February 04 2021,DOG,CORGI,4,M,true,Queens,11436
+10641,February 04 2021,DOG,UNKNOWN,,U,false,Queens,11436
+10642,February 04 2021,DOG,American Pit Bull Mix / Pit Bull Mix,,U,false,Queens,
+10643,February 04 2021,DOG,German Shepherd Crossbreed,2,F,true,Queens,11368
+10645,February 04 2021,DOG,"Poodle, Standard",7,M,false,Queens,11377
+10649,February 04 2021,DOG,Pit Bull,,U,false,Queens,11360
+2086,February 05 2021,DOG,UNKNOWN,,U,false,Brooklyn,11211
+2093,February 05 2021,DOG,Pit Bull,,U,false,Brooklyn,11220
+7006,February 05 2021,DOG,Pit Bull,,U,false,Manhattan,10009
+10646,February 05 2021,DOG,Akita,,U,false,Queens,11101
+10648,February 05 2021,DOG,Pit Bull,,U,false,Queens,11379
+12186,February 05 2021,DOG,UNKNOWN,,U,false,Staten Island,
+7003,February 06 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7004,February 06 2021,DOG,SHIHTZU MIX,7,M,true,Manhattan,10028
+7007,February 06 2021,DOG,Pit Bull,,U,false,Manhattan,
+12187,February 06 2021,DOG,SHEPARD,,U,false,Staten Island,10314
+2087,February 07 2021,DOG,UNKNOWN,,U,false,Brooklyn,11224
+2088,February 07 2021,DOG,Pit Bull,,U,false,Brooklyn,
+2090,February 07 2021,DOG,MIXED BREED,4,M,false,Brooklyn,11226
+4347,February 07 2021,DOG,,,U,false,Bronx,10454
+10647,February 07 2021,DOG,MIXED,,U,false,Queens,11102
+10652,February 07 2021,DOG,Bull dog,1,M,false,Queens,11422
+12189,February 07 2021,DOG,Shiba Inu,1,M,false,Staten Island,10307
+2089,February 08 2021,DOG,MIXED BREED,7,M,false,Brooklyn,11212
+2092,February 08 2021,DOG,UNKNOWN,2,M,false,Brooklyn,11234
+2100,February 08 2021,DOG,MIXED,5,M,false,Brooklyn,11212
+7008,February 08 2021,DOG,MIXED BREED,6,F,true,Manhattan,10023
+7009,February 08 2021,DOG,POODLE,,U,false,Manhattan,
+7010,February 08 2021,DOG,LARGE MIXED BREED,3,M,false,Manhattan,10029
+7012,February 08 2021,DOG,UNKNOWN,,U,false,Manhattan,
+12190,February 08 2021,DOG,Golden Retriever,,U,false,Staten Island,10310
+2091,February 09 2021,DOG,UNKNOWN,,U,false,Brooklyn,
+2094,February 09 2021,DOG,Jack Russ,,U,false,Brooklyn,11232
+7011,February 09 2021,DOG,MIXED BREED,12,M,true,Manhattan,
+10650,February 09 2021,DOG,UNKNOWN,,U,false,Queens,11385
+10670,February 09 2021,DOG,Yorkshire Terrier,4,M,false,Queens,11367
+2095,February 10 2021,DOG,UNKNOWN,,U,false,Brooklyn,11234
+2096,February 10 2021,DOG,BORDER COLLIE/ LABRADOR X,5,F,true,Brooklyn,11216
+7013,February 10 2021,DOG,Doberman Pinscher,2,M,false,Manhattan,10029
+7015,February 10 2021,DOG,UNKNOWN,,U,false,Manhattan,10019
+10651,February 10 2021,DOG,Bull dog,,U,false,Queens,11413
+4380,February 11 2021,DOG,German Shepherd Crossbreed,11,M,true,Bronx,10461
+7014,February 11 2021,DOG,Yorkshire Terrier,10,M,true,Manhattan,10009
+10653,February 11 2021,DOG,Chihuahua,3,M,true,Queens,
+2099,February 12 2021,DOG,MIXED BREED,7,M,false,Brooklyn,11208
+4351,February 12 2021,DOG,German Shepherd,,U,false,Bronx,10472
+7017,February 12 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7019,February 12 2021,DOG,UNKNOWN,6,M,true,Manhattan,
+7023,February 12 2021,DOG,Pit Bull,,U,false,Manhattan,
+12191,February 12 2021,DOG,Saint Bernard,,U,false,Staten Island,10301
+7020,February 13 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7021,February 13 2021,DOG,Siberian Husky,1,F,false,Manhattan,10030
+7022,February 13 2021,DOG,,,U,false,Manhattan,
+8066,February 13 2021,DOG,German Shepherd,7Y,F,true,Other,11792
+10654,February 13 2021,DOG,Pit Bull,,U,false,Queens,11433
+10656,February 13 2021,DOG,Bull dog,,U,false,Queens,11435
+10659,February 13 2021,DOG,UNKNOWN,,U,false,Queens,
+2098,February 14 2021,DOG,HUSKY,,U,false,Brooklyn,
+7016,February 14 2021,DOG,CATTLE MIX,4,M,true,Manhattan,10065
+10655,February 14 2021,DOG,SHIH TZU MIX,7,M,false,Queens,11379
+10657,February 14 2021,DOG,UNKNOWN,,U,false,Queens,11106
+4348,February 15 2021,DOG,Pit Bull,,U,false,Bronx,10467
+4349,February 15 2021,DOG,Pit Bull,,U,false,Bronx,10467
+7018,February 15 2021,DOG,HUSKY,,U,false,Manhattan,
+7572,February 15 2021,DOG,AUSTRALIAN CATTLE,,U,false,Manhattan,10022
+8065,February 15 2021,DOG,Pit Bull,,U,false,Other,
+10658,February 15 2021,DOG,Pit Bull,,U,false,Queens,
+12192,February 15 2021,DOG,ROTTWEILER/PIT BULL MIX,11M,M,false,Staten Island,10312
+12193,February 15 2021,DOG,Pug,,U,false,Staten Island,
+12194,February 15 2021,DOG,Jack Russ,7Y,M,true,Staten Island,10302
+2102,February 16 2021,DOG,Pit Bull,,U,false,Brooklyn,11233
+7024,February 16 2021,DOG,Pit Bull,,U,false,Manhattan,10022
+7025,February 16 2021,DOG,Pit Bull,,U,false,Manhattan,
+10661,February 16 2021,DOG,Cocker Spaniel,2,M,true,Queens,11105
+2109,February 17 2021,DOG,UNKNOWN,,U,false,Brooklyn,11215
+7028,February 17 2021,DOG,UNKNOWN,5,M,false,Manhattan,10039
+7031,February 17 2021,DOG,TERRIER,12,M,true,Manhattan,10065
+10660,February 17 2021,DOG,American Pit Bull Mix / Pit Bull Mix,6,M,true,Queens,
+2103,February 18 2021,DOG,SHEPERD,,U,false,Brooklyn,11218
+2107,February 18 2021,DOG,Yorkshire Terrier,,M,false,Brooklyn,11215
+4355,February 18 2021,DOG,"Bull Dog, French",3M,M,false,Bronx,10466
+4357,February 18 2021,DOG,SMALL MIXED BREED,5,M,false,Bronx,10463
+4358,February 18 2021,DOG,SMALL MIXED BREED\,5,M,false,Bronx,10463
+7026,February 18 2021,DOG,Doberman Pinscher,2,M,false,Manhattan,10029
+7027,February 18 2021,DOG,Shih Tzu,4,M,true,Manhattan,10018
+10662,February 18 2021,DOG,Chihuahua,,U,false,Queens,
+2104,February 19 2021,DOG,"Collie, Border",2,F,true,Brooklyn,
+2106,February 19 2021,DOG,Shiba Inu,5,F,true,Brooklyn,11230
+4359,February 19 2021,DOG,Mixed/Other,,U,false,Bronx,10463
+7029,February 19 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7030,February 19 2021,DOG,UNKNOWN,,U,false,Manhattan,
+10663,February 19 2021,DOG,UNKNOWN,,U,false,Queens,11426
+2108,February 20 2021,DOG,MIXED BREED,6,M,false,Brooklyn,11208
+4356,February 20 2021,DOG,Doberman Pinscher,4M,M,false,Bronx,10465
+4369,February 20 2021,DOG,UNKNOWN,8M,M,false,Bronx,10458
+7032,February 21 2021,DOG,HUSKY MIX,7 MTHS,M,false,Manhattan,10035
+10664,February 21 2021,DOG,CORGI,,U,false,Queens,
+10665,February 21 2021,DOG,UNKNOWN,,U,false,Queens,11101
+10669,February 21 2021,DOG,UNKNOWN,,U,false,Queens,11101
+7033,February 22 2021,DOG,UNKNOWN,2,F,true,Manhattan,10038
+7582,February 22 2021,DOG,Pit Bull,,U,false,Manhattan,10031
+10666,February 22 2021,DOG,Puggle,13,M,true,Queens,11421
+10671,February 22 2021,DOG,Yorkshire Terrier,4,M,false,Queens,11367
+2110,February 23 2021,DOG,BULLDOG,,U,false,Brooklyn,11228
+4360,February 23 2021,DOG,,,U,false,Bronx,
+7034,February 23 2021,DOG,LABRADOR MIX,5,M,true,Manhattan,
+7035,February 23 2021,DOG,Pit Bull,,U,false,Manhattan,10028
+7036,February 23 2021,DOG,HUSKY,,U,false,Manhattan,
+7039,February 23 2021,DOG,SHEPERD/HUSKY MIX,10,M,true,Manhattan,10065
+7040,February 23 2021,DOG,BULLDOG,5,M,false,Manhattan,10022
+8068,February 23 2021,DOG,UNKNOWN,4M,F,false,Other,
+10667,February 23 2021,DOG,MIXED,2,M,false,Queens,
+10668,February 23 2021,DOG,Pit Bull,,U,false,Queens,11694
+10675,February 23 2021,DOG,Yorkshire Terrier,,U,false,Queens,
+2111,February 24 2021,DOG,MIXED BREED,2,M,false,Brooklyn,11223
+2112,February 24 2021,DOG,MIXED BREED,2,M,false,Brooklyn,11223
+7037,February 24 2021,DOG,Maltese,8,M,true,Manhattan,10065
+7038,February 24 2021,DOG,UNKNOWN,12,M,true,Manhattan,10065
+7041,February 24 2021,DOG,Pit Bull,,U,false,Manhattan,10031
+12195,February 24 2021,DOG,UNKNOWN,,U,false,Staten Island,10306
+2113,February 25 2021,DOG,PIT BULL,,U,false,Brooklyn,11221
+2114,February 25 2021,DOG,Pit Bull,,U,false,Brooklyn,11216
+2115,February 25 2021,DOG,AUSSIE X,1,M,true,Brooklyn,11211
+2116,February 25 2021,DOG,Pit Bull,7,M,false,Brooklyn,11211
+4361,February 25 2021,DOG,AMERICAN ESKIMO,4,M,true,Bronx,10467
+4362,February 25 2021,DOG,Rottweiler,,U,false,Bronx,10451
+4363,February 25 2021,DOG,Pomeranian,,U,false,Bronx,10468
+7042,February 25 2021,DOG,SHEPERD MIX,7,M,true,Manhattan,10012
+12196,February 25 2021,DOG,MIXED BREED DOG,,U,false,Staten Island,10314
+2118,February 26 2021,DOG,RETRIEVER X,9,F,true,Brooklyn,11217
+4365,February 26 2021,DOG,MEDIUM MIXED BREED,3 YRS,M,false,Bronx,10455
+4366,February 26 2021,DOG,MEDIUM MIXED BREED,3 YRS,M,false,Bronx,10455
+4376,February 26 2021,DOG,,,U,false,Bronx,10463
+7043,February 26 2021,DOG,Rottweiler,11MTHS,M,false,Manhattan,10006
+10674,February 26 2021,DOG,UNKNOWN,,U,false,Queens,11354
+12197,February 26 2021,DOG,Pit Bull,,U,false,Staten Island,10307
+2117,February 27 2021,DOG,YORKIE/SHIH TZU X,4,M,false,Brooklyn,11211
+4367,February 27 2021,DOG,,7,M,false,Bronx,10467
+4371,February 27 2021,DOG,,,U,false,Bronx,10452
+4375,February 27 2021,DOG,,,U,false,Bronx,
+8069,February 27 2021,DOG,CORGIE,10M,M,false,Other,11530
+12198,February 27 2021,DOG,MIXED BREED DOG,,U,false,Staten Island,10314
+12212,February 27 2021,DOG,Pit Bull,,U,false,Staten Island,
+4364,February 28 2021,DOG,LARGE MIXED BREED,,M,false,Bronx,10460
+4368,February 28 2021,DOG,Labrador Retriever Crossbreed,,M,false,Bronx,10475
+4370,February 28 2021,DOG,Pit Bull,,U,false,Bronx,10460
+8070,February 28 2021,DOG,UNKNOWN,,U,false,Other,
+10672,February 28 2021,DOG,Bichon Frise,,U,false,Queens,11385
+10673,February 28 2021,DOG,Pit Bull,,U,false,Queens,11385
+7045,March 01 2021,DOG,Shih Tzu,,M,true,Manhattan,10012
+10676,March 01 2021,DOG,"Poodle, Standard",3M,F,false,Queens,11361
+7044,March 02 2021,DOG,Golden Retriever,3MTHS,M,false,Manhattan,
+2119,March 03 2021,DOG,PIT BULL MIX,,U,false,Brooklyn,11235
+2120,March 03 2021,DOG,Pit Bull,,U,false,Brooklyn,11214
+8071,March 03 2021,DOG,UNKNOWN,,U,false,Other,
+10677,March 03 2021,DOG,Yorkshire Terrier,8,M,false,Queens,11369
+10678,March 03 2021,DOG,UNKNOWN,,U,false,Queens,
+10679,March 03 2021,DOG,UNKNOWN,,U,false,Queens,
+2122,March 04 2021,DOG,"Bull Dog, English",5,M,false,Brooklyn,11225
+2123,March 04 2021,DOG,Pit Bull,,U,false,Brooklyn,11216
+4372,March 04 2021,DOG,MIXED BREED,11M,M,false,Bronx,10457
+7048,March 04 2021,DOG,UNKNOWN,,U,false,Manhattan,10016
+10680,March 04 2021,DOG,Bichon Frise,6,M,true,Queens,11369
+2121,March 05 2021,DOG,Labrador Retriever,,U,false,Brooklyn,11205
+2125,March 05 2021,DOG,UNKNOWN,,U,false,Brooklyn,11234
+2126,March 05 2021,DOG,Maltese,,U,false,Brooklyn,
+7046,March 05 2021,DOG,Chow Chow,14,M,true,Manhattan,10021
+10681,March 05 2021,DOG,Yorkshire Terrier,4,M,false,Queens,11106
+10685,March 05 2021,DOG,Shiba Inu,3M,M,false,Queens,11373
+10687,March 05 2021,DOG,AMERICAN BULLY,1,M,true,Queens,11415
+4374,March 06 2021,DOG,Pit Bull,3YRS,M,false,Bronx,10456
+10683,March 06 2021,DOG,German Shepherd,,U,false,Queens,
+2124,March 07 2021,DOG,Rottweiler,,U,false,Brooklyn,11206
+8072,March 07 2021,DOG,UNKNOWN,,U,false,Other,
+8073,March 07 2021,DOG,Pit Bull,1Y,M,false,Other,
+8074,March 07 2021,DOG,Siberian Husky,,U,false,Other,
+10682,March 07 2021,DOG,Cocker Spaniel,10,M,true,Queens,11354
+2128,March 08 2021,DOG,American Pit Bull Terrier/Pit Bull,5,M,true,Brooklyn,11224
+4373,March 08 2021,DOG,UNKNOWN,4,M,false,Bronx,10467
+7047,March 08 2021,DOG,UNKNOWN,10,M,true,Manhattan,10036
+7049,March 08 2021,DOG,UNKNOWN,,U,false,Manhattan,
+10686,March 08 2021,DOG,UNKNOWN,,U,false,Queens,11101
+2127,March 09 2021,DOG,UNKNOWN,,U,false,Brooklyn,11201
+2129,March 09 2021,DOG,MIXED,,U,false,Brooklyn,11201
+4379,March 09 2021,DOG,Pit Bull,3,F,false,Bronx,10451
+4381,March 09 2021,DOG,CAINE CORSO,,U,false,Bronx,10462
+4386,March 09 2021,DOG,Cane Corso,5,M,false,Bronx,10469
+7050,March 09 2021,DOG,Pit Bull,,U,false,Manhattan,10040
+7055,March 09 2021,DOG,Pit Bull,2,F,false,Manhattan,10065
+10684,March 09 2021,DOG,Pit Bull,,U,false,Queens,11435
+10690,March 09 2021,DOG,Yorkshire Terrier,,U,false,Queens,11423
+2130,March 10 2021,DOG,Pit Bull,,U,false,Brooklyn,11229
+2131,March 10 2021,DOG,MIXED,4,M,false,Brooklyn,11208
+2132,March 10 2021,DOG,,,U,false,Brooklyn,11238
+4385,March 10 2021,DOG,UNKNOWN,,U,false,Bronx,
+4388,March 10 2021,DOG,Maltese,,U,false,Bronx,10463
+7051,March 10 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7052,March 10 2021,DOG,Maltese,9,M,true,Manhattan,
+10688,March 10 2021,DOG,UNKNOWN,,U,false,Queens,11358
+10689,March 10 2021,DOG,Boxer,,U,false,Queens,
+12199,March 10 2021,DOG,"Bull Dog, English",,U,false,Staten Island,10306
+4383,March 11 2021,DOG,Boston Terrier,5,M,true,Bronx,10469
+7053,March 11 2021,DOG,COLLIE,,U,false,Manhattan,10014
+7058,March 11 2021,DOG,"Bull Dog, English",2,M,true,Manhattan,10002
+12217,March 11 2021,DOG,Pit Bull,7Y,M,false,Staten Island,10314
+2133,March 12 2021,DOG,UNKNOWN,,U,false,Brooklyn,11229
+4384,March 12 2021,DOG,Pit Bull,,U,false,Bronx,10458
+7054,March 12 2021,DOG,PITBULL MIX,4,F,true,Manhattan,10013
+7059,March 12 2021,DOG,"Collie, Border",5,F,false,Manhattan,
+7062,March 12 2021,DOG,BASENJI,15,F,true,Manhattan,10065
+8076,March 12 2021,DOG,UNKNOWN,12,U,false,Other,12567
+8077,March 12 2021,DOG,Pit Bull,,U,false,Other,
+10691,March 12 2021,DOG,American Pit Bull Mix / Pit Bull Mix,7,F,true,Queens,11694
+10692,March 12 2021,DOG,Pit Bull,,U,false,Queens,11416
+10693,March 12 2021,DOG,Pekingese,7,M,true,Queens,11102
+10697,March 12 2021,DOG,UNKNOWN,,U,false,Queens,
+12201,March 12 2021,DOG,Pit Bull,,U,false,Staten Island,10309
+12204,March 12 2021,DOG,Bull dog,3,M,false,Staten Island,10305
+2134,March 13 2021,DOG,UNKNOWN,,U,false,Brooklyn,11236
+2136,March 13 2021,DOG,UNKNOWN,,U,false,Brooklyn,11222
+7057,March 13 2021,DOG,LABRADOR,,U,false,Manhattan,
+10694,March 13 2021,DOG,CHINESE SHAR-PEI MIX,10,M,false,Queens,11435
+2135,March 14 2021,DOG,UNKNOWN,,U,false,Brooklyn,11209
+2137,March 14 2021,DOG,"Mastiff, Bull",,U,false,Brooklyn,11214
+2138,March 14 2021,DOG,Pit Bull,,U,false,Brooklyn,11236
+2140,March 14 2021,DOG,HUSKY,,U,false,Brooklyn,
+4382,March 14 2021,DOG,Bull Terrier,1,M,false,Bronx,10463
+7056,March 14 2021,DOG,"Bull Dog, French",7,M,true,Manhattan,
+8075,March 14 2021,DOG,LARGE MIXED BREED,4Y,F,false,Other,11793
+10695,March 14 2021,DOG,Rottweiler,,U,false,Queens,11375
+10696,March 14 2021,DOG,MALTI-POO MIX,5M,F,false,Queens,11364
+12200,March 14 2021,DOG,MIXED BREED DOG,,M,false,Staten Island,10314
+12206,March 14 2021,DOG,UNKNOWN,,U,false,Staten Island,
+7060,March 15 2021,DOG,UNKNOWN,,M,false,Manhattan,10036
+7061,March 15 2021,DOG,UNKNOWN,,U,false,Manhattan,10282
+12202,March 15 2021,DOG,LABRADOR,,U,false,Staten Island,10307
+2139,March 16 2021,DOG,AMERICAN BULLY,1,M,true,Brooklyn,11207
+7065,March 16 2021,DOG,,,U,false,Manhattan,10038
+10698,March 16 2021,DOG,Pit Bull,3,M,false,Queens,11412
+10699,March 16 2021,DOG,Beagle,15,M,false,Queens,11377
+10700,March 16 2021,DOG,UNKNOWN,,U,false,Queens,11363
+10701,March 16 2021,DOG,Pit Bull,,U,false,Queens,
+10702,March 16 2021,DOG,UNKNOWN,,U,false,Queens,11101
+12203,March 16 2021,DOG,Golden Retriever,,U,false,Staten Island,10307
+4387,March 17 2021,DOG,,,U,false,Bronx,10458
+4389,March 17 2021,DOG,LARGE MIXED BREED,,M,false,Bronx,10452
+7063,March 17 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7064,March 17 2021,DOG,Miniature Pinscher,14,M,true,Manhattan,10065
+7066,March 17 2021,DOG,UNKNOWN,,U,false,Manhattan,
+10703,March 17 2021,DOG,German Shepherd,4,F,false,Queens,11373
+10704,March 17 2021,DOG,Boston Terrier,4,M,true,Queens,11373
+10705,March 17 2021,DOG,Rottweiler,,U,false,Queens,11358
+10707,March 17 2021,DOG,YORKIE / SHIH TZU,6M,M,false,Queens,11435
+12205,March 17 2021,DOG,"Poodle, Standard",,U,false,Staten Island,
+2144,March 18 2021,DOG,POODLE X,9,M,true,Brooklyn,11238
+4390,March 18 2021,DOG,Maltese,,U,false,Bronx,
+7067,March 18 2021,DOG,SCHNAUZER,2,F,false,Manhattan,10027
+7069,March 18 2021,DOG,BOXER,,U,false,Manhattan,
+10706,March 18 2021,DOG,Yorkshire Terrier,9,M,false,Queens,11411
+10708,March 18 2021,DOG,Yorkshire Terrier,8,M,false,Queens,11379
+4394,March 19 2021,DOG,LARGE MIXED BREED,,M,false,Bronx,10458
+7068,March 19 2021,DOG,,,U,false,Manhattan,
+8085,March 19 2021,DOG,Havanese,,U,false,Other,11968
+2141,March 20 2021,DOG,PIT BULL MIX,1,F,true,Brooklyn,
+8078,March 20 2021,DOG,UNKNOWN,,U,false,Other,10550
+8079,March 20 2021,DOG,UNKNOWN,,U,false,Other,
+10709,March 20 2021,DOG,UNKNOWN,,U,false,Queens,11417
+10710,March 20 2021,DOG,Rottweiler,,U,false,Queens,
+10711,March 20 2021,DOG,UNKNOWN,,U,false,Queens,11358
+12220,March 20 2021,DOG,UNKNOWN,,U,false,Staten Island,10301
+4391,March 21 2021,DOG,American Pit Bull Mix / Pit Bull Mix,11,M,false,Bronx,10459
+7072,March 21 2021,DOG,UNKNOWN,,U,false,Manhattan,10032
+8083,March 21 2021,DOG,COLLIE,,U,false,Other,
+10715,March 21 2021,DOG,UNKNOWN,,U,false,Queens,
+12207,March 21 2021,DOG,UNKNOWN,,U,false,Staten Island,
+12208,March 21 2021,DOG,Pit Bull,,U,false,Staten Island,10301
+12209,March 21 2021,DOG,Pit Bull,,U,false,Staten Island,10301
+2142,March 22 2021,DOG,American Staffordshire Terrier,,F,true,Brooklyn,11235
+2145,March 22 2021,DOG,Pointer,,U,false,Brooklyn,11222
+4392,March 22 2021,DOG,Mixed/Other,1,M,false,Bronx,10455
+4393,March 22 2021,DOG,Saint Bernard,3,M,false,Bronx,10466
+7070,March 22 2021,DOG,"Poodle, Toy",1,M,true,Manhattan,10128
+7071,March 22 2021,DOG,UNKNOWN,,M,false,Manhattan,10036
+7073,March 22 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7074,March 22 2021,DOG,Pit Bull,,M,false,Manhattan,10012
+7082,March 22 2021,DOG,Shih Tzu,3,M,false,Manhattan,10033
+10712,March 22 2021,DOG,"Poodle, Standard",,U,false,Queens,
+10713,March 22 2021,DOG,American Pit Bull Mix / Pit Bull Mix,3M,M,false,Queens,11385
+10903,March 22 2021,DOG,UNKNOWN,,U,false,Queens,
+12210,March 22 2021,DOG,Boxer,1,M,true,Staten Island,10303
+2143,March 23 2021,DOG,Pit Bull,,U,false,Brooklyn,11221
+2147,March 23 2021,DOG,HUSKY X,8M,M,true,Brooklyn,11222
+7075,March 23 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7076,March 23 2021,DOG,UNKNOWN,,U,false,Manhattan,
+8080,March 23 2021,DOG,MIXED BREED,5,M,false,Other,6704
+10717,March 23 2021,DOG,German Shepherd,3,F,false,Queens,11102
+12211,March 23 2021,DOG,Pit Bull,,U,false,Staten Island,
+2146,March 24 2021,DOG,MIXED BREED,8,M,false,Brooklyn,11237
+4401,March 24 2021,DOG,Pit Bull,,U,false,Bronx,10453
+7077,March 24 2021,DOG,MICROMINI BERNEDOODLE,5 MTHS,F,false,Manhattan,10003
+10714,March 24 2021,DOG,UNKNOWN,,U,false,Queens,11356
+2148,March 25 2021,DOG,Pit Bull,6,F,true,Brooklyn,11234
+2160,March 25 2021,DOG,Scottish Terrier,6,F,false,Brooklyn,11212
+7078,March 25 2021,DOG,Pit Bull,,U,false,Manhattan,
+7079,March 25 2021,DOG,UNKNOWN,,U,false,Manhattan,10023
+7086,March 25 2021,DOG,UNKNOWN,5,M,false,Manhattan,
+10716,March 25 2021,DOG,Shiba Inu,1,M,true,Queens,11354
+10719,March 25 2021,DOG,Yorkshire Terrier,7,M,false,Queens,11412
+12213,March 25 2021,DOG,UNKNOWN,,U,false,Staten Island,10310
+2149,March 26 2021,DOG,MINI AMERICAN HUSKY,3,M,true,Brooklyn,11232
+2150,March 26 2021,DOG,UNKNOWN,,U,false,Brooklyn,11226
+4396,March 26 2021,DOG,Maltese,12,M,true,Bronx,10466
+4400,March 26 2021,DOG,Shih Tzu,,U,false,Bronx,10461
+7080,March 26 2021,DOG,POODLE,,U,false,Manhattan,
+10718,March 26 2021,DOG,Pit Bull,4,F,false,Queens,
+10720,March 26 2021,DOG,UNKNOWN,,U,false,Queens,
+7081,March 27 2021,DOG,Pit Bull,,U,false,Manhattan,10035
+7084,March 27 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7085,March 27 2021,DOG,UNKNOWN,10,M,false,Manhattan,10029
+8086,March 27 2021,DOG,MALTESE MIX,7Y,F,true,Other,11803
+10721,March 27 2021,DOG,UNKNOWN,,U,false,Queens,
+10722,March 27 2021,DOG,UNKNOWN,,U,false,Queens,11366
+4402,March 28 2021,DOG,Mixed/Other,2,M,false,Bronx,10458
+7083,March 28 2021,DOG,UNKNOWN,,U,false,Manhattan,10014
+8081,March 28 2021,DOG,"Poodle, Standard",,U,false,Other,
+8082,March 28 2021,DOG,Rottweiler,,U,false,Other,8550
+8087,March 28 2021,DOG,LABRADOR,5Y,F,true,Other,
+12214,March 28 2021,DOG,Yorkshire Terrier,,U,false,Staten Island,10303
+12215,March 28 2021,DOG,Pit Bull,,U,false,Staten Island,
+2151,March 29 2021,DOG,UNKNOWN,,U,false,Brooklyn,
+2153,March 29 2021,DOG,Labrador Retriever Crossbreed,,M,false,Brooklyn,11209
+2172,March 29 2021,DOG,German Shepherd,,U,false,Brooklyn,11221
+7087,March 29 2021,DOG,UNKNOWN,,U,false,Manhattan,
+8084,March 29 2021,DOG,UNKNOWN,,U,false,Other,11959
+10723,March 29 2021,DOG,Bull dog,,U,false,Queens,11414
+10724,March 29 2021,DOG,"Schnauzer, Miniature",4,F,true,Queens,11374
+10725,March 29 2021,DOG,German Shepherd Crossbreed,6,M,true,Queens,
+10726,March 29 2021,DOG,MINI SAINT BERDOODLE MIX,1,M,true,Queens,11368
+10728,March 29 2021,DOG,Chow Chow,5,M,false,Queens,11385
+10731,March 29 2021,DOG,Pit Bull,2,M,false,Queens,11435
+12216,March 29 2021,DOG,German Shepherd,,U,false,Staten Island,10305
+2152,March 30 2021,DOG,UNKNOWN,,U,false,Brooklyn,11222
+2155,March 30 2021,DOG,Chihuahua,,U,false,Brooklyn,11201
+4395,March 30 2021,DOG,MEDIUM MIXED BREED,1,M,false,Bronx,10459
+4397,March 30 2021,DOG,Pit Bull,,M,false,Bronx,10452
+4398,March 30 2021,DOG,Pit Bull,,M,false,Bronx,10452
+4399,March 30 2021,DOG,Yorkshire Terrier,,U,false,Bronx,10452
+10727,March 30 2021,DOG,Pit Bull,,U,false,Queens,11419
+10729,March 30 2021,DOG,UNKNOWN,,U,false,Queens,11102
+10730,March 30 2021,DOG,"Poodle, Standard",,M,false,Queens,11372
+10732,March 30 2021,DOG,"Poodle, Standard",,U,false,Queens,11366
+10733,March 30 2021,DOG,UNKNOWN,,U,false,Queens,11435
+10734,March 30 2021,DOG,Pit Bull,,U,false,Queens,11357
+2154,March 31 2021,DOG,BULLY PIT BULL,,U,false,Brooklyn,11224
+2156,March 31 2021,DOG,German Shepherd,,U,false,Brooklyn,11234
+2157,March 31 2021,DOG,UNKNOWN,,U,false,Brooklyn,
+2168,March 31 2021,DOG,MIXED BREED,2,M,false,Brooklyn,11218
+7088,March 31 2021,DOG,UNKNOWN,5,F,false,Manhattan,10039
+7096,March 31 2021,DOG,UNKNOWN,4,F,false,Manhattan,10029
+10736,March 31 2021,DOG,Bull Terrier,2,F,true,Queens,11101
+10746,March 31 2021,DOG,MIXED,7,M,false,Queens,11429
+2158,April 01 2021,DOG,Scottish Terrier,6 YRS,F,false,Brooklyn,11217
+2159,April 01 2021,DOG,UNKNOWN,,U,false,Brooklyn,11237
+2161,April 01 2021,DOG,UNKNOWN,,U,false,Brooklyn,11214
+2162,April 01 2021,DOG,Scottish Terrier,6,F,false,Brooklyn,11207
+4406,April 01 2021,DOG,Pit Bull,4,M,false,Bronx,10473
+10735,April 01 2021,DOG,"Shar-Pei, Chinese",,U,false,Queens,11004
+2163,April 02 2021,DOG,UNKNOWN,,U,false,Brooklyn,11223
+2165,April 02 2021,DOG,UNKNOWN,,U,false,Brooklyn,11213
+2196,April 02 2021,DOG,Shih Tzu,11,M,true,Brooklyn,11210
+10742,April 02 2021,DOG,UNKNOWN,,U,false,Queens,
+10747,April 02 2021,DOG,UNKNOWN,,U,false,Queens,
+10756,April 02 2021,DOG,German Shepherd,3M,M,false,Queens,11423
+2164,April 03 2021,DOG,Pit Bull,,F,false,Brooklyn,11208
+2171,April 03 2021,DOG,Golden Retriever,,U,false,Brooklyn,11232
+7089,April 03 2021,DOG,UNKNOWN,,U,false,Manhattan,10029
+7090,April 03 2021,DOG,LABRADOR MIX,2,F,true,Manhattan,10033
+10737,April 03 2021,DOG,Bull dog,7,M,false,Queens,11374
+12218,April 03 2021,DOG,UNKNOWN,,U,false,Staten Island,
+12219,April 03 2021,DOG,PITBULL,,U,true,Staten Island,
+2166,April 04 2021,DOG,Siberian Husky,,F,false,Brooklyn,11207
+4403,April 04 2021,DOG,LARGE MIXED BREED,,U,false,Bronx,10457
+4407,April 04 2021,DOG,Pit Bull,,U,false,Bronx,10463
+7091,April 04 2021,DOG,Maltese,,U,false,Manhattan,
+7092,April 04 2021,DOG,Pit Bull,,U,false,Manhattan,
+7093,April 04 2021,DOG,LABRADOR,,U,false,Manhattan,
+7095,April 04 2021,DOG,UNKNOWN,,U,false,Manhattan,
+8088,April 04 2021,DOG,Yorkshire Terrier,,U,false,Other,17356
+10738,April 04 2021,DOG,"Poodle, Toy",4,F,true,Queens,11364
+10739,April 04 2021,DOG,Siberian Husky,,U,false,Queens,11364
+10740,April 04 2021,DOG,UNKNOWN,,U,false,Queens,
+10741,April 04 2021,DOG,Pit Bull,1,M,false,Queens,11434
+10743,April 04 2021,DOG,Siberian Husky,10,M,false,Queens,11106
+2167,April 05 2021,DOG,"Poodle, Standard",,U,false,Brooklyn,11220
+2174,April 05 2021,DOG,UNKNOWN,,U,false,Brooklyn,11233
+7094,April 05 2021,DOG,Pit Bull,,U,false,Manhattan,
+7112,April 05 2021,DOG,Maltese,6,M,true,Manhattan,10009
+7580,April 05 2021,DOG,Pit Bull,,U,false,Manhattan,10038
+7581,April 05 2021,DOG,Pit Bull,,U,false,Manhattan,10038
+8111,April 05 2021,DOG,UNKNOWN,,U,false,Other,
+10744,April 05 2021,DOG,Pit Bull,,U,false,Queens,11436
+10749,April 05 2021,DOG,Jack Russ,1,F,false,Queens,11356
+12221,April 05 2021,DOG,Cocker Spaniel,,U,false,Staten Island,10301
+12222,April 05 2021,DOG,Rhodesian Ridgeback,1,M,false,Staten Island,10304
+2169,April 06 2021,DOG,Great Dane,,U,false,Brooklyn,11238
+2170,April 06 2021,DOG,Maltese,,U,false,Brooklyn,11232
+2185,April 06 2021,DOG,Pit Bull,,M,false,Brooklyn,11233
+4404,April 06 2021,DOG,Pit Bull,,U,false,Bronx,10467
+4405,April 06 2021,DOG,Pit Bull,,U,false,Bronx,10467
+4409,April 06 2021,DOG,Pit Bull,,U,false,Bronx,10460
+10745,April 06 2021,DOG,UNKNOWN,,U,false,Queens,11421
+2173,April 07 2021,DOG,Pekingese,,U,false,Brooklyn,11218
+4408,April 07 2021,DOG,Pit Bull,4,M,false,Bronx,
+7097,April 07 2021,DOG,"Shar-Pei, Chinese",1,M,false,Manhattan,
+7098,April 07 2021,DOG,UNKNOWN,,M,true,Manhattan,10025
+10748,April 07 2021,DOG,UNKNOWN,,U,false,Queens,11358
+10750,April 07 2021,DOG,Pit Bull,,U,false,Queens,
+10751,April 07 2021,DOG,German Shepherd,,U,false,Queens,11691
+10752,April 07 2021,DOG,UNKNOWN,,U,false,Queens,
+10753,April 07 2021,DOG,Pit Bull,,U,false,Queens,11433
+10754,April 07 2021,DOG,MIXED,10M,M,true,Queens,11369
+12224,April 07 2021,DOG,UNKNOWN,,U,false,Staten Island,
+2175,April 08 2021,DOG,Pit Bull,,U,false,Brooklyn,11238
+2176,April 08 2021,DOG,Pit Bull,,U,false,Brooklyn,11238
+2177,April 08 2021,DOG,Pit Bull,,U,false,Brooklyn,11233
+2178,April 08 2021,DOG,UNKNOWN,,U,false,Brooklyn,11208
+2179,April 08 2021,DOG,UNKNOWN,,U,false,Brooklyn,11208
+7099,April 08 2021,DOG,Labradoodle,,U,false,Manhattan,
+10755,April 08 2021,DOG,UNKNOWN,,U,false,Queens,11373
+11369,April 08 2021,DOG,Rottweiler,,U,false,Queens,11040
+12223,April 08 2021,DOG,Pit Bull,,U,false,Staten Island,10301
+4410,April 09 2021,DOG,Chihuahua,,M,false,Bronx,10455
+4423,April 09 2021,DOG,UNKNOWN,,U,false,Bronx,10451
+7110,April 09 2021,DOG,UNKNOWN,,U,false,Manhattan,
+10757,April 09 2021,DOG,PIT BULL / LABRADOR MIX,9,M,true,Queens,11385
+10759,April 09 2021,DOG,UNKNOWN,,U,false,Queens,
+10763,April 09 2021,DOG,AMERICAN BULLY / PIT BULL,6,F,false,Queens,
+10764,April 09 2021,DOG,PIT BULL / LABRADOR MIX,9,M,true,Queens,11385
+10765,April 09 2021,DOG,UNKNOWN,,U,false,Queens,11368
+7100,April 10 2021,DOG,American Staffordshire Terrier,1,F,false,Manhattan,10026
+7101,April 10 2021,DOG,American Staffordshire Terrier,1,F,false,Manhattan,10026
+7104,April 10 2021,DOG,Yorkshire Terrier,,F,false,Manhattan,10012
+7105,April 10 2021,DOG,Pit Bull,,U,false,Manhattan,
+7106,April 10 2021,DOG,Pit Bull,,M,true,Manhattan,10128
+7107,April 10 2021,DOG,DACHSHUND,,U,false,Manhattan,
+7109,April 10 2021,DOG,Yorkshire Terrier,,U,false,Manhattan,10033
+8090,April 10 2021,DOG,"Bull Dog, English",,U,false,Other,
+10766,April 10 2021,DOG,UNKNOWN,,U,false,Queens,11427
+10767,April 10 2021,DOG,UNKNOWN,,U,false,Queens,11373
+10768,April 10 2021,DOG,HUSKY MIX,6,F,true,Queens,11105
+10769,April 10 2021,DOG,"Shar-Pei, Chinese",2,F,false,Queens,11374
+12227,April 10 2021,DOG,UNKNOWN,,U,false,Staten Island,
+2180,April 11 2021,DOG,Portuguese Water Dog,,U,false,Brooklyn,11201
+7102,April 11 2021,DOG,UNKNOWN,7,M,true,Manhattan,10017
+7111,April 11 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7116,April 11 2021,DOG,UNKNOWN,1,M,false,Manhattan,10003
+8089,April 11 2021,DOG,UNKNOWN,,U,false,Other,
+8091,April 11 2021,DOG,Labradoodle,,U,false,Other,10703
+10758,April 11 2021,DOG,"Poodle, Standard",,U,false,Queens,11355
+10762,April 11 2021,DOG,American Pit Bull Mix / Pit Bull Mix,4,M,false,Queens,
+12225,April 11 2021,DOG,Mixed/Other,,U,false,Staten Island,10310
+12226,April 11 2021,DOG,GERMAN SHEPARD,15M,F,false,Staten Island,
+2184,April 12 2021,DOG,Chow Chow,,U,false,Brooklyn,11223
+4411,April 12 2021,DOG,,,U,false,Bronx,10457
+4415,April 12 2021,DOG,Pit Bull,7,F,false,Bronx,10466
+4427,April 12 2021,DOG,German Shepherd Crossbreed,1,M,false,Bronx,10457
+7103,April 12 2021,DOG,UNKNOWN,7,M,true,Manhattan,10017
+7108,April 12 2021,DOG,Beagle,,U,false,Manhattan,10033
+10760,April 12 2021,DOG,German Shepherd Crossbreed,3,M,true,Queens,11372
+10761,April 12 2021,DOG,Shiba Inu,10M,M,true,Queens,11378
+10794,April 12 2021,DOG,"Bull Dog, French",,U,false,Queens,11378
+2181,April 13 2021,DOG,TERRIER X,2,F,true,Brooklyn,11216
+2182,April 13 2021,DOG,UNKNOWN,,U,false,Brooklyn,11208
+2183,April 13 2021,DOG,Pit Bull,,U,false,Brooklyn,11214
+4412,April 13 2021,DOG,Cocker Spaniel,16W,F,false,Bronx,10453
+7113,April 13 2021,DOG,POODLE,,U,false,Manhattan,
+7114,April 13 2021,DOG,Pit Bull,2,M,false,Manhattan,
+7115,April 13 2021,DOG,Pit Bull,,U,false,Manhattan,10040
+10770,April 13 2021,DOG,MIXED,7,F,true,Queens,11370
+10771,April 13 2021,DOG,Pit Bull,7,F,true,Queens,11385
+10772,April 13 2021,DOG,"Poodle, Standard",,U,false,Queens,11370
+12228,April 13 2021,DOG,Maltese,,U,false,Staten Island,10310
+2187,April 14 2021,DOG,"Bull Dog, English",,U,false,Brooklyn,
+4426,April 14 2021,DOG,Pit Bull,,U,false,Bronx,10461
+4532,April 14 2021,DOG,Pit Bull,,U,false,Bronx,
+7117,April 14 2021,DOG,UNKNOWN,,U,false,Manhattan,
+8092,April 14 2021,DOG,MINI LABORDOODLE,,M,true,Other,8402
+10773,April 14 2021,DOG,MIXED,,U,false,Queens,11373
+10774,April 14 2021,DOG,Cane Corso,,U,false,Queens,11378
+12229,April 14 2021,DOG,UNKNOWN,,U,false,Staten Island,
+2186,April 15 2021,DOG,MIXED BREED,,U,false,Brooklyn,11222
+2188,April 15 2021,DOG,Pit Bull,,U,false,Brooklyn,
+7118,April 15 2021,DOG,MASTIFF,1,M,false,Manhattan,10009
+7120,April 15 2021,DOG,SHIHTZU-POODLE MIX,5,M,false,Manhattan,10029
+10775,April 15 2021,DOG,MIXED,,U,false,Queens,
+10776,April 15 2021,DOG,German Shepherd,,U,false,Queens,
+2189,April 16 2021,DOG,Siberian Husky,,U,false,Brooklyn,11230
+2191,April 16 2021,DOG,Pit Bull,,U,false,Brooklyn,11223
+2192,April 16 2021,DOG,Labrador Retriever Crossbreed,4,M,true,Brooklyn,11218
+2193,April 16 2021,DOG,MIXED BREED,4,F,false,Brooklyn,11208
+2195,April 16 2021,DOG,Pit Bull,,M,false,Brooklyn,11215
+2198,April 16 2021,DOG,AMERICAN BULLY,,F,false,Brooklyn,11206
+2199,April 16 2021,DOG,AMERICAN BULLY,,M,false,Brooklyn,11206
+4420,April 16 2021,DOG,Pit Bull,,M,false,Bronx,10463
+4422,April 16 2021,DOG,,,U,false,Bronx,10460
+7119,April 16 2021,DOG,LABRADOR,,U,false,Manhattan,
+7121,April 16 2021,DOG,"Bull Dog, English",,M,false,Manhattan,10031
+7122,April 16 2021,DOG,Pit Bull,,U,false,Manhattan,
+7123,April 16 2021,DOG,PITBULL/BOXER MIX,,U,false,Manhattan,10025
+10777,April 16 2021,DOG,Pit Bull,,U,false,Queens,
+10780,April 16 2021,DOG,MIXED,6,F,false,Queens,11369
+10781,April 16 2021,DOG,MIXED,4,M,false,Queens,11369
+2190,April 17 2021,DOG,CATTLE DOG MIX,6,M,true,Brooklyn,11215
+2203,April 17 2021,DOG,MALTESE MIX,,U,false,Brooklyn,11212
+7126,April 17 2021,DOG,UNKNOWN,,U,false,Manhattan,
+10778,April 17 2021,DOG,UNKNOWN,,U,false,Queens,11377
+10779,April 17 2021,DOG,Pit Bull,3,M,false,Queens,11001
+10783,April 17 2021,DOG,AIREDALE TERRIER,2,M,false,Queens,11368
+11370,April 17 2021,DOG,German Shepherd,,U,false,Queens,11365
+2197,April 18 2021,DOG,UNKNOWN,,U,false,Brooklyn,11201
+4413,April 18 2021,DOG,,,U,false,Bronx,10039
+4489,April 18 2021,DOG,UNKNOWN,,U,false,Bronx,10455
+7124,April 18 2021,DOG,Pit Bull,,U,false,Manhattan,
+7125,April 18 2021,DOG,CHIHUAHUA/TERRIER MIX,11,M,true,Manhattan,
+2194,April 19 2021,DOG,MIXED BREED,11,M,false,Brooklyn,11224
+2200,April 19 2021,DOG,UNKNOWN,,U,false,Brooklyn,11204
+4414,April 19 2021,DOG,Pit Bull,,U,false,Bronx,10463
+4419,April 19 2021,DOG,LARGE MIX BREED,3,F,false,Bronx,10462
+4424,April 19 2021,DOG,Pit Bull,,U,false,Bronx,10421
+7127,April 19 2021,DOG,POODLE,,U,false,Manhattan,10031
+7128,April 19 2021,DOG,UNKNOWN,3MTHS,M,false,Manhattan,10128
+7129,April 19 2021,DOG,UNKNOWN,3MTHS,M,false,Manhattan,10128
+7130,April 19 2021,DOG,Pit Bull,1,M,false,Manhattan,10128
+7135,April 19 2021,DOG,UNKNOWN,,U,false,Manhattan,10004
+8093,April 19 2021,DOG,Pit Bull,,U,false,Other,
+10782,April 19 2021,DOG,Pit Bull,5,M,true,Queens,11378
+10784,April 19 2021,DOG,Pit Bull,,U,false,Queens,11378
+12230,April 19 2021,DOG,Pit Bull,,U,false,Staten Island,
+2201,April 20 2021,DOG,SHIBA INU X,10,M,true,Brooklyn,11216
+2204,April 20 2021,DOG,Pit Bull,,U,false,Brooklyn,11207
+4416,April 20 2021,DOG,Labrador Retriever Crossbreed,3,M,true,Bronx,10461
+4417,April 20 2021,DOG,,,U,false,Bronx,
+4421,April 20 2021,DOG,Pit Bull,8,M,false,Bronx,
+7131,April 20 2021,DOG,Maltese,,U,false,Manhattan,
+7132,April 20 2021,DOG,Pit Bull,,U,false,Manhattan,10025
+7133,April 20 2021,DOG,Shiba Inu,4 MTHS,F,true,Manhattan,10030
+7136,April 20 2021,DOG,Chihuahua,5,M,true,Manhattan,10128
+10785,April 20 2021,DOG,Rottweiler,12,M,true,Queens,11418
+12231,April 20 2021,DOG,UNKNOWN,,U,false,Staten Island,10314
+2202,April 21 2021,DOG,Yorkshire Terrier,,U,false,Brooklyn,11209
+2205,April 21 2021,DOG,Labrador Retriever,,U,false,Brooklyn,
+2206,April 21 2021,DOG,Cane Corso,10M,M,false,Brooklyn,11234
+2207,April 21 2021,DOG,Maltese,11,M,true,Brooklyn,11215
+2209,April 21 2021,DOG,MIXED,1,M,false,Brooklyn,11212
+2215,April 21 2021,DOG,Labradoodle,6,M,true,Brooklyn,11218
+4418,April 21 2021,DOG,MEDIUM MIXED BREED,1,M,false,Bronx,10466
+7134,April 21 2021,DOG,POODLE MIX,10,M,true,Manhattan,10024
+7138,April 21 2021,DOG,PITBULL MIX,9,F,true,Manhattan,10035
+10786,April 21 2021,DOG,Chow Chow,1,M,true,Queens,11368
+10787,April 21 2021,DOG,Yorkshire Terrier,11M,F,false,Queens,11354
+2208,April 22 2021,DOG,Chihuahua,,U,false,Brooklyn,11208
+2210,April 22 2021,DOG,UNKNOWN,,U,false,Brooklyn,11249
+2211,April 22 2021,DOG,MIXED,6,M,true,Brooklyn,11208
+2212,April 22 2021,DOG,Pit Bull,,U,false,Brooklyn,11206
+4430,April 22 2021,DOG,Maltese,,U,false,Bronx,
+10789,April 22 2021,DOG,UNKNOWN,,F,false,Queens,11433
+2213,April 23 2021,DOG,Pit Bull,,F,false,Brooklyn,11216
+7137,April 23 2021,DOG,"Coonhound, Black and Tan",12,M,true,Manhattan,10075
+7141,April 23 2021,DOG,TERRIER MIX,9 MTHS,M,false,Manhattan,
+10788,April 23 2021,DOG,MIXED,,U,false,Queens,11374
+12233,April 23 2021,DOG,SMALL MIXED BREED,,M,false,Staten Island,10309
+2219,April 24 2021,DOG,Pit Bull,,U,false,Brooklyn,11215
+2220,April 24 2021,DOG,"Bull Dog, English",,U,false,Brooklyn,11231
+2704,April 24 2021,DOG,American Pit Bull Terrier/Pit Bull,6,F,true,Brooklyn,11216
+4566,April 24 2021,DOG,Shiba Inu,1,M,false,Bronx,10473
+7139,April 24 2021,DOG,"Bull Dog, English",,M,true,Manhattan,10003
+7140,April 24 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7142,April 24 2021,DOG,UNKNOWN,,U,false,Manhattan,10030
+8094,April 24 2021,DOG,German Shepherd,2,M,true,Other,
+10790,April 24 2021,DOG,Pit Bull,,U,false,Queens,11418
+2214,April 25 2021,DOG,American Pit Bull Mix / Pit Bull Mix,4,F,true,Brooklyn,11218
+2216,April 25 2021,DOG,RAT TERRIER,13,F,true,Brooklyn,11223
+2217,April 25 2021,DOG,Pit Bull,,U,false,Brooklyn,11203
+2218,April 25 2021,DOG,MIXED BREED,,U,false,Brooklyn,11218
+7143,April 25 2021,DOG,UNKNOWN,,U,false,Manhattan,
+10791,April 25 2021,DOG,PUG MIX,,U,false,Queens,11106
+10793,April 25 2021,DOG,"Pointer, German Shorthaired",1,M,false,Queens,11357
+10801,April 25 2021,DOG,German Shepherd,4,F,false,Queens,
+12232,April 25 2021,DOG,LARGE MIXED BREED,4Y,M,false,Staten Island,10309
+2223,April 26 2021,DOG,Pit Bull,,F,false,Brooklyn,11238
+4429,April 26 2021,DOG,,,U,false,Bronx,10454
+7145,April 26 2021,DOG,"Bull Dog, French",9,F,true,Manhattan,10065
+10792,April 26 2021,DOG,Siberian Husky,,U,false,Queens,
+2221,April 27 2021,DOG,Pit Bull,,U,false,Brooklyn,11221
+2222,April 27 2021,DOG,Yorkshire Terrier,,U,false,Brooklyn,11211
+4434,April 27 2021,DOG,Pit Bull,,U,false,Bronx,10466
+7144,April 27 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7146,April 27 2021,DOG,Pit Bull,,U,false,Manhattan,
+10795,April 27 2021,DOG,Golden Retriever,2,F,true,Queens,11419
+2224,April 28 2021,DOG,Rottweiler,,U,false,Brooklyn,11211
+7147,April 28 2021,DOG,POODLE,6,M,true,Manhattan,10128
+7148,April 28 2021,DOG,Pug,,U,false,Manhattan,
+8096,April 28 2021,DOG,"Poodle, Standard",5,F,false,Other,
+8121,April 28 2021,DOG,UNKNOWN,,U,false,Other,
+10796,April 28 2021,DOG,Pit Bull,,U,false,Queens,11691
+10797,April 28 2021,DOG,CORGI,11M,M,false,Queens,11101
+10798,April 28 2021,DOG,UNKNOWN,,U,false,Queens,
+10799,April 28 2021,DOG,UNKNOWN,,U,false,Queens,11370
+2226,April 29 2021,DOG,"Poodle, Standard",,U,false,Brooklyn,11207
+2228,April 29 2021,DOG,Pit Bull,,U,false,Brooklyn,11205
+4425,April 29 2021,DOG,Pit Bull,2,M,false,Bronx,10457
+7149,April 29 2021,DOG,Australian Shepherd,8,F,true,Manhattan,10016
+12234,April 29 2021,DOG,DASCHOUND,,U,false,Staten Island,
+12235,April 29 2021,DOG,Pit Bull,,U,false,Staten Island,10303
+2227,April 30 2021,DOG,Cane Corso,,U,false,Brooklyn,11207
+2229,April 30 2021,DOG,Pit Bull,,U,false,Brooklyn,11233
+2232,April 30 2021,DOG,HUSKY,,U,false,Brooklyn,11249
+10800,April 30 2021,DOG,Chihuahua,3,M,true,Queens,11385
+2271,May 01 2021,DOG,AMERICAN PIT/LABRADOR RETRIEVER X,1,M,true,Brooklyn,11205
+4428,May 01 2021,DOG,MEDIUM MIXED BREED,,F,false,Bronx,10462
+4538,May 01 2021,DOG,Chihuahua,4,M,false,Bronx,10463
+7154,May 01 2021,DOG,UNKNOWN,,U,false,Manhattan,
+8095,May 01 2021,DOG,ENGLISH SPRINGER SPANIEL MIX,,U,false,Other,
+8098,May 01 2021,DOG,Pit Bull,5 MTHS,M,false,Other,
+10802,May 01 2021,DOG,UNKNOWN,,U,false,Queens,
+10803,May 01 2021,DOG,Pit Bull,7,M,true,Queens,11356
+10804,May 01 2021,DOG,German Shepherd,,U,false,Queens,11420
+10805,May 01 2021,DOG,Pit Bull,,U,false,Queens,11365
+10808,May 01 2021,DOG,UNKNOWN,,U,false,Queens,11105
+10810,May 01 2021,DOG,UNKNOWN,,U,false,Queens,11434
+4567,May 02 2021,DOG,Pit Bull,6,M,false,Bronx,10465
+7150,May 02 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7151,May 02 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7152,May 02 2021,DOG,AUSTRALIAN SHEPERD MIX,6,M,true,Manhattan,
+7153,May 02 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7161,May 02 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7178,May 02 2021,DOG,UNKNOWN,,M,false,Manhattan,10035
+10806,May 02 2021,DOG,Chow Chow,8,M,true,Queens,
+10807,May 02 2021,DOG,Yorkshire Terrier,3,M,false,Queens,11368
+10809,May 02 2021,DOG,"Collie, Border",,U,false,Queens,11102
+2230,May 03 2021,DOG,Yorkshire Terrier,9,M,false,Brooklyn,11236
+2231,May 03 2021,DOG,Cock-A-Poo,1,M,false,Brooklyn,11226
+7155,May 03 2021,DOG,Pit Bull,,U,false,Manhattan,
+7163,May 03 2021,DOG,German Shepherd,2,M,true,Manhattan,10021
+7320,May 03 2021,DOG,UNKNOWN,,U,false,Manhattan,
+8097,May 03 2021,DOG,Shih Tzu,,U,false,Other,
+10811,May 03 2021,DOG,Golden Retriever,,U,false,Queens,11356
+10812,May 03 2021,DOG,American Eskimo,8,M,true,Queens,11368
+10813,May 03 2021,DOG,BULL DOG MIX,2,M,true,Queens,
+12236,May 03 2021,DOG,Pit Bull,,U,false,Staten Island,
+2234,May 04 2021,DOG,UNKNOWN,,U,false,Brooklyn,11208
+2235,May 04 2021,DOG,Beagle,2,M,false,Brooklyn,11221
+2236,May 04 2021,DOG,Labrador Retriever,,U,false,Brooklyn,11209
+7156,May 04 2021,DOG,UNKNOWN,,U,false,Manhattan,10065
+7157,May 04 2021,DOG,YORKIE,,U,false,Manhattan,10034
+7158,May 04 2021,DOG,Shih Tzu,,U,false,Manhattan,
+7159,May 04 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7160,May 04 2021,DOG,UNKNOWN,,U,false,Manhattan,10003
+7165,May 04 2021,DOG,Chihuahua,,U,false,Manhattan,
+10814,May 04 2021,DOG,POODLE MIX,4,M,true,Queens,11377
+10815,May 04 2021,DOG,Shih Tzu,,U,false,Queens,11377
+2233,May 05 2021,DOG,AMERICAN BULLY,,U,false,Brooklyn,11233
+2246,May 05 2021,DOG,Pit Bull,,U,false,Brooklyn,11216
+4471,May 05 2021,DOG,Yorkshire Terrier,,U,false,Bronx,10469
+7162,May 05 2021,DOG,Golden Retriever,1,M,false,Manhattan,10029
+7167,May 05 2021,DOG,CHIHUAHUA MIX,9,F,true,Manhattan,10065
+7197,May 05 2021,DOG,MIXED SHEPARD,1Y,M,true,Manhattan,
+2237,May 06 2021,DOG,MIXED BREED,,U,false,Brooklyn,11201
+4563,May 06 2021,DOG,UNKNOWN,,U,false,Bronx,10475
+7164,May 06 2021,DOG,UNKNOWN,,U,false,Manhattan,10039
+7166,May 06 2021,DOG,UNKNOWN,,U,false,Manhattan,
+10819,May 06 2021,DOG,UNKNOWN,,U,false,Queens,
+2238,May 07 2021,DOG,MIXED BREED,6M,F,false,Brooklyn,11226
+2240,May 07 2021,DOG,DACHSUND MIX,4,M,true,Brooklyn,11217
+2248,May 07 2021,DOG,Labrador Retriever,,U,false,Brooklyn,
+4438,May 07 2021,DOG,,,U,false,Bronx,10460
+4439,May 07 2021,DOG,,,U,false,Bronx,10472
+7168,May 07 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7170,May 07 2021,DOG,Pit Bull,,U,false,Manhattan,
+7171,May 07 2021,DOG,LABRADOR MIX,2,F,true,Manhattan,
+7172,May 07 2021,DOG,Pit Bull,,U,false,Manhattan,
+7175,May 07 2021,DOG,UNKNOWN,,U,false,Manhattan,
+10816,May 07 2021,DOG,German Shepherd,3,M,true,Queens,11361
+10818,May 07 2021,DOG,UNKNOWN,,U,false,Queens,
+2239,May 08 2021,DOG,MIXED,,M,false,Brooklyn,11234
+2241,May 08 2021,DOG,American Staffordshire Terrier,11,M,false,Brooklyn,11225
+4435,May 08 2021,DOG,Siberian Husky,5,F,false,Bronx,10473
+4437,May 08 2021,DOG,Shih Tzu,7MOS,F,false,Bronx,10472
+7173,May 08 2021,DOG,Cocker Spaniel,4,M,false,Manhattan,
+7174,May 08 2021,DOG,UNKNOWN,9,F,true,Manhattan,
+7184,May 08 2021,DOG,SHEPERD,,U,false,Manhattan,
+10817,May 08 2021,DOG,BOXER / PIT BULL MIX,1,M,false,Queens,11434
+2242,May 09 2021,DOG,Shih Tzu,9,F,false,Brooklyn,11238
+4432,May 09 2021,DOG,Mixed/Other,,M,false,Bronx,10463
+7169,May 09 2021,DOG,BULLDOG,,U,false,Manhattan,
+8099,May 09 2021,DOG,SCHITZU,,F,false,Other,
+8102,May 09 2021,DOG,UNKNOWN,2Y,F,true,Other,
+10820,May 09 2021,DOG,TERRIER MIX,4,M,true,Queens,11105
+10821,May 09 2021,DOG,MIXED,,U,false,Queens,11414
+10822,May 09 2021,DOG,Pit Bull,1,M,false,Queens,11433
+10824,May 09 2021,DOG,West High White Terrier,3,M,true,Queens,11104
+10825,May 09 2021,DOG,Shih Tzu,11,M,false,Queens,11423
+10826,May 09 2021,DOG,UNKNOWN,,U,false,Queens,11368
+10828,May 09 2021,DOG,Pit Bull,1,M,false,Queens,11692
+4431,May 10 2021,DOG,Shih Tzu,,U,false,Bronx,10465
+4436,May 10 2021,DOG,LARGE MIX BREED,2,M,false,Bronx,10472
+7176,May 10 2021,DOG,Pit Bull,5,M,false,Manhattan,10025
+7177,May 10 2021,DOG,Pit Bull,,U,false,Manhattan,10040
+7190,May 10 2021,DOG,Pit Bull,,U,false,Manhattan,
+7191,May 10 2021,DOG,Pit Bull,,U,false,Manhattan,10040
+7192,May 10 2021,DOG,Maltese,,U,false,Manhattan,
+7193,May 10 2021,DOG,"Dachshund, Long Haired",3,M,false,Manhattan,10035
+7194,May 10 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7207,May 10 2021,DOG,UNKNOWN,,U,false,Manhattan,
+10823,May 10 2021,DOG,Pit Bull,1,M,false,Queens,11433
+10829,May 10 2021,DOG,Shih Tzu,10,M,true,Queens,11369
+2244,May 11 2021,DOG,Chihuahua,,U,false,Brooklyn,11220
+2247,May 11 2021,DOG,Pit Bull,,U,false,Brooklyn,11211
+4433,May 11 2021,DOG,American Pit Bull Mix / Pit Bull Mix,5,M,true,Bronx,10452
+7186,May 11 2021,DOG,Pit Bull,15,F,false,Manhattan,10029
+7188,May 11 2021,DOG,MINIATURE GOLDEN DOODLE,4 MTHS,M,false,Manhattan,10075
+10827,May 11 2021,DOG,UNKNOWN,,U,false,Queens,
+10830,May 11 2021,DOG,REFUSED TO PROVIDE,,U,false,Queens,11412
+10831,May 11 2021,DOG,CHIHUAHUA / PUG MIX,10,M,true,Queens,11373
+10832,May 11 2021,DOG,ZUCHON,7,M,true,Queens,11421
+2243,May 12 2021,DOG,BULLY PIT BULL X,1,M,false,Brooklyn,11249
+2245,May 12 2021,DOG,Pit Bull,,U,false,Brooklyn,11222
+2249,May 12 2021,DOG,Pit Bull,,U,false,Brooklyn,11229
+4441,May 12 2021,DOG,Pit Bull,,U,false,Bronx,10460
+7185,May 12 2021,DOG,Pit Bull,,U,false,Manhattan,10038
+7196,May 12 2021,DOG,UNKNOWN,3,M,false,Manhattan,
+8101,May 12 2021,DOG,Shih Tzu,,U,false,Other,
+8104,May 12 2021,DOG,UNKNOWN,,U,false,Other,
+10833,May 12 2021,DOG,Australian Shepherd,,U,false,Queens,
+10834,May 12 2021,DOG,Bull dog,19,M,false,Queens,11434
+10883,May 12 2021,DOG,UNKNOWN,,U,false,Queens,11368
+12238,May 12 2021,DOG,Pit Bull,,U,false,Staten Island,10309
+7179,May 13 2021,DOG,Pit Bull,,U,false,Manhattan,
+7180,May 13 2021,DOG,UNKNOWN,4,F,true,Manhattan,
+7181,May 13 2021,DOG,TERRIER,,U,false,Manhattan,
+7182,May 13 2021,DOG,UNKNOWN,2,F,true,Manhattan,10010
+7183,May 13 2021,DOG,UNKNOWN,10 MTHS,M,true,Manhattan,10128
+7202,May 13 2021,DOG,"Jindo Dog,",5 MTHS,F,true,Manhattan,10065
+12237,May 13 2021,DOG,UNKNOWN,,U,false,Staten Island,
+2252,May 14 2021,DOG,Chihuahua,,U,false,Brooklyn,
+2256,May 14 2021,DOG,UNKNOWN,,U,false,Brooklyn,
+7187,May 14 2021,DOG,Golden Retriever,1,M,true,Manhattan,
+7189,May 14 2021,DOG,Shiba Inu,8,M,true,Manhattan,
+7203,May 14 2021,DOG,Rottweiler,,U,false,Manhattan,
+7205,May 14 2021,DOG,AUSTRALIAN SHEPERD MIX,5,F,true,Manhattan,10011
+10835,May 14 2021,DOG,AMERICAN BULLY / PIT BULL,3,M,false,Queens,11368
+12239,May 14 2021,DOG,Rottweiler,,U,false,Staten Island,10310
+2250,May 15 2021,DOG,SMOOTH COAT COLLIE X,6,M,true,Brooklyn,11225
+2251,May 15 2021,DOG,Belgian Malinois,1,F,true,Brooklyn,11249
+2558,May 15 2021,DOG,Rottweiler,,U,false,Brooklyn,11209
+4443,May 15 2021,DOG,UNKNOWN,,U,false,Bronx,10453
+7198,May 15 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7200,May 15 2021,DOG,CORGI,13,U,false,Manhattan,
+7213,May 15 2021,DOG,UNKNOWN,3,M,false,Manhattan,
+8103,May 15 2021,DOG,UNKNOWN,,U,false,Other,
+8105,May 15 2021,DOG,CORGI/MIX,6.5Y,M,true,Other,
+10839,May 15 2021,DOG,CORGI / AUSTRALIAN SHEPHERD MIX,4,M,true,Queens,11421
+10847,May 15 2021,DOG,Bichon Frise,6,M,true,Queens,11365
+12240,May 15 2021,DOG,BULLDOG,,U,false,Staten Island,
+12241,May 15 2021,DOG,Pit Bull,,U,false,Staten Island,
+4440,May 16 2021,DOG,Chihuahua Crossbreed,,U,false,Bronx,10451
+4442,May 16 2021,DOG,Labrador Retriever,,U,false,Bronx,
+7199,May 16 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7201,May 16 2021,DOG,Pit Bull,8,F,true,Manhattan,
+7206,May 16 2021,DOG,UNKNOWN,5,M,false,Manhattan,10009
+8100,May 16 2021,DOG,LABRADOR,,U,false,Other,
+8108,May 16 2021,DOG,UNKNOWN,,U,false,Other,
+10836,May 16 2021,DOG,UNKNOWN,4M,U,false,Queens,11435
+10837,May 16 2021,DOG,"Bull Dog, French",2,M,false,Queens,
+10838,May 16 2021,DOG,UNKNOWN,,U,false,Queens,11365
+10854,May 16 2021,DOG,SHAR-PEI / BEAGLE MIX,1,M,true,Queens,11421
+12242,May 16 2021,DOG,"Bull Dog, French",11Y,M,true,Staten Island,10309
+2253,May 17 2021,DOG,UNKNOWN,,U,false,Brooklyn,11213
+4444,May 17 2021,DOG,UNKNOWN,,U,false,Bronx,10456
+10840,May 17 2021,DOG,Chihuahua,,U,false,Queens,11416
+10841,May 17 2021,DOG,Pit Bull,,U,false,Queens,11429
+10852,May 17 2021,DOG,German Shepherd,,U,false,Queens,11379
+2254,May 18 2021,DOG,TERRIER,1,F,true,Brooklyn,11225
+2255,May 18 2021,DOG,UNKNOWN,,U,false,Brooklyn,11231
+2259,May 18 2021,DOG,German Shepherd,,U,false,Brooklyn,
+2264,May 18 2021,DOG,"Bull Dog, French",,M,false,Brooklyn,11209
+7204,May 18 2021,DOG,UNKNOWN,,U,false,Manhattan,10006
+7208,May 18 2021,DOG,PITBULL MIX,2,M,false,Manhattan,10128
+7209,May 18 2021,DOG,TERRIER MIX,3,M,true,Manhattan,10009
+7286,May 18 2021,DOG,UNKNOWN,11,F,true,Manhattan,10022
+10842,May 18 2021,DOG,American Pit Bull Mix / Pit Bull Mix,4,M,false,Queens,11364
+10843,May 18 2021,DOG,Rottweiler,,U,false,Queens,11432
+10850,May 18 2021,DOG,Pit Bull,2,F,false,Queens,11412
+10851,May 18 2021,DOG,Australian Shepherd,3,M,false,Queens,11374
+2257,May 19 2021,DOG,Maltese,,U,false,Brooklyn,11221
+2258,May 19 2021,DOG,Chihuahua,,U,false,Brooklyn,11226
+2261,May 19 2021,DOG,"Dachshund, Long Haired",1,M,true,Brooklyn,11229
+4458,May 19 2021,DOG,Pit Bull,,U,false,Bronx,10454
+10848,May 19 2021,DOG,SHIH TZU / MALTESE MIX,3,M,true,Queens,11434
+10849,May 19 2021,DOG,Australian Shepherd,1,F,true,Queens,11366
+12243,May 19 2021,DOG,YORKSHIRE TERRIER,,U,false,Staten Island,
+12244,May 19 2021,DOG,Jack Russ,,U,false,Staten Island,10312
+2260,May 20 2021,DOG,Pit Bull,8,F,false,Brooklyn,11236
+2262,May 20 2021,DOG,"Bull Dog, French",,M,false,Brooklyn,11209
+2268,May 20 2021,DOG,NOVA SCOTIA DUCK TOLLING RETRIEVER,3,M,false,Brooklyn,11213
+4445,May 20 2021,DOG,LARGE MIXED BREED,7,M,false,Bronx,10452
+4446,May 20 2021,DOG,Pit Bull,10,M,false,Bronx,10453
+4447,May 20 2021,DOG,Shih Tzu,3,F,false,Bronx,10466
+4453,May 20 2021,DOG,"Poodle, Standard",,U,false,Bronx,10470
+7210,May 20 2021,DOG,Pit Bull,,U,false,Manhattan,10029
+7211,May 20 2021,DOG,MALTESE MIX,9,M,false,Manhattan,
+7323,May 20 2021,DOG,UNKNOWN,,U,false,Manhattan,
+8106,May 20 2021,DOG,UNKNOWN,,U,false,Other,
+8107,May 20 2021,DOG,German Shepherd,,U,false,Other,
+10844,May 20 2021,DOG,German Shepherd,,U,false,Queens,
+10845,May 20 2021,DOG,German Shepherd,,U,false,Queens,
+10846,May 20 2021,DOG,Rottweiler,2,F,false,Queens,11434
+10853,May 20 2021,DOG,UNKNOWN,,U,false,Queens,11360
+12248,May 20 2021,DOG,Pit Bull,,U,false,Staten Island,
+2263,May 21 2021,DOG,Rottweiler,3,M,false,Brooklyn,11222
+2265,May 21 2021,DOG,SPANIEL X,11,F,true,Brooklyn,11215
+4451,May 21 2021,DOG,Siberian Husky,,U,false,Bronx,10456
+4560,May 21 2021,DOG,Pit Bull,,U,false,Bronx,10472
+7212,May 21 2021,DOG,Pit Bull,1,F,true,Manhattan,10032
+7214,May 21 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7215,May 21 2021,DOG,Pit Bull,4,M,true,Manhattan,
+7225,May 21 2021,DOG,COTTONDOODLE,,M,false,Manhattan,10036
+10857,May 21 2021,DOG,UNKNOWN,,U,false,Queens,
+10858,May 21 2021,DOG,Shih Tzu,,M,true,Queens,11385
+11288,May 21 2021,DOG,UNKNOWN,,U,false,Queens,
+10859,May 22 2021,DOG,Pit Bull,,U,false,Queens,
+10860,May 22 2021,DOG,Labrador Retriever,,U,false,Queens,11366
+12245,May 22 2021,DOG,LARGE MIXED BREED,1Y,M,false,Staten Island,10303
+2266,May 23 2021,DOG,WESTIE TERRIER,7,M,true,Brooklyn,11224
+4456,May 23 2021,DOG,Shetland Sheepdog,,U,false,Bronx,10472
+4561,May 23 2021,DOG,Dachshund Smooth Coat Miniature,,U,false,Bronx,10466
+7217,May 23 2021,DOG,Golden Retriever,,U,false,Manhattan,
+7218,May 23 2021,DOG,UNKNOWN,3,M,false,Manhattan,10128
+7219,May 23 2021,DOG,UNKNOWN,,U,false,Manhattan,10029
+7220,May 23 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7221,May 23 2021,DOG,Yorkshire Terrier,5,F,false,Manhattan,10065
+10855,May 23 2021,DOG,Pit Bull,,M,false,Queens,11355
+10856,May 23 2021,DOG,PEKINGESE MIX,12,M,true,Queens,11368
+10898,May 23 2021,DOG,Pit Bull,,U,false,Queens,
+12246,May 23 2021,DOG,Maltese,12Y,F,true,Staten Island,10304
+2267,May 24 2021,DOG,Shih Tzu,6,F,false,Brooklyn,11211
+4562,May 24 2021,DOG,Pit Bull,,U,false,Bronx,10468
+7216,May 24 2021,DOG,Rottweiler,,U,false,Manhattan,10075
+10862,May 24 2021,DOG,UNKNOWN,,U,false,Queens,
+10864,May 24 2021,DOG,COONHOUND MIX,1,M,true,Queens,11377
+10865,May 24 2021,DOG,"Bull Dog, French",10M,M,false,Queens,11104
+12247,May 24 2021,DOG,Pit Bull,,U,false,Staten Island,
+2270,May 25 2021,DOG,UNKNOWN,,U,false,Brooklyn,
+2273,May 25 2021,DOG,BRITTANY PIT BULL X,2,M,true,Brooklyn,11233
+7222,May 25 2021,DOG,Shih Tzu,,U,false,Manhattan,10128
+7224,May 25 2021,DOG,UNKNOWN,,M,false,Manhattan,10035
+10861,May 25 2021,DOG,German Shepherd,7,M,false,Queens,11365
+10863,May 25 2021,DOG,Pit Bull,5,M,false,Queens,11369
+10866,May 25 2021,DOG,German Shepherd,,U,false,Queens,11420
+10867,May 25 2021,DOG,Maltese,,U,false,Queens,11360
+10868,May 25 2021,DOG,UNKNOWN,,U,false,Queens,
+2278,May 26 2021,DOG,German Shepherd,7,F,true,Brooklyn,11234
+4452,May 26 2021,DOG,"Poodle, Standard",,U,false,Bronx,10451
+7223,May 26 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7226,May 26 2021,DOG,TERRIER,,U,false,Manhattan,
+7227,May 26 2021,DOG,DACHSHUND,3,F,true,Manhattan,10128
+10869,May 26 2021,DOG,Rottweiler,,U,false,Queens,11421
+2269,May 27 2021,DOG,Pit Bull,,U,false,Brooklyn,11229
+2289,May 27 2021,DOG,Chow Chow,9,M,true,Brooklyn,11249
+4448,May 27 2021,DOG,Pit Bull,,U,false,Bronx,10457
+4558,May 27 2021,DOG,,,U,false,Bronx,10472
+7228,May 27 2021,DOG,UNKNOWN,1,F,true,Manhattan,
+7230,May 27 2021,DOG,MASTIFF,,U,false,Manhattan,
+7232,May 27 2021,DOG,UNKNOWN,,U,false,Manhattan,
+10870,May 27 2021,DOG,Saluki,6M,M,false,Queens,11430
+10871,May 27 2021,DOG,UNKNOWN,,U,false,Queens,11358
+10872,May 27 2021,DOG,UNKNOWN,,U,false,Queens,
+10878,May 27 2021,DOG,"Schnauzer, Standard",,U,false,Queens,11102
+12249,May 27 2021,DOG,Doberman Pinscher,,U,false,Staten Island,
+12338,May 27 2021,DOG,LAB/PIT BULL MIX,,F,true,Staten Island,10301
+2272,May 28 2021,DOG,UNKNOWN,,U,false,Brooklyn,11224
+2275,May 28 2021,DOG,MIXED BREED,4,M,false,Brooklyn,11203
+2276,May 28 2021,DOG,MIXED BREED,3,M,false,Brooklyn,11203
+2277,May 28 2021,DOG,Chihuahua,,U,false,Brooklyn,11220
+2280,May 28 2021,DOG,Pit Bull,,U,false,Brooklyn,11228
+2283,May 28 2021,DOG,JINDO X,1,M,true,Brooklyn,11211
+4449,May 28 2021,DOG,Yorkshire Terrier,9,M,false,Bronx,10462
+4559,May 28 2021,DOG,Pit Bull,,U,false,Bronx,10460
+7229,May 28 2021,DOG,UNKNOWN,,U,false,Manhattan,10003
+7249,May 28 2021,DOG,UNKNOWN,,U,false,Manhattan,10016
+8112,May 28 2021,DOG,UNKNOWN,5,M,true,Other,20190
+10876,May 28 2021,DOG,German Shepherd,,U,false,Queens,11102
+2274,May 29 2021,DOG,UNKNOWN,,U,false,Brooklyn,
+2383,May 29 2021,DOG,Rottweiler,,U,false,Brooklyn,
+4450,May 29 2021,DOG,UNKNOWN,,U,false,Bronx,
+4457,May 29 2021,DOG,Pekingese,3,M,false,Bronx,10460
+8109,May 29 2021,DOG,UNKNOWN,4,M,true,Other,
+8110,May 29 2021,DOG,UNKNOWN,,U,false,Other,
+10873,May 29 2021,DOG,Pomeranian,,U,false,Queens,
+10875,May 29 2021,DOG,Jack Russ,4,M,false,Queens,11365
+2287,May 30 2021,DOG,UNKNOWN,,U,false,Brooklyn,
+4454,May 30 2021,DOG,Mixed/Other,,M,false,Bronx,10469
+4473,May 30 2021,DOG,UNKNOWN,,U,false,Bronx,10461
+4529,May 30 2021,DOG,Pit Bull,,U,false,Bronx,10453
+8114,May 30 2021,DOG,Chihuahua,6,M,true,Other,18458
+4455,May 31 2021,DOG,UNKNOWN,,U,false,Bronx,10451
+4467,May 31 2021,DOG,Pit Bull,15,F,true,Bronx,10470
+4687,May 31 2021,DOG,,,U,false,Bronx,10455
+7231,May 31 2021,DOG,PETIT BASSET GRIFFON VENDEEN,13,M,true,Manhattan,
+8113,May 31 2021,DOG,UNKNOWN,,U,false,Other,
+10874,May 31 2021,DOG,Beagle,,U,false,Queens,11385
+10877,May 31 2021,DOG,UNKNOWN,,U,false,Queens,
+10881,May 31 2021,DOG,Labradoodle,5,M,true,Queens,
+12250,May 31 2021,DOG,CATTLE DOG X - LAB,2022-02-03T00:00:00.000,M,true,Staten Island,10312
+7233,June 01 2021,DOG,UNKNOWN,,U,false,Manhattan,
+12251,June 01 2021,DOG,Pit Bull,,U,false,Staten Island,10309
+12252,June 01 2021,DOG,UNKNOWN,,U,false,Staten Island,
+12253,June 01 2021,DOG,UNKNOWN,,U,false,Staten Island,10306
+2279,June 02 2021,DOG,UNKNOWN,,U,false,Brooklyn,11222
+2282,June 02 2021,DOG,Pit Bull,,U,false,Brooklyn,11206
+2286,June 02 2021,DOG,Pomeranian,9,M,false,Brooklyn,11205
+2341,June 02 2021,DOG,UNKNOWN,,U,false,Brooklyn,
+7234,June 02 2021,DOG,HUSKY,,U,false,Manhattan,
+7235,June 02 2021,DOG,SCHNAUZER,,U,false,Manhattan,
+7236,June 02 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7239,June 02 2021,DOG,UNKNOWN,,U,false,Manhattan,10025
+10879,June 02 2021,DOG,Pit Bull,,U,false,Queens,11692
+10880,June 02 2021,DOG,Shih Tzu,1,M,true,Queens,
+10884,June 02 2021,DOG,MIXED,,U,false,Queens,11355
+10892,June 02 2021,DOG,UNKNOWN,,U,false,Queens,11377
+10959,June 02 2021,DOG,Beagle,10M,M,false,Queens,11378
+2281,June 03 2021,DOG,Pit Bull,8,M,false,Brooklyn,11203
+2284,June 03 2021,DOG,UNKNOWN,,U,false,Brooklyn,11209
+2285,June 03 2021,DOG,Shih Tzu,5,M,false,Brooklyn,11222
+4474,June 03 2021,DOG,UNKNOWN,,U,false,Bronx,10459
+7237,June 03 2021,DOG,BEAGLE MIX,1,M,true,Manhattan,10003
+7238,June 03 2021,DOG,Pit Bull,,U,false,Manhattan,10002
+7240,June 03 2021,DOG,INU,,U,false,Manhattan,
+10882,June 03 2021,DOG,Pit Bull,,U,false,Queens,11693
+10885,June 03 2021,DOG,UNKNOWN,,U,false,Queens,11366
+10886,June 03 2021,DOG,Boston Terrier,4,M,true,Queens,
+10887,June 03 2021,DOG,Shih Tzu,5,M,true,Queens,11432
+12254,June 03 2021,DOG,Pit Bull,,U,false,Staten Island,10310
+2288,June 04 2021,DOG,Rottweiler,,U,false,Brooklyn,11235
+2291,June 04 2021,DOG,MIXED BREED,3,M,false,Brooklyn,11219
+2293,June 04 2021,DOG,Pit Bull,,U,false,Brooklyn,
+7246,June 04 2021,DOG,PITBULL MIX,6,M,true,Manhattan,10034
+7247,June 04 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7251,June 04 2021,DOG,UNKNOWN,1,M,false,Manhattan,10128
+10888,June 04 2021,DOG,American Pit Bull Mix / Pit Bull Mix,5,F,true,Queens,11103
+10889,June 04 2021,DOG,Pug,,U,false,Queens,11360
+10890,June 04 2021,DOG,UNKNOWN,,U,false,Queens,11435
+10893,June 04 2021,DOG,UNKNOWN,,U,false,Queens,11368
+10894,June 04 2021,DOG,UNKNOWN,,U,false,Queens,
+10909,June 04 2021,DOG,UNKNOWN,,U,false,Queens,11372
+2290,June 05 2021,DOG,Pit Bull,4,M,false,Brooklyn,11229
+7242,June 05 2021,DOG,UNKNOWN,,U,false,Manhattan,10014
+7243,June 05 2021,DOG,SHEPERD,,U,false,Manhattan,10005
+7245,June 05 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7250,June 05 2021,DOG,Pit Bull,,U,false,Manhattan,
+8117,June 05 2021,DOG,Pit Bull,,U,false,Other,
+8131,June 05 2021,DOG,BOXER/PIT MIX,10,M,false,Other,
+10899,June 05 2021,DOG,German Shepherd,,U,false,Queens,11417
+2292,June 06 2021,DOG,BORDER COLLIE MIX,4,F,true,Brooklyn,11238
+2294,June 06 2021,DOG,MIXED,8,M,true,Brooklyn,11215
+2296,June 06 2021,DOG,UNKNOWN,,U,false,Brooklyn,11234
+4460,June 06 2021,DOG,Mixed/Other,12,M,false,Bronx,10473
+4564,June 06 2021,DOG,Shih Tzu,,U,false,Bronx,10461
+7241,June 06 2021,DOG,LABRADOR,,U,false,Manhattan,
+7244,June 06 2021,DOG,UNKNOWN,5,M,true,Manhattan,10128
+7248,June 06 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7252,June 06 2021,DOG,POODLE,,U,false,Manhattan,
+8115,June 06 2021,DOG,UNKNOWN,,U,false,Other,
+10895,June 06 2021,DOG,Pit Bull,,U,false,Queens,
+10896,June 06 2021,DOG,Cane Corso,5,M,true,Queens,11426
+2295,June 07 2021,DOG,Siberian Husky,,U,false,Brooklyn,11209
+2301,June 07 2021,DOG,UNKNOWN,,U,false,Brooklyn,11235
+2307,June 07 2021,DOG,UNKNOWN,,U,false,Brooklyn,
+2311,June 07 2021,DOG,MIXED,1,M,false,Brooklyn,11235
+4459,June 07 2021,DOG,SMALL MIXED BREED,10,U,false,Bronx,10456
+4557,June 07 2021,DOG,UNKNOWN,,U,false,Bronx,10473
+10891,June 07 2021,DOG,Pit Bull,7,M,false,Queens,11365
+10897,June 07 2021,DOG,Chow Chow,,U,false,Queens,11109
+10900,June 07 2021,DOG,UNKNOWN,,U,false,Queens,
+2297,June 08 2021,DOG,Shih Tzu,,U,false,Brooklyn,11226
+7254,June 08 2021,DOG,UNKNOWN,,U,false,Manhattan,
+8116,June 08 2021,DOG,UNKNOWN,,U,false,Other,
+10901,June 08 2021,DOG,UNKNOWN,,U,false,Queens,
+10902,June 08 2021,DOG,Pit Bull,,U,false,Queens,11432
+2298,June 09 2021,DOG,Puggle,6,M,true,Brooklyn,11220
+2299,June 09 2021,DOG,SOFT COATED WHEATEN TERRIER,6M,F,false,Brooklyn,11217
+2302,June 09 2021,DOG,UNKNOWN,,U,false,Brooklyn,11222
+2354,June 09 2021,DOG,Pit Bull,,U,false,Brooklyn,
+4461,June 09 2021,DOG,LARGE MIXED BREED,,U,false,Bronx,10451
+4466,June 09 2021,DOG,Pit Bull,,U,false,Bronx,10457
+7253,June 09 2021,DOG,German Shepherd,3,M,true,Manhattan,
+10904,June 09 2021,DOG,Pit Bull,,U,false,Queens,11378
+10905,June 09 2021,DOG,MIXED,4,F,true,Queens,11104
+2300,June 10 2021,DOG,Pit Bull,,U,false,Brooklyn,11231
+2305,June 10 2021,DOG,German Shepherd Crossbreed,,U,false,Brooklyn,11215
+2320,June 10 2021,DOG,Belgian Malinois,10,F,false,Brooklyn,11213
+4462,June 10 2021,DOG,Mixed/Other,2,F,false,Bronx,10472
+4465,June 10 2021,DOG,Chihuahua,,M,false,Bronx,10452
+4553,June 10 2021,DOG,UNKNOWN,,U,false,Bronx,10463
+4577,June 10 2021,DOG,Pit Bull,,U,false,Bronx,10473
+7255,June 10 2021,DOG,UNKNOWN,3,M,false,Manhattan,10029
+7265,June 10 2021,DOG,TERRIER MIX,5,F,true,Manhattan,10281
+10907,June 10 2021,DOG,Pit Bull,5,F,false,Queens,11416
+10908,June 10 2021,DOG,UNKNOWN,,U,false,Queens,11419
+10910,June 10 2021,DOG,UNKNOWN,,U,false,Queens,
+10919,June 10 2021,DOG,Dachshund Smooth Coat,3,M,true,Queens,11370
+2303,June 11 2021,DOG,UNKNOWN,3,M,false,Brooklyn,11220
+2304,June 11 2021,DOG,UNKNOWN,,U,false,Brooklyn,11211
+2308,June 11 2021,DOG,Chihuahua,,U,false,Brooklyn,11211
+7256,June 11 2021,DOG,UNKNOWN,,U,false,Manhattan,10002
+7258,June 11 2021,DOG,"Coonhound, Treeing Walker",3,M,true,Manhattan,10014
+10911,June 11 2021,DOG,POODLE / YORKIE MIX,7,F,false,Queens,11434
+10914,June 11 2021,DOG,Pit Bull,,U,false,Queens,11694
+2306,June 12 2021,DOG,Cocker Spaniel,,U,false,Brooklyn,11220
+4463,June 12 2021,DOG,Pit Bull,,U,false,Bronx,10469
+7257,June 12 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7259,June 12 2021,DOG,SHIHTZU-POODLE MIX,6,M,false,Manhattan,10040
+7262,June 12 2021,DOG,Pit Bull,,U,false,Manhattan,
+7263,June 12 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7264,June 12 2021,DOG,BULLDOG,,U,false,Manhattan,
+8118,June 12 2021,DOG,MIXED,11,F,true,Other,10022
+10934,June 12 2021,DOG,Pit Bull,,U,false,Queens,11377
+12255,June 12 2021,DOG,LARGE MIXED BREED,2Y,U,false,Staten Island,10310
+12291,June 12 2021,DOG,MIXED TERRIER,9,M,true,Staten Island,10306
+2309,June 13 2021,DOG,"Poodle, Standard",,U,false,Brooklyn,
+2310,June 13 2021,DOG,"Mastiff, Bull",,U,false,Brooklyn,11209
+7260,June 13 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7261,June 13 2021,DOG,UNKNOWN,,U,false,Manhattan,
+10913,June 13 2021,DOG,UNKNOWN,,U,false,Queens,11413
+10920,June 13 2021,DOG,UNKNOWN,,U,false,Queens,11354
+10926,June 13 2021,DOG,UNKNOWN,,U,false,Queens,11420
+10955,June 13 2021,DOG,German Shepherd,,U,false,Queens,11426
+2313,June 14 2021,DOG,Labrador Retriever,,U,false,Brooklyn,11230
+2332,June 14 2021,DOG,Rottweiler,,U,false,Brooklyn,11210
+7266,June 14 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7267,June 14 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7268,June 14 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7269,June 14 2021,DOG,UNKNOWN,,U,false,Manhattan,10039
+7270,June 14 2021,DOG,UNKNOWN,,U,false,Manhattan,
+8119,June 14 2021,DOG,UNKNOWN,,U,false,Other,
+10912,June 14 2021,DOG,UNKNOWN,,U,false,Queens,
+10915,June 14 2021,DOG,UNKNOWN,,U,false,Queens,11373
+10917,June 14 2021,DOG,LABRADOR / PIT BULL,3,M,false,Queens,
+10922,June 14 2021,DOG,UNKNOWN,,U,false,Queens,
+2312,June 15 2021,DOG,Yorkshire Terrier,,U,false,Brooklyn,11219
+2315,June 15 2021,DOG,Yorkshire Terrier,,U,false,Brooklyn,11206
+2316,June 15 2021,DOG,Pit Bull,,M,false,Brooklyn,11221
+2317,June 15 2021,DOG,Pit Bull,,M,false,Brooklyn,11221
+4464,June 15 2021,DOG,MEDIUM MIXED BREED,11-12YRS,M,true,Bronx,10463
+4475,June 15 2021,DOG,UNKNOWN,,U,false,Bronx,
+7271,June 15 2021,DOG,Pit Bull,,U,false,Manhattan,
+10916,June 15 2021,DOG,"Collie, Border",1,M,true,Queens,
+10918,June 15 2021,DOG,Pit Bull,3,M,false,Queens,
+10921,June 15 2021,DOG,Pit Bull,5,M,true,Queens,
+10924,June 15 2021,DOG,Lhasa Apso,9,F,true,Queens,
+12256,June 15 2021,DOG,Pit Bull,,U,false,Staten Island,
+2319,June 16 2021,DOG,UNKNOWN,,U,false,Brooklyn,
+7272,June 16 2021,DOG,Pit Bull,,U,false,Manhattan,10001
+7273,June 16 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7274,June 16 2021,DOG,Chihuahua,,U,false,Manhattan,10002
+7276,June 16 2021,DOG,UNKNOWN,,U,false,Manhattan,
+10923,June 16 2021,DOG,Australian Shepherd,3M,M,false,Queens,11101
+10925,June 16 2021,DOG,AMERICAN BULLY,2,M,false,Queens,11427
+10927,June 16 2021,DOG,PITBULL TERRIER MIX,,U,false,Queens,11419
+10928,June 16 2021,DOG,Yorkshire Terrier,,U,false,Queens,11428
+10929,June 16 2021,DOG,UNKNOWN,,U,false,Queens,11420
+10930,June 16 2021,DOG,Chihuahua,9,M,true,Queens,11104
+10931,June 16 2021,DOG,UNKNOWN,,U,false,Queens,11101
+10932,June 16 2021,DOG,UNKNOWN,,U,false,Queens,11693
+10933,June 16 2021,DOG,UNKNOWN,,U,false,Queens,
+2314,June 17 2021,DOG,German Shepherd,2,M,true,Brooklyn,
+2318,June 17 2021,DOG,MIXED,1,M,true,Brooklyn,11214
+2326,June 17 2021,DOG,Shiba Inu,1,M,true,Brooklyn,11249
+2334,June 17 2021,DOG,MIXED BREED,,U,false,Brooklyn,11207
+4469,June 17 2021,DOG,PITBULL X/BULL DOG,1,M,false,Bronx,10459
+7275,June 17 2021,DOG,Pit Bull,,F,false,Manhattan,10040
+10935,June 17 2021,DOG,MIXED,1,M,false,Queens,11372
+10937,June 17 2021,DOG,German Shepherd,,U,false,Queens,
+10938,June 17 2021,DOG,Pit Bull,,U,false,Queens,
+10939,June 17 2021,DOG,UNKNOWN,,U,false,Queens,
+10942,June 17 2021,DOG,UNKNOWN,,U,false,Queens,11363
+10947,June 17 2021,DOG,Pit Bull,,F,false,Queens,
+12261,June 17 2021,DOG,Labrador Retriever Crossbreed,,M,false,Staten Island,10304
+2321,June 18 2021,DOG,Chihuahua,2,M,false,Brooklyn,11220
+2324,June 18 2021,DOG,Shih Tzu,,U,false,Brooklyn,11223
+2325,June 18 2021,DOG,Pit Bull,,U,false,Brooklyn,11221
+2331,June 18 2021,DOG,UNKNOWN,7,F,false,Brooklyn,
+2333,June 18 2021,DOG,Chow Chow,,U,false,Brooklyn,11249
+4476,June 18 2021,DOG,UNKNOWN,,U,false,Bronx,
+4551,June 18 2021,DOG,,,U,false,Bronx,
+4565,June 18 2021,DOG,Chihuahua,,U,false,Bronx,
+7277,June 18 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7278,June 18 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7281,June 18 2021,DOG,UNKNOWN,,U,false,Manhattan,10022
+7284,June 18 2021,DOG,UNKNOWN,,U,false,Manhattan,
+8120,June 18 2021,DOG,UNKNOWN,,U,false,Other,
+8123,June 18 2021,DOG,UNKNOWN,,U,false,Other,
+10936,June 18 2021,DOG,JACK RUSSELL MIX,1,M,true,Queens,11368
+10943,June 18 2021,DOG,Pit Bull,,U,false,Queens,11369
+11038,June 18 2021,DOG,Pit Bull,,U,false,Queens,11370
+11224,June 18 2021,DOG,Chihuahua,,U,false,Queens,11103
+12260,June 18 2021,DOG,MEDIUM MIXED BREED,,F,false,Staten Island,10314
+12262,June 18 2021,DOG,UNKNOWN,,U,false,Staten Island,
+2323,June 19 2021,DOG,Pit Bull,,U,false,Brooklyn,11211
+4470,June 19 2021,DOG,Mixed/Other,6,F,false,Bronx,10462
+7279,June 19 2021,DOG,UNKNOWN,6,F,true,Manhattan,
+7282,June 19 2021,DOG,UNKNOWN,,U,false,Manhattan,10038
+7283,June 19 2021,DOG,LABRADOR MIX,1,M,true,Manhattan,
+10941,June 19 2021,DOG,German Shepherd,6,F,true,Queens,11413
+10948,June 19 2021,DOG,German Shepherd,1,F,false,Queens,11355
+10949,June 19 2021,DOG,Golden Retriever,1,M,true,Queens,11358
+11225,June 19 2021,DOG,UNKNOWN,,U,false,Queens,11368
+12258,June 19 2021,DOG,UNKNOWN,,U,false,Staten Island,
+12259,June 19 2021,DOG,UNKNOWN,,U,false,Staten Island,
+2322,June 20 2021,DOG,Labrador Retriever Crossbreed,1,F,true,Brooklyn,
+4468,June 20 2021,DOG,UNKNOWN,,U,false,Bronx,10466
+4472,June 20 2021,DOG,Shih Tzu,,U,false,Bronx,
+4477,June 20 2021,DOG,"Bull Dog, French",,U,false,Bronx,10473
+4478,June 20 2021,DOG,Pit Bull,,U,false,Bronx,10453
+7280,June 20 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7285,June 20 2021,DOG,POODLE,,U,false,Manhattan,
+7288,June 20 2021,DOG,UNKNOWN,8,M,false,Manhattan,10033
+8122,June 20 2021,DOG,Pit Bull,,U,false,Other,
+10940,June 20 2021,DOG,MIXED,,U,false,Queens,
+10945,June 20 2021,DOG,Pit Bull,2,M,false,Queens,11354
+10946,June 20 2021,DOG,UNKNOWN,,U,false,Queens,11385
+10950,June 20 2021,DOG,"Poodle, Standard",13,M,false,Queens,11103
+10954,June 20 2021,DOG,Cocker Spaniel,,U,false,Queens,
+10956,June 20 2021,DOG,UNKNOWN,,U,false,Queens,11106
+10957,June 20 2021,DOG,BEAGLE / SHAR-PEI MIX,10,F,true,Queens,11365
+12257,June 20 2021,DOG,UNKNOWN,,U,false,Staten Island,
+2327,June 21 2021,DOG,"Poodle, Standard",,U,false,Brooklyn,11234
+2348,June 21 2021,DOG,Cocker Spaniel,,U,false,Brooklyn,11229
+2534,June 21 2021,DOG,Yorkshire Terrier,4,M,true,Brooklyn,
+4615,June 21 2021,DOG,UNKNOWN,,U,false,Bronx,10456
+10944,June 21 2021,DOG,German Shepherd,,U,false,Queens,11372
+10951,June 21 2021,DOG,Shiba Inu,6,M,true,Queens,11361
+10952,June 21 2021,DOG,TERRIER MIX,11,F,true,Queens,11101
+10953,June 21 2021,DOG,Pit Bull,,U,false,Queens,11694
+10977,June 21 2021,DOG,Bull dog,3,M,true,Queens,11426
+11022,June 21 2021,DOG,Cocker Spaniel Crossbreed,,U,false,Queens,11369
+12263,June 21 2021,DOG,Siberian Husky,,U,false,Staten Island,
+2328,June 22 2021,DOG,MIXED BREED,,F,false,Brooklyn,11208
+2329,June 22 2021,DOG,MIXED BREED,,M,false,Brooklyn,11208
+2330,June 22 2021,DOG,MIXED BREED,,F,false,Brooklyn,11208
+2335,June 22 2021,DOG,UNKNOWN,,U,false,Brooklyn,
+2342,June 22 2021,DOG,Pit Bull,,U,false,Brooklyn,11208
+4481,June 22 2021,DOG,UNKNOWN,,U,false,Bronx,10452
+2336,June 23 2021,DOG,Pit Bull,,U,false,Brooklyn,11213
+2337,June 23 2021,DOG,Pit Bull,,U,false,Brooklyn,11233
+7287,June 23 2021,DOG,Rottweiler,,U,false,Manhattan,
+10958,June 23 2021,DOG,MIXED,7,F,true,Queens,11694
+10987,June 23 2021,DOG,SHIH TZU / PUG MIX,6,M,true,Queens,11419
+2339,June 24 2021,DOG,Pit Bull,,U,false,Brooklyn,11218
+2340,June 24 2021,DOG,Boxer,,U,false,Brooklyn,11236
+2343,June 24 2021,DOG,"Bull Dog, English",,U,false,Brooklyn,
+2344,June 24 2021,DOG,Pit Bull,,U,false,Brooklyn,11238
+2346,June 24 2021,DOG,"Cocker Spaniel, American",15,F,true,Brooklyn,11235
+8128,June 24 2021,DOG,LABRADOR,2Y,M,true,Other,
+10960,June 24 2021,DOG,POODLE MIX,1,M,true,Queens,11430
+2338,June 25 2021,DOG,Rottweiler,,U,false,Brooklyn,11209
+2347,June 25 2021,DOG,Pit Bull,6,M,true,Brooklyn,11213
+4479,June 25 2021,DOG,"Poodle, Toy",,U,false,Bronx,10452
+4480,June 25 2021,DOG,Maltese,,M,false,Bronx,10467
+4482,June 25 2021,DOG,UNKNOWN,,U,false,Bronx,10475
+4556,June 25 2021,DOG,English Cocker Spaniel,3,F,false,Bronx,
+7289,June 25 2021,DOG,GERMAN SHEPHER MIX,4,F,true,Manhattan,10022
+7290,June 25 2021,DOG,Pit Bull,,U,false,Manhattan,
+10961,June 25 2021,DOG,UNKNOWN,,U,false,Queens,11370
+10965,June 25 2021,DOG,Shiba Inu,6,M,true,Queens,11428
+10967,June 25 2021,DOG,Cocker Spaniel,,U,false,Queens,11373
+10968,June 25 2021,DOG,UNKNOWN,,U,false,Queens,
+2345,June 26 2021,DOG,MORKIE,3,F,false,Brooklyn,11210
+7293,June 26 2021,DOG,UNKNOWN,,U,false,Manhattan,
+8124,June 26 2021,DOG,UNKNOWN,,U,false,Other,10566
+8125,June 26 2021,DOG,Dalmatian,,M,false,Other,12561
+10964,June 26 2021,DOG,"Bull Dog, English",,U,false,Queens,11364
+10978,June 26 2021,DOG,Bull dog,3,M,true,Queens,11426
+11227,June 26 2021,DOG,Pit Bull,4,M,false,Queens,11435
+12264,June 26 2021,DOG,MIXED BREED DOG,,U,false,Staten Island,10309
+2353,June 27 2021,DOG,"Bull Dog, English",,U,false,Brooklyn,11207
+4483,June 27 2021,DOG,American Staffordshire Terrier,,F,false,Bronx,10472
+4484,June 27 2021,DOG,Yorkshire Terrier,,U,false,Bronx,10470
+4486,June 27 2021,DOG,UNKNOWN,,U,false,Bronx,10469
+7291,June 27 2021,DOG,Pit Bull,,U,false,Manhattan,
+7292,June 27 2021,DOG,HUSKY,1,M,false,Manhattan,10031
+7294,June 27 2021,DOG,Pekingese,,U,false,Manhattan,
+10962,June 27 2021,DOG,Beagle,1,M,false,Queens,11372
+10963,June 27 2021,DOG,"Poodle, Standard",,U,false,Queens,11434
+10966,June 27 2021,DOG,Rottweiler,11,M,true,Queens,11433
+10969,June 27 2021,DOG,ROTTWEILER / SHEPHERD MIX,7,M,true,Queens,11413
+10974,June 27 2021,DOG,Maltese,,U,false,Queens,
+10976,June 27 2021,DOG,Pit Bull,,U,false,Queens,11422
+10981,June 27 2021,DOG,UNKNOWN,,U,false,Queens,
+2351,June 28 2021,DOG,Boxer,,U,false,Brooklyn,11229
+2394,June 28 2021,DOG,AMERICAN BULLY,1,F,true,Brooklyn,11233
+4485,June 28 2021,DOG,UNKNOWN,,U,false,Bronx,10452
+4487,June 28 2021,DOG,Pit Bull,,U,false,Bronx,10462
+4488,June 28 2021,DOG,LARGE X BREED,,U,false,Bronx,10461
+4490,June 28 2021,DOG,Yorkshire Terrier Crossbreed,9M,F,false,Bronx,10468
+4552,June 28 2021,DOG,UNKNOWN,,U,false,Bronx,10471
+7295,June 28 2021,DOG,UNKNOWN,1,M,false,Manhattan,10029
+10970,June 28 2021,DOG,UNKNOWN,,U,false,Queens,11414
+10971,June 28 2021,DOG,German Shepherd,,U,false,Queens,11364
+12266,June 28 2021,DOG,Doberman Pinscher,,U,false,Staten Island,
+12267,June 28 2021,DOG,ROTWEILER MIX,7Y,M,true,Staten Island,10312
+2349,June 29 2021,DOG,Maltese,1,M,false,Brooklyn,11219
+2350,June 29 2021,DOG,Cocker Spaniel,,U,false,Brooklyn,
+2352,June 29 2021,DOG,MIXED,11M,M,false,Brooklyn,11234
+10972,June 29 2021,DOG,AMERICAN COONHOUND,1,M,true,Queens,11420
+10973,June 29 2021,DOG,Yorkshire Terrier Crossbreed,9,M,true,Queens,11106
+10975,June 29 2021,DOG,MIXED,14,M,false,Queens,11417
+12265,June 29 2021,DOG,UNKNOWN,,U,false,Staten Island,
+2369,June 30 2021,DOG,MIXED,1,F,false,Brooklyn,
+2539,June 30 2021,DOG,Pit Bull,,U,false,Brooklyn,11207
+4491,June 30 2021,DOG,Pit Bull,,U,false,Bronx,10457
+4492,June 30 2021,DOG,UNKNOWN,,U,false,Bronx,10463
+4493,June 30 2021,DOG,Pit Bull,,M,false,Bronx,10461
+7296,June 30 2021,DOG,UNKNOWN,,U,false,Manhattan,10282
+10979,June 30 2021,DOG,CORGI,1,M,false,Queens,11103
+10980,June 30 2021,DOG,UNKNOWN,,U,false,Queens,11101
+10982,June 30 2021,DOG,UNKNOWN,,U,false,Queens,
+10983,June 30 2021,DOG,UNKNOWN,,U,false,Queens,
+10984,June 30 2021,DOG,Pit Bull,3,F,false,Queens,11102
+2355,July 01 2021,DOG,Shih Tzu,,U,false,Brooklyn,11207
+2360,July 01 2021,DOG,MIXED,10M,M,false,Brooklyn,11238
+10985,July 01 2021,DOG,UNKNOWN,,U,false,Queens,
+10986,July 01 2021,DOG,Pit Bull,,U,false,Queens,11373
+12270,July 01 2021,DOG,SHARPEI,,U,false,Staten Island,10314
+2356,July 02 2021,DOG,SHIH TZU X,7,M,true,Brooklyn,11207
+2362,July 02 2021,DOG,Rottweiler,,U,false,Brooklyn,
+2368,July 02 2021,DOG,Cane Corso,4,M,false,Brooklyn,11206
+7297,July 02 2021,DOG,Rhodesian Ridgeback,6,F,true,Manhattan,10065
+7302,July 02 2021,DOG,Pit Bull,,U,false,Manhattan,10025
+7369,July 02 2021,DOG,UNKNOWN,2,M,false,Manhattan,
+2357,July 03 2021,DOG,Pit Bull,,U,true,Brooklyn,11236
+2358,July 03 2021,DOG,Pit Bull,,U,false,Brooklyn,11236
+7299,July 03 2021,DOG,POINTER,,M,false,Manhattan,10039
+7301,July 03 2021,DOG,UNKNOWN,,U,false,Manhattan,
+10988,July 03 2021,DOG,UNKNOWN,,U,false,Queens,
+10989,July 03 2021,DOG,UNKNOWN,,U,false,Queens,
+2361,July 04 2021,DOG,MIXED,6,M,false,Brooklyn,11211
+2363,July 04 2021,DOG,Maltese,10,M,true,Brooklyn,11211
+2365,July 04 2021,DOG,Pit Bull,,U,false,Brooklyn,11221
+2371,July 04 2021,DOG,Yorkshire Terrier,,U,false,Brooklyn,11249
+4494,July 04 2021,DOG,Pit Bull,,U,false,Bronx,10461
+7298,July 04 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7300,July 04 2021,DOG,POODLE/SCHNAUZER,15,M,true,Manhattan,
+7304,July 04 2021,DOG,Pit Bull,15,U,true,Manhattan,10025
+10990,July 04 2021,DOG,UNKNOWN,,U,false,Queens,11105
+10991,July 04 2021,DOG,UNKNOWN,,U,false,Queens,
+10994,July 04 2021,DOG,Pit Bull,6,F,false,Queens,11423
+11001,July 04 2021,DOG,Chihuahua,,U,false,Queens,
+11006,July 04 2021,DOG,UNKNOWN,,U,false,Queens,11421
+12268,July 04 2021,DOG,Pit Bull,,U,false,Staten Island,
+12269,July 04 2021,DOG,Pit Bull,,U,false,Staten Island,
+2359,July 05 2021,DOG,UNKNOWN,,U,false,Brooklyn,11238
+2367,July 05 2021,DOG,Labrador Retriever Crossbreed,1,M,true,Brooklyn,11219
+2370,July 05 2021,DOG,Pit Bull,,U,false,Brooklyn,11225
+2374,July 05 2021,DOG,"Cocker Spaniel, American",,U,false,Brooklyn,
+4496,July 05 2021,DOG,Pit Bull,,U,false,Bronx,10457
+7317,July 05 2021,DOG,UNKNOWN,,F,false,Manhattan,
+10992,July 05 2021,DOG,UNKNOWN,,U,false,Queens,11367
+10993,July 05 2021,DOG,UNKNOWN,,U,false,Queens,11373
+2364,July 06 2021,DOG,MINATURE POODLE X,2,M,true,Brooklyn,11249
+2372,July 06 2021,DOG,SHEPHERD MIX,3M,F,true,Brooklyn,11219
+4495,July 06 2021,DOG,MEDIUM MIXED BREED,,U,false,Bronx,10473
+7303,July 06 2021,DOG,Pit Bull,2,M,false,Manhattan,10025
+7305,July 06 2021,DOG,UNKNOWN,2,M,false,Manhattan,10025
+7308,July 06 2021,DOG,POMERANIAN/HUSKY MIX,,U,false,Manhattan,
+10995,July 06 2021,DOG,UNKNOWN,,U,false,Queens,
+10997,July 06 2021,DOG,UNKNOWN,,U,false,Queens,
+11018,July 06 2021,DOG,UNKNOWN,,U,false,Queens,
+12271,July 06 2021,DOG,UNKNOWN,,U,false,Staten Island,
+2366,July 07 2021,DOG,Bull Terrier,,U,false,Brooklyn,
+4497,July 07 2021,DOG,LARGE MIXED BREED,4,F,false,Bronx,10453
+7306,July 07 2021,DOG,Pit Bull,,U,false,Manhattan,10032
+7307,July 07 2021,DOG,LABRADOR,,U,false,Manhattan,
+10996,July 07 2021,DOG,Australian Shepherd,1,F,false,Queens,11433
+10998,July 07 2021,DOG,Pit Bull,,U,false,Queens,
+11002,July 07 2021,DOG,UNKNOWN,,U,false,Queens,
+12328,July 07 2021,DOG,Vizsla,1Y,U,true,Staten Island,
+4499,July 08 2021,DOG,Golden Retriever,,U,false,Bronx,10467
+4500,July 08 2021,DOG,Pit Bull,3,F,false,Bronx,10467
+4501,July 08 2021,DOG,Pit Bull,,U,false,Bronx,
+4502,July 08 2021,DOG,UNKNOWN,,U,false,Bronx,10471
+4503,July 08 2021,DOG,Pit Bull,,U,false,Bronx,10454
+7309,July 08 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7310,July 08 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7311,July 08 2021,DOG,UNKNOWN,,F,false,Manhattan,10027
+7312,July 08 2021,DOG,Pit Bull,,F,false,Manhattan,10128
+8126,July 08 2021,DOG,UNKNOWN,,U,false,Other,
+10999,July 08 2021,DOG,Australian Shepherd,,U,false,Queens,11378
+11000,July 08 2021,DOG,UNKNOWN,,U,false,Queens,11373
+11003,July 08 2021,DOG,Pit Bull,,U,false,Queens,
+11004,July 08 2021,DOG,Chihuahua Crossbreed,8M,M,false,Queens,11379
+11005,July 08 2021,DOG,UNKNOWN,,U,false,Queens,
+12352,July 08 2021,DOG,German Shepherd,,U,false,Staten Island,
+2373,July 09 2021,DOG,MIXED BREED,1,M,false,Brooklyn,11234
+2376,July 09 2021,DOG,Pit Bull,11,M,true,Brooklyn,11220
+4498,July 09 2021,DOG,Maltese,,U,false,Bronx,10457
+4504,July 09 2021,DOG,UNKNOWN,3,F,false,Bronx,10467
+4555,July 09 2021,DOG,,,U,false,Bronx,10463
+7313,July 09 2021,DOG,UNKNOWN,,M,false,Manhattan,10013
+11012,July 09 2021,DOG,Jack Russ,,U,false,Queens,11375
+11016,July 09 2021,DOG,Chihuahua,12,M,true,Queens,11372
+12276,July 09 2021,DOG,UKNOWN,,U,false,Staten Island,10304
+2377,July 10 2021,DOG,"Schnauzer, Giant",,U,false,Brooklyn,11229
+2378,July 10 2021,DOG,UNKNOWN,,U,false,Brooklyn,11224
+2406,July 10 2021,DOG,UNKNOWN,,U,false,Brooklyn,11232
+4616,July 10 2021,DOG,Pit Bull,,U,false,Bronx,10473
+7314,July 10 2021,DOG,UNKNOWN,,U,false,Manhattan,
+11008,July 10 2021,DOG,Pit Bull,,U,false,Queens,
+11011,July 10 2021,DOG,POMERANIAN / CHIHUAHUA MIX,4,M,true,Queens,11373
+11013,July 10 2021,DOG,"Welsh Corgi, Pembroke",1,F,true,Queens,11420
+11020,July 10 2021,DOG,Pit Bull,,U,false,Queens,
+11157,July 10 2021,DOG,Pit Bull,,U,false,Queens,11420
+12272,July 10 2021,DOG,Pit Bull,,U,false,Staten Island,
+12274,July 10 2021,DOG,UNKNOWN,,U,false,Staten Island,
+2375,July 11 2021,DOG,Pit Bull,4m,F,false,Brooklyn,11236
+2537,July 11 2021,DOG,Pit Bull,,U,false,Brooklyn,11216
+4507,July 11 2021,DOG,German Shepherd,5,M,false,Bronx,10457
+4508,July 11 2021,DOG,YORKIE/MALTESE MIX,4,M,false,Bronx,10462
+7315,July 11 2021,DOG,Chow Chow,1,F,false,Manhattan,10022
+7316,July 11 2021,DOG,UNKNOWN,,U,false,Manhattan,
+8132,July 11 2021,DOG,NOVA SCOTIA DUCK TOLLING RETRIEVER,5,M,false,Other,10591
+8133,July 11 2021,DOG,COLLIE MIX,2,M,false,Other,1106
+11007,July 11 2021,DOG,MIXED,1,M,false,Queens,11372
+11009,July 11 2021,DOG,Maltese,7,M,true,Queens,11368
+11010,July 11 2021,DOG,UNKNOWN,,U,false,Queens,11360
+11014,July 11 2021,DOG,SIBERIAN HUSKY MIX,2,M,true,Queens,11361
+11015,July 11 2021,DOG,Shih Tzu,,U,false,Queens,
+11019,July 11 2021,DOG,Jack Russ,13,M,true,Queens,11354
+12273,July 11 2021,DOG,UNKNOWN,,U,false,Staten Island,
+2379,July 12 2021,DOG,UNKNOWN,,U,false,Brooklyn,
+2384,July 12 2021,DOG,UNKNOWN,,U,false,Brooklyn,11209
+4505,July 12 2021,DOG,Chihuahua,,U,false,Bronx,
+4506,July 12 2021,DOG,"Schnauzer, Standard",,U,false,Bronx,
+4509,July 12 2021,DOG,UNKNOWN,,U,false,Bronx,10472
+4617,July 12 2021,DOG,UNKNOWN,,U,false,Bronx,10472
+7318,July 12 2021,DOG,UNKNOWN,,U,false,Manhattan,10025
+8127,July 12 2021,DOG,Boxer,11,M,true,Other,
+11021,July 12 2021,DOG,Labrador Retriever,,U,false,Queens,11379
+11037,July 12 2021,DOG,Labrador Retriever,,U,false,Queens,11370
+2382,July 13 2021,DOG,UNKNOWN,,U,false,Brooklyn,11249
+4510,July 13 2021,DOG,UNKNOWN,,U,false,Bronx,10457
+7319,July 13 2021,DOG,UNKNOWN,,U,false,Manhattan,
+11017,July 13 2021,DOG,Pit Bull,,U,false,Queens,
+11023,July 13 2021,DOG,Jack Russ,,U,false,Queens,11414
+11024,July 13 2021,DOG,MIXED,,U,false,Queens,11433
+11025,July 13 2021,DOG,MALTESE MIX,10,M,true,Queens,11419
+11026,July 13 2021,DOG,Yorkshire Terrier,9,F,true,Queens,11421
+11027,July 13 2021,DOG,Pit Bull,,U,false,Queens,11417
+11033,July 13 2021,DOG,POODLE MIX,8,M,true,Queens,11419
+11294,July 13 2021,DOG,German Shepherd,1,M,false,Queens,11692
+12275,July 13 2021,DOG,COLLIE,,U,false,Staten Island,10314
+2380,July 14 2021,DOG,Rottweiler,,U,false,Brooklyn,11209
+2381,July 14 2021,DOG,"Poodle, Standard",,U,false,Brooklyn,11236
+2387,July 14 2021,DOG,UNKNOWN,,U,false,Brooklyn,
+4511,July 14 2021,DOG,UNKNOWN,,U,false,Bronx,10472
+4521,July 14 2021,DOG,MIXED,2,U,false,Bronx,10457
+4525,July 14 2021,DOG,UNKNOWN,,U,false,Bronx,
+7321,July 14 2021,DOG,American Eskimo,4,M,true,Manhattan,
+7330,July 14 2021,DOG,"Bull Dog, French",7,F,true,Manhattan,10065
+7404,July 14 2021,DOG,German Shepherd,,U,false,Manhattan,
+11028,July 14 2021,DOG,MIXED,,U,false,Queens,11360
+11029,July 14 2021,DOG,Pit Bull,,U,false,Queens,11385
+11030,July 14 2021,DOG,Siberian Husky,,U,false,Queens,11420
+11031,July 14 2021,DOG,UNKNOWN,,U,false,Queens,
+11032,July 14 2021,DOG,UNKNOWN,,U,false,Queens,
+12289,July 14 2021,DOG,UNKNOWN,,U,false,Staten Island,
+2385,July 15 2021,DOG,UNKNOWN,,U,false,Brooklyn,
+2386,July 15 2021,DOG,UNKNOWN,,U,false,Brooklyn,11236
+7322,July 15 2021,DOG,POODLE,,U,false,Manhattan,10128
+7324,July 15 2021,DOG,BULLDOG,,U,false,Manhattan,
+8129,July 15 2021,DOG,UNKNOWN,,U,false,Other,10538
+11034,July 15 2021,DOG,Golden Retriever,9M,M,true,Queens,11358
+11035,July 15 2021,DOG,Chihuahua,,U,false,Queens,
+2389,July 16 2021,DOG,Pit Bull,,U,false,Brooklyn,
+2390,July 16 2021,DOG,American Pit Bull Mix / Pit Bull Mix,7,F,true,Brooklyn,11234
+2670,July 16 2021,DOG,Mixed/Other,,U,false,Brooklyn,11211
+4522,July 16 2021,DOG,MIXED,2,U,false,Bronx,10457
+7326,July 16 2021,DOG,UNKNOWN,10,M,true,Manhattan,10014
+7327,July 16 2021,DOG,UNKNOWN,6,F,false,Manhattan,10029
+8139,July 16 2021,DOG,UNKNOWN,,U,false,Other,20815
+11036,July 16 2021,DOG,Bull dog,,U,false,Queens,
+12277,July 16 2021,DOG,Doberman Pinscher,8M,F,false,Staten Island,10314
+2388,July 17 2021,DOG,Pit Bull,,U,false,Brooklyn,11206
+4513,July 17 2021,DOG,"Bull Dog, English",,F,false,Bronx,10462
+7325,July 17 2021,DOG,CHIHUAHUA MIX,2,F,true,Manhattan,10019
+7328,July 17 2021,DOG,GOLDEN DOODLE,1,M,false,Manhattan,10016
+11039,July 17 2021,DOG,Pit Bull,,U,false,Queens,11377
+11040,July 17 2021,DOG,Chihuahua,,U,false,Queens,11357
+11041,July 17 2021,DOG,GOLDENDOODLE,2,F,true,Queens,11362
+11042,July 17 2021,DOG,Siberian Husky,12,M,false,Queens,11434
+11060,July 17 2021,DOG,UNKNOWN,,U,false,Queens,
+12279,July 17 2021,DOG,UNKNOWN,,U,false,Staten Island,
+2391,July 18 2021,DOG,German Shepherd,,U,false,Brooklyn,11226
+4512,July 18 2021,DOG,Pomeranian,,U,false,Bronx,
+4514,July 18 2021,DOG,LARGE MIXED BREED,3Y,F,false,Bronx,10455
+8130,July 18 2021,DOG,UNKNOWN,,U,false,Other,
+8136,July 18 2021,DOG,SMALL MIXED BREED,2,F,false,Other,11718
+12278,July 18 2021,DOG,Pit Bull,4,F,true,Staten Island,10312
+2668,July 19 2021,DOG,UNKNOWN,,U,false,Brooklyn,
+4515,July 19 2021,DOG,Pit Bull,,U,false,Bronx,10456
+4519,July 19 2021,DOG,SHEPERD,,U,false,Bronx,
+11043,July 19 2021,DOG,LABRADOR / PIT BULL MIX,3,F,false,Queens,11691
+12280,July 19 2021,DOG,UNKNOWN,,U,false,Staten Island,10307
+12343,July 19 2021,DOG,Chihuahua Crossbreed,,U,false,Staten Island,10303
+2392,July 20 2021,DOG,Shih Tzu,1,M,false,Brooklyn,11220
+2395,July 20 2021,DOG,Pit Bull,,U,false,Brooklyn,
+2404,July 20 2021,DOG,Pit Bull,,U,false,Brooklyn,11207
+4516,July 20 2021,DOG,Chihuahua,,U,false,Bronx,10452
+4517,July 20 2021,DOG,UNKNOWN,,U,false,Bronx,10467
+4518,July 20 2021,DOG,UNKNOWN,,F,false,Bronx,10458
+7329,July 20 2021,DOG,UNKNOWN,,U,false,Manhattan,10016
+11044,July 20 2021,DOG,UNKNOWN,,U,false,Queens,
+11045,July 20 2021,DOG,AMERICAN BULLY,3,M,false,Queens,11354
+11047,July 20 2021,DOG,UNKNOWN,,U,false,Queens,
+11063,July 20 2021,DOG,UNKNOWN,,U,false,Queens,
+12282,July 20 2021,DOG,Pug,,U,false,Staten Island,
+2393,July 21 2021,DOG,Pit Bull,,U,false,Brooklyn,11206
+2396,July 21 2021,DOG,Pit Bull,5M,M,false,Brooklyn,11224
+7331,July 21 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7332,July 21 2021,DOG,AMERICAN BULLDOG,4,M,false,Manhattan,
+7333,July 21 2021,DOG,UNKNOWN,,U,false,Manhattan,
+11046,July 21 2021,DOG,UNKNOWN,,U,false,Queens,11379
+11048,July 21 2021,DOG,Pit Bull,,U,false,Queens,
+12281,July 21 2021,DOG,"Poodle, Miniature",,U,false,Staten Island,
+2397,July 22 2021,DOG,AUSTRALIAN CATTLE DOG X,2,M,true,Brooklyn,11237
+2398,July 22 2021,DOG,UNKNOWN,,U,false,Brooklyn,11213
+2410,July 22 2021,DOG,MIXED,11,F,false,Brooklyn,11208
+4520,July 22 2021,DOG,SHEPERD,,U,false,Bronx,
+4523,July 22 2021,DOG,Yorkshire Terrier Crossbreed,,U,false,Bronx,10467
+4528,July 22 2021,DOG,Pit Bull,,U,false,Bronx,10463
+4582,July 22 2021,DOG,Pit Bull,,U,false,Bronx,10463
+7334,July 22 2021,DOG,Pit Bull,3,M,false,Manhattan,10012
+11049,July 22 2021,DOG,Maltese,2,M,false,Queens,11434
+11050,July 22 2021,DOG,UNKNOWN,,U,false,Queens,11378
+11051,July 22 2021,DOG,Chihuahua,,U,false,Queens,11357
+11052,July 22 2021,DOG,Lhasa Apso,,U,false,Queens,11377
+11053,July 22 2021,DOG,Pit Bull,3,F,false,Queens,11434
+12283,July 22 2021,DOG,Pit Bull,,U,false,Staten Island,10306
+12286,July 22 2021,DOG,Pit Bull,,U,false,Staten Island,
+12290,July 22 2021,DOG,MEDIUM MIXED BREED,2,M,false,Staten Island,10309
+2399,July 23 2021,DOG,Chihuahua,2,F,true,Brooklyn,
+2400,July 23 2021,DOG,LLEWELIN SETTER,7,M,false,Brooklyn,11249
+4524,July 23 2021,DOG,UNKNOWN,,U,false,Bronx,10471
+4527,July 23 2021,DOG,,1,F,false,Bronx,
+7337,July 23 2021,DOG,CHIHUAHUA MIX,9,M,true,Manhattan,10016
+7339,July 23 2021,DOG,UNKNOWN,,U,false,Manhattan,
+8137,July 23 2021,DOG,SMALL DOG,4,M,true,Other,10524
+8138,July 23 2021,DOG,UNKNOWN,,U,false,Other,
+11056,July 23 2021,DOG,"Poodle, Standard",,U,false,Queens,11373
+11059,July 23 2021,DOG,Shiba Inu,,U,false,Queens,11432
+12285,July 23 2021,DOG,Pit Bull,,U,false,Staten Island,
+12353,July 23 2021,DOG,Pit Bull,2Y,M,false,Staten Island,10301
+2402,July 24 2021,DOG,Golden Retriever,,U,false,Brooklyn,11249
+2408,July 24 2021,DOG,Pit Bull,,U,false,Brooklyn,11213
+2411,July 24 2021,DOG,MIXED,2,F,false,Brooklyn,11208
+2413,July 24 2021,DOG,Yorkshire Terrier Crossbreed,9,F,false,Brooklyn,11234
+2414,July 24 2021,DOG,Pit Bull,,U,false,Brooklyn,11207
+2418,July 24 2021,DOG,Pit Bull,,U,false,Brooklyn,11229
+4526,July 24 2021,DOG,Shih Tzu,,U,false,Bronx,10453
+4541,July 24 2021,DOG,BULLY PIT BULL X,2,M,false,Bronx,10463
+7364,July 24 2021,DOG,Rottweiler,1,M,true,Manhattan,
+8134,July 24 2021,DOG,SMALL BREED MIX,10M,F,true,Other,
+8135,July 24 2021,DOG,UNKNOWN,,U,false,Other,
+11054,July 24 2021,DOG,Pit Bull,1,M,false,Queens,11692
+11055,July 24 2021,DOG,Golden Retriever,5,F,false,Queens,11373
+11057,July 24 2021,DOG,Pit Bull,,U,false,Queens,
+11058,July 24 2021,DOG,"Poodle, Standard",,U,false,Queens,
+12287,July 24 2021,DOG,UNKNOWN,,U,false,Staten Island,
+2401,July 25 2021,DOG,"Schnauzer, Giant",,U,false,Brooklyn,11234
+2403,July 25 2021,DOG,American Pit Bull Mix / Pit Bull Mix,9,M,true,Brooklyn,11215
+2405,July 25 2021,DOG,Pit Bull,,U,false,Brooklyn,11229
+2407,July 25 2021,DOG,MIXED BREED,8,M,false,Brooklyn,11208
+2669,July 25 2021,DOG,Maltese,,U,false,Brooklyn,11223
+4531,July 25 2021,DOG,MIXED BREED DOG,,U,false,Bronx,
+4534,July 25 2021,DOG,POODLE,,U,false,Bronx,10467
+7335,July 25 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7338,July 25 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7342,July 25 2021,DOG,Jack Russ,,U,false,Manhattan,
+7465,July 25 2021,DOG,"Poodle, Miniature",8,M,true,Manhattan,
+11064,July 25 2021,DOG,Pit Bull,,U,false,Queens,11420
+11156,July 25 2021,DOG,UNKNOWN,,U,false,Queens,
+12284,July 25 2021,DOG,BULLDOG,,U,false,Staten Island,
+12288,July 25 2021,DOG,UNKNOWN,,U,false,Staten Island,
+2423,July 26 2021,DOG,UNKNOWN,,U,false,Brooklyn,11233
+4530,July 26 2021,DOG,Yorkshire Terrier,,U,false,Bronx,10454
+4578,July 26 2021,DOG,TERRIER,,U,false,Bronx,10454
+7336,July 26 2021,DOG,UNKNOWN,,U,false,Manhattan,10019
+7340,July 26 2021,DOG,SHEPERD,,U,false,Manhattan,
+7341,July 26 2021,DOG,Pit Bull,,U,false,Manhattan,
+7343,July 26 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7345,July 26 2021,DOG,UNKNOWN,3,F,true,Manhattan,
+7346,July 26 2021,DOG,HUSKY,,U,false,Manhattan,
+7348,July 26 2021,DOG,HUSKY,,U,false,Manhattan,
+11061,July 26 2021,DOG,UNKNOWN,,U,false,Queens,11693
+11062,July 26 2021,DOG,American Pit Bull Terrier/Pit Bull,8M,F,false,Queens,11435
+4535,July 27 2021,DOG,Shih Tzu,,U,false,Bronx,10469
+7344,July 27 2021,DOG,GOLDEN DOODLE,3,M,true,Manhattan,10010
+7347,July 27 2021,DOG,UNKNOWN,11,M,false,Manhattan,
+7349,July 27 2021,DOG,UNKNOWN,3,F,false,Manhattan,10029
+7575,July 27 2021,DOG,CATAHOULA LEOPARD HOUND MIX,1,M,false,Manhattan,10029
+7576,July 27 2021,DOG,CATAHOULA LEOPARD HOUND MIX,1,M,false,Manhattan,10029
+11068,July 27 2021,DOG,HUSKY MIX,10M,M,false,Queens,
+2409,July 28 2021,DOG,UNKNOWN,,U,false,Brooklyn,11238
+2412,July 28 2021,DOG,MIXED BREED,1,M,false,Brooklyn,11208
+7350,July 28 2021,DOG,Pit Bull,,U,false,Manhattan,10034
+7351,July 28 2021,DOG,POINTER,8,M,false,Manhattan,10065
+11065,July 28 2021,DOG,Pit Bull,,U,false,Queens,
+11066,July 28 2021,DOG,UNKNOWN,,U,false,Queens,
+11067,July 28 2021,DOG,MIXED,,U,false,Queens,11357
+11069,July 28 2021,DOG,Pit Bull,,U,false,Queens,11422
+11070,July 28 2021,DOG,AMERICAN BULLY,4,M,true,Queens,11357
+11079,July 28 2021,DOG,MIXED,2,M,false,Queens,11434
+12354,July 28 2021,DOG,LABRADOR/ PIT-BULL,,U,false,Staten Island,
+7353,July 29 2021,DOG,Pomeranian,1,M,true,Manhattan,
+11071,July 29 2021,DOG,COCKAPOO MIX,6,F,true,Queens,11378
+2421,July 30 2021,DOG,"Poodle, Miniature",1,M,false,Brooklyn,11208
+2429,July 30 2021,DOG,UNKNOWN,,U,false,Brooklyn,
+4533,July 30 2021,DOG,UNKNOWN,,U,false,Bronx,
+4629,July 30 2021,DOG,German Shepherd,,U,false,Bronx,10462
+7352,July 30 2021,DOG,UNKNOWN,,U,false,Manhattan,
+8140,July 30 2021,DOG,LARGE MIXED BREED,2Y,M,false,Other,6082
+8143,July 30 2021,DOG,HUSKY MIX,,U,false,Other,
+11072,July 30 2021,DOG,GOLDENDOODLE MIX,2,F,true,Queens,11426
+11073,July 30 2021,DOG,UNKNOWN,,U,false,Queens,
+11074,July 30 2021,DOG,UNKNOWN,,U,false,Queens,
+12293,July 30 2021,DOG,LABRADOR,,U,false,Staten Island,
+2417,July 31 2021,DOG,MIXED,4,F,false,Brooklyn,11208
+2427,July 31 2021,DOG,Shih Tzu,,U,false,Brooklyn,
+4536,July 31 2021,DOG,Pit Bull,,U,false,Bronx,10453
+4537,July 31 2021,DOG,Pit Bull,,U,false,Bronx,10465
+4631,July 31 2021,DOG,"Bull Dog, French",,U,false,Bronx,10462
+7354,July 31 2021,DOG,Pit Bull,,M,false,Manhattan,
+8141,July 31 2021,DOG,TERRIER - OTHER,,U,false,Other,12531
+8142,July 31 2021,DOG,UNKNOWN,,U,false,Other,
+11076,July 31 2021,DOG,Akita,3,M,true,Queens,11413
+11077,July 31 2021,DOG,UNKNOWN,,U,false,Queens,
+11080,July 31 2021,DOG,MIXED,2,M,false,Queens,11434
+11092,July 31 2021,DOG,Pit Bull,,U,false,Queens,
+11290,July 31 2021,DOG,Rottweiler,,U,false,Queens,11413
+12292,July 31 2021,DOG,Pomeranian,,U,false,Staten Island,
+2428,August 01 2021,DOG,UNKNOWN,,U,false,Brooklyn,
+2444,August 01 2021,DOG,UNKNOWN,,U,false,Brooklyn,11211
+7355,August 01 2021,DOG,POODLE MIX,,U,false,Manhattan,10025
+7356,August 01 2021,DOG,Shih Tzu,,U,false,Manhattan,
+7357,August 01 2021,DOG,Chihuahua,8,F,true,Manhattan,
+11075,August 01 2021,DOG,Labrador Retriever,,U,false,Queens,
+11078,August 01 2021,DOG,Bull Terrier,8M,M,false,Queens,11356
+11081,August 01 2021,DOG,Yorkshire Terrier,4M,M,false,Queens,11102
+11082,August 01 2021,DOG,UNKNOWN,,U,false,Queens,11427
+11083,August 01 2021,DOG,UNKNOWN,,U,false,Queens,11103
+11085,August 01 2021,DOG,Australian Shepherd,2,M,false,Queens,11434
+2415,August 02 2021,DOG,MIXED,,F,false,Brooklyn,11223
+2416,August 02 2021,DOG,Pit Bull,3,M,false,Brooklyn,11225
+2420,August 02 2021,DOG,American Pit Bull Mix / Pit Bull Mix,7,M,false,Brooklyn,11234
+7358,August 02 2021,DOG,UNKNOWN,,U,false,Manhattan,10012
+7359,August 02 2021,DOG,German Shepherd,,U,false,Manhattan,10031
+11084,August 02 2021,DOG,PIT BULL / BOXER,6,F,false,Queens,11420
+11090,August 02 2021,DOG,UNKNOWN,,U,false,Queens,
+11093,August 02 2021,DOG,UNKNOWN,,U,false,Queens,
+2422,August 03 2021,DOG,POODLE X,8M,M,false,Brooklyn,11234
+4539,August 03 2021,DOG,"Bull Dog, French",,U,false,Bronx,
+4540,August 03 2021,DOG,Pit Bull,,U,false,Bronx,10455
+7360,August 03 2021,DOG,Belgian Malinois,7,F,false,Manhattan,
+7363,August 03 2021,DOG,UNKNOWN,,U,false,Manhattan,
+11086,August 03 2021,DOG,MIXED,11,M,true,Queens,11364
+11088,August 03 2021,DOG,SHEPHERD / HUSKY MIX,7,M,true,Queens,11426
+11089,August 03 2021,DOG,Doberman Pinscher,14,M,false,Queens,11354
+11112,August 03 2021,DOG,Rottweiler,,U,false,Queens,11372
+2419,August 04 2021,DOG,UNKNOWN,,U,false,Brooklyn,
+2438,August 04 2021,DOG,UNKNOWN,,U,false,Brooklyn,11232
+2456,August 04 2021,DOG,Pit Bull,,F,false,Brooklyn,11229
+4550,August 04 2021,DOG,UNKNOWN,,U,false,Bronx,
+7361,August 04 2021,DOG,UNKNOWN,5,F,true,Manhattan,10003
+7362,August 04 2021,DOG,POODLE MIX,3,F,true,Manhattan,10003
+7365,August 04 2021,DOG,UNKNOWN,3,M,true,Manhattan,10280
+7366,August 04 2021,DOG,UNKNOWN,,M,false,Manhattan,10039
+7367,August 04 2021,DOG,Yorkshire Terrier,,U,true,Manhattan,10030
+11087,August 04 2021,DOG,BICHON / MALTIPOO,5,M,true,Queens,11374
+11091,August 04 2021,DOG,MIXED,,U,false,Queens,11374
+12296,August 04 2021,DOG,UNKNOWN,,U,false,Staten Island,10305
+2426,August 05 2021,DOG,UNKNOWN,,U,false,Brooklyn,11208
+7368,August 05 2021,DOG,LABRADOR,,U,false,Manhattan,10024
+7371,August 05 2021,DOG,Pit Bull,,U,false,Manhattan,
+8144,August 05 2021,DOG,UNKNOWN,1,M,true,Other,10701
+11094,August 05 2021,DOG,UNKNOWN,,U,false,Queens,11369
+11105,August 05 2021,DOG,American Pit Bull Mix / Pit Bull Mix,5,M,true,Queens,11432
+12363,August 05 2021,DOG,German Shepherd,,U,false,Staten Island,
+2424,August 06 2021,DOG,HOUND X,3,F,true,Brooklyn,11249
+2425,August 06 2021,DOG,Pit Bull,,U,false,Brooklyn,11236
+2430,August 06 2021,DOG,RETRIEVER,,U,false,Brooklyn,
+2434,August 06 2021,DOG,Chihuahua,,U,false,Brooklyn,11234
+2435,August 06 2021,DOG,UNKNOWN,,U,false,Brooklyn,11206
+2436,August 06 2021,DOG,MIXED,2,M,false,Brooklyn,11220
+2440,August 06 2021,DOG,SHEEPADOODLE,2,F,true,Brooklyn,11215
+4546,August 06 2021,DOG,Shih Tzu,10,M,false,Bronx,10470
+4549,August 06 2021,DOG,"Bull Dog, English",,U,false,Bronx,10462
+7370,August 06 2021,DOG,UNKNOWN,,U,false,Manhattan,
+8146,August 06 2021,DOG,UNKNOWN,,M,false,Other,
+11095,August 06 2021,DOG,"Bull Dog, French",3,M,true,Queens,11428
+11097,August 06 2021,DOG,Labrador Retriever,,U,false,Queens,11366
+2432,August 07 2021,DOG,American Pit Bull Mix / Pit Bull Mix,1,F,false,Brooklyn,11233
+4543,August 07 2021,DOG,Pit Bull,,U,false,Bronx,10472
+7372,August 07 2021,DOG,Pit Bull,,U,false,Manhattan,10039
+7373,August 07 2021,DOG,UNKNOWN,,U,false,Manhattan,10006
+7374,August 07 2021,DOG,Pit Bull,,U,false,Manhattan,
+7375,August 07 2021,DOG,Australian Shepherd,1,M,true,Manhattan,
+11100,August 07 2021,DOG,Pit Bull,,U,false,Queens,11420
+11101,August 07 2021,DOG,UNKNOWN,,U,false,Queens,
+11102,August 07 2021,DOG,UNKNOWN,,U,false,Queens,
+11103,August 07 2021,DOG,American Pit Bull Mix / Pit Bull Mix,6,F,true,Queens,
+11289,August 07 2021,DOG,Bull Terrier,5,M,true,Queens,11416
+2431,August 08 2021,DOG,MIXED,1,M,false,Brooklyn,11208
+2433,August 08 2021,DOG,UNKNOWN,,U,false,Brooklyn,11235
+2441,August 08 2021,DOG,UNKNOWN,,U,false,Brooklyn,11226
+7377,August 08 2021,DOG,Bouvier Des Flandres,,M,false,Manhattan,
+8145,August 08 2021,DOG,UNKNOWN,,U,false,Other,
+11096,August 08 2021,DOG,MIXED,3,F,false,Queens,11434
+11098,August 08 2021,DOG,American Pit Bull Mix / Pit Bull Mix,3,M,true,Queens,11369
+11099,August 08 2021,DOG,German Shepherd,,U,false,Queens,
+12294,August 08 2021,DOG,SHEPARD,,U,false,Staten Island,10314
+12295,August 08 2021,DOG,UNKNOWN,,U,false,Staten Island,
+12299,August 08 2021,DOG,Pit Bull,,U,false,Staten Island,10309
+2443,August 09 2021,DOG,Shih Tzu,,U,false,Brooklyn,11207
+4554,August 09 2021,DOG,"Poodle, Toy",,U,false,Bronx,
+4568,August 09 2021,DOG,Pit Bull,,U,false,Bronx,10456
+4686,August 09 2021,DOG,Pit Bull,,U,false,Bronx,10463
+7376,August 09 2021,DOG,Shih Tzu,10,F,true,Manhattan,10065
+7378,August 09 2021,DOG,Maltese,,U,false,Manhattan,
+7379,August 09 2021,DOG,TERRIER,7,M,true,Manhattan,10023
+8147,August 09 2021,DOG,UNKNOWN,,U,false,Other,
+11104,August 09 2021,DOG,Chow Chow,,U,false,Queens,11373
+12297,August 09 2021,DOG,Pit Bull,,U,false,Staten Island,10303
+2437,August 10 2021,DOG,Rottweiler,,M,false,Brooklyn,11226
+2442,August 10 2021,DOG,"Poodle, Standard",,U,false,Brooklyn,11226
+7380,August 10 2021,DOG,UNKNOWN,9 MTHS,F,false,Manhattan,10009
+11106,August 10 2021,DOG,UNKNOWN,,U,false,Queens,11426
+11109,August 10 2021,DOG,Yorkshire Terrier,2,F,false,Queens,11432
+2439,August 11 2021,DOG,Pit Bull,,M,false,Brooklyn,11236
+8149,August 11 2021,DOG,UNKNOWN,9Y,F,true,Other,
+11107,August 11 2021,DOG,Pomeranian,6,F,false,Queens,11692
+11108,August 11 2021,DOG,UNKNOWN,,U,false,Queens,
+11139,August 11 2021,DOG,Pit Bull,,U,false,Queens,11418
+2445,August 12 2021,DOG,Pit Bull,,U,false,Brooklyn,
+2446,August 12 2021,DOG,"Bull Dog, English",,U,false,Brooklyn,11208
+2447,August 12 2021,DOG,Labrador Retriever,3,M,true,Brooklyn,11211
+2448,August 12 2021,DOG,BOXER X,,U,false,Brooklyn,11211
+2459,August 12 2021,DOG,UNKNOWN,,U,false,Brooklyn,
+11110,August 12 2021,DOG,UNKNOWN,,U,false,Queens,11419
+11118,August 12 2021,DOG,Pit Bull,1,M,false,Queens,11418
+11124,August 12 2021,DOG,American Pit Bull Mix / Pit Bull Mix,2,F,true,Queens,11369
+2454,August 13 2021,DOG,MINATURE PINSCHER X,1,M,true,Brooklyn,11208
+7385,August 13 2021,DOG,TERRIER,,U,false,Manhattan,
+7388,August 13 2021,DOG,Maltese,10,M,true,Manhattan,10033
+8148,August 13 2021,DOG,UNKNOWN,,U,false,Other,
+11111,August 13 2021,DOG,German Shepherd,4,M,true,Queens,11104
+11113,August 13 2021,DOG,Pit Bull,,U,false,Queens,11691
+11125,August 13 2021,DOG,Saint Bernard,,U,false,Queens,11429
+12356,August 13 2021,DOG,UNKNOWN,,U,false,Staten Island,10304
+2449,August 14 2021,DOG,Rottweiler,,U,false,Brooklyn,11209
+2450,August 14 2021,DOG,Pit Bull,,U,false,Brooklyn,11225
+2451,August 14 2021,DOG,MIXED BREED,1,M,false,Brooklyn,11207
+2455,August 14 2021,DOG,MIXED BREED,1,F,false,Brooklyn,11206
+4542,August 14 2021,DOG,UNKNOWN,3,M,false,Bronx,10451
+7382,August 14 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7386,August 14 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7387,August 14 2021,DOG,UNKNOWN,,U,false,Manhattan,
+8151,August 14 2021,DOG,UNKNOWN,,U,false,Other,
+11116,August 14 2021,DOG,"Poodle, Standard",3M,M,false,Queens,11373
+11122,August 14 2021,DOG,CORGI,9M,M,false,Queens,11427
+11123,August 14 2021,DOG,Siberian Husky,1,F,true,Queens,11373
+11126,August 14 2021,DOG,Pit Bull,,U,false,Queens,
+11134,August 14 2021,DOG,UNKNOWN,,U,false,Queens,11694
+11295,August 14 2021,DOG,Chihuahua,,U,false,Queens,11101
+2452,August 15 2021,DOG,Pit Bull,14M,M,false,Brooklyn,11206
+2453,August 15 2021,DOG,ROTTWEILER X,1,M,true,Brooklyn,11228
+2460,August 15 2021,DOG,Jack Russ,,U,false,Brooklyn,11205
+2620,August 15 2021,DOG,Shih Tzu,,U,false,Brooklyn,11220
+4545,August 15 2021,DOG,UNKNOWN,,U,false,Bronx,10465
+4547,August 15 2021,DOG,,,U,false,Bronx,10473
+4548,August 15 2021,DOG,,,U,false,Bronx,
+4569,August 15 2021,DOG,,,U,false,Bronx,10453
+7381,August 15 2021,DOG,PITBULL MIX,7,M,true,Manhattan,
+7383,August 15 2021,DOG,POODLE,3,F,true,Manhattan,10022
+7384,August 15 2021,DOG,"Bull Dog, French",,U,false,Manhattan,10012
+11114,August 15 2021,DOG,UNKNOWN,,U,false,Queens,11365
+11115,August 15 2021,DOG,UNKNOWN,,U,false,Queens,11370
+11119,August 15 2021,DOG,BOXER MIX,6,M,true,Queens,
+11120,August 15 2021,DOG,Bull dog,3,M,true,Queens,11379
+11121,August 15 2021,DOG,Siberian Husky,4,M,true,Queens,
+11127,August 15 2021,DOG,"Poodle, Standard",,U,false,Queens,11370
+11129,August 15 2021,DOG,UNKNOWN,,U,false,Queens,
+11296,August 15 2021,DOG,UNKNOWN,,U,false,Queens,
+2458,August 16 2021,DOG,German Shepherd,7,F,false,Brooklyn,11220
+2463,August 16 2021,DOG,Pit Bull,,U,false,Brooklyn,11212
+4544,August 16 2021,DOG,Cock-A-Poo,2,M,false,Bronx,10473
+7389,August 16 2021,DOG,American Eskimo,1,M,false,Manhattan,10013
+7390,August 16 2021,DOG,UNKNOWN,6,F,true,Manhattan,
+7397,August 16 2021,DOG,UNKNOWN,,U,false,Manhattan,
+11117,August 16 2021,DOG,Beagle,,U,false,Queens,11101
+12298,August 16 2021,DOG,Pit Bull,4Y,M,false,Staten Island,
+2457,August 17 2021,DOG,UNKNOWN,,U,false,Brooklyn,11221
+2461,August 17 2021,DOG,Siberian Husky,1,F,false,Brooklyn,11203
+2462,August 17 2021,DOG,UNKNOWN,,U,false,Brooklyn,11207
+4573,August 17 2021,DOG,,,U,false,Bronx,
+7391,August 17 2021,DOG,German Shepherd,1,F,false,Manhattan,
+7392,August 17 2021,DOG,German Shepherd,1,F,false,Manhattan,
+7393,August 17 2021,DOG,UNKNOWN,,M,false,Manhattan,10035
+12362,August 17 2021,DOG,Shiba Inu,8,M,false,Staten Island,
+2464,August 18 2021,DOG,MIXED BREED,,U,false,Brooklyn,11209
+2469,August 18 2021,DOG,Pit Bull,,U,false,Brooklyn,11217
+7394,August 18 2021,DOG,UNKNOWN,,M,false,Manhattan,10035
+7395,August 18 2021,DOG,Pit Bull,,U,false,Manhattan,
+8150,August 18 2021,DOG,Cocker Spaniel,3Y,M,true,Other,21727
+11128,August 18 2021,DOG,UNKNOWN,,U,false,Queens,11433
+11130,August 18 2021,DOG,Pit Bull,,U,false,Queens,11693
+11131,August 18 2021,DOG,Dachshund Smooth Coat Miniature,4,M,true,Queens,11355
+2465,August 19 2021,DOG,KOREAN MIXED BREED,,U,false,Brooklyn,11215
+2466,August 19 2021,DOG,Pit Bull,,U,false,Brooklyn,11209
+7396,August 19 2021,DOG,UNKNOWN,,U,false,Manhattan,10065
+11132,August 19 2021,DOG,"Schnauzer, Standard",,U,false,Queens,
+11133,August 19 2021,DOG,UNKNOWN,,U,false,Queens,11411
+12383,August 19 2021,DOG,Yorkshire Terrier Crossbreed,11,M,true,Staten Island,10306
+2467,August 20 2021,DOG,American Pit Bull Terrier/Pit Bull,11M,M,false,Brooklyn,11203
+2468,August 20 2021,DOG,American Pit Bull Terrier/Pit Bull,11M,M,false,Brooklyn,11208
+7405,August 20 2021,DOG,CAVAPOO,,U,false,Manhattan,10014
+8152,August 20 2021,DOG,LAGOTTE,5Y,F,true,Other,
+11135,August 20 2021,DOG,American Pit Bull Mix / Pit Bull Mix,9,F,true,Queens,11375
+11136,August 20 2021,DOG,Pit Bull,,F,false,Queens,11413
+11137,August 20 2021,DOG,Pit Bull,7,F,false,Queens,11413
+11138,August 20 2021,DOG,Pit Bull,2,M,false,Queens,11413
+11140,August 20 2021,DOG,UNKNOWN,,U,false,Queens,11694
+11150,August 20 2021,DOG,UNKNOWN,,U,false,Queens,
+12301,August 20 2021,DOG,UNKNOWN,,U,false,Staten Island,10314
+4683,August 21 2021,DOG,Pit Bull,,U,false,Bronx,10469
+7398,August 21 2021,DOG,UNKNOWN,3,M,false,Manhattan,10029
+7399,August 21 2021,DOG,UNKNOWN,,U,false,Manhattan,
+8154,August 21 2021,DOG,Yorkshire Terrier,,U,false,Other,
+11143,August 21 2021,DOG,UNKNOWN,,U,false,Queens,
+11145,August 21 2021,DOG,Cocker Spaniel,15,F,true,Queens,11365
+11201,August 21 2021,DOG,German Shepherd,2,M,false,Queens,11422
+12300,August 21 2021,DOG,Yorkshire Terrier,,U,false,Staten Island,10312
+12302,August 21 2021,DOG,UNKNOWN,,U,false,Staten Island,
+2470,August 22 2021,DOG,MALTESE MIX,8,F,true,Brooklyn,11212
+2471,August 22 2021,DOG,Mixed/Other,7,F,false,Brooklyn,11206
+2497,August 22 2021,DOG,Cocker Spaniel,,U,false,Brooklyn,
+11142,August 22 2021,DOG,Pit Bull,12,M,true,Queens,11412
+11144,August 22 2021,DOG,UNKNOWN,,U,false,Queens,11101
+4570,August 23 2021,DOG,Pit Bull,,U,false,Bronx,10462
+4574,August 23 2021,DOG,,,U,false,Bronx,
+7400,August 23 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7402,August 23 2021,DOG,UNKNOWN,5,M,false,Manhattan,10026
+8153,August 23 2021,DOG,UNKNOWN,,U,false,Other,
+11141,August 23 2021,DOG,MIXED,,M,false,Queens,11434
+11146,August 23 2021,DOG,CHIHUAHUA / CORGI MIXED,,U,false,Queens,11358
+11147,August 23 2021,DOG,UNKNOWN,,U,false,Queens,11377
+11148,August 23 2021,DOG,Pit Bull,,U,false,Queens,
+12303,August 23 2021,DOG,UNKNOWN,,U,false,Staten Island,
+2475,August 24 2021,DOG,UNKNOWN,,U,false,Brooklyn,
+2478,August 24 2021,DOG,DUTCH SHEPHERD/BELGIAN MALINOIS X,2,M,false,Brooklyn,11237
+7401,August 24 2021,DOG,MIXED,7,M,false,Manhattan,10029
+11149,August 24 2021,DOG,Rottweiler,2,M,true,Queens,11429
+2472,August 25 2021,DOG,MASTIFF,,U,false,Brooklyn,
+2473,August 25 2021,DOG,MIXED,6,M,false,Brooklyn,11225
+2474,August 25 2021,DOG,UNKNOWN,,U,false,Brooklyn,11209
+2476,August 25 2021,DOG,Labrador Retriever,,U,false,Brooklyn,11219
+4571,August 25 2021,DOG,,,U,false,Bronx,10465
+4572,August 25 2021,DOG,,,U,false,Bronx,10465
+7403,August 25 2021,DOG,UNKNOWN,,U,false,Manhattan,
+11152,August 25 2021,DOG,UNKNOWN,,U,false,Queens,
+11154,August 25 2021,DOG,Pit Bull,,U,false,Queens,11422
+12304,August 25 2021,DOG,"Poodle, Standard",,U,false,Staten Island,10304
+12305,August 25 2021,DOG,Shih Tzu,,U,false,Staten Island,10310
+2477,August 26 2021,DOG,Belgian Malinois,,U,false,Brooklyn,11211
+2496,August 26 2021,DOG,UNKNOWN,,U,false,Brooklyn,
+7408,August 26 2021,DOG,Pit Bull,3,M,true,Manhattan,10128
+7414,August 26 2021,DOG,JACK RUSSELL TERRIER,5,F,true,Manhattan,10009
+11151,August 26 2021,DOG,German Shepherd,,U,false,Queens,
+11153,August 26 2021,DOG,AKITA / SHEPHERD MIX,10,F,true,Queens,
+11155,August 26 2021,DOG,UNKNOWN,,U,false,Queens,11428
+11159,August 26 2021,DOG,German Shepherd,,U,false,Queens,
+12306,August 26 2021,DOG,Pit Bull,,U,false,Staten Island,
+2479,August 27 2021,DOG,,,U,false,Brooklyn,11213
+4585,August 27 2021,DOG,,,U,false,Bronx,
+4590,August 27 2021,DOG,Bull dog,,U,false,Bronx,10456
+4591,August 27 2021,DOG,Maltese,,U,false,Bronx,10453
+7406,August 27 2021,DOG,Chihuahua,,U,false,Manhattan,10002
+7410,August 27 2021,DOG,BULLDOG,,U,false,Manhattan,10033
+11158,August 27 2021,DOG,UNKNOWN,,U,false,Queens,11385
+11160,August 27 2021,DOG,"Bull Dog, French",2,M,true,Queens,11101
+11161,August 27 2021,DOG,UNKNOWN,,U,false,Queens,
+11169,August 27 2021,DOG,West High White Terrier,4,M,false,Queens,11365
+12310,August 27 2021,DOG,UNKNOWN,,U,false,Staten Island,
+2480,August 28 2021,DOG,Pit Bull,,U,false,Brooklyn,11236
+2481,August 28 2021,DOG,AUSTRALIAN CATTLE DOG X,1,F,true,Brooklyn,11206
+2482,August 28 2021,DOG,Pit Bull,,U,false,Brooklyn,11226
+2488,August 28 2021,DOG,Pit Bull,,M,false,Brooklyn,11211
+2489,August 28 2021,DOG,Pit Bull,,F,false,Brooklyn,11249
+2492,August 28 2021,DOG,UNKNOWN,,U,false,Brooklyn,
+2672,August 28 2021,DOG,,,U,false,Brooklyn,11225
+4583,August 28 2021,DOG,German Shepherd,,U,false,Bronx,10463
+4589,August 28 2021,DOG,Labrador Retriever Crossbreed,3,M,false,Bronx,10459
+7409,August 28 2021,DOG,Pit Bull,,M,false,Manhattan,
+7413,August 28 2021,DOG,RETRIEVER,,U,false,Manhattan,
+8155,August 28 2021,DOG,HOUND MIX,,F,false,Other,
+11162,August 28 2021,DOG,Bull dog,,U,false,Queens,
+11163,August 28 2021,DOG,HUSKY MIX,1,M,false,Queens,11435
+11177,August 28 2021,DOG,Pit Bull,3,F,false,Queens,11421
+12308,August 28 2021,DOG,Pit Bull,,U,false,Staten Island,
+2483,August 29 2021,DOG,American Pit Bull Mix / Pit Bull Mix,,U,false,Brooklyn,11211
+2484,August 29 2021,DOG,UNKNOWN,,U,false,Brooklyn,11206
+4579,August 29 2021,DOG,UNKNOWN,,U,false,Bronx,10461
+4580,August 29 2021,DOG,MIXED BREED DOG,,U,false,Bronx,10463
+4581,August 29 2021,DOG,,,U,false,Bronx,10467
+4587,August 29 2021,DOG,"Schnauzer, Miniature",9,M,false,Bronx,10458
+7407,August 29 2021,DOG,Staffordshire Bull Terrier,3,M,true,Manhattan,10033
+11164,August 29 2021,DOG,Bull dog,,U,false,Queens,11372
+11165,August 29 2021,DOG,UNKNOWN,,U,false,Queens,
+11166,August 29 2021,DOG,German Shepherd,,U,false,Queens,11435
+12307,August 29 2021,DOG,COCKAPOO,13M,F,true,Staten Island,10310
+12309,August 29 2021,DOG,LARGE MIXED BREED,2Y,M,false,Staten Island,10309
+2485,August 30 2021,DOG,Chihuahua,,U,false,Brooklyn,11219
+4586,August 30 2021,DOG,Chihuahua,2M,M,false,Bronx,10453
+7411,August 30 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7412,August 30 2021,DOG,Pit Bull,,U,false,Manhattan,
+8158,August 30 2021,DOG,UNKNOWN,3,F,false,Other,10579
+11167,August 30 2021,DOG,Pit Bull,,U,false,Queens,11429
+11168,August 30 2021,DOG,UNKNOWN,,U,false,Queens,
+12311,August 30 2021,DOG,UNKNOWN,,U,false,Staten Island,10314
+2486,August 31 2021,DOG,POODLE X,3M,F,false,Brooklyn,11209
+2487,August 31 2021,DOG,SHEPERD,,U,false,Brooklyn,11213
+2490,August 31 2021,DOG,UNCERTAIN,,U,false,Brooklyn,11211
+4584,August 31 2021,DOG,,,U,false,Bronx,10453
+4684,August 31 2021,DOG,Labrador Retriever Crossbreed,,U,false,Bronx,10469
+7416,August 31 2021,DOG,UNKNOWN,,U,false,Manhattan,10011
+7418,August 31 2021,DOG,UNKNOWN,10,F,false,Manhattan,10065
+8156,August 31 2021,DOG,Yorkshire Terrier,1,M,false,Other,11040
+8157,August 31 2021,DOG,Yorkshire Terrier,6,M,true,Other,2026
+11170,August 31 2021,DOG,Pit Bull,,U,false,Queens,11356
+2491,September 01 2021,DOG,Pit Bull,,U,false,Brooklyn,11229
+2495,September 01 2021,DOG,UNKNOWN,,U,false,Brooklyn,11209
+7415,September 01 2021,DOG,Havanese,4,M,true,Manhattan,10128
+11171,September 01 2021,DOG,Shih Tzu,10,F,true,Queens,11360
+11172,September 01 2021,DOG,MIXED,1,M,false,Queens,11418
+2493,September 02 2021,DOG,UNKNOWN,,U,false,Brooklyn,11212
+2494,September 02 2021,DOG,UNKNOWN,,U,false,Brooklyn,
+7419,September 02 2021,DOG,LABRADOR,,U,false,Manhattan,
+7422,September 02 2021,DOG,Labradoodle,1,M,false,Manhattan,10038
+7423,September 02 2021,DOG,UNKNOWN,,U,false,Manhattan,
+11173,September 02 2021,DOG,UNKNOWN,,U,false,Queens,
+11174,September 02 2021,DOG,UNKNOWN,,U,false,Queens,
+11175,September 02 2021,DOG,UNKNOWN,,U,false,Queens,
+2498,September 03 2021,DOG,Pit Bull,3,F,true,Brooklyn,
+2499,September 03 2021,DOG,Pit Bull,,U,false,Brooklyn,
+7417,September 03 2021,DOG,UNKNOWN,,U,false,Manhattan,
+11176,September 03 2021,DOG,UNKNOWN,,U,false,Queens,
+11302,September 03 2021,DOG,Cocker Spaniel,,U,false,Queens,11364
+2507,September 04 2021,DOG,Pit Bull,,U,false,Brooklyn,11229
+11178,September 04 2021,DOG,"Collie, Border",,U,false,Queens,
+11179,September 04 2021,DOG,UNKNOWN,,U,false,Queens,
+11180,September 04 2021,DOG,American Pit Bull Mix / Pit Bull Mix,7,M,true,Queens,11368
+11185,September 04 2021,DOG,UNKNOWN,,U,false,Queens,11364
+12313,September 04 2021,DOG,Siberian Husky,4Y,U,true,Staten Island,
+12315,September 04 2021,DOG,Pit Bull,,U,false,Staten Island,
+2501,September 05 2021,DOG,MIXED BREED,2,M,false,Brooklyn,11208
+2510,September 05 2021,DOG,UNKNOWN,,U,false,Brooklyn,
+2516,September 05 2021,DOG,UNKNOWN,,U,false,Brooklyn,
+4588,September 05 2021,DOG,Pit Bull,,M,false,Bronx,10459
+7421,September 05 2021,DOG,Pit Bull,,M,false,Manhattan,10009
+7425,September 05 2021,DOG,UNKNOWN,,U,false,Manhattan,
+8159,September 05 2021,DOG,UNKNOWN,,U,false,Other,
+8160,September 05 2021,DOG,UNKNOWN,,U,false,Other,
+8161,September 05 2021,DOG,German Shepherd,1Y,M,true,Other,
+11181,September 05 2021,DOG,Pit Bull,,U,false,Queens,11366
+12312,September 05 2021,DOG,UNKNOWN,,U,false,Staten Island,
+12314,September 05 2021,DOG,UNKNOWN,,U,false,Staten Island,
+2500,September 06 2021,DOG,TERRIER,,U,false,Brooklyn,11221
+7420,September 06 2021,DOG,HUSKY,,U,false,Manhattan,
+8166,September 06 2021,DOG,Puggle,17,F,true,Other,
+11182,September 06 2021,DOG,BULL DOG / POODLE MIX,4M,F,false,Queens,11412
+11183,September 06 2021,DOG,UNKNOWN,,U,false,Queens,
+11184,September 06 2021,DOG,UNKNOWN,,U,false,Queens,
+11186,September 06 2021,DOG,Akita,,U,false,Queens,
+2504,September 07 2021,DOG,Maltese,,U,false,Brooklyn,11201
+7424,September 07 2021,DOG,HUSKY,,U,false,Manhattan,
+7427,September 07 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7428,September 07 2021,DOG,Pit Bull,,U,false,Manhattan,
+7429,September 07 2021,DOG,UNKNOWN,,U,false,Manhattan,10065
+11204,September 07 2021,DOG,UNKNOWN,,U,false,Queens,
+2502,September 08 2021,DOG,German Shepherd,,M,false,Brooklyn,11210
+2503,September 08 2021,DOG,Pit Bull,5,U,false,Brooklyn,11221
+2530,September 08 2021,DOG,Pit Bull,,U,false,Brooklyn,11207
+2671,September 08 2021,DOG,Pit Bull,,U,false,Brooklyn,11224
+4592,September 08 2021,DOG,,,U,false,Bronx,10456
+7426,September 08 2021,DOG,MIXED,2,M,true,Manhattan,10065
+7430,September 08 2021,DOG,Mixed/Other,,U,false,Manhattan,
+7431,September 08 2021,DOG,TERRIER,,U,false,Manhattan,10002
+8163,September 08 2021,DOG,AMERICAN BULL DOG,8Y,U,false,Other,11421
+11187,September 08 2021,DOG,Pit Bull,,U,false,Queens,11413
+11191,September 08 2021,DOG,German Shepherd,,U,false,Queens,
+2592,September 09 2021,DOG,HOUND X,1,M,true,Brooklyn,11222
+7432,September 09 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7438,September 09 2021,DOG,UNKNOWN,,U,false,Manhattan,
+11188,September 09 2021,DOG,UNKNOWN,,U,false,Queens,11367
+11189,September 09 2021,DOG,"Poodle, Standard",1,F,false,Queens,11354
+11192,September 09 2021,DOG,MIXED,2,M,false,Queens,11004
+2513,September 10 2021,DOG,Golden Retriever,3,M,true,Brooklyn,11234
+2518,September 10 2021,DOG,Pit Bull,,U,false,Brooklyn,11221
+7433,September 10 2021,DOG,Pit Bull,,U,false,Manhattan,10033
+7434,September 10 2021,DOG,Labrador Retriever,7,M,true,Manhattan,10024
+7435,September 10 2021,DOG,UNKNOWN,,U,false,Manhattan,
+11190,September 10 2021,DOG,PIT BULL / LABRADOR MIX,,M,true,Queens,11102
+11291,September 10 2021,DOG,Labrador Retriever,,M,false,Queens,11426
+4593,September 11 2021,DOG,TERRIER MIX,,U,false,Bronx,10456
+4594,September 11 2021,DOG,Rottweiler,,U,false,Bronx,10452
+4599,September 11 2021,DOG,Pit Bull,,U,false,Bronx,10455
+4601,September 11 2021,DOG,"Poodle, Standard",,M,false,Bronx,10473
+7437,September 11 2021,DOG,PITBULL MIX,4,M,true,Manhattan,
+7443,September 11 2021,DOG,Shih Tzu,9,M,true,Manhattan,10075
+7449,September 11 2021,DOG,JACK RUSSELL TERRIER,9,F,true,Manhattan,
+8162,September 11 2021,DOG,Labrador Retriever,2,F,true,Other,
+11196,September 11 2021,DOG,Maltese,,U,false,Queens,11373
+2505,September 12 2021,DOG,MIXED,,U,false,Brooklyn,
+2512,September 12 2021,DOG,Pit Bull,,U,false,Brooklyn,
+2514,September 12 2021,DOG,AUSSIE X,3,M,true,Brooklyn,11222
+2515,September 12 2021,DOG,DANDIE DINMONT,3,F,true,Brooklyn,11233
+4628,September 12 2021,DOG,Chow Chow,4,M,true,Bronx,10473
+7441,September 12 2021,DOG,UNKNOWN,,U,false,Manhattan,
+11193,September 12 2021,DOG,UNKNOWN,,U,false,Queens,
+11194,September 12 2021,DOG,Pit Bull,,U,false,Queens,11423
+11301,September 12 2021,DOG,MORKIE MIX,3,M,true,Queens,11362
+4595,September 13 2021,DOG,,,U,false,Bronx,
+4603,September 13 2021,DOG,SMALL MIXED BREED,,M,false,Bronx,10467
+7442,September 13 2021,DOG,UNKNOWN,,U,false,Manhattan,
+11195,September 13 2021,DOG,UNKNOWN,,U,false,Queens,
+11197,September 13 2021,DOG,"Pointer, German Shorthaired",,U,false,Queens,
+2506,September 14 2021,DOG,Pit Bull,,U,false,Brooklyn,11236
+2508,September 14 2021,DOG,UNKNOWN,,U,false,Brooklyn,11209
+4597,September 14 2021,DOG,Pit Bull,,U,false,Bronx,10459
+7436,September 14 2021,DOG,UNKNOWN,14,M,false,Manhattan,10026
+7444,September 14 2021,DOG,UNKNOWN,,U,false,Manhattan,
+11198,September 14 2021,DOG,Pit Bull,,U,false,Queens,11365
+11199,September 14 2021,DOG,Pit Bull,2,M,false,Queens,11435
+11200,September 14 2021,DOG,MALTESE / POODLE,10,M,true,Queens,11372
+12324,September 14 2021,DOG,Siberian Husky,,U,false,Staten Island,
+2519,September 15 2021,DOG,UNKNOWN,,U,false,Brooklyn,
+2594,September 15 2021,DOG,Yorkshire Terrier,,U,false,Brooklyn,11223
+4600,September 15 2021,DOG,,,U,false,Bronx,10473
+4602,September 15 2021,DOG,,,U,false,Bronx,10466
+7439,September 15 2021,DOG,Rottweiler,6,M,false,Manhattan,
+7440,September 15 2021,DOG,Pit Bull,,U,false,Manhattan,10039
+7445,September 15 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7450,September 15 2021,DOG,UNKNOWN,,U,false,Manhattan,
+12355,September 15 2021,DOG,Pit Bull,,U,false,Staten Island,10301
+2511,September 16 2021,DOG,UNKNOWN,,U,false,Brooklyn,112
+4596,September 16 2021,DOG,Chihuahua,,U,false,Bronx,10468
+7451,September 16 2021,DOG,BULLDOG,,U,false,Manhattan,
+11202,September 16 2021,DOG,Yorkshire Terrier Crossbreed,1,M,true,Queens,11365
+11203,September 16 2021,DOG,UNKNOWN,,U,false,Queens,
+2509,September 17 2021,DOG,UNKNOWN,,U,false,Brooklyn,
+2520,September 17 2021,DOG,Shih Tzu,8,M,true,Brooklyn,11229
+2532,September 17 2021,DOG,Pit Bull,,U,false,Brooklyn,
+4598,September 17 2021,DOG,Pit Bull,,U,false,Bronx,10473
+7447,September 17 2021,DOG,UNKNOWN,,U,false,Manhattan,
+11205,September 17 2021,DOG,Jack Russ,11,M,false,Queens,11375
+11206,September 17 2021,DOG,Pekingese,7,M,true,Queens,11377
+11207,September 17 2021,DOG,Labradoodle,13,M,false,Queens,11694
+11208,September 17 2021,DOG,MIXED,3,F,true,Queens,
+11210,September 17 2021,DOG,Samoyed,3,M,false,Queens,11368
+11211,September 18 2021,DOG,Bull dog,,U,false,Queens,11109
+11353,September 18 2021,DOG,Pit Bull,,U,false,Queens,11412
+12316,September 18 2021,DOG,Rottweiler,,U,false,Staten Island,10303
+7446,September 19 2021,DOG,SETTER MIX,1,F,true,Manhattan,10034
+8164,September 19 2021,DOG,UNKNOWN,,U,false,Other,
+11209,September 19 2021,DOG,COCKAPOO MIX,7M,F,false,Queens,11368
+11212,September 19 2021,DOG,UNKNOWN,,U,false,Queens,11385
+7448,September 20 2021,DOG,Pit Bull,,U,false,Manhattan,10003
+7452,September 20 2021,DOG,UNKNOWN,5,M,false,Manhattan,10009
+11213,September 20 2021,DOG,American Pit Bull Mix / Pit Bull Mix,1,M,false,Queens,11361
+11214,September 20 2021,DOG,Rottweiler,,U,false,Queens,11101
+11215,September 20 2021,DOG,Golden Retriever,12,M,true,Queens,11368
+12317,September 20 2021,DOG,BEAGLE,,U,false,Staten Island,10301
+4604,September 21 2021,DOG,German Shepherd,,U,false,Bronx,
+4605,September 21 2021,DOG,LARGE MIX BREED,4,M,false,Bronx,10463
+4608,September 21 2021,DOG,SHIH TZU / YORKIE MIX,3,M,false,Bronx,10458
+4625,September 21 2021,DOG,,,U,false,Bronx,10463
+7453,September 21 2021,DOG,GOLDEN DOODLE,1,M,true,Manhattan,10007
+7455,September 21 2021,DOG,UNKNOWN,,U,false,Manhattan,
+12323,September 21 2021,DOG,UNKNOWN,,U,false,Staten Island,11314
+2517,September 22 2021,DOG,MIXED,6,M,true,Brooklyn,11229
+4606,September 22 2021,DOG,German Shepherd,,U,false,Bronx,
+4607,September 22 2021,DOG,,,U,false,Bronx,10456
+4612,September 22 2021,DOG,Pit Bull,,U,false,Bronx,
+7454,September 22 2021,DOG,UNKNOWN,,U,false,Manhattan,
+11216,September 22 2021,DOG,Maltese,1,M,false,Queens,11378
+11217,September 22 2021,DOG,Rottweiler,,U,false,Queens,
+11218,September 22 2021,DOG,Maltese,,U,false,Queens,11377
+11221,September 22 2021,DOG,Chihuahua,6,M,true,Queens,11109
+11279,September 22 2021,DOG,Maltese,2,M,true,Queens,
+2523,September 23 2021,DOG,American Pit Bull Mix / Pit Bull Mix,11,F,true,Brooklyn,11205
+7456,September 23 2021,DOG,MINIATURE AUSTRALIAN SHEPERD,4,M,true,Manhattan,10038
+7457,September 23 2021,DOG,TERRIER,8,F,true,Manhattan,10002
+7466,September 23 2021,DOG,HUSKY,1,M,true,Manhattan,10065
+11219,September 23 2021,DOG,Bichon Frise,,U,false,Queens,11418
+11220,September 23 2021,DOG,UNKNOWN,,U,false,Queens,11378
+2521,September 24 2021,DOG,Pit Bull,11M,M,false,Brooklyn,11216
+2526,September 24 2021,DOG,MIXED,2,M,false,Brooklyn,11212
+2528,September 24 2021,DOG,Pit Bull,,U,false,Brooklyn,11211
+2529,September 24 2021,DOG,Pit Bull,,U,false,Brooklyn,11237
+2583,September 24 2021,DOG,Rottweiler,,U,false,Brooklyn,
+4609,September 24 2021,DOG,Belgian Sheepdog,,U,false,Bronx,
+7458,September 24 2021,DOG,LABRADOR,,U,false,Manhattan,
+11222,September 24 2021,DOG,UNKNOWN,,U,false,Queens,11358
+12318,September 24 2021,DOG,Siberian Husky,,U,false,Staten Island,
+12320,September 24 2021,DOG,MALTESE/ SHIHTZU MIX,,U,false,Staten Island,
+2524,September 25 2021,DOG,UNKNOWN,,U,false,Brooklyn,11226
+2525,September 25 2021,DOG,MIXED,1,M,false,Brooklyn,11208
+2527,September 25 2021,DOG,AMERICAN BULLY,4,M,true,Brooklyn,11234
+4610,September 25 2021,DOG,Pit Bull,,U,false,Bronx,10465
+4611,September 25 2021,DOG,Pit Bull,3,F,false,Bronx,10455
+4624,September 25 2021,DOG,,,U,false,Bronx,10463
+7460,September 25 2021,DOG,SHEEP DOG,,U,false,Manhattan,
+11223,September 25 2021,DOG,Tibetan Spaniel,3,M,true,Queens,11375
+11228,September 25 2021,DOG,UNKNOWN,,U,false,Queens,
+12321,September 25 2021,DOG,LARGE MIXED BREED,8M,M,false,Staten Island,10308
+2522,September 26 2021,DOG,German Shepherd,4,M,true,Brooklyn,11235
+2535,September 26 2021,DOG,MIXED,14,F,true,Brooklyn,11215
+7459,September 26 2021,DOG,Cavalier King Charles Spaniel,,U,false,Manhattan,
+7461,September 26 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7473,September 26 2021,DOG,Pit Bull,,U,false,Manhattan,
+8165,September 26 2021,DOG,KING CHARLES,13,U,false,Other,
+12319,September 26 2021,DOG,Pit Bull,,U,false,Staten Island,
+12346,September 26 2021,DOG,Pit Bull,7Y,F,true,Staten Island,
+4613,September 27 2021,DOG,MALTESE & POODLE MIX,6M,M,false,Bronx,
+7462,September 27 2021,DOG,"Poodle, Standard",,U,false,Manhattan,
+7463,September 27 2021,DOG,UNKNOWN,3mths,F,false,Manhattan,10016
+7464,September 27 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7467,September 27 2021,DOG,UNKNOWN,,U,false,Manhattan,
+12322,September 27 2021,DOG,Pit Bull,5,M,false,Staten Island,10305
+2531,September 28 2021,DOG,UNKNOWN,,U,false,Brooklyn,
+8168,September 28 2021,DOG,UNKNOWN,,U,false,Other,
+2533,September 29 2021,DOG,Pit Bull,,U,false,Brooklyn,11213
+4614,September 29 2021,DOG,UNKNOWN,,U,false,Bronx,10469
+4685,September 29 2021,DOG,Rottweiler,,U,false,Bronx,10473
+7468,September 29 2021,DOG,West High White Terrier,1,M,true,Manhattan,10022
+7469,September 29 2021,DOG,Australian Shepherd,,U,false,Manhattan,10038
+11226,September 29 2021,DOG,Rottweiler,4,M,true,Queens,11105
+2536,September 30 2021,DOG,UNKNOWN,,U,false,Brooklyn,11201
+2538,September 30 2021,DOG,POODLE X,7,M,true,Brooklyn,11234
+2564,September 30 2021,DOG,German Shepherd Crossbreed,8,M,true,Brooklyn,11229
+2619,September 30 2021,DOG,Pit Bull,,U,false,Brooklyn,11236
+4620,September 30 2021,DOG,Pit Bull,1,M,false,Bronx,10460
+4623,September 30 2021,DOG,Pit Bull,2,F,false,Bronx,10459
+7470,September 30 2021,DOG,UNKNOWN,,U,false,Manhattan,10027
+11229,September 30 2021,DOG,UNKNOWN,,U,false,Queens,
+11230,September 30 2021,DOG,Pit Bull,3,M,false,Queens,11385
+11231,September 30 2021,DOG,MASTIFF MIX,3,M,true,Queens,11693
+11232,September 30 2021,DOG,Cairn Terrier,2,F,false,Queens,
+11236,September 30 2021,DOG,MIXED,1,M,false,Queens,11422
+11237,September 30 2021,DOG,MIXED,1,M,false,Queens,11422
+2542,October 01 2021,DOG,TERRIER,,U,false,Brooklyn,
+2546,October 01 2021,DOG,Saint Bernard,8,M,false,Brooklyn,11225
+4618,October 01 2021,DOG,UNKNOWN,,F,false,Bronx,10468
+4619,October 01 2021,DOG,Pit Bull,,U,false,Bronx,10473
+7477,October 01 2021,DOG,PITBULL MIX,2,F,true,Manhattan,
+11281,October 01 2021,DOG,POODLE MIX,7,M,true,Queens,11373
+11396,October 01 2021,DOG,American Pit Bull Terrier/Pit Bull,,U,false,Queens,11693
+12329,October 01 2021,DOG,LARGE MIXED BREED,5Y,F,false,Staten Island,10309
+2547,October 02 2021,DOG,UNKNOWN,,U,false,Brooklyn,11215
+4621,October 02 2021,DOG,German Shepherd,1,F,true,Bronx,10475
+7472,October 02 2021,DOG,Shih Tzu,2,M,false,Manhattan,
+7474,October 02 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7475,October 02 2021,DOG,Pit Bull,,U,false,Manhattan,10029
+11233,October 02 2021,DOG,Chihuahua,,U,false,Queens,
+12325,October 02 2021,DOG,Rottweiler,4,M,false,Staten Island,
+12326,October 02 2021,DOG,American Pit Bull Terrier/Pit Bull,,M,true,Staten Island,
+2540,October 03 2021,DOG,UNKNOWN,,U,false,Brooklyn,11213
+2541,October 03 2021,DOG,POODLE MIX,8,F,true,Brooklyn,
+2544,October 03 2021,DOG,MIXED,3,F,false,Brooklyn,11207
+7471,October 03 2021,DOG,Pit Bull,4,M,false,Manhattan,10023
+7476,October 03 2021,DOG,UNKNOWN,,F,false,Manhattan,10029
+8167,October 03 2021,DOG,MIXED BREED DOG,9Y,F,true,Other,
+11234,October 03 2021,DOG,UNKNOWN,,U,false,Queens,
+11235,October 03 2021,DOG,Maltese,,U,false,Queens,
+11238,October 03 2021,DOG,Shiba Inu,9,M,true,Queens,
+11241,October 03 2021,DOG,American Pit Bull Mix / Pit Bull Mix,12,M,false,Queens,11375
+11333,October 03 2021,DOG,MIXED,1,F,true,Queens,11375
+2545,October 04 2021,DOG,Rottweiler,,U,false,Brooklyn,
+4622,October 04 2021,DOG,Pit Bull,2,U,false,Bronx,10458
+11239,October 04 2021,DOG,Pit Bull,,U,false,Queens,
+11240,October 04 2021,DOG,UNKNOWN,,U,false,Queens,
+11242,October 04 2021,DOG,"Bull Dog, English",3,F,true,Queens,11365
+12327,October 04 2021,DOG,Pit Bull,,U,false,Staten Island,10305
+12340,October 04 2021,DOG,LARGE MIXED BREED,,F,false,Staten Island,10304
+2543,October 05 2021,DOG,MIXED,2,M,false,Brooklyn,
+2551,October 05 2021,DOG,American Pit Bull Mix / Pit Bull Mix,,U,false,Brooklyn,11211
+4627,October 05 2021,DOG,LARGE MIX BREED,1,F,false,Bronx,10463
+7478,October 05 2021,DOG,UNKNOWN,,U,false,Manhattan,10128
+12330,October 05 2021,DOG,Shih Tzu,2,M,true,Staten Island,10305
+2549,October 06 2021,DOG,Chihuahua,,U,false,Brooklyn,11222
+2550,October 06 2021,DOG,Pit Bull,,U,false,Brooklyn,11203
+11244,October 06 2021,DOG,UNKNOWN,,U,false,Queens,11414
+2548,October 07 2021,DOG,MIXED,7,M,false,Brooklyn,11208
+7479,October 07 2021,DOG,LABRADOR,,F,true,Manhattan,
+7482,October 07 2021,DOG,Jack Russ,,U,false,Manhattan,
+7489,October 07 2021,DOG,DOBERMAN MIX,8,F,true,Manhattan,10065
+11243,October 07 2021,DOG,Dachshund Smooth Coat,,U,false,Queens,11103
+11245,October 07 2021,DOG,Chihuahua,,U,false,Queens,11419
+7481,October 08 2021,DOG,Labradoodle,9,M,true,Manhattan,
+8169,October 08 2021,DOG,Pit Bull,4Y,U,true,Other,8360
+11246,October 08 2021,DOG,UNKNOWN,,U,false,Queens,
+12331,October 08 2021,DOG,Pit Bull,,U,false,Staten Island,10303
+4636,October 09 2021,DOG,Pit Bull,,U,false,Bronx,10473
+8172,October 09 2021,DOG,Chihuahua,,M,false,Other,10710
+11247,October 09 2021,DOG,American Pit Bull Mix / Pit Bull Mix,2,M,false,Queens,11418
+11248,October 09 2021,DOG,German Shepherd,6,F,false,Queens,11368
+11249,October 09 2021,DOG,UNKNOWN,,U,false,Queens,
+11250,October 09 2021,DOG,Pekingese,4,M,false,Queens,11378
+11258,October 09 2021,DOG,Pit Bull,,M,false,Queens,11434
+11261,October 09 2021,DOG,Boxer,3,F,false,Queens,11414
+11285,October 09 2021,DOG,MIXED,3,M,false,Queens,11417
+12332,October 09 2021,DOG,LARGE MIXED BREED,2Y,M,false,Staten Island,10309
+12335,October 09 2021,DOG,MIXED BREED DOG,,U,false,Staten Island,10310
+2556,October 10 2021,DOG,SHEPERD,,U,false,Brooklyn,11236
+4626,October 10 2021,DOG,Pit Bull,,U,false,Bronx,10471
+7480,October 10 2021,DOG,UNKNOWN,,U,false,Manhattan,10002
+11254,October 10 2021,DOG,Pit Bull,1,M,false,Queens,11434
+12333,October 10 2021,DOG,UNKNOWN,,U,false,Staten Island,10301
+12337,October 10 2021,DOG,Pit Bull,9M,M,false,Staten Island,10310
+2552,October 11 2021,DOG,Pit Bull,,U,false,Brooklyn,11226
+2554,October 11 2021,DOG,RAT TERRIER,11,M,true,Brooklyn,11237
+7487,October 11 2021,DOG,"Bull Dog, French",5,M,true,Manhattan,10065
+11251,October 11 2021,DOG,COCKAPOO,9,M,true,Queens,11357
+12334,October 11 2021,DOG,AUSTRAILIAN SHEPARD MIX,10,M,true,Staten Island,10305
+2553,October 12 2021,DOG,Boxer,1,M,false,Brooklyn,11235
+7483,October 12 2021,DOG,UNKNOWN,,F,true,Manhattan,10009
+11252,October 12 2021,DOG,MIXED,,U,false,Queens,11432
+11253,October 12 2021,DOG,UNKNOWN,,U,false,Queens,
+11255,October 12 2021,DOG,Pit Bull,7,M,false,Queens,11432
+11256,October 12 2021,DOG,MIXED,,U,false,Queens,11435
+12336,October 12 2021,DOG,SHIH TZU / POODLE MIX,3,M,true,Staten Island,
+2555,October 13 2021,DOG,TERRIER,,U,false,Brooklyn,11237
+2557,October 13 2021,DOG,Pit Bull,,U,false,Brooklyn,11233
+4637,October 13 2021,DOG,Pit Bull,,U,false,Bronx,10462
+7484,October 13 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7485,October 13 2021,DOG,Wheaton Terrier,4,M,true,Manhattan,10036
+7490,October 13 2021,DOG,BASENJI,,U,false,Manhattan,
+12339,October 13 2021,DOG,TERRIER MIX,8Y,M,true,Staten Island,10301
+2559,October 14 2021,DOG,Pit Bull,,U,false,Brooklyn,11206
+2561,October 14 2021,DOG,UNKNOWN,,U,false,Brooklyn,
+2562,October 14 2021,DOG,Pit Bull,,U,false,Brooklyn,11222
+7486,October 14 2021,DOG,American Pit Bull Mix / Pit Bull Mix,2,M,true,Manhattan,10031
+7492,October 14 2021,DOG,Pit Bull,7,F,false,Manhattan,10128
+11257,October 14 2021,DOG,Siberian Husky,4,M,false,Queens,11373
+12341,October 14 2021,DOG,Pit Bull,,F,false,Staten Island,10304
+2560,October 15 2021,DOG,UNKNOWN,,U,false,Brooklyn,11208
+11259,October 15 2021,DOG,German Shepherd,2,M,false,Queens,11434
+11260,October 15 2021,DOG,"Poodle, Standard",,U,false,Queens,
+11262,October 15 2021,DOG,Bull dog,,U,false,Queens,
+11263,October 15 2021,DOG,POODLE / SHIH TZU MIX,3,M,true,Queens,11415
+2563,October 16 2021,DOG,Shih Tzu,1,M,true,Brooklyn,11210
+2567,October 16 2021,DOG,Chihuahua,3 MTHS,M,false,Brooklyn,11220
+2568,October 16 2021,DOG,SHIH TZU MIX,5,M,true,Brooklyn,
+7488,October 16 2021,DOG,Pit Bull,,U,false,Manhattan,
+7491,October 16 2021,DOG,Pit Bull,,U,false,Manhattan,
+7495,October 16 2021,DOG,German Shepherd,7,F,true,Manhattan,10065
+11264,October 16 2021,DOG,MIXED,,U,false,Queens,11435
+11275,October 16 2021,DOG,REFUSED TO PROVIDE,,U,false,Queens,
+7493,October 17 2021,DOG,UNKNOWN,4,M,false,Manhattan,10029
+7494,October 17 2021,DOG,Pit Bull,,M,false,Manhattan,10128
+8170,October 17 2021,DOG,Yorkshire Terrier Crossbreed,6,F,false,Other,10701
+11265,October 17 2021,DOG,Pit Bull,,U,false,Queens,
+11266,October 17 2021,DOG,German Shepherd,5,M,true,Queens,11361
+11267,October 17 2021,DOG,Siberian Husky,3,M,true,Queens,11357
+11268,October 17 2021,DOG,UNKNOWN,,U,false,Queens,
+11270,October 17 2021,DOG,SHIH TZU MIX,4,M,false,Queens,11377
+11271,October 17 2021,DOG,UNKNOWN,,U,false,Queens,
+11276,October 17 2021,DOG,UNKNOWN,,U,false,Queens,
+2565,October 18 2021,DOG,UNKNOWN,,U,false,Brooklyn,
+2570,October 18 2021,DOG,UNKNOWN,,U,false,Brooklyn,
+2593,October 18 2021,DOG,PIT BULL MIX,10,F,true,Brooklyn,11218
+8171,October 18 2021,DOG,Brittany Spaniel,3,M,true,Other,
+11272,October 18 2021,DOG,Shih Tzu,6,M,true,Queens,
+11273,October 18 2021,DOG,MIXED,4M,F,true,Queens,11101
+2566,October 19 2021,DOG,MIXED,1,M,false,Brooklyn,11223
+2600,October 19 2021,DOG,Pit Bull,,U,false,Brooklyn,
+7496,October 19 2021,DOG,Cock-A-Poo,5,M,true,Manhattan,10028
+7497,October 19 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7498,October 19 2021,DOG,UNKNOWN,,U,false,Manhattan,
+11269,October 19 2021,DOG,UNKNOWN,,U,false,Queens,11426
+11274,October 19 2021,DOG,UNKNOWN,,U,false,Queens,
+11277,October 19 2021,DOG,RAT TERRIER / PINSCHER MIX,4,F,false,Queens,11358
+11278,October 19 2021,DOG,UNKNOWN,,U,false,Queens,
+2569,October 20 2021,DOG,BERNADOODLE,3,F,true,Brooklyn,11201
+4630,October 20 2021,DOG,UNKNOWN,6,F,false,Bronx,10469
+4670,October 20 2021,DOG,FRENCH BULL DOG,5M,M,false,Bronx,10471
+7499,October 20 2021,DOG,UNKNOWN,5,M,true,Manhattan,
+7500,October 20 2021,DOG,MASTIFF,9 MTHS,F,false,Manhattan,10128
+12342,October 20 2021,DOG,TERRIER,3Y,M,true,Staten Island,
+2571,October 21 2021,DOG,MEDIUM MIXED BREED,,U,false,Brooklyn,11209
+2598,October 21 2021,DOG,MINI GOLDEN DOODLE,2,M,false,Brooklyn,11204
+4632,October 21 2021,DOG,SMALL MIXED BREED,4,U,false,Bronx,10463
+4665,October 21 2021,DOG,Pit Bull,8Y,M,true,Bronx,
+7501,October 21 2021,DOG,UNKNOWN,,U,false,Manhattan,
+11280,October 21 2021,DOG,Pit Bull,9,M,false,Queens,11369
+11286,October 21 2021,DOG,MIXED,3,M,false,Queens,11417
+12344,October 21 2021,DOG,PITBULL MIX,5,M,false,Staten Island,10303
+2573,October 22 2021,DOG,UNKNOWN,,U,false,Brooklyn,
+2574,October 22 2021,DOG,Pit Bull,6Y,M,true,Brooklyn,
+4634,October 22 2021,DOG,"Poodle, Standard",,F,false,Bronx,10453
+7504,October 22 2021,DOG,German Shepherd,1,M,false,Manhattan,
+7523,October 22 2021,DOG,HARRIER HOUND,5,M,true,Manhattan,
+11284,October 22 2021,DOG,"Poodle, Standard",,U,false,Queens,11377
+4633,October 23 2021,DOG,American Pit Bull Mix / Pit Bull Mix,,M,false,Bronx,10452
+7502,October 23 2021,DOG,TERRIER MIX,,M,false,Manhattan,10036
+7503,October 23 2021,DOG,TERRIER MIX,,M,false,Manhattan,10036
+7506,October 23 2021,DOG,UNKNOWN,,U,false,Manhattan,
+11282,October 23 2021,DOG,UNKNOWN,,U,false,Queens,11432
+11283,October 23 2021,DOG,MIXED,4,M,true,Queens,11375
+12345,October 23 2021,DOG,MIXED BREED DOG,,U,false,Staten Island,10303
+2572,October 24 2021,DOG,Akita,3Y,M,true,Brooklyn,
+2575,October 24 2021,DOG,Pit Bull,,U,false,Brooklyn,11229
+2576,October 24 2021,DOG,MIXED,11M,M,false,Brooklyn,11201
+2577,October 24 2021,DOG,MIXED,11M,M,false,Brooklyn,
+2579,October 24 2021,DOG,"Poodle, Standard",,U,false,Brooklyn,11236
+2582,October 24 2021,DOG,Rottweiler,,U,false,Brooklyn,
+11287,October 24 2021,DOG,Pit Bull,,U,false,Queens,
+11318,October 24 2021,DOG,UNKNOWN,,U,false,Queens,11418
+2601,October 25 2021,DOG,German Shepherd,10,M,false,Brooklyn,11232
+2608,October 25 2021,DOG,UNKNOWN,,U,false,Brooklyn,
+7505,October 25 2021,DOG,Maltese,2,M,false,Manhattan,10032
+7507,October 25 2021,DOG,POODLE,,U,false,Manhattan,10027
+7508,October 25 2021,DOG,TERRIER,,M,false,Manhattan,10128
+7509,October 25 2021,DOG,Havanese,4,M,true,Manhattan,10065
+11298,October 25 2021,DOG,CANE CORSO / PIT BULL MIX,5,M,true,Queens,11385
+4635,October 26 2021,DOG,MIXED BREED,,U,false,Bronx,10470
+4680,October 26 2021,DOG,UNKNOWN,,U,false,Bronx,
+11309,October 26 2021,DOG,Pomeranian,6,M,false,Queens,
+12347,October 26 2021,DOG,LARGE MIXED BREED,2Y,M,false,Staten Island,10309
+2578,October 27 2021,DOG,RED NOSE PIT BULL,,U,false,Brooklyn,11223
+2580,October 27 2021,DOG,MIXED,,U,false,Brooklyn,11238
+2621,October 27 2021,DOG,UNKNOWN,,U,false,Brooklyn,11209
+4638,October 27 2021,DOG,SMALL MIXDED DOG,2,M,true,Bronx,10474
+4644,October 27 2021,DOG,Bull Terrier,,U,false,Bronx,10452
+4645,October 27 2021,DOG,Chihuahua,,M,false,Bronx,10455
+7511,October 27 2021,DOG,UNKNOWN,3,U,false,Manhattan,10013
+7512,October 27 2021,DOG,UNKNOWN,3,U,false,Manhattan,
+7514,October 27 2021,DOG,Rottweiler,,M,false,Manhattan,10027
+11292,October 27 2021,DOG,BEAGLE / SHAR-PEI MIX,6M,M,false,Queens,11368
+11297,October 27 2021,DOG,German Shepherd,,U,false,Queens,11365
+12348,October 27 2021,DOG,Yorkshire Terrier,,U,false,Staten Island,
+2597,October 28 2021,DOG,MIXED,3,U,false,Brooklyn,11206
+2599,October 28 2021,DOG,MIXED,3,M,false,Brooklyn,11206
+4639,October 28 2021,DOG,UNKNOWN,,U,false,Bronx,
+4651,October 28 2021,DOG,,,U,false,Bronx,10455
+4681,October 28 2021,DOG,Pit Bull,,U,false,Bronx,
+7510,October 28 2021,DOG,CHIHUAHUA MIX,9,M,true,Manhattan,10009
+11293,October 28 2021,DOG,Shih Tzu,7,M,false,Queens,11369
+11299,October 28 2021,DOG,Rottweiler,,U,false,Queens,11413
+11300,October 28 2021,DOG,Shih Tzu,3,M,false,Queens,11377
+12349,October 28 2021,DOG,MUTT MIX,18 M,M,false,Staten Island,10310
+2581,October 29 2021,DOG,MIXED,,U,false,Brooklyn,11220
+4650,October 29 2021,DOG,SMALL MIXED,,M,false,Bronx,10452
+4673,October 29 2021,DOG,LAB/PIT BULL MIX,7Y,M,false,Bronx,10467
+7515,October 29 2021,DOG,COLLIE,,U,false,Manhattan,10016
+7516,October 29 2021,DOG,UNKNOWN,,U,false,Manhattan,
+11303,October 29 2021,DOG,Bull Terrier,6,F,true,Queens,11361
+11304,October 29 2021,DOG,UNKNOWN,,U,false,Queens,11373
+11305,October 29 2021,DOG,Pit Bull,6,M,false,Queens,11378
+11313,October 29 2021,DOG,SIBERIAN HUSKY MIX,,U,false,Queens,
+4646,October 30 2021,DOG,Pit Bull,,U,false,Bronx,10468
+4652,October 30 2021,DOG,Pit Bull,,U,false,Bronx,10455
+7520,October 30 2021,DOG,Pit Bull,,U,false,Manhattan,
+7521,October 30 2021,DOG,Shih Tzu,,U,false,Manhattan,
+11317,October 30 2021,DOG,Pit Bull,,U,false,Queens,
+11383,October 30 2021,DOG,Pit Bull,,U,false,Queens,11385
+2584,October 31 2021,DOG,German Shepherd Crossbreed,3,F,false,Brooklyn,11236
+2585,October 31 2021,DOG,UNKNOWN,,U,false,Brooklyn,
+2588,October 31 2021,DOG,MALTIPOO,,U,false,Brooklyn,11236
+2589,October 31 2021,DOG,UNKNOWN,,U,false,Brooklyn,
+4640,October 31 2021,DOG,German Shepherd Crossbreed,,U,false,Bronx,10455
+7513,October 31 2021,DOG,Labradoodle,1,M,false,Manhattan,10009
+7517,October 31 2021,DOG,UNKNOWN,,U,false,Manhattan,10029
+7518,October 31 2021,DOG,PITBULL MIX,4,F,true,Manhattan,
+7522,October 31 2021,DOG,Pit Bull,,U,false,Manhattan,
+11306,October 31 2021,DOG,STAFFORDSHIRE / ENGLIS BULL MIX,3,M,false,Queens,11378
+11307,October 31 2021,DOG,Beagle,7,M,true,Queens,11377
+2591,November 01 2021,DOG,TERRIER,,U,false,Brooklyn,
+7562,November 01 2021,DOG,PITBULL MIX,2,M,true,Manhattan,10075
+11308,November 01 2021,DOG,Labrador Retriever Crossbreed,1,F,true,Queens,
+11310,November 01 2021,DOG,Chihuahua,,U,false,Queens,11109
+11312,November 01 2021,DOG,SHIH TZU / YORKIE MIX,4,M,true,Queens,11375
+2586,November 02 2021,DOG,German Shepherd Crossbreed,1,M,true,Brooklyn,11234
+2587,November 02 2021,DOG,UNKNOWN,,U,false,Brooklyn,
+2595,November 02 2021,DOG,Pit Bull,,U,false,Brooklyn,
+4654,November 02 2021,DOG,Pit Bull,,F,false,Bronx,10453
+4657,November 02 2021,DOG,LARGE MIX BREED,10M,M,false,Bronx,10455
+4666,November 02 2021,DOG,UNKNOWN,,M,false,Bronx,
+7525,November 02 2021,DOG,Maltese,,F,true,Manhattan,10025
+11311,November 02 2021,DOG,Pit Bull,,U,false,Queens,11374
+11321,November 02 2021,DOG,AUSSIEDOODLE MIX,1,M,true,Queens,11379
+12350,November 02 2021,DOG,"Schnauzer, Standard",9Y,F,true,Staten Island,10314
+2590,November 03 2021,DOG,UNKNOWN,,U,false,Brooklyn,11231
+4641,November 03 2021,DOG,FRENCHIE,,U,false,Bronx,
+4642,November 03 2021,DOG,Pit Bull,,U,false,Bronx,10462
+4643,November 03 2021,DOG,SMALL MIXED BREED,3,M,false,Bronx,10467
+4647,November 03 2021,DOG,,,U,false,Bronx,10473
+4682,November 03 2021,DOG,,,U,false,Bronx,
+7519,November 03 2021,DOG,Australian Shepherd,6,F,true,Manhattan,10023
+7524,November 03 2021,DOG,FRENCHIE,,U,false,Manhattan,10021
+7526,November 03 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7527,November 03 2021,DOG,UNKNOWN,,U,false,Manhattan,10029
+7528,November 03 2021,DOG,UNKNOWN,,U,false,Manhattan,10040
+7529,November 03 2021,DOG,UNKNOWN,,U,false,Manhattan,10016
+11314,November 03 2021,DOG,COLLIE MIX,6,M,true,Queens,11375
+11315,November 03 2021,DOG,Akita,3,M,true,Queens,11420
+11316,November 03 2021,DOG,MIXED,5,M,true,Queens,11377
+11319,November 03 2021,DOG,JACK RUSSELL MIX,12,M,true,Queens,11368
+11324,November 03 2021,DOG,Beagle,,U,false,Queens,11375
+2596,November 04 2021,DOG,MIXED,6,M,false,Brooklyn,11212
+2603,November 04 2021,DOG,LABRADOR,,U,false,Brooklyn,
+4655,November 04 2021,DOG,Pit Bull,,U,false,Bronx,10460
+7531,November 04 2021,DOG,Maltese,2,M,true,Manhattan,10028
+7538,November 04 2021,DOG,Pit Bull,,U,false,Manhattan,10027
+7548,November 04 2021,DOG,UNKNOWN,2,M,false,Manhattan,
+7553,November 04 2021,DOG,HUSKY,3,F,false,Manhattan,10016
+11320,November 04 2021,DOG,UNKNOWN,,U,false,Queens,
+12351,November 04 2021,DOG,UNKNOWN,2,F,false,Staten Island,10309
+2613,November 05 2021,DOG,Pit Bull,,U,false,Brooklyn,
+2614,November 05 2021,DOG,UNKNOWN,,U,false,Brooklyn,
+2692,November 05 2021,DOG,Pit Bull,,U,false,Brooklyn,11218
+4667,November 05 2021,DOG,SHI-PO,5Y,M,true,Bronx,10461
+7530,November 05 2021,DOG,DACHSHUND,12,M,true,Manhattan,10128
+7532,November 05 2021,DOG,UNKNOWN TERRIER,,U,false,Manhattan,10011
+7540,November 05 2021,DOG,Pit Bull,,U,false,Manhattan,10011
+7541,November 05 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7549,November 05 2021,DOG,UNKNOWN,2,M,false,Manhattan,10031
+7556,November 05 2021,DOG,UNKNOWN,1,F,true,Manhattan,10011
+11325,November 05 2021,DOG,"Bull Dog, French",4,M,true,Queens,11101
+12367,November 05 2021,DOG,LABRADOR / COLLIE,11,M,true,Staten Island,10312
+12380,November 05 2021,DOG,Pit Bull,4Y,M,true,Staten Island,10309
+2602,November 06 2021,DOG,Pit Bull,,U,false,Brooklyn,
+2612,November 06 2021,DOG,Lhasa Apso,9,M,true,Brooklyn,11230
+4648,November 06 2021,DOG,TERRIER MIX,3,M,false,Bronx,10467
+7534,November 06 2021,DOG,Shih Tzu,2,M,true,Manhattan,
+7536,November 06 2021,DOG,Pit Bull,,U,false,Manhattan,10032
+7537,November 06 2021,DOG,HUSKY,,U,false,Manhattan,
+7550,November 06 2021,DOG,UNKNOWN,2,M,false,Manhattan,10031
+8173,November 06 2021,DOG,"Mastiff, French (Dogue de Bordeaux)",2Y,M,true,Other,
+11322,November 06 2021,DOG,"Poodle, Toy",8,U,true,Queens,11355
+11326,November 06 2021,DOG,Pit Bull,,U,false,Queens,11373
+12358,November 06 2021,DOG,LABRADOR MIX,6Y,M,true,Staten Island,10304
+2604,November 07 2021,DOG,MIXED,5,M,false,Brooklyn,11221
+2607,November 07 2021,DOG,UNKNOWN,,U,false,Brooklyn,
+4649,November 07 2021,DOG,German Shepherd,,U,false,Bronx,
+7535,November 07 2021,DOG,COLLIE,4 MTHS,F,true,Manhattan,10016
+7539,November 07 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7543,November 07 2021,DOG,PITBULL MIX,2,F,true,Manhattan,
+7551,November 07 2021,DOG,UNKNOWN,2,M,false,Manhattan,10031
+7561,November 07 2021,DOG,AMERICAN BULLY,,U,false,Manhattan,10011
+11323,November 07 2021,DOG,UNKNOWN,,U,false,Queens,11434
+11327,November 07 2021,DOG,UNKNOWN,,U,false,Queens,11102
+11330,November 07 2021,DOG,MIXED,3,F,false,Queens,11385
+2606,November 08 2021,DOG,UNKNOWN,,U,false,Brooklyn,
+2610,November 08 2021,DOG,Pit Bull,,U,false,Brooklyn,11225
+2633,November 08 2021,DOG,MIXED,,M,true,Brooklyn,11237
+7533,November 08 2021,DOG,TERRIER MIX,2,F,true,Manhattan,10023
+7542,November 08 2021,DOG,Beagle,5,F,false,Manhattan,10003
+7544,November 08 2021,DOG,DACHSHUND & CHIHUAHUA MIX,2,M,false,Manhattan,
+11328,November 08 2021,DOG,German Shepherd,,U,false,Queens,11427
+11329,November 08 2021,DOG,"Bull Dog, English",1,M,false,Queens,11412
+11331,November 08 2021,DOG,Pit Bull,,U,false,Queens,
+11332,November 08 2021,DOG,UNKNOWN,,U,false,Queens,
+4653,November 09 2021,DOG,Shih Tzu,16,M,true,Bronx,
+7545,November 09 2021,DOG,Pit Bull,,U,false,Manhattan,
+7547,November 09 2021,DOG,Chihuahua,,U,false,Manhattan,
+7552,November 09 2021,DOG,UNKNOWN,2,M,false,Manhattan,10031
+7554,November 09 2021,DOG,UNKNOWN,2,M,true,Manhattan,
+11334,November 09 2021,DOG,Pit Bull,,U,false,Queens,11373
+11335,November 09 2021,DOG,German Shepherd,5,M,false,Queens,11368
+12357,November 09 2021,DOG,Chihuahua,,U,false,Staten Island,10306
+2605,November 10 2021,DOG,Havanese,4,M,false,Brooklyn,11235
+2609,November 10 2021,DOG,Cane Corso,7,M,false,Brooklyn,11233
+4656,November 10 2021,DOG,Pit Bull,,U,false,Bronx,
+4662,November 10 2021,DOG,UNKNOWN,2,F,false,Bronx,10455
+7546,November 10 2021,DOG,Golden Retriever,2,M,false,Manhattan,10012
+7557,November 10 2021,DOG,UNKNOWN,11,F,false,Manhattan,10031
+11336,November 10 2021,DOG,"Schnauzer, Miniature",16,M,false,Queens,11373
+11338,November 10 2021,DOG,Pit Bull,,U,false,Queens,
+11339,November 10 2021,DOG,UNKNOWN,,U,false,Queens,
+2611,November 11 2021,DOG,Jack Russ,,U,false,Brooklyn,11209
+2617,November 11 2021,DOG,,,U,false,Brooklyn,11235
+4658,November 11 2021,DOG,Jack Russ,,U,false,Bronx,10472
+4659,November 11 2021,DOG,LARGE MIX BREED,4,M,false,Bronx,10451
+7555,November 11 2021,DOG,UNKNOWN,3 MTHS,M,false,Manhattan,10029
+7558,November 11 2021,DOG,UNKNOWN,4,M,true,Manhattan,10016
+11337,November 11 2021,DOG,Rottweiler,1,M,false,Queens,
+11340,November 11 2021,DOG,UNKNOWN,,U,false,Queens,11103
+12360,November 11 2021,DOG,JACK RUSS/CHIHUAHUA MIX,,M,true,Staten Island,
+2615,November 12 2021,DOG,Pit Bull,6,M,false,Brooklyn,11207
+2616,November 12 2021,DOG,Pit Bull,6,M,false,Brooklyn,11207
+2629,November 12 2021,DOG,Pit Bull,3M,M,false,Brooklyn,11207
+7559,November 12 2021,DOG,Pit Bull,,U,false,Manhattan,10128
+7564,November 12 2021,DOG,LABARADOR RETRIEVER,3,M,true,Manhattan,10022
+11341,November 12 2021,DOG,UNKNOWN,,U,false,Queens,
+11348,November 12 2021,DOG,Golden Retriever,3M,M,false,Queens,11364
+11358,November 12 2021,DOG,Labrador Retriever Crossbreed,9,F,true,Queens,11693
+12370,November 12 2021,DOG,"Bull Dog, French",,U,false,Staten Island,10305
+2622,November 13 2021,DOG,MIXED,3,M,false,Brooklyn,11207
+2623,November 13 2021,DOG,UNKNOWN,,U,false,Brooklyn,11222
+2625,November 13 2021,DOG,BULLDOG,,U,false,Brooklyn,11224
+2631,November 13 2021,DOG,UNKNOWN,,U,false,Brooklyn,11223
+4663,November 13 2021,DOG,SMALL MIXED DOG,9,M,false,Bronx,10473
+4671,November 13 2021,DOG,,,U,false,Bronx,
+7563,November 13 2021,DOG,UNKNOWN,5,M,false,Manhattan,10016
+11342,November 13 2021,DOG,Pit Bull,,U,false,Queens,11691
+11346,November 13 2021,DOG,UNKNOWN,,U,false,Queens,
+11347,November 13 2021,DOG,Boxer,,U,false,Queens,11691
+12361,November 13 2021,DOG,LARGE MIXED BREED,1Y,M,false,Staten Island,10305
+12369,November 13 2021,DOG,Pit Bull,8Y,F,true,Staten Island,
+2626,November 14 2021,DOG,Siberian Husky,,U,false,Brooklyn,11218
+2628,November 14 2021,DOG,Pit Bull,,U,false,Brooklyn,11224
+4661,November 14 2021,DOG,LARGE MIXED BREED,3Q,M,false,Bronx,10454
+4668,November 14 2021,DOG,SMALL MIXED BREED,8,M,false,Bronx,10474
+7560,November 14 2021,DOG,Shih Tzu,,U,false,Manhattan,
+7565,November 14 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7566,November 14 2021,DOG,UNKNOWN,8,M,false,Manhattan,10025
+7567,November 14 2021,DOG,UNKNOWN,,U,false,Manhattan,
+11343,November 14 2021,DOG,Boxer,,U,false,Queens,
+11344,November 14 2021,DOG,Chihuahua,5,M,true,Queens,11374
+11345,November 14 2021,DOG,Siberian Husky,6,M,false,Queens,11373
+2618,November 15 2021,DOG,Pit Bull,,U,false,Brooklyn,
+4660,November 15 2021,DOG,MEDIUM SIZE BREED,,U,false,Bronx,10455
+4664,November 15 2021,DOG,SMALL MIXED BREED,9,M,false,Bronx,10473
+4675,November 15 2021,DOG,LARGE MIXED BREED,,F,false,Bronx,10467
+7568,November 15 2021,DOG,POODLE,,M,false,Manhattan,10025
+7569,November 15 2021,DOG,Pit Bull,,U,false,Manhattan,
+7574,November 15 2021,DOG,UNKNOWN,,U,false,Manhattan,
+11385,November 15 2021,DOG,POODLE / SHIH TZU MIX,4,M,true,Queens,11418
+12359,November 15 2021,DOG,SMALL MIXED BREED,2Y,M,false,Staten Island,10314
+2624,November 16 2021,DOG,UNKNOWN,,U,false,Brooklyn,11206
+2627,November 16 2021,DOG,Pit Bull,4,F,false,Brooklyn,11214
+2682,November 16 2021,DOG,UNKNOWN,,U,false,Brooklyn,
+4669,November 16 2021,DOG,Pit Bull,,U,false,Bronx,
+7570,November 16 2021,DOG,UNKNOWN,,M,false,Manhattan,10001
+7595,November 16 2021,DOG,UNKNOWN,,U,false,Manhattan,
+8174,November 16 2021,DOG,Jack Russ,11Y,M,true,Other,
+11349,November 16 2021,DOG,UNKNOWN,,U,false,Queens,11361
+11350,November 16 2021,DOG,MALTESE MIX,9,M,false,Queens,11367
+11351,November 16 2021,DOG,German Shepherd,1,M,true,Queens,11361
+11352,November 16 2021,DOG,Pit Bull,2,F,false,Queens,11368
+11354,November 16 2021,DOG,UNKNOWN,,U,false,Queens,11361
+2630,November 17 2021,DOG,Bouvier Des Flandres,6,M,true,Brooklyn,11220
+4676,November 17 2021,DOG,TERRIER,,U,false,Bronx,10462
+7571,November 17 2021,DOG,Doberman Pinscher,9,M,true,Manhattan,10013
+11355,November 17 2021,DOG,UNKNOWN,,U,false,Queens,
+11356,November 17 2021,DOG,UNKNOWN,,U,false,Queens,
+2632,November 18 2021,DOG,Pit Bull,1,M,false,Brooklyn,11229
+4674,November 18 2021,DOG,LARGE MIXED BREED,,F,false,Bronx,10457
+4678,November 18 2021,DOG,Pit Bull,,U,false,Bronx,
+4679,November 18 2021,DOG,Rottweiler,,U,false,Bronx,
+7573,November 18 2021,DOG,UNKNOWN,,U,false,Manhattan,
+8175,November 18 2021,DOG,UNKNOWN,,U,false,Other,
+11357,November 18 2021,DOG,MALTESE / POODLE MIX,,U,false,Queens,11375
+11359,November 18 2021,DOG,MIXED,3,F,false,Queens,11415
+11360,November 18 2021,DOG,REFUSED TO PROVIDE,,U,false,Queens,
+2639,November 19 2021,DOG,SHEPERD,,U,false,Brooklyn,
+2643,November 19 2021,DOG,Pit Bull,6,M,true,Brooklyn,11207
+11361,November 19 2021,DOG,UNKNOWN,,U,false,Queens,11369
+11362,November 19 2021,DOG,UNKNOWN,,U,false,Queens,
+12364,November 19 2021,DOG,Pit Bull,,U,false,Staten Island,
+4677,November 20 2021,DOG,Pit Bull,,U,false,Bronx,10467
+7577,November 20 2021,DOG,UNKNOWN,6,M,true,Manhattan,10003
+11363,November 20 2021,DOG,Pit Bull,,U,false,Queens,11357
+2638,November 21 2021,DOG,MIXED,7,F,false,Brooklyn,11204
+2640,November 21 2021,DOG,Pit Bull,,U,false,Brooklyn,11207
+2647,November 21 2021,DOG,MIXED,5,M,false,Brooklyn,11207
+2680,November 21 2021,DOG,Cane Corso,7,M,true,Brooklyn,11231
+4672,November 21 2021,DOG,Pit Bull,,U,false,Bronx,10458
+7578,November 21 2021,DOG,Pit Bull,,U,false,Manhattan,
+11364,November 21 2021,DOG,UNKNOWN,,U,false,Queens,
+11365,November 21 2021,DOG,American Staffordshire Terrier,5,F,true,Queens,11385
+11386,November 21 2021,DOG,UNKNOWN,,U,false,Queens,11105
+12365,November 21 2021,DOG,Pit Bull,,U,false,Staten Island,10310
+2634,November 22 2021,DOG,Pit Bull,,U,false,Brooklyn,11233
+11373,November 22 2021,DOG,Chihuahua,11,M,false,Queens,11356
+2641,November 23 2021,DOG,UNKNOWN,,U,false,Brooklyn,
+2642,November 23 2021,DOG,HUSKY/PIT BULL X,,U,false,Brooklyn,11235
+7579,November 23 2021,DOG,UNKNOWN,,U,false,Manhattan,
+11371,November 23 2021,DOG,UNKNOWN,,U,false,Queens,11358
+11374,November 23 2021,DOG,"Poodle, Miniature",4,M,true,Queens,
+11382,November 23 2021,DOG,"Poodle, Miniature",8,M,false,Queens,11372
+12366,November 23 2021,DOG,Pit Bull,,U,false,Staten Island,
+2656,November 24 2021,DOG,MEXICAN HAIRLESS,2,M,false,Brooklyn,11206
+4691,November 24 2021,DOG,UNKNOWN,,U,false,Bronx,
+7586,November 24 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7587,November 24 2021,DOG,Yorkshire Terrier,,U,false,Manhattan,10002
+8178,November 24 2021,DOG,,,U,false,Other,
+8182,November 24 2021,DOG,Labrador Retriever,1Y,F,false,Other,
+11372,November 24 2021,DOG,MIXED,,U,false,Queens,
+11375,November 24 2021,DOG,Shiba Inu,9,F,false,Queens,11364
+2644,November 25 2021,DOG,POMERANIAN / YORKIE MIX,4,F,false,Brooklyn,11224
+2645,November 25 2021,DOG,UNKNOWN,,U,false,Brooklyn,
+2651,November 25 2021,DOG,UNKNOWN,,U,false,Brooklyn,
+4696,November 25 2021,DOG,Shih Tzu,,U,false,Bronx,10452
+4711,November 25 2021,DOG,UNKNOWN,,U,false,Bronx,10474
+7584,November 25 2021,DOG,UNKNOWN,5,M,false,Manhattan,10036
+7585,November 25 2021,DOG,UNKNOWN,5,M,false,Manhattan,10036
+7588,November 25 2021,DOG,Pug,,U,false,Manhattan,
+8176,November 25 2021,DOG,,11Y,M,true,Other,7079
+11377,November 25 2021,DOG,Labrador Retriever Crossbreed,12,F,true,Queens,11419
+2646,November 26 2021,DOG,POODLE MIX,3,M,true,Brooklyn,11235
+7583,November 26 2021,DOG,GOLDEN DOODLE,14,M,true,Manhattan,10065
+8177,November 26 2021,DOG,UNKNOWN,,U,false,Other,
+11376,November 26 2021,DOG,Beagle,,U,false,Queens,11360
+11378,November 26 2021,DOG,Australian Shepherd,,U,false,Queens,
+11379,November 26 2021,DOG,AMERICAN BULL / MASTIFF,1,M,false,Queens,11435
+2648,November 27 2021,DOG,MIXED,5,M,false,Brooklyn,11207
+2649,November 27 2021,DOG,LARGE MIXED BREED,5Y,M,false,Brooklyn,11208
+4690,November 27 2021,DOG,German Shepherd,1,M,false,Bronx,10461
+4697,November 27 2021,DOG,TERRIER,,U,false,Bronx,
+7591,November 27 2021,DOG,SHARPEI,,U,false,Manhattan,
+11380,November 27 2021,DOG,UNKNOWN,,U,false,Queens,11416
+11392,November 27 2021,DOG,UNKNOWN,,U,false,Queens,
+2667,November 28 2021,DOG,CAVAPOO,10,M,true,Brooklyn,11234
+4689,November 28 2021,DOG,MIXED,9,M,false,Bronx,10460
+7589,November 28 2021,DOG,Pug,7,M,false,Manhattan,10013
+7590,November 28 2021,DOG,CHINESE CRESTED,10,M,true,Manhattan,10019
+7592,November 28 2021,DOG,UNKNOWN,3,M,false,Manhattan,10029
+11381,November 28 2021,DOG,AMERICAN BULLY,8M,M,false,Queens,11373
+11384,November 28 2021,DOG,AMERICAN BULLY,3M,F,false,Queens,11356
+11399,November 28 2021,DOG,UNKNOWN,,U,false,Queens,11101
+2650,November 29 2021,DOG,American Pit Bull Mix / Pit Bull Mix,2,M,true,Brooklyn,11222
+2653,November 29 2021,DOG,Chihuahua Crossbreed,2,M,true,Brooklyn,11215
+4692,November 29 2021,DOG,Pit Bull,3,F,true,Bronx,10460
+4693,November 29 2021,DOG,Maltese,9,F,true,Bronx,10469
+4694,November 29 2021,DOG,MASTIFF,1,F,false,Bronx,10466
+4699,November 29 2021,DOG,Bull Terrier,4,F,true,Bronx,10465
+7593,November 29 2021,DOG,Pit Bull,,U,false,Manhattan,10032
+2652,November 30 2021,DOG,Bull dog,,M,false,Brooklyn,11209
+2654,November 30 2021,DOG,UNKNOWN,,U,false,Brooklyn,11206
+2659,November 30 2021,DOG,Pit Bull,,U,false,Brooklyn,
+4695,November 30 2021,DOG,Pit Bull,,M,false,Bronx,10473
+2655,December 01 2021,DOG,CORGI,,U,false,Brooklyn,11230
+2664,December 01 2021,DOG,Rottweiler,,U,false,Brooklyn,11209
+2686,December 01 2021,DOG,UNKNOWN,,U,false,Brooklyn,11211
+4698,December 01 2021,DOG,UNKNOWN,,U,false,Bronx,10457
+7594,December 01 2021,DOG,Pit Bull,6,M,false,Manhattan,10128
+12368,December 01 2021,DOG,Pit Bull,,U,false,Staten Island,
+12371,December 01 2021,DOG,MIXED,3,M,false,Staten Island,10304
+2657,December 02 2021,DOG,UNKNOWN,,U,false,Brooklyn,11237
+4700,December 02 2021,DOG,Pit Bull,6,M,false,Bronx,10472
+4701,December 02 2021,DOG,Pit Bull,6,M,false,Bronx,10472
+7597,December 02 2021,DOG,Pit Bull,,F,false,Manhattan,10026
+2658,December 03 2021,DOG,Pit Bull,,U,false,Brooklyn,11212
+2662,December 03 2021,DOG,MIXED BREED,1,M,false,Brooklyn,11233
+7596,December 03 2021,DOG,SHIH TZU MIX,11,M,true,Manhattan,10065
+7600,December 03 2021,DOG,Weimaraner,1,M,false,Manhattan,10028
+11387,December 03 2021,DOG,Pit Bull,,U,false,Queens,11417
+11405,December 03 2021,DOG,UNKNOWN,,U,false,Queens,11358
+4702,December 04 2021,DOG,Pit Bull,,U,false,Bronx,10461
+4704,December 04 2021,DOG,MALTESE / POODLE,12,F,false,Bronx,
+7598,December 04 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7599,December 04 2021,DOG,UNKNOWN,9 MTHS,M,false,Manhattan,10009
+8179,December 04 2021,DOG,Labrador Retriever,12Y,M,true,Other,
+2660,December 05 2021,DOG,MIXED,3,F,false,Brooklyn,11221
+2663,December 05 2021,DOG,MIXED,5,F,false,Brooklyn,11217
+4703,December 05 2021,DOG,Pit Bull,,U,false,Bronx,
+4709,December 05 2021,DOG,Maltese,12,F,false,Bronx,10463
+7601,December 05 2021,DOG,"Poodle, Miniature",2,M,false,Manhattan,10035
+11388,December 05 2021,DOG,Bernese Mountain,5,M,false,Queens,11101
+11389,December 05 2021,DOG,Labrador Retriever,,U,false,Queens,
+11410,December 05 2021,DOG,UNKNOWN,,U,false,Queens,
+11441,December 05 2021,DOG,German Shepherd,,U,false,Queens,11694
+2661,December 06 2021,DOG,Belgian Malinois,1,M,false,Brooklyn,11249
+4705,December 06 2021,DOG,Pit Bull,,U,false,Bronx,
+4706,December 06 2021,DOG,UNKNOWN,,U,false,Bronx,
+11390,December 06 2021,DOG,UNKNOWN,,U,false,Queens,
+11391,December 06 2021,DOG,Boxer,,U,false,Queens,11433
+11393,December 06 2021,DOG,German Shepherd,,M,false,Queens,
+2665,December 07 2021,DOG,Yorkshire Terrier,,U,false,Brooklyn,11229
+2666,December 07 2021,DOG,MIXED,,U,false,Brooklyn,112
+4707,December 07 2021,DOG,UNKNOWN,,U,false,Bronx,10458
+7602,December 07 2021,DOG,YORKIE/TERRIER MIX,2,M,true,Manhattan,10029
+7603,December 07 2021,DOG,TERRIER MIX,,F,true,Manhattan,10022
+8180,December 07 2021,DOG,Rottweiler,,U,false,Other,
+11394,December 07 2021,DOG,American Pit Bull Mix / Pit Bull Mix,3,M,true,Queens,11378
+11395,December 07 2021,DOG,Pit Bull,5,M,true,Queens,11378
+12372,December 07 2021,DOG,UNKNOWN,,U,false,Staten Island,
+2673,December 08 2021,DOG,UNKNOWN,,U,false,Brooklyn,11235
+2675,December 08 2021,DOG,MIXED,2,M,false,Brooklyn,11224
+4708,December 08 2021,DOG,UNKNOWN,,U,false,Bronx,
+7604,December 08 2021,DOG,Pit Bull,7,M,true,Manhattan,10065
+7605,December 08 2021,DOG,Pit Bull,7,M,true,Manhattan,10065
+7606,December 08 2021,DOG,POODLE MIX,6,F,true,Manhattan,10014
+12374,December 08 2021,DOG,BULL MASTIFF MIX,3,M,false,Staten Island,10304
+2676,December 09 2021,DOG,German Pinscher,11,M,false,Brooklyn,11234
+4710,December 09 2021,DOG,MIXED,10,F,false,Bronx,10460
+7607,December 09 2021,DOG,UNKNOWN,,U,false,Manhattan,10011
+11397,December 09 2021,DOG,SHIH TZU / MALTESE,4,M,false,Queens,11692
+11398,December 09 2021,DOG,AUSTRALIAN CATTLE,10M,M,true,Queens,11378
+11402,December 09 2021,DOG,Yorkshire Terrier,5,M,false,Queens,11368
+12373,December 09 2021,DOG,LAB/BASSET HOUND,,M,false,Staten Island,10312
+2683,December 10 2021,DOG,Pit Bull,,U,false,Brooklyn,11236
+4712,December 10 2021,DOG,Pit Bull,3Y,M,false,Bronx,10467
+4713,December 10 2021,DOG,JACK RUSSELL MIX,11,F,true,Bronx,10465
+7627,December 10 2021,DOG,UNKNOWN,,U,false,Manhattan,
+12377,December 10 2021,DOG,YORKIE/SHIHTZU MIX,,M,false,Staten Island,
+2678,December 11 2021,DOG,Rottweiler,4,F,false,Brooklyn,11229
+2679,December 11 2021,DOG,UNKNOWN,,U,false,Brooklyn,11218
+7610,December 11 2021,DOG,"Welsh Corgi, Cardigan",10,M,true,Manhattan,
+7613,December 11 2021,DOG,MIXED,5,M,true,Manhattan,10025
+8184,December 11 2021,DOG,UNKNOWN,2,M,false,Other,7302
+11403,December 11 2021,DOG,American Pit Bull Mix / Pit Bull Mix,1,M,true,Queens,11433
+11408,December 11 2021,DOG,Whippet,7,M,true,Queens,11379
+11442,December 11 2021,DOG,UNKNOWN,,U,false,Queens,11354
+12375,December 11 2021,DOG,"Shar-Pei, Chinese",4M,M,false,Staten Island,
+2677,December 12 2021,DOG,Rottweiler,,U,false,Brooklyn,11222
+4714,December 12 2021,DOG,Pit Bull,,U,false,Bronx,10465
+7608,December 12 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7609,December 12 2021,DOG,German Shepherd,,U,false,Manhattan,
+7611,December 12 2021,DOG,German Shepherd,1,M,false,Manhattan,10030
+7612,December 12 2021,DOG,Rottweiler,,M,false,Manhattan,
+7618,December 12 2021,DOG,UNKNOWN,2,M,false,Manhattan,10029
+8181,December 12 2021,DOG,CORGI,3Y,M,true,Other,
+11400,December 12 2021,DOG,GOLDEN DOODLE,2,F,true,Queens,11374
+11401,December 12 2021,DOG,Shih Tzu,10,M,true,Queens,11368
+11406,December 12 2021,DOG,Chihuahua,1,M,false,Queens,11435
+11407,December 12 2021,DOG,UNKNOWN,,U,false,Queens,11361
+11409,December 12 2021,DOG,Labrador Retriever Crossbreed,4,F,true,Queens,
+12376,December 12 2021,DOG,UNKNOWN,,U,false,Staten Island,
+2674,December 13 2021,DOG,UNKNOWN,,U,false,Brooklyn,11234
+2703,December 13 2021,DOG,UNKNOWN,,U,false,Brooklyn,11236
+4715,December 13 2021,DOG,UNKNOWN,,U,false,Bronx,
+4716,December 13 2021,DOG,UNKNOWN,,U,false,Bronx,10458
+7614,December 13 2021,DOG,MIXED,4,M,false,Manhattan,10030
+7615,December 13 2021,DOG,UNKNOWN,7,M,true,Manhattan,10029
+11404,December 13 2021,DOG,Pit Bull,,U,false,Queens,11372
+11412,December 13 2021,DOG,"Mastiff, Tibetan",10M,F,false,Queens,11379
+12378,December 13 2021,DOG,UNKNOWN,,U,false,Staten Island,
+12379,December 13 2021,DOG,German Shepherd,2Y,M,false,Staten Island,10314
+7616,December 14 2021,DOG,AMERICAN BULLY,1,M,false,Manhattan,
+7617,December 14 2021,DOG,UNKNOWN,,U,false,Manhattan,
+7623,December 14 2021,DOG,MALTESE MIX,5,M,true,Manhattan,10028
+8183,December 14 2021,DOG,Siberian Husky,,U,false,Other,
+11411,December 14 2021,DOG,COCKER SPANIEL / BEAGLE,3,F,false,Queens,11413
+11413,December 14 2021,DOG,UNKNOWN,,U,false,Queens,11418
+2681,December 15 2021,DOG,Golden Retriever,,U,false,Brooklyn,11201
+7619,December 15 2021,DOG,CHIHUAHUA MIX,8,M,true,Manhattan,
+7622,December 15 2021,DOG,UNKNOWN,2,M,false,Manhattan,10019
+7625,December 15 2021,DOG,UNKNOWN,,U,false,Manhattan,
+11414,December 15 2021,DOG,"Poodle, Standard",8M,M,true,Queens,11358
+11419,December 15 2021,DOG,MIXED,2,M,false,Queens,11414
+2684,December 16 2021,DOG,Chihuahua,,U,false,Brooklyn,11217
+2685,December 16 2021,DOG,UNKNOWN,,U,false,Brooklyn,
+4717,December 16 2021,DOG,German Shepherd,2Y,M,false,Bronx,10475
+4719,December 16 2021,DOG,Chihuahua,,U,false,Bronx,10467
+7620,December 16 2021,DOG,TERRIER X,,U,false,Manhattan,10065
+7621,December 16 2021,DOG,Doberman Pinscher,10 MTHS,M,false,Manhattan,10069
+8189,December 16 2021,DOG,NOVA SCOTIA,,U,false,Other,
+11415,December 16 2021,DOG,UNKNOWN,,U,false,Queens,11368
+11416,December 16 2021,DOG,SOFT WHEATON TERRIER,2,M,false,Queens,11378
+11417,December 16 2021,DOG,UNKNOWN,,U,false,Queens,
+2687,December 17 2021,DOG,UNKNOWN,1,M,true,Brooklyn,
+2688,December 17 2021,DOG,UNKNOWN,,U,false,Brooklyn,
+4718,December 17 2021,DOG,Siberian Husky,,U,false,Bronx,10470
+7626,December 17 2021,DOG,UNKNOWN,4,M,false,Manhattan,
+11418,December 17 2021,DOG,Shih Tzu,8,M,true,Queens,
+11422,December 17 2021,DOG,Siberian Husky,2,M,false,Queens,11377
+11423,December 17 2021,DOG,Bull dog,,U,false,Queens,
+11424,December 17 2021,DOG,UNKNOWN,,U,false,Queens,11365
+2691,December 18 2021,DOG,Pit Bull,,U,false,Brooklyn,
+4722,December 18 2021,DOG,MEDIUM MIXED BREED,2Y,M,false,Bronx,10453
+11425,December 18 2021,DOG,MIXED,7,F,false,Queens,11433
+11426,December 18 2021,DOG,CORGI,,U,false,Queens,11375
+11427,December 18 2021,DOG,UNKNOWN,,U,false,Queens,
+2689,December 19 2021,DOG,UNKNOWN,,U,false,Brooklyn,11213
+2690,December 19 2021,DOG,Labrador Retriever,,U,false,Brooklyn,11222
+7624,December 19 2021,DOG,LABRADOR,7Y,F,true,Manhattan,10025
+7628,December 19 2021,DOG,UNKNOWN,,U,false,Manhattan,
+8185,December 19 2021,DOG,LARGE MIXED BREED,4Y,M,false,Other,7002
+11420,December 19 2021,DOG,PIT BULL / CHIHUAHUA MIX,1,M,true,Queens,11432
+11421,December 19 2021,DOG,BULLY,2,M,false,Queens,
+11429,December 19 2021,DOG,UNKNOWN,,U,false,Queens,
+4720,December 20 2021,DOG,BULLDOG,3Y,F,false,Bronx,
+4721,December 20 2021,DOG,UNKNOWN,,U,false,Bronx,10452
+4726,December 20 2021,DOG,SMALL MIXED BREED,13Y,M,false,Bronx,10461
+7629,December 20 2021,DOG,PUGGLE/PUG/BEAGLE MIX,10 MTHS,M,true,Manhattan,10010
+7631,December 20 2021,DOG,Shiba Inu,4,M,false,Manhattan,10065
+11428,December 20 2021,DOG,Chihuahua Crossbreed,7,F,true,Queens,11104
+11430,December 20 2021,DOG,Shiba Inu,3,M,true,Queens,11365
+4723,December 21 2021,DOG,Chihuahua,,F,false,Bronx,10453
+7633,December 21 2021,DOG,UNKNOWN,5,M,false,Manhattan,10029
+7644,December 21 2021,DOG,POODLE,,U,false,Manhattan,10002
+11432,December 21 2021,DOG,UNKNOWN,,U,false,Queens,11354
+7632,December 22 2021,DOG,UNKNOWN,9,M,false,Manhattan,10029
+7642,December 22 2021,DOG,Pit Bull,,U,false,Manhattan,
+11431,December 22 2021,DOG,MIXED,,U,false,Queens,11358
+2695,December 23 2021,DOG,UNKNOWN,3,M,true,Brooklyn,
+4724,December 23 2021,DOG,UNKNOWN,,U,false,Bronx,
+4725,December 23 2021,DOG,MEDIUM MIXED BREED,2Y,M,false,Bronx,10473
+7641,December 23 2021,DOG,Cock-A-Poo,,U,false,Manhattan,
+8188,December 23 2021,DOG,Labradoodle,,U,false,Other,
+11433,December 23 2021,DOG,"Poodle, Standard",2,M,true,Queens,11377
+2693,December 24 2021,DOG,UNKNOWN,,U,false,Brooklyn,11224
+4727,December 24 2021,DOG,UNKNOWN,,U,false,Bronx,
+4728,December 24 2021,DOG,MASTIFF,,U,false,Bronx,10466
+8187,December 24 2021,DOG,UNKNOWN,,U,false,Other,
+11434,December 24 2021,DOG,HOUND,,U,false,Queens,11370
+11435,December 24 2021,DOG,UNKNOWN,,U,false,Queens,11377
+11437,December 24 2021,DOG,Bull dog,,M,false,Queens,11691
+12381,December 24 2021,DOG,MIXED BREED DOG,8Y,M,false,Staten Island,10304
+2694,December 25 2021,DOG,UNKNOWN,,U,false,Brooklyn,11229
+2696,December 25 2021,DOG,Pomeranian,,U,false,Brooklyn,
+7636,December 25 2021,DOG,POODLE MIX,5,F,false,Manhattan,10040
+7643,December 25 2021,DOG,Bichon Frise,,U,false,Manhattan,
+11436,December 25 2021,DOG,Bull dog,5,M,false,Queens,
+7640,December 26 2021,DOG,SHEEP DOG,,U,false,Manhattan,
+8186,December 26 2021,DOG,German Shepherd,2Y,M,true,Other,
+2699,December 27 2021,DOG,Chihuahua,5,M,false,Brooklyn,11234
+7634,December 27 2021,DOG,German Shepherd,2,F,true,Manhattan,
+7635,December 27 2021,DOG,Australian Shepherd,10,F,true,Manhattan,
+7639,December 27 2021,DOG,Pit Bull,,U,false,Manhattan,
+11438,December 27 2021,DOG,Pit Bull,9M,F,true,Queens,11357
+2697,December 28 2021,DOG,GOLDEN RETRIEVER MIX,9,F,true,Brooklyn,11204
+2698,December 28 2021,DOG,Pit Bull,,F,false,Brooklyn,11233
+4730,December 28 2021,DOG,UNKNOWN,,U,false,Bronx,10452
+7637,December 28 2021,DOG,UNKNOWN,4,M,true,Manhattan,10128
+7638,December 28 2021,DOG,UNKNOWN,,U,false,Manhattan,
+12382,December 28 2021,DOG,MIXED BREED,,U,false,Staten Island,10304
+2701,December 29 2021,DOG,American Pit Bull Mix / Pit Bull Mix,,U,false,Brooklyn,11236
+2702,December 29 2021,DOG,UNKNOWN,,U,false,Brooklyn,
+2705,December 29 2021,DOG,Pomeranian,,U,false,Brooklyn,11214
+4729,December 29 2021,DOG,Bull dog,,U,false,Bronx,10459
+7645,December 30 2021,DOG,Shih Tzu,,U,false,Manhattan,10032
+11439,December 30 2021,DOG,UNKNOWN,,U,false,Queens,
+11440,December 30 2021,DOG,Dachshund Smooth Coat,7,M,true,Queens,11369
+2700,December 31 2021,DOG,UNKNOWN,,U,false,Brooklyn,11233

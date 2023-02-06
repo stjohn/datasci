@@ -1,0 +1,178 @@
+zip,borough,post_office,neighborhood,population,density
+10001,Manhattan,"New York, NY",Chelsea and Clinton,21102,33959
+10002,Manhattan,"New York, NY",Lower East Side,81410,92573
+10003,Manhattan,"New York, NY",Lower East Side,56024,97188
+10004,Manhattan,"New York, NY",Lower Manhattan,3089,5519
+10005,Manhattan,"New York, NY",Lower Manhattan,7135,97048
+10006,Manhattan,"New York, NY",Lower Manhattan,3011,32796
+10007,Manhattan,"New York, NY",Lower Manhattan,6988,42751
+10009,Manhattan,"New York, NY",Lower East Side,61347,99492
+10010,Manhattan,"New York, NY",Gramercy Park and Murray Hill,31834,81487
+10011,Manhattan,"New York, NY",Chelsea and Clinton,50984,77436
+10012,Manhattan,"New York, NY",Greenwich Village and Soho,24090,74517
+10013,Manhattan,"New York, NY",Greenwich Village and Soho,27700,50154
+10014,Manhattan,"New York, NY",Greenwich Village and Soho,31959,56119
+10016,Manhattan,"New York, NY",Gramercy Park and Murray Hill,54183,101814
+10017,Manhattan,"New York, NY",Gramercy Park and Murray Hill,16575,51775
+10018,Manhattan,"New York, NY",Chelsea and Clinton,5229,16251
+10019,Manhattan,"New York, NY",Chelsea and Clinton,42870,63042
+10021,Manhattan,"New York, NY",Upper East Side,43631,112711
+10022,Manhattan,"New York, NY",Gramercy Park and Murray Hill,31924,73158
+10023,Manhattan,"New York, NY",Upper West Side,60998,124357
+10024,Manhattan,"New York, NY",Upper West Side,59283,69106
+10025,Manhattan,"New York, NY",Upper West Side,94600,125860
+10026,Manhattan,"New York, NY",Central Harlem,34003,102315
+10027,Manhattan,"New York, NY",Central Harlem,59707,68513
+10028,Manhattan,"New York, NY",Upper East Side,45141,143683
+10029,Manhattan,"New York, NY",East Harlem,76003,92116
+10030,Manhattan,"New York, NY",Central Harlem,26999,96790
+10031,Manhattan,"New York, NY",Inwood and Washington Heights,56438,86722
+10032,Manhattan,"New York, NY",Inwood and Washington Heights,57331,87199
+10033,Manhattan,"New York, NY",Inwood and Washington Heights,53926,89201
+10034,Manhattan,"New York, NY",Inwood and Washington Heights,38908,34544
+10035,Manhattan,"New York, NY",East Harlem,33969,24329
+10036,Manhattan,"New York, NY",Chelsea and Clinton,24711,55745
+10037,Manhattan,"New York, NY",Central Harlem,17416,65973
+10038,Manhattan,"New York, NY",Lower Manhattan,20300,68214
+10039,Manhattan,"New York, NY",Central Harlem,24527,52965
+10040,Manhattan,"New York, NY",Inwood and Washington Heights,41905,111184
+10044,Manhattan,"New York, NY",Upper East Side,11661,48251
+10065,Manhattan,"New York, NY",Upper East Side,32270,83533
+10069,Manhattan,"New York, NY",West Side,5199,49908
+10075,Manhattan,"New York, NY",Upper East Side,26121,141546
+10128,Manhattan,"New York, NY",Upper East Side,60453,128441
+10280,Manhattan,"New York, NY",Lower Manhattan,7853,56710
+10282,Manhattan,"New York, NY",Tribeca,4783,54674
+10301,Staten Island,"Staten Island, NY",Stapleton and St. George,39706,10852
+10302,Staten Island,"Staten Island, NY",Port Richmond,19088,15982
+10303,Staten Island,"Staten Island, NY",Port Richmond,26337,8395
+10304,Staten Island,"Staten Island, NY",Stapleton and St. George,42193,10889
+10305,Staten Island,"Staten Island, NY",Stapleton and St. George,41749,9819
+10306,Staten Island,"Staten Island, NY",South Shore,55909,7481
+10307,Staten Island,"Staten Island, NY",South Shore,14096,7184
+10308,Staten Island,"Staten Island, NY",South Shore,27357,13864
+10309,Staten Island,"Staten Island, NY",South Shore,32519,4840
+10310,Staten Island,"Staten Island, NY",Port Richmond,24962,13903
+10312,Staten Island,"Staten Island, NY",South Shore,59304,7723
+10314,Staten Island,"Staten Island, NY",Mid-Island,85510,6235
+10451,Bronx,"Bronx, NY",High Bridge and Morrisania,45713,45043
+10452,Bronx,"Bronx, NY",High Bridge and Morrisania,75371,76548
+10453,Bronx,"Bronx, NY",Central Bronx,78309,85491
+10454,Bronx,"Bronx, NY",Hunts Point and Mott Haven,37337,35820
+10455,Bronx,"Bronx, NY",Hunts Point and Mott Haven,39665,55696
+10456,Bronx,"Bronx, NY",High Bridge and Morrisania,86547,84979
+10457,Bronx,"Bronx, NY",Central Bronx,70496,66425
+10458,Bronx,"Bronx, NY",Bronx Park and Fordham,79492,78784
+10459,Bronx,"Bronx, NY",Hunts Point and Mott Haven,47308,57907
+10460,Bronx,"Bronx, NY",Central Bronx,57311,43567
+10461,Bronx,"Bronx, NY",Southeast Bronx,50502,21045
+10462,Bronx,"Bronx, NY",Southeast Bronx,75784,51207
+10463,Bronx,"Bronx, NY",Kingsbridge and Riverdale,67970,47002
+10464,Bronx,"Bronx, NY",Southeast Bronx,4534,1295
+10465,Bronx,"Bronx, NY",Southeast Bronx,42230,12313
+10466,Bronx,"Bronx, NY",Northeast Bronx,67813,33601
+10467,Bronx,"Bronx, NY",Bronx Park and Fordham,97060,41649
+10468,Bronx,"Bronx, NY",Bronx Park and Fordham,76103,70778
+10469,Bronx,"Bronx, NY",Northeast Bronx,66631,26903
+10470,Bronx,"Bronx, NY",Northeast Bronx,15293,10734
+10471,Bronx,"Bronx, NY",Kingsbridge and Riverdale,22922,8878
+10472,Bronx,"Bronx, NY",Southeast Bronx,66358,63167
+10473,Bronx,"Bronx, NY",Southeast Bronx,58519,26846
+10474,Bronx,"Bronx, NY",Hunts Point and Mott Haven,12281,8010
+10475,Bronx,"Bronx, NY",Northeast Bronx,40931,23753
+11004,Queens,"Glen Oaks, NY",Southeast Queens,14016,14752
+11101,Queens,"Long Island City, NY",Northwest Queens,25484,9744
+11102,Queens,"Astoria, NY",Northwest Queens,34133,42255
+11103,Queens,"Astoria, NY",Northwest Queens,38780,54537
+11104,Queens,"Sunnyside, NY",Northwest Queens,27232,69826
+11105,Queens,"Astoria, NY",Northwest Queens,36688,22481
+11106,Queens,"Astoria, NY",Northwest Queens,38875,45359
+11109,Queens,"Long Island City, NY",Long Island City,3523,87802
+11201,Brooklyn,"Brooklyn, NY",Northwest Brooklyn,51128,35981
+11203,Brooklyn,"Brooklyn, NY",Flatbush,76174,35502
+11204,Brooklyn,"Brooklyn, NY",Borough Park,78134,49173
+11205,Brooklyn,"Brooklyn, NY",Northwest Brooklyn,40366,42508
+11206,Brooklyn,"Brooklyn, NY",Bushwick and Williamsburg,81677,56939
+11207,Brooklyn,"Brooklyn, NY",East New York and New Lots,93386,34965
+11208,Brooklyn,"Brooklyn, NY",East New York and New Lots,94469,27333
+11209,Brooklyn,"Brooklyn, NY",Southwest Brooklyn,68853,31845
+11210,Brooklyn,"Brooklyn, NY",Flatbush,62008,37785
+11211,Brooklyn,"Brooklyn, NY",Greenpoint,90117,39209
+11212,Brooklyn,"Brooklyn, NY",Central Brooklyn,84500,54944
+11213,Brooklyn,"Brooklyn, NY",Central Brooklyn,63767,58448
+11214,Brooklyn,"Brooklyn, NY",Southwest Brooklyn,88630,40566
+11215,Brooklyn,"Brooklyn, NY",Northwest Brooklyn,63488,29148
+11216,Brooklyn,"Brooklyn, NY",Central Brooklyn,54316,58065
+11217,Brooklyn,"Brooklyn, NY",Northwest Brooklyn,35881,47796
+11218,Brooklyn,"Brooklyn, NY",Borough Park,75220,52664
+11219,Brooklyn,"Brooklyn, NY",Borough Park,92221,62225
+11220,Brooklyn,"Brooklyn, NY",Sunset Park,99598,55603
+11221,Brooklyn,"Brooklyn, NY",Bushwick and Williamsburg,78895,57033
+11222,Brooklyn,"Brooklyn, NY",Greenpoint,36934,24232
+11223,Brooklyn,"Brooklyn, NY",Southern Brooklyn,78731,37956
+11224,Brooklyn,"Brooklyn, NY",Southern Brooklyn,47621,30841
+11225,Brooklyn,"Brooklyn, NY",Flatbush,56829,64295
+11226,Brooklyn,"Brooklyn, NY",Flatbush,101572,78775
+11228,Brooklyn,"Brooklyn, NY",Southwest Brooklyn,41788,28428
+11229,Brooklyn,"Brooklyn, NY",Southern Brooklyn,80018,36934
+11230,Brooklyn,"Brooklyn, NY",Borough Park,86408,46966
+11231,Brooklyn,"Brooklyn, NY",Northwest Brooklyn,33336,23441
+11232,Brooklyn,"Brooklyn, NY",Sunset Park,28265,22028
+11233,Brooklyn,"Brooklyn, NY",Central Brooklyn,67053,49746
+11234,Brooklyn,"Brooklyn, NY",Canarsie and Flatlands,87757,11627
+11235,Brooklyn,"Brooklyn, NY",Southern Brooklyn,79132,35237
+11236,Brooklyn,"Brooklyn, NY",Canarsie and Flatlands,93877,26112
+11237,Brooklyn,"Brooklyn, NY",Bushwick and Williamsburg,49896,50927
+11238,Brooklyn,"Brooklyn, NY",Central Brooklyn,49262,44555
+11239,Brooklyn,"Brooklyn, NY",Canarsie and Flatlands,13393,23470
+11354,Queens,"Flushing, NY",North Queens,54878,25324
+11355,Queens,"Flushing, NY",North Queens,85871,49492
+11356,Queens,"College Point, NY",North Queens,23438,14915
+11357,Queens,"Whitestone, NY",North Queens,39150,13973
+11358,Queens,"Flushing, NY",North Queens,37546,19260
+11360,Queens,"Bayside, NY",North Queens,18884,13251
+11361,Queens,"Bayside, NY",Northeast Queens,28606,16269
+11362,Queens,"Little Neck, NY",Northeast Queens,17823,7081
+11363,Queens,"Little Neck, NY",Northeast Queens,6988,8045
+11364,Queens,"Oakland Gardens, NY",Northeast Queens,34555,14013
+11365,Queens,"Fresh Meadows, NY",Central Queens,42252,16923
+11366,Queens,"Fresh Meadows, NY",Central Queens,13532,12362
+11367,Queens,"Flushing, NY",Central Queens,41047,17252
+11368,Queens,"Corona, NY",West Queens,109931,41768
+11369,Queens,"East Elmhurst, NY",West Queens,38615,36170
+11370,Queens,"East Elmhurst, NY",West Queens,39688,27899
+11372,Queens,"Jackson Heights, NY",West Queens,66636,90360
+11373,Queens,"Elmhurst, NY",West Queens,100820,66007
+11374,Queens,"Rego Park, NY",West Central Queens,43600,46664
+11375,Queens,"Forest Hills, NY",West Central Queens,68733,34707
+11377,Queens,"Woodside, NY",West Queens,89830,35274
+11378,Queens,"Maspeth, NY",West Queens,34981,13697
+11379,Queens,"Middle Village, NY",West Central Queens,34821,16785
+11385,Queens,"Ridgewood, NY",West Central Queens,98592,27290
+11411,Queens,"Cambria Heights, NY",Southeast Queens,18556,15875
+11412,Queens,"Saint Albans, NY",Jamaica,34882,21186
+11413,Queens,"Springfield Gardens, NY",Southeast Queens,38912,12553
+11414,Queens,"Howard Beach, NY",Southwest Queens,26148,11370
+11415,Queens,"Kew Gardens, NY",Southwest Queens,19341,34042
+11416,Queens,"Ozone Park, NY",Southwest Queens,24861,37347
+11417,Queens,"Ozone Park, NY",Southwest Queens,28967,25886
+11418,Queens,"Richmond Hill, NY",Southwest Queens,36256,22201
+11419,Queens,"South Richmond Hill, NY",Southwest Queens,47211,41805
+11420,Queens,"South Ozone Park, NY",Southwest Queens,44354,21345
+11421,Queens,"Woodhaven, NY",Southwest Queens,39127,30376
+11422,Queens,"Rosedale, NY",Southeast Queens,30425,15456
+11423,Queens,"Hollis, NY",Jamaica,29987,21254
+11426,Queens,"Bellerose, NY",Southeast Queens,17590,13039
+11427,Queens,"Queens Village, NY",Southeast Queens,23593,14967
+11428,Queens,"Queens Village, NY",Southeast Queens,19168,23021
+11429,Queens,"Queens Village, NY",Southeast Queens,25105,19296
+11432,Queens,"Jamaica, NY",Jamaica,60809,28295
+11433,Queens,"Jamaica, NY",Jamaica,32687,21062
+11434,Queens,"Jamaica, NY",Jamaica,59129,18256
+11435,Queens,"Jamaica, NY",Jamaica,53687,35447
+11436,Queens,"Jamaica, NY",Jamaica,17949,22783
+11691,Queens,"Far Rockaway, NY",Rockaways,60035,21185
+11692,Queens,"Arverne, NY",Rockaways,18540,18566
+11693,Queens,"Far Rockaway, NY",Rockaways,11916,11950
+11694,Queens,"Rockaway Park, NY",Rockaways,20408,14944
+11697,Queens,"Breezy Point, NY",Rockaways,4079,1838

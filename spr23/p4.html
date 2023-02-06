@@ -1,0 +1,435 @@
+<!DOCTYPE doctype PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <title>Program 4, CSci 39542: Data Science, Hunter College</title>
+</head>
+<STYLE>A {text-decoration: none;}
+th, td { padding: 5px; }
+code {
+  background-color: #eeeeee;
+}
+.inline {
+  padding: 1px;
+}
+.blockcode {
+  border: 1px solid #999999;
+  display: block;
+  padding-left: 10px;
+  padding-top : 2px;
+  padding-bottom : 2px;
+  margin: 5px;
+}
+.datablock {
+  border: 1px solid #eeeeee;
+  display: block;
+  padding: 7px;
+  padding-top : 0px;
+  margin: 5px;
+}
+</STYLE>
+<body>
+
+
+<div style="margin: 15px;width:100%;">
+    <span style= "float: left;font-size:larger"><a href="index.html">CSci 39542</a></span>
+    <span style= "float: right">
+      <a href="syl.html">Syllabus</a>&nbsp;&nbsp;&nbsp;
+      <a href="resources.html">Resources</a>&nbsp;&nbsp;&nbsp;
+      <a href="work.html">Coursework</a><!--&nbsp;&nbsp;&nbsp;
+      <a href="faq.html">FAQ</a>-->
+    </span>
+</div>
+
+<br>
+<br>
+<hr>
+
+<div style="margin:50px">
+
+
+<h2>Program 4:  City Dogs
+  <br>CSci 39542: Introduction to Data Science<br>
+<a href="http://www.hunter.cuny.edu/csci">Department of Computer Science</a><br>
+<a href="https://hunter.cuny.edu">Hunter College</a>, <a href="https://www.cuny.edu">City University of New York</a><br>
+Spring 2021<br><br>
+</h2>
+
+
+<hr>
+<a href="work.html#cw">Classwork</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#quizzes">Quizzes</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#hw">Homework</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#project">Project</a>&nbsp;&nbsp;&nbsp;
+<hr>
+
+<object width=100% height=50% type="text/html" data="generalNotes.html" border="0"
+   style="overflow: hidden;">
+</object>
+
+<hr>
+
+<h2>Program Description</h2>
+
+<p><a name="p4"><b>Program 4: City Dogs.</b></b> &emsp; <i>Due 10am, Wednesday, 22 February.
+  <br>Learning Objective:  to enhance data cleaning skills from reading in raw data, imputing values, and formatting date and string data.  
+  <br>Available Libraries: datetime, pandas, and core Python 3.6+.
+  <br>Data Sources:  
+  <a href="https://data.cityofnewyork.us/Health/NYC-Dog-Licensing-Dataset/nu7n-tubp">NYC Dog Licensing Data</a> from OpenData NYC,
+  <a href="https://data.beta.nyc/en/dataset/pediacities-nyc-neighborhoods/resource/7caac650-d082-4aea-9f9b-3681d568e8a5">NYC Zip Codes by Borough</a> from BetaNYC,
+  <a href="https://data.cityofnewyork.us/Health/DOHMH-Dog-Bite-Data/rsgh-akpg">DOHMH Dog Bite Data</a> from OpenData NYC. 
+  <br>Sample Datasets: 
+  <ul>
+    <li><a href="NYC_Dog_Licensing_Dataset_2021.csv">NYC_Dog_Licensing_Dataset_2021.csv</a>: dogs licensed in NYC in 2021.</li>
+    <li><a href="nyc_zip_borough_neighborhoods_pop.csv">nyc_zip_borough_neighborhoods_pop.csv</a>: NYC zip codes by boroughs.</li>
+    <li><a href="DOHMH_Dog_Bite_Data_2021.csv">DOHMH_Dog_Bite_Data_2021.csv</a>:  reported dog bites in NYC in 2021.</li>
+  </ul><br>
+</i>
+
+<br>
+
+<p><a href="https://www.nycgovparks.org/facilities/dogareas"><img src="https://www.nycgovparks.org/facilities/images/dog-runs-header.jpg" width = "60%"></a></p>
+(<a href="https://www.nycgovparks.org/facilities/dogareas">NYC Parks:  Dog Runs</a>)
+
+
+
+
+<br><br>
+<p>This program focuses on cleaning and imputing data.  We're using data about dogs in New York City.  All dog owners are required by law to license their dogs via the <a href="https://a816-healthpsi.nyc.gov/DogLicense">DOHMH Dog Licensing System</a>.   Each record represents a unique dog license that was active during the year and includes information about the dog as well as the zipcode of the owner.  It doesn't include the borough, but we can add that via data collated by <a href="https://data.beta.nyc/en/dataset/pediacities-nyc-neighborhoods/resource/7caac650-d082-4aea-9f9b-3681d568e8a5">BetaNYC</a>.
+<p>
+The NYC Department of Health also provides the data it collects on reported dog bites.  Many of the reports have missing fields, such as the breed of the dog and age.  Dropping any row with incomplete data (e.g. <code class = "inline">dropna()</code>) would lose valuable information.  For many features, we can "impute" the missing values (see <a href="https://learningds.org/ch/09/wrangling_missing.html?highlight=impute">Chapter 9</a>).  For example, for the breed of dog, one possible entry is "Unknown".  If that field is empty, filling in the entry with "Unknown" is a logical approach.  For entries that have the borough, but not the zipcode, we can use the zipcode of the main post office of that borough.
+
+
+
+  <p>
+The assignment is broken into the following functions to allow for unit testing:
+
+<ul>
+
+  <li> <code class = "inline">make_dog_df(licence_file,zipcode_file):</code>:
+  This function takes two inputs:
+  <ul>
+    <li> <code class = "inline">license_file</code>: the name of a CSV file containing   <a href="https://data.cityofnewyork.us/Health/NYC-Dog-Licensing-Dataset/nu7n-tubp">NYC Dog Licensing Data</a> from OpenData NYC, and
+    <li><code class = "inline">zipcode_file</code>: the name of a CSV file containing <a href="https://data.beta.nyc/en/dataset/pediacities-nyc-neighborhoods/resource/7caac650-d082-4aea-9f9b-3681d568e8a5">BetaNYC's NYC Zip Codes by Borough</a>.
+  </ul>    
+  The function opens the two inputted files, the first with the dog licensing information, and the second with zipcodes by boroughs.  The function should do the following:
+  <ul>
+    <li> The names of the dogs 
+    <code class="inline">AnimalName</code> should be capitalized.  
+    <li> The columns, <code class="inline">'LicenseExpiredDate', 'Extract Year'</code> should be dropped.</li>
+    <li> The two DataFrames should be (left) merged on zipcodes.  </li>
+    <li> Any reported dogs not in NYC (i.e. have <code class="inline">NaN</code> for <code class="inline">Borough</code> in the combined DataFrame) should be dropped.  </li>
+  </ul>
+  The resulting DataFrame, with 7 columns, is returned.
+  </li>
+  
+  <br>
+  <li> <code class = "inline">make_bite_df(file_name)</code>:
+  This function takes one input:
+  <ul>
+    <li> <code class = "inline">file_name</code>: the name of a CSV file containing <a href="https://data.cityofnewyork.us/Health/DOHMH-Dog-Bite-Data/rsgh-akpg">DOHMH Dog Bite Data</a> from OpenData NYC.
+  </ul>
+  The function should open the file <code class = "inline">file_name</code> as DataFrame, dropping the <code class = "inline">Species</code> column.
+  The resulting DataFrame is returned.</li>
+   
+  <br>
+  <li> <code class = "inline">clean_age(age_str)</code>:
+  This function takes one input:
+  <ul>
+    <li> <code class = "inline">age_str</code>: a string containing the age of the dog.
+  </ul>
+  Your function should:
+  <ul>
+    <li>If <code class = "inline">age_str</code> ends in a <code class = "inline">Y</code>, return the rest of the string as a number.  For example, <code class = "inline">3Y</code> represents 3 years and the return value is <code class = "inline">3</code>.  </li>
+    <li>If <code class = "inline">age_str</code> ends in a <code class = "inline">M</code>, return the rest of the string as a number in years.  For example, <code class = "inline">6M</code> represents 6 months and the return value is <code class = "inline">0.5</code>.  </li>
+    <li>If <code class = "inline">age_str</code> contains only a number, return it as a number.  For example, <code class = "inline">3</code> represents 3 years and the return value is <code class = "inline">3</code>.  </li>
+    <li> For all other values, return <code class = "inline">None</code>.
+    </li>
+  </ul></li>
+
+  <br>
+  <li> <code class = "inline">clean_breed(breed_str)</code>:
+  This function takes one input:
+  <ul>
+    <li> <code class = "inline">breed_str</code>: a string containing the breed of the dog.
+  </ul>
+  Your function should return:
+  <ul>
+    <li>If <code class = "inline">breed_str</code> is empty, return <code class = "inline">"Unknown"</code>.  </li>
+    <li>Otherwise, return the string in title format with each word in the string capitalized and all other letters lower case.  For example, If the input is <code class = "inline">BEAGLE MIXED</code>, you should return <code class = "inline">Beagle Mixed</code>.  </li>
+  </ul></li>   
+  
+  <br>
+  <li> <code class = "inline">impute_age(df)</code>:
+  This function takes one input:
+  <ul>
+    <li> <code class = "inline">df</code>: a DataFrame containing the column <code class = "inline">Age Num</code>.
+  </ul>
+  Your function should replace any missing values in the <code class = "inline">df['Age Num']</code> column with the median of the values of the column.  The resulting DataFrame is returned.
+  </li>
+
+  <br>
+  <li> <code class = "inline">impute_zip(boro, zipcode)</code>:
+  This function takes two inputs:
+  <ul>
+    
+    <li> <code class = "inline">boro</code>: a non-empty string containing the borough.</li>
+    <li> <code class = "inline">zipcode</code>: a possibly empty string containing the zip code.
+  </ul> 
+  If the <code class = "inline">zipcode</code> column is empty, impute the value with the zip code of the general delivery post office based on value of <code class = "inline">boro</code>:  
+    10451 for Bronx, 
+    11201 for Brooklyn, 
+    10001 for Manhattan,    
+    11431 for Queens, 
+    10341 for Staten Island, and 
+    None for Other.
+  </li>
+
+  <br>
+  <li> <code class = "inline">parse_datetime(df, column='LicenseIssuedDate')</code>:
+  This function takes two input:
+  <ul>
+    <li> <code class = "inline">df</code>: a DataFrame containing the column <code class = "inline">column</code>.  
+    <code class = "inline">column</code> has a default value of 
+    <code class = "inline">'LicenseIssuedDate'</code>  
+  </ul>
+  The function should return a DataFrame with three additional columns:
+  <ul>
+    <li><code class = "inline">timestamp</code>: contains the <code class = "inline">datetime</code> object corresponding to the string stored in <code class = "inline">column</code>.</li>
+    <li><code class = "inline">month</code>: return the number corresponding to the month of <code class = "inline">timestamp</code>:  1 for January, 2 for February, ... 12 for December.  </li>
+    <li><code class = "inline">day_of_week</code>: return the number corresponding to the day of the week of <code class = "inline">timestamp</code>:  0 for Monday, 1 for Tuesday, ... 6 for Sunday.   </li>    
+  </ul>
+  See <a href="https://learningds.org/ch/09/wrangling_transformations.html">DS 100: Section 9.4</a> for an example working with dates and times.
+  </li>
+
+</ul>
+
+
+<br>
+<p>For example, we can use our first function to make a DataFrame of the dogs licensed in 2021, with the names capitalized and borough information (data files linked above):
+  <pre><code class="blockcode">dog_df = make_dog_df("NYC_Dog_Licensing_Dataset_2021.csv","nyc_zip_borough_neighborhoods_pop.csv")
+print(dog_df)</code></pre>
+
+would print:
+  <pre><code class="datablock">              AnimalName AnimalGender  AnimalBirthYear             BreedName  ZipCode LicenseIssuedDate        Borough
+0                Waldorf            M             2006              Havanese    10065        2021-01-01      Manhattan
+1                 Bailey            F             2008     Yorkshire Terrier    11104        2021-01-01         Queens
+2                   Muki            F             2006   American Eskimo dog    10038        2021-01-01      Manhattan
+3                   Luna            F             2009             Chihuahua    11201        2021-01-01       Brooklyn
+5                   Coco            M             2011                 Boxer    10472        2021-01-01          Bronx
+...                  ...          ...              ...                   ...      ...               ...            ...
+77732               Luff            M             2021            Rottweiler    11365        2021-12-31         Queens
+77733               Appa            M             2013          Goldendoodle    10027        2021-12-31      Manhattan
+77734            Salvano            F             2021            Pomeranian    11223        2021-12-31       Brooklyn
+77735  Name not provided            F             2021     Yorkshire Terrier    11206        2021-12-31       Brooklyn
+77736             Hudson            M             2021  Pembroke Welsh Corgi    10314        2021-12-31  Staten Island
+
+[76670 rows x 7 columns]</code></pre>
+Note that we printed the indices (left most column), and some of the initial rows were dropped due to null values.
+
+<p>Let's also add in the new columns for the date (as a timedate object), the month, and the day of the week:</p>
+<pre><code class="blockcode">dog_df = parse_datetime(dog_df)
+print(dog_df)</code></pre>
+The three new columns are added at the right of the DataFrame:
+  <pre><code class="datablock">              AnimalName AnimalGender  AnimalBirthYear             BreedName  ZipCode LicenseIssuedDate        Borough  timestamp  month  day_of_week
+0                Waldorf            M             2006              Havanese    10065        01/01/2021      Manhattan 2021-01-01      1            4
+1                 Bailey            F             2008     Yorkshire Terrier    11104        01/01/2021         Queens 2021-01-01      1            4
+2                   Muki            F             2006   American Eskimo dog    10038        01/01/2021      Manhattan 2021-01-01      1            4
+3                   Luna            F             2009             Chihuahua    11201        01/01/2021       Brooklyn 2021-01-01      1            4
+5                   Coco            M             2011                 Boxer    10472        01/01/2021          Bronx 2021-01-01      1            4
+...                  ...          ...              ...                   ...      ...               ...            ...        ...    ...          ...
+77732               Luff            M             2021            Rottweiler    11365        12/31/2021         Queens 2021-12-31     12            4
+77733               Appa            M             2013          Goldendoodle    10027        12/31/2021      Manhattan 2021-12-31     12            4
+77734            Salvano            F             2021            Pomeranian    11223        12/31/2021       Brooklyn 2021-12-31     12            4
+77735  Name not provided            F             2021     Yorkshire Terrier    11206        12/31/2021       Brooklyn 2021-12-31     12            4
+77736             Hudson            M             2021  Pembroke Welsh Corgi    10314        12/31/2021  Staten Island 2021-12-31     12            4
+
+[76670 rows x 10 columns]</code></pre>
+
+<p>Let's take a look at the data.  Now that all the names are capitalized the same, we can see which are the most popular in 2021:</p>
+<pre><code class="blockcode">print('Most popular names are:')
+print(dog_df['AnimalName'].value_counts()[:10])
+</code></pre>
+many didn't provide a name, but Bella and Luna, lead the list of those named:
+<pre><code class="datablock">
+Most popular names are:
+Unknown              2955
+Name not provided    1269
+Bella                 872
+Luna                  774
+Max                   649
+Charlie               612
+Coco                  557
+Lola                  508
+Teddy                 472
+Milo                  467
+Name: AnimalName, dtype: int64  
+</code></pre>
+
+More dogs are registered in Manhattan than any other borough:
+  <pre><code class="blockcode">import seaborn as sns
+import matplotlib.pyplot as plt
+sns.histplot(data=dog_df, x="Borough")
+
+plt.title('Dog Bites, 2021')
+plt.show()
+</code></pre>
+<img src="dogs_by_boro.png" height="200">
+
+
+
+
+<p>Next, let's set up the dog bite DataFrame:
+  <pre><code class="blockcode">bite_df = make_bite_df("DOHMH_Dog_Bite_Data_2021.csv")
+print(bite_df)</code></pre>
+
+would print:
+  <pre><code class="datablock">      UniqueID        DateOfBite                  Breed  Age Gender  SpayNeuter    Borough  ZipCode
+0         2055   January 01 2021            MIXED BREED    5      F       False   Brooklyn  11228.0
+1         4308   January 01 2021      LARGE MIXED BREED    2      M       False      Bronx  10468.0
+2         4309   January 01 2021      LARGE MIXED BREED    2      M       False      Bronx  10463.0
+3         4310   January 01 2021      LARGE MIXED BREED    2      M       False      Bronx  10463.0
+4         6963   January 01 2021             Pomeranian  NaN      U       False  Manhattan  10038.0
+...        ...               ...                    ...  ...    ...         ...        ...      ...
+2916      4729  December 29 2021               Bull dog  NaN      U       False      Bronx  10459.0
+2917      7645  December 30 2021               Shih Tzu  NaN      U       False  Manhattan  10032.0
+2918     11439  December 30 2021                UNKNOWN  NaN      U       False     Queens      NaN
+2919     11440  December 30 2021  Dachshund Smooth Coat    7      M        True     Queens  11369.0
+2920      2700  December 31 2021                UNKNOWN  NaN      U       False   Brooklyn  11233.0
+
+[2921 rows x 8 columns]</code></pre>
+
+Let's take a quick look at where the reports are from:
+  <pre><code class="blockcode">sns.histplot(data=bite_df, x="Borough")
+plt.show()
+</code></pre>
+<img src="bites_by_boro.png" height="200">
+
+
+<p>
+If we dropped all rows with undefined values:
+<pre><code class="blockcode">df_drop = bite_df.dropna()
+print(f'The full DataFrame has {len(bite_df)} entries.')
+print(f'Dropping undefined values leaves {len(df_drop)} entries.')
+</code></pre>
+almost two thirds of the entries are dropped:
+<pre><code class="datablock">The full DataFrame has 2921 entries.
+Dropping undefined values leaves 959 entries.</code></pre>
+
+<p>
+Instead, let's impute values, using the functions above.  Starting with the <code class="inline">Age</code> column, which mostly stored as number of years, but also has the age in months (e.g. <code class="inline">6M</code>) but also some unexpected entries such as:  
+<code class="inline">4-6MOS</code>.  If the entry is not a number, or a number followed by <code class="inline">M</code> or <code class="inline">Y</code>, our function returns <code class="inline">None</code>.
+<pre><code class="blockcode">bite_df['Age Num'] = bite_df['Age'].apply(clean_age)
+print(bite_df[['Age','Age Num']])</code></pre>
+The function <code class="inline">clean_age</code> to the age column of the DataFrame, and the results are stored in a new column, <code class="inline">Age Num</code>:
+<pre><code class="datablock">      Age  Age Num
+0       5      5.0
+1       2      2.0
+2       2      2.0
+3       2      2.0
+4     NaN      NaN
+...   ...      ...
+2916  NaN      NaN
+2917  NaN      NaN
+2918  NaN      NaN
+2919    7      7.0
+2920  NaN      NaN
+
+[2921 rows x 2 columns]</code></pre>
+
+<p>Next, let's clean up the breeds, replacing empty entries with <code class="inline">Unknown</code> and standardizing capitalization:
+
+<pre><code class="blockcode">bite_df['Breed'] = bite_df['Breed'].apply(clean_breed)
+print(bite_df)</code></pre>
+This prints
+<pre><code class="datablock">      UniqueID        DateOfBite                  Breed  Age Gender  SpayNeuter    Borough  ZipCode  Age Num
+0         2055   January 01 2021            Mixed Breed    5      F       False   Brooklyn  11228.0      5.0
+1         4308   January 01 2021      Large Mixed Breed    2      M       False      Bronx  10468.0      2.0
+2         4309   January 01 2021      Large Mixed Breed    2      M       False      Bronx  10463.0      2.0
+3         4310   January 01 2021      Large Mixed Breed    2      M       False      Bronx  10463.0      2.0
+4         6963   January 01 2021             Pomeranian  NaN      U       False  Manhattan  10038.0      NaN
+...        ...               ...                    ...  ...    ...         ...        ...      ...      ...
+2916      4729  December 29 2021               Bull Dog  NaN      U       False      Bronx  10459.0      NaN
+2917      7645  December 30 2021               Shih Tzu  NaN      U       False  Manhattan  10032.0      NaN
+2918     11439  December 30 2021                Unknown  NaN      U       False     Queens      NaN      NaN
+2919     11440  December 30 2021  Dachshund Smooth Coat    7      M        True     Queens  11369.0      7.0
+2920      2700  December 31 2021                Unknown  NaN      U       False   Brooklyn  11233.0      NaN
+
+[2921 rows x 9 columns]</code></pre>
+
+<p>Next, let's impute, or fill in the missing values, for <code class="inline">Age Num</code> with the median and the zipcode with the general delivery post office:</p>
+
+<pre><code class="blockcode">bite_df = impute_age(bite_df)
+bite_df['ZipCode'] = bite_df.apply(lambda row: impute_zip(row['Borough'],row['ZipCode']),axis=1)
+print(bite_df)</code></pre>
+This prints:
+<pre><code class="datablock">      UniqueID        DateOfBite                  Breed  Age Gender  SpayNeuter    Borough ZipCode  Age Num
+0         2055   January 01 2021            Mixed Breed    5      F       False   Brooklyn   11228      5.0
+1         4308   January 01 2021      Large Mixed Breed    2      M       False      Bronx   10468      2.0
+2         4309   January 01 2021      Large Mixed Breed    2      M       False      Bronx   10463      2.0
+3         4310   January 01 2021      Large Mixed Breed    2      M       False      Bronx   10463      2.0
+4         6963   January 01 2021             Pomeranian  NaN      U       False  Manhattan   10038      4.0
+...        ...               ...                    ...  ...    ...         ...        ...     ...      ...
+2916      4729  December 29 2021               Bull Dog  NaN      U       False      Bronx   10459      4.0
+2917      7645  December 30 2021               Shih Tzu  NaN      U       False  Manhattan   10032      4.0
+2918     11439  December 30 2021                Unknown  NaN      U       False     Queens   11431      4.0
+2919     11440  December 30 2021  Dachshund Smooth Coat    7      M        True     Queens   11369      7.0
+2920      2700  December 31 2021                Unknown  NaN      U       False   Brooklyn   11233      4.0
+
+[2921 rows x 9 columns]</code></pre>
+
+<p>We can use again the function <code class="inline">parse_datetime</code> to add that information, this time to the DataFrame: <code class="inline">bite_df</code>:</p>
+
+<pre><code class="blockcode">bite_df = parse_datetime(bite_df,column='DateOfBite')
+print(bite_df)</code></pre>
+This prints:
+<pre><code class="datablock">      UniqueID        DateOfBite                  Breed  Age Gender  SpayNeuter    Borough ZipCode  Age Num  timestamp  month  day_of_week
+0         2055   January 01 2021            Mixed Breed    5      F       False   Brooklyn   11228      5.0 2021-01-01      1            4
+1         4308   January 01 2021      Large Mixed Breed    2      M       False      Bronx   10468      2.0 2021-01-01      1            4
+2         4309   January 01 2021      Large Mixed Breed    2      M       False      Bronx   10463      2.0 2021-01-01      1            4
+3         4310   January 01 2021      Large Mixed Breed    2      M       False      Bronx   10463      2.0 2021-01-01      1            4
+4         6963   January 01 2021             Pomeranian  NaN      U       False  Manhattan   10038      4.0 2021-01-01      1            4
+...        ...               ...                    ...  ...    ...         ...        ...     ...      ...        ...    ...          ...
+2916      4729  December 29 2021               Bull Dog  NaN      U       False      Bronx   10459      4.0 2021-12-29     12            2
+2917      7645  December 30 2021               Shih Tzu  NaN      U       False  Manhattan   10032      4.0 2021-12-30     12            3
+2918     11439  December 30 2021                Unknown  NaN      U       False     Queens   11431      4.0 2021-12-30     12            3
+2919     11440  December 30 2021  Dachshund Smooth Coat    7      M        True     Queens   11369      7.0 2021-12-30     12            3
+2920      2700  December 31 2021                Unknown  NaN      U       False   Brooklyn   11233      4.0 2021-12-31     12            4
+
+[2921 rows x 12 columns]</code></pre>
+
+
+
+
+
+
+
+<p>Now that we have the data cleaned up, let's look at when dog bites happen:
+<pre><code class="blockcode">sns.histplot(data=bite_df, x="month",discrete=True)
+plt.xticks(range(1,13),
+    ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'])
+plt.title('Dog Bites, 2021')       
+plt.show()</code></pre>
+<img src="bites_by_month.png" height="200">
+<p>and by day of the week:
+<pre><code class="blockcode">sns.histplot(data=bite_df, x="day_of_week")
+plt.xticks(range(7),['Mon','Tue','Wed','Thu','Fri','Sat','Sun'])
+plt.title('Dog Bites, 2021')      
+plt.show()</code></pre>
+  <img src="bites_by_day.png" height="200">
+
+  <p></p>
+<i>Hints:
+<ul>
+  <li> You should submit a .py file with only the standard comments at the top, the specified functions, and any helper functions you have written. The grading scripts will then import the file for testing.
+    If your file includes code outside of functions, either comment the code out before submitting or use a main function that is conditionally executed (see <a href="https://runestone.academy/ns/books/published//thinkcspy/Functions/mainfunction.html">Think CS: Section 6.8</a> for details).</li>
+  <li> Include only the libraries you need (such as <code class = "inline">pandas</code>) for your functions and none of the ones for plotting (such as <code class = "inline">matplotlib.pyplot</code> and <code class = "inline">seaborn</code>) since the functions submitted are computing and not plotting.  Only the libraries listed in <b>Available Libraries</b> are loaded by the autograder.   
+  <li>  See Lecture 3 or <a href="https://learningds.org/ch/09/wrangling_transformations.html">DS 100: Section 9.4</a> for working with dates and times.</li>
+  <li>  See <a href="http://www.textbook.ds100.org/ch/11/viz_intro.html">DS 100:  Chapter 11</a> for details on the plots included in the examples.
+</ul>
+
+
+</div>
+</body>
+</html>
