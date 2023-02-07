@@ -107,7 +107,7 @@ The assignment is broken into the following functions to allow for unit testing:
 
 <ul>
 
-  <li> <code class = "inline">make_dog_df(licence_file,zipcode_file):</code>:
+  <li> <code class = "inline">make_dog_df(license_file,zipcode_file):</code>:
   This function takes two inputs:
   <ul>
     <li> <code class = "inline">license_file</code>: the name of a CSV file containing   <a href="https://data.cityofnewyork.us/Health/NYC-Dog-Licensing-Dataset/nu7n-tubp">NYC Dog Licensing Data</a> from OpenData NYC, and
@@ -188,7 +188,7 @@ The assignment is broken into the following functions to allow for unit testing:
 
   <br>
   <li> <code class = "inline">parse_datetime(df, column='LicenseIssuedDate')</code>:
-  This function takes two input:
+  This function takes two inputs:
   <ul>
     <li> <code class = "inline">df</code>: a DataFrame containing the column <code class = "inline">column</code>.  
     <code class = "inline">column</code> has a default value of 
@@ -322,7 +322,7 @@ Instead, let's impute values, using the functions above.  Starting with the <cod
 <code class="inline">4-6MOS</code>.  If the entry is not a number, or a number followed by <code class="inline">M</code> or <code class="inline">Y</code>, our function returns <code class="inline">None</code>.
 <pre><code class="blockcode">bite_df['Age Num'] = bite_df['Age'].apply(clean_age)
 print(bite_df[['Age','Age Num']])</code></pre>
-The function <code class="inline">clean_age</code> to the age column of the DataFrame, and the results are stored in a new column, <code class="inline">Age Num</code>:
+The function <code class="inline">clean_age</code> is applied to to the age column of the DataFrame, and the results are stored in a new column, <code class="inline">Age Num</code>:
 <pre><code class="datablock">      Age  Age Num
 0       5      5.0
 1       2      2.0
