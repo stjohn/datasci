@@ -137,10 +137,10 @@ Row:  YOUR_ROW
 Seat:  YOUR_SEAT
 """</pre></code>
 
-        If you did not attend lecture, do not include the above lines.
+        If you did not attend lecture, do not include the above lines.</p>
 
 
-          
+   <br>       
   <p><a name="cw2"><b>Classwork 2: </b> &emsp; <i>Due 3pm, Wednesday, 1 February.</i> &emsp;
 
  
@@ -176,10 +176,10 @@ Row:  YOUR_ROW
 Seat:  YOUR_SEAT
 """</pre></code>
 
-      If you did not attend lecture, do not include the above lines.
+      If you did not attend lecture, do not include the above lines.</p>
 
 
-
+        <br>
   <p><a name="cw3"><b>Classwork 3: </b> &emsp; <i>Due 3pm, Wednesday, 8 February.</i> &emsp;
      Available during Lecture 3 on Gradescope, this classwork focuses on the structure and topics for the optional project, based on the project overview in lecture:
 
@@ -189,8 +189,36 @@ Seat:  YOUR_SEAT
         <li>What kind of data would you be needed for this? </li>
      </ol>
 
-   
+   <br>
   <p><a name="cw4"><b>Classwork 4: </b> &emsp; <i>Due 3pm, Wednesday, 15 February.</i> &emsp;
+    Available during Lecture 4 on Gradescope, this classwork focuses on hiring in the technical sector has been in the news recently and is inspired by <a href="https://fordschool.umich.edu/faculty/betsey-stevenson">Prof. Stevenson's recent analysis: </a> </p>   
+
+    <p>
+      <a href="https://poverty.umich.edu/2022/12/02/november-jobs-report-strong-job-growth-continues-but-there-are-hints-of-weakness/"><img src="stevenson_info_jobs_dec_2022.png" height="500"><br>
+      BLS Monthly Jobs Report:  Rapid Insights from Betsey Stevenson</a>
+      </p>
+    
+    Using the data set for the previous 5 years from <a href="https://fred.stlouisfed.org/series/USINFO">St. Louis Federal Reserve Economic Data Data (FRED)</a>:
+    <ul>
+      <li><a href="fred_info_2022_5yr.csv">fred_info_2022_5yr.csv</a>:  A CSV file with the employment in Information Services for past 5 years:  2018-2022.</li>     
+    </ul>
+
+    Fit a linear model to the data by:  
+    <ol>
+      <li> Compute the standard deviation of the <code class = "inline">xes</code> and <code class = "inline">yes</code>.  Call these <code class = "inline">sd_x</code> and <code class = "inline">sd_y</code>.
+      <li> Compute the correlation, <code class = "inline">r</code>,  of the <code class = "inline">xes</code> and <code class = "inline">yes</code>.
+      <li> Compute the slope, <code class = "inline">theta_1</code>, as <code class = "inline">theta_1 = r*sd_y/sd_x</code>.
+      <li> Compute the y-intercept, <code class = "inline">theta_0</code>, as <code class = "inline">theta_0 = average(yes) - theta_1 * average(xes)</code>
+      <li> Return <code class = "inline">theta_0</code> and <code class = "inline">theta_1</code>.
+    </ol>    
+    where <code class = "inline">xes</code> is the entries (can <code class = "inline">df.index.to_series</code>) and <code class = "inline">yes</code> is the <code class = "inline">USINFO</code> column of your dataset. 
+</p>
+    <p>See <a href="p5.html">Program 5</a> for more details on this dataset.</p>
+
+
+<br>
+
+
 
 
   <p><a name="cw5"><b>Classwork 5: </b> &emsp; <i>Due 3pm, Wednesday, 22 February.</i> &emsp;
