@@ -1,0 +1,389 @@
+<!DOCTYPE doctype PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <title>Program 5, CSci 39542: Data Science, Hunter College</title>
+</head>
+<STYLE>A {text-decoration: none;}
+th, td { padding: 5px; }
+code {
+  background-color: #eeeeee;
+}
+.inline {
+  padding: 1px;
+}
+.blockcode {
+  border: 1px solid #999999;
+  display: block;
+  padding-left: 10px;
+  padding-top : 2px;
+  padding-bottom : 2px;
+  margin: 5px;
+}
+.datablock {
+  border: 1px solid #eeeeee;
+  display: block;
+  padding: 7px;
+  padding-top : 0px;
+  margin: 5px;
+}
+</STYLE>
+<body>
+
+
+<div style="margin: 15px;width:100%;">
+    <span style= "float: left;font-size:larger"><a href="index.html">CSci 39542</a></span>
+    <span style= "float: right">
+      <a href="syl.html">Syllabus</a>&nbsp;&nbsp;&nbsp;
+      <a href="resources.html">Resources</a>&nbsp;&nbsp;&nbsp;
+      <a href="work.html">Coursework</a><!--&nbsp;&nbsp;&nbsp;
+      <a href="faq.html">FAQ</a>-->
+    </span>
+</div>
+
+<br>
+<br>
+<hr>
+
+<div style="margin:50px">
+
+
+<h2>Program 5:  Tech Jobs.
+  <br>CSci 39542: Introduction to Data Science<br>
+<a href="http://www.hunter.cuny.edu/csci">Department of Computer Science</a><br>
+<a href="https://hunter.cuny.edu">Hunter College</a>, <a href="https://www.cuny.edu">City University of New York</a><br>
+Spring 2023<br><br>
+</h2>
+
+
+<hr>
+<a href="work.html#cw">Classwork</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#quizzes">Quizzes</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#hw">Homework</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#project">Project</a>&nbsp;&nbsp;&nbsp;
+<hr>
+
+<object width=100% height=50% type="text/html" data="generalNotes.html" border="0"
+   style="overflow: hidden;">
+</object>
+
+<hr>
+
+<h2>Program Description</h2>
+
+<br><br>
+<p><a name="p5"><b>Program 5: Tech Jobs.</b></b> &emsp; <i>Due 10am, Wednesday, 1 March.
+<br>Learning Objective: to build intuition and strengthen competency with least squares method of minimizing functions.  
+<br>Available Libraries: pandas, numpy, and core Python 3.6+.  
+<br>Data Source:  <a href="https://fred.stlouisfed.org/series/USINFO">St. Louis Federal Reserve Bank Online Data (FRED)</a>, 
+<a href="https://poverty.umich.edu/2022/12/02/november-jobs-report-strong-job-growth-continues-but-there-are-hints-of-weakness/">U Michigan BLS Monthly Job Reports Rapid Insights, November 2022</a> 
+<br>Sample Datasets: 
+  <ul>
+    <li><a href="fred_info_2022_1yr.csv">fred_info_2022_1yr.csv</a>:  A CSV file with the employment in Information Services for 2022.</li>
+    <li><a href="fred_info_2022_5yr.csv">fred_info_2022_5yr.csv</a>:  A CSV file with the employment in Information Services for past 5 years:  2018-2022.</li>
+    <li><a href="fred_info_2022_all.csv">fred_info_2022_all.csv</a>:  A CSV file with the employment in Information Services for all years on record (through end of 2022).</li>        
+  </ul></i>
+</p>
+
+<br>
+<p>Hiring in the technical sector has been in the news recently.  This program looks at the data related to information services in the United States and is inspired by <a href="https://fordschool.umich.edu/faculty/betsey-stevenson">Prof. Stevenson's recent analysis: </a> </p>
+
+<p>
+<a href="https://poverty.umich.edu/2022/12/02/november-jobs-report-strong-job-growth-continues-but-there-are-hints-of-weakness/"><img src="stevenson_info_jobs_dec_2022.png" height="500"><br>
+BLS Monthly Jobs Report:  Rapid Insights from Betsey Stevenson</a>
+</p>
+
+<br>
+<p>The graph above was generated in early December and includes data through November 2022.  We will use data sets that include through the end of 2022 from the <a href="https://fred.stlouisfed.org/series/USINFO">St. Louis Federal Reserve Economic Data (FRED)</a>.  
+  
+The assignment is broken into the following functions to allow for unit testing:
+
+<ul>
+  <br>
+  <li> <code class = "inline">parse_datetime(df, column='DATE')</code>:
+  This function takes two inputs:
+  <ul>
+    <li> <code class = "inline">df</code>: a DataFrame containing the column <code class = "inline">column</code>.  
+    <li><code class = "inline">column</code>: the name of a column.  <code class = "inline">column</code> has default value of 
+    <code class = "inline">'DATE'</code>.</li>
+  </ul>
+  The function should return a DataFrame with three additional columns:
+  <ul>
+    <li><code class = "inline">timestamp</code>: contains the <code class = "inline">datetime</code> object corresponding to the string stored in <code class = "inline">column</code>.</li>
+    <li><code class = "inline">month</code>: return the number corresponding to the month of <code class = "inline">timestamp</code>:  1 for January, 2 for February, ... 12 for December.  </li>
+    <li><code class = "inline">year</code>: return the number corresponding to year of <code class = "inline">timestamp</code>.</li>    
+  </ul>
+  Note this is very similar, but not identical to the <code class = "inline">parse_datetime</code> from the 
+  <a href="https://learningds.org/ch/09/wrangling_transformations.html">DS 100: Section 9.4</a> or <a href="p4.html">Program 4</a>.
+  </li><br>
+
+
+
+<li> <code class = "inline">compute_lin_reg(xes, yes)</code>:
+  This function takes two inputs:
+  <ul>
+    <li><code class = "inline">xes</code>: an iterables of numeric values
+      representing the independent variable</li>
+    <li><code class = "inline">yes</code>: an iterables of numeric values
+      representing the dependent variable</li>
+  </ul>
+  The function computes the slope and y-intercept of the
+  linear regression line, using ordinary least squares (see <a href="https://inferentialthinking.com/chapters/15/2/Regression_Line.html">DS 8:  Chapter 15</a> for detailed explanation).
+  The pseudocode for this:
+  <ol>
+    <li> Compute the standard deviation of the <code class = "inline">xes</code> and <code class = "inline">yes</code>.  Call these <code class = "inline">sd_x</code> and <code class = "inline">sd_y</code>.
+    <li> Compute the correlation, <code class = "inline">r</code>,  of the <code class = "inline">xes</code> and <code class = "inline">yes</code>.
+    <li> Compute the slope, <code class = "inline">theta_1</code>, as <code class = "inline">theta_1 = r*sd_y/sd_x</code>.
+    <li> Compute the y-intercept, <code class = "inline">theta_0</code>, as <code class = "inline">theta_0 = average(yes) - theta_1 * average(xes)</code>
+    <li> Return <code class = "inline">theta_0</code> and <code class = "inline">theta_1</code>.
+  </ol>
+  </li><br>
+   
+  <li> <code class = "inline">predict(xes, theta_0, theta_1)</code>:
+    This function takes three inputs:
+    <ul>
+      <li><code class = "inline">xes</code>: an iterables of numeric values
+        representing the independent variable</li>
+      <li><code class = "inline">theta_0</code>: the y-intercept of the linear regression model</li>        
+      <li><code class = "inline">theta_1</code>: the slope of the linear regression model</li>
+
+    </ul>
+    The function returns the predicted values of the dependent variable,  <code class = "inline">xes</code>, under the linear regression model with y-intercept <code class = "inline">theta_0</code> and slope <code class = "inline">theta_1</code>.
+    </li><br>  
+
+  <li> <code class = "inline">mse_loss(y_actual,y_estimate):</code>:
+    This function takes two inputs:
+    <ul>
+            <li> <code class = "inline">y_actual</code>:  a Series containing numeric values.
+            <li> <code class = "inline">y_estimate</code>:  a Series containing numeric values.
+    </ul>
+    The series are of the same length and contain numeric values only (all null and non-numeric values have been dropped).  The function returns the mean square error loss function between  <code class = "inline">y_actual</code> and <code class = "inline">y_estimate</code> (e.g. the mean of the squares of the differences).
+    <br>Note: this function was part of an earlier homework (<a href="p3.html">Program 3</a>) as well as in the textbook. It is included here to be used as a default argument for the error computation function below.</li>
+    <br>
+
+  <li> <code class = "inline">rmse_loss(y_actual,y_estimate):</code>:
+  This function takes two inputs:
+  <ul>
+    <li> <code class = "inline">y_actual</code>:  a Series containing numeric values.
+    <li> <code class = "inline">y_estimate</code>:  a Series containing numeric values.
+  </ul>
+  The series are of the same length and contain numeric values only (all null and non-numeric values have been dropped).  The function returns the square root of the mean square error loss function between  <code class = "inline">y_actual</code> and <code class = "inline">y_estimate</code> (e.g. the square root of the mean of the squares of the differences).</li><br>
+
+  <li> <code class = "inline">compute_error(y_actual,y_estimate,loss_fnc=mse_loss)</code>:
+  This function takes three inputs:
+  <ul>
+    <li> <code class = "inline">y_actual</code>:  a Series containing numeric values.
+    <li> <code class = "inline">y_estimate</code>:  a Series containing numeric values.
+    <li> <code class = "inline">loss_fnc</code>:  function that takes two numeric series as input parameters and returns a numeric value.  It has a default value of mse_loss.
+  </ul>
+  The series are of the same length and contain numeric values only (all null and non-numeric values have been dropped).  The result of computing the <code class = "inline">loss_fnc</code> on the inputs <code class = "inline">y_actual</code> and
+  <code class = "inline">y_estimate</code> is returned.</li><br>
+  
+  <li><code class = "inline">compute_ytd(df)</code>:  
+  This function takes one input:
+  <ul>
+    <li> <code class = "inline">df</code>: a DataFrame containing columns <code class = "inline">month</code>, <code class = "inline">year</code> and <code class = "inline">USINFO</code>.  
+  </ul>
+  The function returns a <code class="inline">Series</code> with the number of jobs since the beginning of the year for that entry.  For example, for the January 2022 row, the number would be 0 since January is the beginning of the year.  For July 2022, the number be the difference between <code class = "inline">USINFO</code> for July and <code class = "inline">USINFO</code> for January.
+  </li>
+  <br>
+
+  <li><code class = "inline">compute_year_over_year(df)</code>:  
+  This function takes one input:
+  <ul>
+    <li> <code class = "inline">df</code>: a DataFrame containing columns <code class = "inline">month</code>, <code class = "inline">year</code> and <code class = "inline">USINFO</code>.  
+  </ul>
+  Computes and returns a Series with the percent change from the previous year for <code class = "inline">USINFO</code>.  You can assume that the DataFrame is ordered by date, with earlier dates coming first in the DataFrame.
+  <br>Note:  you may find the <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.pct_change.html">df.pct_change</a> function useful for computing the change from the previous year.
+  </li> 
+  <br>
+</ul>
+
+
+<br><br>
+<br>
+<p>Let's start with the 2022 numbers:
+  <pre><code class="blockcode">df_1yr = pd.read_csv('program05/fred_info_2022_1yr.csv')
+df_1yr = parse_datetime(df_1yr)
+print(df_1yr)</code></pre>
+
+would print:
+  <pre><code class="datablock">          DATE  USINFO  timestamp  month  year
+0   2021-12-01    2913 2021-12-01     12  2021
+1   2022-01-01    2918 2022-01-01      1  2022
+2   2022-02-01    2918 2022-02-01      2  2022
+3   2022-03-01    2936 2022-03-01      3  2022
+4   2022-04-01    2957 2022-04-01      4  2022
+5   2022-05-01    2983 2022-05-01      5  2022
+6   2022-06-01    3009 2022-06-01      6  2022
+7   2022-07-01    3025 2022-07-01      7  2022
+8   2022-08-01    3032 2022-08-01      8  2022
+9   2022-09-01    3040 2022-09-01      9  2022
+10  2022-10-01    3044 2022-10-01     10  2022
+11  2022-11-01    3066 2022-11-01     11  2022
+12  2022-12-01    3061 2022-12-01     12  2022</code></pre>
+Note that the columns <code class="inline">DATE</code> and <code class="inline">timestamp</code> are printed the same, but if we check the types, they are stored as strings and datetime, respectively:
+<pre><code class="blockcode">print(f'df_1yr has elements of:\n {df_1yr.dtypes}')</code></pre>
+which prints:
+<pre><code class="datablock">df_1yr has elements of:
+DATE                 object
+USINFO                int64
+timestamp    datetime64[ns]
+month                 int64
+year                  int64 </code></pre>
+
+<p>Exploring the 2022 job numbers:
+  <pre><code class="blockcode">import seaborn as sns
+import matplotlib.pyplot as plt
+sns.lineplot(data = df_1yr, x = 'month', y='USINFO')
+plt.ylabel('Number of Jobs')
+plt.xticks(range(1,13),\
+    ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'])
+plt.title('Information Services Employment, 2022')
+plt.show()
+</code></pre>
+The additional data from December shows a drop-off:
+<p>
+<img src="info_employment_2022.png" height="300">
+
+<p>Let's fit a regression line to the 2022 numbers:
+  <pre><code class="blockcode">theta_0, theta_1 = compute_lin_reg(df_1yr['month'],df_1yr['USINFO'])
+xes = np.array([0,12])
+yes = theta_1*xes + theta_0
+sns.lineplot(data = df_1yr, x = 'month', y='USINFO')
+plt.ylabel("Number of Jobs, in 1000's")
+plt.xticks(range(1,13),\
+    ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'])
+plt.plot(xes,yes)
+plt.title(f'Regression line with m = {theta_1:.2f} and y-intercept = {theta_0:.2f}')
+plt.show()    </code></pre>
+  would give the plot:
+
+  <p><img height=300 src="info_employment_2022_rline.png">
+
+<p>We can also use the theta values to estimate future values.  For example, since if we were to extend our count of months into 2023, we can compute the predicted number of jobs:</p>    
+<pre><code class="blockcode">months_2023 = np.array([13,14,15,16,17])
+  print(predict(months_2023,theta_0,theta_1)*1000)</code></pre>
+which would print:
+<pre><code class="datablock">[3052279.02790279 3062122.41224122 3071965.79657966 3081809.18091809
+  3091652.56525653]</code></pre>
+showing 3,052,280 jobs in January and gaining an additional 40,000 jobs by May 2023.
+
+<p>We can repeat our calculations using data from the last 5 years, but since we have more than 1 year, we can't use the month as our x-axis.  Instead, we can use the index:
+<pre><code class="blockcode">df_5yr = pd.read_csv('program05/fred_info_2022_5yr.csv')
+df_5yr = parse_datetime(df_5yr)
+print(df_5yr[:30])
+print(df_5yr.index.to_series())</code></pre>
+which will print:
+<pre><code class="datablock">          DATE  USINFO  timestamp  month  year
+0   2012-12-01    2675 2012-12-01     12  2012
+1   2013-01-01    2661 2013-01-01      1  2013
+2   2013-02-01    2699 2013-02-01      2  2013
+3   2013-03-01    2699 2013-03-01      3  2013
+4   2013-04-01    2696 2013-04-01      4  2013
+5   2013-05-01    2711 2013-05-01      5  2013
+6   2013-06-01    2707 2013-06-01      6  2013
+7   2013-07-01    2720 2013-07-01      7  2013
+8   2013-08-01    2690 2013-08-01      8  2013
+9   2013-09-01    2707 2013-09-01      9  2013
+10  2013-10-01    2719 2013-10-01     10  2013
+11  2013-11-01    2724 2013-11-01     11  2013
+12  2013-12-01    2726 2013-12-01     12  2013
+13  2014-01-01    2721 2014-01-01      1  2014
+14  2014-02-01    2719 2014-02-01      2  2014
+15  2014-03-01    2725 2014-03-01      3  2014
+16  2014-04-01    2722 2014-04-01      4  2014
+17  2014-05-01    2719 2014-05-01      5  2014
+18  2014-06-01    2725 2014-06-01      6  2014
+19  2014-07-01    2724 2014-07-01      7  2014
+20  2014-08-01    2731 2014-08-01      8  2014
+21  2014-09-01    2732 2014-09-01      9  2014
+22  2014-10-01    2726 2014-10-01     10  2014
+23  2014-11-01    2735 2014-11-01     11  2014
+24  2014-12-01    2735 2014-12-01     12  2014
+25  2015-01-01    2738 2015-01-01      1  2015
+26  2015-02-01    2742 2015-02-01      2  2015
+27  2015-03-01    2737 2015-03-01      3  2015
+28  2015-04-01    2741 2015-04-01      4  2015
+29  2015-05-01    2749 2015-05-01      5  2015
+0        0
+1        1
+2        2
+3        3
+4        4
+      ... 
+116    116
+117    117
+118    118
+119    119
+120    120
+Length: 121, dtype: int64</code></pre>
+
+Using the index for the x values: 
+<pre><code class="blockcode">theta_0, theta_1 = compute_lin_reg(df_5yr.index.to_series(),df_5yr['USINFO'])
+print(theta_0, theta_1)
+df_5yr['predicted'] = theta_1*df_5yr.index.to_series() + theta_0
+sns.lineplot(data = df_5yr, x = 'timestamp', y='USINFO')
+sns.lineplot(data = df_5yr, x = 'timestamp', y='predicted')
+plt.ylabel("Number of Jobs, in 1000's")
+plt.xlabel("2018-2022")
+plt.title(f'Regression line with m = {theta_1:.2f} and y-intercept = {theta_0:.2f}')
+plt.show()</code></pre>
+
+would give the plot:
+
+<p><img height=300 src="info_employment_5yr_rline.png">
+
+  <p>
+Using <a href="https://seaborn.pydata.org/examples/timeseries_facets.html">seaborn's functionality with time series data</a>,
+we can look at year-to-date growth of jobs for the last ten years, highlighting 2022 in blue:
+<pre><code class="blockcode">df_all = pd.read_csv('program05/fred_info_2022_all.csv')
+df_all = parse_datetime(df_all)
+print(df_all)
+df_all['YTD'] = compute_ytd(df_all)
+
+sns.lineplot(data=df_all[-120:], x = 'month', y='YTD', units='year',\
+            estimator=None, color=".7", linewidth=1)
+sns.lineplot(data=df_all[-12:], x = 'month', y='YTD', linewidth=2)
+plt.ylabel("Year To Date, in 1000's")
+plt.xticks(range(1,13),\
+    ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'])
+plt.title('Year To Date, 2013-2022')
+plt.show()   
+</code></pre>
+
+<img src="info_ytd_10yr.png" height="300">
+
+<p>
+Looking at the change, measured against previous year:
+</p>
+<pre><code class="blockcode">df_all['YTD'] = compute_ytd(df_all)
+df_all['year_over_year'] = compute_year_over_year(df_all)
+sns.set_theme(style="whitegrid")
+sns.lineplot(data=df_all[-240:],x='timestamp',y='year_over_year')
+plt.ylabel('% Change Year Over Year')
+plt.xlabel('Years')
+plt.title('Percent Change in Information Services Employment')
+plt.show()
+</code></pre>
+
+we see slowing, but continued growth:
+
+<p><img src="info_employment_change.png" height="300"></p>
+
+<i>
+<p>Notes and Hints:</p>
+<ul>
+  <li> You should submit a .py file with only the standard comments at the top, the specified functions, and any helper functions you have written. The grading scripts will then import the file for testing.
+  If your file includes code outside of functions, either comment the code out before submitting or use a main function that is conditionally executed (see <a href="https://runestone.academy/ns/books/published//thinkcspy/Functions/mainfunction.html">Think CS: Section 6.8</a> for details).</li>
+  
+  <li> Include only the libraries you need (such as <code class = "inline">pandas</code>) for your functions and none of the ones for plotting (such as <code class = "inline">matplotlib.pyplot</code> and <code class = "inline">seaborn</code>) since the functions submitted are computing and not plotting.  Only the libraries listed in <b>Available Libraries</b> are loaded by the autograder.     
+
+  <li>  See Lecture 3 or <a href="https://learningds.org/ch/09/wrangling_transformations.html">DS 100: Section 9.4</a> for working with dates and times.</li>  
+  
+</ul>
+</i>
+</div>
+</body>
+</html>
