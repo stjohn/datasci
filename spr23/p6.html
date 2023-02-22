@@ -1,0 +1,428 @@
+<!DOCTYPE doctype PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <title>Program 6, CSci 39542: Data Science, Hunter College</title>
+</head>
+<STYLE>A {text-decoration: none;}
+th, td { padding: 5px; }
+code {
+  background-color: #eeeeee;
+}
+.inline {
+  padding: 1px;
+}
+.blockcode {
+  border: 1px solid #999999;
+  display: block;
+  padding-left: 10px;
+  padding-top : 2px;
+  padding-bottom : 2px;
+  margin: 5px;
+}
+.datablock {
+  border: 1px solid #eeeeee;
+  display: block;
+  padding: 7px;
+  padding-top : 0px;
+  margin: 5px;
+}
+</STYLE>
+<body>
+
+
+<div style="margin: 15px;width:100%;">
+    <span style= "float: left;font-size:larger"><a href="index.html">CSci 39542</a></span>
+    <span style= "float: right">
+      <a href="syl.html">Syllabus</a>&nbsp;&nbsp;&nbsp;
+      <a href="resources.html">Resources</a>&nbsp;&nbsp;&nbsp;
+      <a href="work.html">Coursework</a><!--&nbsp;&nbsp;&nbsp;
+      <a href="faq.html">FAQ</a>-->
+    </span>
+</div>
+
+<br>
+<br>
+<hr>
+
+<div style="margin:50px">
+
+
+<h2>Program 6:  Taxi Tips
+  <br>CSci 39542: Introduction to Data Science<br>
+<a href="http://www.hunter.cuny.edu/csci">Department of Computer Science</a><br>
+<a href="https://hunter.cuny.edu">Hunter College</a>, <a href="https://www.cuny.edu">City University of New York</a><br>
+Spring 2023<br><br>
+</h2>
+
+
+<hr>
+<a href="work.html#cw">Classwork</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#quizzes">Quizzes</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#hw">Homework</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#project">Project</a>&nbsp;&nbsp;&nbsp;
+<hr>
+
+<object width=100% height=50% type="text/html" data="generalNotes.html" border="0"
+   style="overflow: hidden;">
+</object>
+<hr>
+
+<h2>Program Description</h2>
+
+
+
+
+<br>
+<p><a name="p6"><b>Program 6: Taxi Tips.</b></b> &emsp; <i>Due 10am, Wednesday, 8 March.
+  <br>Learning Objective: give students practice on implementing model from start to finish and to strengthen understanding of model drift.
+  <br>Available Libraries: pandas, numpy, datetime, pickle, sklearn, and core Python 3.6+.
+  <br>Data Sources: <a href="https://data.cityofnewyork.us/Transportation/2020-Yellow-Taxi-Trip-Data/kxp8-n2sj">Yellow Taxi Trip Data</a> and <a href="https://data.cityofnewyork.us/Transportation/NYC-Taxi-Zones/d3c5-ddgc">NYC Taxi Zones</a> from OpenData NYC.
+  <br>Sample Datasets:  <a href="../fall21/taxi_new_years_day_2020.csv">taxi_new_years_day_2020.csv</a>,
+    <a href="../fall21/taxi_new_years_day_2020.csv">taxi_4July2020.csv</a>,
+    <a href="../spr22/taxi_jfk_june2020.csv">taxi_jfk_june2020.csv</a>, and 
+    <a href="../spr22/taxi_zones.csv">taxi_zones.csv</a>.</i>
+  <p>
+  <a href="https://www1.nyc.gov/site/tlc/businesses/yellow-cab.page"><img src = "https://www1.nyc.gov/assets/tlc/images/content/pages/businesses/yellow-cab.png" height=300 alt="image of yellow taxi"></a></p>
+
+<p>
+This program is tailored to the NYC OpenData Yellow Taxi Trip Data and follows astandard strategy for data cleaning and model building of:
+  <ol>
+    <li> Read in datasets, merging and cleaning as needed.
+    <li> Impute missing values (we will use median for the numeric values and one-hot encoding for categorical values).
+    <li> Transform features to polynomial (we will restrict to quadratic).
+    <li> Split our dataset into training and testing sets.
+    <li> Fit a model, or multiple models, to the training dataset.
+    <li> Validate the models using the testing dataset.
+  </ol>
+This program will focus on building a linear regression model on the features of our dataset to predict tip percentages. </p>
+
+<p>The function specifications are:
+
+<ul>
+  <li> <code class = "inline">import_data(file_name):</code>
+    This function takes as one input parameter:
+    <ul>
+      <li> <code class = "inline">file_name</code>: the name of a CSV file containing <a href="https://data.cityofnewyork.us/Transportation/2020-Yellow-Taxi-Trip-Data/kxp8-n2sj">Yellow Taxi Trip Data</a> from OpenData NYC.
+    </ul>
+    The data in the file is read into a DataFrame, and 
+    <ul>
+      <li>the columns:
+      <code class='inline'>VendorID,RatecodeID,store_and_fwd_flag,payment_type,extra,mta_tax,tolls_amount,improvement_surcharge,congestion_surcharge</code> are dropped. </li>  
+      <li>Any rows with non-positive <code class = "inline">total_amount</code> are dropped. </li>
+    </ul>
+    The resulting DataFrame is returned.
+  </li><br>
+
+   <li> <code class = "inline">add_tip_time_features(df):</code>
+    This function takes one input:
+    <ul>
+      <li> <code class = "inline">df</code>: a DataFrame containing Yellow Taxi Trip Data from OpenData NYC.
+    </ul>
+    The function computes 3 new columns:
+    <ul>
+      <li><code class = "inline">percent_tip</code>: which is <code class="inline">100*tip_amount/(total_amount-tip_amount)</code>
+      <li><code class = "inline">duration</code>: the time the trip took in seconds.
+      <li><code class = "inline">dayofweek</code>: the day of the week that the trip started, represented as 0 for Monday, 1 for Tuesday, ... 6 for Sunday.
+    </ul>
+   The original DataFrame with these additional three columns is returned.
+  </li><br>
+
+  <li> <code class = "inline">impute_numeric_cols(df):</code>
+    This function takes one input:
+    <ul>
+      <li> <code class = "inline">df</code>: a DataFrame containing Yellow Taxi Trip Data from OpenData NYC.
+    </ul>
+    Missing data in the numeric columns <code class = "inline">passenger_count,trip_distance,fare_amount,tip_amount,total_amount,duration,dayofweek</code> are replaced with the median of the respective column. <br> 
+    Returns the resulting DataFrame.
+    </li><br>
+
+    <li> <code class = "inline">add_boro(df, file_name) -> pd.DataFrame:</code>
+      This function takes as two input parameters:
+      <ul>
+          <li> <code class = "inline">df</code>: a DataFrame containing <a href="https://data.cityofnewyork.us/Transportation/2020-For-Hire-Vehicles-Trip-Data/m3yx-mvk4">Yellow Taxi Trip Data</a> from OpenData NYC.
+          <li> <code class = "inline">file_name</code>: the name of a CSV file containing <a href="https://data.cityofnewyork.us/Transportation/NYC-Taxi-Zones/d3c5-ddgc">NYC Taxi Zones</a> from OpenData NYC.
+      </ul>
+      Makes a DataFrame, using <code class = "inline">file_name</code>, to add pick up and drop off boroughs to <code class = "inline">df</code>.
+      In particular, adds two new columns to the <code class = "inline">df</code>:
+      <ul>
+        <li> <code class = "inline">PU_borough</code> that contain the borough corresponding to the pick up taxi zone ID (stored in <code class = "inline">PULocationID</code>), and
+        <li> <code class = "inline">DO_borough</code> that contain the borough corresponding to the drop off taxi zone (stored in <code class = "inline">DOLocationID</code>)
+      </ul>
+      Returns <code class = "inline">df</code> with these two additional columns (<code class = "inline">PU_borough</code> and <code class = "inline">DO_borough</code>).</li><br>
+
+
+  <li> <code class = "inline">encode_categorical_col(col,prefix):</code>
+      This function takes two input parameters:
+      <ul>
+          <li> <code class = "inline">col</code>: a column of categorical data.
+          <li> <code class = "inline">prefix</code>: a prefix to use for the labels of the resulting columns.
+      </ul>
+      Takes a column of categorical data and uses categorical encoding to create a new DataFrame with the k-1 columns, where k is the number of different nomial values for the column.  Your function should create k columns, one for each value, labels by the prefix concatenated with the value.  The columns should be sorted and the DataFrame restricted to the first k-1 columns returned.  For example, if the column contains values:  'Bronx', 'Brooklyn', 'Manhattan', 'Queens', and 'Staten Island', and the  <code class = "inline">prefix</code> parameter has the value 'PU_' (and set the separators to be the empty string: <code class = "inline">prefix_sep=''</code>), then the resulting columns would be labeled: 'PU_Bronx', 'PU_Brooklyn', 'PU_Manhattan', 'PU_Queens', and 'PU_Staten Island'.  The last one alphabetically is dropped (in this example, 'PU_Staten Island'), and the DataFrame restricted to the first k-1 columns is returned.  
+      <br><i>Note:  we presented several different ways to categorically encode nomial data in Lecture 5.  The book details an approach using sklearn in <a href="https://learningds.org/ch/15/linear_categorical.html">Chapter 15</a>,
+      and you may find <a href="https://pandas.pydata.org/docs/reference/api/pandas.get_dummies.html#pandas.get_dummies">Panda's get_dummies</a> useful.</i>
+      </li><br>
+
+    <li> <code class = "inline">split_test_train(df, xes_col_names, y_col_name,
+                       test_size=0.25, random_state=1870):</code>
+      This function takes 5 input parameters:
+      <ul>
+        <li> <code class = "inline">df</code>: a DataFrame containing <a href="https://data.cityofnewyork.us/Transportation/2020-For-Hire-Vehicles-Trip-Data/m3yx-mvk4">Yellow Taxi Trip Data</a> from OpenData NYC to which <code class = "inline">add_boro()</code> has been applied.</li>
+        <li>  <code class = "inline">y_col_name</code>: the name of the column of the dependent variable.</li>
+        <li>  <code class = "inline">xes_col_names</code>: a list of columns that contain the independent variables.</li>
+        <li>  <code class = "inline">test_size</code>: accepts a float between 0 and 1 and represents the proportion of the data set to use for training.  This parameter has a default value of 0.25.</li>
+        <li>  <code class = "inline">random_state</code>:  Used as a seed to the randomization.  This parameter has a default value of 1870.</li>
+    </ul>
+    Calls <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">sklearn's train_test_split</a> function to split the data set into a training and testing subsets:  x_train, x_test, y_train, y_test.  The resulting 4 subsets are returned.<br>
+    <i>Hint:  see the examples from Lecture 4 for a similar splitting of data into training and testing datasets.</i>
+    </li><br>
+
+  <li> <code class = "inline">fit_linear_regression(x_train, y_train)</code>
+    This function takes two inputs:
+    <ul>
+       <li> <code class = "inline">x_train</code>: an array of numeric columns with no null values.
+       <li> <code class = "inline">y_train</code>: an array of numeric columns with no null values.
+    </ul>
+    Fits a linear model to <code class = "inline">x_train</code> and <code class = "inline">y_train</code>, using <code class = "inline">sklearn.linear_model.LinearRegression</code> (see lecture & textbook for details on setting up the model).  The resulting model should be returned as bytestream, using <a href="https://docs.python.org/3/library/pickle.html">pickle</a> (see Lecture 4).</li><br>
+
+
+  <li> <code class = "inline">predict_using_trained_model(mod_pkl, xes, yes): </code>
+    This function takes three inputs:
+    <ul>
+      <li> <code class = "inline">mod_pkl</code>: a trained model for the data, stored in pickle format.
+      <li> <code class = "inline">xes</code>: an array or  DataFrame of numeric columns with no null values.
+      <li> <code class = "inline">yes</code>: an array or DataFrame of numeric columns with no null values.
+    </ul>
+    Computes and returns the mean squared error and r2 score between the values predicted by the model (<code class = "inline">mod_pkl</code> on <code class = "inline">x</code>) and the actual values (<code class = "inline">y</code>).  Note that <code class = "inline">sklearn.metrics</code> contains two functions that may be of use:  <code class = "inline">mean_squared_error</code> and <code class = "inline">r2_score</code>.</li><br>
+</ul>
+
+
+<p>For example, the file, <a href="taxi_jfk_june2020.csv">taxi_jfk_june2020.csv</a>, contains all taxi trips, starting from JFK in June 2020 <a href="https://data.cityofnewyork.us/Transportation/2020-For-Hire-Vehicles-Trip-Data/m3yx-mvk4">Yellow Taxi Trip Data</a> (about 9,500 entries) with the first lines are:
+<pre><code class="datablock">VendorID,tpep_pickup_datetime,tpep_dropoff_datetime,passenger_count,trip_distance,RatecodeID,store_and_fwd_flag,PULocationID,DOLocationID,payment_type,fare_amount,extra,mta_tax,tip_amount,tolls_amount,improvement_surcharge,total_amount,congestion_surcharge
+2,06/01/2020 12:00:31 AM,06/01/2020 12:31:43 AM,1,12.59,1,N,132,189,2,37,0.5,0.5,0,0,0.3,38.3,0
+2,06/01/2020 12:05:23 AM,06/01/2020 12:29:05 AM,1,15.8,1,N,132,255,1,42,0.5,0.5,8.66,0,0.3,51.96,0
+2,06/01/2020 12:06:27 AM,06/01/2020 12:36:26 AM,1,18.19,2,N,132,142,1,52,0,0.5,10,0,0.3,65.3,2.5
+2,06/01/2020 12:08:48 AM,06/01/2020 12:40:48 AM,2,19,2,N,132,113,1,52,0,0.5,13.82,0,0.3,69.12,2.5
+2,06/01/2020 12:13:46 AM,06/01/2020 12:25:29 AM,1,7.21,1,N,132,134,2,21,0.5,0.5,0,0,0.3,22.3,0
+</code></pre>
+Then our first functions:
+     <pre><code class="blockcode">df = import_data('taxi_jfk_june2020.csv')
+df = add_tip_time_features(df)
+print(df[ ['trip_distance','duration','dayofweek','total_amount','percent_tip'] ].head() )</code></pre>
+     prints:
+     <pre><code class="datablock">   trip_distance  duration  dayofweek  total_amount  percent_tip
+0          12.59    1872.0          0         38.30     0.000000
+1          15.80    1422.0          0         51.96    20.000000
+2          18.19    1799.0          0         65.30    18.083183
+3          19.00    1920.0          0         69.12    24.990958
+4           7.21     703.0          0         22.30     0.000000</code></pre>
+
+
+<p>We can impute the missing data in numerical columns with their median value.  For example:
+ <pre><code class="blockcode">print(df[ ['passenger_count','trip_distance'] ].head(10) )
+df = impute_numeric_cols(df)
+print( df[ ['passenger_count','trip_distance'] ].head(10) )</code></pre>
+shows the <code class = "inline">passenger_count</code> the results of <code class = "inline">impute_numeric_cols</code>:
+ <pre><code class="datablock">   passenger_count  trip_distance
+0              1.0          12.59
+1              1.0          15.80
+2              1.0          18.19
+3              2.0          19.00
+4              1.0           7.21
+5              1.0           6.50
+6              2.0          13.90
+7              NaN           0.00
+8              NaN           0.00
+9              NaN           0.00
+  passenger_count  trip_distance
+0              1.0          12.59
+1              1.0          15.80
+2              1.0          18.19
+3              2.0          19.00
+4              1.0           7.21
+5              1.0           6.50
+6              2.0          13.90
+7              1.0           0.00
+8              1.0           0.00
+9              1.0           0.00</code></pre>
+
+
+<p>
+The running example in the textbook focuses on predicting restaurant tips.  A highly correlated feature with tips for restaurant meals is the total bill.  Let's look at the taxi data set to see if a similar correlation is suggested for tips on yellow taxi trips:
+
+<pre><code class="blockcode">#Explore some data:
+import matplotlib.pyplot as plt
+import seaborn as sns
+sns.set_theme(color_codes=True)
+
+sns.lmplot(x="total_amount", y="percent_tip", data=df)
+tot_r = df['total_amount'].corr(df['percent_tip'])
+plt.title(f'Taxi Trips from JFK, June 2020 with r = {tot_r:.2f}')
+plt.tight_layout()  #for nicer margins
+plt.show()
+sns.lmplot(x="trip_distance", y="percent_tip", data=df)
+dist_r = df['trip_distance'].corr(df['percent_tip'])
+plt.title(f'Taxi Trips from JFK, June 2020 with r = {dist_r:.2f}')
+plt.tight_layout()  #for nicer margins
+plt.show()</code></pre>
+
+<p>The resulting images:
+
+<p><img src="p6_jfk_total_tip.png" height = 300>
+<img src="p6_jfk_dist_tip.png" height = 300>
+
+
+
+<p>
+Neither total amount or distance of the trip are strongly correlated, suggesting a linear regression model with a single input will not make a good predictor.  
+
+<p>
+Next, let's use our new functions to add in boroughs for the pick up and drop off locations 
+<pre><code class="blockcode">df = add_boro(df,'taxi_zones.csv')
+print('\nThe locations and borough columns:')
+print(f"{df[['PULocationID','PU_borough','DOLocationID','DO_borough']]}")</code></pre>
+
+<p>which prints out the new columns:
+<pre><code class="datablock">The locations and borough columns:
+      PULocationID PU_borough  DOLocationID DO_borough
+0              132     Queens           189   Brooklyn
+1              132     Queens           255   Brooklyn
+2              132     Queens           142  Manhattan
+3              132     Queens           113  Manhattan
+4              132     Queens           134     Queens
+...            ...        ...           ...        ...
+9495           132     Queens            36   Brooklyn
+9496           132     Queens           263  Manhattan
+9497           132     Queens           132     Queens
+9498           132     Queens            75  Manhattan
+9499           132     Queens           249  Manhattan
+
+[9500 rows x 4 columns]</code></pre>
+And encode the categorical columns for drop off boroughs so we can use them as inputs for our model:  
+<pre><code class="blockcode">df_do = encode_categorical_col(df['DO_borough'],'DO_')
+print(df_do.head())</code></pre>
+  
+<p>The first few lines of the resulting DataFrames:
+  
+  <pre><code class="datablock">     DO_Bronx  DO_Brooklyn  DO_EWR  DO_Manhattan  DO_Queens
+  0         0            1       0             0          0
+  1         0            1       0             0          0
+  2         0            0       0             1          0
+  3         0            0       0             1          0
+  4         0            0       0             0          1</code></pre>
+  
+  <p>Let's combine all the DataFrames into one (using <a href="https://pandas.pydata.org/docs/reference/api/pandas.concat.html">concat</a> along column axis):
+  
+<pre><code class="blockcode">df_all = pd.concat( [df,df_do], axis=1)
+print(f'The combined DataFrame has columns: {df_all.columns}')</code></pre>
+  
+  <p>The combined DataFrame has the columns:
+  
+  <pre><code class="datablock">The combined DataFrame has columns: Index(['tpep_pickup_datetime', 'tpep_dropoff_datetime', 'passenger_count',
+    'trip_distance', 'PULocationID', 'DOLocationID', 'fare_amount',
+    'tip_amount', 'total_amount', 'percent_tip', 'duration',
+    'dayofweek', 'PU_borough', 'DO_borough', 'DO_Bronx', 'DO_Brooklyn',
+    'DO_EWR', 'DO_Manhattan', 'DO_Queens'],
+   dtype='object')</code></pre>
+  
+Let's build a more complicated model that uses multiple inputs, including the numerical and encoded categorical columns:
+
+<pre><code class="blockcode">df_all = impute_numeric_cols(df_all)
+num_cols = ['passenger_count','trip_distance','fare_amount',\
+'tip_amount', 'total_amount', 'percent_tip', 'duration','dayofweek',\
+'PU_borough', 'DO_borough', 'DO_Bronx', 'DO_Brooklyn','DO_EWR',\
+'DO_Manhattan', 'DO_Queens']</code></pre>
+
+<p> With the missing numeric data imputed, we can fit the model on training sets (of size 25%):
+
+
+<pre><code class="blockcode">x_train,x_test,y_train,y_test = split_test_train(df_all,num_cols, 'percent_tip')
+  print('For numeric columns, training on 25% of data:')
+  mod_pkl = fit_linear_regression(x_train,y_train)
+  mod = pickle.loads(mod_pkl)
+  print(f'intercept = {mod.intercept_} and coefficients = {mod.coef_}')
+  tr_err,tr_r2 = predict_using_trained_model(mod_pkl, x_train,y_train)
+  print(f'training:  RMSE = {tr_err} and r2 = {tr_r2}.')
+  test_err,test_r2 = predict_using_trained_model(mod_pkl, x_test,y_test)
+  print(f'testing:  RMSE = {test_err} and r2 = {test_r2}.')</code></pre>
+
+<p>the resulting model does a reasonable both with the training and testing data sets that we used to validate the model:
+
+<pre><code class="datablock">For numeric columns, training on 25% of data:
+intercept = -4.796163466380676e-14 and coefficients = [ 5.23397910e-17  1.61192577e-15  1.85687045e-16 -5.56734918e-17
+  -2.61963848e-16  1.00000000e+00  1.31317482e-17  1.22153806e-16
+  -1.72760552e-15  2.32202615e-16 -9.61810652e-17 -3.20366914e-17
+  -5.19491682e-17]
+training:  RMSE = 1.7731188666093563e-27 and r2 = 1.0.
+testing:  RMSE = 2.2870524510872717e-27 and r2 = 1.0.</code></pre>
+
+<p> Let's do the same with just two of the columns:
+
+<pre><code class="blockcode">x_train,x_test,y_train,y_test = split_test_train(df_all,num_cols, 'percent_tip')
+print('For numeric columns, training on 25% of data:')
+mod_pkl = fit_linear_regression(x_train,y_train)
+mod = pickle.loads(mod_pkl)
+print(f'intercept = {mod.intercept_} and coefficients = {mod.coef_}')
+tr_err,tr_r2 = predict_using_trained_model(mod_pkl, x_train,y_train)
+print(f'training:  RMSE = {tr_err} and r2 = {tr_r2}.')
+test_err,test_r2 = predict_using_trained_model(mod_pkl, x_test,y_test)
+print(f'testing:  RMSE = {test_err} and r2 = {test_r2}.')</code></pre>
+  
+<p>the resulting model does a reasonable both with the training and testing data sets that we used to validate the model:
+
+<pre><code class="datablock">For ['duration','total_amount'], training on 25% of data:
+intercept = -4.796163466380676e-14 and coefficients = [ 5.23397910e-17  1.61192577e-15  1.85687045e-16 -5.56734918e-17
+-2.61963848e-16  1.00000000e+00  1.31317482e-17  1.22153806e-16
+-1.72760552e-15  2.32202615e-16 -9.61810652e-17 -3.20366914e-17
+-5.19491682e-17]
+training:  RMSE = 117.29525461464237 and r2 = 0.09393010147197978.
+testing:  RMSE = 106.48541736076493 and r2 = 0.12955509236760188.</code></pre>
+
+<p>Neither does very well, compared to using all the possible columns.</p>
+<p>We can use the model for other yellow taxi data sets to see how well our model does:
+
+<pre><code class="blockcode">print(f'Prediction for 4 July data with only duration and total amount:')
+df_july = import_data('program06/taxi_4July2020.csv')
+df_july = add_tip_time_features(df_july)
+df_july = impute_numeric_cols(df_july)
+print(df_july[['duration','total_amount']])
+july_err,july_r2 = predict_using_trained_model(mod2_pkl, df_july[['duration','total_amount']].to_numpy(),df_july['percent_tip'])
+print(f'RMSE = {july_err} and r2 = {july_r2}.')</code></pre>
+
+<p>The restricted model does not do well with the other data set:
+<pre><code class="datablock">Prediction for 4 July data:
+RMSE = 441.3910670031561 and r2 = -0.060720824296001785.
+</code></pre>
+
+<p>While the full model does quite well predicting results for other data sets:
+
+<pre><code class="blockcode">print(f'Prediction for 4 July data with full model:')
+df_july = add_boro(df_july,'program06/taxi_zones.csv')
+df_do_j = encode_categorical_col(df_july['DO_borough'],'DO_')
+df_all_j = pd.concat( [df_july,df_do_j], axis=1)
+july_err,july_r2 = predict_using_trained_model(mod_pkl, df_all_j[num_cols].to_numpy(),df_all_j['percent_tip'])
+print(f'RMSE = {july_err} and r2 = {july_r2}.')</code></pre>
+
+<pre><code class="datablock">Prediction for 4 July data with full model:
+RMSE = 3.2743379800535055e-27 and r2 = 1.0.
+</code></pre>
+
+
+
+<i>
+  <p>Notes and Hints:</p>
+  <ul>
+    <li> You should submit a .py file with only the standard comments at the top, the specified functions, and any helper functions you have written. The grading scripts will then import the file for testing.
+    If your file includes code outside of functions, either comment the code out before submitting or use a main function that is conditionally executed (see <a href="https://runestone.academy/ns/books/published//thinkcspy/Functions/mainfunction.html">Think CS: Section 6.8</a> for details).</li>
+    
+    <li> Include only the libraries you need (such as <code class = "inline">pandas</code>) for your functions and none of the ones for plotting (such as <code class = "inline">matplotlib.pyplot</code> and <code class = "inline">seaborn</code>) since the functions submitted are computing and not plotting.  Only the libraries listed in <b>Available Libraries</b> are loaded by the autograder.     
+  
+    <li>  See Lecture 3 or <a href="https://learningds.org/ch/09/wrangling_transformations.html">DS 100: Section 9.4</a> for working with dates and times.</li>  
+    
+  </ul>
+  </i>
+
+</div>
+</body>
+</html>
