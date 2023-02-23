@@ -221,10 +221,62 @@ Seat:  YOUR_SEAT
 
 
 
-  <p><a name="cw5"><b>Classwork 5: </b> &emsp; <i>Due 3pm, Wednesday, 22 February.</i> &emsp;
+  <p><a name="cw5"><b>Classwork 5: </b> &emsp; <i>Due 3pm, Wednesday, 22 February.</i> &emsp;  
+      Available during Lecture 5 on Gradescope, this on-line assignment is to design an algorithm to compute Voronoi diagrams (see Lecture 5 notes and Gradescope exercise for details).</p>
+      <br>
 
-
+<br>
   <p><a name="cw6"><b>Classwork 6: </b> &emsp; <i>Due 2:30pm, Wednesday, 1 March.</i> &emsp;
+
+    <br>(Learning Objective: increase understanding of smoothing and gain fluidity with using distributions for smoothing.)
+
+
+    <p>
+    In Lecture 5 and <a href="https://learningds.org/ch/11/viz_smoothing.html">Section 11.2</a>, we used smoothing to visualize data.  For this program, write a function that takes two arguments, an Numpy array of x-axis coordinates, and a list of numeric values, and returns the corresponding y-values for the sum of the gaussian probability distribution functions (pdf's) for each point in the list.
+  
+    <ul>
+      <li> <code class = "inline">computeSmoothing(xes,points)</code>:  This function takes a numpy array <code class = "inline">xes</code> and a list, <code class = "inline">points</code>, of numeric values.  For each <code class = "inline">p</code> in <code class = "inline">points</code>, the function should compute the normal probability distribution function (<code class = "inline">scipy.norm.pdf</code>)
+      centered at <code class = "inline">loc = p</code> with standard deviation <code class = "inline">scale = 0.5</code> for all values in <code class = "inline">xes</code>.  The return value is a numpy array of the sum of these at each point.
+    </ul>
+  
+    <p>For example, calling the function:
+      <pre><code class="blockcode">xes = np.linspace(0, 10, 1000)
+  density = computeSmoothing(xes,[5])
+  plt.plot(xes,density)
+  plt.show()</code></pre>
+  
+      would give the plot:
+  
+      <p><img height=200 src="https://stjohn.github.io/teaching/data/fall21/density5.png">
+  
+      <p>since there is only one point given (namely 5), the returned value is the probability density function centered at 5 (with <code class = "inline">scale =  0.5</code>) computed for each of the <code class = "inline">xes</code>.
+  
+  <p>For example, calling the function:
+    <pre><code class="blockcode">pts = [2,2,5,5,2,3,4,6,7,9]
+  xes = np.linspace(0, 10, 1000)
+  density = computeSmoothing(xes,pts)
+  plt.plot(xes,density)
+  plt.fill_between(xes,density)
+  plt.show()</code></pre>
+  
+  would give the plot:
+  
+  <p><img height=200 src="https://stjohn.github.io/teaching/data/fall21/density_fillBetween.png">
+  
+    <p>since the there are 10 points given, the function computes the probability density function centered at each of the points, across all the values in <code class = "inline">xes</code>.  It then sums up these contributions and returns an array of the same length as <code class = "inline">xes</code>.
+  
+  
+  
+  
+  <p>
+      Note:  you should submit a file with only the standard comments at the top, and this function.  The grading scripts will then import the file for testing.
+  
+  <p>
+    <i>Hint:  Include only the function you need (such as <code class = "inline">numpy</code> and <code class = "inline">scipy.stats</code>) and none of the ones for plotting (such as <code class = "inline">matplotlib.pyplot</code> and <code class = "inline">seaborn</code>) since this function is computing and not plotting.
+    </i>
+    </p>
+    <br><br>
+  
 <!--  
     Available during Lecture 6 on Gradescope, this on-line assignment reviews the different ways to merge DataFrames in Pandas.
 -->
@@ -442,42 +494,33 @@ Unless otherwise noted, quizzes focus on the corresponding programming assignmen
   <br>This quiz focuses on working with datetime in Python as in <a href="#p4">Program 4</a>, <a href="#p5">Program 5</a>, and <a href="#p6">Program 6</a>.
 
 <p><a name="q8"><b>Quiz 8: Fitting Models & Regularization. </b> &emsp; <i>Due 2:30pm, Thursday, 16 March.</i> &emsp;
-<!--
-  Link to access HackerRank available at the end of Lecture 15 (posted on Blackboard).
-    <br>This quiz focuses on computing errors with loss functions in Python as in <a href="#p7">Program 7</a>.
---> 
-
+  Link to access HackerRank available at the end of lecture on 15 March (posted on Blackboard).
+  <br>This quiz focuses on regularization and fitting models as in Lecture 6 and <a href="#p7">Program 7</a>.
+ 
 <p><a name="q9"><b>Quiz 9: Feature Engineering & Categorical Encoding.</b> &emsp; <i>Due 2:30pm, Thursday, 23 March.</i> &emsp;
-<!--
-  Link to access HackerRank available at the end of Lecture 17 (posted on Blackboard).
-    <br>This quiz focuses on computing errors with loss functions in Python as in <a href="#p8">Program 8</a>.
---> 
+  Link to access HackerRank available at the end of lecture on 22 March (posted on Blackboard).
+  <br>This quiz focuses on categorical encoding and feature engineering as Lecture 4, 5, and 6 and in <a href="#p8">Program 8</a>.
+
 <p><a name="q10"><b>Quiz 10: Linear Separability & Classifiers.</b> &emsp; <i>Due 2:30pm, Thursday, 30 March.</i> &emsp;
-<!--
-  Link to access HackerRank available at the end of Lecture 19 (posted on Blackboard).
-    <br>This quiz focuses on categorical encoding and fitting models in Python as in <a href="#p9">Program 9</a>.
---> 
+  Link to access HackerRank available at the end of lecture on 29 March (posted on Blackboard).
+  <br>This quiz focuses on logistic regression and classifiers as in Lectures 8 and 9,<a href="">Classwork 9</a> and <a href="#p9">Program 9</a>.
+
 <p><a name="q11"><b>Quiz 11: Dimensionality Reduction. </b> &emsp; <i>Due 2:30pm, Thursday, 20 April.</i> &emsp;
-<!--
-  <i>Due to the holiday on April 15, the link to access HackerRank will be available at 8am on Thursday, 14 April to allow students who are observing the holiday to be able to complete the quiz on Thursday.</i>
-    <br>This quiz focuses on linear separability and classifiers from
-    <a href="#cw18">Classwork 18</a> and <a href="#p10">Program 10</a>.
---> 
-<p><a name="q12"><b>Quiz 12: Clustering.  </b> &emsp; <i>Due 2:30pm, Thursday, 27 April.</i> &emsp;
-<!--    
-  Link to access HackerRank available at the end of Lecture 23 (posted on Blackboard).
-    <br>This quiz focuses on instrinsic dimensions and dimensionality reduction techniques in Python as in <a href="#p11">Program 11</a>.
---> 
+  Link to access HackerRank available at the end of lecture on 19 April (posted on Blackboard).
+  <br>This quiz focuses on instrinsic dimensions and dimensionality reduction techniques as in Lecture 10 and <a href="#p10">Program 10</a>.
+
+<p><a name="q12"><b>Quiz 12: Clustering.  </b> &emsp; <i>Due 2:30pm, Thursday, 27 April.</i> &emsp; 
+  Link to access HackerRank available at the end of lecture on 26 April (posted on Blackboard).
+  <br>This quiz focuses on clustering techniques in Python as in <a href="#p11">Program 11</a>.
+
 <p><a name="q13"><b>Quiz 13: Regular Expressions.</b> &emsp; <i>Due 2:30pm, Thursday, 5 May.</i> &emsp;
-<!--    
-  Link to access HackerRank available at the end of Lecture 25 (posted on Blackboard).
-    <br>This quiz focuses on clustering techniques in Python as in <a href="#p12">Program 12</a>.
---> 
+  Link to access HackerRank available at the end of lecture on 3 May (posted on Blackboard).
+  <br>This quiz focuses on regular expressions as in <a href="#p12">Program 12</a>.
+ 
 <p><a name="q14"><b>Quiz 14: End-of-Semester Survey.</b> &emsp; <i>Due 2:30pm, Thursday, 12 May.</i> &emsp;
-<!--    
-  Available on Blackboard at the end of Lecture 27.
-    <br>This quiz is an end-of semester survey.
--->
+  Available on Blackboard at the end of lecture on 10 May.
+  <br>This quiz is an end-of semester survey.
+
 
 <br><br><br><br>
 <hr>
@@ -528,15 +571,15 @@ Also, to receive full credit, the code should be compatible with Python 3.6 (the
     <p><a name="p7"><b><!--<a href="p7.html">-->Program 7: Commodity Pricing.</b></b> &emsp; <i>Due 10am, Wednesday, 15 March.
     <br>Learning Objective: to build models with polynomial features and use regularization techniques to better fit models.</i>
 
-    <!--
+<!--
 <br>
-  <p><a name="p8"><b><b><a href="p8.html">Program 8: Yellow Taxi Data.</a></b></b> &emsp; <i>Due 10am, Wednesday, 22 March.
-    <br>Learning Objective: give students practice on implementing model from start to finish and to strengthen understanding of model drift.</i>
+  <p><a name="p8"><b><a href="p8.html">Program 8: Subway Ridership.</b> &emsp; <i>Due 10am, Wednesday, 22 March.
+    <br>Learning Objective: to train and validate logistic models, as well as practice assessing model quality.</i>
 
 
 <br>
-  <p><a name="p9"><b><b><a href="p9.html">Program 9: Logistic Taxi.</a></b></b> &emsp; <i>Due 10am, Wednesday, 29 March.
-    <br>Learning Objective:  to train and validate models, given quantitative and qualitative data, as well as assessing model quality.</i>
+  <p><a name="p9"><b><a href="p9.html">Program 9: Ticket Predictor.</b> &emsp; <i>Due 10am, Wednesday, 29 March.
+    <br>Learning Objective:  to train and validate different models for classifying data.</i>
 
 
 <br>
