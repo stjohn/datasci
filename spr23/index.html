@@ -127,6 +127,7 @@ For questions about the course, write to: <tt>datasci AT hunter cuny edu</tt>.<!
       <a href="https://seeing-theory.brown.edu/index.html">Seeing Theory</a> (Brown U),<br>
       <a href="https://www.geogebra.org/m/KE6JfuF9">Guessing Correlation Coefficients</a> (GeoGebra),<br>
       <a href="https://realpython.com/numpy-scipy-pandas-correlation-python/">Computing Correlations</a> (Real Python), <br>
+      <a href="https://shiney.zoology.ubc.ca/whitlock/Residuals/">Residuals</a> (UBC),<br>
       <br>          
       <a href="http://learningds.org/ch/03/theory_intro.html">DS 100: Chapter 3</a> (Data Design),<br>
       <a href="http://learningds.org/ch/04/modeling_intro.html">DS 100: Chapter 4</a> (Modeling with Summary Statistics),<br>  
@@ -235,7 +236,7 @@ For questions about the course, write to: <tt>datasci AT hunter cuny edu</tt>.<!
       Probability and Generalization:  Distributions, Probability Mass Functions, Smoothing;
       <br><br> 
       Feature Engineering:  Variable Transformations; <br>
-      Training Models: Cross Validation, Regularization: Ridge Regularization (L2) &
+      Training Models: Cross Validation, Ridge Regularization (L2) &
       Lasso Regularization (L1); 
       Bias-Variance Tradeoff   
     </td>
@@ -250,6 +251,7 @@ For questions about the course, write to: <tt>datasci AT hunter cuny edu</tt>.<!
     <td>     
       <a href="https://learningds.org/ch/16/ms_intro.html">Chapter 16</a> Model Selection,<br>
       <a href="https://learningds.org/ch/17/inf_pred_gen_intro.html">DS 100: Chapter 17</a> (Probability & Generalization), <br>
+      <a href="http://learningds.org/ch/a05/bias_cv.html">DS 100: Appendix</a> (Cross Validation),<br>
       <br>
       <a href="https://www.zoology.ubc.ca/~whitlock/Kingfisher/SamplingNormal.htm"> Sampling from a Normally Distributed Population</a> (UBC),<br>
    
@@ -262,6 +264,7 @@ For questions about the course, write to: <tt>datasci AT hunter cuny edu</tt>.<!
       Sampling & Confidence Intervals,
       Central Limit Theorem<br><br>   
       Regression on Probabilities; The Logistic Model & Loss Function;
+      Using Logistic Models: Fitting & Evaluating a Logistic Model
     </td>
 		<td> 
       <a href="work.html#cw7">Classwork 7</a> <br>
@@ -273,17 +276,20 @@ For questions about the course, write to: <tt>datasci AT hunter cuny edu</tt>.<!
       <a href="http://learningds.org/ch/19/classification_intro.html">DS 100: Chapter 19</a> (Classification),<br>
       <br>
       <a href="https://www.zoology.ubc.ca/~whitlock/Kingfisher/CIMean.htm">Confidence Intervals</a> (UBC),<br>
-      <a href="https://shiney.zoology.ubc.ca/whitlock/Residuals/">Residuals</a> (UBC),<br>
+
       <a href="https://www.zoology.ubc.ca/~whitlock/Kingfisher/CLT.htm">Central Limit Theorem</a> (UBC),<br>
-      <a href="https://ds100.org/sp22/resources/#exam-resources">DS 100: Exam Resources</a>    
+      <a href="https://scikit-learn.org/stable/auto_examples/classification/plot_digits_classification.html#sphx-glr-auto-examples-classification-plot-digits-classification-py">Recognizing Hand-Written Digits</a> (sklearn)<br>   
+      <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html">Confusion Matrices</a> (sklearn)      
     </td>
   </tr>
 
 	<tr>
 		<td rowspan="1">Wednesday,<br>15 March</td>
-    <td><br><br>
+    <td>
       Linear Algebra Recap:  Vectors, Matrices, Eigenvectors & Eigenvalues<br><br>
-      Using Logistic Models: Fitting & Evaluating a Logistic Model; 
+      One-Versus-Rest (OVR) Classification; 
+      Other Approaches:  Naive Bayes, Support Vector Machines (SVM's),
+      
     </td>
 		<td>
       
@@ -297,8 +303,13 @@ For questions about the course, write to: <tt>datasci AT hunter cuny edu</tt>.<!
       <a href="https://setosa.io/ev/eigenvectors-and-eigenvalues/">Explained Visually</a> (Eigenvectors and Eigenvalues),<br>
       <a href="https://setosa.io/ev/principal-component-analysis/">Explained Visually</a> (Principal Components Analysis),<br>
       <a href="https://math.mit.edu/~gs/linearalgebra/ila0601.pdf">Linear Algebra Review</a> (MIT),<br>
-      <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html">Confusion Matrices</a> (sklearn),
 
+      <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.07-support-vector-machines.html">Python DS Handbook Chapter 5</a> (SVMs),<br>
+
+      <a href="https://cs.stanford.edu/~karpathy/svmjs/demo/">Karparthy's SVM Demo</a> (Stanford),<br>
+
+      <a href="https://www.datacamp.com/community/tutorials/svm-classification-scikit-learn-python">Data Camp Tutorial</a> (SVM's)<br>
+      <a href="https://scikit-learn.org/stable/modules/svm.html">SVM's</a> (sklearn),<br>
     </td>
 	</tr>
 
@@ -306,9 +317,9 @@ For questions about the course, write to: <tt>datasci AT hunter cuny edu</tt>.<!
 	<tr>
 		<td rowspan="1">Wednesday,<br>22 March</td>
 		<td>
-      One-Versus-Rest (OVR) Classification; 
-      Other Approaches:  Naive Bayes, Support Vector Machines (SVM's),
-      Decision Trees & Random Forests
+      More on Classification:  Decision Trees & Random Forests<br><br>
+      Intrinistic Dimensionality (Scree Plots)<br><br>
+      Principal Components Analysis;  <br><br>
     </td>
 		<td>
       <a href="work.html#cw9">Classwork 9</a> <br>
@@ -319,14 +330,10 @@ For questions about the course, write to: <tt>datasci AT hunter cuny edu</tt>.<!
     </td>
 		<td>    <a href="http://learningds.org/ch/19/classification_intro.html">DS 100: Chapter 19</a> (Classification),<br>
 
-       <a href="http://learningds.org/ch/a05/bias_cv.html">DS 100: Appendix</a> (Cross Validation),<br>
-       <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.07-support-vector-machines.html">Python DS Handbook Chapter 5</a> (SVMs),<br>
+      <a href="http://learningds.org/ch/22/pca_intro.html">DS 100: Chapter 22</a> (PCA)<br>
+      <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.09-principal-component-analysis.html">Python DS Handbook: Section 5.09</a> (PCA),<br>
 
-       <a href="https://cs.stanford.edu/~karpathy/svmjs/demo/">Karparthy's SVM Demo</a> (Stanford),<br>
 
-       <a href="https://www.datacamp.com/community/tutorials/svm-classification-scikit-learn-python">Data Camp Tutorial</a> (SVM's)<br>
-       <a href="https://scikit-learn.org/stable/modules/svm.html">SVM's</a> (sklearn),<br>
-       <a href="https://scikit-learn.org/stable/auto_examples/classification/plot_digits_classification.html#sphx-glr-auto-examples-classification-plot-digits-classification-py">Recognizing Hand-Written Digits</a> (sklearn)
 
       </td>
 	</tr>
@@ -334,10 +341,13 @@ For questions about the course, write to: <tt>datasci AT hunter cuny edu</tt>.<!
 	<tr>
 		<td rowspan="1">Wednesday,<br>29 March</td>
 		<td> 
-      Intrinistic Dimensionality (Scree Plots)<br><br>
-      Principal Components Analysis;  <br><br>
+
       Other Dimensionality Reduction:  Multiple Dimensional Scaling; 
-          Non-Linear Dimensionality Reduction:  t-SNE, UMAP</td>
+          Non-Linear Dimensionality Reduction:  t-SNE, UMAP
+        
+      <br><br>
+      K-Means Clustering:  Clustering Complexity, Lloyd's Algorithm (Naive K-Means)
+    </td>
 		<td>     
       <a href="work.html#cw10">Classwork 10</a> <br>
       <a href="work.html#q10">Quiz 10</a><br>
@@ -345,10 +355,13 @@ For questions about the course, write to: <tt>datasci AT hunter cuny edu</tt>.<!
       <a href="work.html#check_in">Project:  Interim Check-In Closes</a>
       </td>
     <td>      
-      <a href="http://learningds.org/ch/22/pca_intro.html">DS 100: Chapter 22</a> (PCA)<br>
-      <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.09-principal-component-analysis.html">Python DS Handbook: Section 5.09</a> (PCA),<br>
+
       <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.10-manifold-learning.html">Python DS Handbook Section 5.10</a> (Manifold Learning),<br>
       <a href="https://scikit-learn.org/stable/auto_examples/manifold/plot_lle_digits.html#sphx-glr-auto-examples-manifold-plot-lle-digits-py">Manifold Learning</a> (sklearn), <br>
+      <a href="https://en.wikipedia.org/wiki/K-means_clustering#/media/File:K-means_convergence.gif">K-Means gif</a> (wiki),<br>
+      <a href="http://learningds.org/ch/24/clustering_intro.html">DS 100: Chapter 24</a> (clustering),
+      <br>
+      <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.11-k-means.html">Python DS Handbook: Section 5.11</a> (K-Means),<br>     
     </td>
 	</tr>
 
@@ -360,9 +373,7 @@ For questions about the course, write to: <tt>datasci AT hunter cuny edu</tt>.<!
 	<tr> 
 		<td rowspan="1">Wednesday,<br>19 April</td>
 		<td>Supervised vs. Unsupervised Learning;<br><br>
-      K-Means Clustering<br>
-      K-Means:  Clustering Complexity, Lloyd's Algorithm (Naive K-Means), MiniBatch K-Means<br><br>
-      Gaussian Mixture Models
+      More on K-Means Clustering MiniBatch K-Means, Gaussian Mixture Models; Hierarchical Clustering
     </td>
     
 		<td>
@@ -373,11 +384,10 @@ For questions about the course, write to: <tt>datasci AT hunter cuny edu</tt>.<!
     <td>
       <a href="https://www.ibm.com/cloud/blog/supervised-vs-unsupervised-learning">Supervised vs. Unsupervised Learning</a> (IBM),
       <br>
-      <a href="https://en.wikipedia.org/wiki/K-means_clustering#/media/File:K-means_convergence.gif">K-Means gif</a> (wiki),<br>
-      <a href="http://learningds.org/ch/24/clustering_intro.html">DS 100: Chapter 24</a> (clustering),
-      <br>
-      <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.11-k-means.html">Python DS Handbook: Section 5.11</a> (K-Means),<br>
+
       <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.12-gaussian-mixtures.html">Python DS Handbook: Section 5.12</a> (Gaussian Mixture Models)
+      <a href="https://en.wikipedia.org/wiki/Cluster_analysis">Cluster Analysis</a> (wiki),
+        <br>      
     </td>
 	</tr>
 
@@ -385,10 +395,7 @@ For questions about the course, write to: <tt>datasci AT hunter cuny edu</tt>.<!
 		<td rowspan="1">Wednesday,<br>26 April
 		</td>
     
-		<td> Other Clustering Approaches; <br><br>
-
-
-      Replicability, P-Hacking, A/B testing<br><br>
+		<td> Replicability, P-Hacking, A/B testing<br><br>
       Regular Expressions</td>
     <td>
       <a href="work.html#cw12">Classwork 12</a> <br>
@@ -397,8 +404,7 @@ For questions about the course, write to: <tt>datasci AT hunter cuny edu</tt>.<!
       <a href="work.html#slides">Project Draft</a>
     </td>
 		<td> 
-      <a href="https://en.wikipedia.org/wiki/Cluster_analysis">Cluster Analysis</a> (wiki),
-        <br>
+
       <a href="http://learningds.org/ch/21/repl_intro.html">DS Chapter 21</a> (Replicability)<br>
       <a href="http://learningds.org/ch/13/text_regex.html">DS 100: Sections 13.2-3</a> (Regular Expressions)
     </td> 
