@@ -34,7 +34,7 @@ and its uses across computer science at Hunter College.
 <p>
 Next, we will:
 
-1. [Getting started with Python:](warmup.html) using turtles to map GIS data of [NYC libraries](https://data.cityofnewyork.us/Business/Library/p4pf-fyc4">).
+1. [Getting started with Python:](https://stjohn.github.io/datasci/openDataWeek/warmup.html) using turtles to map GIS data of [NYC libraries](https://data.cityofnewyork.us/Business/Library/p4pf-fyc4">).
 2. <a href="https://gist.github.com/stjohn/ca92cb126f7cb6ae33a389f6b5cdf410">Using structured data</a>:  who gets the most <a href="https://data.cityofnewyork.us/City-Government/Parking-Violations-Issued-Fiscal-Year-2018/pvqr-7yc4">parking tickets</a> (using pandas).
 
 
