@@ -149,7 +149,7 @@ mapWIFI = folium.Map(location=[40.768731, -73.964915])
 <p>
 We need to add markers for each campus.  We're going to iterate through the rows of dataframe to create the markers:
 <pre style = "background-color:lavender;width:450px">
-for index,row in cuny.iterrows():
+for index,row in wifi.iterrows():
     lat = row["Latitude"]
     lon = row["Longitude"]
     name = row["Location"]
