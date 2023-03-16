@@ -1,0 +1,363 @@
+<!DOCTYPE doctype PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <title>Program 8, CSci 39542: Data Science, Hunter College</title>
+</head>
+<STYLE>A {text-decoration: none;}
+th, td { padding: 5px; }
+code {
+  background-color: #eeeeee;
+}
+.inline {
+  padding: 1px;
+}
+.blockcode {
+  border: 1px solid #999999;
+  display: block;
+  padding-left: 10px;
+  padding-top : 2px;
+  padding-bottom : 2px;
+  margin: 5px;
+}
+.datablock {
+  border: 1px solid #eeeeee;
+  display: block;
+  padding: 7px;
+  padding-top : 0px;
+  margin: 5px;
+}
+</STYLE>
+<body>
+
+
+<div style="margin: 15px;width:100%;">
+    <span style= "float: left;font-size:larger"><a href="index.html">CSci 39542</a></span>
+    <span style= "float: right">
+      <a href="syl.html">Syllabus</a>&nbsp;&nbsp;&nbsp;
+      <a href="resources.html">Resources</a>&nbsp;&nbsp;&nbsp;
+      <a href="work.html">Coursework</a><!--&nbsp;&nbsp;&nbsp;
+      <a href="faq.html">FAQ</a>-->
+    </span>
+</div>
+
+<br>
+<br>
+<hr>
+
+<div style="margin:50px">
+
+
+<h2>Program 8:  Ticket Predictor
+  <br>CSci 39542: Introduction to Data Science<br>
+<a href="http://www.hunter.cuny.edu/csci">Department of Computer Science</a><br>
+<a href="https://hunter.cuny.edu">Hunter College</a>, <a href="https://www.cuny.edu">City University of New York</a><br>
+Spring 2023<br><br>
+</h2>
+
+
+<hr>
+<a href="work.html#cw">Classwork</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#quizzes">Quizzes</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#hw">Homework</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#project">Project</a>&nbsp;&nbsp;&nbsp;
+<hr>
+
+<object width=100% height=50% type="text/html" data="generalNotes.html" border="0"
+   style="overflow: hidden;">
+</object>
+
+<hr>
+
+<h2>Program Description</h2>
+
+<br>
+<p><a name="p8"><b>Program 8: Ticket Predictor.</b></b> &emsp; <i>Due 10am, Wednesday, 22 March.
+<br>
+<br>Learning Objective: to employ aggregation and data cleaning techniques and to fit and evaluate classification models.
+<br>
+<br>Available Libraries: pandas, numpy, sklearn, and core Python 3.6+. The available packages used for scikit-learn: 
+sklearn.model_selection, sklearn.linear_model, sklearn.ensemble, sklearn.naive_bayes, sklearn.svm, and sklearn.metrics.
+<br>Data Sources:  <a href="https://data.cityofnewyork.us/City-Government/Parking-Violations-Issued-Fiscal-Year-2023/pvqr-7yc4">Parking Violations Data</a> from OpenDataNYC.
+<br>Sample Datasets: <a href="Parking_Violations_Issued_Precinct_19_2021.csv">Parking_Violations_Issued_Precinct_19_2021.csv</a><br></i>
+
+
+<p>Can you predict which vehicles will get excessive number of tickets?  In Lectures #7 and 8 and <a href="https://learningds.org/ch/19/classification_intro.html">Chapter 19</a>, we focused on the building of the classifers.  For this program, we will use the parking data from OpenData NYC.  While most vehicles have one or two tickets, some vehicles have a huge number, averaging to more than one day.  We will build models to predict which vehicles are most likely to have an excessive number of tickets.  The data is first cleaned to use standardized spellings of color names as well as one of three vehicle classes.  The first function adds indicators for the specified categorical featuers.  Subsequent functions trains a classifier on the data and returns the accuracy (score) of your classifier on the test data, as well as the classifier.
+
+
+<p>The first set of functions focus on cleaning the data.  To clean the data, the first two functions that can be applied to a column of a DataFrame or Series.  The second two add additional columns to be used for the analysis:
+<ul>
+  <li> <code class=inline>clean_reg(reg):</code> This function takes one input parameter:
+    <ul>
+      <li> <code class = "inline">reg</code>: a string containing the registration status of the vehicle.</li>
+    </ul>
+    If <code class=inline>reg</code> is coded as passenger <code class=inline>'PAS'</code> or commercial
+  <code class=inline>'COM'</code>, return those values.  Otherwise, return <code class=inline>'OTHER'</code>.</li><br>
+
+  <li> <code class=inline>clean_color(col):</code> This function takes one input parameter: 
+    <ul>
+      <li> <code class = "inline">col</code>: a string containing the color of the vehicle.</li>
+    </ul>  
+    Return the following for the values of <code class=inline>col</code>:
+  <ul>
+    <li> <code class=inline>'GRAY'</code>: for <code class=inline>GY</code>,
+      <code class=inline>GRAY</code>,
+      <code class=inline>GREY</code>,<code class=inline>SILVE</code>,
+        <code class=inline>SIL</code>, <code class=inline>SL</code>,
+    <li> <code class=inline>'WHITE'</code>: for <code class=inline>WH</code>,
+      <code class=inline>WHITE</code>,
+    <li> <code class=inline>'BLACK'</code>: for <code class=inline>BK</code>,
+      <code class=inline>BLACK</code>, <code class=inline>BL</code>,
+    <li> <code class=inline>'BLUE'</code>: for <code class=inline>BLUE</code>,
+    <li> <code class=inline>'RED'</code>: for <code class=inline>RED</code>,
+        <code class=inline>RD</code>,
+    <li> <code class=inline>'GREEN'</code>: for <code class=inline>GR</code>,
+        <code class=inline>GREEN</code>,
+    <li> <code class=inline>'BROWN'</code>: for <code class=inline>BROWN</code>,
+        <code class=inline>TAN</code>,
+    <li> Otherwise, return <code class=inline>'OTHER'</code>.
+  </ul>
+  </li><br>
+
+  <li> <code class = "inline">add_indicators(df,cols=['Registration', 'Color', 'State']):</code>:
+    This function has two inputs and returns a DataFrame:
+    <ul>
+        <li> <code class = "inline">df</code>: a DataFrame that
+                including the columns specified in <code class = "inline">cols</code>.
+        <li> <code class = "inline">col</code>: a list of names of columns in the DataFrameIt has a default value of ['Registration', 'Color', 'State'].
+    </ul>
+    Returns the DataFrame with an additional indicator columns generated by <code class=inline>get_dummies</code> for specified columns.  The <code class = "inline">drop_first</code> flag is set to <code class = "inline">True</code> to drop extraneous columns.
+  </li><br>
+
+  <li> <code class = "inline">add_excessive_flag(df, threshold=5):</code>:
+    This function has two inputs and returns a DataFrame:
+    <ul>
+        <li> <code class = "inline">df</code>: a DataFrame that
+                including the columns specified in <code class = "inline">cols</code>.
+        <li> <code class = "inline">threshold</code>: a numeric value.  The default value is 5.
+    </ul>
+    Returns the DataFrame with a new column, <code class=inline>Excessive Tickets</code> which is 0 if there's less threshold number of <code class=inline>Tickets</code> and 1 otherwise.
+  </li><br>    
+
+</ul>
+After applying these functions, the resulting DataFrame can then be used to build a classifer on how likely a particular car is to be one that has more than a ticket a day.</p>
+
+<p>The second set of functions focus on training and testing models to classify which vehicles get excessive numbers of tickets:</p>
+  <ul>
+  <li> <code class = "inline">split_data(df, x_cols, y_col, test_size = 0.25, random_state = 2023):</code>
+    This function takes 5 input parameters:
+    <ul>
+      <li> <code class = "inline">df</code>: a DataFrame containing with a columns <code class = "inline">units</code>.</li>
+      <li>  <code class = "inline">x_cols</code>: a list of the names of the column of the independent variable.</li>      
+      <li>  <code class = "inline">y_col</code>: the name of the column of the dependent variable.</li>
+      <li>  <code class = "inline">test_size</code>: accepts a float between 0 and 1 and represents the proportion of the data set to use for training.  This parameter has a default value of 0.25.</li>
+      <li>  <code class = "inline">random_state</code>:  Used as a seed to the randomization.  This parameter has a default value of 1870.</li>
+    </ul>
+    Returns the data split into 4 subsets, corresponding to those returned by <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">train_test_split</a>:
+    <code class = "inline">x_train</code>,
+    <code class = "inline">x_test</code>,
+    <code class = "inline">y_train</code>, and
+    <code class = "inline">y_test</code>. where <code class="inline">units</code> is the "x" column and the input parameter, <code class="inline">y_col_name</code> is the "y" column.<br>
+    Note:  this is function is very similar to the splitting of data into training and testing sets from <a href="p6.html">Program 6</a> and <a href="p7.html">Program 7</a>.</li><br>
+
+  <li> <code class = "inline">fit_model(x_train, y_train, model_type='logreg'):</code>
+  This function takes four input parameters:
+  <ul>
+    <li> <code class = "inline">x_train</code>: the independent variable(s) for the analysis.</li>
+    <li> <code class = "inline">y_train</code>: the dependent variable for the analysis.</li>
+    <li> <code class = "inline">model_type</code>: the type of model to use.  Possible values are 'logreg', 'svm', 'nbayes', and 'rforest'.  See below for the specified parameters for each model.  The default value for this parameter is 'logreg'.</li>
+  </ul>
+  Fits the specifed model to the <code class = "inline">x_train</code> and
+  <code class = "inline">y_train</code> data, using <a href="https://scikit-learn.org">sklearn</a>.  Additional notes for each model:
+  <ul>
+    <li> <code class = "inline">logreg</code>: Logistic Regression:  For logistic regression, use the SVM classifier to set up the model, <code class = "inline">sklearn.linear_model.LogisticRegression</code> with solver <code class = "inline">solver = 'saga'</code>, regularization <code class = "inline">penalty='l2'</code>, and max iterations <code class = "inline">max_iter=5000</code> (Note that it's the letter L in 'l2', not a 1.).
+    
+    <li> <code class = "inline">nbayes</code>: Naive Bayes:  use the Gaussian Naive Bayes classifier to set up the model, <code class = "inline">sklearn.naive_bayes.GaussianNB</code>.
+      
+    <li> <code class = "inline">svm</code>: Support Vector Machine:  use the SVM classifier to set up the model, <code class = "inline">sklearn.svm.SVC</code> with the radial basis function kernel RBF <code class = "inline">kernel='rbf'</code>.
+      
+    <li> <code class = "inline">rforest</code>: Random Forest: use the random forest classifier to set up the model, <code class = "inline">sklearn.ensemble.RandomForestClassifier</code> with 100 estimators and the random state set to 0  (i.e. <code class = "inline">n_estimators=100, random_state=0</code>).
+  </ul>
+  The resulting model should be returned as bytestream, using <a href="https://docs.python.org/3/library/pickle.html">pickle</a>.<br>
+  <i>Hint: for more details on setting up each of these models, see Lecture 8 and the associated notebooks and reading.</i></li><br>
+
+  <li> <code class = "inline">score_model(mod_pkl,xes,yes):</code>
+  This function takes three input parameters:
+  <ul>
+      <li> <code class = "inline">mod_pkl</code>: a object serialization of a trained model.  The possible model approaches are logistic regression, support vector machine, naive Bayes, and random forest.
+      <li> <code class = "inline">xes</code>: the independent variable(s) for the analysis with the same dimensions as which the model was trained.
+      <li> <code class = "inline">yes</code>: the dependent variable(s) for the analysis with the same dimensions as which the model was trained.
+  </ul>
+  Returns the confusion matrix for the model.</li><br>
+
+  <li> <code class = "inline">compare_models(x_test, y_test, models):</code>
+  This function has three inputs:
+  <ul>
+    <li> <code class = "inline">x_test</code>: a numpy array that includes rows of equal size flattened arrays,
+    <li> <code class = "inline">y_test</code> a numpy array that takes values 0 or 1 corresponding to the rows of <code class = "inline">x_test</code>.
+    <li> <code class = "inline">models</code>: a list of pickled models constructed from <code class = "inline">fit_model</code>.  The 
+  </ul>
+  For each of the specified models in <code class = "inline">models</code>, calls <code class = "inline">score()</code> function of each model on <code class = "inline">x_test</code> and <code class = "inline">y_test</code>.  The function returns the index of the model with highest accuracy score and its accuracy score (i.e. 0 if it is the first model in the list, 1 if it is the second model in the list, etc).  In case of ties for the best score, return the first one that has that value.</li><br>
+
+
+</ul>    
+
+
+<p>Let's use our functions to clean the data and build some classifiers.  As a first step, we will group by licence plate number and aggregate the state, vehicle type and color by choosing the first item stored for each:
+
+<pre><code class="blockcode">df = pd.read_csv('Parking_Q1_2021_Lexington.csv')
+#Focus on features about vehicles:
+df = df[['Plate ID','Plate Type','Registration State','Issue Date','Vehicle Color']]
+#Drop rows that are missing info:
+df = df.dropna()
+print(f'Your file contains {len(df)} parking violations.')
+df['Plate Type'] = df['Plate Type'].apply(clean_reg)
+df['Vehicle Color'] = df['Vehicle Color'].apply(clean_color)
+#Count tickets for each vehicle:
+newDF =  df.groupby('Plate ID').agg(NumTickets =
+    pd.NamedAgg(column = 'Plate ID', aggfunc = 'count'),
+    Registration = pd.NamedAgg(column = 'Plate Type', aggfunc = 'first'),
+    State = pd.NamedAgg(column = 'Registration State', aggfunc = 'first'),
+    Color = pd.NamedAgg(column = 'Vehicle Color', aggfunc = 'first')
+)
+print(newDF)</code></pre>
+                 
+which will print:
+<pre><code class="datablock">Your file contains 20589 parking violations.
+          NumTickets Registration State  Color
+Plate ID
+00356R2            1          PAS    TX  WHITE
+004LSM             1          PAS    TN  OTHER
+00574R7            1          PAS    TX  WHITE
+0064NQD            1          PAS    DP  BLACK
+0107NQD            1          PAS    DP   GRAY
+...              ...          ...   ...    ...
+ZRB1864            1          PAS    PA  WHITE
+ZSA6859            1          PAS    PA   GRAY
+ZSE1922            1          PAS    PA  WHITE
+ZWF62E             1          PAS    NJ  OTHER
+ZWZ35J             1          PAS    NJ  OTHER</code></pre>
+  
+<p>We can then, using the cleaned data, add indicator columns for the categorical data:
+
+<pre><code class="blockcode">newDF = add_indicators(newDF)
+print(newDF)</code></pre>
+
+will add the indicator variables:
+<pre><code class="datablock">          NumTickets  Registration_OTHER  ...  State_WI  State_WV
+Plate ID                                  ...
+00356R2            1                   0  ...         0         0
+004LSM             1                   0  ...         0         0
+00574R7            1                   0  ...         0         0
+0064NQD            1                   0  ...         0         0
+0107NQD            1                   0  ...         0         0
+...              ...                 ...  ...       ...       ...
+ZRB1864            1                   0  ...         0         0
+ZSA6859            1                   0  ...         0         0
+ZSE1922            1                   0  ...         0         0
+ZWF62E             1                   0  ...         0         0
+ZWZ35J             1                   0  ...         0         0</code></pre>
+
+
+<p>While this works well for <code class=inline>State</code>,
+<code class=inline>Registration</code> and <code class=inline>Vehicle Color</code>:
+<pre><code class=blockcode>print(f'Registration: {newDF['Registration'].unique()})
+print(f'State: {newDF['State'].unique()})
+print(f'VehicleColor: {newDF['VehicleColor'].unique()})</code></pre>
+  
+prints expected values for states but many different types of registrations and abbreviations and mispellings for colors:
+<pre><code class=datablock>Registration: ['PAS' 'COM' 'USC' 'MOT' 'LMB' '999' 'CMB' 'RGL' 'SRF' 'MED' 'APP' 'ORG'
+'ITP' 'OMR' 'TRA' 'BOB' 'SPO' 'LMA' 'VAS' 'OML' 'TOW' 'DLR' 'AMB' 'TRC'
+'STG' 'AGR' 'NLM' 'ORC' 'IRP' 'TRL' 'MCL' 'OMT' 'SCL' 'SPC' 'CHC' 'HIS'
+'SRN' 'RGC' 'PHS' 'PSD' 'MCD' 'NYA' 'JCA' 'SOS' 'CSP' 'OMS' 'CBS' 'OMV'
+'HAM']
+State: ['DP' 'NJ' 'PA' 'TX' 'OK' 'NY' 'OH' '99' 'DC' 'AR' 'IL' 'MN' 'NC' 'NV'
+'FL' 'GV' 'CA' 'NH' 'MD' 'CT' 'MO' 'RI' 'MS' 'MA' 'MI' 'TN' 'WV' 'AL'
+'OR' 'KS' 'VA' 'KY' 'AZ' 'WA' 'NM' 'CO' 'SC' 'WI' 'ME' 'DE' 'HI' 'IN'
+'WY' 'MT' 'NE' 'VT' 'GA' 'LA' 'SD' 'ON' 'IA' 'ID' 'ND' 'SK' 'UT' 'AK'
+'QB' 'AB' 'BC' 'MX' 'PR' 'NS' 'MB' 'FO']
+VehicleColor: ['BLACK' 'SILVE' 'GREY' 'WHITE' 'RED' 'OTHER' 'BLUE' 'GY' 'BLK' 'BK'
+'PURPL' 'TAN' 'GREEN' 'YELLO' 'ORANG' 'BL' 'SILV' 'GRAY' 'BROWN' nan
+'GRY' 'WH' 'SIL' 'GOLD' 'WT' 'WHT' 'GR' 'RD' 'YW' 'BR' 'LTG' 'WH/' 'OR'
+'WHB' 'TN' 'BRN' 'MR' 'DK/' 'BLW' 'GL' 'PR' 'BU' 'DKB' 'W' 'GRT' 'ORG'
+'RD/' 'LT/' 'NO' 'LTT' 'GRN' 'BN' 'TB' 'BRO' 'B' 'RDW' 'SL' 'BURG' 'BLU'
+'NOC' 'BK/' 'DKG' 'WHG' 'PINK' 'G' 'LAVEN' 'BL/' 'YEL' 'OG' 'GRW' 'WHI'
+'WHTE' 'BUR' 'GY/' 'DKR' 'RDT' 'GN' 'BUN' 'SV' 'BKG' 'YELL' 'WHIT' 'GR/'
+'LTTN' 'SLV' 'BRWN' 'GYB' 'WHTIE' 'WI' 'BUS' 'LTB' 'TN/' 'GD' 'MAROO'
+'BW' 'BLG' 'ORA' 'GRA' 'DKP' 'NAVY' 'GREG' 'GRB' 'BRW' 'BBRN' 'R' 'GRRY'
+'BLA' 'BG' 'MAR' 'BURGA' 'BRWON' 'YLW' 'ORNG' 'HREY' 'DERD' 'YL' 'PLE'
+'BWN' 'BI']</code></pre>
+  
+The first two registration types account are the most common:
+<pre><code class=blockcode>count = len(newDF)
+pasCount = len(newDF[newDF['Registration'] == 'PAS'])
+comCount = len(newDF[newDF['Registration'] == 'COM'])
+print(f'{count} different vehicles, {100*(pasCount+comCount)/count} percent are passenger or commercial plates.')</code></pre>
+    
+<p>And for the Precinct District 19 dataset that contains almost a half million tickets:
+<pre><code class=blockcode>159928 different vehicles, 93.95477965084288 percent are passenger or commercial plates.</code></pre>
+  
+And similarly, 15 of the entries for vehicle color account for most of the entries:
+<pre><code class=blockcode>print(newDF['VehicleColor'].unique())
+print(f"The top 15 values account for {100*newDF['VehicleColor'].value_counts()[:15].sum()/len(newDF)} percent.")
+print(f"Those values are: {newDF['VehicleColor'].value_counts()[:15]}.")</code></pre>
+which prints: 
+<pre><code class=blockcode>The top 15 values account for 95.37291781301586 percent.
+Those values are:
+WH       27814
+GY       24704
+WHITE    20817
+BK       20778
+BLACK    14486
+GREY      9629
+BL        9249
+SILVE     5704
+BLUE      5300
+RD        4395
+RED       3303
+OTHER     2678
+GR        1674
+BROWN     1059
+TN         938</code></pre>
+
+<p>Let's also add in a column that flags if a vehicle has an excessive number of tickets:</p>
+<pre><code inclass="blockcode">df = add_excessive_flag(df)
+print(df.columns)
+</code></pre>
+which will print the DataFrame with a new column that is 1 if the number of tickets is larger than the default threshold of 5:
+<pre><code class="datablock"></code></pre>
+
+<!--
+<p>
+After applying these functions, the resulting DataFrame can then be used to build a classifer on how likely a particular car is to be one that has more than a ticket a day.
+<pre><code class="blockcode">xes = ['State_NY','Registration_OTHER', 'Registration_PAS', 'Color_GRAY', 'Color_OTHER', 'Color_WHITE']
+y_col = 'NumTickets'
+sc,clf = build_clf(newDF, xes)
+print(f'Score is {sc}.')
+predicted = clf.predict([[1,0,0,0,0,1]])[0]
+print(f'NY state, white commercial vehicle (encoded as: [1,0,0,0,0,1])\n\twill get {predicted:.2f} tickets.')
+predicted = clf.predict([[1,0,1,1,0,0]])[0]
+print(f'NY state, gray passenger vehicle (encoded as: [1,0,1,1,0,0])\n\twill get {predicted:.2f} tickets.')
+</code></pre>
+
+which will print:
+       <pre><code class="datablock">Score is 0.04310334739677757.
+NY state, white commercial vehicle (encoded as: [1,0,0,0,0,1])
+ will get 2.48 tickets.
+NY state, gray passenger vehicle (encoded as: [1,0,1,1,0,0])
+ will get 1.16 tickets.</code></pre>
+
+ <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
+
+
+       -->
+
+
+ 
+
+  
+
+</div>
+</body>
+</html>
