@@ -322,9 +322,9 @@ BROWN     1059
 TN         938</code></pre>
 
 <p>Let's also add in a column that flags if a vehicle has an excessive number of tickets on 20 randomly selected rows:</p>
-<pre><code inclass="blockcode">df = add_excessive_flag(df, threshold = 4)
-print(df)
-</code></pre>
+<pre><code class="blockcode">df = add_excessive_flag(df, threshold = 4)
+print(df)</code></pre>
+<p>
 which will print the DataFrame with a new column that is 1 if the number of tickets is larger than the threshold of 4:
 <pre><code class="datablock">
       Plate ID  Tickets Registration State  Color  Excessive Tickets
