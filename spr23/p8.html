@@ -321,12 +321,33 @@ GR        1674
 BROWN     1059
 TN         938</code></pre>
 
-<p>Let's also add in a column that flags if a vehicle has an excessive number of tickets:</p>
-<pre><code inclass="blockcode">df = add_excessive_flag(df)
-print(df.columns)
+<p>Let's also add in a column that flags if a vehicle has an excessive number of tickets on 20 randomly selected rows:</p>
+<pre><code inclass="blockcode">df = add_excessive_flag(df, threshold = 4)
+print(df)
 </code></pre>
-which will print the DataFrame with a new column that is 1 if the number of tickets is larger than the default threshold of 5:
-<pre><code class="datablock"></code></pre>
+which will print the DataFrame with a new column that is 1 if the number of tickets is larger than the threshold of 4:
+<pre><code class="datablock">
+      Plate ID  Tickets Registration State  Color  Excessive Tickets
+10390   L30JWD        1          PAS    NJ  WHITE                  0
+3144   80321MM        2          COM    NY  OTHER                  0
+74     11153MA        1          COM    NY  WHITE                  0
+11912   XHYY18        5          PAS    NJ  WHITE                  1
+7705   JBW5667        2          PAS    NY  OTHER                  0
+11451   W3F679        1          PAS    NY   GRAY                  0
+11764   XGEY82        2          PAS    NJ  WHITE                  0
+5480   FGA9371        1          PAS    NY  BLACK                  0
+9958    KHBJ82        1          PAS    FL  OTHER                  0
+9976   KHF3318        1          PAS    NY  OTHER                  0
+7519   HZZ6700        1          PAS    NY   GRAY                  0
+1473   40822ML        1          COM    NY  WHITE                  0
+2098   58962JT        1          COM    NY  WHITE                  0
+9379   KDR4765        3          PAS    NY  BLACK                  0
+9254    K44ECD        1          PAS    NJ  OTHER                  0
+2066   57819MM        1          COM    NY  WHITE                  0
+11957   XJJH31        1          PAS    NJ  WHITE                  0
+11437  W110304        1          PAS    NJ  WHITE                  0
+4969   DDF6091        1          PAS    NY   GRAY                  0
+6148   GUR4196        1          PAS    NY  BLACK                  0</code></pre>
 
 <!--
 <p>
