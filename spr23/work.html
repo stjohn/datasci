@@ -475,11 +475,118 @@ plt.show()</code></pre>
 
 
 <p><a name="cw10"><b>Classwork 10: </b> &emsp; <i>Due 2:30pm, Wednesday, 29 March.</i> &emsp;
-<!--
-    
+  
+    <p>
+    Available during Lecture 10 on Gradescope, this classwork builds intuition on k-means clusters and serves as a basis for <a href="#p11">Program 11</a>.  To get the most out of this exercise, bring a device with you that can access Gradescope's online assignments.</p>
 
-    Available during Lecture 10 on Gradescope, this classwork builds intuition about how correlated datasets are.  To get the most out of this exercise, bring a device with you that can access Gradescope's online assignments.
--->
+<br><br>
+
+<br>Data Sources: <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd
+">911 System Calls (NYC OpenData)</a>
+     <br>Sample Datasets:
+      <ul>
+          <li> Small dataset (1 day of calls for 1 borough): <a href="../spr22/NYPD_Calls_Manhattan_4Jul2021.csv">NYPD_Calls_Manhattan_4Jul2021.csv</a>,
+          <li> Midnight calls in January 2021 (all boroughs): <a href="../spr22/NYPD_Calls_midnight_Jan2021.csv">NYPD_Calls_midnight_Jan2021.csv</a>,
+          <li> Larger dataset (1 month of calls for Queens): <a href="../spr22/NYPD_Calls_Queens_Jan2021.csv">NYPD_Calls_Queens_Jan2021.csv</a>
+      </ul><br></i>
+
+
+
+<p> For this program, we are focusing on ambulance calls in New York City.
+Decreasing ambulance response times improves outcomes and
+<a href="https://www.sciencedirect.com/science/article/pii/S1386505619303491">strategic placement</a> of ambulance stations and overall allocation has been shown an effective approach.  For example, here are all the calls for ambulances on 4 July 2021 in Manhattan (using Folium/Leaflet to create an interactive map):
+<p>
+<iframe src="../spr22/4_July_map.html" style="width: 60%; height: 550px" name="internal"></iframe>
+
+
+<p>To decide on where to "pre-place" ambulances, we will use K-means clustering, where "K" is the number of ambulances available for that shift.  For example, if there 2 ambulances available to be placed in Manhattan, we will look at previous ambulance calls for that shift and form 2 clusters and station each ambulance at the mean of the cluster.  If two more ambulances become available, we can recompute the K-means algorithm for K=4, and place those 4 ambulances, each at the mean of the cluster found, and similarly for K=8:
+
+
+<p><img src="../spr22/july4_clusters2.png" height="500">
+  <img src="../spr22/july4_clusters4.png" height="500">
+  <img src="../spr22/july4_clusters8.png" height="500">
+
+
+
+<p>The assignment is broken into the following functions to allow for unit testing:
+
+  <ul>
+    <li> <code class = "inline">make_df(file_name)</code>:
+      This function takes one input:
+      <ul>
+        <li> <code class = "inline">file_name</code>: the name of a CSV file containing <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd">911 System Calls</a> from OpenData NYC.
+      </ul>
+      The data is read into a DataFrame.  Rows that are have null values for the type description, incident date, incident time, latitute and longitude are dropped.
+      Only rows that contain <code class = "inline">AMBULANCE</code> as part of the <code class = "inline">TYP_DESC</code> are kept.  The resulting DataFrame is returned.
+      <br><i>Hint: see <a href="http://www.textbook.ds100.org/ch/13/text_strings.html">DS 100: Chapter 13</a> for using string methods within pandas.</i>
+
+
+    <li> <code class = "inline">compute_locations(df, num_clusters = 8, random_state = 2022)</code>:
+      This function takes three input:
+      <ul>
+        <li> <code class = "inline">df</code>: a DataFrame containing <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd">911 System Calls</a> from OpenData NYC.
+          <li> <code class = "inline">num_clusters</code>:  an integer representing the number of clusters.  The default value is <code class = "inline">8</code>.
+          <li> <code class = "inline">random_state</code>: the random seed used for <a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html">KMeans</a>. The default value is <code class = "inline">2022</code>.
+
+        </ul>
+        Runs the KMeans model with <code class = "inline">num_clusters</code> on the latitude and longitude data of the provided DataFrame.  Returns the cluster centers and predicted labels computed via the model.
+
+
+</ul>
+
+<br>
+<p>For example, if we use the small dataset from 4 July 2021:
+  <pre><code class="blockcode">df = make_df('NYPD_Calls_Manhattan_4Jul2021.csv')
+print(df[['INCIDENT_TIME','TYP_DESC','Latitude','Longitude']])
+</code></pre>
+  would print:
+  <pre><code class="datablock">     INCIDENT_TIME                             TYP_DESC   Latitude  Longitude
+7         00:01:51      AMBULANCE CASE: CARDIAC/OUTSIDE  40.724578 -73.992519
+27        00:06:12       AMBULANCE CASE: CARDIAC/INSIDE  40.807719 -73.964240
+51        00:12:12      AMBULANCE CASE: SERIOUS/TRANSIT  40.732019 -74.000734
+53        00:12:38           AMBULANCE CASE: EDP/INSIDE  40.789348 -73.947352
+54        00:12:38           AMBULANCE CASE: EDP/INSIDE  40.789348 -73.947352
+...            ...                                  ...        ...        ...
+5175      23:50:02         AMBULANCE CASE: WATER RESCUE  40.711839 -74.011234
+5176      23:50:02         AMBULANCE CASE: WATER RESCUE  40.711839 -74.011234
+5205      23:57:11  AMBULANCE CASE: UNCONSCIOUS/TRANSIT  40.732019 -74.000734
+5211      23:57:59           AMBULANCE CASE: EDP/INSIDE  40.827547 -73.937461
+5212      23:57:59           AMBULANCE CASE: EDP/INSIDE  40.827547 -73.937461
+
+[459 rows x 4 columns]</code></pre>
+
+Note that the original CSV file had over 5000 lines, only 459 of those were for ambulances calls.  The indices were not reset and refer to the line numbers of the original file.
+
+
+
+<p>We can make maps with the computed clusters.  We use the <code class = "inline">compute_locations</code> function with different values of <code class = "inline">num_clusters</code>.  Since we are repeating the same actions for <code class = "inline">K = 2, 4, 6</code>, we wrote a helper function to create the HTML maps:
+
+<pre><code class="blockcode">def make_map(df, num_clusters, out_file):
+    centers,labels = compute_locations(df,num_clusters = num_clusters)
+    df_map = df[ ['Latitude','Longitude','INCIDENT_TIME','INCIDENT_MIN','TYP_DESC'] ]
+    df_map = df_map.assign(Labels = labels)
+    m = folium.Map(location=[40.7678,-73.9645],zoom_start=13,tiles="cartodbpositron")
+    df_map.apply( lambda row: folium.CircleMarker(location=[row["Latitude"], row["Longitude"]],
+                                        radius=5, popup=(row['INCIDENT_TIME']+": "+row['TYP_DESC']),
+                                        color=cc(row['Labels'],num_clusters))
+                                        .add_to(m), axis=1)
+    for i in range(num_clusters):
+        x,y = centers[i]
+        folium.Marker(location=[x,y],popup = "Cluster "+str(i)).add_to(m)
+    m.save(out_file)
+
+make_map(df,2,'map_4_July_2clusters.html')
+make_map(df,4,'map_4_July_4clusters.html')
+make_map(df,8,'map_4_July_8clusters.html')</code></pre>
+
+Screenshots of the maps are displayed above.
+</p>
+<br><br><br>
+
+
+
+
+
 <p><a name="cw11"><b>Classwork 11: </b> &emsp; <i>Due 2:30pm, Wednesday, 19 April.</i> &emsp;
 <!--
     Available during Lecture 11 on Gradescope, this classwork reviews probability distributions and sampling.  To get the most out of this exercise, bring a device with you that can access Gradescope's online assignments.
