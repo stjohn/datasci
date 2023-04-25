@@ -165,18 +165,18 @@ Decreasing ambulance response times improves outcomes and
   <br><br>
 
   <li> <code class = "inline">compute_gmm(df, num_clusters = 8, random_state = 2022)</code>:
-    This function takes three input:
+    This function takes three inputs:
     <ul>
       <li> <code class = "inline">df</code>: a DataFrame containing <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd">911 System Calls</a> from OpenData NYC.
         <li> <code class = "inline">num_clusters</code>:  an integer representing the number of clusters.  The default value is <code class = "inline">8</code>.
-        <li> <code class = "inline">random_state</code>: the random seed used for <a href="https://scikit-learn.org/stable/modules/generated/sklearn.mixture.GaussianMixture.html#sklearn.mixture.GaussianMixture">GaussianMixture</a>. The default value is <code class = "inline">2022</code>..
+        <li> <code class = "inline">random_state</code>: the random seed used for <a href="https://scikit-learn.org/stable/modules/generated/sklearn.mixture.GaussianMixture.html#sklearn.mixture.GaussianMixture">GaussianMixture</a>. The default value is <code class = "inline">2022</code>.
   
       </ul>
       Runs the GaussianMixture model with <code class = "inline">num_clusters</code> on the latitude and longitude data of the provided DataFrame.  Returns the array of the predicted labels computed via the model.<br>
     <br>
 
     <li> <code class = "inline">compute_agglom(df, num_clusters = 8, linkage='ward')</code>:
-      This function takes three input:
+      This function takes three inputs:
       <ul>
         <li> <code class = "inline">df</code>: a DataFrame containing <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd">911 System Calls</a> from OpenData NYC.
         <li> <code class = "inline">num_clusters</code>:  an integer representing the number of clusters.  The default value is <code class = "inline">8</code>.
@@ -282,7 +282,7 @@ df.apply( lambda row: folium.CircleMarker(location=[row["Latitude"], row["Longit
         axis=1)
 m.save('4_July_map.html')</code></pre>
 
-displayed above.  Note that we used the time to shade the incidents.  The popups provide the exact time as well as the description.
+displayed at the top of the page.  Note that we used the time to shade the incidents.  The popups provide the exact time as well as the description.
 
 <p>We can also make maps with the computed clusters.  We use the <code class = "inline">compute_locations</code> function with different values of <code class = "inline">num_clusters</code>.  Since we are repeating the same actions for <code class = "inline">K = 2, 4, 6</code>, we wrote a helper function to create the HTML maps:
 
@@ -338,7 +338,7 @@ print(df_early_am[['INCIDENT_DATE','WEEK_DAY','INCIDENT_TIME','INCIDENT_MIN']])<
 
 [76 rows x 4 columns]</code></pre>
 
-<p>We can use other methods for clustering, printing out the labels for the uly 4 dataset:</p>
+<p>We can use other methods for clustering, printing out the labels for the July 4 dataset:</p>
 
 <pre><code class="blockcode">print(compute_gmm(df))
 print(compute_agglom(df))  
