@@ -1,0 +1,218 @@
+<!DOCTYPE doctype PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <title>Program 12, CSci 39542: Data Science, Hunter College</title>
+</head>
+<STYLE>A {text-decoration: none;}
+th, td { padding: 5px; }
+code {
+  background-color: #eeeeee;
+}
+.inline {
+  padding: 1px;
+}
+.blockcode {
+  border: 1px solid #999999;
+  display: block;
+  padding-left: 10px;
+  padding-top : 2px;
+  padding-bottom : 2px;
+  margin: 5px;
+}
+.datablock {
+  border: 1px solid #eeeeee;
+  display: block;
+  padding: 7px;
+  padding-top : 0px;
+  margin: 5px;
+}
+</STYLE>
+<body>
+
+
+<div style="margin: 15px;width:100%;">
+    <span style= "float: left;font-size:larger"><a href="index.html">CSci 39542</a></span>
+    <span style= "float: right">
+      <a href="syl.html">Syllabus</a>&nbsp;&nbsp;&nbsp;
+      <a href="resources.html">Resources</a>&nbsp;&nbsp;&nbsp;
+      <a href="work.html">Coursework</a><!--&nbsp;&nbsp;&nbsp;
+      <a href="faq.html">FAQ</a>-->
+    </span>
+</div>
+
+<br>
+<br>
+<hr>
+
+<div style="margin:50px">
+
+
+<h2>Program 12:  Patterns  & Testing
+  <br>CSci 39542: Introduction to Data Science<br>
+<a href="http://www.hunter.cuny.edu/csci">Department of Computer Science</a><br>
+<a href="https://hunter.cuny.edu">Hunter College</a>, <a href="https://www.cuny.edu">City University of New York</a><br>
+Spring 2023<br><br>
+</h2>
+
+
+<hr>
+<a href="work.html#cw">Classwork</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#quizzes">Quizzes</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#hw">Homework</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#project">Project</a>&nbsp;&nbsp;&nbsp;
+<hr>
+
+<object width=100% height=50% type="text/html" data="generalNotes.html" border="0"
+   style="overflow: hidden;">
+</object>
+<hr>
+
+<h2>Program Description</h2>
+
+<br>
+<p><a name="p12"><b>Program 12: Patterns & Testing.</b></b> &emsp; <i>Due 10am, Wednesday, 3 May.
+<br>Learning Objective: to use regular expressions with simple patterns from semi-struictured data.
+<br>Available Libraries: re and core Python 3.6+(Note:  pandas and numpy are not included).
+<br>Sample Datasets: <a href="sample.html">sample.html</a></i>
+
+<p>
+The case study in Lecture 11 focused on determining the accuracy of self-reported college rankings data.  Much of the exploratory data analysis relied on "scraping" information from webpages.  For this program, we will write functions that extract data from a an HTML page, with a twist on this canonical problem: you can only use the <code class="inline">re</code> (regex) library and <b></b>no additional libraries, such as pandas, numpy, beautifulSoup, etc</b>.
+
+<p><i>(If you are rusty at HTML, here's a <a href="https://www.w3schools.com/html/html_intro.asp">quick tutorial.)</i></a></p>
+
+<p>The assignment is broken into the following functions to allow for unit testing:</p>
+<ul>
+  <li> <code class = "inline">rm_tags(data)</code>:  
+  This function takes one input:
+      <ul>
+        <li> <code class = "inline">data</code>: a multiline string.
+      </ul>
+      Returns a string with all HTML formatting removed.  If the string was plain text, the contents are returned unaltered as a string.
+  </li><br>
+
+  <li> <code class = "inline">test_strip(rm_tags_fnc)</code>:  
+    This function takes one input:
+        <ul>
+          <li> <code class = "inline">rm_tags_fnc</code>: a function that takes a string and returns a string.
+        </ul>
+    Returns <code class = "inline">True</code> if the inputted function correctly strips out the text from a HTML file and <code class = "inline">False</code> otherwise.        
+    </li><br>
+
+  <li> <code class = "inline">make_dict(data)</code>:  
+    This function takes one input:
+      <ul>
+        <li> <code class = "inline">data</code>: a string
+      </ul>
+      Uses regular expressions (see <a href="http://www.textbook.ds100.org/ch/12/text_re.html">Chapter 12.4</a> for using the <code class="inline">re</code> package in Python) to find all external links in <code class="inline">data</code> and store the link text as the key and URL value in a dictionary.  <code class="inline">Title</code> and <code class="inline">URL</code> in the CSV file specified by the user.  For the URL, keep the leading <code class="inline">https://</code> or <code class="inline">http://</code>. Returns the resulting dictionary.
+  </li><br>
+
+  <li> <code class = "inline">test_strip(rm_tags_fnc)</code>:  
+    This function takes one input:
+        <ul>
+          <li> <code class = "inline">rm_tags_fnc</code>: a function that takes a string and returns a string.
+        </ul>
+    Returns <code class = "inline">True</code> if the inputted function correctly strips out the text from a HTML file and <code class = "inline">False</code> otherwise.        
+    </li><br>
+
+
+  <li> <code class = "inline">test_make_dict(make_dict_fnc)</code>:  
+    This function takes one input:
+    <ul>
+      <li> <code class = "inline">make_dict_fnc</code>: a function that takes a string and returns a dictionary.
+    </ul>
+    Returns <code class = "inline">True</code> if the inputted function correctly returns a dictionary of links and <code class = "inline">False</code> otherwise. 
+    </li><br>
+  </ul>        
+
+  
+  <p>For example, if the input file is:
+
+<pre><code class="datablock">
+  &lt;html>
+  &lt;head>&lt;title>Simple HTML File&lt;/title>&lt;/head>
+
+  &lt;body>
+    &lt;p> Here's a link for &lt;a href="http://www.hunter.</i>cuny.edu/csci">Hunter CS Department&lt;/a>
+    and for &lt;a href="https://stjohn.github.io/teaching/data/fall21/index.html">CSci 39542&lt;/a>.  &lt;/p>
+
+    &lt;p> And for &lt;a href="https://www.google.com/">google&lt;/a>
+  &lt;/body>
+  &lt;/html>
+</code></pre>
+
+  Then a sample run of the program:
+<pre><code class="blockcode">Enter input file name: simple.html
+Enter output file name:  links.csv
+</code></pre>
+
+  And the <code class="inline">links.csv</code> would be:
+<pre><code class="datablock">
+Title,URL
+Hunter CS Department,www.hunter.</i>cuny.edu/csci
+CSci 39542,stjohn.github.io/teaching/data/fall21/index.html
+google,www.google.com</code></pre>
+</p>
+  <br>
+
+
+
+
+ 
+
+
+<br>
+<p>For example, let's try the <code class="inline">rm_tags</code> function on a string with no tags:
+  <pre><code class="blockcode">no_tags = "No tags\tbut new\nlines"
+print('For data = "No tags\\tbut new\\nlines"')
+print(rm_tags(no_tags))</code></pre>
+will print:
+    <pre><code class="datablock">No tags	but new
+lines</code></pre>
+Trying with data that has tags, let's use the sample HTML file:  
+<pre><code class="blockcode">data = open('sample.html').read()
+print(rm_tags(data)
+</code></pre>
+will print:
+<pre><code class="datablock">    Simple HTML File
+  
+    
+  Here's a link for Hunter CS Department
+ and for CSci 39542.  
+
+  And for google
+
+
+</code></pre>
+
+<p>Next, we'll build a function that pulls the titles and URL of external links (i.e. starts with <code class="inline">http</code> or <code class="inline">https</code>) from an HTML file.  As an exercise in regular expressions, only the standard Python and <code class="inline">re</code> library are allowed.</p>
+
+<p>For example, let's try the <code class="inline">make_dict</code> with a single external link:
+  <pre><code class="blockcode">data = '&lt;a href="https://mta.info">MTA&lt;/a>'
+print(make_dict(data))</code></pre>
+will print:
+    <pre><code class="datablock">{'MTA': 'https://mta.info'}</code></pre>
+
+
+<p>Our functions <code class="inline">test_rm_tags</code> and <code class="inline">test_rm_tags</code> are tester functions, not unlike the ones used to grade assignments in Gradescope Autograder.  Let's build a constant function that returns <code class="inline">True</code> no matter what the inputs and see how it compares to <code class="inline">rm_tags</code>:
+
+<pre><code class="blockcode">def always_true(data):
+  return True
+  
+print(f'Testing rm_tags with constant function:  {test_rm_tags(always_true)}')
+print(f'Testing rm_tags with our function:  {test_rm_tags(rm_tags)}')</code></pre>
+
+will print:
+</p>
+<pre><code class="datablock">Testing rm_tags with constant function:  False
+Testing rm_tags with our function:  True
+</code></pre>
+
+The tester for making dictionaries will similarly should return True when passed the correct function and False otherwise.
+
+
+
+</div>
+</body>
+</html>
