@@ -92,7 +92,7 @@ The case study in Lecture 11 focused on determining the accuracy of self-reporte
       Returns a string with all HTML formatting removed.  If the string was plain text, the contents are returned unaltered as a string.
   </li><br>
 
-  <li> <code class = "inline">test_strip(rm_tags_fnc)</code>:  
+  <li> <code class = "inline">test_rm_tags(rm_tags_fnc)</code>:  
     This function takes one input:
         <ul>
           <li> <code class = "inline">rm_tags_fnc</code>: a function that takes a string and returns a string.
@@ -107,14 +107,6 @@ The case study in Lecture 11 focused on determining the accuracy of self-reporte
       </ul>
       Uses regular expressions (see <a href="http://www.textbook.ds100.org/ch/12/text_re.html">Chapter 12.4</a> for using the <code class="inline">re</code> package in Python) to find all external links in <code class="inline">data</code> and store the link text as the key and URL value in a dictionary.  <code class="inline">Title</code> and <code class="inline">URL</code> in the CSV file specified by the user.  For the URL, keep the leading <code class="inline">https://</code> or <code class="inline">http://</code>. Returns the resulting dictionary.
   </li><br>
-
-  <li> <code class = "inline">test_strip(rm_tags_fnc)</code>:  
-    This function takes one input:
-        <ul>
-          <li> <code class = "inline">rm_tags_fnc</code>: a function that takes a string and returns a string.
-        </ul>
-    Returns <code class = "inline">True</code> if the inputted function correctly strips out the text from a HTML file and <code class = "inline">False</code> otherwise.        
-    </li><br>
 
 
   <li> <code class = "inline">test_make_dict(make_dict_fnc)</code>:  
