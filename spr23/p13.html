@@ -77,7 +77,7 @@ Spring 2023<br><br>
 <br>Learning Objective: to introduce SQL to access data.  
 <br>Available Libraries: pandas, pandasql and core Python 3.6+.  
 <br>Data Source:  <a href="https://console.cloud.google.com/marketplace/details/github/github-repos">Github Activity Data</a>
-<br>Sample Datasets: <a href="github_projects_2017.csv">github_projects_2017.csv</a>, <a href="github_projects_2018.csv">github_projects_2018.csv</a>
+<br>Sample Datasets: <a href="github_projects_2017.csv">github_projects_2017.csv</a>, <a href="github_projects_2018.csv">github_projects_2018.csv</a></i>
 
 <br>
 <br>
@@ -85,10 +85,10 @@ The assignment is broken into the following functions to allow for unit testing:
 
 <ul>
   <br>
-  <li> <code class = "inline">make_df(df)</code>:
+  <li> <code class = "inline">make_df(file_name)</code>:
   This function takes one input:
   <ul>
-    <li> <code class = "inline">filename</code>: the input data filename
+    <li> <code class = "inline">file_name</code>: the input data filename
   </ul>
   The function should return a Pandas DataFrame.
 </ul>
@@ -100,7 +100,7 @@ The assignment is broken into the following functions to allow for unit testing:
   <ul>
     <li> <code class = "inline">df</code>: the Github Activity dataset loaded as a Pandas DataFrame
   </ul>
-  Write a query that returns a DataFrame containing one column, <code class = "inline">num_repos</code>, which counts the number of rows in the dataframe df where the repository url is missing
+  Write a query that returns a DataFrame containing one column, <code class = "inline">num_repos</code>, which counts the number of rows in the dataframe <code class = "inline">df</code> where the repository url is missing
 </ul>
 
 <ul>
@@ -110,7 +110,7 @@ The assignment is broken into the following functions to allow for unit testing:
   <ul>
     <li> <code class = "inline">df</code>: the Github Activity dataset loaded as a Pandas DataFrame
   </ul>
-  Write a query that returns a DataFrame containing two columns: <code class = "inline">language</code>, <code class = "inline">num_repos</code>.  The column <code class = "inline">language</code> contains the unique languages in the dataframe df.  The column <code class = "inline">num_repos</code> counts how many rows in the dataframe for each language.  Sort the resulting dataframe alphabetically by the first column, <code class = "inline">language</code>.
+  Write a query that returns a DataFrame containing two columns: <code class = "inline">language</code>, <code class = "inline">num_repos</code>.  The column <code class = "inline">language</code> contains the unique languages in the dataframe <code class = "inline">df</code>.  The column <code class = "inline">num_repos</code> counts how many rows in the dataframe for each language.  Sort the resulting dataframe alphabetically by the first column, <code class = "inline">language</code>.
 </ul>
 
 <ul>
@@ -120,7 +120,7 @@ The assignment is broken into the following functions to allow for unit testing:
   <ul>
     <li> <code class = "inline">df</code>: the Github Activity dataset loaded as a Pandas DataFrame
   </ul>
-  Write a query that returns a DataFrame containing one column, <code class = "inline">num_repos</code>, which counts the number of rows in the dataframe df that contains the keywords "machine learning"
+  Write a query that returns a DataFrame containing one column, <code class = "inline">num_repos</code>, which counts the number of rows in the dataframe <code class = "inline">df</code> that contains the keywords "machine learning"
 </ul>
 
 <ul>
@@ -148,7 +148,7 @@ The assignment is broken into the following functions to allow for unit testing:
 <br>
 <p>Let's use the 2017 data for testing:
 
-Finding total number of repos where the github url is not specified:
+Finding total number of repos where the Github url is not specified:
 <pre><code class="blockcode">df = make_df('program13/github_projects_2017.csv')
 df_count_null = count_null_repositories(df)
 print(df_count_null)</code></pre>
@@ -175,7 +175,7 @@ XSLT	        1</code></pre>
 
 <br>
 
-Counting the number of repositorys tagged with machine learning:
+Counting the number of repositories tagged with machine learning:
 <pre><code class="blockcode">df_ml_repos = count_ml_repos(df)
 print(df_ml_repos)</code></pre>  
 would print:
