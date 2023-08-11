@@ -1,0 +1,69 @@
+<STYLE>A {text-decoration: none;}
+  th, td { padding: 5px; }
+  code {
+    background-color: #eeeeee;
+  }
+  .inline {
+    padding: 1px;
+  }
+  .blockcode {
+    border: 1px solid #999999;
+    display: block;
+    padding-left: 10px;
+    padding-top : 2px;
+    padding-bottom : 2px;
+    margin: 5px;
+  }
+  .datablock {
+    border: 1px solid #eeeeee;
+    display: block;
+    padding: 7px;
+    padding-top : 0px;
+    margin: 5px;
+  }
+  </STYLE>
+
+<h3>General Notes</h3>
+
+<p>This program builds on the concepts and code developed during lecture and through the reading.  Mastery of material is assessed via
+<ul>
+  <li> Autograding of the program submitted to Gradescope, and
+  <li> Midterm and final exam on the material.  
+</ul>
+
+Solutions will be available on Blackboard (<tt>Course Materials : Solutions</tt>) an hour after their respective deadline.
+
+<h4>Autograder Notes</h4>
+
+<p> Submitted code must be in Python, using only the specified libraries.  The autograder expects a <code class="inline">.py</code> file and does not accept iPython notebooks.  Since all assignments are designed to be uploaded as a single file, the autograder is set up for direct file upload instead of Github.  If submitting directly (drop-and-drag onto the webpage), the file name is flexible but must have the extension <code class="inline">.py</code>.
+Also, to receive full credit, the code should be compatible with Python 3.6 (the default for the Gradescope autograders).
+
+<p>To encourage starting early on programs, bonus points are given for early submission.  Four bonus points, up to 10% of the program grade, are possible.  Programs submitted by noon the previous Monday receive 4 points, prorated by hour.  For example, if you turn in the program Wednesday noon, or 48 hours early, then the bonus poins are: (48 hours/4 days)*4 points = (36 hours/96 hours)*4 points = 2 points.
+
+<p>
+To get full credit for a program, the file must include in the opening comment:
+<ul>
+    <li> Your name, as it appears in your Gradescope registration.
+    <li> The email you are using for Gradescope.
+    <li> A list of any resources you used for the program.  Include classmates and tutors that you worked with, along with any websites or tutorials that you used.  If you used no resources (other than the class notes and textbooks), then you should include the line:  "No resources used."
+</ul>
+
+For example, for the student, Thomas Hunter, the opening comment of his first program might be:
+<pre><code class="blockcode">
+"""
+Name:  Thomas Hunter
+Email: thomas.hunter1870@hunter.cuny.edu
+Resources:  Used python.org as a reminder of Python 3 print statements.
+"""
+</pre></code>
+and then followed by his Python program.
+
+
+<p>Good style accounts for 5% of the program grade.  We are following the standard <a href="https://peps.python.org/pep-0008/">PEP 8</a> style guide for Python code.  As part of the autograder scripts, your program is run through a static code analyser (aka a "linter").  
+<ul> 
+  <li> We are using <a href="https://pylint.pycqa.org/">Pylint</a> which reports warnings and errors, including message codes, and then scores the code on a scale from 0 to 10.  We multiply your percentage score by 2 (5% of the total) to determine the style grade.  For example, if pylint scores your program 9, your style grade is (9/10) * 2 = 1.8.</li>   
+  <li>See the <a href="https://pylint.pycqa.org/">Pylint</a> website for tutorials, FAQ's and standard warnings.  </li> 
+  <li><a href="https://peps.python.org/pep-0008/">PEP 8</a> specifies that variable names should be at least 3 characters long, but it is long standing convention that DataFrames are named <code class=inline>df</code>.  For the autograders, we have included <code class=inline>df</code> in the "good-names" that are accepted.  This can be done locally with <code class=inline>.pylintrc</code> files or using the command-line option <code class=inline>pylint --good-names=df</code>.</li>
+  <li>Most IDE's have linting available:  for example, see <a href="https://plugins.jetbrains.com/plugin/11084-pylint">pylint in PyCharm</a> and <a href="https://code.visualstudio.com/docs/python/linting">Linting Python in VSCode</a>.</li>
+</ul>
+</p>
