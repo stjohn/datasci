@@ -1,0 +1,1251 @@
+<!DOCTYPE doctype PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <title>Coursework, CSci 39542: Data Science, Hunter College</title>
+</head>
+<STYLE>A {text-decoration: none;}
+th, td { padding: 5px; }
+code {
+  background-color: #eeeeee;
+}
+.inline {
+  padding: 1px;
+}
+.blockcode {
+  border: 1px solid #999999;
+  display: block;
+  padding-left: 10px;
+  padding-top : 2px;
+  padding-bottom : 2px;
+  margin: 5px;
+}
+.datablock {
+  border: 1px solid #eeeeee;
+  display: block;
+  padding: 7px;
+  padding-top : 0px;
+  margin: 5px;
+}
+</STYLE>
+<body>
+
+
+  <div style="margin: 15px;">
+    <span style= "float: left;font-size:larger"><a href="index.html">CSci 39542</a></span>
+    <span style= "float: right">
+      <a href="syl.html">Syllabus</a>&nbsp;&nbsp;&nbsp;
+      <a href="resources.html">Resources</a>&nbsp;&nbsp;&nbsp;
+      <a href="work.html">Coursework</a>&nbsp;&nbsp;&nbsp;
+      <a href="faq.html">FAQ</a>
+    </span>
+</div>
+
+<br>
+<br>
+<hr>
+
+<div style="margin:50px">
+
+
+<h2>Coursework
+  <br>CSci 39542: Introduction to Data Science<br>
+<a href="http://www.hunter.cuny.edu/csci">Department of Computer Science</a><br>
+<a href="https://hunter.cuny.edu">Hunter College</a>, <a href="https://www.cuny.edu">City University of New York</a><br>
+Fall 2023<br><br>
+</h2>
+
+
+<hr>
+<a href="work.html#cw">Classwork</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="work.html#midterm">Midterm Exam</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="work.html#hw">Programming Assignments</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="work.html#project">Project</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="work.html#final">Final Exam</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<hr>
+
+<p>All students registered by Wednesday, 23 August are sent a Gradescope registration invitation to the email on record on their Blackboard account.  If you did not receive the email or would like to use a different account, write to <code class="inline">datasci@hunter.cuny.edu</code>.  Include in your email that you not receive a Gradescope invitation, your preferred email, and your EmpID.  We will manually generate an invitation.  As a default, we use your name as it appears in Blackboard/CUNYFirst (to update CUNYFirst, see <a href="https://hunter.cuny.edu/students/registration/records-and-transcripts/changing-your-personal-information/">changing your personal information</a>).  If you prefer a different name for Gradescope, include it, and we will update the Gradescope registration.
+<br>
+<br>
+<hr>
+
+
+<a name="cw">
+<h2>Classwork</h2>
+</a>
+
+
+<p>
+Unless otherwise noted, classwork is submitted via Gradescope.
+Access information is given during the corresponding lecture.
+To get the most out of lecture, bring a device with you to lecture with a development environment (IDE) that has Python 3+ (preferrably the same that you plan to use for technical interviews).  <br>
+<i>Note:  Hunter College is committed to all students having the technology needed for their courses.  If you are in need of technology, see
+    <a href="https://ww2.hunter.cuny.edu/students/student-life/emergency-support-and-resources">Student Life's Support & Resources Page</a>.</i></p>
+
+<p>If you attended class that day, there is an option to earn 0.5 points for attendance for each part of lecture. and space to include the row and seat number.  If you were not able to attend a given lecture, you can still work through the classwork at home and we will replace the fractional point for that classwork with the grade you earned on the final exam.</p>
+
+<p><b>Do not say you were in the room if you did not attend. </b>
+Lying about attendance obtains an unfair advantage and will be submitted to the Office of Student Conduct.  It is not worth 0.5 points (that would have been replaced anyway by your final exam score) for a record of academic dishonesty that is kept by both the department and college.  The suggested sanction for lying is a 0 on this classwork and the loss of the replacement policy for missed lecture grades.  Note:  while we suggest a sanction, the final decision about the severity of the sanction is by the Office of Student Conduct.
+</p>
+
+<ul>
+  <li><a name="cw0"><b>Week 0:</b></a>
+    <p><b>Classwork 0: </b> &emsp; <i>Due midnight, Tuesday, 29 August.</i> &emsp;  Available on Wednesday, 23 August, this classwork focuses on the course <a href="syl.html">syllabus</a> and <a href="faq.html">frequently asked questions</a>.
+  </li>
+  <li><a name="cw1"><b>Week 1:</b></a>
+    <p><b>Classwork 1.1: </b> &emsp; <i>Due 1:45pm, Wednesday, 30 August.</i> &emsp;
+    Available during Lecture 1 on Gradescope, this classwork introduces the autograder that is used for the programming assignments.  The structure of the sample program mirrors the structure and content of the upcoming <a href="#p1">Program 1</a> (which we will start in the second part of Lecture 1).  
+    
+        <p>Write a function that takes the name of a file and makes a dictionary of the lines of the file.
+          <ul>
+            <li> <code class = "inline">make_dict(file_name, sep=': ')</code>:  Takes a name of a file, <code class = "inline">file_name</code> and a delimiter <code class = "inline">sep</code>.  The default value is <code class = "inline">': '</code>.  If a line of the file does not include <code class = "inline">sep</code>, the line should be ignored.   Otherwise, for each line, the string preceding the delimiter <code class = "inline">sep</code> is the key, and the string after <code class = "inline">sep</code> is the value.  Your function returns the dictionary.
+          </ul>
+    
+        <p>For example, assuming these functions are in a file, <code class="inline">cw1.py</code> and run on a file containing names that start with 'A', <a href="../spr22/contacts.txt">contacts.txt</a>:
+    
+        <pre><code class="blockcode">contacts = cw1.make_dict('contacts.txt')
+    who = 'CS Department'
+    print(f'Contact info for {who} is {contacts[who]}.')</pre></code>
+      </pre></code>
+          will print:
+      <pre><code class="datablock">Contact info for CS Department is 10th Floor HN, x5213.</pre></code>
+    
+      <p>Another example with <a href="../spr22/nick_names.txt">nick_names.txt</a>:
+    
+      <pre><code class="blockcode">nick_names = cw1.make_dict('nick_names.txt', sep = ' ')
+    names = ['Beth','Lisa','Meg','Greta','Amy','Mia']
+    for n in names:
+        print(f'Full name for {n} is {nick_names[n]}.')</pre></code>
+      </pre></code>
+      will print:
+      <pre><code class="datablock">Full name for Beth is Elizabeth.
+    Full name for Lisa is Elizabeth.
+    Full name for Meg is Margaret.
+    Full name for Greta is Margaret.
+    Full name for Amy is Amelia.
+    Full name for Mia is Amelia.</pre></code>
+    
+          <p>If you attended lecture, include the last three lines to the the introductory comment:
+            <pre><code class="blockcode">"""
+    Name:  YOUR_NAME
+    Email: YOUR_EMAIL
+    Resources:  RESOURCES USED
+    I attended lecture today.
+    Row:  YOUR_ROW
+    Seat:  YOUR_SEAT
+    """</pre></code>
+    
+            If you did not attend lecture, do not include the above lines.</p>
+
+    <p><b>Classwork 1.2: </b> &emsp; <i>Due 3pm, Wednesday, 30 August.</i> &emsp;  In the second part of Lecture 1, we will start <a href="#p1">Program 1</a>.  At the end of lecture, having a positive score on the first program gives credit for this classwork.  You do not need to complete the first program of submit anything extra, we will generate the scores directly by if you have submitted an attempt to Gradescope.  
+  </li> 
+
+  <!--
+  <li><a name="cw2"><b>Week 2:</b></a>
+    <p><b>Classwork 2.1: </b> &emsp; <i>Due 1:45pm, Wednesday, 6 September.</i> &emsp;
+    <p><b>Classwork 2.2: </b> &emsp; <i>Due 3pm, Wednesday, 6 September.</i> &emsp;      
+  </li>  
+  <li><a name="cw3"><b>Week 3:</b></a>
+    <p><b>Classwork 3.1: </b> &emsp; <i>Due 1:45pm, Wednesday, 13 September.</i> &emsp;
+    <p> <b>Classwork 3.2: </b> &emsp; <i>Due 3pm, Wednesday, 13 September.</i> &emsp;      
+  </li> 
+  <li><a name="cw4"><b>Week 4:</b></a>
+    <p> <b>Classwork 4.1: </b> &emsp; <i>Due 1:45pm, Wednesday, 20 September.</i> &emsp;
+    <p> <b>Classwork 4.2: </b> &emsp; <i>Due 3pm, Wednesday, 20 September.</i> &emsp;      
+  </li> 
+  <li><a name="cw5"><b>Week 5:</b></a>
+    <p> <b>Classwork 5.1: </b> &emsp; <i>Due 1:45pm, Wednesday, 27 September.</i> &emsp;
+    <p> <b>Classwork 5.2: </b> &emsp; <i>Due 3pm, Wednesday, 27 September.</i> &emsp;      
+  </li> 
+  <li><a name="cw6"><b>Week 6:</b></a>
+    <p> <b>Classwork 6.1: </b> &emsp; <i>Due 1:45pm, Wednesday, 4 October.</i> &emsp;
+    <p> <b>Classwork 6.2: </b> &emsp; <i>Due 3pm, Wednesday, 4 October.</i> &emsp;      
+  </li> 
+  <li><a name="cw7"><b>Week 7:</b></a>  Midterm this week.  Classwork is the seating slips for the coding and written exams. 
+    <p> <b>Classwork 7.1: </b> &emsp;&emsp;  Signed seating slip is picked up during the exam.
+    <p> <b>Classwork 7.2: </b> &emsp;&emsp;  Signed seating slip is picked up during the exam.  
+  </li>      
+  <li><a name="cw8"><b>Week 8:</b></a>
+    <p> <b>Classwork 8.1: </b> &emsp; <i>Due 1:45pm, Wednesday, 18 October.</i> &emsp;
+    <p> <b>Classwork 8.2: </b> &emsp; <i>Due 3pm, Wednesday, 18 October.</i> &emsp;      
+  </li> 
+  <li><a name="cw8"><b>Week 9:</b></a>
+    <p> <b>Classwork 9.1: </b> &emsp; <i>Due 1:45pm, Wednesday, 25 October.</i> &emsp;
+    <p> <b>Classwork 9.2: </b> &emsp; <i>Due 3pm, Wednesday, 25 October.</i> &emsp;      
+  </li> 
+  <li><a name="cw10"><b>Week 10:</b></a>
+    <p> <b>Classwork 10.1: </b> &emsp; <i>Due 1:45pm, Wednesday, 1 November.</i> &emsp;
+    <p> <b>Classwork 10.2: </b> &emsp; <i>Due 3pm, Wednesday, 1 November.</i> &emsp;      
+  </li>  
+  <li><a name="cw11"><b>Week 11:</b></a>
+    <p> <b>Classwork 11.1: </b> &emsp; <i>Due 1:45pm, Wednesday, 8 November.</i> &emsp;
+    <p> <b>Classwork 11.2: </b> &emsp; <i>Due 3pm, Wednesday, 8 November.</i> &emsp;      
+  </li>   
+  <li><a name="cw12"><b>Week 12:</b></a>
+    <p> <b>Classwork 12.1: </b> &emsp; <i>Due 1:45pm, Wednesday, 15 November.</i> &emsp;
+    <p> <b>Classwork 12.2: </b> &emsp; <i>Due 3pm, Wednesday, 15 November.</i> &emsp;      
+  </li>   
+  <li><a name="cw13"><b>Week 13:</b></a>
+    <p> <b>Classwork 13.1: </b> &emsp; <i>Due 1:45pm, Wednesday, 29 November.</i> &emsp;
+    <p> <b>Classwork 13.2: </b> &emsp; <i>Due 3pm, Wednesday, 29 November.</i> &emsp;      
+  </li>  
+  <li><a name="cw14"><b>Week 14:</b></a>
+    <p> <b>Classwork 14.1: </b> &emsp; <i>Due 1:45pm, Wednesday, 6 December.</i> &emsp;
+    <p> <b>Classwork 14.2: </b> &emsp; <i>Due 3pm, Wednesday, 6 December.</i> &emsp;      
+  </li>     
+  -->
+</ul>
+
+
+
+
+<!--
+   <br>       
+  <p><a name="cw2"><b>Classwork 2: </b> &emsp; <i>Due 3pm, Wednesday, 1 February.</i> &emsp;
+
+ 
+    Available during Lecture 2 on Gradescope, this classwork asks that you write a program using Pandas and its file I/O.  To get the most out of this exercise, bring a laptop with you to lecture with a development environment (IDE) that has Python 3.6+ to work through in lecture.  <br>
+
+    <p>
+    Write a program that asks the user for the name of an input CSV file and the name of an output CSV file.  The program should open the file name provided by the user.
+    Next, the program should select rows where the field <code class="inline">Grade</code> is equal to 3 and the <code class="inline">Year</code> is equal to 2019 and write all rows that match that criteria to a new CSV file.
+
+    <p>
+    Then a sample run of the program:
+  <pre><code class="blockcode">Enter input file name: school-ela-results-2013-2019.csv
+Enter output file name:  ela2013.csv</code></pre>
+    where the file <code class="inline">school-ela-results-2013-2019.csv</code> is extracted from <a href="https://infohub.nyced.org/reports/academics/test-results">NYC Schools Test Results</a> (and <a href="../fall21/school_ELA_2013_2019_truncated.csv">truncated version</a> of roughly the first 1000 lines for testing).  The first lines of the output file would be:
+
+  <pre><code class="datablock">School,Name,Grade,Year,Category,Number Tested,Mean Scale Score,# Level 1,% Level 1,# Level 2,% Level 2,# Level 3,% Level 3,# Level 4,% Level 4,# Level 3+4,% Level 3+4
+01M015,P.S. 015 ROBERTO CLEMENTE,3,2019,All Students,27,606,1,3.7,7,25.9,18,66.7,1,3.7,19,70.4
+01M019, P.S. 019 ASHER LEVY,3,2019,All Students,24,606,0,0.0,8,33.3,15,62.5,1,4.2,16,66.7
+01M020,P.S. 020 ANNA SILVER,3,2019,All Students,57,593,13,22.8,24,42.1,18,31.6,2,3.5,20,35.1</code></pre>
+
+  <p>Hints:
+    <ul>
+      <li> Since the <code class=inline>Grade</code> column contains a mixtures of numbers (e.g. 3) and strings ("All Grades"), the column is stored as strings.
+    </ul>
+
+    <p>If you attended lecture, include the last three lines to the the introductory comment:
+      <pre><code class="blockcode">"""
+Name:  YOUR_NAME
+Email: YOUR_EMAIL
+Resources:  RESOURCES USED
+I attended lecture today.
+Row:  YOUR_ROW
+Seat:  YOUR_SEAT
+"""</pre></code>
+
+      If you did not attend lecture, do not include the above lines.</p>
+
+
+        <br>
+  <p><a name="cw3"><b>Classwork 3: </b> &emsp; <i>Due 3pm, Wednesday, 8 February.</i> &emsp;
+     Available during Lecture 3 on Gradescope, this classwork focuses on the structure and topics for the optional project, based on the project overview in lecture:
+
+     <ol>
+        <li> What is an NYC-related topic in which you are interested?</li>
+        <li>Was is a question related to that topic (i.e. predictive instead of descriptive framing of your project)?</li>
+        <li>What kind of data would you be needed for this? </li>
+     </ol>
+
+   <br>
+  <p><a name="cw4"><b>Classwork 4: </b> &emsp; <i>Due 3pm, Wednesday, 15 February.</i> &emsp;
+    Available during Lecture 4 on Gradescope, this classwork focuses on hiring in the technical sector has been in the news recently and is inspired by <a href="https://fordschool.umich.edu/faculty/betsey-stevenson">Prof. Stevenson's recent analysis: </a> </p>   
+
+    <p>
+      <a href="https://poverty.umich.edu/2022/12/02/november-jobs-report-strong-job-growth-continues-but-there-are-hints-of-weakness/"><img src="stevenson_info_jobs_dec_2022.png" height="500"><br>
+      BLS Monthly Jobs Report:  Rapid Insights from Betsey Stevenson</a>
+      </p>
+
+    <p>To get the most out of this exercise, bring a laptop with you to lecture with a development environment (IDE) that has Python 3.6+ to work through in lecture.  </p>
+    
+    <p>Using the data set for the previous 5 years from <a href="https://fred.stlouisfed.org/series/USINFO">St. Louis Federal Reserve Economic Data Data (FRED)</a>:
+    <ul>
+      <li><a href="fred_info_2022_5yr.csv">fred_info_2022_5yr.csv</a>:  A CSV file with the employment in Information Services for past 5 years:  2018-2022.</li>     
+    </ul>
+
+    Fit a linear model to the data by:  
+    <ol>
+      <li> Compute the standard deviation of the <code class = "inline">xes</code> and <code class = "inline">yes</code>.  Call these <code class = "inline">sd_x</code> and <code class = "inline">sd_y</code>.
+      <li> Compute the correlation, <code class = "inline">r</code>,  of the <code class = "inline">xes</code> and <code class = "inline">yes</code>.
+      <li> Compute the slope, <code class = "inline">theta_1</code>, as <code class = "inline">theta_1 = r*sd_y/sd_x</code>.
+      <li> Compute the y-intercept, <code class = "inline">theta_0</code>, as <code class = "inline">theta_0 = average(yes) - theta_1 * average(xes)</code>
+      <li> Return <code class = "inline">theta_0</code> and <code class = "inline">theta_1</code>.
+    </ol>    
+    where <code class = "inline">xes</code> is the number of months from start of dataset, counting from 0 (i.e. 0, 1, 2, 3,...)   and <code class = "inline">yes</code> is the <code class = "inline">USINFO</code> column of your dataset. The <code class = "inline">xes</code> can be generated by looping through the dataset or using the index as a column (e.g. <code class = "inline">df.index.to_series()</code>).
+</p>
+    <p>See <a href="p5.html">Program 5</a> for more details on this dataset.</p>
+
+
+<br>
+
+
+
+
+  <p><a name="cw5"><b>Classwork 5: </b> &emsp; <i>Due 3pm, Wednesday, 22 February.</i> &emsp;  
+      Available during Lecture 5 on Gradescope, this on-line assignment is to design an algorithm to compute Voronoi diagrams (see Lecture 5 notes and Gradescope exercise for details).</p>
+      <br>
+
+<br>
+  <p><a name="cw6"><b>Classwork 6: </b> &emsp; <i>Due 2:30pm, Wednesday, 1 March.</i> &emsp;
+    Available during Lecture 6 on Gradescope, the learning objective of this classwork is toincrease understanding of smoothing and gain fluidity with using distributions for smoothing.  To get the most out of this exercise, bring a laptop with you to lecture with a development environment (IDE) that has Python 3.6+ to work through in lecture.  </p>
+
+
+    <p>
+    In Lecture 5 and <a href="https://learningds.org/ch/11/viz_smoothing.html">Section 11.2</a>, we used smoothing to visualize data.  For this program, write a function that takes two arguments, an Numpy array of x-axis coordinates, and a list of numeric values, and returns the corresponding y-values for the sum of the gaussian probability distribution functions (pdf's) for each point in the list.
+  
+    <ul>
+      <li> <code class = "inline">computeSmoothing(xes,points)</code>:  This function takes a numpy array <code class = "inline">xes</code> and a list, <code class = "inline">points</code>, of numeric values.  For each <code class = "inline">p</code> in <code class = "inline">points</code>, the function should compute the normal probability distribution function (<code class = "inline">scipy.norm.pdf</code>)
+      centered at <code class = "inline">loc = p</code> with standard deviation <code class = "inline">scale = 0.5</code> for all values in <code class = "inline">xes</code>.  The return value is a numpy array of the sum of these at each point.
+    </ul>
+  
+    <p>For example, calling the function:
+      <pre><code class="blockcode">xes = np.linspace(0, 10, 1000)
+  density = computeSmoothing(xes,[5])
+  plt.plot(xes,density)
+  plt.show()</code></pre>
+  
+      would give the plot:
+  
+      <p><img height=200 src="https://stjohn.github.io/teaching/data/fall21/density5.png">
+  
+      <p>since there is only one point given (namely 5), the returned value is the probability density function centered at 5 (with <code class = "inline">scale =  0.5</code>) computed for each of the <code class = "inline">xes</code>.
+  
+  <p>For example, calling the function:
+    <pre><code class="blockcode">pts = [2,2,5,5,2,3,4,6,7,9]
+  xes = np.linspace(0, 10, 1000)
+  density = computeSmoothing(xes,pts)
+  plt.plot(xes,density)
+  plt.fill_between(xes,density)
+  plt.show()</code></pre>
+  
+  would give the plot:
+  
+  <p><img height=200 src="https://stjohn.github.io/teaching/data/fall21/density_fillBetween.png">
+  
+    <p>since the there are 10 points given, the function computes the probability density function centered at each of the points, across all the values in <code class = "inline">xes</code>.  It then sums up these contributions and returns an array of the same length as <code class = "inline">xes</code>.
+  
+  
+  
+  
+  <p>
+      Note:  you should submit a file with only the standard comments at the top, and this function.  The grading scripts will then import the file for testing.  If you attended lecture, include in the introductory comment the three lines detailed in <a href="work.html#cw2">Classwork 2</a>.</p>
+  <br><br>
+
+  <p><a name="cw7"><b>Classwork 7: </b> &emsp; <i>Due 2:30pm, Wednesday, 8 March.</i> &emsp;
+   
+    Available during Lecture 7 on Gradescope, this classwork introduces the canonical digits dataset and uses sci-kit learn to build logistic regression models.  To get the most out of this exercise, bring a laptop with you to lecture with a development environment (IDE) that has Python 3+ to work through in lecture.
+
+    <p>
+      This program uses the canonical <a href="https://en.wikipedia.org/wiki/MNIST_database">MNIST dataset of hand-written digits</a> and available in <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_digits.html">sklearn digits dataset</a>:
+      <br>
+<a href="https://scikit-learn.org/stable/auto_examples/manifold/plot_lle_digits.html#sphx-glr-auto-examples-manifold-plot-lle-digits-py">
+  <img src="https://stjohn.github.io/teaching/data/fall21/sklearn_digits.png" height=400>
+</a>
+
+<br>
+The dataset has 1797 scans of hand-written digits.
+Each entry has the digit represented (<code class=inline>target</code>) as well as the 64 values representing the gray scale for the 8 x 8 image.  The first 5 entries are:
+<br>
+<img src = "https://stjohn.github.io/teaching/data/fall21/mnist_first5.png", height = 100>
+<br>
+The gray scales for the first 5 entries, flattened to one dimensional array:
+<pre><code class="datablock">[[ 0.  0.  5. 13.  9.  1.  0.  0.  0.  0. 13. 15. 10. 15.  5.  0.  0.  3. 15.  2.  0. 11.  8.  0.  0.  4. 12.  0.  0.  8.  8.  0.  0.  5.  8.  0.  0.  9.  8.  0.  0.  4. 11.  0.  1. 12.  7.  0.  0.  2. 14.  5. 10. 12.  0.  0.  0.  0.  6. 13. 10.  0.  0.  0.]
+[ 0.  0.  0. 12. 13.  5.  0.  0.  0.  0.  0. 11. 16.  9.  0.  0.  0.  0.  3. 15. 16.  6.  0.  0.  0.  7. 15. 16. 16.  2.  0.  0.  0.  0.  1. 16. 16.  3.  0.  0.  0.  0.  1. 16. 16.  6.  0.  0.  0.  0.  1. 16. 16.  6.  0.  0.  0.  0.  0. 11. 16. 10.  0.  0.]
+[ 0.  0.  0.  4. 15. 12.  0.  0.  0.  0.  3. 16. 15. 14.  0.  0.  0.  0.  8. 13.  8. 16.  0.  0.  0.  0.  1.  6. 15. 11.  0.  0.  0.  1.  8. 13. 15.  1.  0.  0.  0.  9. 16. 16.  5.  0.  0.  0.  0.  3. 13. 16. 16. 11.  5.  0.  0.  0.  0.  3. 11. 16.  9.  0.]
+[ 0.  0.  7. 15. 13.  1.  0.  0.  0.  8. 13.  6. 15.  4.  0.  0.  0.  2.  1. 13. 13.  0.  0.  0.  0.  0.  2. 15. 11.  1.  0.  0.  0.  0.  0.  1. 12. 12.  1.  0.  0.  0.  0.  0.  1. 10.  8.  0.  0.  0.  8.  4.  5. 14.  9.  0.  0.  0.  7. 13. 13.  9.  0.  0.]
+[ 0.  0.  0.  1. 11.  0.  0.  0.  0.  0.  0.  7.  8.  0.  0.  0.  0.  0.  1. 13.  6.  2.  2.  0.  0.  0.  7. 15.  0.  9.  8.  0.  0.  5. 16. 10.  0. 16.  6.  0.  0.  4. 15. 16. 13. 16.  1.  0.  0.  0.  0.  3. 15. 10.  0.  0.  0.  0.  0.  2. 16.  4.  0.  0.]]</code></pre>
+
+<br>To start, we will focus on entries that represent 0's and 1's.  The first 10 from the dataset are displayed below:
+<br>
+  <img src = "https://stjohn.github.io/teaching/data/fall21/mnist_binary10.png", height = 175>
+
+<p>
+Write a function that builds a logistic regression model that classifies binary digits:
+    <ul>
+      <li> <code class = "inline">def binary_digit_clf(data, target, test_size = 0.25, random_state = 21):</code>:
+        This function has four inputs:
+        <ul>
+            <li> <code class = "inline">data</code>: a numpy array that
+                  includes rows of equal size flattend arrays,
+            <li> <code class = "inline">target</code> a numpy array that takes values 0 or 1 corresponding to the rows of <code class = "inline">data</code>.
+            <li> <code class = "inline">test_size</code>: the size of the test set created when the data is divided into test and training sets with <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">train_test_split</a>. The default value is <code class = "inline">0.25</code>.
+            <li> <code class = "inline">random_state</code>: the random seed used when the data is divided into test and training sets with <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">train_test_split</a>. The default value is <code class = "inline">21</code>.
+        </ul>
+
+      The function returns the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html">confusion matrix</a> that results.
+      </ul>
+
+      <p>
+      For example, let's flatten the entries and restrict the dataset to just binary digits:
+      <pre><code class="blockcode">#Import datasets, classifiers and performance metrics:
+from sklearn import datasets, svm, metrics
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+#Using the digits data set from sklearn:
+from sklearn import datasets
+digits = datasets.load_digits()
+print(digits.target)
+print(type(digits.target), type(digits.data))
+#flatten the images
+n_samples = len(digits.images)
+data = digits.images.reshape((n_samples, -1))
+print(data[0:5])
+print(f'The targets for the first 5 entries: {digits.target[:5]}')
+#Make a DataFrame with just the binary digits:
+binaryDigits = [(d,t) for (d,t) in zip(data,digits.target) if t <= 1]
+bd,bt = zip(*binaryDigits)
+print(f'The targets for the first 5 binary entries: {bt[:5]}')</code></pre>
+      which will print:
+<pre><code class="datablock">
+[0 1 2 ... 8 9 8]
+<class 'numpy.ndarray'> <class 'numpy.ndarray'>
+[[ 0.  0.  5. 13.  9.  1.  0.  0.  0.  0. 13. 15. 10. 15.  5.  0.  0.  3.
+15.  2.  0. 11.  8.  0.  0.  4. 12.  0.  0.  8.  8.  0.  0.  5.  8.  0.
+0.  9.  8.  0.  0.  4. 11.  0.  1. 12.  7.  0.  0.  2. 14.  5. 10. 12.
+0.  0.  0.  0.  6. 13. 10.  0.  0.  0.]
+[ 0.  0.  0. 12. 13.  5.  0.  0.  0.  0.  0. 11. 16.  9.  0.  0.  0.  0.
+3. 15. 16.  6.  0.  0.  0.  7. 15. 16. 16.  2.  0.  0.  0.  0.  1. 16.
+16.  3.  0.  0.  0.  0.  1. 16. 16.  6.  0.  0.  0.  0.  1. 16. 16.  6.
+0.  0.  0.  0.  0. 11. 16. 10.  0.  0.]
+[ 0.  0.  0.  4. 15. 12.  0.  0.  0.  0.  3. 16. 15. 14.  0.  0.  0.  0.
+8. 13.  8. 16.  0.  0.  0.  0.  1.  6. 15. 11.  0.  0.  0.  1.  8. 13.
+15.  1.  0.  0.  0.  9. 16. 16.  5.  0.  0.  0.  0.  3. 13. 16. 16. 11.
+5.  0.  0.  0.  0.  3. 11. 16.  9.  0.]
+[ 0.  0.  7. 15. 13.  1.  0.  0.  0.  8. 13.  6. 15.  4.  0.  0.  0.  2.
+1. 13. 13.  0.  0.  0.  0.  0.  2. 15. 11.  1.  0.  0.  0.  0.  0.  1.
+12. 12.  1.  0.  0.  0.  0.  0.  1. 10.  8.  0.  0.  0.  8.  4.  5. 14.
+9.  0.  0.  0.  7. 13. 13.  9.  0.  0.]
+[ 0.  0.  0.  1. 11.  0.  0.  0.  0.  0.  0.  7.  8.  0.  0.  0.  0.  0.
+1. 13.  6.  2.  2.  0.  0.  0.  7. 15.  0.  9.  8.  0.  0.  5. 16. 10.
+0. 16.  6.  0.  0.  4. 15. 16. 13. 16.  1.  0.  0.  0.  0.  3. 15. 10.
+0.  0.  0.  0.  0.  2. 16.  4.  0.  0.]]
+The targets for the first 5 entries: [0 1 2 3 4]
+The targets for the first 5 binary entries: (0, 1, 0, 1, 0)
+</code></pre>
+
+      <p>We can then use the restricted data and targets datasets as input to our function, assuming your function <code class="inline">binary_digit_clf()</code>:
+<pre><code class="blockcode">confuse_mx = binary_digit_clf(bd,bt,test_size=0.95)
+print(f'Confusion matrix:\n{confuse_mx}')
+disp = metrics.ConfusionMatrixDisplay(confusion_matrix=confuse_mx)
+#Use a different color map since the default is garish:
+disp.plot(cmap = "Purples")
+plt.title("Logistic Regression Classifier for Binary Digits")
+plt.show()</code></pre>
+        which will print:
+<pre><code class="datablock">Confusion matrix:
+[[172   0]
+[  4 166]]</code></pre>
+      and display:
+      <br>
+      <img src="https://stjohn.github.io/teaching/data/fall21/logReg_clf_confuse.png" height = 300>
+
+      <p>Another example with the same data, but different size for the data reserved for testing:
+        <pre><code class="blockcode">confuse_mx = binary_digit_clf(bd,bt)
+print(f'Confusion matrix:\n{confuse_mx}')</code></pre>
+        would print:
+        <pre><code class="datablock">Confusion matrix:
+[[43  0]
+[ 0 47]]</code></pre>
+
+<p>
+  Note:  you should submit a file with only the standard comments at the top, and this function.  The grading scripts will then import the file for testing.  If you attended lecture, include in the introductory comment the three lines detailed in <a href="work.html#cw2">Classwork 2</a>.</p>
+<br><br>
+
+<p><a name="cw8"><b>Classwork 8: </b> &emsp; <i>Due 2:30pm, Wednesday, 15 March.</i> &emsp;
+
+    Available during Lecture 8 on Gradescope, this classwork recaps linear algebra. To get the most out of this exercise, bring a laptop with you to lecture with a development environment (IDE) that has Python 3+ to work through in lecture.
+
+<p><a name="cw9"><b>Classwork 9: </b> &emsp; <i>Due 2:30pm, Wednesday, 22 March.</i> &emsp;
+
+    Available during Lecture 9 on Gradescope, this classwork is modeled on an analytic reasoning challenge of efficiently computing catchment areas (Voronoi diagrams) for NYC libraries.  To get the most out of this exercise, bring a device with you that can access Gradescope's online assignments.
+    
+    
+    <p></p>We introduced Principal Components Analysis and the number of components needed to capture the intrinistic dimension of the data set.  For this program, write a function that allows the user to explore how many dimensions are needed to see the underlying structure of images from the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_digits.html">sklearn digits dataset</a> (inspired by <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.09-principal-component-analysis.html">Python Data Science Handbook: Section 5.9</a> (PCA)).
+
+    <p> Write a function that approximates an image by summing up a fixed number of its components:
+
+      <ul>
+      <li> <code class = "inline">approxDigits(numComponents, coefficients, mean, components):</code>
+          This function has four inputs and returns an array containing the approximation:
+          <ul>
+              <li> <code class = "inline">numComponents</code>: the number of componets used in the approximation.  Expecting a value between 0 and 64.
+              <li> <code class = "inline">coefficients</code>: an array of coefficients, outputted from <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">PCA()</a>.
+              <li> <code class = "inline">mean</code>: an array representing the mean of the dataset.
+              <li> <code class = "inline">components</code>:  an array of the components computed by <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">PCA()</a> analysis.
+            </ul>
+
+            The function returns the approximation image (flattened array) of the mean and sum of the first <code class = "inline">numComponents</code>
+            terms (i.e. <code class = "inline">coefficients[i] * components[i]</code>).
+        </ul>
+
+
+
+
+
+    As discussed in <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.09-principal-component-analysis.html">Python Data Science Handbook: Section 5.9</a>, we can view the images as sums of the components.  For our
+    flattened images, we have 1D arrays of length 64.  Here's the first one from the dataset:
+    <pre><code class="datablock">[[ 0.  0.  5. 13.  9.  1.  0.  0.  0.  0. 13. 15. 10. 15.  5.  0.  0.  3. 15.  2.  0. 11.  8.  0.  0.  4. 12.  0.  0.  8.  8.  0.  0.  5.  8.  0.  0.  9.  8.  0.  0.  4. 11.  0.  1. 12.  7.  0.  0.  2. 14.  5. 10. 12.  0.  0.  0.  0.  6. 13. 10.  0.  0.  0.]</code></pre>
+    <p>
+    If we let <code class=inline>x1 = [1 0 ... 0]</code>,
+    <code class=inline>x2 = [0 1 0 ... 0]</code>, ...,
+    <code class=inline>x64 = [0 ... 0 1]</code> (vectors corresponding to the axis), then we can write our images, <code class=inline>im = [i1 i2 ... i64]</code>, as:
+    <pre><code class="datablock">im = x1*i1 + x2*i2 + ... + x64*i64
+        x1*0 + x2*0 + x3*5 + ... + x64*0</code></pre>
+    plugging in the values of <code class=inline>im</code> into the equation.
+
+    <p>
+    In a similar fashion, we can represent the image in terms of the axis,<code class=inline>c1, c2, ... c64</code>,  that the PCA analysis returns:
+    <pre><code class="datablock">im = mean + c1*i1 + c2*i2 + ... + c64*i64</code></pre>
+    since the axis of PCA are chosen so that the first one captures the most variance, the second the next most, etc.  The later axis capture very little variance and likely add litte to the image.  (For technical reasons, we include the mean.  The reason is similar to when we "center" multidimensional data at 0).
+
+    This can be very useful for reducing the dimension of the data set, for example, here is the first image from above on the left:
+    <p>
+    <img src = "../fall21/digit_adding_comps.png" width=90%>
+    <br>
+    The next image is the overall mean, and each subsequent image is adding another component to the previous.  For this particular scan, the mean plus its first component is enough to see that it's a 0.
+
+
+    <p> For example, assuming the function  is in <code class=inline>p46</code> and the appropriate libraries are loaded:
+      <pre><code class="blockcode">from sklearn.decomposition import PCA
+pca = PCA()
+Xproj = pca.fit_transform(digits.data)
+showDigit(pca.mean_, f"Mean for digits")
+plt.imshow(pca.mean_.reshape(8,8),cmap='binary', interpolation='nearest',clim=(0, 16))
+plt.title("Mean for digits")
+plt.show()
+approxAnswer = p46.approxDigits(8,Xproj[1068], pca.mean_, pca.components_)
+plt.imshow(approxAnswer.reshape(8,8),cmap='binary', interpolation='nearest',clim=(0, 16))
+plt.title("mean + 8 components for digits[1068]")
+plt.show()</code></pre>
+
+      would show the mean and summed with the first 8 components for
+      <code class=inline>digits[1068]</code>:
+
+      <p>
+      <img src="../fall21/digits_mean.png" height=200>
+      <img src="../fall21/digits_1068_8.png" height=200>
+  </p>
+
+        <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
+</p>
+<br><br>
+
+
+
+<p><a name="cw10"><b>Classwork 10: </b> &emsp; <i>Due 2:30pm, Wednesday, 29 March.</i> &emsp;
+  
+    <p>
+    Available during Lecture 10 on Gradescope, this classwork builds intuition on k-means clusters and serves as a basis for <a href="#p11">Program 11</a>.  To get the most out of this exercise, bring a device with you that can access Gradescope's online assignments.</p>
+
+<br><br>
+
+<br>Data Sources: <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd
+">911 System Calls (NYC OpenData)</a>
+     <br>Sample Datasets:
+      <ul>
+          <li> Small dataset (1 day of calls for 1 borough): <a href="../spr22/NYPD_Calls_Manhattan_4Jul2021.csv">NYPD_Calls_Manhattan_4Jul2021.csv</a>,
+          <li> Midnight calls in January 2021 (all boroughs): <a href="../spr22/NYPD_Calls_midnight_Jan2021.csv">NYPD_Calls_midnight_Jan2021.csv</a>,
+          <li> Larger dataset (1 month of calls for Queens): <a href="../spr22/NYPD_Calls_Queens_Jan2021.csv">NYPD_Calls_Queens_Jan2021.csv</a>
+      </ul><br></i>
+
+
+
+<p> For this program, we are focusing on ambulance calls in New York City.
+Decreasing ambulance response times improves outcomes and
+<a href="https://www.sciencedirect.com/science/article/pii/S1386505619303491">strategic placement</a> of ambulance stations and overall allocation has been shown an effective approach.  For example, here are all the calls for ambulances on 4 July 2021 in Manhattan (using Folium/Leaflet to create an interactive map):
+<p>
+<iframe src="../spr22/4_July_map.html" style="width: 60%; height: 550px" name="internal"></iframe>
+
+
+<p>To decide on where to "pre-place" ambulances, we will use K-means clustering, where "K" is the number of ambulances available for that shift.  For example, if there 2 ambulances available to be placed in Manhattan, we will look at previous ambulance calls for that shift and form 2 clusters and station each ambulance at the mean of the cluster.  If two more ambulances become available, we can recompute the K-means algorithm for K=4, and place those 4 ambulances, each at the mean of the cluster found, and similarly for K=8:
+
+
+<p><img src="../spr22/july4_clusters2.png" height="500">
+  <img src="../spr22/july4_clusters4.png" height="500">
+  <img src="../spr22/july4_clusters8.png" height="500">
+
+
+
+<p>The assignment is broken into the following functions to allow for unit testing:
+
+  <ul>
+    <li> <code class = "inline">make_df(file_name)</code>:
+      This function takes one input:
+      <ul>
+        <li> <code class = "inline">file_name</code>: the name of a CSV file containing <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd">911 System Calls</a> from OpenData NYC.
+      </ul>
+      The data is read into a DataFrame.  Rows that are have null values for the type description, incident date, incident time, latitute and longitude are dropped.
+      Only rows that contain <code class = "inline">AMBULANCE</code> as part of the <code class = "inline">TYP_DESC</code> are kept.  The resulting DataFrame is returned.
+      <br><i>Hint: see <a href="http://www.textbook.ds100.org/ch/13/text_strings.html">DS 100: Chapter 13</a> for using string methods within pandas.</i>
+
+
+    <li> <code class = "inline">compute_locations(df, num_clusters = 8, random_state = 2022)</code>:
+      This function takes three input:
+      <ul>
+        <li> <code class = "inline">df</code>: a DataFrame containing <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd">911 System Calls</a> from OpenData NYC.
+          <li> <code class = "inline">num_clusters</code>:  an integer representing the number of clusters.  The default value is <code class = "inline">8</code>.
+          <li> <code class = "inline">random_state</code>: the random seed used for <a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html">KMeans</a>. The default value is <code class = "inline">2022</code>.
+
+        </ul>
+        Runs the KMeans model with <code class = "inline">num_clusters</code> on the latitude and longitude data of the provided DataFrame.  Returns the cluster centers and predicted labels computed via the model.
+
+
+</ul>
+
+<br>
+<p>For example, if we use the small dataset from 4 July 2021:
+  <pre><code class="blockcode">df = make_df('NYPD_Calls_Manhattan_4Jul2021.csv')
+print(df[['INCIDENT_TIME','TYP_DESC','Latitude','Longitude']])
+</code></pre>
+  would print:
+  <pre><code class="datablock">     INCIDENT_TIME                             TYP_DESC   Latitude  Longitude
+7         00:01:51      AMBULANCE CASE: CARDIAC/OUTSIDE  40.724578 -73.992519
+27        00:06:12       AMBULANCE CASE: CARDIAC/INSIDE  40.807719 -73.964240
+51        00:12:12      AMBULANCE CASE: SERIOUS/TRANSIT  40.732019 -74.000734
+53        00:12:38           AMBULANCE CASE: EDP/INSIDE  40.789348 -73.947352
+54        00:12:38           AMBULANCE CASE: EDP/INSIDE  40.789348 -73.947352
+...            ...                                  ...        ...        ...
+5175      23:50:02         AMBULANCE CASE: WATER RESCUE  40.711839 -74.011234
+5176      23:50:02         AMBULANCE CASE: WATER RESCUE  40.711839 -74.011234
+5205      23:57:11  AMBULANCE CASE: UNCONSCIOUS/TRANSIT  40.732019 -74.000734
+5211      23:57:59           AMBULANCE CASE: EDP/INSIDE  40.827547 -73.937461
+5212      23:57:59           AMBULANCE CASE: EDP/INSIDE  40.827547 -73.937461
+
+[459 rows x 4 columns]</code></pre>
+
+Note that the original CSV file had over 5000 lines, only 459 of those were for ambulances calls.  The indices were not reset and refer to the line numbers of the original file.
+
+
+
+<p>We can make maps with the computed clusters.  We use the <code class = "inline">compute_locations</code> function with different values of <code class = "inline">num_clusters</code>.  Since we are repeating the same actions for <code class = "inline">K = 2, 4, 6</code>, we wrote a helper function to create the HTML maps:
+
+<pre><code class="blockcode">def make_map(df, num_clusters, out_file):
+    centers,labels = compute_locations(df,num_clusters = num_clusters)
+    df_map = df[ ['Latitude','Longitude','INCIDENT_TIME','INCIDENT_MIN','TYP_DESC'] ]
+    df_map = df_map.assign(Labels = labels)
+    m = folium.Map(location=[40.7678,-73.9645],zoom_start=13,tiles="cartodbpositron")
+    df_map.apply( lambda row: folium.CircleMarker(location=[row["Latitude"], row["Longitude"]],
+                                        radius=5, popup=(row['INCIDENT_TIME']+": "+row['TYP_DESC']),
+                                        color=cc(row['Labels'],num_clusters))
+                                        .add_to(m), axis=1)
+    for i in range(num_clusters):
+        x,y = centers[i]
+        folium.Marker(location=[x,y],popup = "Cluster "+str(i)).add_to(m)
+    m.save(out_file)
+
+make_map(df,2,'map_4_July_2clusters.html')
+make_map(df,4,'map_4_July_4clusters.html')
+make_map(df,8,'map_4_July_8clusters.html')</code></pre>
+
+Screenshots of the maps are displayed above.
+</p>
+<br><br><br>
+
+
+
+
+
+<p><a name="cw11"><b>Classwork 11: </b> &emsp; <i>Due 2:30pm, Wednesday, 19 April.</i> &emsp;
+
+    Available during Lecture 11 on Gradescope, this classwork reviews probability distributions and sampling.  To get the most out of this exercise, bring a device with you that can access Gradescope's online assignments.
+
+<p><a name="cw12"><b>Classwork 12: </b> &emsp; <i>Due 2:30pm, Wednesday, 26 April.</i> &emsp;
+
+  Available during Lecture 12 on Gradescope, this classwork focuses on empirical analysis of random variables.  To get the most out of this exercise, bring a laptop with you to lecture with a development environment (IDE) that has Python 3+ to work through in lecture.
+
+  <p>
+    Write a function:
+    <ul>
+        <li> <code class="inline">diceSim(D1,D2,trials)</code> that takes as input the number of sides on die 1 (<code class="inline">D1</code>) and
+        die2 (<code class="inline">D2</code>) and the number of trials.  Your function should repeatedly sum pairs of random numbers between 1 and <code class="inline">D1</code> and 1 and <code class="inline">D2</code> and keep track of how many times each sum occurs. The function returns a numpy array with the fraction each sum of rolls occured.
+      </ul>
+
+      <p>
+      Since the numbers are chosen at random, the fractions will differ some from run to run. One run of the function <code class="inline">print(p22.diceSim(6,6,10000))</code> resulted in:
+<pre><code class="datablock">
+  [0.     0.     0.0259 0.0615 0.0791 0.1086 0.139  0.1633 0.1385 0.114  0.0833 0.0587 0.0281]</code></pre>
+
+      or displayed using the code from <a href="http://www.textbook.ds100.org/ch/16/prob_random_vars.html">Section 16.1.1.</a>:
+      <p>
+      <img src="../fall21/dice_6_6.png" height=200>
+    </p>
+
+    <p>If you attended lecture, include the last three lines to the the introductory comment:
+      <pre><code class="blockcode">"""
+Name:  YOUR_NAME
+Email: YOUR_EMAIL
+Resources:  RESOURCES USED
+I attended lecture today.
+Row:  YOUR_ROW
+Seat:  YOUR_SEAT
+"""</pre></code>
+
+      If you did not attend lecture, do not include the above lines.
+
+
+    Write a program that asks the user for the name of an input HTML file and the name of an output CSV file.  Your program should use regular expressions (see <a href="http://www.textbook.ds100.org/ch/12/text_re.html">Chapter 12.4</a> for using the <code class="inline">re</code> package in Python) to find all links in the input file and store the link text and URL as columns:  <code class="inline">Title</code> and <code class="inline">URL</code> in the CSV file specified by the user.  For the URL, strip off the leading <code class="inline">https://</code> or <code class="inline">http://</code> and any trailing slashes (<code class="inline">/</code>):
+
+    <p>For example, if the input file is:
+
+  <pre><code class="datablock">
+&lt;html>
+&lt;head>&lt;title>Simple HTML File&lt;/title>&lt;/head>
+
+&lt;body>
+  &lt;p> Here's a link for &lt;a href="http://www.hunter.</i>cuny.edu/csci">Hunter CS Department&lt;/a>
+  and for &lt;a href="https://stjohn.github.io/teaching/data/fall21/index.html">CSci 39542&lt;/a>.  &lt;/p>
+
+  &lt;p> And for &lt;a href="https://www.google.com/">google&lt;/a>
+&lt;/body>
+&lt;/html>
+  </code></pre>
+
+    Then a sample run of the program:
+<pre><code class="blockcode">Enter input file name: simple.html
+Enter output file name:  links.csv</code></pre>
+
+    And the <code class="inline">links.csv</code> would be:
+  <pre><code class="datablock">Title,URL
+Hunter CS Department,www.hunter.</i>cuny.edu/csci
+CSci 39542,stjohn.github.io/teaching/data/fall21/index.html
+google,www.google.com</code></pre>
+  </p>
+
+
+
+<p><a name="cw13"><b>Classwork 13: </b> &emsp; <i>Due 2:30pm, Wednesday, 4 May.</i> &emsp;
+   
+  Available during Lecture 13 on Gradescope, this classwork focuses on gradient descent.  To get the most out of this exercise, bring a device with you that can access Gradescope's online assignments.
+
+<p><a name="cw14"><b>Classwork 14: </b> &emsp; <i>Due 2:30pm, Wednesday, 11 May.</i> &emsp;
+   
+  Available during Lecture 14 on Gradescope, this classwork was a reviewed the first half of the course, following the topics in <a href="https://ds100.org/sp22/resources/assets/exams/fa19/fa19midterm1.pdf">DS100 Fall 19 Midterm</a>.  To get the most out of this exercise, bring a device with you that can access Gradescope's online assignments.
+
+<p><a name="cw15"><b>Classwork 15: </b> &emsp; <i>Due 4pm, Thursday, 24 March.</i> &emsp;
+    Available during Lecture 15 on Gradescope, this classwork focuses on regularization.  To get the most out of this exercise, bring a device with you that can access Gradescope's online assignments.
+
+<p><a name="cw16"><b>Classwork 16: </b> &emsp; <i>Due 4pm, Monday, 28 March.</i> &emsp;
+    Available during Lecture 16 on Gradescope, this classwork focuses on computing loss functions.  To get the most out of this exercise, bring a device with you that can access Gradescope's online assignments.
+
+<p><a name="cw17"><b>Classwork 17: </b> &emsp; <i>Due 4pm, Thursday, 31 March.</i> &emsp;
+    Available during Lecture 17 on Gradescope, this classwork focuses on nominal data.  To get the most out of this exercise, bring a device with you that can access Gradescope's online assignments.
+
+<p><a name="cw18"><b>Classwork 18: </b> &emsp; <i>Due 4pm, Monday, 4 April.</i> &emsp;
+    Available during Lecture 18 on Gradescope, this classwork focuses on linear separability and classification.  To get the most out of this exercise, bring a device with you that can access Gradescope's online assignments.
+
+<p><a name="cw19"><b>Classwork 19: </b> &emsp; <i>Due 4pm, Thursday, 7 April.</i> &emsp;
+    Available during Lecture 19 on Gradescope, this classwork focuses on linear algebra.  To get the most out of this exercise, bring a device with you that can access Gradescope's online assignments.
+
+
+<p><a name="cw20"><b>Classwork 20: </b> &emsp; <i>Due 4pm, Monday, 11 April.</i> &emsp;
+    Available during Lecture 20 on Gradescope, this classwork focuses on intrinsic dimensionality.  To get the most out of this exercise, bring a device with you that can access Gradescope's online assignments.
+
+
+<p><a name="cw21"><b>Classwork 21: </b> &emsp; <i>Due 4pm, Thursday, 14 April.</i> &emsp;
+    Available during Lecture 21 on Gradescope, this classwork focuses on distance metrics.  To get the most out of this exercise, bring a device with you that can access Gradescope's online assignments.
+    <p> Using <a href="https://developers.google.com/maps/documentation/distance-matrix/overview">Google Maps API</a>, we generated the amount of time it would take to travel between the following landmarks:
+    <ul>
+        <li> Bronx Zoo (Bronx),
+        <li> Empire State Building (Manhattan),
+        <li> National Lighthouse Museum (Staten Island),
+        <li> FDR Four Freedoms Park (Roosevelt Island),
+        <li> Citi Field (Queens),
+        <li> Coney Island (Brooklyn), and
+        <li> Hunter College (Manhattan)
+    </ul>
+    by driving, transit, and walking
+    (files:
+    <a href="../fall21/nyc_landmarks_driving.csv">nyc_landmarks_driving.csv</a>,
+    <a href="../fall21/nyc_landmarks_transit.csv">nyc_landmarks_transit.csv</a>,
+    <a href="../fall21/nyc_landmarks_walking.csv">nyc_landmarks_walking.csv</a>
+    ).
+
+    <p>
+    Of the three, which best estimates the (aerial) distance?
+    <p>
+    <iframe src="../fall21/nycMap.html" style="height: 400px" name="internal"></iframe>
+
+
+<p><a name="cw22"><b>Classwork 22: </b> &emsp; <i>Due 4pm, Monday, 25 April.</i> &emsp;
+    Available during Lecture 22 on Gradescope, this classwork focuses on supervised vs. unsupervised learning.  To get the most out of this exercise, bring a device with you that can access Gradescope's online assignments.
+
+<p><a name="cw23"><b>Classwork 23: </b> &emsp; <i>Due 4pm, Monday, 28 April.</i> &emsp;
+    Available during Lecture 23 on Gradescope, this classwork focuses on clustering via K-means.  To get the most out of this exercise, bring a device with you that can access Gradescope's online assignments.
+
+<p><a name="cw24"><b>Classwork 24: </b> &emsp; <i>Due midnight, Wednesday, 4 May.</i> &emsp;
+    Available during Lecture 24 on Gradescope, this classwork asks your final examination plans (e.g. Do you need a laptop for the coding exam?  Would you prefer a left-handed desk for the exam? Do you have accommodations from the Office of Accessability? Do you need to take the exam(s) early?, etc.).  If no survey is submitted, the default is that you will take the exams during the regularly assigned times at a right-handed desk and will bring your own laptop to the coding exam.
+
+<p><a name="cw25"><b>Classwork 25: </b> &emsp; <i>Due 4pm, Thursday, 5 May.</i> &emsp;
+    Available during Lecture 25 on Gradescope, this classwork focuses on SQL.  To get the most out of this exercise, bring a device with you that can access Gradescope's online assignments.
+
+<p><a name="cw26"><b>Classwork 26: </b> &emsp; <i>Due 4pm, Monday, 9 May.</i> &emsp;
+    Available during Lecture 26 on Gradescope, this classwork is a review for the final examinations.  To get the most out of this exercise, bring a device with you that can access Gradescope's online assignments.
+
+<p><a name="cw27"><b>Classwork 27: </b> &emsp; <i>Due 4pm, Thursday, 12 May.</i> &emsp;
+    Available during Lecture 27 on Gradescope, this classwork is on paper at your assigned seat for the exams (or in the front section, if you have requested to take either exam at an alternate time).
+
+-->
+<br><br><br><br>
+<hr>
+
+<a name="midterm">
+<h2>Midterm Exam</h2>
+</a>
+
+<i>More details to come...</i>
+
+<br><br><br><br>
+<hr>
+
+<a name="hw">
+<h2>Homework</h2>
+</a>
+
+Unless otherwise noted, homework programs are submitted on the course's Gradescope site and are written in Python.  The autograders expect a <code class="inline">.py</code> file and do not accept iPython notebooks.
+Also, to receive full credit, the code should be compatible with Python 3.6 (the default for the Gradescope autograders).
+
+<br>
+<br>
+<br>
+
+<p><i>More details to come...</i></p>
+
+<!--
+<p></p><p><a name="p1"><b><a href="p1.html">Program 1: School Stats.</a></b></b> &emsp; <i>Due 10am, Wednesday, 1 February.</i>
+  <br>Learning Objective: to build competency with core Python dictionaries and string function. 
+
+
+<br>
+
+
+<p></p><p><b><a name="p2"><a href="p2.html">Program 2: Tree Census.</a></b></b> &emsp; <i>Due 10am, Wednesday, 8 February.</i>
+  <br>Learning Objective: to refresh students' knowledge of Pandas' functionality to manipulate and create columns from formatted data.
+
+<br>
+
+<p><a name="p3"><b><a href="p3.html">Program 3: Trees & Neighborhoods.</a></b></b> &emsp; <i>Due 10am, Wednesday, 15 February.</i>
+  <br>Learning Objective: to enhance data cleaning skills from reading in raw data, formatting data, and imputing values.  
+
+<br>
+<p><a name="p4"><b><a href="p4.html">Program 4: City Dogs.</a></b></b> &emsp; <i>Due 10am, Wednesday, 22 February.</i>
+  <br>Learning Objective: to enhance data cleaning skills from reading in raw data, formatting data, and imputing values, and to evaluate models using loss functions.   
+
+<br>
+<p><a name="p5"><b><a href="p5.html">Program 5: Tech Jobs.</a></b></b> &emsp; <i>Due 10am, Wednesday, 1 March.</i>
+  <br>Learning Objective: to enhance on statistical skills and understanding via computation linear regression and loss functions.</i>
+
+
+<br>
+   <p><a name="p6"><b><a href="p6.html">Program 6: Taxi Tips.</a></b></b> &emsp; <i>Due 10am, Wednesday, 8 March.
+     <br>Learning Objective: to give students practice on implementing model from start to finish and to strengthen understanding of model drift. </i>
+
+
+<br>
+    <p><a name="p7"><b><a href="p7.html">Program 7: Commodity Pricing.</a></b></b> &emsp; <i>Due 10am, Wednesday, 15 March.
+    <br>Learning Objective: to build models with polynomial features and use regularization techniques to better fit models.</i>
+
+
+<br>
+  <p><a name="p8"><b><a href="p8.html">Program 8: Ticket Predictor.</a></b> &emsp; <i>Due 10am, Wednesday, 22 March.
+    <br>Learning Objective: to train and validate different models for classifying data.</i>
+
+
+<br>
+<p><a name="p9"><b><a href="p9.html">Program 9: State Migration Flow</a></b> &emsp; <i>Due 10am, Wednesday, <strike>29 March</strike> 19 April.
+  <br>Learning Objective:  to increase facility with standard linear algebra approaches for modeling data.</i>
+
+-->
+
+
+
+
+<br><br><br><br>
+<hr>
+<a name="project">
+<h2>Project</h2>
+</a>
+
+A final project is optional for this course.
+Projects should synthesize the skills acquired in the course to analyze and visualize data on a topic of your choosing.  It is your chance to demonstrate what you have learned, your creativity, and a project that you are passionate about.  The intended audience for your project is your classmates as well as tech recruiters and potential employers.
+
+<p>
+The grade for the project is a combination of grades earned on the milestones (e.g. deadlines during the semester to keep the projects on track) and the overall submitted program. If you choose not to complete the project, your final exam grade will replace its portion of the overall grade.
+
+
+<p><i>More details to come...</i></p>
+<!--
+<h3>Milestones</h3>
+
+The project is broken down into smaller pieces that must be submitted by the deadlines below.  For details of each milestone, see the links.  The project is worth 20% of the final grade.  The point breakdown is listed as well as the submission windows and deadlines.  All components of the project are submitted via Gradescope unless other noted.
+
+
+<p>
+<table class="handouts" border="1">
+<tr>
+	<th>Deadline:</th><th>Deliverables:</th><th>Points:</th>
+  <th>Submission Window Opens:</th>
+</tr>
+<tr>
+	<td>Wed, March 1, 2023</td>
+  <td><a href="#opt_in">Opt-In</a></td>
+  <td></td>
+  <td>Wed, February 22, 2023</td>
+</tr>
+<tr>
+	<td>Sun, March 12, 2023 </td>
+  <td><a href="#proposal">Proposal</a></td>
+  <td>50</td>
+  <td>Wed, March 1, 2023</td>
+</tr>
+<tr>
+	<td>Wed, March 29, 2023</td>
+  <td><a href="#check_in">Interim Check-In</a></td>
+  <td>25</strike></td>
+  <td>Wed, March 22, 2023</td>
+</tr>
+
+<tr>
+	<td>Fri, May 5, 2023</td>
+  <td><a href="#complete">Complete Project & Website</a></td>
+  <td>100</td>
+  <td>Wed, March 22, 2023</td>
+</tr>
+
+
+<tr>
+	<td>Fri, May 5, 2023</td><td><a href="#presentation">Project Demonstration</a></td>
+  <td>25</td>
+  <td>Wed, March 22, 2023</td>
+</tr>
+<tr>
+	<th colspan=2>Total Points:</th>
+  <td>200</td>
+  <td></td>
+</tr>
+
+
+</table>
+
+
+<br><br><br><br>
+<h3>Project Opt-In</h3>
+<a name="opt_in"></a>
+
+Review the following FAQs before filling out the Project Opt-In form (available on Gradescope on 14 February).
+
+<ul>
+  <li> <b>Is the final project mandatory?</b><br>
+No, the final project is optional for this course.
+
+  <li> <b>Will the project be difficult?</b><br>
+Expect the project to be time consuming because we will hold you to a high standard.  However, in turn, we hope that this will produce a high quality project that you could proudly add to your coding portfolio, to showcase when seeking internships and full-time jobs.
+
+  <li> <b>What counts as "opting in" to the project?</b><br>
+That's easy.  Your response to this Gradescope assignment counts as your "opt in".  If you respond "No" or do not submit this assignment before the deadline due date, we will count you as having "opted out".
+
+  <li> <b>What happens after I "opt in"?</b><br>
+If you "opt in", we will continue to send you information on completing the next steps for the final project via Gradescope.  If you "opt out", you will no longer receive follow up assignments for the project.
+
+  <li> <b>Does "opting in" place me under obligation to complete the project?</b><br>
+Yes and no.  We would like you to seriously consider your availability before making this commitment.  Likewise, we would like to focus our time to help those who are serious about doing this project.  That being said, if you decide midway through the process that you no longer have the time nor capacity to complete the project, no harm no foul, your final written exam will once again be weighted 40% of your cumulative grade (see more in the question below).
+
+  <li> <b>How does the final project factor into my final grade?</b><br>
+If you choose to do the project, your Written Exam will be worth 20% of your overall course grade:
+  <ul>
+      <li> Optional Project: 20%
+      <li> Final Exam - Written Exam: 20%
+      <li> Final Exam - Coding Exam: 20%
+  </ul>
+If you choose not to do the project, your Written Exam will be worth 40% of your overall course grade:
+
+<ul>
+    <li> Final Exam - Written Exam: 40%
+    <li> Final Exam - Coding Exam: 20%
+</ul>
+For more details, see the <a href="syl.html">syllabus.</a>
+</ul>
+
+<br>
+<h3>Project Proposal</h3>
+<a name="proposal"></a>
+<p>(50 points)</p>
+<p>
+
+The window for submitting proposals opens 1 March.  If you would like feedback and the opportunity to resubmit for a higher grade, submit early in the window.  Feel free to re-submit as many times as you like, up until the assignment deadline.  The instructing team will work hard to give feedback on your submission as quickly as possible, and we will grade them in the order they were received.
+
+<p>The proposal is split into the following sections:
+  <ul>
+    <li> <b>Overview:</b> (10 Points)<br>
+    Think of the overview section as the equivalent of an abstract in a research paper or an
+    <a href="https://en.wikipedia.org/wiki/Elevator_pitch">elevator pitch</a> for the project.  The following questions will help you frame your thoughts if you ever have to succinctly describe your project in an interview:
+    <p>
+    <ul>
+      <li>Title:  should capture the topic/theme of your project.
+      <li>Objective:  In 1 to 2 sentences, succinctly describe what you are hoping to accomplish in this project in simple, non technical English.
+      <li>Importance:  In 1 to 2 sentences, describe why this project has personal significance to you.
+      <li>Originality: In 1 to 2 sentences, describe why you believe this project idea is unique and original.
+    </ul>
+    <br>
+    <li><b>Background Research:</b> (10 Points)<br>
+      In this section, please prove to us that you have already done research in the project you are proposing by answering the questions below.
+      <p>
+      <ul>
+          <li>Key Term Definitions:  What are some terms specific to your project that someone else might not know?  List and define these terms here.
+          <li> Existing Solutions: What are some existing solutions (if any) that are already available for your problem.  What are the drawbacks to these solutions?
+      </ul>
+      <br>
+      <li><b>Data:</b> (10 points)<br>
+        In order to write a successful proposal, you must already have obtained the data and done basic exploratory analysis on it, enough so that you feel confident you have enough data to answer the questions you wish to explore. We cannot stress this enough:  <b>You must use NYC specific data that is publicly available.</b>  If your data does not fit this criteria, your proposal will be rejected.
+
+        <p> The following questions will guide you through some criteria you should be using to assess if the data you have is enough for a successful project.
+          <ul>
+              <li>Data Source: Include a list of your planned data source(s), complete with URL(s) for downloading.  All data must be NYC specific and must be publicly available.
+
+              <li> Data Volume: How many columns in your dataset?  How many rows?  If you are joining multiple datasets together, please tell us how many rows and columns remain after the data has been merged into a single dataset.
+
+              <li> Data Richness: What type of data is in your dataset?  You don't need to describe every column.  A generalized overview is fine.  (e.g. "My data contains 311 complaint types, the date the complaints are created and closed, as well as a description of the complaint").  If you found a data dictionary, feel free to link us to that as well.
+            </ul><br>
+        <li><b>The Predictive Model:</b> (10 Points)<br>
+
+            A strong data science project should demonstrate your knowledge of predictive modeling.  We will be covering models extensively in the latter half of the course.  At this stage of the proposal writing, we will not have covered all the modeling techniques yet, so it's okay to be a bit vague here.
+
+            <p> Hint: Look ahead in the textbook at the chapters on "Linear Modeling" and "Multiple Linear Modeling" for the running examples of models.
+
+            <ul>
+                <li> The Predicted (Y):  Which column in the dataset are you interested in predicting?
+                <li> The Predictors (X's): Which column(s) in the dataset will be used to predict the column listed above?
+                <li> Python Dependencies: What Python libraries and dependencies will you be using?
+                <li> Security and Privacy Considerations: Will you be working with personal identifiable information (PII)? Can your model be mis-used for evil, not good? If so, how do you plan to mitigate that?
+           </ul>
+           <br>
+       <li><b>The Visualization:</b> (10 Points)<br>
+          A key part of making a great data science portfolio are the visualizations.  This is a quick and elegant way of showcasing your work during the job hunting process, even to a non-technical audience.
+
+          <p>Thus, a major part of this final project will center around making the following three types of visualizations with the data you choose.
+          If your data cannot support all three types of visualizations, then please, reconsider choosing another dataset.
+
+          <ul>
+            <li>Summary Statistics Plots: Write out in detail at least 3 types of summary statistics graphs you plan to make with your data (e.g. "I plan to make a histogram using the column X").
+            <li>Map Graphs: Write out in detail how you plan to make at least 1 map data visualization using your data (e.g. "I plan to create a choropleth map to visualize the volume of 311 service requests in NYC in 2021").
+            <li>Model Performance Plots: At the time of writing this proposal, we would not have covered how to visualize model accuracy yet.  So, no worries if this part is still confusing to you.  Give it your best shot on explaining what kind of visualization you think will best showcase that your model is "successful" and "accurate".
+        </ul>
+        <br>
+</ul>
+<br>
+<h3>Project Interim Check-In</h3>
+<a name="check_in"></a>
+<p>(25 points)</p>
+<p> The interim check-in is submitted via Gradescope and contains:
+
+<ul>
+    <li><b>Title and Major Changes:</b> (1 point)
+      <ul>
+        <li>Title:  should capture the topic/theme of your project.
+        <li>Major Changes:  Has there been any changes to the focus of your project since the project proposal?  If none, write "None".  <br>
+          If there has been changes, explain why (e.g. found more data to enrich my dataset than what was originally described in the proposal).      
+      </ul>
+    </li><br>
+    <li><b>Summary Statistics:</b> (8 points)<br>
+      <ul>
+        <li>Upload the Visualization:  Upload at least one summary statistics plot you've made so far. 
+          (File format accepted: PNG, JPEG, JPG)</li>
+        <li>Inference Based on the Visualization:  In your own words, what can you infer from this graph?</li>
+      </ul>
+    </li><br>
+    <li><b>Map Graphs:</b> (8 points)<br>
+      <ul>
+        <li>Upload the Visualization:  Upload at least one map graph you've made so far. 
+          (File format accepted: PNG, JPEG, JPG)</li>
+        <li>Inference Based on the Visualization:  In your own words, what can you infer from this graph?</li>
+      </ul>      
+    </li> <br>
+    <li><b>Model Performance Plots:</b> (8 points)<br>
+      <ul>
+        <li>Upload the Visualization:  Upload at least one model accuracy plot you've made so far. 
+          (File format accepted: PNG, JPEG, JPG)</li>
+        <li>Inference Based on the Visualization:  In your own words, what can you infer from this graph?</li>
+      </ul>      
+    </li>      
+</ul>
+<br><br>
+<p>
+<h3>Final Project & Website Submission</h3>
+<a name="complete"></a>
+<p>(100 points)</p>
+<p> <b>Submission Instructions</b>:
+    <ul>
+        <li> Submit on Gradescope under "3. Final Project & Website Submission". </li>
+        <li> Submit your code as one single Python .py file. </li>
+        <li> Submit the URL of the website in the introductory comment section of the Python file, preceded by "URL:" so that it can be picked up by the Autograder. </li>
+        <li> Submit the code you wrote for your project in the body of the Python file.  </li>
+    </ul>
+
+<p>For example, for the student, Thomas Hunter, the opening comment of his project might be:
+<pre><code class="blockcode">
+"""
+Name:       Thomas Hunter
+Email:      thomas.hunter1870@hunter.cuny.edu
+Resources:  Used python.org as a reminder of Python 3 print statements.
+Title:      My project
+URL:        https://www.myproject.com
+"""
+</pre></code>
+
+and then followed by the rest of the Python scripts.
+
+<p>The Gradescope Autograder will check for the Python file and that includes the title, the resources, and the URL of your website. After the submission deadline, the code and the website will be graded manually for code quality and data science inference.
+
+<p>For manual grading of the project, we are grading for the following:
+  <ul>
+    <li> <b>Overall Code Quality (code):</b> (25 points) <br>  We are looking for production level code.  No stream of consciousness scripting please.  Everything should be in functions, cleanly formatted, and optimized for performance.
+    <br><br>
+    <li> <b>Good Use of the Data (code & website):</b> (25 points) <br>  We are looking for evidence that you did analysis on a non-trivial sized dataset and used the data in a meaningful way, drawing from the data cleaning, inference, visualization, and predictive modeling techniques you've learned this semester.  Please use the questions in the project proposal and the interim check-in as guidelines for what we are expecting from you.
+    <br><br>
+    <li> <b>Model Inference (code & website):</b> (25 points) <br>  We covered a number of predictive modeling techniques in this course, from regularization to linear regression to classification to to SVMs to more.  In both the proposal and the interim check in, we have asked you to brainstorm and show us some interim output on the predictive model(s) you have used on your data.  Now for the final submission, we ask that you show us 1) the code and output for the final model you chose and 2) the reasoning behind why you chose this model and finally, 3) any inference, interpretation, and insights from the final model results.
+    <br><br>
+    <li> <b>High Quality Data Visualizations (code & website):</b> (25 points) <br>  Just like the project interim check-in.  We would like to see three types of visualizations: 1) at least one exploratory data analysis graph 2) at least one map related graph and 3) at least one model inference graph.  All graphs must be made by you, in Python.  Please also make the code available in the Python file submission.  If you've already made the visualizations during the interim check-in, we hope that you would take the time to clean them up so that they could be a great show-case of your data visualization skills on your website.
+    <br><br>
+        </li>
+    </ul>
+
+    <br>
+<p><h3>Project Demonstration</h3></p>
+<a name="presentation"></a>
+<p>(25 points)</p>
+<p> For the last part of the project, we would like to you to prepare a lightning demo.  This composes of two parts:
+  <ul>
+    <li>(10 points) Two slides that serve as a graphical overview ("lightning talk" slides) of your project. </li>
+    <ul>
+      <li>To be submitted under "4. Final Project Demonstration - Slides"</li>
+      <ul>
+        <li> Slide 1: the front image and title from website, as well as your name</li>
+        <li> Slide 2: discoveries & conclusions (with images)</li>  
+      </ul>
+      <li> It's completely acceptable to re-use what you wrote on the website and the data visualizations you've submitted for "3. Final Project & Website Submission" here.</li>
+    </ul>
+    <br>  
+    <li>(15 points) An in-person 30 second demo of your project <b>OR</b> a pre-recorded 30 second video demo.</li>
+    <ul>
+      <li>Due date is May 10th. </li>
+      <li>Grading rubric is the same whether you choose in-person or pre-recorded.  More details under "5. Final Project Demonstration - Video Recording". </li>
+      <li>If you choose to do this in person, please note you will be expected present in class, in-person, on May 10th, after the coding exam. </li>
+      <li>If you choose to do this via pre-recorded video recording, the video submission will be handled via upload under "5. Final Project Demonstration - Video Recording". Please see more instructions there.</li>      
+    </ul>
+  </ul>
+  
+-->
+
+
+  <br><br><br><br><br><br>
+
+
+
+<hr>
+<a name="final">
+<h2>Final Examination</h2>
+</a>
+
+<i>More details to come...</i>
+<!--
+<p>
+The final exam has two parts:
+  <ul>
+    <li> <a href="#codingExam">Coding Exam</a>: given on the last day of class, <b>Wednesday, 10 May, 11:30am-2:15pm</b>, in the style of the weekly course quizzes.
+    <li> <a href="#writtenExam">Written Exam</a>: given during finals week on the day and time assigned by the registrar: <b>Wednesday, 17 May, 11:30 am-1:30pm</b>.
+  </ul>
+Both parts are required and are comprehensive, covering all the material of the course.
+For grading details, see the <a href="syl.html">syllabus.</a>
+
+<p>
+
+</p>For those who requested special accommodations:
+  <ul>
+      <li> If you submitted a request on the Gradescope poll "Final Exam Plans" for a borrowed laptop, your seat will be up front on the day of the Coding Exam.
+      <li> If you submitted a request for a left-handed desk, this is actually no longer relevant because we are in the same lecture room as usual, with bench table set-up.
+      <li> For those taking the exams at alternate times (for either exam), we will reach out and coordinate with you separately.
+      <li> If you did not submit a response for the Gradescope poll "Final Exam Plans", we will assume that you are taking the exam at the regular time, using your own laptop, and at a right-handed desk.  Your assigned seat is alphabetical by last name.
+  </ul>
+
+
+<br><br>
+<a name="codingExam">
+<h3>Coding Examination</h3>
+</a>
+
+The coding exam is on <b>Wednesday, 10 May, 11:30am-2:15pm</b>, in the style of the weekly course quizzes.
+
+<p><b>Logistics:</b>
+  <ul>
+    <li> The coding exam is administered on HackerRank, using Python 3.6+, libraries used in programming assignments and quizzes, and SQL.
+    <li> It is given in two 30-minute parts with a short break in between.
+    <li> There are multiple versions of the exam.  To access your version, use the passwords on the attendance sheet at your assigned seat.
+    <li> To get credit for the exam, you must also turn in the signed attendance sheet before leaving.
+</ul>
+
+<p><b>Exam Rules:</b>
+  <ul>
+    <li> Leave your Hunter College ID on your desk to be checked during the exam.
+    <li> You may have one 8.5"x11" page of notes (content written on front and back).
+    <li> The exam must be taken on a laptop or tablet computer (no phones). You may use your own laptop or a department laptop (must be request in advance).
+    <li> You may not seek outside help during the exam, including leaving the window once
+you have started the exam.
+  </ul>
+
+<p><b>Preparing:</b>  The exam covers the material covered in lecture and classwork, programming assignments and quizzes, as well as the reading.  The coding exam follows the same style as the quizzes.  To prepare:
+
+<ul>
+  <li> Bring the laptop (and its charging cables) you plan to use to the lecture on Wednesday, 10 May.  Test that the power outlet at your assigned seat works then, so, adjustments can be made before the exam.
+  <li> The past quiz descriptions and solutions are available on Blackboard.  Work through all the problems, in quiz-like conditions (limited time, no outside help).  Think about variations: what could we ask that's similar?  The quiz problems (or parts of them) make excellent exam questions.
+  <li> Structure the programming assignments as quizzes: set a 20 minute timer and do each function from the assignments as a quiz. The programming assignments (or parts of them) make excellent exam questions.
+  <li> See Lectures 12 and 13 for more hints on studying for coding challenges.
+</ul>
+
+
+<br><br>
+<a name="writtenExam">
+<h3>Written Examination</h3>
+</a>
+
+The written exam is <b>on Wednesday, 17 May, 11:30am-1:30pm</b>.
+
+<p><b>Logistics:</b>
+  <ul>
+    <li> The assigned seating for the written exam will be the same as the coding exam (see above for details).
+    <li> To get credit for the exam, you must also turn in the signed attendance sheet before leaving.
+  </ul>
+
+<p><b>Exam Rules:</b>
+  <ul>
+    <li> Leave your Hunter College ID on your desk to be checked during the exam.
+    <li> You may have one 8.5"x11" page of notes (content written on front and back).
+    <li> You may not seek outside help during the exam and no electronics are allowed including computers, phones, smart watches, etc.
+  </ul>
+
+<p><b>Format and Preparing:</b>
+  <ul>
+    <li> The first pages of the exam include the <a href="https://ds100.org/sp22/resources/assets/exams/sp22/mt1_reference_sheet.pdf">DS 100 Reference Sheet</a>.  Read over it as your design your single sheet of notes, since using the reference sheet could open up room for additional information on your notesheet.
+    <li> The written exam has 10 multiple-part questions on the material covered in lecture and classwork, programming assignments and quizzes, as well as the reading.
+    <li> The questions are similar to those given for past <a href="https://ds100.org/sp22/resources/#exam-resources">DS 100 exams</a>.  Their website contains the exams, as well as solutions.  While we used their textbook, our course had slightly different focus (most notably, less statistics), as such not all problems are on their exams fit our course.  
+    --> 
+    <!--
+    Here is a list of problems from their exams that are good samples for our exam:
+      <ul>
+          <li> <a href="https://ds100.org/sp22/resources/assets/exams/sp22/sp22_mt2.pdf">Spring 2022 Final:</a> 1a-c,2,4,6a,12
+          <li> <a href="https://ds100.org/sp22/resources/assets/exams/sp22/sp22_mt2.pdf">Spring 2022 Midterm 2:</a> 1, 6b
+          <li> <a href="https://ds100.org/sp22/resources/assets/exams/sp22/sp22_mt1.pdf">Spring 2022 Midterm 1:</a> 1a-d, 2-4, 7a, 8
+          <li>  <a href="https://ds100.org/sp22/resources/assets/exams/fa21/fa21mt.pdf">Fall 2021 Midterm:</a> 2d, 5-6b, 7
+          <li> <a href="https://ds100.org/sp22/resources/assets/exams/su21/su21final.pdf">Summer 2021 Final:</a> 6a-c, 7, 10a-d, 12a-b, 14c-f, 16e-f
+          <li> <a href="https://ds100.org/sp22/resources/assets/exams/su21/su21mt.pdf">Summer 2021 Midterm:</a> 2a-b, 4-9
+          <li> <a href="https://ds100.org/sp22/resources/assets/exams/fa20/fa20final.pdf">Fall 2020 Final:</a> 2-5a, 9a, 10a,11a
+          <li> <a href="https://ds100.org/sp22/resources/assets/exams/fa20/fa20mt.pdf">Fall 2020 Midterm:</a> 3-5            
+      </ul>
+    -->
+
+
+
+</div>
+</body>
+</html>
