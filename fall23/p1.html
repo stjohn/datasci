@@ -1,0 +1,573 @@
+<!DOCTYPE doctype PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <title>Program 1, CSci 39542: Data Science, Hunter College</title>
+</head>
+<STYLE>A {text-decoration: none;}
+th, td { padding: 5px; }
+code {
+  background-color: #eeeeee;
+}
+.inline {
+  padding: 1px;
+}
+.blockcode {
+  border: 1px solid #999999;
+  display: block;
+  padding-left: 10px;
+  padding-top : 2px;
+  padding-bottom : 2px;
+  margin: 5px;
+}
+.datablock {
+  border: 1px solid #eeeeee;
+  display: block;
+  padding: 7px;
+  padding-top : 0px;
+  margin: 5px;
+}
+</STYLE>
+<body>
+
+
+<div style="margin: 15px;width:100%;">
+    <span style= "float: left;font-size:larger"><a href="index.html">CSci 39542</a></span>
+    <span style= "float: right">
+      <a href="syl.html">Syllabus</a>&nbsp;&nbsp;&nbsp;
+      <a href="resources.html">Resources</a>&nbsp;&nbsp;&nbsp;
+      <a href="work.html">Coursework</a><!--&nbsp;&nbsp;&nbsp;
+      <a href="faq.html">FAQ</a>-->
+    </span>
+</div>
+
+<br>
+<br>
+<hr>
+
+<div style="margin:50px">
+
+
+<h2>Program 1:  School Counts
+  <br>CSci 39542: Introduction to Data Science<br>
+<a href="http://www.hunter.cuny.edu/csci">Department of Computer Science</a><br>
+<a href="https://hunter.cuny.edu">Hunter College</a>, <a href="https://www.cuny.edu">City University of New York</a><br>
+Spring 2023<br><br>
+</h2>
+
+
+<hr>
+<a href="work.html#cw">Classwork</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#quizzes">Quizzes</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#hw">Homework</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#project">Project</a>&nbsp;&nbsp;&nbsp;
+<hr>
+
+<object width=100% height=50% type="text/html" data="generalNotes.html" border="0"
+   style="overflow: hidden;">
+</object>
+<hr>
+
+<h2>Program Description</h2>
+
+
+<p><a name="p1"><b>Program 1: School Counts.</b></b> &emsp; <i>Due noon, Friday, 8 September.
+  <br>Learning Objective: to refresh students' knowledge of dictionaries and string functions of core Python, use constant models, and build competency with open source data portals.
+  <br>Available Libraries:  Core Python 3.6+ only.
+  <br>Data Sources: NYC Open Data: <a href="https://data.cityofnewyork.us/Education/2021-DOE-High-School-Directory/8b6c-7uty">2021 DOE High School Directory</a>,
+  <a href="https://data.cityofnewyork.us/Education/2020-DOE-High-School-Directory/23z9-6uk9">2020 DOE High School Directory</a>, 
+  <a href="https://data.cityofnewyork.us/Education/2019-DOE-High-School-Directory/uq7m-95z8">2019 DOE High School Directory</a>.
+  <br>Sample Datasets: <a href="2021_DOE_High_School_Directory_SI.csv">2021_DOE_High_School_Directory_SI.csv</a> (2021 dataset restricted to Staten Island schools) and <br>
+  <a href="2020_DOE_High_School_Directory_late_start.csv">2020_DOE_High_School_Directory_late_start.csv</a> (schools with 9am start times in 2020 dataset).
+</i></p>
+
+
+
+
+
+<p>
+Welcome!  Each programming assignment this term has a similar structure:</p>
+<ul>
+  <li>focuses on a data set, usually related to NYC,</li>
+  <li>cleans the data to be used for analysis,</li>
+  <li>builds a model, using some of the data, </li>
+  <li>evaluates how well the model at predicting, using the rest of the data, and</li>
+  <li>incorporates tests that the writen code perform correctly.</li>
+</ul>
+
+<p>Programs are submitted via Gradescope (see general notes above for details) and can only use the libraries specified above (echoing the restrictions of technical screenings).  For example, this first assignment only uses core Python libraries.</p>
+
+
+<br><br>
+<p><a href="https://opendata.cityofnewyork.us"><img src="openDataLogo.png" height = 300></a></p>
+
+
+
+<h3>NYC OpenData</h3>
+
+
+Much of the data collected by New York City agencies is publicly available at <a href="https://opendata.cityofnewyork.us">NYC Open Data</a>.  For this program, we will use the overview of high schools maintained by the Department of Education and available each year for rising 9th graders to choose a high school:
+
+<p>
+<a href="https://myschools.nyc/en/schools/high-school">
+  <img src="hs_dashboard_si.png" height="250">
+</a></iframe>
+</p>
+
+The raw data for 2021 is available at:
+
+<ul>
+  <li>
+    <a href="https://data.cityofnewyork.us/Education/2021-DOE-High-School-Directory/8b6c-7uty">https://data.cityofnewyork.us/Education/2021-DOE-High-School-Directory/8b6c-7uty</a>
+  </li>
+</ul>
+
+<p>Since it is quite large (1.7MB), let's filter the data set to just be high schools in Staten Island:</p>
+
+<ul>
+  <li>Click on the OpenData link above. Click on the <code class="inline">View Data</code> button. </li>
+  <li>In the <code class="inline">Filter</code> region (either at the bottom of the page or on the right hand side, depending on your browser window size), choose <code class="inline">Select a column to filter</code> and choose <code class="inline">borocode</code>.</li>
+  <li>Change the <code class="inline">is one of</code> to <code class="inline">is</code>.</li>
+  <li>In the search box, put <code class="inline">R</code> (for Richmond County or Staten Island).</li>
+  <li>Click the <code class="inline">Apply</code> button.  It will take a few seconds (it's a large file) but the rows filtered will be all the Staten Island high schools.</li>
+  <li>To download the file, 
+    <ul>
+      <li>Click on the <code class="inline">Export</code> button.</li>
+      <li>Under <code class="inline">Download</code>, choose <code class="inline">CSV</code>.</li>
+      <li>The download will begin automatically (files are usually stored in <code class="inline">Downloads</code> folder).</li>
+    </ul>
+  <li>Move your CSV file to the directory that you save your programs. </li>
+</ul>
+<p>In addition to the Staten Island data set, create several other datasets for testing locally and to practice using the filtering on NYC OpenData. </p>
+
+
+<p>Most of the data at NYC OpenData is stored in <code class="inline">comma-separated-values</code> or CSV format.  The first row is usually the column names for the data, separated by commas.  Each entry is in its own row, separated by commas.  For example, the first 5 rows of entire 2021 dataset are:</p>
+
+<pre>
+  <code class="datablock">dbn,school_name,borocode,url,overview_paragraph,diversity_in_admissions,diadetails,school_10th_seats,academicopportunities1,academicopportunities2,academicopportunities3,academicopportunities4,academicopportunities5,academicopportunities6,ell_programs,language_classes,advancedplacement_courses,diplomaendorsements,neighborhood,shared_space,campus_name,building_code,location,phone_number,fax_number,school_email,website,recruitment_website,sqr_website,subway,bus,gradespan,finalgrades,total_students,freshmanschedule,start_time,end_time,addtl_info1,extracurricular_activities,psal_sports_boys,psal_sports_girls,psal_sports_coed,school_sports,graduation_rate,pct_stu_safe,attendance_rate,pct_stu_enough_variety,college_career_rate,girls,boys,pbat,international,specialized,transfer,ptech,earlycollege,school_accessibility_description,program1,program2,program3,program4,program5,program6,program7,program8,program9,program10,program11,program12,interest1,interest2,interest3,interest4,interest5,interest6,interest7,interest8,interest9,interest10,interest11,interest12,prgdesc1,prgdesc2,prgdesc3,prgdesc4,prgdesc5,prgdesc6,prgdesc7,prgdesc8,prgdesc9,prgdesc10,prgdesc11,prgdesc12,common_audition1,common_audition2,common_audition3,common_audition4,common_audition5,common_audition6,common_audition7,common_audition8,common_audition9,common_audition10,common_audition11,common_audition12,auditioninformation1,auditioninformation2,auditioninformation3,auditioninformation4,auditioninformation5,auditioninformation6,auditioninformation7,auditioninformation8,auditioninformation9,auditioninformation10,auditioninformation11,auditioninformation12,seats9ge1,seats9ge2,seats9ge3,seats9ge4,seats9ge5,seats9ge6,seats9ge7,seats9ge8,seats9ge9,seats9ge10,seats9ge11,seats9ge12,grade9geapplicants1,grade9geapplicantsperseat1,grade9geapplicants2,grade9geapplicantsperseat2,grade9geapplicants3,grade9geapplicantsperseat3,grade9geapplicants4,grade9geapplicantsperseat4,grade9geapplicants5,grade9geapplicantsperseat5,grade9geapplicants6,grade9geapplicantsperseat6,grade9geapplicants7,grade9geapplicantsperseat7,grade9geapplicants8,grade9geapplicantsperseat8,grade9geapplicants9,grade9geapplicantsperseat9,grade9geapplicants10,grade9geapplicantsperseat10,grade9geapplicants11,grade9geapplicantsperseat11,grade9geapplicants12,grade9geapplicantsperseat12,grade9gefilledflag1,grade9gefilledflag2,grade9gefilledflag3,grade9gefilledflag4,grade9gefilledflag5,grade9gefilledflag6,grade9gefilledflag7,grade9gefilledflag8,grade9gefilledflag9,grade9gefilledflag10,grade9gefilledflag11,grade9gefilledflag12,seats9swd1,seats9swd2,seats9swd3,seats9swd4,seats9swd5,seats9swd6,seats9swd7,seats9swd8,seats9swd9,seats9swd10,seats9swd11,seats9swd12,grade9swdapplicants1,grade9swdapplicantsperseat1,grade9swdapplicants2,grade9swdapplicantsperseat2,grade9swdapplicants3,grade9swdapplicantsperseat3,grade9swdapplicants4,grade9swdapplicantsperseat4,grade9swdapplicants5,grade9swdapplicantsperseat5,grade9swdapplicants6,grade9swdapplicantsperseat6,grade9swdapplicants7,grade9swdapplicantsperseat7,grade9swdapplicants8,grade9swdapplicantsperseat8,grade9swdapplicants9,grade9swdapplicantsperseat9,grade9swdapplicants10,grade9swdapplicantsperseat10,grade9swdapplicants11,grade9swdapplicantsperseat11,grade9swdapplicants12,grade9swdapplicantsperseat12,grade9swdfilledflag1,grade9swdfilledflag2,grade9swdfilledflag3,grade9swdfilledflag4,grade9swdfilledflag5,grade9swdfilledflag6,grade9swdfilledflag7,grade9swdfilledflag8,grade9swdfilledflag9,grade9swdfilledflag10,grade9swdfilledflag11,grade9swdfilledflag12,seats1specialized,seats2specialized,seats3specialized,seats4specialized,seats5specialized,seats6specialized,applicants1specialized,applicants2specialized,applicants3specialized,applicants4specialized,applicants5specialized,applicants6specialized,appperseat1specialized,appperseat2specialized,appperseat3specialized,appperseat4specialized,appperseat5specialized,appperseat6specialized,seats101,seats102,seats103,seats104,seats105,seats106,seats107,seats108,seats109,seats1010,seats1011,seats1012,eligibility1,eligibility2,eligibility3,eligibility4,eligibility5,eligibility6,eligibility7,eligibility8,eligibility9,eligibility10,eligibility11,eligibility12,admissionspriority11,admissionspriority21,admissionspriority31,admissionspriority41,admissionspriority12,admissionspriority22,admissionspriority32,admissionspriority42,admissionspriority13,admissionspriority23,admissionspriority33,admissionspriority43,admissionspriority14,admissionspriority24,admissionspriority34,admissionspriority44,admissionspriority15,admissionspriority25,admissionspriority35,admissionspriority45,admissionspriority16,admissionspriority26,admissionspriority36,admissionspriority46,admissionspriority17,admissionspriority27,admissionspriority37,admissionspriority47,admissionspriority18,admissionspriority28,admissionspriority38,admissionspriority48,admissionspriority19,admissionspriority29,admissionspriority39,admissionspriority49,admissionspriority110,admissionspriority210,admissionspriority310,admissionspriority410,admissionspriority111,admissionspriority211,admissionspriority311,admissionspriority411,admissionspriority112,admissionspriority212,admissionspriority312,admissionspriority412,offer_rate1_1,offer_rate2_1,offer_rate3_1,offer_rate4_1,offer_rate1_2,offer_rate2_2,offer_rate3_2,offer_rate4_2,offer_rate1_3,offer_rate2_3,offer_rate3_3,offer_rate4_3,offer_rate1_4,offer_rate2_4,offer_rate3_4,offer_rate4_4,offer_rate1_5,offer_rate2_5,offer_rate3_5,offer_rate4_5,offer_rate1_6,offer_rate2_6,offer_rate3_6,offer_rate4_6,offer_rate1_7,offer_rate2_7,offer_rate3_7,offer_rate4_7,offer_rate1_8,offer_rate2_8,offer_rate3_8,offer_rate4_8,offer_rate1_9,offer_rate2_9,offer_rate3_9,offer_rate4_9,offer_rate1_10,offer_rate2_10,offer_rate3_10,offer_rate4_10,offer_rate1_11,offer_rate2_11,offer_rate3_11,offer_rate4_11,offer_rate1_12,offer_rate2_12,offer_rate3_12,offer_rate4_12,requirement_1_1,requirement_2_1,requirement_3_1,requirement_4_1,requirement_5_1,requirement_1_2,requirement_2_2,requirement_3_2,requirement_4_2,requirement_5_2,requirement_1_3,requirement_2_3,requirement_3_3,requirement_4_3,requirement_5_3,requirement_1_4,requirement_2_4,requirement_3_4,requirement_4_4,requirement_5_4,requirement_1_5,requirement_2_5,requirement_3_5,requirement_4_5,requirement_5_5,requirement_1_6,requirement_2_6,requirement_3_6,requirement_4_6,requirement_5_6,requirement_1_7,requirement_2_7,requirement_3_7,requirement_4_7,requirement_5_7,requirement_1_8,requirement_2_8,requirement_3_8,requirement_4_8,requirement_5_8,requirement_1_9,requirement_2_9,requirement_3_9,requirement_4_9,requirement_5_9,requirement_1_10,requirement_2_10,requirement_3_10,requirement_4_10,requirement_5_10,requirement_1_11,requirement_2_11,requirement_3_11,requirement_4_11,requirement_5_11,requirement_1_12,requirement_2_12,requirement_3_12,requirement_4_12,requirement_5_12,code1,method1,code2,method2,code3,method3,code4,method4,code5,method5,code6,method6,code7,method7,code8,method8,code9,method9,code10,method10,code11,method11,code12,method12,primary_address_line_1,city,postcode,state_code,Borough,Latitude,Longitude,Community Board,Council District,Census Tract,BIN,BBL,NTA
+31R028,"Eagle Academy for Young Men of Staten Island, The",R,https://www.myschools.nyc/en/schools/high-school/19134,"The Eagle Academy for Young Men of Staten Island is an all-male college preparatory school (grades 6-12) that educates and develops young men to be future leaders. We recognize the diversity within our learning community and respect the individuality of each scholar. We are committed to providing 21st century technology, fostering intellectual development, establishing self-esteem, and encouraging personal responsibility. We realize the need for all students to become independent, lifelong learners prepared to successfully meet the demands of a changing world and as such our entire approach is focused around instilling five core values in our scholars: Confidence, Leadership, Effort, Academic Excellence, and Resilience.",,,,Eagle's Honors Program,CUNY CSI STEP; Eagle Up enrichment opportunities,Eagle Excel tutoring opportunities,College and Career Counseling beginning in the ninth grade,Advanced Placement courses will be offered as the school expands,,,Spanish,"AP Biology, AP English Literature and Composition",,Stapleton-Rosebank,Yes,,R049,"101 Warren Street, Staten Island NY 10304 (40.620443,-74.080695)",718-727-6201,718-727-6207,eaglestatenisland@gmail.com,https://eaglestatenisland.org/,,https://tools.nycenet.edu/snapshot/0/31R028/HS/?utm_source=myschools.nyc&utm_medium=DOE_App_referral&utm_campaign=MySchools,SIR to Clifton,"S51, S52, S74, S76, S78, S84, S86",6 to 12,6 to 12,306,8:25am-2:40pm,8:25am,2:40pm,,,"Baseball, Basketball, Bowling, Cross Country, Football, Handball, Indoor Track, Lacrosse, Outdoor Track, Soccer, Swimming, Tennis, Volleyball, Wrestling","Basketball, Bowling, Cross Country, Golf, Gymnastics, Handball, Indoor Track, Lacrosse, Outdoor Track, Rugby, Soccer, Softball, Swimming, Tennis, Volleyball, Wrestling","Double Dutch, Golf",,,0.83999997,0.88999999,0.75,,,1,,,,,,,Not Accessible,The Eagle Academy for Young Men of Staten Island,,,,,,,,,,,,Humanities & Interdisciplinary,,,,,,,,,,,,A humanities-based approach to excellence in all subject areas.,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,62,,,,,,,,,,,,70,1,,,,,,,,,,,,,,,,,,,,,,,N,,,,,,,,,,,,19,,,,,,,,,,,,39,2,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,,,,,,,,,,Open only to Male-Identified students,,,,,,,,,,,,Priority to continuing 8th graders,Then to Staten Island students or residents,Then to New York City residents,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,81% of offers went to this group,15% of offers went to this group,4% of offers went to this group,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,R28L,Open,,,,,,,,,,,,,,,,,,,,,,,101 Warren Street,Staten Island,10304,NY,STATEN IS,40.620347,-74.081643,501,49,29,5014184,5005560080,Stapleton-Rosebank
+31R047,CSI High School for International Studies,R,https://www.myschools.nyc/en/schools/high-school/16121,"Our challenging and academically demanding program is designed around college preparedness & aligned to Next Generation Standards. High standards, rigor, & global themes are infused throughout subjects. Exceptionally high standards around student conduct, school tone, and academic citizenship are strictly maintained. Students are required to present comprehensive portfolios and engage in summer research projects. Teachers work to challenge students' thinking, build student ownership of learning, and prepare students for college. Students have opportunities to travel & foster cross-cultural learning. All students must undertake at least 3 years of world language, including; Mandarin Chinese or Spanish, building global competence.",,,Y,"College courses with CUNY College of Staten Island, and some tuition waivers.","Four year Advisory class for students to enrich communication skills, social/emotional proficiency, global competence, and college/career readiness.","CUNY College Now, Int'l Journalism, Global Art, Digital Photography, Forensics, Physics, Honors Classes and Dual HS/College Credit Program.","Strong academic/college prep. with strict policy on timely homework (late work not graded), strong school tone: zero tolerance of student misconduct.",International travel opportunities and language immersion programs (three-year requirement of a world language is mandated in Chinese or Spanish).,,,"Mandarin, Spanish","AP 2-D Art and Design, AP Calculus AB, AP Computer Science Principles, AP English Language and Composition, AP English Literature and Composition, AP United States History, AP Biology, AP Drawing","Math, Science",Todt Hill-Heartland Village,Yes,Jerome Parker Educational Campus,R043,"100 Essex Drive, Staten Island NY 10314 (40.581958,-74.159343)",718-370-6900,718-370-6915,alentini@schools.nyc.gov,csihighschool.org,,https://tools.nycenet.edu/snapshot/0/31R047/HS/?utm_source=myschools.nyc&utm_medium=DOE_App_referral&utm_campaign=MySchools,N/A,"S44, S55, S56, S59, S61, S79-SBS, S89, S91, S94, X17, X17A, X17J, X31",9 to 12,9 to 12,487,7:30am-3:45pm,7:30am,3:45pm,"10th Grade Seats Available,College Trips,Community Service Expected,Dress Code,Extended Day Program,Online Grading System,Orientation,Summer Bridge,Summer Orientation",,"Baseball, Basketball, Cross Country, Fencing, Indoor Track, Soccer, Tennis, Wrestling","Basketball, Cross Country, Fencing, Flag Football, Outdoor Track, Soccer, Softball, Tennis, Volleyball, Wrestling",,,1,0.88999999,0.94999999,0.68000001,0.93000001,,,,,,,,,Fully Accessible,CSI High School for International Studies,,,,,,,,,,,,Humanities & Interdisciplinary,,,,,,,,,,,,"CSI is rated a Well Developed school (NYCDOE Quality Review) featured on the prestigious 2016 Newsweek America's Top High Schools listings, NY Post's 2017 TOP 25 Best High Schools, and 2017/18 Blue Ribbon Nominated School. Accountability to quality of work, class participation, and sharp communication skills is heavily emphasized across the curriculum. Students have access to honors, AP class offerings, and college classes as they progress. All student work is carefully graded and assessed.",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,81,,,,,,,,,,,,1214,15,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,,24,,,,,,,,,,,,155,6,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,1,,,,,,,,,,,,,,,,,,,,,,,,"Priority to Districts 20, 21, and 31 students or residents",Then to New York City residents,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,100% of offers went to this group,0% of offers went to this group,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,R01R,Open,,,,,,,,,,,,,,,,,,,,,,,100 Essex Drive,Staten Island,10314,NY,STATEN IS,40.581315,-74.158589,502,51,27702,5149609,5024500320,Todt Hill-Emerson Hill-Heartland Village-Lighthouse Hill
+31R064,Gaynor McCown Expeditionary Learning School,R,https://www.myschools.nyc/en/schools/high-school/19140,"McCown is a college preparatory school partnering with NYC Outward Bound Schools and EL Education to offer challenging student-centered learning focused around case studies and expeditions that incorporate fieldwork and conclude with projects presented to authentic audiences along with service learning opportunities.  We offer a small, personal environment which allows McCown to highlight each student's unique gifts, talents and creativity in pursuit of mastery of NYS Standards.  We expect students to uphold our character traits of citizenship, integrity, perseverance, respect, and responsibility, wear our uniform, and complete 100 hours of community service by graduation.",,,Y,"NYC Outward Bound Schools: In-depth expeditions that incorporate real-world connections, project-based learning, and authentic audiences.","Crew: Advisory group of students who work with one staff member to receive guidance, develop leadership, support academics, and build character.",Intensives Week: Students engage in a one week exploration of a topic of their choosing and present their learning to an authentic audience at the end of the week.,"Day of Service: Students give back to the Staten Island and greater NYC area, performing community service in memory of Gaynor McCown. Students must also perform 100 hours of community service.",Dedicated college counselor and four years of college preparation and exploration.,,,Spanish,"AP English Literature and Composition, AP United States History, AP Computer Science Principles, AP Biology, AP Human Geography, AP Spanish Language and Culture",,Todt Hill-Heartland Village,Yes,Jerome Parker Educational Campus,R043,"100 Essex Drive, Staten Island NY 10314 (40.581958,-74.159343)",718-370-6950,718-370-6960,dleongonzalez@schools.nyc.gov,http://www.gaynormccownels.org/,https://www.gaynormccownels.org/apps/news/,https://tools.nycenet.edu/snapshot/0/31R064/HS/?utm_source=myschools.nyc&utm_medium=DOE_App_referral&utm_campaign=MySchools,N/A,"S44, S55, S56, S59, S61, S79-SBS, S89, S91, S94, X17, X17A, X17J, X31",9 to 12,9 to 12,420,8:15am-2:35pm,8:15am,2:35pm,"10th Grade Seats Available,College Trips,Dress Code,Extended Day Program,Online Grading System,Orientation,Uniform",,"Baseball, Basketball, Cross Country, Fencing, Indoor Track, Soccer, Tennis, Wrestling","Basketball, Cross Country, Fencing, Flag Football, Outdoor Track, Soccer, Softball, Tennis, Volleyball, Wrestling",,,0.93000001,0.88,0.92000002,0.58999997,0.86000001,,,,,,,,,Fully Accessible,Gaynor McCown Expeditionary Learning School,,,,,,,,,,,,Humanities & Interdisciplinary,,,,,,,,,,,,"Our school partners with NYC Outward Bound Schools and EL Education to offer student-centered learning, focused around case studies and expeditions, that incorporate fieldwork, products presented to authentic audiences, and service learning opportunities. We expect students to uphold our character traits of creativity, honesty, humor, respect, and responsibility. Students are part of a Crew that provides social and emotional support, opportunities for community service and academic tracking.",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,83,,,,,,,,,,,,490,6,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,,25,,,,,,,,,,,,120,5,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,1,,,,,,,,,,,,,,,,,,,,,,,,Priority to Staten Island students or residents,Then to New York City residents,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,100% of offers went to this group,0% of offers went to this group,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,R55A,Ed. Opt.,,,,,,,,,,,,,,,,,,,,,,,100 Essex Drive,Staten Island,10314,NY,STATEN IS,40.581315,-74.158589,502,51,27702,5149609,5024500320,Todt Hill-Emerson Hill-Heartland Village-Lighthouse Hill
+31R080,"Michael J. Petrides School, The",R,https://www.myschools.nyc/en/schools/high-school/18694,"Petrides is a comprehensive college preparatory school that offers a wide array of academic opportunities. Our students are challenged to their maximum potential and are encouraged to meet and exceed the standards in all subject areas. What separates Petrides is not only its level of academic excellence, but its strong sense of community and family. Our small, intimate setting allows students to grow both academically and socially.",,,,"Specialized academies include: Career Exploration and Entrepreneurship Academy, Creative Arts Academy, Science - Technology - Engineering & Mathematics Academy, and Social Sciences & Language Academy","Unique, flexible, individualized programming encourages independence and builds organizational, time management and college readiness skills","Special Arts program with courses in instrumental, orchestral and vocal music and Fine Arts courses in sculpture, graphic arts and fashion design","STEM offerings include courses in: Computer Science, Drone Science, Engineering, Film Making and Theater Tech","Opportunities for travel, both domestic and abroad",,,"Italian, Spanish","AP Statistics, AP English Language and Composition, AP English Literature and Composition, AP United States History, AP Biology, AP Comparative Government and Politics, AP World History: Modern, AP Calculus AB",,Todt Hill-Heartland Village,Yes,,R880,"715 Ocean Terrace, Staten Island NY 10301 (40.607637,-74.105883)",718-815-0186,718-815-9638,atabbit@schools.nyc.gov,Petridesschool.com,,https://tools.nycenet.edu/snapshot/0/31R080/HS/?utm_source=myschools.nyc&utm_medium=DOE_App_referral&utm_campaign=MySchools,N/A,"S53, S66, S78, S93, X14",PK to 12,K to 12,1338,8:00am-2:20pm,8:00am,2:20pm,"College Trips,Online Grading System","Astronomy Club, Billion Oyster Project Club, Community Affairs Project(C.A.P.), Cheerleading, Chess Club, Cooking Club, Council For Unity (CFU), Craft Club, Habitat For Humanity, History Club, Italian Club, LGBTQ Club, Math Team, Media and Technology Club, My Brothers Keeper, My Sisters Keeper, National Honor Society, Newspaper, Petrides against Cancer Society (PACS), Passport Club, Step Team, Spoken Word, Student Government, Yearbook, SING, Spring Musical, Winter Concert, Spring Concert, Art Show","Baseball, Basketball, Bowling, Cross Country, Fencing, Football, Handball, Indoor Track, Outdoor Track, Soccer, Swimming, Tennis, Wrestling","Basketball, Bowling, Golf, Lacrosse, Soccer, Softball, Swimming, Volleyball",Golf,,0.94999999,0.77999997,0.92000002,0.72000003,0.92000002,,,,,,,,,Partially Accessible,Comprehensive Academic,The Michael J. Petrides School D75 Inclusion Program,,,,,,,,,,,Humanities & Interdisciplinary,,,,,,,,,,,,Comprehensive academic curriculum with an emphasis on performing arts and technology.,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,102,,,,,,,,,,,,496,5,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,,28,,,,,,,,,,,,126,5,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,,,,,,,,,,Open only to Staten Island students or residents.,,,,,,,,,,,,Priority to continuing 8th graders,Then to Staten Island students or residents,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,27% of offers went to this group,73% of offers went to this group,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,R15J,Ed. Opt.,R15U,D75 Special Education Inclusive Services,,,,,,,,,,,,,,,,,,,,,715 Ocean Terrace,Staten Island,10301,NY,STATEN IS,40.608512,-74.102067,502,50,177,5113169,5006830001,Todt Hill-Emerson Hill-Heartland Village-Lighthouse Hill</code>
+</pre>
+<p>
+For this assignment, we are going to focus on the <code class="inline">overview_paragraph</code> column that contains a short description of each school. 
+</p> 
+
+
+
+<br>
+<h3>Cleaning Data</h3>
+
+<p><i>Note:  for this assignment, we are <b>not</b> using Pandas.  We will recap Pandas in Lecture 2 and use it in the next assignment, <a href="p2.html">Program 2</a>.  Instead, we're going to use the built-in file and string I/O in Python. If you're rusty on Python, see the chapters in the CSci 127 textbook:  <a href="http://learningds.org/ch/13/text_strings.html">DS 100: Section 13.1</a> (String Methods) and 
+  <a href="https://runestone.academy/ns/books/published//thinkcspy/Files/toctree.html">Think CS: Chapter 11</a> (Files).</i></p>
+
+<p>Programming assignments are submitted as a single <code class="inline">.py</code> file.  If you use multiple files or notebooks, convert your program to a single <code class="inline">.py</code> file to submit to the autograder.  For this first program, we have set up a template (see <a href="p1_template.py">p1_template.py</a> and also included at the end of this page).  Edit the template to include your name, email, and resources and submit to Gradescope to make sure everything works. </p>
+
+<p>Once you have downloaded some test data sets to your device, the next thing to do is format the data to be usable for analysis.  Add the following function to your file:</p>
+
+<ul>
+  <li> <code class = "inline">extract_overviews(file_name)</code>:  Opens the <code class="inline">file_name</code> and from each line of the file, keeps the overview description of the school (the fifth "column": <code class="inline">overview_paragraph</code>). Returns a list of the overviews.
+</ul>
+<p>For example, starting with the Staten Island data set (and using the <code class="inline">textwrap</code> package to print prettily):
+
+<pre><code class="blockcode">file_name = '2021_DOE_High_School_Directory_SI.csv'
+si_overviews = extract_overviews(file_name)
+print(f"Number of SI overviews: {len(si_overviews)}. The the last one is:\n")
+print(textwrap.fill(si_overviews[-1],80))
+</code></pre>
+gives the output:
+<pre><code class="datablock">Number of SI overviews: 11. The the last one is:
+
+SI Technical High School provides a robust liberal arts curriculum including
+courses in science, technology, engineering, arts, and mathematics (STEAM) and a
+cutting edge Career and Technical Education (CTE) program. All students take an
+Intensive Writing course and English and Language Arts curriculum to prepare
+them for Advanced Placement (AP) Language and AP Literature and Composition.
+Students take four years of mathematics, a variety of STEM and AP courses,
+graduate with at least two or three AP Social Studies courses, and take three
+years of the Russian language with an optional fourth year of a second language
+via a blended learning program. All ninth grade students receive a computer to
+use in school and to take home.
+</code></pre>
+<p>Running the fuction on the late start data set (schools that start 9am or later):</p>
+<pre><code class="blockcode">late_name = '2020_DOE_High_School_Directory_late_start.csv'
+late_overviews = extract_overviews(late_name)
+print(f"\n\nNumber of late start overviews: {len(late_overviews)}. The the last one is:\n")
+print(textwrap.fill(late_overviews[-1],80))</code></pre>
+
+gives the output:
+<pre><code class="datablock">Number of late start overviews: 30. The the last one is:
+
+The mission of the Bronx International High School is to empower our students to
+become active participants in today's interdependent and diverse world. We
+accomplish this by helping enhance our students' cultural awareness, English and
+native language proficiencies, and intellectual and collaborative abilities. We
+are dedicated to serving the academic and social needs of recently immigrated
+young people and their families. By critically analyzing and responding to
+complex world issues, students achieve academic, personal, and professional
+success as they become advocates for themselves and their communities.   
+</code></pre>
+
+<p>Once you have written your function, test it locally on the small test files.  When it works, upload to Gradescope. Given the size of the files that we evaluate your code, you will find it much faster to develop and test the code in your IDE than debugging and testing in Gradescope.</p>
+
+<br>
+<h3>Constant Model</h3>
+
+<p>The first model that we will use is the <b>constant model</b> which predicts the same (constant) values for all inputs.  We saw examples in Lecture 1 and <a href="https://learningds.org/ch/04/modeling_intro.html">Chapter 4</a> with modeling restaurant tips and bus lateness.  We are going to build two models:  one that predicts the length of the overview paragraphs (in number of characters) and a second that predicts the number of sentences (using the number of periods as a proxy for the number of sentences.  To do that, we will use some of our datasets to compute values and determine a good constant for each one.  Since the datasets can be quite large, instead of storing the numeric values in a list, we will use a dictionary that keeps count of each time a value is seen (if you're rusty on dictionaries, see <a href="https://runestone.academy/ns/books/published//thinkcspy/Dictionaries/toctree.html">Think CS: Chapter 12</a> or <a href="https://www.educative.io/courses/learn-python-3-from-scratch">Learning Python 3 from Scratch</a>).</p>
+
+<p>Implement the functions below.  In the real world, you would likely combine these into one function, but we are implementing them separately to make partial credit and testing easier:</p>
+
+<ul>
+  <li> <code class = "inline">count_lengths(overview_list)</code>:  For each element of the <code class="inline">overview_list</code>, the function computes the length (the number of characters in the string).  The results are stored in a dictionary of length occurrences where the keys are the lengths seen in <code class="inline">overview_list</code> and the values are the number of times each length occurs.  Returns the dictionary of length occurrences.
+  <li> <code class = "inline">count_num_sentences(overview_list)</code>:  For each element of the <code class="inline">overview_list</code>, the function computes the number of periods (<code class="inline">.</code>) (as a proxy for the number of sentences).  The results are stored in a dictionary of occurrences where the keys are the number of periods seen in <code class="inline">overview_list</code> and the values are the number of times each occurs.  Returns the dictionary of occurrences.
+  <li> <code class = "inline">compute_mean(counts)</code>:  Computes the mean (average) of <code class="inline">counts</code> dictionary weighting each key that occurs by its value (e.g. if the key of 10 has value 8, then the 10 showed up 8 times and adds 10*8 to the computation of the average). Returns the mean.     
+</ul>
+
+<p>
+Continuing our example for the 11 Staten Island high schools:
+<pre><code class="blockcode">si_len_counts = count_lengths(si_overviews)
+print(f"The {sum(si_len_counts.values())} entries have lengths:")    
+print(si_len_counts)</code></pre>
+gives the output:
+<pre><code class="datablock">
+The 11 entries have lengths:
+{729: 1, 738: 1, 681: 1, 435: 1, 536: 1, 732: 2, 741: 1, 623: 1, 564: 1, 735: 1}
+</code></pre>
+Note that two entries have the same length.
+</p>
+
+<p>
+Continuing our late start high school example:
+<pre><code class="blockcode">late_len_counts = count_lengths(late_overviews)
+print(f"The {sum(late_len_counts.values())} entries have lengths:")    
+print(late_len_counts)</code></pre>
+gives the output:
+<pre><code class="datablock">The 30 entries have lengths:
+{38: 1, 634: 1, 528: 1, 743: 1, 748: 1, 385: 1, 753: 1, 27: 1, 684: 1, 512: 1, 680: 1, 477: 1, 722: 1, 741: 1, 106: 1, 739: 1, 732: 1, 700: 1, 750: 1, 551: 1, 733: 1, 399: 1, 22: 1, 679: 1, 723: 1, 31: 1, 73: 1, 710: 1, 655: 1, 616: 1}</code></pre>
+</p>
+
+
+<p>We can similarly compute the number of sentences:  
+<pre><code class="blockcode">si_dots_counts = count_sentences(si_overviews)
+print(f"The {sum(si_dots_counts.values())} entries have lengths:")    
+print(si_dots_counts)
+late_dots_counts = count_sentences(late_overviews)
+print(f"The {sum(late_dots_counts.values())} entries have lengths:")    
+print(late_dots_counts)</code></pre>
+gives the output:
+<pre><code class="datablock">The 11 entries have lengths:
+{4: 6, 7: 2, 3: 2, 5: 1}
+The 30 entries have lengths:
+{0: 5, 7: 2, 3: 3, 4: 11, 5: 3, 2: 1, 6: 5}</code></pre>
+For these small examples, the overall lengths of the paragraphs were different, but the number of sentences were much more concentrated.</p>
+
+<p>
+We can compute the means as well:
+<pre><code class="blockcode">si_len_mean = compute_mean(si_len_counts)
+si_dots_mean = compute_mean(si_dots_counts)
+print(f"Staten Island high schools overviews had an average of {si_len_mean:.2f} \
+characters in {si_dots_mean:.2f} sentences.")</code></pre>
+gives the output:
+<pre><code class="datablock">Staten Island high schools overviews had an average of 658.73 characters in 4.45 sentences.</code></pre>
+</p>
+
+<br>
+<h3>Evaluating Our Model</h3>
+
+<p>The next part of program evaluates how well our constant models do at prediction.  We will use a loss function, mean squared error, introduced in Lecture 1 and <a href="https://learningds.org/ch/04/modeling_loss_functions.html">Section 4.2</a>.</p>
+
+<ul>
+  <li> <code class = "inline">compute_mse(theta, counts)</code>: 
+    This function takes two inputs:
+    <ul>
+          <li> <code class = "inline">theta</code>: a numeric value.
+          <li> <code class = "inline">counts</code>:  a dictionary where the keys are numerical and the values are the number of occurrences. 
+    </ul>
+    Computes the Mean Squared Error of the parameter <code class = "inline">theta</code> and a dictionary, <code class = "inline">counts</code>.  See <a href="https://learningds.org/ch/04/modeling_loss_functions.html">Section 4.2:  Modeling Loss Functions</a> where this function is implemented using <code class = "inline">numpy</code> and assumes the values are in a list or Series.  Note that <code class = "inline">numpy</code> is not one of the libraries for this assignment and your function should compute MSE without using <code class = "inline">numpy</code>.    
+    Returns the MSE.   
+</ul>
+
+
+<p>
+Continuing our example of number of sentences in an overview:
+<pre><code class="blockcode">late_dots_mean = compute_mean(late_dots_counts)
+print(f"The mean for number of sentences in SI descriptions is {late_dots_mean}.")
+losses = []
+for theta in range(10):
+  loss = compute_mse(theta,late_dots_counts)
+  print(f"For theta = {theta}, MSE loss is {loss:.2f}.")
+  losses.append(loss)</code></pre>
+gives the output:
+<pre><code class="datablock">The mean for number of sentences in SI descriptions is 3.8.
+For theta = 0, MSE loss is 18.67.
+For theta = 1, MSE loss is 12.07.
+For theta = 2, MSE loss is 7.47.
+For theta = 3, MSE loss is 4.87.
+For theta = 4, MSE loss is 4.27.
+For theta = 5, MSE loss is 5.67.
+For theta = 6, MSE loss is 9.07.
+For theta = 7, MSE loss is 14.47.
+For theta = 8, MSE loss is 21.87.
+For theta = 9, MSE loss is 31.27.</code></pre>
+</p>
+
+<p>The smallest losses are near the mean of 3.8.  We can also visualize the lengths (as a histogram in blue) and the loss function in terms of theta (in red) using matplotlib:</p>
+<pre><code class="blockcode">import matplotlib.pyplot as plt
+import seaborn as sns
+plt.bar(late_dots_counts.keys(),late_dots_counts.values())
+plt.plot(losses, color='r')
+plt.title('Sentences in late overviews')
+plt.show()</code></pre>
+which generates the plot:
+<p><img src="late_sentences.png" height = 300></p>
+
+<p>
+This suggests that the best constant model for sentence length is 3.8.  Let's look at the Staten Island data (generated similarly to above) which has mean 4.45:
+</p>
+<p><img src="si_sentences.png" height = 300></p>
+<p>Looking at the graph of the loss function (red line), it's minimized closer to 4.5 than 3.8.  So, our constant model built on late-starting schools does not do as well for predicting sentences in SI descriptions.  We will see in later lectures that the MSE loss function is minimized for the mean value (and that other loss functions achieve their minimum values at different values).</p>
+
+
+<br>
+<h3>Testing Code</h3>
+
+<p>Each programming assignment includes functions that test that your code works (a "test suite").  We will first build these in core Python, and in future assignments (Programs 3-6), will introduce standard testing packages.</p>
+
+<p>Your program should include the functions below that test if your functions above perform correctly.  Each of these functions takes a function as an argument.  You can write them in any order, but we have placed them easiest to hardest below:</p>
+
+<ul>
+  <li> <code class = "inline">test_compute_mean(mean_fnc=compute_mean)</code>:
+    This test function takes one input:
+    <ul>
+      <li> <code class = "inline">mean_fnc</code>: a function that takes one input parameter (a dictionary of counts) and returns a numeric value.  It has a default value of <code class = "inline">compute_mean</code>.</li>
+    </ul>
+    This is a test function, used to test whether the <code class = "inline">mean_fnc</code> returning <code class = "inline">True</code> if the <code class = "inline">mean_fnc</code> performs correctly (e.g. computes the mean) and <code class = "inline">False</code> otherwise. 
+  
+    <p><i>Hint: we will test your function with three different functions:  the correct one, one that returns the mean of the keys (i.e. doesn't use the counts when computing the mean), and one that always returns 42.</i></p>
+  </li> 
+    
+  <li> <code class = "inline">test_mse(loss_fnc=compute_mse):</code>:
+    This test function takes one input:
+    <ul>
+      <li> <code class = "inline">mse_fnc</code>: a function that takes in two input parameters (a numeric value and a dictionary of counts) and returns a numeric value.  It has a default value of <code class = "inline">compute_mse</code>.
+    </ul>
+    This is a test function, used to test whether the <code class = "inline">mse_fnc</code> returning <code class = "inline">True</code> if the <code class = "inline">mse_fnc</code> performs correctly (e.g. computes mean squared error) and <code class = "inline">False</code> otherwise. 
+    <p><i>Hint: we will test your function with three different functions:  the correct one, one that returns the mean squared error of the keys (i.e. doesn't use the counts when computing the mean), and one that always returns 42.</i></p>
+  </li> 
+
+  <li> <code class = "inline">test_count_lengths(count_fnc=count_lengths)</code>:
+    This test function takes one input:
+    <ul>
+      <li> <code class = "inline">count_fnc</code>: a function that takes one input parameter (a list of strings) and returns a dictionary.  It has a default value of <code class = "inline">count_lengths</code>.</li>
+    </ul>
+    This is a test function, used to test whether the <code class = "inline">count_fnc</code> returning <code class = "inline">True</code> if the <code class = "inline">count_fnc</code> performs correctly (e.g. creates a dictionary of counts of occurrences of lengths) and <code class = "inline">False</code> otherwise.
+    <p><i>Hint: we will test your function with three different functions:  the correct one, one that returns the number of strings in the list, and one that always returns a dictionary with the key:value pair of 42:42.</i></p>
+  </li>
+
+</ul>
+
+<p>
+Trying first on the correct function:
+<pre><code class="blockcode">print(f'test_compute_mean(compute_mean) returns {test_compute_mean(compute_mean)}.')</code></pre>
+gives the output:
+<pre><code class="datablock">test_compute_mean(compute_mean) returns True.</code></pre>
+</p>
+
+<p>
+Continuing our example:
+<pre><code class="blockcode">print(f'test_compute_mean( lambda x : 42 ) returns {test_compute_mean(lambda x : 42)}.')</code></pre>
+gives the output:
+<pre><code class="datablock">test_compute_mean( lambda x : 42 ) returns False.</code></pre>
+The <code class="inline">lambda</code> in Python allows you to write small anonymous functions (see <a href="https://docs.python.org/3/tutorial/controlflow.html#lambda-expressions">Python Docs 4.8.6 Lambda Expressions</a> for more details).
+</p>
+
+<h3>Program Template</h3>
+
+<p>For this first program, we have included a template, <a href="p1_template.py">p1_template.py</a> to use to get started.  It includes function stubs and some testing in a (conditionally executed) main function:</p>
+
+<pre>
+<code class="blockcode">
+"""
+  Name: YOUR NAME HERE (as it appears in Gradescope)
+  Email: YOUR EMAIL HERE (as it appears in Gradescope)
+  Resources:  ANY RESOURCES YOU USED
+"""
+import textwrap
+
+def extract_overviews(file_name):
+  """
+  Opens the file_name and from each line of the file, keeps the overview
+  description of the school (the fifth "column": overview_paragraph.
+  Returns a list of the paragraphs.
+  """
+
+  #Placeholder-- replace with your code
+  lst = []
+  return lst
+
+def count_lengths(overview_list):
+  """
+  For each element of the overview_list, computes the length (# of characters).
+  Returns the dictionary of length occurrences.
+  """
+
+  #Placeholder-- replace with your code
+  counts = {}
+  return counts
+
+def count_sentences(overview_list):
+  """
+  For each element of the overview_list, computes the number of periods 
+  (as a proxy for the number of sentences).
+  Returns the dictionary of occurrences.
+  """
+
+  #Placeholder-- replace with your code
+  counts = {}
+  return counts
+
+
+def compute_mean(counts):
+  """
+  Computes the mean of counts dictionary, weighting each key that occurs by its value.
+  Returns the mean. 
+  """
+
+  #Placeholder-- replace with your code
+  mean = 0
+  return mean
+
+
+def compute_mse(theta, counts):
+  """
+  Computes the Mean Squared Error of the parameter theta and a dictionary, counts.
+  Returns the MSE.
+  """
+
+  #Placeholder-- replace with your code
+  mse = 0
+
+  num_values = sum(counts.values())
+  total = sum([((k-theta)**2)*v for k,v in counts.items()])
+
+  mse = total/num_values
+
+  return mse
+
+def test_compute_mean(mean_fnc=compute_mean):
+  """
+  Returns True if the mean_fnc performs correctly
+  (e.g. computes weighted mean of inputted dictionary) and False otherwise. 
+  """
+
+  #Placeholder-- replace with your code
+  correct = True
+  return correct
+
+
+def test_mse(mse_fnc=compute_mse):
+  """
+  Returns True if the extract_fnc performs correctly
+  (e.g. computes mean squared error) and False otherwise.
+  """
+
+  #Placeholder-- replace with your code
+  correct = True
+  return correct
+
+def test_count_lengths(counts_fnc=count_lengths):
+  """
+  Returns True if the counts_fnc performs correctly
+  (e.g. counts lengths of overviews and stores in dictionary) & False otherwise.
+  """
+
+  #Placeholder-- replace with your code
+
+  correct = True
+  return correct
+
+
+def main():
+  """
+  Some examples of the functions in use:
+  """
+
+  ###Extracts the overviews from the data files:
+  file_name = 'fall23/program01/2021_DOE_High_School_Directory_SI.csv'
+  si_overviews = extract_overviews(file_name)
+  print(f"Number of SI overviews: {len(si_overviews)}. The the last one is:\n")
+  #Using textwrap for prettier printing:
+  print(textwrap.fill(si_overviews[-1],80))
+
+  late_name = 'fall23/program01/2020_DOE_High_School_Directory_late_start.csv'
+  late_overviews = extract_overviews(late_name)
+  print(f"\n\nNumber of late start overviews: {len(late_overviews)}. The the last one is:\n")
+  print(textwrap.fill(late_overviews[-1],80))
+
+  ###Computing counts and means:
+  si_len_counts = count_lengths(si_overviews)
+  print(f"The {sum(si_len_counts.values())} entries have lengths:")
+  print(si_len_counts)
+  late_len_counts = count_lengths(late_overviews)
+  print(f"The {sum(late_len_counts.values())} entries have lengths:")
+  print(late_len_counts)
+
+  si_dots_counts = count_sentences(si_overviews)
+  print(f"The {sum(si_dots_counts.values())} entries have lengths:")
+  print(si_dots_counts)
+  late_dots_counts = count_sentences(late_overviews)
+  print(f"The {sum(late_dots_counts.values())} entries have lengths:")
+  print(late_dots_counts)
+
+  si_len_mean = compute_mean(si_len_counts)
+  si_dots_mean = compute_mean(si_dots_counts)
+  print(f"Staten Island high schools overviews had an average of {si_len_mean:.2f}\
+characters in {si_dots_mean:.2f} sentences.")
+
+  ###Computing MSE:
+  late_dots_mean = compute_mean(late_dots_counts)
+  print(f"The mean for number of sentences in SI descriptions is {late_dots_mean}.")
+  losses = []
+  for theta in range(10):
+      loss = compute_mse(theta,late_dots_counts)
+      print(f"For theta = {theta}, MSE loss is {loss:.2f}.")
+      losses.append(loss)
+
+  losses = []
+  for theta in range(10):
+      loss = compute_mse(theta,si_dots_counts)
+      print(f"For theta = {theta}, MSE loss is {loss:.2f}.")
+      losses.append(loss)
+
+  ###Testing
+  #Trying first on the correct function:
+  print(f'test_compute_mean(compute_mean) returns {test_compute_mean(compute_mean)}.')
+  #Trying on a function that returns 42 no matter what the output:
+  print(f'test_compute_mean( lambda x : 42 ) returns {test_compute_mean(lambda x : 42)}.')
+
+if __name__ == "__main__":
+  main()
+</code>
+</pre>
+
+
+
+
+
+
+
+<br><hr>
+
+<h3>Notes</h3>
+  
+  <ul>
+    <li> You should submit a file with only the standard comments at the top, the specified functions, and any helper functions you have written. The grading scripts will then import the file for testing.
+    <li>If your file includes code outside of functions, either comment the code out before submitting or use a main function that is conditionally executed (see <a href="https://runestone.academy/ns/books/published//thinkcspy/Functions/mainfunction.html">Think CS: Section 6.8</a> for details).
+  </ul>
+  </p>
+
+</div>
+</body>
+</html>
