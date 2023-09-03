@@ -449,11 +449,6 @@ def compute_mse(theta, counts):
   #Placeholder-- replace with your code
   mse = 0
 
-  num_values = sum(counts.values())
-  total = sum([((k-theta)**2)*v for k,v in counts.items()])
-
-  mse = total/num_values
-
   return mse
 
 def test_compute_mean(mean_fnc=compute_mean):
