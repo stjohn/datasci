@@ -46,6 +46,8 @@ For questions about the course, write to: <tt>datasci AT hunter cuny edu</tt>.<!
 
 
 <ul>
+  <li> Enrollment is closed for this semester.</li>
+<!--  
   <li> The course will meet Wednesdays, 11:30am-2:15pm in HN C002.
   <li> The course prerequisites for this programming-intensive class are:
       <p>
@@ -56,7 +58,7 @@ For questions about the course, write to: <tt>datasci AT hunter cuny edu</tt>.<!
       </ul>
   <p> If you are interested in the course and have a year of programming, Python proficiency, and taken statistics, you can enroll directly via CUNYFirst without additional permissions.  If you took the courses elsewhere, reach out to a computer science advisor about what's needed to align your previous courses to Hunter courses on your CUNYFirst record.
   <li> Enrollment for the course is via CUNYFirst.  Fall enrollment opens in early May.
-<!--
+
   <li> The course is full, and we do not expect additional seats to become available for the fall term.  We anticipate that the course will be offered again in the spring.
   Enrollment for the course is via CUNYFirst.  If the course is at capacity, sign up for the wait list.  Those on the wait list have first priority when seats become available.</li>
   <li> Enrolled Students:  for the quickest response to questions, use the links on the course Blackboard page:
@@ -130,8 +132,8 @@ For questions about the course, write to: <tt>datasci AT hunter cuny edu</tt>.<!
     <td rowspan="2">Week 2:</td>    
 		<td>Wednesday,<br> 6 September</td>
 		<td>
-      Statistics Recap:  Expectation, Variance, Correlation, & Sampling<br><br>
-      Modeling and Estimation:  Linear Models, Predicting Tip Amounts, Loss Functions<br><br>
+      Statistics Recap:  Expectation, Variance, Correlation, Residuals & Sampling<br><br>
+      Linear Regression, Loss Functions:  Mean Squared and Mean Absolute Error,
       Data Representation, DataFrames (Pandas)<br><br>
       Python Recap: Lambda Expressions & Applying Functions
     </td>
@@ -148,8 +150,10 @@ For questions about the course, write to: <tt>datasci AT hunter cuny edu</tt>.<!
 
       <a href="http://learningds.org/ch/15/linear_intro.html">DS 100: Chapter 15</a> (Linear Models),<br><br>
 
+ 
       <a href="http://learningds.org/ch/06/pandas_intro.html">DS 100: Chapter 6</a> (DataFrames),<br>
       <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html">Constructing DataFrames</a> (pydata.org) <br>     
+      <a href="http://learningds.org/ch/08/files_granularity.html">DS 100: Section 8.5</a> (Table Shape & Granularity),<br>       
 
       <a href="https://docs.python.org/3/tutorial/controlflow.html#more-on-defining-functions?">python.org: Section 4.7</a> (Functions)
     
@@ -167,12 +171,10 @@ For questions about the course, write to: <tt>datasci AT hunter cuny edu</tt>.<!
     <td>Week 3:</td>    
     <td rowspan=1>Wednesday,<br> 13 September</td>
 		<td>
-      Data Representation:  Structure & Granularity, 
-      Joining & Transforming Data in Pandas, Handling Missing Values (Imputation) & Modifying Structure<br><br>
-      
+      Multiple Linear Regression, More on Fitting Models:  Convexity, Validating, & Gradient Descent;<br>
+      Feature Engineering: Categorical Encoding  <br><br>
 
-      Linear Regression, Fitting Linear Models, Loss Functions:  Mean Squared and Mean Absolute Error, 
-      <br><br> 
+      Joining & Transforming Data in Pandas, Handling Missing Values (Imputation) & Modifying Structure<br><br>
 
       Python Recap:  List comprehensions & zips      <br><br>
       
@@ -182,8 +184,7 @@ For questions about the course, write to: <tt>datasci AT hunter cuny edu</tt>.<!
       <a href="work.html#cw3">Classwork 3</a>
     </td>
     <td>
-      <a href="http://learningds.org/ch/06/pandas_intro.html">DS 100: Chapter 6</a> (DataFrames), <br>
-      <a href="http://learningds.org/ch/08/files_granularity.html">DS 100: Section 8.5</a> (Table Shape & Granularity),<br>      
+      <a href="http://learningds.org/ch/06/pandas_intro.html">DS 100: Chapter 6</a> (DataFrames), <br>    
       <a href="http://learningds.org/ch/09/wrangling_intro.html">DS 100: Chapter 9</a> (Data Wrangling),<br>
       <a href="http://learningds.org/ch/15/linear_intro.html">DS 100: Chapter 15</a> (Linear Models),<br>     
       <br>
@@ -197,13 +198,14 @@ For questions about the course, write to: <tt>datasci AT hunter cuny edu</tt>.<!
     <td rowspan=2>Week 4:</td>    
 		<td rowspan=1>Wednesday,<br> 20 September<br></span></td>
 		<td>
-             
+      Feature Engineering:  Variable Transformations; <br>
+      Training Models: Cross Validation, Ridge Regularization (L2) &
+      Lasso Regularization (L1);          
+      
+
       Visualizing Qualitative & Quantitative Data, Time-Series Data,<br>
       Customizing Plots in plotly, matplotlib & seaborn<br><br>
    
-      Multiple Linear Regression, More on Fitting Models:  Convexity, Validating, & Gradient Descent;<br>
-      Feature Engineering: Categorical Encoding  <br><br>
-
       Serializing and Evaluating Models
       
     </td>
@@ -233,10 +235,10 @@ For questions about the course, write to: <tt>datasci AT hunter cuny edu</tt>.<!
 		<td rowspan="1">Wednesday,<br>27 September</td>
 		<td>
       Visualizing GIS Data: GeoJSON Format, Choropleth Maps, Voronoi Diagrams, Visualization Principles<br><br>  
-
-      Feature Engineering:  Variable Transformations; <br>
-      Training Models: Cross Validation, Ridge Regularization (L2) &
-      Lasso Regularization (L1);   
+      Probability and Generalization:  Distributions, Probability Mass Functions, Confidence Intervals, Smoothing;<br>
+      Hypothesis Testing, 
+      Central Limit Theorem
+  
 
 
     </td>
@@ -264,9 +266,10 @@ For questions about the course, write to: <tt>datasci AT hunter cuny edu</tt>.<!
 		<td rowspan="1">Wednesday, <br>4 October</td>
 
 		<td>
-      Probability and Generalization:  Distributions, Probability Mass Functions, Confidence Intervals, Smoothing;<br>
-      Hypothesis Testing, 
-      Central Limit Theorem
+      Regression on Probabilities; The Logistic Model & Loss Function;
+      Using Logistic Models: Fitting & Evaluating a Logistic Model   <br><br> 
+
+      Review
     </td>
 		<td>
       <a href="work.html#cw6">Classwork 6</a> <br>
@@ -322,8 +325,7 @@ For questions about the course, write to: <tt>datasci AT hunter cuny edu</tt>.<!
 		<td rowspan="1">Wednesday,<br>18 October</td>
     <td>
        
-      Regression on Probabilities; The Logistic Model & Loss Function;
-      Using Logistic Models: Fitting & Evaluating a Logistic Model   <br><br>     
+    
       Linear Algebra Recap:  Vectors, Matrices, Eigenvectors & Eigenvalues<br><br>
       One-Versus-Rest (OVR) Classification; 
       Other Approaches:  Naive Bayes, Support Vector Machines (SVM's), Decision Trees & Random Forests
@@ -571,5 +573,5 @@ For questions about the course, write to: <tt>datasci AT hunter cuny edu</tt>.<!
 
 
 <div>
-<i style="float:right">(This file was last modified on 23 August 2023.)</i><br>
+<i style="float:right">(This file was last modified on 5 September 2023.)</i><br>
 </div>
