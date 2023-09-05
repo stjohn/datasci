@@ -104,48 +104,83 @@ Lying about attendance obtains an unfair advantage and will be submitted to the 
     
         <p>For example, assuming these functions are in a file, <code class="inline">cw1.py</code> and run on a file containing names that start with 'A', <a href="../spr22/contacts.txt">contacts.txt</a>:
     
-        <pre><code class="blockcode">contacts = cw1.make_dict('contacts.txt')
-    who = 'CS Department'
-    print(f'Contact info for {who} is {contacts[who]}.')</pre></code>
-      </pre></code>
+<pre><code class="blockcode">contacts = cw1.make_dict('contacts.txt')
+who = 'CS Department'
+print(f'Contact info for {who} is {contacts[who]}.')</pre></code>
+</pre></code>
           will print:
-      <pre><code class="datablock">Contact info for CS Department is 10th Floor HN, x5213.</pre></code>
+<pre><code class="datablock">Contact info for CS Department is 10th Floor HN, x5213.</pre></code>
     
       <p>Another example with <a href="../spr22/nick_names.txt">nick_names.txt</a>:
     
-      <pre><code class="blockcode">nick_names = cw1.make_dict('nick_names.txt', sep = ' ')
-    names = ['Beth','Lisa','Meg','Greta','Amy','Mia']
-    for n in names:
-        print(f'Full name for {n} is {nick_names[n]}.')</pre></code>
-      </pre></code>
-      will print:
-      <pre><code class="datablock">Full name for Beth is Elizabeth.
-    Full name for Lisa is Elizabeth.
-    Full name for Meg is Margaret.
-    Full name for Greta is Margaret.
-    Full name for Amy is Amelia.
-    Full name for Mia is Amelia.</pre></code>
+<pre><code class="blockcode">nick_names = cw1.make_dict('nick_names.txt', sep = ' ')
+names = ['Beth','Lisa','Meg','Greta','Amy','Mia']
+for n in names:
+  print(f'Full name for {n} is {nick_names[n]}.')</pre></code>
+</pre></code>
+will print:
+<pre><code class="datablock">Full name for Beth is Elizabeth.
+Full name for Lisa is Elizabeth.
+Full name for Meg is Margaret.
+Full name for Greta is Margaret.
+Full name for Amy is Amelia.
+Full name for Mia is Amelia.</pre></code>
     
-          <p>If you attended lecture, include the last three lines to the the introductory comment:
+    <p>If you attended lecture, include the last line to the introductory comment:
             <pre><code class="blockcode">"""
     Name:  YOUR_NAME
     Email: YOUR_EMAIL
     Resources:  RESOURCES USED
     I attended lecture today.
-    Row:  YOUR_ROW
-    Seat:  YOUR_SEAT
     """</pre></code>
     
-            If you did not attend lecture, do not include the above lines.</p>
+    If you did not attend lecture, do not include the last line.</p>
 
     <p><b>Classwork 1.2: </b> &emsp; <i>Due 3pm, Wednesday, 30 August.</i> &emsp;  In the second part of Lecture 1, we will start <a href="#p1">Program 1</a>.  At the end of lecture, having a positive score on the first program gives credit for this classwork.  You do not need to complete the first program or submit anything extra, we will generate the scores directly by if you have submitted an attempt to Gradescope.  
   </li> 
 
-  <!--
+
   <li><a name="cw2"><b>Week 2:</b></a>
     <p><b>Classwork 2.1: </b> &emsp; <i>Due 1:45pm, Wednesday, 6 September.</i> &emsp;
-    <p><b>Classwork 2.2: </b> &emsp; <i>Due 3pm, Wednesday, 6 September.</i> &emsp;      
+
+    Available during Lecture 2 on Gradescope, this classwork asks that you write a program using Pandas and its file I/O.  To get the most out of this exercise, bring a laptop with you to lecture with a development environment (IDE) that has Python 3.6+ to work through in lecture.  <br>
+
+    <p>
+    Write a program that asks the user for the name of an input CSV file and the name of an output CSV file.  The program should open the file name provided by the user.
+    Next, the program should select rows where the field <code class="inline">Grade</code> is equal to 3 and the <code class="inline">Year</code> is equal to 2019 and write all rows that match that criteria to a new CSV file.
+  
+    <p>
+    Then a sample run of the program:
+  <pre><code class="blockcode">Enter input file name: school-ela-results-2013-2019.csv
+Enter output file name:  ela2013.csv</code></pre>
+    where the file <code class="inline">school-ela-results-2013-2019.csv</code> is extracted from <a href="https://infohub.nyced.org/reports/academics/test-results">NYC Schools Test Results</a> (and <a href="../fall21/school_ELA_2013_2019_truncated.csv">truncated version</a> of roughly the first 1000 lines for testing).  The first lines of the output file would be:
+  
+<pre><code class="datablock">School,Name,Grade,Year,Category,Number Tested,Mean Scale Score,# Level 1,% Level 1,# Level 2,% Level 2,# Level 3,% Level 3,# Level 4,% Level 4,# Level 3+4,% Level 3+4
+01M015,P.S. 015 ROBERTO CLEMENTE,3,2019,All Students,27,606,1,3.7,7,25.9,18,66.7,1,3.7,19,70.4
+01M019, P.S. 019 ASHER LEVY,3,2019,All Students,24,606,0,0.0,8,33.3,15,62.5,1,4.2,16,66.7
+01M020,P.S. 020 ANNA SILVER,3,2019,All Students,57,593,13,22.8,24,42.1,18,31.6,2,3.5,20,35.1</code></pre>
+  
+  <p>Hints:
+    <ul>
+      <li> Since the <code class=inline>Grade</code> column contains a mixtures of numbers (e.g. 3) and strings ("All Grades"), the column is stored as strings.
+    </ul>
+  
+  <p>If you attended lecture, include the last line to the introductory comment:
+    <pre><code class="blockcode">"""
+Name:  YOUR_NAME
+Email: YOUR_EMAIL
+Resources:  RESOURCES USED
+I attended lecture today.
+"""</pre></code>
+
+    If you did not attend lecture, do not include the above lines.</p>
+  
+  
+
+    <p><b>Classwork 2.2: </b> &emsp; <i>Due 3pm, Wednesday, 6 September.</i> &emsp;      <i>TBA</i>
   </li>  
+
+<!--
   <li><a name="cw3"><b>Week 3:</b></a>
     <p><b>Classwork 3.1: </b> &emsp; <i>Due 1:45pm, Wednesday, 13 September.</i> &emsp;
     <p> <b>Classwork 3.2: </b> &emsp; <i>Due 3pm, Wednesday, 13 September.</i> &emsp;      
@@ -205,40 +240,6 @@ Lying about attendance obtains an unfair advantage and will be submitted to the 
   <p><a name="cw2"><b>Classwork 2: </b> &emsp; <i>Due 3pm, Wednesday, 1 February.</i> &emsp;
 
  
-    Available during Lecture 2 on Gradescope, this classwork asks that you write a program using Pandas and its file I/O.  To get the most out of this exercise, bring a laptop with you to lecture with a development environment (IDE) that has Python 3.6+ to work through in lecture.  <br>
-
-    <p>
-    Write a program that asks the user for the name of an input CSV file and the name of an output CSV file.  The program should open the file name provided by the user.
-    Next, the program should select rows where the field <code class="inline">Grade</code> is equal to 3 and the <code class="inline">Year</code> is equal to 2019 and write all rows that match that criteria to a new CSV file.
-
-    <p>
-    Then a sample run of the program:
-  <pre><code class="blockcode">Enter input file name: school-ela-results-2013-2019.csv
-Enter output file name:  ela2013.csv</code></pre>
-    where the file <code class="inline">school-ela-results-2013-2019.csv</code> is extracted from <a href="https://infohub.nyced.org/reports/academics/test-results">NYC Schools Test Results</a> (and <a href="../fall21/school_ELA_2013_2019_truncated.csv">truncated version</a> of roughly the first 1000 lines for testing).  The first lines of the output file would be:
-
-  <pre><code class="datablock">School,Name,Grade,Year,Category,Number Tested,Mean Scale Score,# Level 1,% Level 1,# Level 2,% Level 2,# Level 3,% Level 3,# Level 4,% Level 4,# Level 3+4,% Level 3+4
-01M015,P.S. 015 ROBERTO CLEMENTE,3,2019,All Students,27,606,1,3.7,7,25.9,18,66.7,1,3.7,19,70.4
-01M019, P.S. 019 ASHER LEVY,3,2019,All Students,24,606,0,0.0,8,33.3,15,62.5,1,4.2,16,66.7
-01M020,P.S. 020 ANNA SILVER,3,2019,All Students,57,593,13,22.8,24,42.1,18,31.6,2,3.5,20,35.1</code></pre>
-
-  <p>Hints:
-    <ul>
-      <li> Since the <code class=inline>Grade</code> column contains a mixtures of numbers (e.g. 3) and strings ("All Grades"), the column is stored as strings.
-    </ul>
-
-    <p>If you attended lecture, include the last three lines to the the introductory comment:
-      <pre><code class="blockcode">"""
-Name:  YOUR_NAME
-Email: YOUR_EMAIL
-Resources:  RESOURCES USED
-I attended lecture today.
-Row:  YOUR_ROW
-Seat:  YOUR_SEAT
-"""</pre></code>
-
-      If you did not attend lecture, do not include the above lines.</p>
-
 
         <br>
   <p><a name="cw3"><b>Classwork 3: </b> &emsp; <i>Due 3pm, Wednesday, 8 February.</i> &emsp;
@@ -673,7 +674,7 @@ Screenshots of the maps are displayed above.
       <img src="../fall21/dice_6_6.png" height=200>
     </p>
 
-    <p>If you attended lecture, include the last three lines to the the introductory comment:
+    <p>If you attended lecture, include the last line to the introductory comment:
       <pre><code class="blockcode">"""
 Name:  YOUR_NAME
 Email: YOUR_EMAIL
