@@ -1,0 +1,640 @@
+<!DOCTYPE doctype PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <title>Program 2, CSci 39542: Data Science, Hunter College</title>
+</head>
+<STYLE>A {text-decoration: none;}
+th, td { padding: 5px; }
+code {
+  background-color: #eeeeee;
+}
+.inline {
+  padding: 1px;
+}
+.blockcode {
+  border: 1px solid #999999;
+  display: block;
+  padding-left: 10px;
+  padding-top : 2px;
+  padding-bottom : 2px;
+  margin: 5px;
+}
+.datablock {
+  border: 1px solid #eeeeee;
+  display: block;
+  padding: 7px;
+  padding-top : 0px;
+  margin: 5px;
+}
+</STYLE>
+<body>
+
+
+<div style="margin: 15px;width:100%;">
+    <span style= "float: left;font-size:larger"><a href="index.html">CSci 39542</a></span>
+    <span style= "float: right">
+      <a href="syl.html">Syllabus</a>&nbsp;&nbsp;&nbsp;
+      <a href="resources.html">Resources</a>&nbsp;&nbsp;&nbsp;
+      <a href="work.html">Coursework</a><!--&nbsp;&nbsp;&nbsp;
+      <a href="faq.html">FAQ</a>-->
+    </span>
+</div>
+
+<br>
+<br>
+<hr>
+
+<div style="margin:50px">
+
+
+<h2>Program 2:  School Success
+  <br>CSci 39542: Introduction to Data Science<br>
+<a href="http://www.hunter.cuny.edu/csci">Department of Computer Science</a><br>
+<a href="https://hunter.cuny.edu">Hunter College</a>, <a href="https://www.cuny.edu">City University of New York</a><br>
+Spring 2023<br><br>
+</h2>
+
+
+<hr>
+<a href="work.html#cw">Classwork</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#quizzes">Quizzes</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#hw">Homework</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#project">Project</a>&nbsp;&nbsp;&nbsp;
+<hr>
+
+<object width=100% height=50% type="text/html" data="generalNotes.html" border="0"
+   style="overflow: hidden;">
+</object>
+<hr>
+
+<h2>Program Description</h2>
+
+
+<p><a name="p1"><b>Program 2: School Success.</b></b> &emsp; <i>Due noon, Friday, 22 September.
+  <br>Learning Objective: to build competency with Pandas for storing and cleaning data, use linear models, and introduce catergorical encoding.
+  <br>Available Libraries:  Core Python 3.6+ only.
+  <br>Data Sources: NYC Open Data: <a href="https://data.cityofnewyork.us/Education/2021-DOE-High-School-Directory/8b6c-7uty">2021 DOE High School Directory</a>,
+  <a href="https://data.cityofnewyork.us/Education/2020-DOE-High-School-Directory/23z9-6uk9">2020 DOE High School Directory</a>, 
+  <a href="https://data.cityofnewyork.us/Education/2019-DOE-High-School-Directory/uq7m-95z8">2019 DOE High School Directory</a>.
+  <br>Sample Datasets: <a href="2021_DOE_High_School_Directory_SI.csv">2021_DOE_High_School_Directory_SI.csv</a> (2021 dataset restricted to Staten Island schools) and <br>
+  <a href="2020_DOE_High_School_Directory_late_start.csv">2020_DOE_High_School_Directory_late_start.csv</a> (schools with 9am start times in 2020 dataset).
+</i></p>
+
+
+
+
+
+<p>
+The second program uses the same DOE school directory datasets as <a href="p1.html">Program 1</a>.  
+Instead of using string and file I/O from core Python, this program uses <a href="https://pandas.pydata.org">Pandas</a> to store and manipulate the data.
+The linear models built in this program are more complex than the simple constant models from the first program.
+This program follows a similar structure:</p>
+<ul>
+  <li>focuses on a data set, usually related to NYC,</li>
+  <li>cleans the data to be used for analysis,</li>
+  <li>builds a model, using some of the data, </li>
+  <li>evaluates how well the model at predicting, using the rest of the data, and</li>
+  <li>incorporates tests that the writen code perform correctly.</li>
+</ul>
+
+<p>Programs are submitted via Gradescope (see general notes above for details) and can only use the libraries specified above (echoing the restrictions of technical screenings).  </p>
+
+
+<br><br>
+<p><a href="https://opendata.cityofnewyork.us"><img src="openDataLogo.png" height = 300></a></p>
+
+
+
+<h3>NYC OpenData</h3>
+
+
+Much of the data collected by New York City agencies is publicly available at <a href="https://opendata.cityofnewyork.us">NYC Open Data</a>.  For this program, we will use the overview of high schools maintained by the Department of Education and available each year for rising 9th graders to choose a high school:
+
+<p>
+<a href="https://myschools.nyc/en/schools/high-school">
+  <img src="hs_dashboard_si.png" height="250">
+</a></iframe>
+</p>
+
+<p>See <a href="p1.html">Program 1</a> for the steps needed to download the datasets for testing.</p>
+
+The datasets have a large number (448!) columns:</p>
+
+<pre>
+  <code class="datablock">dbn,school_name,borocode,url,overview_paragraph,diversity_in_admissions,diadetails,school_10th_seats,academicopportunities1,academicopportunities2,academicopportunities3,academicopportunities4,academicopportunities5,academicopportunities6,ell_programs,language_classes,advancedplacement_courses,diplomaendorsements,neighborhood,shared_space,campus_name,building_code,location,phone_number,fax_number,school_email,website,recruitment_website,sqr_website,subway,bus,gradespan,finalgrades,total_students,freshmanschedule,start_time,end_time,addtl_info1,extracurricular_activities,psal_sports_boys,psal_sports_girls,psal_sports_coed,school_sports,graduation_rate,pct_stu_safe,attendance_rate,pct_stu_enough_variety,college_career_rate,girls,boys,pbat,international,specialized,transfer,ptech,earlycollege,school_accessibility_description,program1,program2,program3,program4,program5,program6,program7,program8,program9,program10,program11,program12,interest1,interest2,interest3,interest4,interest5,interest6,interest7,interest8,interest9,interest10,interest11,interest12,prgdesc1,prgdesc2,prgdesc3,prgdesc4,prgdesc5,prgdesc6,prgdesc7,prgdesc8,prgdesc9,prgdesc10,prgdesc11,prgdesc12,common_audition1,common_audition2,common_audition3,common_audition4,common_audition5,common_audition6,common_audition7,common_audition8,common_audition9,common_audition10,common_audition11,common_audition12,auditioninformation1,auditioninformation2,auditioninformation3,auditioninformation4,auditioninformation5,auditioninformation6,auditioninformation7,auditioninformation8,auditioninformation9,auditioninformation10,auditioninformation11,auditioninformation12,seats9ge1,seats9ge2,seats9ge3,seats9ge4,seats9ge5,seats9ge6,seats9ge7,seats9ge8,seats9ge9,seats9ge10,seats9ge11,seats9ge12,grade9geapplicants1,grade9geapplicantsperseat1,grade9geapplicants2,grade9geapplicantsperseat2,grade9geapplicants3,grade9geapplicantsperseat3,grade9geapplicants4,grade9geapplicantsperseat4,grade9geapplicants5,grade9geapplicantsperseat5,grade9geapplicants6,grade9geapplicantsperseat6,grade9geapplicants7,grade9geapplicantsperseat7,grade9geapplicants8,grade9geapplicantsperseat8,grade9geapplicants9,grade9geapplicantsperseat9,grade9geapplicants10,grade9geapplicantsperseat10,grade9geapplicants11,grade9geapplicantsperseat11,grade9geapplicants12,grade9geapplicantsperseat12,grade9gefilledflag1,grade9gefilledflag2,grade9gefilledflag3,grade9gefilledflag4,grade9gefilledflag5,grade9gefilledflag6,grade9gefilledflag7,grade9gefilledflag8,grade9gefilledflag9,grade9gefilledflag10,grade9gefilledflag11,grade9gefilledflag12,seats9swd1,seats9swd2,seats9swd3,seats9swd4,seats9swd5,seats9swd6,seats9swd7,seats9swd8,seats9swd9,seats9swd10,seats9swd11,seats9swd12,grade9swdapplicants1,grade9swdapplicantsperseat1,grade9swdapplicants2,grade9swdapplicantsperseat2,grade9swdapplicants3,grade9swdapplicantsperseat3,grade9swdapplicants4,grade9swdapplicantsperseat4,grade9swdapplicants5,grade9swdapplicantsperseat5,grade9swdapplicants6,grade9swdapplicantsperseat6,grade9swdapplicants7,grade9swdapplicantsperseat7,grade9swdapplicants8,grade9swdapplicantsperseat8,grade9swdapplicants9,grade9swdapplicantsperseat9,grade9swdapplicants10,grade9swdapplicantsperseat10,grade9swdapplicants11,grade9swdapplicantsperseat11,grade9swdapplicants12,grade9swdapplicantsperseat12,grade9swdfilledflag1,grade9swdfilledflag2,grade9swdfilledflag3,grade9swdfilledflag4,grade9swdfilledflag5,grade9swdfilledflag6,grade9swdfilledflag7,grade9swdfilledflag8,grade9swdfilledflag9,grade9swdfilledflag10,grade9swdfilledflag11,grade9swdfilledflag12,seats1specialized,seats2specialized,seats3specialized,seats4specialized,seats5specialized,seats6specialized,applicants1specialized,applicants2specialized,applicants3specialized,applicants4specialized,applicants5specialized,applicants6specialized,appperseat1specialized,appperseat2specialized,appperseat3specialized,appperseat4specialized,appperseat5specialized,appperseat6specialized,seats101,seats102,seats103,seats104,seats105,seats106,seats107,seats108,seats109,seats1010,seats1011,seats1012,eligibility1,eligibility2,eligibility3,eligibility4,eligibility5,eligibility6,eligibility7,eligibility8,eligibility9,eligibility10,eligibility11,eligibility12,admissionspriority11,admissionspriority21,admissionspriority31,admissionspriority41,admissionspriority12,admissionspriority22,admissionspriority32,admissionspriority42,admissionspriority13,admissionspriority23,admissionspriority33,admissionspriority43,admissionspriority14,admissionspriority24,admissionspriority34,admissionspriority44,admissionspriority15,admissionspriority25,admissionspriority35,admissionspriority45,admissionspriority16,admissionspriority26,admissionspriority36,admissionspriority46,admissionspriority17,admissionspriority27,admissionspriority37,admissionspriority47,admissionspriority18,admissionspriority28,admissionspriority38,admissionspriority48,admissionspriority19,admissionspriority29,admissionspriority39,admissionspriority49,admissionspriority110,admissionspriority210,admissionspriority310,admissionspriority410,admissionspriority111,admissionspriority211,admissionspriority311,admissionspriority411,admissionspriority112,admissionspriority212,admissionspriority312,admissionspriority412,offer_rate1_1,offer_rate2_1,offer_rate3_1,offer_rate4_1,offer_rate1_2,offer_rate2_2,offer_rate3_2,offer_rate4_2,offer_rate1_3,offer_rate2_3,offer_rate3_3,offer_rate4_3,offer_rate1_4,offer_rate2_4,offer_rate3_4,offer_rate4_4,offer_rate1_5,offer_rate2_5,offer_rate3_5,offer_rate4_5,offer_rate1_6,offer_rate2_6,offer_rate3_6,offer_rate4_6,offer_rate1_7,offer_rate2_7,offer_rate3_7,offer_rate4_7,offer_rate1_8,offer_rate2_8,offer_rate3_8,offer_rate4_8,offer_rate1_9,offer_rate2_9,offer_rate3_9,offer_rate4_9,offer_rate1_10,offer_rate2_10,offer_rate3_10,offer_rate4_10,offer_rate1_11,offer_rate2_11,offer_rate3_11,offer_rate4_11,offer_rate1_12,offer_rate2_12,offer_rate3_12,offer_rate4_12,requirement_1_1,requirement_2_1,requirement_3_1,requirement_4_1,requirement_5_1,requirement_1_2,requirement_2_2,requirement_3_2,requirement_4_2,requirement_5_2,requirement_1_3,requirement_2_3,requirement_3_3,requirement_4_3,requirement_5_3,requirement_1_4,requirement_2_4,requirement_3_4,requirement_4_4,requirement_5_4,requirement_1_5,requirement_2_5,requirement_3_5,requirement_4_5,requirement_5_5,requirement_1_6,requirement_2_6,requirement_3_6,requirement_4_6,requirement_5_6,requirement_1_7,requirement_2_7,requirement_3_7,requirement_4_7,requirement_5_7,requirement_1_8,requirement_2_8,requirement_3_8,requirement_4_8,requirement_5_8,requirement_1_9,requirement_2_9,requirement_3_9,requirement_4_9,requirement_5_9,requirement_1_10,requirement_2_10,requirement_3_10,requirement_4_10,requirement_5_10,requirement_1_11,requirement_2_11,requirement_3_11,requirement_4_11,requirement_5_11,requirement_1_12,requirement_2_12,requirement_3_12,requirement_4_12,requirement_5_12,code1,method1,code2,method2,code3,method3,code4,method4,code5,method5,code6,method6,code7,method7,code8,method8,code9,method9,code10,method10,code11,method11,code12,method12,primary_address_line_1,city,postcode,state_code,Borough,Latitude,Longitude,Community Board,Council District,Census Tract,BIN,BBL,NTA</code>
+</pre>
+<p>
+For this assignment, we are going to focus on a subset of these columns, listed below. 
+</p> 
+
+
+
+<br>
+<h3>Cleaning Data</h3>
+
+<p><i>Note:  for this assignment, we are using Pandas.  See Lectures 2 and 3 and the resources page for more details on using Panda.</i></p>
+
+<p>Make sure you have downloaded some test data sets to your device.  Start a <code class="inline">.py</code> file that contains your introductory comment (see General Notes above for format).  The next step is to format the data for analysis.  Add the following to your file, testing as you go:</p>
+
+
+<ul>
+  <li> <code class = "inline">import_data(file_name):</code>
+    This function takes as one input parameter:
+    <ul>
+      <li> <code class = "inline">file_name</code>: the name of a CSV file containing 2021 DOE High School Directory from OpenData NYC.
+    </ul>
+    The data in the file is read into a DataFrame, and 
+    <ul>
+      <li>only the columns, in the order below:
+      <pre><code class='blockcode'>dbn,school_name,NTA,graduation_rate,pct_stu_safe,attendance_rate,college_career_rate,language_classes,advancedplacement_courses,method1,overview_paragraph</code></pre>
+      are kept (e.g. all others dropped). </li>  
+      <li>Any rows with missing values for <code class = "inline">graduation rate</code> are dropped. </li>
+    </ul>
+    The resulting DataFrame is returned.
+  </li><br>
+
+  <li> <code class = "inline">impute_numeric_cols(df):</code>
+    This function takes one input:
+    <ul>
+      <li> <code class = "inline">df</code>: a DataFrame containing DOE High School from OpenData NYC.
+    </ul>
+    Any missing entries in the numeric columns <code class = "inline">['pct_stu_safe','attendance_rate', 'college_career_rate']</code> are replaced with the median of the respective column. <br> 
+    Returns the resulting DataFrame.
+    </li><br>  
+
+    <li> <code class = "inline">compute_count_col(df,col):</code>
+        This function takes two inputs:
+        <ul>
+          <li> <code class = "inline">df</code>: a DataFrame containing DOE High School from OpenData NYC.
+          <li> <code class = "inline">col</code>: a column name in <code class = "inline">df</code> that contains a list of items separated by commas.         
+        </ul>
+        Counts the number of items, separated by commas, in each entry of <code class = "inline">df[col]</code>.<br> 
+        Returns the resulting Series.
+        </li><br>      
+
+    <li> <code class = "inline">encode_categorical_col(col):</code>
+        This function takes one input parameter:
+        <ul>
+            <li> <code class = "inline">col</code>: a column of categorical data.
+        </ul>
+        Takes a column of categorical data and uses categorical encoding to create a new DataFrame with k columns, where k is the number of different nomial values for the column.  Your function should create k columns, one for each value.  The columns should be sorted and the DataFrame restricted to the first k-1 columns returned.  For example, if the column contains the languages offers: <code class="inline">Mandarin, French, Arabic, Spanish</code>, then the resulting columns would be labeled with those languages and sorted: <code class="inline">Arabic, French, Mandarin, Spanish</code>.   
+        <br><i>Note:  we presented several different ways to categorically encode nomial data in Lecture 3.  While the book details an approach <a href="https://learningds.org/ch/15/linear_categorical.html">Chapter 15</a>, it uses scikit-learn (sklearn) which is not included in this program.
+        You may find <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.str.get_dummies.html#pandas.Series.str.get_dummies">Panda's Series.str.get_dummies</a> useful.</i>
+        </li><br>
+  
+
+    <li> <code class = "inline">split_test_train(df, xes_col_names, y_col_name,
+        frac=0.25, random_state=922):</code>
+This function takes 5 input parameters:
+<ul>
+<li> <code class = "inline">df</code>: a DataFrame</li>
+<li>  <code class = "inline">y_col_name</code>: the name of the column of the dependent variable.</li>
+<li>  <code class = "inline">xes_col_names</code>: a list of columns that contain the independent variables.</li>
+<li>  <code class = "inline">frac</code>: accepts a float between 0 and 1 and represents the proportion of the data set to use for training.  This parameter has a default value of 0.25.</li>
+<li>  <code class = "inline">random_state</code>:  Used as a seed to the randomization.  This parameter has a default value of 922.</li>
+</ul>
+This function should:
+<ol>
+    <li>Create a new DataFrame, <code class="inline">df_test</code> using <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sample.html">panda's sample</a> function to create a test set with <code class="inline">frac</code> of the rows and <code class="inline">random_state</code> for the random seed.</li>
+    <li>Makes a copy of the DataFrame, <code class="inline">df</code> and call it <code class="inline">df_train</code>.</li>
+    <li>Drop the rows in <code class="inline">df_test</code> from <code class="inline">df_train</code> (e.g. <code class="inline">df_train = df_train.drop(df_test.index)</code>) </li>
+    <li>Return <code class="inline">df_train[xes_col_names]</code>,<code class="inline">df_test[xes_col_names]</code>,<code class="inline">df_train[y_col_name]</code>,<code class="inline">df_test[y_col_name]</code>.</li>
+</ol>
+<i>Note:  we are using only Pandas for this assignment.  For future assignments, we will use the scikit-learn packages for splitting data into training and testing sets.</i>
+</li><br>
+
+</ul>
+<p>For example, starting with the Staten Island data set:
+
+<pre><code class="blockcode">file_name = 'fall23/program02/2021_DOE_High_School_Directory_SI.csv'
+df = import_data(file_name)
+print(f'There are {len(df.columns)} columns:')
+print(df.columns)
+print('The dataframe is:')
+print(df)</code></pre>
+gives the output:
+<pre><code class="datablock">There are 11 columns:
+Index(['dbn', 'school_name', 'NTA', 'graduation_rate', 'pct_stu_safe',
+        'attendance_rate', 'college_career_rate', 'language_classes',
+        'advancedplacement_courses', 'method1', 'overview_paragraph'],
+        dtype='object')
+The dataframe is:
+        dbn                                        school_name  ...   method1                                 overview_paragraph
+1   31R047          CSI High School for International Studies  ...      Open  Our challenging and academically demanding pro...
+2   31R064        Gaynor McCown Expeditionary Learning School  ...  Ed. Opt.  McCown is a college preparatory school partner...
+3   31R080                    Michael J. Petrides School, The  ...  Ed. Opt.  Petrides is a comprehensive college preparator...
+4   31R440                               New Dorp High School  ...  Ed. Opt.  New Dorp High School is a comprehensive high s...
+5   31R445                          Port Richmond High School  ...  Screened  Port Richmond High School is a comprehensive C...
+6   31R450                                 Curtis High School  ...      Open  Curtis High School is a Community School whose...
+7   31R455                            Tottenville High School  ...  Ed. Opt.  Tottenville High School has long been recogniz...
+8   31R460                        Susan E. Wagner High School  ...  Screened  Susan E. Wagner High School consists of 16 uni...
+9   31R600  Ralph R. McKee Career and Technical Education ...  ...  Ed. Opt.  McKee prepares you for college, career, and li...
+10  31R605                Staten Island Technical High School  ...      Test  SI Technical High School provides a robust lib...
+
+[10 rows x 11 columns]</code></pre>
+<p>Note that there are 11 high schools in Staten Island, but one (Eagle Academy) was new and didn't have a graduation rate, so, was dropped.
+
+<p>
+Looking at the schools who start after 9am:
+<pre><code class="blockcode">file_name = 'fall23/program02/2020_DOE_High_School_Directory_late_start.csv'
+df_late = import_data(file_name)
+print('The numerical columns are:')    
+print(df_late[ ['dbn','pct_stu_safe','attendance_rate','college_career_rate'] ])
+</code></pre>
+gives the output:
+<pre><code class="datablock">The numerical columns are:
+       dbn  pct_stu_safe  attendance_rate  college_career_rate
+0   01M696          0.92             0.95                 0.92
+1   07X334          0.89             0.90                 0.35
+2   02M543          0.92             0.84                 0.75
+3   14K685          0.94             0.83                 0.42
+4   02M546          0.80             0.90                 0.78
+5   02M376          0.97             0.93                 0.79
+6   19K404          0.87             0.86                 0.74
+7   20K490          0.80             0.90                 0.57
+9   27Q334          0.92             0.83                  NaN
+10  30Q301          0.94             0.93                 0.84
+11  28Q328          0.87             0.87                 0.88
+12  14K561          0.94             0.89                 0.76
+13  31R450          0.76             0.85                 0.60
+14  02M298          0.89             0.87                 0.65
+15  04M555          0.97             0.95                 0.95
+16  10X353          0.95             0.88                 0.69
+17  02M420          0.90             0.91                 0.73
+18  10X351          0.83             0.76                 0.39
+19  20K445          0.75             0.86                 0.63
+20  21K337          0.90             0.90                 0.46
+21  18K633          0.92             0.89                 0.81
+22  23K514          0.88             0.82                 0.37
+23  02M294          0.89             0.87                 0.78
+24  30Q575          0.86             0.93                 0.62
+26  28Q440          0.77             0.90                 0.72
+27  24Q299          0.97             0.98                 0.99
+28  16K765          0.87             0.72                  NaN
+29  09X403          0.89             0.83                 0.47</code></pre>
+There are several rows with missing values for the <code class="inline">college_career_rate</code>.  We will fill those in (impute) with the median of the column: 
+<pre><code class="blockcode">df_late = impute_numeric_cols(df_late)
+print(df_late[ ['dbn','pct_stu_safe','attendance_rate','college_career_rate'] ])
+</code></pre>
+gives the output:
+<pre><code class="datablock">           dbn  pct_stu_safe  attendance_rate  college_career_rate
+    0   01M696          0.92             0.95                0.920
+    1   07X334          0.89             0.90                0.350
+    2   02M543          0.92             0.84                0.750
+    3   14K685          0.94             0.83                0.420
+    4   02M546          0.80             0.90                0.780
+    5   02M376          0.97             0.93                0.790
+    6   19K404          0.87             0.86                0.740
+    7   20K490          0.80             0.90                0.570
+    9   27Q334          0.92             0.83                0.725
+    10  30Q301          0.94             0.93                0.840
+    11  28Q328          0.87             0.87                0.880
+    12  14K561          0.94             0.89                0.760
+    13  31R450          0.76             0.85                0.600
+    14  02M298          0.89             0.87                0.650
+    15  04M555          0.97             0.95                0.950
+    16  10X353          0.95             0.88                0.690
+    17  02M420          0.90             0.91                0.730
+    18  10X351          0.83             0.76                0.390
+    19  20K445          0.75             0.86                0.630
+    20  21K337          0.90             0.90                0.460
+    21  18K633          0.92             0.89                0.810
+    22  23K514          0.88             0.82                0.370
+    23  02M294          0.89             0.87                0.780
+    24  30Q575          0.86             0.93                0.620
+    26  28Q440          0.77             0.90                0.720
+    27  24Q299          0.97             0.98                0.990
+    28  16K765          0.87             0.72                0.725
+    29  09X403          0.89             0.83                0.470</code></pre>
+</p>
+
+
+<p>
+Using the <code class="inline">compute_count_col</code> twice, let's add in counts for languages & AP classes:
+<pre><code class="blockcode">df_late['language_count'] = compute_count_col(df_late,'language_classes')
+df_late['ap_count'] = compute_count_col(df_late,'advancedplacement_courses')
+print('High schools that have 9am or later start:')
+print(df_late[ ['dbn','language_count','language_classes','ap_count','advancedplacement_courses'] ])
+</code></pre>
+gives the output:
+<pre><code class="datablock">High schools that have 9am or later start:
+    dbn  language_count                                   language_classes  ap_count                          advancedplacement_courses
+0   01M696               5            French, Greek, Latin, Mandarin, Spanish         0                                                NaN
+1   07X334               1                                             French         0                                                NaN
+2   02M543               1                                            Spanish         2  AP English Literature and Composition, AP Unit...
+3   14K685               1                                            Spanish         0                                                NaN
+4   02M546               1                                            Spanish         6  AP Biology, AP Calculus AB, AP Computer Scienc...
+5   02M376               1                                            Spanish         4  AP Calculus AB, AP English Language and Compos...
+6   19K404               1                                            Spanish         5  AP Biology, AP Computer Science A, AP English ...
+7   20K490               6  Arabic, French, Greek, Italian, Mandarin, Spanish        20  AP 2-D Art and Design, AP Biology, AP Calculus...
+9   27Q334               1                                            Spanish         6  AP Biology, AP Computer Science Principles, AP...
+10  30Q301               1                                             French         6  AP Calculus AB, AP Computer Science Principles...
+11  28Q328               2                                    French, Spanish         5  AP Biology, AP Calculus AB, AP Chemistry, AP C...
+12  14K561               2                    American Sign Language, Spanish         7  AP Calculus AB, AP English Language and Compos...
+13  31R450               3                           French, Italian, Spanish        10  AP Calculus AB, AP Computer Science Principles...
+14  02M298               1                                            Spanish         5  AP Biology, AP Calculus AB, AP English Languag...
+15  04M555               1                                            Spanish         7  AP Calculus AB, AP Computer Science Principles...
+16  10X353               4                  French, German, Japanese, Spanish         6  AP English Language and Composition, AP Englis...
+17  02M420               1                                            Spanish        12  AP Art History, AP Biology, AP Calculus AB, AP...
+18  10X351               2                                  Japanese, Spanish         1                                         AP Seminar
+19  20K445               4                 Arabic, Italian, Mandarin, Spanish        22  AP Biology, AP Calculus AB, AP Calculus BC, AP...
+20  21K337               2                                  Mandarin, Spanish         0                                                NaN
+21  18K633               1                                            Spanish         6  AP Biology, AP English Literature and Composit...
+22  23K514               2                                    French, Spanish         4  AP Chemistry, AP English Language and Composit...
+23  02M294               2                                    French, Spanish         0                                                NaN
+24  30Q575               2                                    French, Spanish        10  AP Calculus AB, AP Calculus BC, AP English Lan...
+26  28Q440               7  American Sign Language, French, Hebrew, Italia...        19  AP Art History, AP Biology, AP Calculus AB, AP...
+27  24Q299               3                           Latin, Mandarin, Spanish         0                                                NaN
+28  16K765               1                                            Spanish         3  AP Biology, AP English Literature and Composit...
+29  09X403               2                                    French, Spanish         3  AP Calculus AB, AP French Language and Culture...</code></pre>
+</p>
+
+
+<p>
+Continuing our example, we can add columns for the languages available, using one hot encoding:
+<pre><code class="blockcode">    df_langs = encode_categorical_col(df_si['language_classes'])
+print(df_langs)
+print(f'Number of schools for each language:')
+print(df_langs.sum(axis=0))</code></pre>
+gives the new DataFrame that we can use to count number of schools that offer each language:
+<pre><code class="datablock">     Italian   Latin   Mandarin   Spanish  American Sign Language  French  Italian  Mandarin  Russian  Spanish
+1          0       0          0         1                       0       0        0         1        0        0
+2          0       0          0         0                       0       0        0         0        0        1
+3          0       0          0         1                       0       0        1         0        0        0
+4          0       0          0         1                       0       0        1         0        0        0
+5          0       0          0         1                       0       0        1         0        0        0
+6          1       0          0         1                       0       1        0         0        0        0
+7          1       0          1         1                       1       0        0         0        0        0
+8          1       1          0         1                       0       1        0         0        0        0
+9          0       0          0         0                       0       0        0         0        0        1
+10         0       0          0         0                       0       0        0         0        1        0
+Number of schools for each language:
+Italian                   3
+Latin                     1
+Mandarin                  1
+Spanish                   7
+American Sign Language    1
+French                    2
+Italian                   3
+Mandarin                  1
+Russian                   1
+Spanish                   2</code></pre>
+</p>
+
+<p>
+To validate our models, we will randomly split the dataset into training and testing sets:
+<pre><code class="blockcode"> xes_cols = ['language_count','ap_count','pct_stu_safe','attendance_rate','college_career_rate']
+y_col = 'graduation_rate'
+x_train, x_test, y_train, y_test = split_test_train(df_late,xes_cols,y_col)
+print(f'The sizes of the sets are:')
+print(f'x_train has {len(x_train)} rows.\tx_test has {len(x_test)} rows.')
+print(f'y_train has {len(y_train)} rows.\ty_test has {len(y_test)} rows.')
+</code></pre>
+gives the output:
+<pre><code class="datablock">x_train has 21 rows.    x_test has 7 rows.
+y_train has 21 rows.    y_test has 7 rows.</code></pre>
+</p>
+
+<p>Once you have written your function, test it locally on the small test files.  When it works, upload to Gradescope. Given the size of the files that we evaluate your code, you will find it much faster to develop and test the code in your IDE than debugging and testing in Gradescope.</p>
+
+<br>
+<h3>Linear Regression Model</h3>
+
+
+
+<p>Last program, we built constant models which predicts the same (constant) values for all inputs.  For this program, we are building models that vary their output, based on the input.  Our first models will be <b>linear regression models</b> where we find the line that best fits (using least square) the data.  <a href="https://learningds.org/ch/15/linear_simple.html">Chapter 15</a> sets a good foundation for this and includes many examples.</p>
+
+<p>We will first implement the linear regression for a single independent (explanatory) variable and a dependent (outcome) variable using only Pandas (our next assigment we will use build more complex models and use packages that have implemented them).</p>
+
+<ul>
+  <li> <code class = "inline">compute_lin_reg(xes, yes)</code>:
+    This function takes two inputs:
+    <ul>
+      <li><code class = "inline">xes</code>: an iterables of numeric values
+        representing the independent variable</li>
+      <li><code class = "inline">yes</code>: an iterables of numeric values
+        representing the dependent variable</li>
+    </ul>
+    The function computes the slope and y-intercept of the
+    linear regression line, using ordinary least squares (see <a href="https://inferentialthinking.com/chapters/15/2/Regression_Line.html">DS 8:  Chapter 15</a> or <a href="https://learningds.org/ch/15/linear_pa.html">DS 100: Chapter 15</a> for detailed explanation).
+    The pseudocode for this:
+    <ol>
+      <li> Compute the standard deviation of the <code class = "inline">xes</code> and <code class = "inline">yes</code>.  Call these <code class = "inline">sd_x</code> and <code class = "inline">sd_y</code>.
+      <li> Compute the correlation, <code class = "inline">r</code>, of the <code class = "inline">xes</code> and <code class = "inline">yes</code>.
+      <li> Compute the slope, <code class = "inline">theta_1</code>, as <code class = "inline">theta_1 = r*sd_y/sd_x</code>.
+      <li> Compute the y-intercept, <code class = "inline">theta_0</code>, as <code class = "inline">theta_0 = average(yes) - theta_1 * average(xes)</code>
+      <li> Return <code class = "inline">theta_0</code> and <code class = "inline">theta_1</code>.
+    </ol>
+    </li><br>
+   
+</ul>
+
+<p>
+Continuing our example for the late start high schools:
+<pre><code class="blockcode">coeff = {}
+for col in xes_cols:
+    coeff[col] = compute_lin_reg(x_train[col],y_train)
+    print(f'for {col}, theta_0 = {coeff[col][0]} and theta_1 = {coeff[col][1]}')
+</code></pre>
+gives the output:
+<pre><code class="datablock">for language_count,     theta_0 = 0.821969696969697 and theta_1 = 0.008721590909090911
+for ap_count,   theta_0 = 0.829236532747707 and theta_1 = 0.0021805968221160063
+for pct_stu_safe,       theta_0 = 0.3259265268281375 and        theta_1 = 0.5869741569127364
+for attendance_rate,    theta_0 = -0.4082696527688132 and       theta_1 = 1.4385568607202786
+for college_career_rate,        theta_0 = 0.4664578537197913 and        theta_1 = 0.5575944180964911
+</code></pre>
+We can now use the coefficients of the models to make predictions.
+</p>
+
+
+<br>
+<h3>Evaluating Our Models</h3>
+
+<p>The next part of program evaluates how well our linear models do at prediction.  We will use a loss function, mean squared error and rooted mean squared error, introduced in Lecture 1 and <a href="https://learningds.org/ch/04/modeling_loss_functions.html">Section 4.2</a>.</p>
+
+<ul>
+  <li> <code class = "inline">predict(xes, theta_0, theta_1)</code>:
+    This function takes three inputs:
+    <ul>
+      <li><code class = "inline">xes</code>: an iterables of numeric values
+        representing the independent variable</li>
+      <li><code class = "inline">theta_0</code>: the y-intercept of the linear regression model</li>        
+      <li><code class = "inline">theta_1</code>: the slope of the linear regression model</li>
+
+    </ul>
+    The function returns the predicted values of the dependent variable,  <code class = "inline">xes</code>, under the linear regression model with y-intercept <code class = "inline">theta_0</code> and slope <code class = "inline">theta_1</code>.
+    </li><br> 
+    <li> <code class = "inline">mse_loss(y_actual,y_estimate):</code>
+        This function takes two inputs:
+        <ul>
+                <li> <code class = "inline">y_actual</code>:  a Series containing numeric values.
+                <li> <code class = "inline">y_estimate</code>:  a Series containing numeric values.
+        </ul>
+        The series are of the same length and contain numeric values only (all null and non-numeric values have been dropped).  The function returns the mean square error loss function between  <code class = "inline">y_actual</code> and <code class = "inline">y_estimate</code> (e.g. the mean of the squares of the differences).
+        <br>Note: a variation of this function was part of an earlier homework (<a href="p1.html">Program 1</a>) as well as in the textbook (using numpy). This is slightly different from both, as it takes lists (instead of dictionaries) and does not use the numpy library.  It is included here to be used as a default argument for the error computation function below.</li>
+        <br>
+    
+      <li> <code class = "inline">rmse_loss(y_actual,y_estimate):</code>
+      This function takes two inputs:
+      <ul>
+        <li> <code class = "inline">y_actual</code>:  a Series containing numeric values.
+        <li> <code class = "inline">y_estimate</code>:  a Series containing numeric values.
+      </ul>
+      The series are of the same length and contain numeric values only (all null and non-numeric values have been dropped).  The function returns the square root of the mean square error loss function between  <code class = "inline">y_actual</code> and <code class = "inline">y_estimate</code> (e.g. the square root of the mean of the squares of the differences).</li><br>
+    
+      <li> <code class = "inline">compute_error(y_actual,y_estimate,loss_fnc=mse_loss)</code>:
+      This function takes three inputs:
+      <ul>
+        <li> <code class = "inline">y_actual</code>:  a Series containing numeric values.
+        <li> <code class = "inline">y_estimate</code>:  a Series containing numeric values.
+        <li> <code class = "inline">loss_fnc</code>:  function that takes two numeric series as input parameters and returns a numeric value.  It has a default value of mse_loss.
+      </ul>
+      The series are of the same length and contain numeric values only (all null and non-numeric values have been dropped).  The result of computing the <code class = "inline">loss_fnc</code> on the inputs <code class = "inline">y_actual</code> and
+      <code class = "inline">y_estimate</code> is returned.</li><br>
+ 
+</ul>
+
+
+<p>
+Continuing our example of number of sentences in an overview:
+<pre><code class="blockcode">coeff = {}
+for col in xes_cols:
+    coe = compute_lin_reg(x_train[col],y_train)
+    coeff[col] = coe        
+    print(f'for {col}, theta_0 = {coe[0]} and theta_1 = {coe[1]}')</code></pre>
+gives the output:
+<pre><code class="datablock">for language_count, theta_0 = 0.821969696969697 and theta_1 = 0.008721590909090911
+for ap_count, theta_0 = 0.829236532747707 and theta_1 = 0.0021805968221160063
+for pct_stu_safe, theta_0 = 0.3259265268281375 and theta_1 = 0.5869741569127364
+for attendance_rate, theta_0 = -0.4082696527688132 and theta_1 = 1.4385568607202786
+for college_career_rate, theta_0 = 0.4664578537197913 and theta_1 = 0.5575944180964911</code></pre>
+</p>
+
+<p>
+Lets see which explanatory variable did best on the testing data:
+<pre><code class="blockcode">predicts = {}
+errors = {}
+min_error = 1
+best = ""
+for col in xes_cols:
+    predicts[col] = predict(x_test[col], coe[0], coe[1])
+    errors[col] = compute_error(y_test,predicts[col])
+    print(f'Error on test data for {col} is {errors[col]}.')
+    if errors[col] < min_error:
+        min_error = errors[col]
+        best = col
+
+print(f'Column {col} has lowest error ({min_error}).')</code></pre>
+gives the output:
+<pre><code class="datablock">Error on test data for language_count is 1.4074577840833737.
+Error on test data for ap_count is 21.589341577894185.
+Error on test data for pct_stu_safe is 0.014732620032972344.
+Error on test data for attendance_rate is 0.015958758340922953.
+Error on test data for college_career_rate is 0.0016245415203027973.
+Column college_career_rate has lowest error (0.0016245415203027973).</code></pre>
+</p>
+
+
+
+<p>The smallest losses are for <code class="inline">college_career_rate</code>, so, let's graph that to visualize the difference between the actual and predicted data.  We first build a helper function to use for graphing.</p>
+<pre><code class="blockcode">import matplotlib.pyplot as plt
+import seaborn as sns
+def graph_data(df, col, coeff):
+    """
+    Function to graph the models
+    """
+    plt.scatter(df[col],df['graduation_rate'],label='Actual')
+    predict_grad = predict(df_late[col],coeff[col][0],coeff[col][1])
+    plt.scatter(df[col], predict_grad,label='Predicted')
+    plt.title(f'{col} vs graduation_rate')
+    plt.xlabel('graduation_rate')
+    plt.ylabel(f'{col}')
+    plt.legend()
+    plt.show()
+
+graph_data(df_late, 'college_career_rate',coeff)</code></pre>
+which generates the plot:
+<p><img src="college_v_attendance.png" height = 300></p>
+
+
+
+
+<br>
+<h3>Testing Code</h3>
+
+<p>Each programming assignment includes functions that test that your code works (a "test suite").  We will first build these in core Python, and in future assignments (Programs 3-6), will introduce standard testing packages.</p>
+
+<p>Your program should include the functions below that test if your functions above perform correctly.  Each of these functions takes a function as an argument.  You can write them in any order, but we have placed them easiest to hardest below:</p>
+
+<ul>
+     
+    <li> <code class = "inline">test_compute_count_col(compute_fnc=compute_count_col)</code>:
+    This test function takes one input:
+    <ul>
+        <li> <code class = "inline">compute_fnc</code>: a function that takes two input parameters (a DataFrame and the name of a categorical column) and returns a Series.  It has a default value of <code class = "inline">compute_count_col</code>.</li>
+    </ul>
+    This is a test function, used to test whether the <code class = "inline">compute_fnc</code> returning <code class = "inline">True</code> if the <code class = "inline">compute_fnc</code> performs correctly (e.g. computes the the count column) and <code class = "inline">False</code> otherwise. 
+    
+    <p><i>Hint: we will test your function with three different functions:  the correct one, one that returns the column, and one that always returns a DataFrame with the 3 specified columns having the same entry (42) for all rows.</i></p>
+    </li> 
+
+
+
+  <li> <code class = "inline">test_predict(predict_fnc=predict)</code>:
+    This test function takes one input:
+    <ul>
+      <li> <code class = "inline">predict_fnc</code>: a function that takes three input parameters (a Series and two numerics) and returns a Series.  It has a default value of <code class = "inline">predict</code>.</li>
+    </ul>
+    This is a test function, used to test whether the <code class = "inline">predict_fnc</code> returning <code class = "inline">True</code> if the <code class = "inline">predict_fnc</code> performs correctly (e.g. predicts the correct values) and <code class = "inline">False</code> otherwise. 
+  
+    <p><i>Hint: we will test your function with three different functions:  the correct one, one that returns the Series unchanged, and one that always returns a Series with the same entry (42) for all rows.</i></p>
+  </li> 
+
+
+  <li> <code class = "inline">test_mse_loss(loss_fnc=mse_loss)</code>:
+    This test function takes one input:
+    <ul>
+      <li> <code class = "inline">loss_fnc</code>: a function that takes three input parameter (two Series) and returns a numeric.  It has a default value of <code class = "inline">mse_loss</code>.</li>
+    </ul>
+    This is a test function, used to test whether the <code class = "inline">loss_fnc</code> returning <code class = "inline">True</code> if the <code class = "inline">loss_fnc</code> performs correctly (e.g. compute MSA) and <code class = "inline">False</code> otherwise.
+    <p><i>Hint: we will test your function with three different functions:  the correct one, one that always uses mean absolute error as its loss function, and one that always returns 42.</i></p>
+  </li>
+
+</ul>
+
+<p>
+Trying first on the correct function:
+<pre><code class="blockcode">print(f'test_compute_count_col(compute_count_col) returns {test_compute_count_col(compute_count_col)}.')</code></pre>
+gives the output:
+<pre><code class="datablock">test_compute_count_col(compute_count_col) returns True.</code></pre>
+</p>
+
+<p>
+Continuing our example with a function that returns the input columns values (instead of counts):
+<pre><code class="blockcode">def same(df,col):    
+    return df[col]
+print(f'test_compute_count_col(same) returns {test_compute_count_col(same)}.')</code></pre>
+gives the output:
+<pre><code class="datablock">test_compute_count_col(same) returns False.</code></pre>
+</p>
+
+
+
+
+
+
+<br><hr>
+
+<h3>Notes</h3>
+  
+  <ul>
+    <li> You should submit a file with only the standard comments at the top, the specified functions, and any helper functions you have written. The grading scripts will then import the file for testing.
+    <li>If your file includes code outside of functions, either comment the code out before submitting or use a main function that is conditionally executed (see <a href="https://runestone.academy/ns/books/published//thinkcspy/Functions/mainfunction.html">Think CS: Section 6.8</a> for details).
+  </ul>
+  </p>
+
+</div>
+</body>
+</html>
