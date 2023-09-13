@@ -354,7 +354,7 @@ gives the output:
 
 <p>
 Continuing our example, we can add columns for the languages available, using one hot encoding:
-<pre><code class="blockcode">    df_langs = encode_categorical_col(df_si['language_classes'])
+<pre><code class="blockcode">df_langs = encode_categorical_col(df_late['language_classes'])
 print(df_langs)
 print(f'Number of schools for each language:')
 print(df_langs.sum(axis=0))</code></pre>
