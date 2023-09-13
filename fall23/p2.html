@@ -355,37 +355,45 @@ gives the output:
 <p>
 Continuing our example, we can add columns for the languages available, using one hot encoding:
 <pre><code class="blockcode">df_langs = encode_categorical_col(df_late['language_classes'])
-print(df_langs)
-print(f'Number of schools for each language:')
-print(df_langs.sum(axis=0))</code></pre>
+print(df_late['language_classes'].head(5))
+print(df_langs.head(5))
+print('Number of schools for each language:')
+print(df_langs.sum(axis=0))
+</code></pre>
 gives the new DataFrame that we can use to count number of schools that offer each language:
-<pre><code class="datablock">     Italian   Latin   Mandarin   Spanish  American Sign Language  French  Italian  Mandarin  Russian  Spanish
-1          0       0          0         1                       0       0        0         1        0        0
-2          0       0          0         0                       0       0        0         0        0        1
-3          0       0          0         1                       0       0        1         0        0        0
-4          0       0          0         1                       0       0        1         0        0        0
-5          0       0          0         1                       0       0        1         0        0        0
-6          1       0          0         1                       0       1        0         0        0        0
-7          1       0          1         1                       1       0        0         0        0        0
-8          1       1          0         1                       0       1        0         0        0        0
-9          0       0          0         0                       0       0        0         0        0        1
-10         0       0          0         0                       0       0        0         0        1        0
+<pre><code class="datablock">0    French, Greek, Latin, Mandarin, Spanish
+1                                     French
+2                                    Spanish
+3                                    Spanish
+4                                    Spanish
+Name: language_classes, dtype: object
+
+   American Sign Language  Arabic  French  German  Greek  Hebrew  Italian  Japanese  Latin  Mandarin  Spanish
+0                       0       0       1       0      1       0        0         0      1         1        1
+1                       0       0       1       0      0       0        0         0      0         0        0
+2                       0       0       0       0      0       0        0         0      0         0        1
+3                       0       0       0       0      0       0        0         0      0         0        1
+4                       0       0       0       0      0       0        0         0      0         0        1
+
 Number of schools for each language:
-Italian                   3
-Latin                     1
-Mandarin                  1
-Spanish                   7
-American Sign Language    1
-French                    2
-Italian                   3
-Mandarin                  1
-Russian                   1
-Spanish                   2</code></pre>
+American Sign Language     2
+Arabic                     2
+French                    12
+German                     1
+Greek                      2
+Hebrew                     1
+Italian                    4
+Japanese                   3
+Latin                      2
+Mandarin                   6
+Spanish                   28
+dtype: int64
+</code></pre>
 </p>
 
 <p>
 To validate our models, we will randomly split the dataset into training and testing sets:
-<pre><code class="blockcode"> xes_cols = ['language_count','ap_count','pct_stu_safe','attendance_rate','college_career_rate']
+<pre><code class="blockcode">xes_cols = ['language_count','ap_count','pct_stu_safe','attendance_rate','college_career_rate']
 y_col = 'graduation_rate'
 x_train, x_test, y_train, y_test = split_test_train(df_late,xes_cols,y_col)
 print(f'The sizes of the sets are:')
