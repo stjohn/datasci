@@ -401,8 +401,8 @@ print(f'x_train has {len(x_train)} rows.\tx_test has {len(x_test)} rows.')
 print(f'y_train has {len(y_train)} rows.\ty_test has {len(y_test)} rows.')
 </code></pre>
 gives the output:
-<pre><code class="datablock">x_train has 21 rows.    x_test has 7 rows.
-y_train has 21 rows.    y_test has 7 rows.</code></pre>
+<pre><code class="datablock">x_train has 22 rows.    x_test has 8 rows.
+y_train has 22 rows.    y_test has 8 rows.</code></pre>
 </p>
 
 <p>Once you have written your function, test it locally on the small test files.  When it works, upload to Gradescope. Given the size of the files that we evaluate your code, you will find it much faster to develop and test the code in your IDE than debugging and testing in Gradescope.</p>
@@ -447,11 +447,11 @@ for col in xes_cols:
     print(f'for {col}, theta_0 = {coeff[col][0]} and theta_1 = {coeff[col][1]}')
 </code></pre>
 gives the output:
-<pre><code class="datablock">for language_count,     theta_0 = 0.821969696969697 and theta_1 = 0.008721590909090911
-for ap_count,   theta_0 = 0.829236532747707 and theta_1 = 0.0021805968221160063
-for pct_stu_safe,       theta_0 = 0.3259265268281375 and        theta_1 = 0.5869741569127364
-for attendance_rate,    theta_0 = -0.4082696527688132 and       theta_1 = 1.4385568607202786
-for college_career_rate,        theta_0 = 0.4664578537197913 and        theta_1 = 0.5575944180964911
+<pre><code class="datablock">for language_count, theta_0 = 0.8480569704034503 and theta_1 = 0.008590562417322539
+for ap_count, theta_0 = 0.8461003017752102 and theta_1 = 0.0036611430972476005
+for pct_stu_safe, theta_0 = 0.3139020169251634 and theta_1 = 0.6179008519044576
+for attendance_rate, theta_0 = 0.05301553094638145 and theta_1 = 0.937016067877174
+for college_career_rate, theta_0 = 0.5128147415423354 and theta_1 = 0.5026459501657516
 </code></pre>
 We can now use the coefficients of the models to make predictions.
 </p>
