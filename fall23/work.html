@@ -186,11 +186,59 @@ I attended lecture today.
   </li> 
 
 
-<!--  
+ 
   <li><a name="cw4"><b>Week 4:</b></a>
     <p> <b>Classwork 4.1: </b> &emsp; <i>Due 1:45pm, Wednesday, 20 September.</i> &emsp;  
+
+    Available during Lecture 4 on Gradescope, this classwork focuses on hiring in the technical sector.  Last fall, hiring looked quite strong.  Here's a an analysis by <a href="https://fordschool.umich.edu/faculty/betsey-stevenson">Prof. Stevenson</a> of University of Michigan:</p>   
+
+    <p>
+    <a href="https://poverty.umich.edu/2022/12/02/november-jobs-report-strong-job-growth-continues-but-there-are-hints-of-weakness/"><img src="../spr23/stevenson_info_jobs_dec_2022.png" height="500"><br>
+    BLS Monthly Jobs Report:  Rapid Insights from Betsey Stevenson</a>
+    </p>
+    
+    <p>Including more recent numbers show growth but not as quickly:</p>
+
+    <img src="tech_jobs_fred_1940_2023.png" height = "500">
+
+    <p>Using the data set for 2010 until August 2023 from <a href="https://fred.stlouisfed.org/series/USINFO">St. Louis Federal Reserve Economic Data Data (FRED)</a>:
+    <ul>
+      <li><a href="fred_info_2010_aug_2023.csv">fred_info_2010_aug_2023.csv</a>:  A CSV file with the employment in Information Services since 2010 (until August 2023).</li>     
+    </ul>
+    write functions that will fit a linear regression to the data and predicts the number of jobs on January 1, 2024:
+    
+  <li> <code class = "inline">fit_linear_regression(df)</code>
+    This function takes two inputs:
+    <ul>
+       <li> <code class = "inline">df</code>: containing an index and the column, <code class="inline">USINFO</code>.
+    </ul>
+    Fits a linear model to <code class = "inline">index</code> and <code class = "inline">????</code>, using <code class = "inline">sklearn.linear_model.LinearRegression</code> (see lecture & textbook for details on setting up the model).  The resulting model should be returned as bytestream, using <a href="https://docs.python.org/3/library/pickle.html">pickle</a> (see Lecture 4).<br>
+    <i>Hint:  Since each entry is exactly 1 month apart, you can use the index, instead of parsing the <code class="inline">datetime</code> objects.</i></li><br>
+
+
+  <li> <code class = "inline">predict(mod_pkl, offset): </code>
+    This function takes two inputs:
+    <ul>
+      <li> <code class = "inline">mod_pkl</code>: a trained model for the data, stored in pickle format.
+      <li> <code class = "inline">offset</code>: the number of months since January 1, 2010.
+    </ul>
+    Using the model, <code class = "inline">mod_pkl</code>, returns the predicted number of employees in Information Services <code class="inline">offset</code> months from January 1, 2010.  For example if <code class="inline">offset</code> is <code class="inline">180</code>, then it would return the model's prediction of the number of employees <code class="inline">180/12 = 15</code> years after the baseline (January 2010) or January 2025.</li><br>
+</ul>
+
+
+  </p>
+
     <p> <b>Classwork 4.2: </b> &emsp; <i>Due 3pm, Wednesday, 20 September.</i> &emsp;      
+      Available during Lecture 4 on Gradescope, this classwork focuses on the structure and topics for the optional project, based on the project overview in lecture:
+
+      <ol>
+         <li> What is an NYC-related topic in which you are interested?</li>
+         <li>Was is a question related to that topic (i.e. predictive instead of descriptive framing of your project)?</li>
+         <li>What kind of data would you be needed for this? </li>
+      </ol>
   </li> 
+
+<!--   
   <li><a name="cw5"><b>Week 5:</b></a>
     <p> <b>Classwork 5.1: </b> &emsp; <i>Due 1:45pm, Wednesday, 27 September.</i> &emsp;
     <p> <b>Classwork 5.2: </b> &emsp; <i>Due 3pm, Wednesday, 27 September.</i> &emsp;      
@@ -238,50 +286,6 @@ I attended lecture today.
 
 
 <!--
-
-
-        <br>
-  <p><a name="cw3"><b>Classwork 4: </b> &emsp; <i>Due 3pm, Wednesday, 8 February.</i> &emsp;
-     Available during Lecture 3 on Gradescope, this classwork focuses on the structure and topics for the optional project, based on the project overview in lecture:
-
-     <ol>
-        <li> What is an NYC-related topic in which you are interested?</li>
-        <li>Was is a question related to that topic (i.e. predictive instead of descriptive framing of your project)?</li>
-        <li>What kind of data would you be needed for this? </li>
-     </ol>
-
-   <br>
-  <p><a name="cw4"><b>Classwork 4: </b> &emsp; <i>Due 3pm, Wednesday, 15 February.</i> &emsp;
-    Available during Lecture 4 on Gradescope, this classwork focuses on hiring in the technical sector has been in the news recently and is inspired by <a href="https://fordschool.umich.edu/faculty/betsey-stevenson">Prof. Stevenson's recent analysis: </a> </p>   
-
-    <p>
-      <a href="https://poverty.umich.edu/2022/12/02/november-jobs-report-strong-job-growth-continues-but-there-are-hints-of-weakness/"><img src="stevenson_info_jobs_dec_2022.png" height="500"><br>
-      BLS Monthly Jobs Report:  Rapid Insights from Betsey Stevenson</a>
-      </p>
-
-    <p>To get the most out of this exercise, bring a laptop with you to lecture with a development environment (IDE) that has Python 3.6+ to work through in lecture.  </p>
-    
-    <p>Using the data set for the previous 5 years from <a href="https://fred.stlouisfed.org/series/USINFO">St. Louis Federal Reserve Economic Data Data (FRED)</a>:
-    <ul>
-      <li><a href="fred_info_2022_5yr.csv">fred_info_2022_5yr.csv</a>:  A CSV file with the employment in Information Services for past 5 years:  2018-2022.</li>     
-    </ul>
-
-    Fit a linear model to the data by:  
-    <ol>
-      <li> Compute the standard deviation of the <code class = "inline">xes</code> and <code class = "inline">yes</code>.  Call these <code class = "inline">sd_x</code> and <code class = "inline">sd_y</code>.
-      <li> Compute the correlation, <code class = "inline">r</code>,  of the <code class = "inline">xes</code> and <code class = "inline">yes</code>.
-      <li> Compute the slope, <code class = "inline">theta_1</code>, as <code class = "inline">theta_1 = r*sd_y/sd_x</code>.
-      <li> Compute the y-intercept, <code class = "inline">theta_0</code>, as <code class = "inline">theta_0 = average(yes) - theta_1 * average(xes)</code>
-      <li> Return <code class = "inline">theta_0</code> and <code class = "inline">theta_1</code>.
-    </ol>    
-    where <code class = "inline">xes</code> is the number of months from start of dataset, counting from 0 (i.e. 0, 1, 2, 3,...)   and <code class = "inline">yes</code> is the <code class = "inline">USINFO</code> column of your dataset. The <code class = "inline">xes</code> can be generated by looping through the dataset or using the index as a column (e.g. <code class = "inline">df.index.to_series()</code>).
-</p>
-    <p>See <a href="p5.html">Program 5</a> for more details on this dataset.</p>
-
-
-<br>
-
-
 
 
   <p><a name="cw5"><b>Classwork 5: </b> &emsp; <i>Due 3pm, Wednesday, 22 February.</i> &emsp;  
