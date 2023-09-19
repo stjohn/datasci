@@ -192,14 +192,19 @@ I attended lecture today.
 
     Available during Lecture 4 on Gradescope, this classwork focuses on hiring in the technical sector.  Last fall, hiring looked quite strong.  Here's a an analysis by <a href="https://fordschool.umich.edu/faculty/betsey-stevenson">Prof. Stevenson</a> of University of Michigan:</p>   
 
+
     <p>
     <a href="https://poverty.umich.edu/2022/12/02/november-jobs-report-strong-job-growth-continues-but-there-are-hints-of-weakness/"><img src="../spr23/stevenson_info_jobs_dec_2022.png" height="500"><br>
-    BLS Monthly Jobs Report:  Rapid Insights from Betsey Stevenson</a>
+    BLS Monthly Jobs Report:  Rapid Insights from Betsey Stevenson</a>.
     </p>
     
     <p>Including more recent numbers show growth but not as quickly:</p>
 
     <img src="tech_jobs_fred_1940_2023.png" height = "500">
+
+
+    <p><i>Available Libraries: pandas, numpy, sklearn.linear_model, pickle</i>.</p>
+
 
     <p>Using the data set for 2010 until August 2023 from <a href="https://fred.stlouisfed.org/series/USINFO">St. Louis Federal Reserve Economic Data Data (FRED)</a>:
     <ul>
@@ -208,12 +213,12 @@ I attended lecture today.
     write functions that will fit a linear regression to the data and predicts the number of jobs on January 1, 2024:
     
   <li> <code class = "inline">fit_linear_regression(df)</code>
-    This function takes two inputs:
+    This function takes one input:
     <ul>
        <li> <code class = "inline">df</code>: containing an index and the column, <code class="inline">USINFO</code>.
     </ul>
     Fits a linear model to <code class = "inline">index</code> and <code class = "inline">????</code>, using <code class = "inline">sklearn.linear_model.LinearRegression</code> (see lecture & textbook for details on setting up the model).  The resulting model should be returned as bytestream, using <a href="https://docs.python.org/3/library/pickle.html">pickle</a> (see Lecture 4).<br>
-    <i>Hint:  Since each entry is exactly 1 month apart, you can use the index, instead of parsing the <code class="inline">datetime</code> objects.</i></li><br>
+    <i>Hint:  Since each entry is exactly 1 month apart, you can use the index, instead of parsing the <code class="inline">datetime</code> objects.  You may find <code class="inline">df.index.to_series()</code> useful.</i></li><br>
 
 
   <li> <code class = "inline">predict(mod_pkl, offset): </code>
@@ -225,8 +230,29 @@ I attended lecture today.
     Using the model, <code class = "inline">mod_pkl</code>, returns the predicted number of employees in Information Services <code class="inline">offset</code> months from January 1, 2010.  For example if <code class="inline">offset</code> is <code class="inline">180</code>, then it would return the model's prediction of the number of employees <code class="inline">180/12 = 15</code> years after the baseline (January 2010) or January 2025.</li><br>
 </ul>
 
-
+  <p>For example:</p>
+  <pre><code class="blockcode">df = pd.read_csv(directory+'fred_info_2010_aug_2023.csv')
+mod_pkl = fit_linear_regression(df)
+januarys = pd.DataFrame({'index' : list(range(120,240,12))})
+predictions = predict(mod_pkl,januarys)
+print(f'The predicted employments by years:')
+results = zip(list(range(2020,2030)),predictions)
+for year,pred in results:
+    print(f'January {year}: \t {int(pred*1000):,}')</code></pre>
+  gives the model's predictions for employment from 2020 to 2030:
   </p>
+  <pre><code class="datablock">The predicted employments by years:
+January 2020:    2,879,867
+January 2021:    2,905,173
+January 2022:    2,930,480
+January 2023:    2,955,786
+January 2024:    2,981,092
+January 2025:    3,006,398
+January 2026:    3,031,705
+January 2027:    3,057,011
+January 2028:    3,082,317
+January 2029:    3,107,623</code></pre>
+<br><br>
 
     <p> <b>Classwork 4.2: </b> &emsp; <i>Due 3pm, Wednesday, 20 September.</i> &emsp;      
       Available during Lecture 4 on Gradescope, this classwork focuses on the structure and topics for the optional project, based on the project overview in lecture:
@@ -861,11 +887,10 @@ Projects should synthesize the skills acquired in the course to analyze and visu
 The grade for the project is a combination of grades earned on the milestones (e.g. deadlines during the semester to keep the projects on track) and the overall submitted program. If you choose not to complete the project, your final exam grade will replace its portion of the overall grade.
 
 
-<p><i>More details to come...</i></p>
-<!--
+
 <h3>Milestones</h3>
 
-The project is broken down into smaller pieces that must be submitted by the deadlines below.  For details of each milestone, see the links.  The project is worth 20% of the final grade.  The point breakdown is listed as well as the submission windows and deadlines.  All components of the project are submitted via Gradescope unless other noted.
+The project is broken down into smaller pieces that must be submitted by the deadlines below.  For details of each milestone, see the links.  The project is worth 25% of the final grade.  The point breakdown is listed as well as the submission windows and deadlines.  All components of the project are submitted via Gradescope unless other noted.
 
 
 <p>
@@ -875,40 +900,49 @@ The project is broken down into smaller pieces that must be submitted by the dea
   <th>Submission Window Opens:</th>
 </tr>
 <tr>
-	<td>Wed, March 1, 2023</td>
+	<td>Tue, October 10, 2023</td>
   <td><a href="#opt_in">Opt-In</a></td>
   <td></td>
-  <td>Wed, February 22, 2023</td>
+  <td>Wed, September 20, 2023
+  </td>
 </tr>
 <tr>
-	<td>Sun, March 12, 2023 </td>
+	<td>Fri, October 22, 2023</td>
   <td><a href="#proposal">Proposal</a></td>
-  <td>50</td>
-  <td>Wed, March 1, 2023</td>
+  <td></td>
+  <td>Thu, October 12, 2023 </td>
 </tr>
 <tr>
-	<td>Wed, March 29, 2023</td>
-  <td><a href="#check_in">Interim Check-In</a></td>
-  <td>25</strike></td>
-  <td>Wed, March 22, 2023</td>
+	<td>Fri, November 10, 2023</td>
+  <td><a href="#check_in">Project Draft/Interim Check-In</a></td>
+  <td></td>
+  <td>Sat, October 23, 2023</td>
 </tr>
 
 <tr>
-	<td>Fri, May 5, 2023</td>
+	<td>Friday, December 2, 2023</td>
+  <td><a href="#complete">Final Project Code Submission</a></td>
+  <td></td>
+  <td>Sat, November 11, 2023</td>
+</tr>
+
+<tr>
+	<td>Friday, December 2, 2023</td>
   <td><a href="#complete">Complete Project & Website</a></td>
-  <td>100</td>
-  <td>Wed, March 22, 2023</td>
+  <td></td>
+  <td>Sat, November 11, 2023</td>
 </tr>
 
 
 <tr>
-	<td>Fri, May 5, 2023</td><td><a href="#presentation">Project Demonstration</a></td>
-  <td>25</td>
-  <td>Wed, March 22, 2023</td>
+	<td>Friday, December 2, 2023</td>
+  <td><a href="#presentation">Final Project Demonstration - Live Demo or Video Recording</a></td>
+  <td></td>
+  <td>Sat, November 11, 2023</td>
 </tr>
 <tr>
 	<th colspan=2>Total Points:</th>
-  <td>200</td>
+  <td>250</td>
   <td></td>
 </tr>
 
@@ -920,7 +954,7 @@ The project is broken down into smaller pieces that must be submitted by the dea
 <h3>Project Opt-In</h3>
 <a name="opt_in"></a>
 
-Review the following FAQs before filling out the Project Opt-In form (available on Gradescope on 14 February).
+Review the following FAQs before filling out the Project Opt-In form (available on Gradescope on September 20).
 
 <ul>
   <li> <b>Is the final project mandatory?</b><br>
@@ -939,17 +973,15 @@ If you "opt in", we will continue to send you information on completing the next
 Yes and no.  We would like you to seriously consider your availability before making this commitment.  Likewise, we would like to focus our time to help those who are serious about doing this project.  That being said, if you decide midway through the process that you no longer have the time nor capacity to complete the project, no harm no foul, your final written exam will once again be weighted 40% of your cumulative grade (see more in the question below).
 
   <li> <b>How does the final project factor into my final grade?</b><br>
-If you choose to do the project, your Written Exam will be worth 20% of your overall course grade:
+If you choose to do the project, your final exam will be worth 25% of your overall course grade:
   <ul>
-      <li> Optional Project: 20%
-      <li> Final Exam - Written Exam: 20%
-      <li> Final Exam - Coding Exam: 20%
+      <li> Optional Project: 25%
+      <li> Final Exam: 25%
   </ul>
-If you choose not to do the project, your Written Exam will be worth 40% of your overall course grade:
+If you choose not to do the project, your final exam will be worth 50% of your overall course grade:
 
 <ul>
-    <li> Final Exam - Written Exam: 40%
-    <li> Final Exam - Coding Exam: 20%
+    <li> Final Exam: 50%
 </ul>
 For more details, see the <a href="syl.html">syllabus.</a>
 </ul>
@@ -957,14 +989,14 @@ For more details, see the <a href="syl.html">syllabus.</a>
 <br>
 <h3>Project Proposal</h3>
 <a name="proposal"></a>
-<p>(50 points)</p>
+<!--<p>(50 points)</p>-->
 <p>
 
-The window for submitting proposals opens 1 March.  If you would like feedback and the opportunity to resubmit for a higher grade, submit early in the window.  Feel free to re-submit as many times as you like, up until the assignment deadline.  The instructing team will work hard to give feedback on your submission as quickly as possible, and we will grade them in the order they were received.
+The window for submitting proposals opens October 12.  If you would like feedback and the opportunity to resubmit for a higher grade, submit early in the window.  Feel free to re-submit as many times as you like, up until the assignment deadline.  The instructing team will work hard to give feedback on your submission as quickly as possible, and we will grade them in the order they were received.
 
 <p>The proposal is split into the following sections:
   <ul>
-    <li> <b>Overview:</b> (10 Points)<br>
+    <li> <b>Overview:</b> <!--(10 Points)--><br>
     Think of the overview section as the equivalent of an abstract in a research paper or an
     <a href="https://en.wikipedia.org/wiki/Elevator_pitch">elevator pitch</a> for the project.  The following questions will help you frame your thoughts if you ever have to succinctly describe your project in an interview:
     <p>
@@ -975,7 +1007,7 @@ The window for submitting proposals opens 1 March.  If you would like feedback a
       <li>Originality: In 1 to 2 sentences, describe why you believe this project idea is unique and original.
     </ul>
     <br>
-    <li><b>Background Research:</b> (10 Points)<br>
+    <li><b>Background Research:</b><!--(10 Points)--><br>
       In this section, please prove to us that you have already done research in the project you are proposing by answering the questions below.
       <p>
       <ul>
@@ -983,7 +1015,7 @@ The window for submitting proposals opens 1 March.  If you would like feedback a
           <li> Existing Solutions: What are some existing solutions (if any) that are already available for your problem.  What are the drawbacks to these solutions?
       </ul>
       <br>
-      <li><b>Data:</b> (10 points)<br>
+      <li><b>Data:</b> <!--(10 Points)--><br>
         In order to write a successful proposal, you must already have obtained the data and done basic exploratory analysis on it, enough so that you feel confident you have enough data to answer the questions you wish to explore. We cannot stress this enough:  <b>You must use NYC specific data that is publicly available.</b>  If your data does not fit this criteria, your proposal will be rejected.
 
         <p> The following questions will guide you through some criteria you should be using to assess if the data you have is enough for a successful project.
@@ -994,7 +1026,7 @@ The window for submitting proposals opens 1 March.  If you would like feedback a
 
               <li> Data Richness: What type of data is in your dataset?  You don't need to describe every column.  A generalized overview is fine.  (e.g. "My data contains 311 complaint types, the date the complaints are created and closed, as well as a description of the complaint").  If you found a data dictionary, feel free to link us to that as well.
             </ul><br>
-        <li><b>The Predictive Model:</b> (10 Points)<br>
+        <li><b>The Predictive Model:</b><!--(10 Points)--><br>
 
             A strong data science project should demonstrate your knowledge of predictive modeling.  We will be covering models extensively in the latter half of the course.  At this stage of the proposal writing, we will not have covered all the modeling techniques yet, so it's okay to be a bit vague here.
 
@@ -1007,7 +1039,7 @@ The window for submitting proposals opens 1 March.  If you would like feedback a
                 <li> Security and Privacy Considerations: Will you be working with personal identifiable information (PII)? Can your model be mis-used for evil, not good? If so, how do you plan to mitigate that?
            </ul>
            <br>
-       <li><b>The Visualization:</b> (10 Points)<br>
+       <li><b>The Visualization:</b><!--(10 Points)--><br>
           A key part of making a great data science portfolio are the visualizations.  This is a quick and elegant way of showcasing your work during the job hunting process, even to a non-technical audience.
 
           <p>Thus, a major part of this final project will center around making the following three types of visualizations with the data you choose.
@@ -1023,32 +1055,32 @@ The window for submitting proposals opens 1 March.  If you would like feedback a
 <br>
 <h3>Project Interim Check-In</h3>
 <a name="check_in"></a>
-<p>(25 points)</p>
+<p><!--(25 points)--></p>
 <p> The interim check-in is submitted via Gradescope and contains:
 
 <ul>
-    <li><b>Title and Major Changes:</b> (1 point)
+    <li><b>Title and Major Changes:</b> <!--(1 Points)-->
       <ul>
         <li>Title:  should capture the topic/theme of your project.
         <li>Major Changes:  Has there been any changes to the focus of your project since the project proposal?  If none, write "None".  <br>
           If there has been changes, explain why (e.g. found more data to enrich my dataset than what was originally described in the proposal).      
       </ul>
     </li><br>
-    <li><b>Summary Statistics:</b> (8 points)<br>
+    <li><b>Summary Statistics:</b><!--(10 Points)--><br>
       <ul>
         <li>Upload the Visualization:  Upload at least one summary statistics plot you've made so far. 
           (File format accepted: PNG, JPEG, JPG)</li>
         <li>Inference Based on the Visualization:  In your own words, what can you infer from this graph?</li>
       </ul>
     </li><br>
-    <li><b>Map Graphs:</b> (8 points)<br>
+    <li><b>Map Graphs:</b><!--(10 Points)--><br>
       <ul>
         <li>Upload the Visualization:  Upload at least one map graph you've made so far. 
           (File format accepted: PNG, JPEG, JPG)</li>
         <li>Inference Based on the Visualization:  In your own words, what can you infer from this graph?</li>
       </ul>      
     </li> <br>
-    <li><b>Model Performance Plots:</b> (8 points)<br>
+    <li><b>Model Performance Plots:</b><!--(10 Points)--><br>
       <ul>
         <li>Upload the Visualization:  Upload at least one model accuracy plot you've made so far. 
           (File format accepted: PNG, JPEG, JPG)</li>
@@ -1058,9 +1090,14 @@ The window for submitting proposals opens 1 March.  If you would like feedback a
 </ul>
 <br><br>
 <p>
-<h3>Final Project & Website Submission</h3>
+<h3>Final Project Code Submission</h3>
 <a name="complete"></a>
-<p>(100 points)</p>
+<p><!--(100 points)--></p>
+
+More details to come...
+<!--
+
+
 <p> <b>Submission Instructions</b>:
     <ul>
         <li> Submit on Gradescope under "3. Final Project & Website Submission". </li>
@@ -1098,12 +1135,20 @@ and then followed by the rest of the Python scripts.
     </ul>
 
     <br>
+
+-->    
 <p><h3>Project Demonstration</h3></p>
 <a name="presentation"></a>
-<p>(25 points)</p>
+<p><!--( points)--></p>
+
+More details to come...
+
+<!--
+
+
 <p> For the last part of the project, we would like to you to prepare a lightning demo.  This composes of two parts:
   <ul>
-    <li>(10 points) Two slides that serve as a graphical overview ("lightning talk" slides) of your project. </li>
+    <li>Two slides that serve as a graphical overview ("lightning talk" slides) of your project. </li>
     <ul>
       <li>To be submitted under "4. Final Project Demonstration - Slides"</li>
       <ul>
@@ -1113,7 +1158,7 @@ and then followed by the rest of the Python scripts.
       <li> It's completely acceptable to re-use what you wrote on the website and the data visualizations you've submitted for "3. Final Project & Website Submission" here.</li>
     </ul>
     <br>  
-    <li>(15 points) An in-person 30 second demo of your project <b>OR</b> a pre-recorded 30 second video demo.</li>
+    <li>An in-person 30 second demo of your project <b>OR</b> a pre-recorded 30 second video demo.</li>
     <ul>
       <li>Due date is May 10th. </li>
       <li>Grading rubric is the same whether you choose in-person or pre-recorded.  More details under "5. Final Project Demonstration - Video Recording". </li>
@@ -1121,8 +1166,8 @@ and then followed by the rest of the Python scripts.
       <li>If you choose to do this via pre-recorded video recording, the video submission will be handled via upload under "5. Final Project Demonstration - Video Recording". Please see more instructions there.</li>      
     </ul>
   </ul>
-  
--->
+-->  
+
 
 
   <br><br><br><br><br><br>
