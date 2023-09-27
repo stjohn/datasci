@@ -286,9 +286,9 @@ January 2029:    3,107,623</code></pre>
   
     <p>For example, calling the function:
       <pre><code class="blockcode">xes = np.linspace(0, 10, 1000)
-  density = computeSmoothing(xes,[5])
-  plt.plot(xes,density)
-  plt.show()</code></pre>
+density = computeSmoothing(xes,[5])
+plt.plot(xes,density)
+plt.show()</code></pre>
   
       would give the plot:
   
@@ -298,19 +298,17 @@ January 2029:    3,107,623</code></pre>
   
   <p>For example, calling the function:
     <pre><code class="blockcode">pts = [2,2,5,5,2,3,4,6,7,9]
-  xes = np.linspace(0, 10, 1000)
-  density = computeSmoothing(xes,pts)
-  plt.plot(xes,density)
-  plt.fill_between(xes,density)
-  plt.show()</code></pre>
+xes = np.linspace(0, 10, 1000)
+density = computeSmoothing(xes,pts)
+plt.plot(xes,density)
+plt.fill_between(xes,density)
+plt.show()</code></pre>
   
   would give the plot:
   
   <p><img height=200 src="https://stjohn.github.io/teaching/data/fall21/density_fillBetween.png">
   
-    <p>since the there are 10 points given, the function computes the probability density function centered at each of the points, across all the values in <code class = "inline">xes</code>.  It then sums up these contributions and returns an array of the same length as <code class = "inline">xes</code>.
-  
-  
+  <p>since the there are 10 points given, the function computes the probability density function centered at each of the points, across all the values in <code class = "inline">xes</code>.  It then sums up these contributions and returns an array of the same length as <code class = "inline">xes</code>.
   
   
   <p>

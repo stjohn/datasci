@@ -1,0 +1,635 @@
+<!DOCTYPE doctype PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <title>Program 3, CSci 39542: Data Science, Hunter College</title>
+</head>
+<STYLE>A {text-decoration: none;}
+th, td { padding: 5px; }
+code {
+  background-color: #eeeeee;
+}
+.inline {
+  padding: 1px;
+}
+.blockcode {
+  border: 1px solid #999999;
+  display: block;
+  padding-left: 10px;
+  padding-top : 2px;
+  padding-bottom : 2px;
+  margin: 5px;
+}
+.datablock {
+  border: 1px solid #eeeeee;
+  display: block;
+  padding: 7px;
+  padding-top : 0px;
+  margin: 5px;
+}
+</STYLE>
+<body>
+
+
+<div style="margin: 15px;width:100%;">
+    <span style= "float: left;font-size:larger"><a href="index.html">CSci 39542</a></span>
+    <span style= "float: right">
+      <a href="syl.html">Syllabus</a>&nbsp;&nbsp;&nbsp;
+      <a href="resources.html">Resources</a>&nbsp;&nbsp;&nbsp;
+      <a href="work.html">Coursework</a><!--&nbsp;&nbsp;&nbsp;
+      <a href="faq.html">FAQ</a>-->
+    </span>
+</div>
+
+<br>
+<br>
+<hr>
+
+<div style="margin:50px">
+
+
+<h2>Program 3:  Cookie Pricing
+  <br>CSci 39542: Introduction to Data Science<br>
+<a href="http://www.hunter.cuny.edu/csci">Department of Computer Science</a><br>
+<a href="https://hunter.cuny.edu">Hunter College</a>, <a href="https://www.cuny.edu">City University of New York</a><br>
+Fall 2023<br><br>
+</h2>
+
+
+<hr>
+<a href="work.html#cw">Classwork</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#quizzes">Quizzes</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#hw">Homework</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#project">Project</a>&nbsp;&nbsp;&nbsp;
+<hr>
+
+<object width=100% height=50% type="text/html" data="generalNotes.html" border="0"
+   style="overflow: hidden;">
+</object>
+<hr>
+
+<h2>Program Description</h2>
+
+<br>
+<p><a name="p3"><b>Program 3: Cookie Pricing.</b></b> &emsp; <i>Due noon, Friday, 6 October.
+<br>Learning Objective: to build models with polynomial features, employ thresholds to decide model fitness, and use regularization techniques to better fit models.
+<br>Available Libraries: pandas, numpy, scikit-learn, pickle, and core Python 3.6+.  The available packages used for scikit-learn:  sklearn.model_selection, sklearn.preprocessing, sklearn.linear_model, and sklearn.metrics.
+<br>Data Sources:  <a href="https://fred.stlouisfed.org/">St. Louis Federal Reserve Bank Online Data (FRED)</a>.
+<br>Sample Datasets:  <a href="fred_ccc.csv">fred_ccc.csv</a></i>
+
+<h3>Federal Reserve Economic Data (FRED)</h3>
+
+<p>This program builds models for economic data from <a href="https://fred.stlouisfed.org/">St. Louis Federal Reserve Bank Economic Data (FRED)</a>, using polynomial features and regularization for economica data.
+  
+<p><a href="https://fred.stlouisfed.org/"><img src="fred_cc_cookies.png" width="800"></a></p>
+
+<p>We will focus, on the average price of chocolate chip cookies and their ingredients, but it can be generalized for other price indices. The pipeline below is general enough to handle actual prices as well as changes over time and price indices. The first steps are importing the data and splitting it into training and testing sets.  The training set is then used to determine the degree of the polynomial for the model, and once that is determined, regularization, with cross validation, is used to fit a model that can be validated with the testing data and used for predictions.</p>
+
+<p>Start by downloading the data file:</p>
+
+<ol>
+  <li>Go to <a href="https://fred.stlouisfed.org/">St. Louis Federal Reserve Bank Economic Data (FRED)</a>.</li>
+  <li>In the search window, type:  <code class="inline">Chocolate Chip Cookies</code>.</li>
+  <li>Click on <code class="inline">Average Price: Cookies, Chocolate Chip (Cost per Pound/453.6 Grams) in U.S. City Average</code>.  It's index number is <code class="inline">APU0000702421</code>.</li>
+  <li>You should see a graph of the average price of cookies, like the image above.</li>
+  <li>Click on the red button:  <code class="inline">Edit Graph</code>.</li>
+  <li>On the top of the side bar, click on <code class="inline">ADD LINE</code>. </li>
+  <li>Type in <code class="inline">eggs</code> into the search bar.  Choose the average price index (<code class="inline">APU0000708111</code>). And click on <code class="inline">Add data series</code>.</li>
+  <li>Repeat the last two steps with 
+  butter (<code class="inline">APU0000FS1101</code>), chocolate (<code class="inline">PCU3113513113517</code>), flour (<code class="inline">APU0000701111</code>), and sugar (<code class="inline">APU0000715211</code>).
+  </li>
+  <li>Click the <code class="inline">X</code> in the upper right corner to close the side bar menu.</li>
+  <li>Next, adjust dates so all indices are defined.  Click on the <code class="inline">1980-01-01</code> and change it to <code class="inline">2018-04-01</code> (before which the butter index is not defined).</li>
+  <li>Click on <code class="inline">DOWNLOAD</code> and choose <code class="inline">CSV</code> and save the file to your working directory.</li>
+</ol>
+
+    
+<br>
+<h3>Preparing Data</h3>
+  
+<p>Once you have downloaded some test data sets to your device, the next thing to do is format the data to be usable for analysis.  The data from FRED is very clean, so, we will only need to split into training and testing sets. Add the following function to your Python program:</p>
+ 
+<ul>
+  <li> <code class = "inline">import_data(csv_file, names=None)</code>:
+  This function takes two inputs:
+    <ul>
+      <li> <code class = "inline">csv_file</code>: the name of a CSV file time series data for commodities from <a href="https://fred.stlouisfed.org/series">FRED</a>. 
+      <li> <code class = "inline">names</code>: a dictionary of names where the keys are the codes for commodity indices and the values are the name to be used for the column.  The default value is <code class="inline">None</code>. </li>
+    </ul>
+  The data in the file is read into a DataFrame with the <code class="inline">DATE</code> column is dropped.  If <code class = "inline">names</code> is not <code class = "inline">None</code>, then the remaining column names correspond to the values of the <code class = "inline">names</code> dictionary.  For example, if the <code class="inline">csv_file</code> contains the chocolate chip cookie data, then a possible corresponding dictionary is: 
+  <code class="inline">names = {'APU0000702421' : 'CC Cookies', 'APU0000708111' : 'Eggs', 'APU0000FS1101' : 'Butter', 'PCU3113513113517' : 'Chocolate','APU0000701111' : 'Flour', 'APU0000715211' : 'Sugar'}
+  </code>.
+  Any rows with non-numeric entries is dropped.  You can replace non-numeric entries with <code class="inline">NaN</code> by converting to numeric and coercing errors (which will put in <code class="inline">NaN</code> if a entry is not numeric):
+  <pre><code class="blockcode">df = df.apply(lambda col: pd.to_numeric(col, errors ='coerce'))</code></pre>
+  and then dropping rows with null entries (hint: <code class="inline">df.dropna()</code>).<br>
+  The resulting DataFrame is returned with the column names taken from <code class="inline">names</code>.</li><br>
+
+  <li> <code class = "inline">split_data(df, xes_col_names, y_col_name, test_size = 0.33, random_state = 106):</code>
+  This function takes 5 input parameters:
+  <ul>
+    <li> <code class = "inline">df</code>: a DataFrame containing columns <code class = "inline">xes_col_names</code> and <code class = "inline">y_col_name</code>.</li>
+    <li> <code class = "inline">xes_col_names</code>: a list of column names of the independent variable.</li>
+    <li>  <code class = "inline">y_col_name</code>: the name of the column of the dependent variable.</li>
+    <li>  <code class = "inline">test_size</code>: accepts a float between 0 and 1 and represents the proportion of the data set to use for training.  This parameter has a default value of 0.25.</li>
+    <li>  <code class = "inline">random_state</code>:  Used as a seed to the randomization.  This parameter has a default value of 1870.</li>
+  </ul>
+  Returns the data split into 4 subsets, corresponding to those returned by <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">train_test_split</a>:
+  <code class = "inline">x_train</code>,
+  <code class = "inline">x_test</code>,
+  <code class = "inline">y_train</code>, and
+  <code class = "inline">y_test</code>. where <code class="inline">units</code> is the "x" column and the input parameter, <code class="inline">y_col_name</code> is the "y" column.<br>
+  Note:  this is function is very similar to the splitting of data into training and testing sets from <a href="p6.html">Program 6</a>.</li><br>
+</ul>
+
+
+
+<p>For example, let's input the cookie dataset:
+
+<pre><code class="blockcode">csv_file = "fred_ccc.csv"
+names = {'APU0000702421' : 'CC Cookies', 'APU0000708111' : 'Eggs', 'APU0000FS1101' : 'Butter', \
+         'PCU3113513113517' : 'Chocolate','APU0000701111' : 'Flour', 'APU0000715211' : 'Sugar'}
+df_ccc = import_data(csv_file,names)
+print('The DataFrame:')
+print(df_ccc)</code></pre>
+gives the output:
+<pre><code class="datablock">The DataFrame:
+    CC Cookies   Eggs  Butter  Chocolate  Flour  Sugar
+0        3.328  2.081   4.153     97.400  0.472  0.617
+1        3.400  1.987   4.112     98.100  0.469  0.628
+2        3.490  1.628   4.064     94.800  0.469  0.629
+3        3.481  1.725   4.110     94.700  0.468  0.630
+4        3.351  1.622   4.085     90.200  0.464  0.628
+..         ...    ...     ...        ...    ...    ...
+60       5.193  3.270   4.452    147.867  0.542  0.893
+61       5.153  2.666   4.549    149.313  0.544  0.899
+62       5.111  2.219   4.452    150.627  0.551  0.918
+63       5.091  2.094   4.465    154.298  0.564  0.932
+64       5.056  2.043   4.411    159.247  0.566  0.950
+
+[65 rows x 6 columns]</code></pre>
+
+<p>If we use the default for the last argument, the resulting DataFrame has the original column names:</p>
+<pre><code class="blockcode">df_no_sub = import_data(csv_file)
+print('The DataFrame with original column names:')
+print(df_no_sub)</code></pre>
+
+gives the output:
+<pre><code class="datablock">The DataFrame with original column names:
+    APU0000702421  APU0000708111  APU0000FS1101  PCU3113513113517 APU0000701111  APU0000715211
+0           3.328          2.081          4.153            97.400         0.472          0.617
+1           3.400          1.987          4.112            98.100         0.469          0.628
+2           3.490          1.628          4.064            94.800         0.469          0.629
+3           3.481          1.725          4.110            94.700         0.468          0.630
+4           3.351          1.622          4.085            90.200         0.464          0.628
+..            ...            ...            ...               ...           ...            ...
+60          5.193          3.270          4.452           147.867         0.542          0.893
+61          5.153          2.666          4.549           149.313         0.544          0.899
+62          5.111          2.219          4.452           150.627         0.551          0.918
+63          5.091          2.094          4.465           154.298         0.564          0.932
+64          5.056          2.043          4.411           159.247         0.566          0.950
+
+[65 rows x 6 columns]</code></pre>
+
+<p>We can then split the data into training and testing subsets:</p>
+<pre><code class="blockcode">xes_col_names = ['Eggs', 'Chocolate']
+y_col_name = "CC Cookies"
+print(f'For the x column = {xes_col_names}, y_col = {y_col_name}')
+x_train_ccc, x_test_ccc, y_train_ccc, y_test_ccc = split_data(df_ccc, xes_col_names, y_col_name)
+
+print('\nReturned sets of lengths:')
+print(f"x_train_cpi: {len(x_train_ccc)}, x_test_cpi: {len(x_test_ccc)}")
+print(f"y_train_cpi: {len(y_train_ccc)}, y_test_cpi: {len(y_test_ccc)}")
+
+print(f"And test sets:\nx test:\n{x_test_ccc}\ny_test\n{y_test_ccc}")</code></pre>
+
+gives the output:
+<pre><code class="datablock">For the x column = ['Eggs', 'Chocolate'], y_col = CC Cookies
+
+Returned sets of lengths:
+x_train_ccc: 43, x_test_ccc: 22
+y_train_ccc: 43, y_test_ccc: 22
+And test sets:
+x test:
+      Eggs  Chocolate
+43  1.718    111.641
+22  1.449    101.100
+4   1.622     90.200
+57  4.823    142.614
+32  1.481    107.900
+58  4.211    141.027
+63  2.094    154.298
+48  2.520    118.120
+12  1.463     95.100
+50  2.707    118.896
+51  2.936    122.882
+1   1.987     98.100
+49  2.863    118.161
+28  1.328    103.300
+60  3.270    147.867
+47  2.046    116.664
+9   1.554     94.200
+26  1.554     96.000
+29  1.353    108.000
+15  1.243    100.000
+0   2.081     97.400
+23  1.525     95.400
+y_test
+43    3.999
+22    3.551
+4     3.351
+57    5.058
+32    3.793
+58    5.177
+63    5.091
+48    4.174
+12    3.426
+50    4.567
+51    4.654
+1     3.400
+49    4.505
+28    3.769
+60    5.193
+47    4.147
+9     3.466
+26    3.717
+29    3.659
+15    3.468
+0     3.328
+23    3.633
+Name: CC Cookies, dtype: float64</code></pre>
+
+
+
+<p>Once you have written your function, test it locally on the small test files.  When it works, upload to Gradescope. Given the size of the files that we evaluate your code, you will find it much faster to develop and test the code in your IDE than debugging and testing in Gradescope.</p>
+
+<p>Now that we have the data, let's do some quick plots to get some intuition about how the possible explanatory variables (e.g. the ingredients) explain the price of chocolate chip cookies:</p>
+
+<pre><code class="blockcode">import matplotlib.pyplot as plt
+import seaborn as sns
+ingredients = list(df_ccc.columns)[1:]
+for ingredient in ingredients:
+    sns.lmplot(data=df_ccc, x =ingredient, y = 'CC Cookies')
+    plt.title(f'{ingredient} vs. Chocolate Chip Cookies')
+    plt.ylabel('Chocolate Chip Cookies, Price per pound')
+    plt.tight_layout()
+    plt.subplots_adjust(top=0.88)    
+    plt.show()</code></pre>
+
+<p>which makes a scatter plot of each ingredient versus the chocolate cookie price, and includes the linear regression line with the 95% confidence interval for the regression highlighted:</p>
+
+<img src="eggs.png" height = 400>
+<img src="butter.png" height = 400>
+<img src="chocolate.png" height = 400>
+<img src="flour.png" height = 400>
+<img src="sugar.png" height = 400>
+
+<p>The linear models, especially for chocolate and sugar, fits the data well, but the plots suggest a quadratic might fit better than a linear model with a single input. Let's look at linear models that use multiple inputs, as well as polynomial models.</p>
+
+<br>
+<h3>Multiple Linear Models</h3>
+
+<p>As we did in Lecture 3 with modeling miles-per-gallon (MPG) for cars, let's build a multiple linear model using all inputs:</p>
+
+<ul>
+  <li> <code class = "inline">fit_lin_reg(x_train, y_train)</code>
+    This function takes two inputs:
+    <ul>
+       <li> <code class = "inline">x_train</code>: an array-like  of numeric columns with no null values.
+       <li> <code class = "inline">y_train</code>: the target values in an array-like numeric column with no null values.
+    </ul>
+    Fits a (multiple) linear model to <code class = "inline">x_train</code> and <code class = "inline">y_train</code>, using <code class = "inline">sklearn.linear_model.LinearRegression</code> (see Lecture 5 & textbook for details on setting up the model).  The resulting model should be returned as bytestream, using <a href="https://docs.python.org/3/library/pickle.html">pickle</a> (see Lecture 4).</li><br>
+</ul>
+
+<p>
+Continuing our example using all the training data sets that we partitioned above:
+<pre><code class="blockcode">mlm_pkl = fit_lin_reg(x_train_ccc,y_train_ccc)
+print(f'The pickled model:  {mlm_pkl}')
+mlm = pickle.loads(mlm_pkl)
+print(f'\nwith coefficients:  {mlm.coef_}')</code></pre>
+gives the output:
+<pre><code class="datablock">The pickled model:  b'\x80\x04\x95\x12\x02\x00\x00\x00\x00\x00\x00\x8c\x1asklearn.linear_model._base\x94\x8c\x10LinearRegression\x94\x93\x94)\x81\x94}\x94(\x8c\rfit_intercept\x94\x88\x8c\x06copy_X\x94\x88\x8c\x06n_jobs\x94N\x8c\x08positive\x94\x89\x8c\x11feature_names_in_\x94\x8c\x15numpy.core.multiarray\x94\x8c\x0c_reconstruct\x94\x93\x94\x8c\x05numpy\x94\x8c\x07ndarray\x94\x93\x94K\x00\x85\x94C\x01b\x94\x87\x94R\x94(K\x01K\x02\x85\x94h\r\x8c\x05dtype\x94\x93\x94\x8c\x02O8\x94\x89\x88\x87\x94R\x94(K\x03\x8c\x01|\x94NNNJ\xff\xff\xff\xffJ\xff\xff\xff\xffK?t\x94b\x89]\x94(\x8c\x04Eggs\x94\x8c\tChocolate\x94et\x94b\x8c\x0en_features_in_\x94K\x02\x8c\x05coef_\x94h\x0ch\x0fK\x00\x85\x94h\x11\x87\x94R\x94(K\x01K\x02\x85\x94h\x16\x8c\x02f8\x94\x89\x88\x87\x94R\x94(K\x03\x8c\x01<\x94NNNJ\xff\xff\xff\xffJ\xff\xff\xff\xffK\x00t\x94b\x89C\x10y\x13p\x89\xdd\xa1\xbe?\xec!*\xde-\xc9\x9c?\x94t\x94b\x8c\x05rank_\x94K\x02\x8c\tsingular_\x94h\x0ch\x0fK\x00\x85\x94h\x11\x87\x94R\x94(K\x01K\x02\x85\x94h(\x89C\x10\x8e\xd1Q\xf3\x16\x8a[@\x9a\x17\xa3\x05@\x9f\x07@\x94t\x94b\x8c\nintercept_\x94h\n\x8c\x06scalar\x94\x93\x94h(C\x08\xb4\xdc\xcdN\xb76\xe5?\x94\x86\x94R\x94\x8c\x10_sklearn_version\x94\x8c\x051.2.2\x94ub.'
+
+with coefficients:  [0.11965737 0.02811119]
+</code></pre>
+The pickled model is bytestream but is fairly short considering that it's encoding the state of our trained model.  
+</p>
+
+
+<br>  
+<h3>Polynomial Models</h3>
+
+<p>Next, let's focus on a single independent variable and build models that use higher order (e.g. quadratic, cubic, etc.) terms to capture the relationship between the independent and dependent variables.  A useful function underlying the three following functions is <code class="inline">sklearn.preprocessing.PolynomialFeatures</code>, which is available from <a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.PolynomialFeatures.html">scikit-learn</a>.</p>
+
+  
+<ul>
+  <li> <code class = "inline">encode_poly(df, x_col, deg=2)</code>:
+  This function takes three inputs:
+  <ul>
+    <li> <code class = "inline">df</code>: a DataFrame that
+    includes the column <code class="inline">x_col</code>.
+    <li> <code class = "inline">x_col</code>: a column name of the DataFrame<code class = "inline">df</code>.
+    <li> <code class = "inline">deg</code>: an positive, integer value that is the degree of the polynomial feature. It has a default value of <code class = "inline">2</code>.      
+  </ul>
+  Using <code class="inline">df[[x_col]]</code> as an array (hint:  <code class="inline">pandas.DataFrame.to_numpy()</code> converts a DataFrame to a Numpy array), returns the polynomial features of that column to degree <code class = "inline">deg</code>.  Returns the resulting array.
+  <br>
+  Hint:  see the <a href="https://learningds.org/ch/16/ms_overfitting.html">Chapter 16</a> for examples of using <code class="inline">PolynomialFeatures()</code>.</li><br>
+
+  <li> <code class = "inline">fit_poly(xes, yes, epsilon=0.01, verbose=False)</code>:
+    This function takes four inputs:
+    <ul>
+      <li> <code class = "inline">xes</code>: a DataFrame that
+      includes the column <code class="inline">units</code>.
+      <li> <code class = "inline">yes</code>: a series of the same length as <code class = "inline">xes</code>.
+      <li> <code class = "inline">epsilon</code>: the size of the sample.  It has a default value of <code class = "inline">100</code>.
+      <li> <code class = "inline">verbose</code>: when <code class = "inline">True</code>, prints out the MSE cost for each degree tried (in format:  <code class="inline">f'MSE cost for deg {deg} poly model: {error:.3f}'</code> for degrees 1, 2, ..., until the error is below <code class = "inline">epsilon</code>, see example below).  It has a default value of <code class = "inline">False</code>.      
+    </ul>
+    It returns the smallest integer degree >= 1 for which the model yields a MSE of less than the specified epsilon and the coefficients as a vector for <code class = "inline">df["units"]</code> and <code class = "inline">df[y_col]</code>.  If it does not find a model with an error less than <code class="inline">epsilon</code> by degree 5, returns <code class="inline">None</code>. 
+    When fitting the linear regression model, the <code class="inline">fit_intercept=False</code>.
+    <br>
+    Hint:  see the <a href="https://learningds.org/ch/16/ms_overfitting.html">Chapter 16</a> for examples of using <code class="inline">PolynomialFeatures()</code>.</li><br>
+  
+
+  <li> <code class = "inline">fit_with_regularization(xes, yes, poly_deg=2 reg = "lasso"): </code>
+    <ul>
+      <li> <code class = "inline">xes</code>: a series of numeric values.
+      <li> <code class = "inline">yes</code>: a series of numeric values.
+      <li> <code class = "inline">poly_deg</code>: the degree of the polynomial features to be created.  It has a default value of <code class = "inline">2</code>.
+      <li> <code class = "inline">reg</code>: The type of regularization used:  <code class="inline">ridge</code> or <code class = "inline">lasso</code>. It has a default value of <code class = "inline">lasso</code>.
+    </ul>
+    This function fits a model with polynomial features using Lasso or Ridge regression with cross validation:
+    <ol>
+      <li>Apply <code class="inline">PolynomialFeatures</code> to the <code class = "inline">xes</code> with degree equal to <code class = "inline">poly_deg</code>.</li>
+      <li>If <code class = "inline">reg</code> equals <code class = "inline">ridge</code>, use <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.RidgeCV.html">RidgeCV</a> to instantiate and fit a model to the polynomial features and <code class = "inline">yes</code>.  Otherwise, use <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LassoCV.html">LassoCV</a> to to instantiate and fit the model.</li>
+      <li>Returns the model as serialized object (i.e. a pickled object).</li>
+    </ol>   
+</li><br>
+</ul>
+  
+<p>
+Continuing our example with the chocolate column:
+<pre><code class="blockcode">choc_deg_3_tr = encode_poly(x_train_ccc,'Chocolate',deg=3)
+print('Polynomial features (deg = 3) for chocolate:')
+np.set_printoptions(precision=3,suppress=True)
+print(choc_deg_3_tr)</code></pre>
+gives the polynomial features (printed prettily):
+<pre><code class="datablock">Polynomial features (deg = 3) for chocolate:
+[[      1.         99.1      9820.81   973242.271]
+  [      1.        147.867   21864.65  3233060.156]
+  [      1.        106.487   11339.481 1207507.331]
+  [      1.        108.997   11880.346 1294922.074]
+  [      1.         92.8      8611.84   799178.752]
+  [      1.        111.641   12463.713 1391461.37 ]
+  [      1.        150.627   22688.493 3417499.655]
+  [      1.         99.9      9980.01   997002.999]
+  [      1.         94.       8836.     830584.   ]
+  [      1.        141.027   19888.615 2804831.669]
+  [      1.        107.9     11642.41  1256216.039]
+  [      1.         91.       8281.     753571.   ]
+  [      1.         94.7      8968.09   849278.123]
+  [      1.        103.3     10670.89  1102302.937]
+  [      1.        143.979   20729.952 2984677.823]
+  [      1.         99.8      9960.04   994011.992]
+  [      1.         93.2      8686.24   809557.568]
+  [      1.        136.453   18619.421 2540675.882]
+  [      1.         91.       8281.     753571.   ]
+  [      1.        112.5     12656.25  1423828.125]
+  [      1.         91.3      8335.69   761048.497]
+  [      1.        105.8     11193.64  1184287.112]
+  [      1.        108.4     11750.56  1273760.704]
+  [      1.        108.6     11793.96  1280824.056]
+  [      1.        104.5     10920.25  1141166.125]
+  [      1.        111.8     12499.24  1397415.032]
+  [      1.        117.552   13818.473 1624389.103]
+  [      1.         94.6      8949.16   846590.536]
+  [      1.        101.1     10221.21  1033364.331]
+  [      1.        117.856   13890.037 1637024.17 ]
+  [      1.        100.6     10120.36  1018108.216]
+  [      1.         94.8      8987.04   851971.392]
+  [      1.        133.051   17702.569 2355344.455]
+  [      1.        142.614   20338.753 2900590.92 ]
+  [      1.        102.8     10567.84  1086373.952]
+  [      1.         92.4      8537.76   788889.024]
+  [      1.        129.897   16873.231 2191782.036]
+  [      1.         99.       9801.     970299.   ]
+  [      1.         96.       9216.     884736.   ]
+  [      1.        110.413   12191.031 1346048.258]
+  [      1.         97.4      9486.76   924010.424]
+  [      1.        116.664   13610.489 1587854.077]]</code></pre>
+The first column is 
+<code class = "inline">Chocolate**0</code> which is constantly 1.  
+The next column is 
+<code class = "inline">Chocolate**1</code> which is just the <code class = "inline">Chocolate</code> column.
+The next columns are the square,
+<code class = "inline">Chocolate**2</code>, and the cube,
+<code class = "inline">Chocolate**3</code>,  of the <code class = "inline">Chocolate</code> column.
+</p>
+
+<p>The next function tries different degree polynomials and stops when the MSE cost is less than epsilon or large (degree >=5).  Trying first for eggs,  
+<pre><code class="blockcode">deg_ccc = fit_poly(x_train_ccc[['Eggs']],y_train_ccc,verbose=True)
+print(f'For eggs, the degree found is {deg_ccc}.')</code></pre>
+finds that no small degree yields an error less than epsilon:
+<pre><code class="datablock">MSE cost for deg 1 poly model: 0.076
+MSE cost for deg 2 poly model: 0.053
+MSE cost for deg 3 poly model: 0.053
+MSE cost for deg 4 poly model: 0.048
+MSE cost for deg 5 poly model: 0.044
+For eggs, the degree found is None.</code></pre>
+  </p>
+
+<p>Repeating with chocolate: 
+<pre><code class="blockcode">deg_ccc = fit_poly(x_train_ccc[['Chocolate']],y_train_ccc,verbose=True)
+  print(f'For chocolate, the degree found is {deg_ccc}.')</code></pre>
+finds that degree = 3 yields an error less than epsilon:
+<pre><code class="datablock">MSE cost for deg 1 poly model: 0.011
+MSE cost for deg 2 poly model: 0.011
+MSE cost for deg 3 poly model: 0.008
+For chocolate, the degree found is 3.</code></pre>
+  </p>  
+    
+  
+<p>
+The next function fits the model using regularization:
+<pre><code class="blockcode">choc_3_lasso_pkl = fit_with_regularization(choc_deg_3_tr, y_train_ccc, poly_deg=3, reg="lasso")
+choc_3_lasso = pickle.loads(choc_3_lasso_pkl)
+print(f'\nThe model, using Lasso regularization:  {choc_3_lasso.get_params()}')
+</code></pre>
+gives the output:
+<pre><code class="datablock">The model, using Lasso regularization:  {'alphas': None, 'copy_X': True, 'cv': None, 'eps': 0.001, 'fit_intercept': True, 'max_iter': 1000, 'n_alphas': 100, 'n_jobs': None, 'positive': False, 'precompute': 'auto', 'random_state': None, 'selection': 'cyclic', 'tol': 0.0001, 'verbose': False}</code></pre>
+</p>
+
+  
+<br>
+<h3>Evaluating Our Models</h3>
+
+<p>The next part of program evaluates how well our constant models do at prediction.  We will use a loss function, mean squared error, introduced in Lecture 1 and <a href="https://learningds.org/ch/04/modeling_loss_functions.html">Section 4.2</a>.</p>
+
+<ul>
+  <li> <code class = "inline">predict_using_trained_model(mod_pkl, xes, yes): </code>
+    This function takes three inputs:
+    <ul>
+      <li> <code class = "inline">mod_pkl</code>: a trained model for the data, stored in pickle format.
+      <li> <code class = "inline">xes</code>: an array-like of numeric columns with no null values.
+      <li> <code class = "inline">yes</code>: the target values as an array-like numeric column with no null values.
+    </ul>
+    Computes and returns the mean squared error and r2 score between the values predicted by the model (<code class = "inline">mod_pkl</code> on <code class = "inline">x</code>) and the actual values (<code class = "inline">y</code>).  Note that <code class = "inline">sklearn.metrics</code> contains two functions that may be of use:  <code class = "inline">mean_squared_error</code> and <code class = "inline">r2_score</code>.</li><br>
+
+</ul>
+
+<p>
+Continuing our example using models that we trained above:
+<pre><code class="blockcode">mse_mlm_tr,r2_mlm_tr = predict_using_trained_model(mlm_pkl,x_train_ccc,y_train_ccc)
+print(f'For the mult linear model on the test data, MSE is {mse_mlm_tr:.4} and r2 is {r2_mlm_tr:.4}.')
+mse_mlm,r2_mlm = predict_using_trained_model(mlm_pkl,x_test_ccc,y_test_ccc)
+print(f'For the mult linear model on the test data, MSE is {mse_mlm:.4} and r2 is {r2_mlm:.4}.')</code></pre>
+gives the output:
+<pre><code class="datablock">For the mult linear model on the test data, MSE is 0.008202 and r2 is 0.9748.
+For the mult linear model on the test data, MSE is 0.02778 and r2 is 0.9295.</code></pre>
+As expected, the data on which the model was trained yields better mean squared error and r2 than the testing data.
+</p>
+
+<p> We can use the function to predict with the polynomial features for chocolate:
+<pre><code class="blockcode">choc_3_pkl = fit_lin_reg(choc_deg_3_tr,y_train_ccc)
+mse_choc_3_tr,r2_choc_3_tr = predict_using_trained_model(choc_3_pkl,choc_deg_3_tr,y_train_ccc)
+print(f'\nFor the mult linear model on the test data, MSE is {mse_choc_3_tr:.4} and r2 is {r2_choc_3_tr:.4}')
+
+choc_deg_3_test = encode_poly(x_test_ccc,'Chocolate',deg=3)
+mse_choc_3,r2_choc_3 = predict_using_trained_model(choc_3_pkl,choc_deg_3_test,y_test_ccc)
+print(f'\nFor the mult linear model on the test data, MSE is {mse_choc_3:.4} and r2 is {r2_choc_3:.4}')</code></pre>
+gives the output:
+<pre><code class="datablock">For the mult linear model on the test data, MSE is 0.00777 and r2 is 0.9761
+
+For the mult linear model on the test data, MSE is 0.01934 and r2 is 0.9509</code></pre>
+The cubic model on just the chocolate column does similarly to the regression built on all the input indices.
+</p>
+
+<!--
+<p>
+Continuing our example:
+<pre><code class="blockcode"></code></pre>
+gives the output:
+<pre><code class="datablock"></code></pre>
+</p>
+<p>Next, let's use cross validation Lasso regularization (the default for our function) to better fit our models for the CPI data:</p>
+
+<pre><code class="blockcode">#Working with CPI:
+transformer = PolynomialFeatures(degree=2)
+x_train_poly = transformer.fit_transform(x_train_cpi.to_frame())
+#Fit model to the poly features
+#print(x_train_poly)
+cpi_pkl = fit_model(x_train_cpi.to_frame(), y_train_cpi)
+mod = pickle.loads(cpi_pkl)
+print(mod.get_params())
+print(x_train_poly)
+print(f'model:  {mod.predict(x_train_poly)}')</code></pre>
+would print in a sample run:
+<pre><code class="datablock">model:  [115.4081765  100.78877974 103.75105901 105.76705462 104.53105731
+116.71103081 100.87106528 103.18877452 107.38533682 123.64873
+102.5630616  106.54876721 115.09103434 101.56877805 116.38017439
+117.38302935 101.65277786 110.48304436 102.02306277 104.36820053
+101.26706442 112.39104021 115.72874723 111.01104321 100.72020846
+114.77732073 101.13677899 111.55275632 105.39676972 102.4482047
+102.92820366 105.58019789 114.16017922 101.07677912 120.57673669
+120.94873588 102.22877661 119.4813105  104.69734267 123.25273086
+122.08530483 122.47101828 109.71676032 106.15105379 101.33734998
+103.3242028  106.96019489 109.2230471  103.05677481 112.96703896
+109.46818943 104.05277264 101.4110641  102.80306107 105.95733992
+113.85675131 103.46305964 100.82820823 114.46703569 111.82875572
+103.90020154 116.05274653 100.91735089 100.62420867 107.60305063
+119.12302556 108.98133334 108.27676345 124.0481577  100.58820875
+101.20020742 104.2087723  121.70301995 117.0453158  113.55675196
+118.06874214 105.04019906 100.66535144 103.60534504 118.76816919
+121.32416363 101.9253487  117.72417146 106.34819622 109.96875977
+104.86705658 119.843024   100.58135162 100.96706507 100.5830659 ]</code></pre>
+
+<p>We can see how well this model does with the testing data, as well as predicting for the future:</p>
+
+<pre><code class="blockcode">#Predict with the model on training data:
+x_test_poly = transformer.fit_transform(x_test_cpi.to_frame())
+print('Built model, testing on testing data:')
+
+mse_cpi, r2_cpi = predict_using_trained_model(cpi_pkl, x_test_poly, y_test_cpi)
+print(f'The CPI model has a MSE for the testing set of {mse_cpi:2.2} and r2 score of {r2_cpi:2.2}.')</code></pre>
+would print in a sample run:
+<pre><code class="datablock">Built model, testing on testing data:
+The CPI model has a MSE for the testing set of 2.8 and r2 score of 0.96.</code></pre>
+ 
+-->
+
+<p>
+Let's visualize the model (red line) with the full data set:
+<pre><code class="blockcode">import matplotlib.pyplot as plt
+import seaborn as sns
+
+x_poly_all = transformer.fit_transform(df_ccc[['Eggs']])
+y_predict = mod.predict(x_poly_all)
+sns.lineplot(df_ccc['Eggs'],y_predict,color='red')
+plt.scatter(df_ccc['Eggs'],df_ccc['CC Cookies'])
+plt.title('Eggs vs CC Cookies Quadratic Model')
+plt.xlabel('Egg Prices')
+plt.show()</code></pre>
+which shows:
+</p>
+<p>
+<img src="ccc_choc_cubic_model.png" height="300">
+</p>
+
+<br>
+<h3>Testing Code</h3>
+
+<p>Each programming assignment includes functions that test that your code works (a "test suite").  In Programs 1 & 2, we wrote the test functions by hand.  For this program, we will also use <a href="https://docs.pytest.org/en/7.4.x/">pytest</a>, a standard Python testing framework.  Before you start, make sure that your IDE has pytest installed:
+<pre><code class="blockcode">pip install -U pytest</code></pre>
+    
+<p>Pytest is one of the most popular testing frameworks for Python.  For this program, we will introduce the core testing features (and will introduce more features, such as parametrizing, in future programs).  For more details, see Lecture 5, <a href="https://docs.pytest.org/en/7.4.x/">pytest docs</a> and <a href="https://runestone.academy/ns/books/published//thinkcspy/UnitTesting/toctree.html">Think CS: Chapter 20</a>.</p>
+
+
+  
+  <ul>
+    <li> <code class = "inline">test_fit_poly()</code>:
+      This test function uses pytest to test the <code class = "inline">fit_poly()</code> function.  It assert <code class = "inline">True</code> if <code class = "inline">fit_poly()</code> is correct and  <code class = "inline">False</code> otherwise. 
+  </ul>
+  
+  <p>
+  Trying first on the correct function, assuming that your program is called <code class = "inline">p3.py</code>, we can invoke <code class = "inline">pytest</code> from the command-line:
+<pre><code class="blockcode">pytest p3.py::test_encode_poly</code></pre>
+gives the output:
+<pre><code class="datablock">======================================= test session starts ========================================
+platform darwin -- Python 3.11.5, pytest-7.4.2, pluggy-1.3.0
+rootdir: /Users/stjohn/gitHub/dataScience/programs/fall23/program03
+collected 1 item                                                                                   
+
+p3.py .                                                                                      [100%]
+
+======================================== 1 passed in 1.63s =========================================
+</code></pre>
+<code class = "inline">pytest</code> looks for a function called:  <code class = "inline">test_encode_poly()</code> in the file <code class = "inline">p3.py</code>.  It then runs <code class = "inline">test_encode_poly()</code>, which tests the correctness of the function <code class = "inline">encode_poly()</code> and reports back the results.  
+  </p>
+
+
+
+
+
+<br>
+
+
+
+
+
+<i>
+<p>Notes and Hints:</p>
+<ul>
+  <li> You should submit a .py file with only the standard comments at the top, the specified functions, and any helper functions you have written. The grading scripts will then import the file for testing.
+  If your file includes code outside of functions, either comment the code out before submitting or use a main function that is conditionally executed (see <a href="https://runestone.academy/ns/books/published//thinkcspy/Functions/mainfunction.html">Think CS: Section 6.8</a> for details).</li>
+  
+  <li> Include only the libraries you need (such as <code class = "inline">pandas</code>) for your functions and none of the ones for plotting (such as <code class = "inline">matplotlib.pyplot</code> and <code class = "inline">seaborn</code>) since the functions submitted are computing and not plotting.  Only the libraries listed in <b>Available Libraries</b> are loaded by the autograder.     
+  
+</ul>
+</i>
+
+    
+
+    
+</div>
+</body>
+</html>
+    
