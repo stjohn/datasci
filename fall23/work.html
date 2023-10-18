@@ -322,11 +322,136 @@ plt.show()</code></pre>
     <p> <b>Classwork 7.1: </b> &emsp;&emsp;  Signed seating slip is picked up during the written portion of the exam.
     <p> <b>Classwork 7.2: </b> &emsp;&emsp;  Signed seating slip is picked up during the coding portion of the exam.  
   </li>      
-<!--
+
+  <br>
   <li><a name="cw8"><b>Week 8:</b></a>
     <p> <b>Classwork 8.1: </b> &emsp; <i>Due 1:45pm, Wednesday, 18 October.</i> &emsp;
-    <p> <b>Classwork 8.2: </b> &emsp; <i>Due 3pm, Wednesday, 18 October.</i> &emsp;      
+
+      Available during Lecture 8 on Gradescope, this classwork introduces the canonical digits dataset and uses sci-kit learn to build logistic regression models.  To get the most out of this exercise, bring a laptop with you to lecture with a development environment (IDE) that has Python 3+ to work through in lecture.
+
+      <p>
+        This program uses the canonical <a href="https://en.wikipedia.org/wiki/MNIST_database">MNIST dataset of hand-written digits</a> and available in <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_digits.html">sklearn digits dataset</a>:
+        <br>
+  <a href="https://scikit-learn.org/stable/auto_examples/manifold/plot_lle_digits.html#sphx-glr-auto-examples-manifold-plot-lle-digits-py">
+    <img src="https://stjohn.github.io/teaching/data/fall21/sklearn_digits.png" height=400>
+  </a>
+  
+  <br>
+  The dataset has 1797 scans of hand-written digits.
+  Each entry has the digit represented (<code class=inline>target</code>) as well as the 64 values representing the gray scale for the 8 x 8 image.  The first 5 entries are:
+  <br>
+  <img src = "https://stjohn.github.io/teaching/data/fall21/mnist_first5.png", height = 100>
+  <br>
+  The gray scales for the first 5 entries, flattened to one dimensional array:
+  <pre><code class="datablock">[[ 0.  0.  5. 13.  9.  1.  0.  0.  0.  0. 13. 15. 10. 15.  5.  0.  0.  3. 15.  2.  0. 11.  8.  0.  0.  4. 12.  0.  0.  8.  8.  0.  0.  5.  8.  0.  0.  9.  8.  0.  0.  4. 11.  0.  1. 12.  7.  0.  0.  2. 14.  5. 10. 12.  0.  0.  0.  0.  6. 13. 10.  0.  0.  0.]
+ [ 0.  0.  0. 12. 13.  5.  0.  0.  0.  0.  0. 11. 16.  9.  0.  0.  0.  0.  3. 15. 16.  6.  0.  0.  0.  7. 15. 16. 16.  2.  0.  0.  0.  0.  1. 16. 16.  3.  0.  0.  0.  0.  1. 16. 16.  6.  0.  0.  0.  0.  1. 16. 16.  6.  0.  0.  0.  0.  0. 11. 16. 10.  0.  0.]
+ [ 0.  0.  0.  4. 15. 12.  0.  0.  0.  0.  3. 16. 15. 14.  0.  0.  0.  0.  8. 13.  8. 16.  0.  0.  0.  0.  1.  6. 15. 11.  0.  0.  0.  1.  8. 13. 15.  1.  0.  0.  0.  9. 16. 16.  5.  0.  0.  0.  0.  3. 13. 16. 16. 11.  5.  0.  0.  0.  0.  3. 11. 16.  9.  0.]
+ [ 0.  0.  7. 15. 13.  1.  0.  0.  0.  8. 13.  6. 15.  4.  0.  0.  0.  2.  1. 13. 13.  0.  0.  0.  0.  0.  2. 15. 11.  1.  0.  0.  0.  0.  0.  1. 12. 12.  1.  0.  0.  0.  0.  0.  1. 10.  8.  0.  0.  0.  8.  4.  5. 14.  9.  0.  0.  0.  7. 13. 13.  9.  0.  0.]
+ [ 0.  0.  0.  1. 11.  0.  0.  0.  0.  0.  0.  7.  8.  0.  0.  0.  0.  0.  1. 13.  6.  2.  2.  0.  0.  0.  7. 15.  0.  9.  8.  0.  0.  5. 16. 10.  0. 16.  6.  0.  0.  4. 15. 16. 13. 16.  1.  0.  0.  0.  0.  3. 15. 10.  0.  0.  0.  0.  0.  2. 16.  4.  0.  0.]]</code></pre>
+  
+  <br>Today, we will focus on entries that represent 0's and 1's.  The first 10 from the dataset are displayed below:
+  <br>
+    <img src = "https://stjohn.github.io/teaching/data/fall21/mnist_binary10.png", height = 175>
+  
+  <p>
+  Write a function that builds a logistic regression model that classifies binary digits:
+      <ul>
+        <li> <code class = "inline">def binary_digit_clf(data, target, test_size = 0.25, random_state = 21):</code>:
+          This function has four inputs:
+          <ul>
+              <li> <code class = "inline">data</code>: a numpy array that
+                    includes rows of equal size flattend arrays,
+              <li> <code class = "inline">target</code> a numpy array that takes values 0 or 1 corresponding to the rows of <code class = "inline">data</code>.
+              <li> <code class = "inline">test_size</code>: the size of the test set created when the data is divided into test and training sets with <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">train_test_split</a>. The default value is <code class = "inline">0.25</code>.
+              <li> <code class = "inline">random_state</code>: the random seed used when the data is divided into test and training sets with <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">train_test_split</a>. The default value is <code class = "inline">21</code>.
+          </ul>
+  
+        The function returns the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html">confusion matrix</a> that results.
+        </ul>
+  
+  <p> For example, let's flatten the entries and restrict the dataset to just binary digits:
+        <pre><code class="blockcode">#Import datasets, classifiers and performance metrics:
+from sklearn import datasets, svm, metrics
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+#Using the digits data set from sklearn:
+from sklearn import datasets
+digits = datasets.load_digits()
+print(digits.target)
+print(type(digits.target), type(digits.data))
+#flatten the images
+n_samples = len(digits.images)
+data = digits.images.reshape((n_samples, -1))
+print(data[0:5])
+print(f'The targets for the first 5 entries: {digits.target[:5]}')
+#Make a DataFrame with just the binary digits:
+binaryDigits = [(d,t) for (d,t) in zip(data,digits.target) if t <= 1]
+bd,bt = zip(*binaryDigits)
+print(f'The targets for the first 5 binary entries: {bt[:5]}')</code></pre>
+        which will print:
+  <pre><code class="datablock">
+[0 1 2 ... 8 9 8]
+  <class 'numpy.ndarray'> <class 'numpy.ndarray'>
+[[ 0.  0.  5. 13.  9.  1.  0.  0.  0.  0. 13. 15. 10. 15.  5.  0.  0.  3.
+15.  2.  0. 11.  8.  0.  0.  4. 12.  0.  0.  8.  8.  0.  0.  5.  8.  0.
+0.  9.  8.  0.  0.  4. 11.  0.  1. 12.  7.  0.  0.  2. 14.  5. 10. 12.
+0.  0.  0.  0.  6. 13. 10.  0.  0.  0.]
+ [ 0.  0.  0. 12. 13.  5.  0.  0.  0.  0.  0. 11. 16.  9.  0.  0.  0.  0.
+3. 15. 16.  6.  0.  0.  0.  7. 15. 16. 16.  2.  0.  0.  0.  0.  1. 16.
+16.  3.  0.  0.  0.  0.  1. 16. 16.  6.  0.  0.  0.  0.  1. 16. 16.  6.
+0.  0.  0.  0.  0. 11. 16. 10.  0.  0.]
+ [ 0.  0.  0.  4. 15. 12.  0.  0.  0.  0.  3. 16. 15. 14.  0.  0.  0.  0.
+8. 13.  8. 16.  0.  0.  0.  0.  1.  6. 15. 11.  0.  0.  0.  1.  8. 13.
+15.  1.  0.  0.  0.  9. 16. 16.  5.  0.  0.  0.  0.  3. 13. 16. 16. 11.
+5.  0.  0.  0.  0.  3. 11. 16.  9.  0.]
+ [ 0.  0.  7. 15. 13.  1.  0.  0.  0.  8. 13.  6. 15.  4.  0.  0.  0.  2.
+1. 13. 13.  0.  0.  0.  0.  0.  2. 15. 11.  1.  0.  0.  0.  0.  0.  1.
+12. 12.  1.  0.  0.  0.  0.  0.  1. 10.  8.  0.  0.  0.  8.  4.  5. 14.
+9.  0.  0.  0.  7. 13. 13.  9.  0.  0.]
+ [ 0.  0.  0.  1. 11.  0.  0.  0.  0.  0.  0.  7.  8.  0.  0.  0.  0.  0.
+1. 13.  6.  2.  2.  0.  0.  0.  7. 15.  0.  9.  8.  0.  0.  5. 16. 10.
+0. 16.  6.  0.  0.  4. 15. 16. 13. 16.  1.  0.  0.  0.  0.  3. 15. 10.
+0.  0.  0.  0.  0.  2. 16.  4.  0.  0.]]
+The targets for the first 5 entries: [0 1 2 3 4]
+The targets for the first 5 binary entries: (0, 1, 0, 1, 0)
+  </code></pre>
+  
+  <p>We can then use the restricted data and targets datasets as input to our function, assuming your function <code class="inline">binary_digit_clf()</code>:
+  <pre><code class="blockcode">confuse_mx = binary_digit_clf(bd,bt,test_size=0.95)
+print(f'Confusion matrix:\n{confuse_mx}')
+disp = metrics.ConfusionMatrixDisplay(confusion_matrix=confuse_mx)
+#Use a different color map since the default is garish:
+disp.plot(cmap = "Purples")
+plt.title("Logistic Regression Classifier for Binary Digits")
+plt.show()</code></pre>
+    which will print:
+  <pre><code class="datablock">Confusion matrix:
+[[172   0]
+ [  4 166]]</code></pre>
+        and display:
+    <br>
+  <img src="https://stjohn.github.io/teaching/data/fall21/logReg_clf_confuse.png" height = 300>
+  
+  <p>Another example with the same data, but different size for the data reserved for testing:
+  <pre><code class="blockcode">confuse_mx = binary_digit_clf(bd,bt)
+print(f'Confusion matrix:\n{confuse_mx}')</code></pre>
+          would print:
+          <pre><code class="datablock">Confusion matrix:
+[[43  0]
+ [ 0 47]]</code></pre>
+  
+  <p>
+    Note:  you should submit a file with only the standard comments at the top, and this function.  The grading scripts will then import the file for testing.  If you attended lecture, include in the introductory comment the three lines detailed in <a href="work.html#cw2">Classwork 2</a>.</p>
+  </p>
+
+
+  <p> <b>Classwork 8.2: </b> &emsp; <i>Due 3pm, Wednesday, 18 October.</i> &emsp;   
+      
+    Available during Lecture 8 on Gradescope, this classwork recaps linear algebra.        
   </li> 
+
+
+<!--
   <li><a name="cw8"><b>Week 9:</b></a>
     <p> <b>Classwork 9.1: </b> &emsp; <i>Due 1:45pm, Wednesday, 25 October.</i> &emsp;
     <p> <b>Classwork 9.2: </b> &emsp; <i>Due 3pm, Wednesday, 25 October.</i> &emsp;      
@@ -359,130 +484,8 @@ plt.show()</code></pre>
 
 <!--
 
-
-  <p><a name="cw7"><b>Classwork 7: </b> &emsp; <i>Due 2:30pm, Wednesday, 8 March.</i> &emsp;
    
-    Available during Lecture 7 on Gradescope, this classwork introduces the canonical digits dataset and uses sci-kit learn to build logistic regression models.  To get the most out of this exercise, bring a laptop with you to lecture with a development environment (IDE) that has Python 3+ to work through in lecture.
 
-    <p>
-      This program uses the canonical <a href="https://en.wikipedia.org/wiki/MNIST_database">MNIST dataset of hand-written digits</a> and available in <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_digits.html">sklearn digits dataset</a>:
-      <br>
-<a href="https://scikit-learn.org/stable/auto_examples/manifold/plot_lle_digits.html#sphx-glr-auto-examples-manifold-plot-lle-digits-py">
-  <img src="https://stjohn.github.io/teaching/data/fall21/sklearn_digits.png" height=400>
-</a>
-
-<br>
-The dataset has 1797 scans of hand-written digits.
-Each entry has the digit represented (<code class=inline>target</code>) as well as the 64 values representing the gray scale for the 8 x 8 image.  The first 5 entries are:
-<br>
-<img src = "https://stjohn.github.io/teaching/data/fall21/mnist_first5.png", height = 100>
-<br>
-The gray scales for the first 5 entries, flattened to one dimensional array:
-<pre><code class="datablock">[[ 0.  0.  5. 13.  9.  1.  0.  0.  0.  0. 13. 15. 10. 15.  5.  0.  0.  3. 15.  2.  0. 11.  8.  0.  0.  4. 12.  0.  0.  8.  8.  0.  0.  5.  8.  0.  0.  9.  8.  0.  0.  4. 11.  0.  1. 12.  7.  0.  0.  2. 14.  5. 10. 12.  0.  0.  0.  0.  6. 13. 10.  0.  0.  0.]
-[ 0.  0.  0. 12. 13.  5.  0.  0.  0.  0.  0. 11. 16.  9.  0.  0.  0.  0.  3. 15. 16.  6.  0.  0.  0.  7. 15. 16. 16.  2.  0.  0.  0.  0.  1. 16. 16.  3.  0.  0.  0.  0.  1. 16. 16.  6.  0.  0.  0.  0.  1. 16. 16.  6.  0.  0.  0.  0.  0. 11. 16. 10.  0.  0.]
-[ 0.  0.  0.  4. 15. 12.  0.  0.  0.  0.  3. 16. 15. 14.  0.  0.  0.  0.  8. 13.  8. 16.  0.  0.  0.  0.  1.  6. 15. 11.  0.  0.  0.  1.  8. 13. 15.  1.  0.  0.  0.  9. 16. 16.  5.  0.  0.  0.  0.  3. 13. 16. 16. 11.  5.  0.  0.  0.  0.  3. 11. 16.  9.  0.]
-[ 0.  0.  7. 15. 13.  1.  0.  0.  0.  8. 13.  6. 15.  4.  0.  0.  0.  2.  1. 13. 13.  0.  0.  0.  0.  0.  2. 15. 11.  1.  0.  0.  0.  0.  0.  1. 12. 12.  1.  0.  0.  0.  0.  0.  1. 10.  8.  0.  0.  0.  8.  4.  5. 14.  9.  0.  0.  0.  7. 13. 13.  9.  0.  0.]
-[ 0.  0.  0.  1. 11.  0.  0.  0.  0.  0.  0.  7.  8.  0.  0.  0.  0.  0.  1. 13.  6.  2.  2.  0.  0.  0.  7. 15.  0.  9.  8.  0.  0.  5. 16. 10.  0. 16.  6.  0.  0.  4. 15. 16. 13. 16.  1.  0.  0.  0.  0.  3. 15. 10.  0.  0.  0.  0.  0.  2. 16.  4.  0.  0.]]</code></pre>
-
-<br>To start, we will focus on entries that represent 0's and 1's.  The first 10 from the dataset are displayed below:
-<br>
-  <img src = "https://stjohn.github.io/teaching/data/fall21/mnist_binary10.png", height = 175>
-
-<p>
-Write a function that builds a logistic regression model that classifies binary digits:
-    <ul>
-      <li> <code class = "inline">def binary_digit_clf(data, target, test_size = 0.25, random_state = 21):</code>:
-        This function has four inputs:
-        <ul>
-            <li> <code class = "inline">data</code>: a numpy array that
-                  includes rows of equal size flattend arrays,
-            <li> <code class = "inline">target</code> a numpy array that takes values 0 or 1 corresponding to the rows of <code class = "inline">data</code>.
-            <li> <code class = "inline">test_size</code>: the size of the test set created when the data is divided into test and training sets with <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">train_test_split</a>. The default value is <code class = "inline">0.25</code>.
-            <li> <code class = "inline">random_state</code>: the random seed used when the data is divided into test and training sets with <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">train_test_split</a>. The default value is <code class = "inline">21</code>.
-        </ul>
-
-      The function returns the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html">confusion matrix</a> that results.
-      </ul>
-
-      <p>
-      For example, let's flatten the entries and restrict the dataset to just binary digits:
-      <pre><code class="blockcode">#Import datasets, classifiers and performance metrics:
-from sklearn import datasets, svm, metrics
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LogisticRegression
-#Using the digits data set from sklearn:
-from sklearn import datasets
-digits = datasets.load_digits()
-print(digits.target)
-print(type(digits.target), type(digits.data))
-#flatten the images
-n_samples = len(digits.images)
-data = digits.images.reshape((n_samples, -1))
-print(data[0:5])
-print(f'The targets for the first 5 entries: {digits.target[:5]}')
-#Make a DataFrame with just the binary digits:
-binaryDigits = [(d,t) for (d,t) in zip(data,digits.target) if t <= 1]
-bd,bt = zip(*binaryDigits)
-print(f'The targets for the first 5 binary entries: {bt[:5]}')</code></pre>
-      which will print:
-<pre><code class="datablock">
-[0 1 2 ... 8 9 8]
-<class 'numpy.ndarray'> <class 'numpy.ndarray'>
-[[ 0.  0.  5. 13.  9.  1.  0.  0.  0.  0. 13. 15. 10. 15.  5.  0.  0.  3.
-15.  2.  0. 11.  8.  0.  0.  4. 12.  0.  0.  8.  8.  0.  0.  5.  8.  0.
-0.  9.  8.  0.  0.  4. 11.  0.  1. 12.  7.  0.  0.  2. 14.  5. 10. 12.
-0.  0.  0.  0.  6. 13. 10.  0.  0.  0.]
-[ 0.  0.  0. 12. 13.  5.  0.  0.  0.  0.  0. 11. 16.  9.  0.  0.  0.  0.
-3. 15. 16.  6.  0.  0.  0.  7. 15. 16. 16.  2.  0.  0.  0.  0.  1. 16.
-16.  3.  0.  0.  0.  0.  1. 16. 16.  6.  0.  0.  0.  0.  1. 16. 16.  6.
-0.  0.  0.  0.  0. 11. 16. 10.  0.  0.]
-[ 0.  0.  0.  4. 15. 12.  0.  0.  0.  0.  3. 16. 15. 14.  0.  0.  0.  0.
-8. 13.  8. 16.  0.  0.  0.  0.  1.  6. 15. 11.  0.  0.  0.  1.  8. 13.
-15.  1.  0.  0.  0.  9. 16. 16.  5.  0.  0.  0.  0.  3. 13. 16. 16. 11.
-5.  0.  0.  0.  0.  3. 11. 16.  9.  0.]
-[ 0.  0.  7. 15. 13.  1.  0.  0.  0.  8. 13.  6. 15.  4.  0.  0.  0.  2.
-1. 13. 13.  0.  0.  0.  0.  0.  2. 15. 11.  1.  0.  0.  0.  0.  0.  1.
-12. 12.  1.  0.  0.  0.  0.  0.  1. 10.  8.  0.  0.  0.  8.  4.  5. 14.
-9.  0.  0.  0.  7. 13. 13.  9.  0.  0.]
-[ 0.  0.  0.  1. 11.  0.  0.  0.  0.  0.  0.  7.  8.  0.  0.  0.  0.  0.
-1. 13.  6.  2.  2.  0.  0.  0.  7. 15.  0.  9.  8.  0.  0.  5. 16. 10.
-0. 16.  6.  0.  0.  4. 15. 16. 13. 16.  1.  0.  0.  0.  0.  3. 15. 10.
-0.  0.  0.  0.  0.  2. 16.  4.  0.  0.]]
-The targets for the first 5 entries: [0 1 2 3 4]
-The targets for the first 5 binary entries: (0, 1, 0, 1, 0)
-</code></pre>
-
-      <p>We can then use the restricted data and targets datasets as input to our function, assuming your function <code class="inline">binary_digit_clf()</code>:
-<pre><code class="blockcode">confuse_mx = binary_digit_clf(bd,bt,test_size=0.95)
-print(f'Confusion matrix:\n{confuse_mx}')
-disp = metrics.ConfusionMatrixDisplay(confusion_matrix=confuse_mx)
-#Use a different color map since the default is garish:
-disp.plot(cmap = "Purples")
-plt.title("Logistic Regression Classifier for Binary Digits")
-plt.show()</code></pre>
-        which will print:
-<pre><code class="datablock">Confusion matrix:
-[[172   0]
-[  4 166]]</code></pre>
-      and display:
-      <br>
-      <img src="https://stjohn.github.io/teaching/data/fall21/logReg_clf_confuse.png" height = 300>
-
-      <p>Another example with the same data, but different size for the data reserved for testing:
-        <pre><code class="blockcode">confuse_mx = binary_digit_clf(bd,bt)
-print(f'Confusion matrix:\n{confuse_mx}')</code></pre>
-        would print:
-        <pre><code class="datablock">Confusion matrix:
-[[43  0]
-[ 0 47]]</code></pre>
-
-<p>
-  Note:  you should submit a file with only the standard comments at the top, and this function.  The grading scripts will then import the file for testing.  If you attended lecture, include in the introductory comment the three lines detailed in <a href="work.html#cw2">Classwork 2</a>.</p>
-<br><br>
-
-<p><a name="cw8"><b>Classwork 8: </b> &emsp; <i>Due 2:30pm, Wednesday, 15 March.</i> &emsp;
-
-    Available during Lecture 8 on Gradescope, this classwork recaps linear algebra. To get the most out of this exercise, bring a laptop with you to lecture with a development environment (IDE) that has Python 3+ to work through in lecture.
 
 <p><a name="cw9"><b>Classwork 9: </b> &emsp; <i>Due 2:30pm, Wednesday, 22 March.</i> &emsp;
 
@@ -946,9 +949,6 @@ Also, to receive full credit, the code should be compatible with Python 3.6 (the
 
 <p><a name="p4"><b><a href="p4.html">Program 4: Taxi Classifiers.</a></b></b> &emsp; <i>Due noon, Friday, 3 November.</i>
   <br>Learning Objective: to train and validate different models for classifying data. 
-
-
-
 
 
 
