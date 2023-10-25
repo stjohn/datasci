@@ -538,24 +538,24 @@ Fitting a SVC with sigmoid kernel.</code></pre>
 
 
   <ul> 
-    <li> <code class = "inline">predict_using_trained_model(mod_pkl, x, y) -> Union[float, float]: </code>
+    <li> <code class = "inline">predict_using_trained_model(mod_pkl, xes, yes) -> Union[float, float]: </code>
 
     This function takes three inputs:
     <ul>
       <li> <code class = "inline">mod_pkl</code>: a trained model for the data, stored in pickle format.
-      <li> <code class = "inline">x</code>: an array or  DataFrame of numeric columns with no null values.
-      <li> <code class = "inline">y</code>: an array or DataFrame of numeric columns with no null values.
+      <li> <code class = "inline">xes</code>: an array or  DataFrame of numeric columns with no null values.
+      <li> <code class = "inline">yes</code>: an array or DataFrame of numeric columns with no null values.
     </ul>
     Computes and returns the mean squared error and r2 score between the values predicted by the model (<code class = "inline">mod</code> on <code class = "inline">x</code>) and the actual values (<code class = "inline">y</code>).  Note that <code class = "inline">sklearn.metrics</code> contains two functions that may be of use:  <code class = "inline">mean_squared_error</code> and <code class = "inline">r2_score</code>.</li>
 
-    <li> <code class = "inline">best_fit(mod_list, name_list, x, y, verbose=False) -> Union[object, str]: </code>
+    <li> <code class = "inline">best_fit(mod_list, name_list, xes, yes, verbose=False) -> Union[object, str]: </code>
 
       This function takes five inputs:
       <ul>
         <li> <code class = "inline">mod_list</code>: a list of trained models for the data, each stored in pickle format.
         <li> <code class = "inline">name_list</code>: a list of trained models for the data, each stored in pickle format.          
-        <li> <code class = "inline">x</code>: an array or  DataFrame of numeric columns with no null values.
-        <li> <code class = "inline">y</code>: an array or DataFrame of numeric columns with no null values.
+        <li> <code class = "inline">xes</code>: an array or  DataFrame of numeric columns with no null values.
+        <li> <code class = "inline">yes</code>: an array or DataFrame of numeric columns with no null values.
         <code class = "inline">verbose</code>: when <code class = "inline">True</code>, prints out the MSE cost for each model tried (in format:  <code class="inline">f'MSE cost for model {mod_name} poly model: {error:.3f}'</code> for each <code class="inline">mod_name</code> in <code class="inline">name_list</code>.  It has a default value of <code class = "inline">False</code>.      
       </ul>
       For each model in <code class="inline">mod_list</code>, computes the r2 score between the values predicted by the model (<code class = "inline">mod</code> on <code class = "inline">x</code>) and the actual values (<code class = "inline">y</code>), and returns the pickled model and its name.   </li>
