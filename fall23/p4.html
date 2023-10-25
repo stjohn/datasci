@@ -1,0 +1,663 @@
+<!DOCTYPE doctype PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <title>Program 9, CSci 39542: Data Science, Hunter College</title>
+</head>
+<STYLE>A {text-decoration: none;}
+th, td { padding: 5px; }
+code {
+  background-color: #eeeeee;
+}
+.inline {
+  padding: 1px;
+}
+.blockcode {
+  border: 1px solid #999999;
+  display: block;
+  padding-left: 10px;
+  padding-top : 2px;
+  padding-bottom : 2px;
+  margin: 5px;
+}
+.datablock {
+  border: 1px solid #eeeeee;
+  display: block;
+  padding: 7px;
+  padding-top : 0px;
+  margin: 5px;
+}
+</STYLE>
+<body>
+
+
+<div style="margin: 15px;width:100%;">
+    <span style= "float: left;font-size:larger"><a href="index.html">CSci 39542</a></span>
+    <span style= "float: right">
+      <a href="syl.html">Syllabus</a>&nbsp;&nbsp;&nbsp;
+      <a href="resources.html">Resources</a>&nbsp;&nbsp;&nbsp;
+      <a href="work.html">Coursework</a><!--&nbsp;&nbsp;&nbsp;
+      <a href="faq.html">FAQ</a>-->
+    </span>
+</div>
+
+<br>
+<br>
+<hr>
+
+<div style="margin:50px">
+
+
+<h2>Program 4:  Taxi Classifiers
+  <br>CSci 39542: Introduction to Data Science<br>
+<a href="http://www.hunter.cuny.edu/csci">Department of Computer Science</a><br>
+<a href="https://hunter.cuny.edu">Hunter College</a>, <a href="https://www.cuny.edu">City University of New York</a><br>
+Spring 2022<br><br>
+</h2>
+
+
+<hr>
+<a href="work.html#cw">Classwork</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#quizzes">Quizzes</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#hw">Homework</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#project">Project</a>&nbsp;&nbsp;&nbsp;
+<hr>
+
+
+<object width=100% height=50% type="text/html" data="generalNotes.html" border="0"
+   style="overflow: hidden;">
+</object>
+
+<hr>
+
+<h2>Program Description</h2>
+
+<br>
+   <p><a name="p9"><b>Program 4: Taxi Classifiers.</b></b> &emsp; <i>Due noon, Friday, 27 October.
+     <br>Learning Objective:  to train and validate models, given quantitative and qualitative data, as well as assessing model quality.
+     <br>Available Libraries: pandas, datetime, pickle, pytest, sklearn.ensemble, sklearn.model_selection, sklearn.metrics, sklearn.svm, and core Python 3.6+.
+     (Note if you use our annonations, you should also import Union.)
+     <br>Data Sources: <a href="https://data.cityofnewyork.us/Transportation/2021-Yellow-Taxi-Trip-Data/m6nq-qud6">2021 Yellow Taxi Trip Data</a> and <a href="https://data.cityofnewyork.us/Transportation/NYC-Taxi-Zones/d3c5-ddgc">NYC Taxi Zones</a> from OpenData NYC.
+     <br>Sample Datasets: <a href="taxi_new_years_day_2021.csv">taxi_new_years_day_2021.csv</a>,
+      <a href="taxi_4July2021.csv">taxi_4July2021.csv</a>,
+      <a href="taxi_jfk_june2021.csv">taxi_jfk_june2021.csv</a>, and
+      <a href="taxi_zones.csv">taxi_zones.csv</a>.<br></i>
+
+<br>
+
+
+This program is tailored to the NYC OpenData Yellow Taxi Trip Data and follows standard strategy for data cleaning and model building:
+    <ol>
+      <li> Read in datasets, merging and cleaning as needed.
+      <li> Impute missing values (we will use median for the ordinal values and "most popular" for nominal values).
+      <li> Use categorical encoding for qualitative values.
+      <li> Split our dataset into training and testing sets.
+      <li> Fit a model, or multiple models, to the training dataset.
+      <li> Validate the models using the testing dataset.
+      <li> Develop test suites, using pytest, to ensure that correctness of your code.</li>
+    </ol>
+To identify which trips are most likely to cross between boroughs, this program will focus on building several classifiers on both the categorical and numerical features of our dataset.
+
+<p>
+<a href="https://www1.nyc.gov/site/tlc/businesses/yellow-cab.page"><img src = "https://www1.nyc.gov/assets/tlc/images/content/pages/businesses/yellow-cab.png" height=300 alt="image of yellow taxi"></a>
+  
+<h3>NYC OpenData Yellow Taxi Trip Data</h3>
+  
+  <p>This program uses two datasets from <a href="https://opendata.cityofnewyork.us">NYC Open Data</a>:
+  
+  <ul>
+    <li><a href="https://data.cityofnewyork.us/Transportation/2021-Yellow-Taxi-Trip-Data/m6nq-qud6">2021 Yellow Taxi Trip Data</a> and </li>
+    <li><a href="https://data.cityofnewyork.us/Transportation/NYC-Taxi-Zones/d3c5-ddgc">NYC Taxi Zones</a>.</li>
+  </ul>
+
+  See <a href="p1.html">Program 1</a> for directions on how to download datasets from 
+  <a href="https://opendata.cityofnewyork.us">NYC Open Data</a>.  The sample datasets are filtered, before downloading, by pickup time <code class="inline">tpep_pickup_datetime</code> and pickup location <code class="inline">PULocationID</code>.
+  Create a practice dataset from your birthday or favorite day in 2021 to use to test your code.
+</p>
+
+<h3>Preparing Data</h3>
+
+<p>Once you have downloaded some test data sets to your device, the next thing to do is format the data to be usable for analysis.  We will need to do some cleaning, as well as imputing missing values and encoding categorical values.  Once we have the cleaned the data, we can split it into training and testing data sets.  Add the following functions to your Python program:</p>
+
+<ul>
+  <li> <code class = "inline">import_data(file_name) -> pd.DataFrame:</code>
+    This function takes as one input parameter:
+    <ul>
+      <li> <code class = "inline">file_name</code>: the name of a CSV file containing <a href="https://data.cityofnewyork.us/Transportation/2021-Yellow-Taxi-Trip-Data/m6nq-qud6">2021 Yellow Taxi Trip Data</a> from OpenData NYC.
+    </ul>
+    The data in the file is read into a DataFrame, restricted to the columns:
+    <pre class="datablock"><code>VendorID,tpep_pickup_datetime,tpep_dropoff_datetime,passenger_count,trip_distance,PULocationID,DOLocationID,fare_amount,tip_amount,tolls_amount,total_amount</code></pre>
+    Any rows where the <code class="inline">total_amount</code> is 0 or negative or <code class="inline">trip_distance</code> is larger than 200 are dropped.
+    The resulting DataFrame is returned.
+  </li>
+  <br>
+
+  <li> <code class = "inline">add_tip_time_features(df) -> pd.DataFrame:</code>
+    This function takes one input:
+    <ul>
+      <li> <code class = "inline">df</code>: a DataFrame containing <a href="https://data.cityofnewyork.us/Transportation/2021-Yellow-Taxi-Trip-Data/m6nq-qud6">2021 Yellow Taxi Trip Data</a> from OpenData NYC.
+    </ul>
+    The function computes 3 new columns:
+    <ul>
+      <li><code class = "inline">percent_tip</code>: which is <code class="inline">100*tip_amount/(total_amount-tip_amount)</code>
+      <li><code class = "inline">duration</code>: the time the trip took in minutes.
+      <li><code class = "inline">dayofweek</code>: the day of the week that the trip started, represented as 0 for Monday, 1 for Tuesday, ... 6 for Sunday.
+    </ul>
+    The original DataFrame with these additional three columns is returned.<br>
+    Hint:  See <a href="https://learningds.org/ch/09/wrangling_transformations.html?highlight=datetime">Chapter 9.4</a> for transforming strings to <code class="inline">datetime</code> objects.
+  </li>
+  <br>
+
+  <li> <code class = "inline">impute_numeric_cols(df, x_num_cols) -> pd.DataFrame:</code>
+      This function takes two inputs:
+      <ul>
+        <li> <code class = "inline">df</code>: a DataFrame containing Yellow Taxi Trip Data from OpenData NYC.
+        <li> <code class = "inline">x_num_cols</code>: a list of numerical columns in <code class = "inline">df</code>.
+      </ul>
+      Missing data in the columns <code class = "inline">x_num_cols</code> are replaced with the median of the column.  
+      <br>
+      Returns the resulting DataFrame.
+  </li>
+  <br>
+    
+  <li> <code class = "inline">add_boro(df, file_name) -> pd.DataFrame:</code>
+    This function takes as two input parameters:
+    <ul>
+        <li> <code class = "inline">df</code>: a DataFrame containing <a href="https://data.cityofnewyork.us/Transportation/2021-Yellow-Taxi-Trip-Data/m6nq-qud6">2021 Yellow Taxi Trip Data</a> from OpenData NYC.
+        <li> <code class = "inline">file_name</code>: the name of a CSV file containing <a href="https://data.cityofnewyork.us/Transportation/NYC-Taxi-Zones/d3c5-ddgc">NYC Taxi Zones</a> from OpenData NYC.
+    </ul>
+    Makes a DataFrame, using <code class = "inline">file_name</code>, to add pick up and drop off boroughs to <code class = "inline">df</code>.
+    In particular, adds two new columns to the <code class = "inline">df</code>:
+    <ul>
+      <li> <code class = "inline">PU_borough</code> that contain the borough corresponding to the pick up taxi zone ID (stored in <code class = "inline">PULocationID</code>), and
+      <li> <code class = "inline">DO_borough</code> that contain the borough corresponding to the drop off taxi zone (stored in <code class = "inline">DOLocationID</code>)
+    </ul>
+    Returns <code class = "inline">df</code> with these two additional columns (<code class = "inline">PU_borough</code> and <code class = "inline">DO_borough</code>).
+  </li>
+  <br>
+
+  <li> <code class = "inline">add_flags(df) -> pd.DataFrame:</code>
+    This function takes one input parameter:
+    <ul>
+        <li> <code class = "inline">df</code>: a DataFrame containing <a href="https://data.cityofnewyork.us/Transportation/2021-Yellow-Taxi-Trip-Data/m6nq-qud6">2021 Yellow Taxi Trip Data</a> from OpenData NYC to which <code class = "inline">add_boro()</code> has been applied.
+    </ul>
+    Adds two new columns:
+    <ul>
+      <li> <code class = "inline">paid_toll</code> which is 1 if a toll was paid on the trip and 0 in no tolls were paid.
+      <li> <code class = "inline">cross_boro</code> which is 1 if the trip started and ended in different borough, and 0 if the trip started and ended in the same borough.
+    </ul>
+    Returns <code class = "inline">df</code> with these two additional columns (<code class = "inline">paid_toll</code> and <code class = "inline">cross_boro</code>).
+  </li>
+  <br>
+
+  <li> <code class = "inline">encode_categorical_col(col,prefix) -> pd.DataFrame:</code>
+    This function takes two input parameters:
+    <ul>
+        <li> <code class = "inline">col</code>: a column of categorical data.
+        <li> <code class = "inline">prefix</code>: a prefix to use for the labels of the resulting columns.
+    </ul>
+    Takes a column of categorical data and uses categorical encoding to create a new DataFrame with the k-1 columns, where k is the number of different nomial values for the column.  Your function should create k columns, one for each value, labels by the prefix concatenated with the value.  The columns should be sorted and the DataFrame restricted to the first k-1 columns returned.  For example, if the column contains values:  'Bronx', 'Brooklyn', 'Manhattan', 'Queens', and 'Staten Island', and the  <code class = "inline">prefix</code> parameter has the value 'PU_' (and set the separators to be the empty string: <code class = "inline">prefix_sep=''</code>), then the resulting columns would be labeled: 'PU_Bronx', 'PU_Brooklyn', 'PU_Manhattan', 'PU_Queens', and 'PU_Staten Island'.  The last one alphabetically is dropped (in this example, 'PU_Staten Island') and the DataFrame restricted to the first k-1 columns is returned.  Note:  we presented several different ways to categorically encode nomial data in Lecture 14.  The book details an approach using sklearn in <a href="https://learningds.org/ch/15/linear_categorical.html">Chapter 15</a>,
+    and you may find <a href="https://pandas.pydata.org/docs/reference/api/pandas.get_dummies.html#pandas.get_dummies">Panda's get_dummies</a> useful.
+  </li>  
+  <br>
+
+  <li> <code class = "inline">split_test_train(df, xes_col_names, y_col_name,
+                       test_size=0.25, random_state=2023) -> Union[pd.DataFrame, pd.DataFrame, pd.Series(), pd.Series()]:</code>
+    This function takes 5 input parameters:
+    <ul>
+      <li> <code class = "inline">df</code>: a DataFrame containing <a href="https://data.cityofnewyork.us/Transportation/2021-Yellow-Taxi-Trip-Data/m6nq-qud6">2021 Yellow Taxi Trip Data</a> from OpenData NYC to which <code class = "inline">add_boro()</code> has been applied.</li>
+      <li>  <code class = "inline">y_col_name</code>: the name of the column of the dependent variable.</li>
+      <li>  <code class = "inline">xes_col_names</code>: a list of columns that contain the independent variables.</li>
+      <li>  <code class = "inline">test_size</code>: accepts a float between 0 and 1 and represents the proportion of the data set to use for training.  This parameter has a default value of 0.25.</li>
+      <li>  <code class = "inline">random_state</code>:  Used as a seed to the randomization.  This parameter has a default value of 2023.</li>
+  </ul>
+  Calls <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">sklearn's train_test_split</a> function to split the data set into a training and testing subsets and returns:  <code class="inline">x_train</code>, 
+  <code class="inline">x_test</code>, 
+  <code class="inline">y_train</code>, 
+  <code class="inline">y_test</code>.  <br>
+  <i>Hint:  see the examples from Lecture 4 for a similar splitting of data into training and testing datasets.</i>
+  </li><br>
+  <br>
+</ul>
+
+  <br><br>
+  <p>For example, let's start by setting up a DataFrame, with the file, <a href="taxi_4July2021.csv">taxi_4July2021.csv</a>, add in the tip and time features, and imputing missing values for <code class = "inline">passenger_count</code>:
+  
+  <pre><code class="blockcode">df = import_data('taxi_4July2021.csv')
+df = add_tip_time_features(df)
+print('First lines of DataFrame with tip/time features:')
+print(df.head())</code></pre>
+  which prints:
+  <pre><code class="datablock">   VendorID    tpep_pickup_datetime   tpep_dropoff_datetime  passenger_count  trip_distance  ...  tolls_amount  total_amount  percent_tip  duration  dayofweek
+0       1.0  07/04/2021 12:00:00 AM  07/04/2021 12:16:03 AM              2.0           3.50  ...           0.0         20.75    19.942197     963.0          6
+1       NaN  07/04/2021 12:00:00 AM  07/04/2021 12:08:00 AM              NaN           1.49  ...           0.0         16.30    13.986014     480.0          6
+2       NaN  07/04/2021 12:00:00 AM  07/04/2021 12:09:00 AM              NaN           1.66  ...           0.0         17.01    15.793057     540.0          6
+3       NaN  07/04/2021 12:00:00 AM  07/04/2021 12:18:00 AM              NaN           3.75  ...           0.0         24.65    21.428571    1080.0          6
+4       NaN  07/04/2021 12:00:00 AM  07/04/2021 12:15:00 AM              NaN           5.07  ...           0.0         32.50     0.000000     900.0          6
+
+[5 rows x 14 columns]</code></pre>
+
+
+Next, let's use our new functions to impute passenger counts and add in boroughs for the pick up and drop off locations:
+  <pre><code class="blockcode">df = impute_numeric_cols(df,['passenger_count'])
+df = add_boro(df,'taxi_zones.csv')
+print('\nThe locations and new columns:')
+print(f"{df[['passenger_count','PULocationID','PU_borough','DOLocationID','DO_borough']]}")</code></pre>
+  
+  <p>which prints out the new columns:
+  <pre><code class="datablock">The locations and new columns:
+       passenger_count  PULocationID PU_borough  DOLocationID DO_borough
+0                  2.0           170  Manhattan           238  Manhattan
+1                  1.0           107  Manhattan           246  Manhattan
+2                  1.0           113  Manhattan           186  Manhattan
+3                  1.0           137  Manhattan           256   Brooklyn
+4                  1.0           151  Manhattan            68  Manhattan
+...                ...           ...        ...           ...        ...
+60286              1.0           186  Manhattan            68  Manhattan
+60287              1.0           234  Manhattan           249  Manhattan
+60288              1.0            90  Manhattan           230  Manhattan
+60289              1.0            79  Manhattan           144  Manhattan
+60290              1.0           186  Manhattan           229  Manhattan
+</code></pre>
+  
+
+  <p>We can add the indicators for if a toll was paid and if the trip started and ended in different boroughs:
+  <pre><code class="blockcode">df = add_flags(df)
+print(df[['trip_distance','PU_borough','DO_borough','paid_toll','cross_boro']])
+  </code></pre>
+  prints:
+  <pre><code class="datablock">       trip_distance PU_borough DO_borough  paid_toll  cross_boro
+0               3.50  Manhattan  Manhattan          1           0
+1               1.49  Manhattan  Manhattan          1           0
+2               1.66  Manhattan  Manhattan          1           0
+3               3.75  Manhattan   Brooklyn          1           1
+4               5.07  Manhattan  Manhattan          1           0
+...              ...        ...        ...        ...         ...
+60282           0.60  Manhattan  Manhattan          1           0
+60283           1.43  Manhattan  Manhattan          1           0
+60284           1.57  Manhattan  Manhattan          1           0
+60285           0.89  Manhattan  Manhattan          1           0
+60286           2.09  Manhattan  Manhattan          1           0</code></pre>
+  
+  <p>
+  Let's explore the data some:
+  <pre><code class="blockcode">import matplotlib.pyplot as plt
+import seaborn as sns
+sns.set_theme(color_codes=True)
+
+sns.boxplot(data=df, x="trip_distance")
+plt.title('Plot of trip_distance')
+plt.tight_layout()  #for nicer margins
+plt.show()
+
+sns.boxplot(data=df, x="duration")
+plt.title('Plot of duration')
+plt.tight_layout()  #for nicer margins
+plt.show()</code></pre>
+  
+  <p>The resulting plots are:
+    <p><img src="box_trip_dist.png" height = 300><img src="box_duration.png" height = 300>
+
+  <p>and show that most trips are short in distance and time.  There's a some long trips and very long durations.  The latter are likely measurement errors (e.g. mistakenly not ending the trip on the trip recorder), since it's unlikely that there are many trips of 240 minutes (4 hours) or more.</p>
+
+  <p>Let's look at the trips of over 4 hours and also those of more than 100 miles:</p>
+
+  <pre><code class="blockcode">print(df[['trip_distance','duration']])
+print('Trips that are longer than 4 hours:')
+print(df[ df['duration'] >60*4][["tpep_pickup_datetime","tpep_dropoff_datetime","trip_distance","duration"]])
+print(f"Max trip for long trips is: {df[ df['duration'] >60*4]['trip_distance'].max()}")</code></pre>
+
+  <pre><code class="datablock">Trips that are longer than 4 hours:
+    tpep_pickup_datetime   tpep_dropoff_datetime  trip_distance     duration
+90     07/04/2021 12:01:43 AM  07/04/2021 11:27:14 PM           2.40  1405.516667
+524    07/04/2021 12:10:51 AM  07/04/2021 11:42:47 PM           3.87  1411.933333
+1240   07/04/2021 12:26:42 AM  07/04/2021 10:34:47 PM           1.85  1328.083333
+1560   07/04/2021 12:34:18 AM  07/05/2021 12:32:39 AM           1.99  1438.350000
+2341   07/04/2021 12:52:52 AM  07/04/2021 08:27:48 AM          19.31   454.933333
+...                       ...                     ...            ...          ...
+58554  07/04/2021 11:18:59 PM  07/05/2021 11:15:07 PM           3.54  1436.133333
+59505  07/04/2021 11:41:01 PM  07/05/2021 11:26:59 PM           3.18  1425.966667
+59690  07/04/2021 11:45:17 PM  07/05/2021 10:34:01 PM          17.17  1368.733333
+60154  07/04/2021 11:56:51 PM  07/05/2021 11:32:48 PM           1.17  1415.950000
+60172  07/04/2021 11:57:05 PM  07/05/2021 10:34:14 PM          19.60  1357.150000
+
+[157 rows x 4 columns]
+Max trip for long trips is: 19.86</code></pre>
+
+<p>The farthest traveled of the 157 trips that took more than 4 hours is just under 19.86.  This seems much more likely an error in the recording device than actual trips.  Let's look at the long trips:</p>
+
+<pre><code class="blockcode">print('Trips that are longer than 100 miles:')
+print(df[ df['trip_distance'] >100][["tpep_pickup_datetime","tpep_dropoff_datetime","trip_distance","duration"]])</code></pre>
+
+<pre><code class="datablock">tpep_pickup_datetime   tpep_dropoff_datetime  trip_distance   duration
+14080  07/04/2021 10:43:03 AM  07/04/2021 10:58:24 AM          108.2  15.350000
+17162  07/04/2021 11:49:17 AM  07/04/2021 12:06:09 PM          103.3  16.866667
+27029  07/04/2021 02:28:57 PM  07/04/2021 02:48:52 PM          171.1  19.916667
+33158  07/04/2021 04:00:19 PM  07/04/2021 04:21:38 PM          161.6  21.316667
+35624  07/04/2021 04:36:21 PM  07/04/2021 04:51:59 PM          144.0  15.633333
+40783  07/04/2021 05:53:22 PM  07/04/2021 06:24:52 PM          164.2  31.500000</code></pre>
+
+  
+<p>To focus on trips that stay within the city, let's limit our data to trips that are less than 50 miles in distance, as well as less than 4 hours in duration.  And, explore the data by making scatter plots of some of the features:
+  
+  <pre><code class="blockcode">df = df[ df['duration'] < 60*4]
+df = df[df['trip_distance'] < 50]
+  
+sns.lmplot(x="trip_distance", y="duration", data=df)
+tot_r = df['trip_distance'].corr(df['duration'])
+plt.title(f'Taxi Trips from 4 July 2021 with r = {tot_r:.2f}')
+plt.tight_layout()  #for nicer margins
+plt.show()
+sns.lmplot(x="trip_distance", y="paid_toll", data=df,fit_reg=False,y_jitter=0.1,
+            scatter_kws={'alpha': 0.3})
+dist_r = df['trip_distance'].corr(df['paid_toll'])
+plt.title(f'Taxi Trips from 4 July 2021 with r = {dist_r:.2f}')
+plt.tight_layout()  #for nicer margins
+plt.show()
+sns.lmplot(x="trip_distance", y="cross_boro", data=df,fit_reg=False,y_jitter=0.1,
+            scatter_kws={'alpha': 0.3})
+dist_r = df['trip_distance'].corr(df['cross_boro'])
+plt.title(f'Taxi Trips from 4 July 2021 with r = {dist_r:.2f}')
+plt.tight_layout()  #for nicer margins
+plt.show()</code></pre>
+  
+<p>As discussed in Lecture 8 and <a href="http://www.textbook.ds100.org/ch/24/classification_cost.html">Chapter 24</a>, we added jitter to the y-values to better visualize the data since so much has similar values:
+  
+  <p><img src="taxi_dist_v_duration.png" height = 300>
+  <img src="taxi_dist_v_paid_toll.png" height = 300>
+  <img src="taxi_dist_v_cross_boro.png" height = 300>
+  
+  
+  <p>
+  In our left image, the distance traveled and the duration of the trip are strongly correlated.  The middle image show negative correlation between trip distance and paying tolls.  While the right images shows the trip distance positively correlated with trips that start and end in different boroughs.
+  
+  <p>
+  Next, let's encode the categorical columns for pick up and drop off boroughs so we can use them as inputs for our model.
+  
+  <pre><code class="blockcode">df_pu = encode_categorical_col(df['PU_borough'],'PU_')
+print(df_pu.head())
+df_do = encode_categorical_col(df['DO_borough'],'DO_')
+print(df_do.head())</code></pre>
+  
+  <p>The first few lines of the resulting DataFrames:
+  
+  <pre><code class="datablock">   PU_Bronx  PU_Brooklyn  PU_EWR  PU_Manhattan  PU_Queens
+0         0            0       0             1          0
+1         0            0       0             1          0
+2         0            0       0             1          0
+3         0            0       0             1          0
+4         0            0       0             1          0
+    DO_Bronx  DO_Brooklyn  DO_EWR  DO_Manhattan  DO_Queens
+0         0            0       0             1          0
+1         0            0       0             1          0
+2         0            0       0             1          0
+3         0            1       0             0          0
+4         0            0       0             1          0</code></pre>
+  
+  <p>Let's combine all the DataFrames into one (using <a href="https://pandas.pydata.org/docs/reference/api/pandas.concat.html">concat</a> along column axis):
+  
+  <pre><code class="blockcode">df_all = pd.concat( [df,df_pu,df_do], axis=1)
+  print(f'The combined DataFrame has columns: {df_all.columns}')
+  </code></pre>
+  
+  <p>The combined DataFrame has the columns:
+  
+  <pre><code class="datablock">The combined DataFrame has columns: 
+Index(['VendorID', 'tpep_pickup_datetime', 'tpep_dropoff_datetime',
+       'passenger_count', 'trip_distance', 'PULocationID', 'DOLocationID',
+       'fare_amount', 'tip_amount', 'tolls_amount', 'total_amount',
+       'percent_tip', 'duration', 'dayofweek', 'PU_borough', 'DO_borough',
+       'paid_toll', 'cross_boro', 'PU_Bronx', 'PU_Brooklyn', 'PU_EWR',
+       'PU_Manhattan', 'PU_Queens', 'DO_Bronx', 'DO_Brooklyn', 'DO_EWR',
+       'DO_Manhattan', 'DO_Queens'],
+     dtype='object')</code></pre>
+  
+  For the taxi data, there is a special zone for trips to Newark Airport, and as such we have a drop off borough location of <code class="inline">'DO_EWR'</code>.
+  We'll focus on the numeric columns, split our data into training and testing data sets:
+  
+  <pre><code class="blockcode">x_col_names = ['passenger_count', 'trip_distance', 'RatecodeID', 'PULocationID',
+            'DOLocationID', 'payment_type', 'fare_amount', 'extra', 'mta_tax',
+            'tip_amount', 'tolls_amount', 'improvement_surcharge', 'total_amount',
+            'congestion_surcharge', 'percent_tip', 'duration', 'dayofweek',
+            'paid_toll', 'PU_Bronx', 'PU_Brooklyn', 'PU_Manhattan', 'PU_Queens',
+            'DO_Bronx', 'DO_Brooklyn', 'DO_EWR', 'DO_Manhattan', 'DO_Queens']
+y_col_name = 'cross_boro'
+x_train, x_test, y_train, y_test = split_test_train(df_all, x_col_names, y_col_name)
+  </code></pre>
+  
+  
+
+<br><br>
+  <h3>Building Classifers</h3>
+
+  <p>In Lectures 8 & 9, we introduced models for classifying data.  We will use three of those classifiers here:  logistic regression, support vector machine classifier (SVC), and random forests.  All are implemented in <code class="inline">scikit-learn</code> and we will </p>
+  <ul>
+    <li> <code class = "inline">fit_logistic_regression(x_train, y_train,penalty=None,max_iter=1000,random_state=2023) -> object:</code>
+
+      This function takes five input parameter:
+      <ul>
+          <li> <code class = "inline">x_train</code>: the indepenent variable(s) for the analysis.
+          <li> <code class = "inline">y_train</code>: the dependent variable for the analysis.
+          <li> <code class = "inline">penalty</code>: the type of regularization applied.  The default value for this parameter is <code class="inline">None</code>.
+          <li> <code class = "inline">max_iter</code>: number of iterations allowed when fitting model.  The default value for this parameter is 1000.
+          <li>  <code class = "inline">random_state</code>:  Used as a seed to the randomization.  This parameter has a default value of 2023.</li>  
+      </ul>
+      Fits a logistic regression model to the <code class = "inline">x_train</code> and
+      <code class = "inline">y_train</code> data, using the logistic model from <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html">sklearn.linear_model</a>.  The model should use the <code class = "inline">solver = 'saga'</code> to allow all the options for regularization (called <code class = "inline">penalty</code> as the option to the model) be any of <code class = "inline">'elasticnet'</code>, <code class = "inline">'l1'</code>,
+      <code class = "inline">'l2'</code>, and <code class = "inline">'none'</code>).
+      The parameter <code class = "inline">max_iter</code> should also be used when fitting the model.
+      The resulting model should be returned as bytestream, using <a href="https://docs.python.org/3/library/pickle.html">pickle</a>.</li>
+
+    <br>
+    <li> <code class = "inline">fit_svc(x_train, y_train,kernel='none',max_iter=1000,random_state=2023) -> object:</code>
+
+      This function takes five input parameter:
+      <ul>
+          <li> <code class = "inline">x_train</code>: the indepenent variable(s) for the analysis.
+          <li> <code class = "inline">y_train</code>: the dependent variable for the analysis.
+          <li> <code class = "inline">kernel</code>: the type of kernel used.  The default value for this parameter is 'rbf'.
+          <li> <code class = "inline">max_iter</code>: number of iterations allowed when fitting model.  The default value for this parameter is 1000.
+          <li>  <code class = "inline">random_state</code>:  Used as a seed to the randomization.  This parameter has a default value of 2023.</li>
+      </ul>
+      Fits a support vector machine classifier model to the <code class = "inline">x_train</code> and
+      <code class = "inline">y_train</code> data, using the logistic model from <a href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html">sklearn.svm</a>.  The model should use the <code class = "inline">kernel</code> speficied and can be any of the following <code class = "inline">'linear'</code>, <code class = "inline">'poly'</code>,
+      <code class = "inline">'rbf'</code>, and <code class = "inline">'sigmoid'</code>).
+      The parameter <code class = "inline">max_iter</code> should also be used when fitting the model.
+      The resulting model should be returned as bytestream, using <a href="https://docs.python.org/3/library/pickle.html">pickle</a>.</li>
+
+    <br>
+    <li> <code class = "inline">fit_random_forest(x_train, y_train,num_trees=100,random_state=2023) -> object:</code>
+
+      This function takes four input parameter:
+      <ul>
+          <li> <code class = "inline">x_train</code>: the indepenent variable(s) for the analysis.
+          <li> <code class = "inline">y_train</code>: the dependent variable for the analysis.
+          <li> <code class = "inline">num_trees</code>: the number of decision trees in the forest classifier.  The default value for this parameter is 100.
+          <li>  <code class = "inline">random_state</code>:  Used as a seed to the randomization.  This parameter has a default value of 2023.</li>
+      </ul>
+      Fits a random forest model to the <code class = "inline">x_train</code> and
+      <code class = "inline">y_train</code> data, using the logistic model from <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html">sklearn.ensemble</a>.  
+      The parameter <code class = "inline">num_trees</code> should also be used when fitting the model as the number of estimators, or trees in the forest.
+      The resulting model should be returned as bytestream, using <a href="https://docs.python.org/3/library/pickle.html">pickle</a>.</li>      
+
+  </ul> 
+
+  <p>We'll use these functions to build a list of models (as serialized objects) for later use.  We'll try first just a single independent variable, <code class = "inline">trip_distance</code>, and build a classifiers to predict when trips start in one borough and end in another (when <code class = "inline">cross_boro</code> is 1).  Since some classifiers expect data to be in standard units (introduced in lecture and <a href="p2.html">Program 2</a>), we first put the training sets in standard units and transform the testing sets to be in the same units:
+
+    <pre><code class="blockcode">from sklearn.preprocessing import StandardScaler
+x_cols = ['trip_distance','dayofweek','paid_toll', 'PU_Bronx', 'PU_Brooklyn','PU_Manhattan', 'PU_Queens']
+x_scaler = StandardScaler()
+x_tr_std = x_scaler.fit_transform(x_train[x_cols])
+x_te_std = x_scaler.transform(x_test[x_cols])
+
+print(f'The means for the x_scaler is {x_scaler.mean_} and x_tr_std is {(np.mean(x_tr_std))}')
+      </code></pre>
+
+    <p>The means for our data are:</p>
+    <pre><code class="datablock">The means for the x_scaler is [3.76803337 6.         0.93331411 0.00672183 0.01936686 0.8738381
+      0.08807152] and x_tr_std is 3.485845347030431e-17</code></pre>
+
+  <p>For each type of classifier, we will set up a model for the different parameters available:</p>
+
+    <pre><code class="blockcode">pkl_models = []
+mod_names = []
+for p in [None,'l1','l2']:
+  print(f'Fitting a logistic model with {p} regularization.')
+  mod_names.append(f'logistic regression with {p} regularization')
+  pkl_models.append(fit_logistic_regression(x_tr,y_tr,penalty=p))
+for n_trees in [10,100,1000]:
+  print(f'Fitting a random forest model with {p} number of trees.')
+  mod_names.append(f'random forest with {p} number of trees')
+  pkl_models.append(fit_random_forest(x_tr,y_tr,num_trees=n_trees)) 
+for kernel in ['linear', 'poly', 'rbf','sigmoid']:
+  print(f'Fitting a SVC with {p} kernel.')
+  mod_names.append(f'SVC with {p} kernel')
+  pkl_models.append(fit_svc(x_tr,y_tr,kernel=kernel),max_iter=50000) 
+</code></pre>
+<p>Note that we increased the number of iterates for the SVM classifier, since the default of 1000 gave convergence warnings, but even at 50,000, the poly kernel gave convergence warnings:</p>
+    
+<pre><code class="datablock">Fitting a logistic model with None regularization.
+Fitting a logistic model with l1 regularization.
+Fitting a logistic model with l2 regularization.
+Fitting a random forest model with 10 number of trees.
+Fitting a random forest model with 100 number of trees.
+Fitting a random forest model with 1000 number of trees.
+Fitting a SVC with linear kernel.
+Fitting a SVC with poly kernel.
+/Users/stjohn/opt/anaconda3/lib/python3.8/site-packages/sklearn/svm/_base.py:299: ConvergenceWarning: Solver terminated early (max_iter=50000).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
+  warnings.warn(
+Fitting a SVC with rbf kernel.
+Fitting a SVC with sigmoid kernel.</code></pre>
+
+
+<br>
+<h3>Evaluating Our Classifiers</h3>  
+
+  <p>We have build a list of multiple classifiers and now will evaluate how well each works on the training data as well as the data we saved for testing.</p>
+
+
+  <ul> 
+    <li> <code class = "inline">predict_using_trained_model(mod_pkl, x, y) -> Union[float, float]: </code>
+
+    This function takes three inputs:
+    <ul>
+      <li> <code class = "inline">mod_pkl</code>: a trained model for the data, stored in pickle format.
+      <li> <code class = "inline">x</code>: an array or  DataFrame of numeric columns with no null values.
+      <li> <code class = "inline">y</code>: an array or DataFrame of numeric columns with no null values.
+    </ul>
+    Computes and returns the mean squared error and r2 score between the values predicted by the model (<code class = "inline">mod</code> on <code class = "inline">x</code>) and the actual values (<code class = "inline">y</code>).  Note that <code class = "inline">sklearn.metrics</code> contains two functions that may be of use:  <code class = "inline">mean_squared_error</code> and <code class = "inline">r2_score</code>.</li>
+
+    <li> <code class = "inline">best_fit(mod_list, name_list, x, y, verbose=False) -> Union[object, str]: </code>
+
+      This function takes five inputs:
+      <ul>
+        <li> <code class = "inline">mod_list</code>: a list of trained models for the data, each stored in pickle format.
+        <li> <code class = "inline">name_list</code>: a list of trained models for the data, each stored in pickle format.          
+        <li> <code class = "inline">x</code>: an array or  DataFrame of numeric columns with no null values.
+        <li> <code class = "inline">y</code>: an array or DataFrame of numeric columns with no null values.
+        <code class = "inline">verbose</code>: when <code class = "inline">True</code>, prints out the MSE cost for each model tried (in format:  <code class="inline">f'MSE cost for model {mod_name} poly model: {error:.3f}'</code> for each <code class="inline">mod_name</code> in <code class="inline">name_list</code>.  It has a default value of <code class = "inline">False</code>.      
+      </ul>
+      For each model in <code class="inline">mod_list</code>, computes the r2 score between the values predicted by the model (<code class = "inline">mod</code> on <code class = "inline">x</code>) and the actual values (<code class = "inline">y</code>), and returns the pickled model and its name.   </li>
+
+</ul>
+
+
+  <p>Let's run the logistic models we build above:
+  
+  <pre><code class="blockcode">print(f'For independent variables:  {x_cols}:')
+for mod,name in zip(mod_list[:3],name_list[:3]):
+    print(f'For model {name}:')
+    mse_tr, r2_tr = predict_using_trained_model(mod,x_tr_std,y_train)
+    print(f'\ttraining data: mean squared error = {mse_tr:8.8} and r2 = {r2_tr:4.4}.')
+    mse_val, r2_val = predict_using_trained_model(mod,x_te_std,y_test)
+    print(f'\ttesting data: mean squared error = {mse_val:8.8} and r2 = {r2_val:4.4}.')
+  </code></pre>
+  
+  which prints:
+  <pre><code class="datablock">For independent variables:  ['trip_distance', 'dayofweek', 'paid_toll', 'PU_Bronx', 'PU_Brooklyn', 'PU_Manhattan', 'PU_Queens']:
+For model logistic regression with None regularization:
+        training data: mean squared error = 0.070102269 and r2 = 0.5002.
+        testing data: mean squared error = 0.06801544 and r2 = 0.4981.
+For model logistic regression with l1 regularization:
+        training data: mean squared error = 0.070124454 and r2 =  0.5.
+        testing data: mean squared error = 0.06801544 and r2 = 0.4981.
+For model logistic regression with l2 regularization:
+        training data: mean squared error = 0.070124454 and r2 =  0.5.
+        testing data: mean squared error = 0.06801544 and r2 = 0.4981.</code></pre>
+
+
+<p>All of the models do better with the training subset than the testing subset.  Let's look at which model did best of all considered:
+
+  <pre><code class="blockcode">print(f'For independent variables:  {x_cols}:')
+for mod,name in zip(pkl_models[:3],mod_names[:3]):
+    print(f'For model {name}:')
+    mse_tr, r2_tr = predict_using_trained_model(mod,x_tr_std,y_train)
+    print(f'\ttraining data: mean squared error = {mse_tr:8.8} and r2 = {r2_tr:4.4}.')
+    mse_val, r2_val = predict_using_trained_model(mod,x_te_std,y_test)
+    print(f'\ttesting data: mean squared error = {mse_val:8.8} and r2 = {r2_val:4.4}.')
+best_mod, best_name = best_fit(pkl_models,mod_names, x_te_std, y_test, verbose=True)
+print(f'The best mode is {best_name}.')    
+    </code></pre>
+since we had the <code class="inline">verbose</code> flag on, we can see the computations:
+  <pre><code class="datablock">MSE cost for model logistic regression with l1 regularization poly model: 0.068
+MSE cost for model logistic regression with l2 regularization poly model: 0.068
+MSE cost for model random forest with 10 number of trees poly model: 0.076
+MSE cost for model random forest with 100 number of trees poly model: 0.075
+MSE cost for model random forest with 1000 number of trees poly model: 0.076
+MSE cost for model SVC with linear kernel poly model: 0.070
+MSE cost for model SVC with poly kernel poly model: 0.075
+MSE cost for model SVC with rbf kernel poly model: 0.067
+MSE cost for model SVC with sigmoid kernel poly model: 0.131
+The best mode is SVC with rbf kernel.</code></pre>
+
+<br>
+<h3>Test Suites</h3>
+
+<p>In <a href="p3.html">Program 3</a> and Lecture 5, we introduced <a href="https://docs.pytest.org/en/7.4.x/">pytest</a>.  In addition to the <code class="inline">assert</code> statements used, we will also use <a href="https://docs.pytest.org/en/7.3.x/how-to/parametrize.html">parametrizations</a> for this program.  The basic format is:</p>
+
+<p>
+<img src="pytest_parametrize.png" height=100>
+</p>
+
+<p> The parametrize list allows you to specify the inputs and expected outputs for the function you are testing.  You can define 
+
+</p>
+
+<ul>
+  <li> <code class = "inline">test_impute_numeric_cols(test_df,test_cols,expected)</code>: This function takes three inputs, provided by the parametriziations:
+  <ul>
+    <li><code class = "inline">test_df</code>: A DataFrame containing the <code class="inline">test_cols</code>.</li>
+    <li><code class = "inline">test_cols</code>: A list of columns for the DataFrame <code class="inline">test_df</code>.</li>
+    <li><code class = "inline">expected</code>: A DataFrame containing the expected output for the <code class="inline">inpute_numeric_cols(test_df,test_cols)</code>.</li>
+  </ul>
+    This test function uses pytest to test the <code class = "inline">impute_numeric_cols()</code> function.  It assert <code class = "inline">True</code> if <code class = "inline">impute_numeric_cols()</code> is correct and  <code class = "inline">False</code> otherwise. 
+  <li> <code class = "inline">test_add_flags(test_df,expected)</code>:
+    This function takes two inputs, provided by the parametriziations:
+  <ul>
+    <li><code class = "inline">test_df</code>: A DataFrame containing the columns expected for the <code class="inline">add_flags()</code> function.</li>
+    <li><code class = "inline">expected</code>: A DataFrame containing the expected output for the <code class="inline">add_flags(test_df)</code>.</li>
+  </ul>
+    This test function uses pytest to test the <code class = "inline">add_flags()</code> function.  It assert <code class = "inline">True</code> if <code class = "inline">add_flags()</code> is correct and  <code class = "inline">False</code> otherwise. 
+</ul>
+
+<p>Preceding each of these test functions, you should include <code class="inline">@pytest.mark.parametrize</code> list.  For example, the first testing function should be of the format:</p>
+
+<pre><code class="blockcode">test_data = [ """TRIPLES OF DATA TO TEST GOES HERE""" ]
+@pytest.mark.parametrize("test_df,test_cols,expected", test_data)
+def test_impute_numeric_cols(test_df,test_cols,expected):
+    assert test_impute_numeric_cols(test_df,test_cols).equals(expected)
+</code></pre>
+
+<p>Hints:</p>
+  <ul>
+    <li>You can run pytest locally from the command line.  To see only errors and results, use the disable-warnings flag:
+    <pre><code class="blockcode">pytest --disable-warnings p4.py </code></pre>
+    </li>
+    <li>When comparing DataFrames, you may find the <code class="inline">equals()</code> method helpful.</li>
+  </ul>
+
+
+</div>
+</body>
+</html>
