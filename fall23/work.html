@@ -500,7 +500,7 @@ print(f'Confusion matrix:\n{confuse_mx}')</code></pre>
       The next image is the overall mean, and each subsequent image is adding another component to the previous.  For this particular scan, the mean plus its first component is enough to see that it's a 0.
   
   
-      <p> For example, assuming the function  is in <code class=inline>p46</code> and the appropriate libraries are loaded:
+      <p> For example, assuming the appropriate libraries are loaded:
         <pre><code class="blockcode">from sklearn.decomposition import PCA
   pca = PCA()
   Xproj = pca.fit_transform(digits.data)
@@ -508,7 +508,7 @@ print(f'Confusion matrix:\n{confuse_mx}')</code></pre>
   plt.imshow(pca.mean_.reshape(8,8),cmap='binary', interpolation='nearest',clim=(0, 16))
   plt.title("Mean for digits")
   plt.show()
-  approxAnswer = p46.approxDigits(8,Xproj[1068], pca.mean_, pca.components_)
+  approxAnswer = approxDigits(8,Xproj[1068], pca.mean_, pca.components_)
   plt.imshow(approxAnswer.reshape(8,8),cmap='binary', interpolation='nearest',clim=(0, 16))
   plt.title("mean + 8 components for digits[1068]")
   plt.show()</code></pre>
@@ -556,84 +556,6 @@ print(f'Confusion matrix:\n{confuse_mx}')</code></pre>
 <!--
 
    
-
-
-<p><a name="cw9"><b>Classwork 9: </b> &emsp; <i>Due 2:30pm, Wednesday, 22 March.</i> &emsp;
-
-    Available during Lecture 9 on Gradescope, this classwork is modeled on an analytic reasoning challenge of efficiently computing catchment areas (Voronoi diagrams) for NYC libraries.  To get the most out of this exercise, bring a device with you that can access Gradescope's online assignments.
-    
-    
-    <p></p>We introduced Principal Components Analysis and the number of components needed to capture the intrinistic dimension of the data set.  For this program, write a function that allows the user to explore how many dimensions are needed to see the underlying structure of images from the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_digits.html">sklearn digits dataset</a> (inspired by <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.09-principal-component-analysis.html">Python Data Science Handbook: Section 5.9</a> (PCA)).
-
-    <p> Write a function that approximates an image by summing up a fixed number of its components:
-
-      <ul>
-      <li> <code class = "inline">approxDigits(numComponents, coefficients, mean, components):</code>
-          This function has four inputs and returns an array containing the approximation:
-          <ul>
-              <li> <code class = "inline">numComponents</code>: the number of componets used in the approximation.  Expecting a value between 0 and 64.
-              <li> <code class = "inline">coefficients</code>: an array of coefficients, outputted from <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">PCA()</a>.
-              <li> <code class = "inline">mean</code>: an array representing the mean of the dataset.
-              <li> <code class = "inline">components</code>:  an array of the components computed by <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">PCA()</a> analysis.
-            </ul>
-
-            The function returns the approximation image (flattened array) of the mean and sum of the first <code class = "inline">numComponents</code>
-            terms (i.e. <code class = "inline">coefficients[i] * components[i]</code>).
-        </ul>
-
-
-
-
-
-    As discussed in <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.09-principal-component-analysis.html">Python Data Science Handbook: Section 5.9</a>, we can view the images as sums of the components.  For our
-    flattened images, we have 1D arrays of length 64.  Here's the first one from the dataset:
-    <pre><code class="datablock">[[ 0.  0.  5. 13.  9.  1.  0.  0.  0.  0. 13. 15. 10. 15.  5.  0.  0.  3. 15.  2.  0. 11.  8.  0.  0.  4. 12.  0.  0.  8.  8.  0.  0.  5.  8.  0.  0.  9.  8.  0.  0.  4. 11.  0.  1. 12.  7.  0.  0.  2. 14.  5. 10. 12.  0.  0.  0.  0.  6. 13. 10.  0.  0.  0.]</code></pre>
-    <p>
-    If we let <code class=inline>x1 = [1 0 ... 0]</code>,
-    <code class=inline>x2 = [0 1 0 ... 0]</code>, ...,
-    <code class=inline>x64 = [0 ... 0 1]</code> (vectors corresponding to the axis), then we can write our images, <code class=inline>im = [i1 i2 ... i64]</code>, as:
-    <pre><code class="datablock">im = x1*i1 + x2*i2 + ... + x64*i64
-        x1*0 + x2*0 + x3*5 + ... + x64*0</code></pre>
-    plugging in the values of <code class=inline>im</code> into the equation.
-
-    <p>
-    In a similar fashion, we can represent the image in terms of the axis,<code class=inline>c1, c2, ... c64</code>,  that the PCA analysis returns:
-    <pre><code class="datablock">im = mean + c1*i1 + c2*i2 + ... + c64*i64</code></pre>
-    since the axis of PCA are chosen so that the first one captures the most variance, the second the next most, etc.  The later axis capture very little variance and likely add litte to the image.  (For technical reasons, we include the mean.  The reason is similar to when we "center" multidimensional data at 0).
-
-    This can be very useful for reducing the dimension of the data set, for example, here is the first image from above on the left:
-    <p>
-    <img src = "../fall21/digit_adding_comps.png" width=90%>
-    <br>
-    The next image is the overall mean, and each subsequent image is adding another component to the previous.  For this particular scan, the mean plus its first component is enough to see that it's a 0.
-
-
-    <p> For example, assuming the function  is in <code class=inline>p46</code> and the appropriate libraries are loaded:
-      <pre><code class="blockcode">from sklearn.decomposition import PCA
-pca = PCA()
-Xproj = pca.fit_transform(digits.data)
-showDigit(pca.mean_, f"Mean for digits")
-plt.imshow(pca.mean_.reshape(8,8),cmap='binary', interpolation='nearest',clim=(0, 16))
-plt.title("Mean for digits")
-plt.show()
-approxAnswer = p46.approxDigits(8,Xproj[1068], pca.mean_, pca.components_)
-plt.imshow(approxAnswer.reshape(8,8),cmap='binary', interpolation='nearest',clim=(0, 16))
-plt.title("mean + 8 components for digits[1068]")
-plt.show()</code></pre>
-
-      would show the mean and summed with the first 8 components for
-      <code class=inline>digits[1068]</code>:
-
-      <p>
-      <img src="../fall21/digits_mean.png" height=200>
-      <img src="../fall21/digits_1068_8.png" height=200>
-  </p>
-
-        <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
-</p>
-<br><br>
-
-
 
 <p><a name="cw10"><b>Classwork 10: </b> &emsp; <i>Due 2:30pm, Wednesday, 29 March.</i> &emsp;
   
