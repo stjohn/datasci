@@ -103,9 +103,9 @@ Decreasing ambulance response times improves outcomes and
 <p>To decide on where to "pre-place" ambulances, we will use K-means clustering, where "K" is the number of ambulances available for that shift.  For example, if there 2 ambulances available to be placed in Manhattan, we will look at previous ambulance calls for that shift and form 2 clusters and station each ambulance at the mean of the cluster.  If two more ambulances become available, we can recompute the K-means algorithm for K=4, and place those 4 ambulances, each at the mean of the cluster found, and similarly for K=8:
 
 
-<p><img src="july4_clusters2.png" height="500">
-  <img src="july4_clusters4.png" height="500">
-  <img src="july4_clusters8.png" height="500">
+<p><img src="../spr22/july4_clusters2.png" height="500">
+  <img src="../spr22/july4_clusters4.png" height="500">
+  <img src="../spr22/july4_clusters8.png" height="500">
 
 <p>In addition to K-means analysis, we will also use standard approaches from <a href="https://scikit-learn.org/stable/auto_examples/cluster/plot_cluster_comparison.html">sklearn</a> as well as filter data by time and day.</p>
 
@@ -382,7 +382,7 @@ plt.show()
 
 will display:
 
-<p><img src="july4_ev.png" height=400>
+<p><img src="../spr22/july4_ev.png" height=400>
 
 <p>showing a sharp drop-off to <code class = "inline">K=5</code> that quickly flattens, showing that additional clusters, beyond 10, do not significantly improve the average distance to the assigned means.  This suggests that a reasonable number of clusters is around 8.
 </div>
