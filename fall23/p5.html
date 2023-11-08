@@ -1,0 +1,476 @@
+<!DOCTYPE doctype PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <title>Program 5, CSci 39542: Data Science, Hunter College</title>
+</head>
+<STYLE>A {text-decoration: none;}
+th, td { padding: 5px; }
+code {
+  background-color: #eeeeee;
+}
+.inline {
+  padding: 1px;
+}
+.blockcode {
+  border: 1px solid #999999;
+  display: block;
+  padding-left: 10px;
+  padding-top : 2px;
+  padding-bottom : 2px;
+  margin: 5px;
+}
+.datablock {
+  border: 1px solid #eeeeee;
+  display: block;
+  padding: 7px;
+  padding-top : 0px;
+  margin: 5px;
+}
+</STYLE>
+<body>
+
+
+<div style="margin: 15px;width:100%;">
+    <span style= "float: left;font-size:larger"><a href="index.html">CSci 39542</a></span>
+    <span style= "float: right">
+      <a href="syl.html">Syllabus</a>&nbsp;&nbsp;&nbsp;
+      <a href="resources.html">Resources</a>&nbsp;&nbsp;&nbsp;
+      <a href="work.html">Coursework</a><!--&nbsp;&nbsp;&nbsp;
+      <a href="faq.html">FAQ</a>-->
+    </span>
+</div>
+
+<br>
+<br>
+<hr>
+
+<div style="margin:50px">
+
+
+<h2>Program 5: EMS Clusters
+  <br>CSci 39542: Introduction to Data Science<br>
+<a href="http://www.hunter.cuny.edu/csci">Department of Computer Science</a><br>
+<a href="https://hunter.cuny.edu">Hunter College</a>, <a href="https://www.cuny.edu">City University of New York</a><br>
+Fall 2023<br><br>
+</h2>
+
+
+<hr>
+<a href="work.html#cw">Classwork</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#quizzes">Quizzes</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#hw">Homework</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#project">Project</a>&nbsp;&nbsp;&nbsp;
+<hr>
+
+<object width=100% height=50% type="text/html" data="generalNotes.html" border="0"
+   style="overflow: hidden;">
+</object>
+<hr>
+
+<h2>Program Description</h2>
+
+<br>
+<p><a name="p12"><b>Program 5: EMS Clusters.</b></b> &emsp; <i>Due noon, Friday, 17 November.
+<br>Learning Objective: to enhance data cleaning skills and build understanding of clustering algorithms.
+<br>Available Libraries: pandas, datetime, sklearn, and core Python 3.6+.
+<br>Data Sources: <br>Data Sources: <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd
+">911 System Calls (NYC OpenData)</a>
+<br>Sample Datasets:
+<ul>
+  <li> Small dataset (1 day of calls for 1 borough): <a href="NYPD_Calls_Manhattan_4Jul2021.csv">NYPD_Calls_Manhattan_4Jul2021.csv</a>,
+  <li> Midnight calls in January 2021 (all boroughs): <a href="NYPD_Calls_midnight_Jan2021.csv">NYPD_Calls_midnight_Jan2021.csv</a>,
+  <li> Larger dataset (1 month of calls for Queens): <a href="NYPD_Calls_Queens_Jan2021.csv">NYPD_Calls_Queens_Jan2021.csv</a>
+</ul><br></i>
+
+
+
+<p> For this program, we are building on the clustering techniques from Lecture 11 and <a href="work.html#cw11">Classwork 11.1</a> which focused on different clustering algorithms.
+
+Decreasing ambulance response times improves outcomes and
+<a href="https://www.sciencedirect.com/science/article/pii/S1386505619303491">strategic placement</a> of ambulance stations and overall allocation has been shown an effective approach.  For example, here are all the calls for ambulances on 4 July 2021 in Manhattan (using Folium/Leaflet to create an interactive map):
+<p>
+  <iframe src="4_July_map.html" style="width: 60%; height: 550px" name="internal"></iframe>
+  
+  
+<p>To decide on where to "pre-place" ambulances, we will start with K-means clustering, where "K" is the number of ambulances available for that shift.  For example, if there 2 ambulances available to be placed in Manhattan, we will look at previous ambulance calls for that shift and form 2 clusters and station each ambulance at the mean of the cluster.  If two more ambulances become available, we can recompute the K-means algorithm for K=4, and place those 4 ambulances, each at the mean of the cluster found, and similarly for K=8:
+
+<p><img src="july4_clusters2.png" height="500">
+  <img src="july4_clusters4.png" height="500">
+  <img src="july4_clusters8.png" height="500">
+
+<p>In addition to K-means analysis, we will also compare to other clustering techniques and  use standard approaches from <a href="https://scikit-learn.org/stable/auto_examples/cluster/plot_cluster_comparison.html">sklearn</a> as well as filter data by time and day.</p>
+
+  <a href="https://scikit-learn.org/stable/auto_examples/cluster/plot_cluster_comparison.html"><img src="sklearn_cluster_cmp.png" height="600">
+  </a>
+
+<p>
+The program follows standard strategy for data cleaning and model building:
+    <ol>
+      <li> Read in datasets, merging and cleaning as needed.
+      <li> Split our dataset into training and testing sets.
+      <li> Fit a model, or multiple models, to the training dataset.
+      <li> Validate the models using the testing dataset.
+      <li> Develop test suites, using pytest, to ensure that correctness of the code written.</li>
+    </ol>
+</p>
+
+<p>To download test datasets, see <a href="p2.html">Program 2</a> for directions on accessing datasets at NYC Open Data.</p>
+
+<br><br>
+<h3>Preparing Data</h3>
+
+<p>Once you have downloaded some test data sets to your device, the next thing to do is format the data to be usable for analysis.  We will need to do some cleaning, and also filter by day of week and time.  Once we have the cleaned the data, we can split it into training and testing data sets.  Add the following functions to your Python program:</p>
+
+
+
+<ul>
+  <li> <code class = "inline">make_df(file_name)</code>:
+  This function takes one input:
+  <ul>
+    <li> <code class = "inline">file_name</code>: the name of a CSV file containing <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd">911 System Calls</a> from OpenData NYC.
+  </ul>
+  The data is read into a DataFrame.  Rows that are have null values for the type description, incident date, incident time, latitute and longitude are dropped.
+  Only rows that contain <code class = "inline">AMBULANCE</code> as part of the <code class = "inline">TYP_DESC</code> are kept.  The resulting DataFrame is returned.
+  <br><i>Hint: see <a href="http://www.textbook.ds100.org/ch/13/text_strings.html">DS 100: Chapter 13</a> for using string methods within pandas.</i>
+  <br><i>See <a href="work.html#cw9">Classwork 9</a>.</i>
+  <br><br>
+
+<li> <code class = "inline">add_date_time_features(df)</code>:
+  This function takes one input:
+  <ul>
+    <li> <code class = "inline">df</code>: a DataFrame containing <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd">911 System Calls</a> from OpenData NYC created by <code class = "inline">make_df</code>.
+  </ul>
+  An additional column <code class = "inline">WEEK_DAY</code> is added with the day of the week (0 for Monday, 1 for Tuesday, ..., 6 for Sunday) of the date in <code class = "inline">INCIDENT_DATE</code> is added.
+  Another column, <code class = "inline">INCIDENT_MIN</code>, that takes the time from <code class = "inline">INCIDENT_TIME</code> and stores it as the number of minutes since midnight.  The resulting DataFrame is returned.
+  <br><i>Hint: see Lecture 3 for using datetime methods with pandas, including computing the day of the week (of <code class = "inline">datetime</code> objects) and the total seconds (of <code class = "inline">timedelta</code> objects).</i>
+  <br><br>
+
+  <li> <code class = "inline">filter_by_time(df, days=None, start_min=0, end_min=1439)</code>:
+  This function takes four inputs:
+  <ul>
+    <li> <code class = "inline">df</code>: a DataFrame containing <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd">911 System Calls</a> from OpenData NYC.
+    <li> <code class = "inline">days</code>:  a list of integers ranging from 0 to 6, representing the days of the week.  The default value is <code class = "inline">None</code> and is equivalent to the list containing all days:
+    <code class = "inline">[0,1,2,3,4,5,6]</code>.
+    <li> <code class = "inline">start_min</code>:  a non-negative integer value representing the starting time.  With <code class = "inline">end_min</code>, it representing the range, inclusive, for the time, in minutes, that should be selected.  The default value give the range of <code class = "inline">[0,1439]</code> which ranges from midnight (<code class = "inline">0</code> minutes) to (<code class = "inline">1439</code> representing 23:59 since 23 hours + 59 minutes = 23*60+59 minutes = 1439 minutes).        
+    <li> <code class = "inline">end_min</code>:  a non-negative integer value representing the ending time.  With <code class = "inline">start_min</code>, it representing the range, inclusive, for the time, in minutes, that should be selected.  The default value give the range of <code class = "inline">[0,1439]</code> which ranges from midnight (<code class = "inline">0</code> minutes) to (<code class = "inline">1439</code> representing 23:59 since 23 hours + 59 minutes = 23*60+59 minutes = 1439 minutes).     
+  </ul>
+  Returns a DataFrame with entries restricted to weekdays in <code class = "inline">days</code> (or all weekdays if <code class = "inline">None</code> is given) and incident times in <code class = "inline">[start_min, end_min]</code> inclusive (e.g. contains the endpoints).
+  <br><br>
+</ul>
+
+
+<br>
+<p>For example, if we use the small dataset from 4 July 2021:
+  <pre><code class="blockcode">df = make_df('NYPD_Calls_Manhattan_4Jul2021.csv')
+print(df[['INCIDENT_TIME','TYP_DESC','Latitude','Longitude']])
+</code></pre>
+  would print:
+  <pre><code class="datablock">     INCIDENT_TIME                             TYP_DESC   Latitude  Longitude
+7         00:01:51      AMBULANCE CASE: CARDIAC/OUTSIDE  40.724578 -73.992519
+27        00:06:12       AMBULANCE CASE: CARDIAC/INSIDE  40.807719 -73.964240
+51        00:12:12      AMBULANCE CASE: SERIOUS/TRANSIT  40.732019 -74.000734
+53        00:12:38           AMBULANCE CASE: EDP/INSIDE  40.789348 -73.947352
+54        00:12:38           AMBULANCE CASE: EDP/INSIDE  40.789348 -73.947352
+...            ...                                  ...        ...        ...
+5175      23:50:02         AMBULANCE CASE: WATER RESCUE  40.711839 -74.011234
+5176      23:50:02         AMBULANCE CASE: WATER RESCUE  40.711839 -74.011234
+5205      23:57:11  AMBULANCE CASE: UNCONSCIOUS/TRANSIT  40.732019 -74.000734
+5211      23:57:59           AMBULANCE CASE: EDP/INSIDE  40.827547 -73.937461
+5212      23:57:59           AMBULANCE CASE: EDP/INSIDE  40.827547 -73.937461
+
+[459 rows x 4 columns]</code></pre>
+
+Note that the original CSV file had over 5000 lines, only 459 of those were for ambulances calls.  The indices were not reset and refer to the line numbers of the original file.
+
+<p>Let's add in the date and time features:
+  <pre><code class="blockcode">df = add_date_time_features(df)
+print(df[['INCIDENT_DATE','WEEK_DAY','INCIDENT_TIME','INCIDENT_MIN']])</code></pre>
+  would print:
+  <pre><code class="datablock">     INCIDENT_DATE  WEEK_DAY INCIDENT_TIME  INCIDENT_MIN
+7       07/04/2021         6      00:01:51      1.850000
+27      07/04/2021         6      00:06:12      6.200000
+51      07/04/2021         6      00:12:12     12.200000
+53      07/04/2021         6      00:12:38     12.633333
+54      07/04/2021         6      00:12:38     12.633333
+...            ...       ...           ...           ...
+5175    07/04/2021         6      23:50:02   1430.033333
+5176    07/04/2021         6      23:50:02   1430.033333
+5205    07/04/2021         6      23:57:11   1437.183333
+5211    07/04/2021         6      23:57:59   1437.983333
+5212    07/04/2021         6      23:57:59   1437.983333
+
+[459 rows x 4 columns]
+[Finished in 2.294s]</code></pre>
+
+Since all the incidents are from a single day (i.e. 4 July 2021) the <code class = "inline">WEEK_DAY</code> column has the same value (i.e. <code class = "inline">6</code>) for every row.
+
+
+
+
+<p>Let's add in the date and time features:
+<pre><code class="blockcode">df_early_am = filter_by_time(df,times=[0,360])
+print(df_early_am[['INCIDENT_DATE','WEEK_DAY','INCIDENT_TIME','INCIDENT_MIN']])</code></pre>
+would print:
+<pre><code class="datablock">     INCIDENT_DATE  WEEK_DAY INCIDENT_TIME  INCIDENT_MIN
+7       07/04/2021         6      00:01:51      1.850000
+27      07/04/2021         6      00:06:12      6.200000
+51      07/04/2021         6      00:12:12     12.200000
+53      07/04/2021         6      00:12:38     12.633333
+54      07/04/2021         6      00:12:38     12.633333
+...            ...       ...           ...           ...
+1041    07/04/2021         6      05:08:49    308.816667
+1068    07/04/2021         6      05:21:49    321.816667
+1075    07/04/2021         6      05:24:21    324.350000
+1079    07/04/2021         6      05:28:13    328.216667
+1111    07/04/2021         6      05:41:34    341.566667
+
+[76 rows x 4 columns]
+</code></pre>
+
+<p>We can build a map with the calls for ambulances shaded by the time of the call:
+
+  <pre><code class="blockcode">import folium
+import matplotlib.colors
+def cc(minute,scale):
+    return(matplotlib.colors.to_hex( (minute/scale,0,minute/scale) ))
+
+m = folium.Map(location=[40.7678,-73.9645],zoom_start=13,tiles="cartodbpositron")
+df.apply( lambda row: folium.CircleMarker(location=[row["Latitude"], row["Longitude"]],
+                                        radius=5, popup=(row['INCIDENT_TIME']+": "+row['TYP_DESC']),
+                                        color=cc(row['INCIDENT_MIN'],2000))
+                                        .add_to(m) ,
+        axis=1)
+m.save('4_July_map.html')</code></pre>
+
+displayed above.  Note that we used the time to shade the incidents.  The popups provide the exact time as well as the description.
+
+
+<br><br>
+<h3>Building Models</h3>
+
+
+<p>Next, let's build some models, using the clustering techniques from Lecture 11.  Write the following functions:</p>
+
+<ul>
+
+<li> <code class = "inline">compute_kmeans(df, num_clusters = 8, n_init = 'auto', random_state = 1870)</code>:
+  This function takes four inputs:
+  <ul>
+    <li> <code class = "inline">df</code>: a DataFrame containing <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd">911 System Calls</a> from OpenData NYC.
+      
+    <li> <code class = "inline">n_init</code>:  Number of times the k-means algorithm is run with different centroid seeds. The final results is the best output of <code class = "inline">n_init</code> consecutive runs in terms of inertia.   The default value is <code class = "inline">auto</code>.
+    
+    <li> <code class = "inline">num_clusters</code>:  an integer representing the number of clusters.  The default value is <code class = "inline">8</code>.       
+    
+    <li> <code class = "inline">random_state</code>: the random seed used for <a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html">KMeans</a>. The default value is <code class = "inline">1870</code>.
+
+  </ul>
+  Runs the KMeans model with <code class = "inline">num_clusters</code> on the latitude and longitude data of the provided DataFrame.  Returns the cluster centers and predicted labels computed via the model.
+  <br><i>A similar, but not identical function was part of <a href="work.html#cw9">Classwork 9</a>.</i>
+  <br><br>
+
+  <li> <code class = "inline">compute_gmm(df, num_clusters = 8, random_state = 1870)</code>:
+    This function takes three input:
+    <ul>
+      <li> <code class = "inline">df</code>: a DataFrame containing <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd">911 System Calls</a> from OpenData NYC.
+        <li> <code class = "inline">num_clusters</code>:  an integer representing the number of clusters.  The default value is <code class = "inline">8</code>.
+        <li> <code class = "inline">random_state</code>: the random seed used for <a href="https://scikit-learn.org/stable/modules/generated/sklearn.mixture.GaussianMixture.html#sklearn.mixture.GaussianMixture">GaussianMixture</a>. The default value is <code class = "inline">1870</code>.
+  
+      </ul>
+      Runs the GaussianMixture model with <code class = "inline">num_clusters</code> on the latitude and longitude data of the provided DataFrame.  Returns the array of the predicted labels computed via the model.<br>
+    <br>
+
+    <li> <code class = "inline">compute_agglom(df, num_clusters = 8, linkage='ward')</code>:
+      This function takes three inputs:
+      <ul>
+        <li> <code class = "inline">df</code>: a DataFrame containing <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd">911 System Calls</a> from OpenData NYC.
+        <li> <code class = "inline">num_clusters</code>:  an integer representing the number of clusters.  The default value is <code class = "inline">8</code>.
+        <li> <code class = "inline">linkage</code>: the linkage criterion used determining distances between sets for <a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.AgglomerativeClustering.html#sklearn.cluster.AgglomerativeClustering">AgglomerativeClustering</a>. The default value is <code class = "inline">'ward'</code>.
+    
+        </ul>
+        Runs the Agglomerative model with <code class = "inline">num_clusters</code> on the latitude and longitude data of the provided DataFrame and default linkage (i.e. <code class = "inline">ward</code>).  Returns the array of the predicted labels computed via the model.<br>
+      <br>
+
+      <li> <code class = "inline">compute_spectral(df, num_clusters = 8, affinity='rbf',random_state=1870)</code>:
+        This function takes four inputs:
+        <ul>
+          <li> <code class = "inline">df</code>: a DataFrame containing <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd">911 System Calls</a> from OpenData NYC.
+          <li> <code class = "inline">num_clusters</code>:  an integer representing the number of clusters.  The default value is <code class = "inline">8</code>.
+          <li> <code class = "inline">affinity</code>: method used for computing the affinity matrix by <a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.SpectralClustering.html">SpectralClustering</a>. The default value is <code class = "inline">'rbf'</code>.
+          <li> <code class = "inline">random_state</code>: the random seed used for <a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.SpectralClustering.html">SpectralClustering</a>. The default value is <code class = "inline">1870</code>.            
+      
+          </ul>
+          Runs the Spectral Clustering model with <code class = "inline">num_clusters</code> on the latitude and longitude data of the provided DataFrame and affinity matrix (i.e. <code class = "inline">affinity</code>).  Returns the array of the predicted labels computed via the model.<br>
+        <br>      
+      </ul>
+
+
+      <p>We can also make maps with the computed clusters.  We use the <code class = "inline">compute_locations</code> function with different values of <code class = "inline">num_clusters</code>.  Since we are repeating the same actions for <code class = "inline">K = 2, 4, 6</code>, we wrote a helper function to create the HTML maps:
+
+        <pre><code class="blockcode">def make_map(df, num_clusters, out_file):
+            centers,labels = compute_kmeans(df,num_clusters = num_clusters)
+            df_map = df[ ['Latitude','Longitude','INCIDENT_TIME','INCIDENT_MIN','TYP_DESC'] ]
+            df_map = df_map.assign(Labels = labels)
+            m = folium.Map(location=[40.7678,-73.9645],zoom_start=13,tiles="cartodbpositron")
+            df_map.apply( lambda row: folium.CircleMarker(location=[row["Latitude"], row["Longitude"]],
+                                                radius=5, popup=(row['INCIDENT_TIME']+": "+row['TYP_DESC']),
+                                                color=cc(row['Labels'],num_clusters))
+                                                .add_to(m), axis=1)
+            for i in range(num_clusters):
+                x,y = centers[i]
+                folium.Marker(location=[x,y],popup = "Cluster "+str(i)).add_to(m)
+            m.save(out_file)
+        
+        make_map(df,2,'map_4_July_2clusters.html')
+        make_map(df,4,'map_4_July_4clusters.html')
+        make_map(df,8,'map_4_July_8clusters.html')</code></pre>
+        
+        Screenshots of the maps are displayed above.
+        
+        
+        <p>Another function can be used to filter the dataset by day of the week and time of day.  For example, still working with the 4 July data set:
+        
+          <pre><code class="blockcode">df_mondays = filter_by_time(df, days = [0])
+        print(df_mondays)</code></pre>
+        
+        This will return an empty DataFrame since only 4 of July in this data set (which was a Sunday and we filtered for 0 or Monday):
+          <pre><code class="datablock">Empty DataFrame
+        Columns: [CAD_EVNT_ID, CREATE_DATE, INCIDENT_DATE, INCIDENT_TIME, NYPD_PCT_CD, BORO_NM, PATRL_BORO_NM, GEO_CD_X, GEO_CD_Y, RADIO_CODE, TYP_DESC, CIP_JOBS, ADD_TS, DISP_TS, ARRIVD_TS, CLOSNG_TS, Latitude, Longitude, WEEK_DAY, INCIDENT_MIN]
+        Index: []</code></pre>
+        
+        <p>Let's next filter for early morning times:
+        
+          <pre><code class="blockcode">df_early_am = filter_by_time(df,times=[0,360])
+        print(df_early_am[['INCIDENT_DATE','WEEK_DAY','INCIDENT_TIME','INCIDENT_MIN']])</code></pre>
+        
+          would print:
+          <pre><code class="datablock">     INCIDENT_DATE  WEEK_DAY INCIDENT_TIME  INCIDENT_MIN
+        7       07/04/2021         6      00:01:51      1.850000
+        27      07/04/2021         6      00:06:12      6.200000
+        51      07/04/2021         6      00:12:12     12.200000
+        53      07/04/2021         6      00:12:38     12.633333
+        54      07/04/2021         6      00:12:38     12.633333
+        ...            ...       ...           ...           ...
+        1041    07/04/2021         6      05:08:49    308.816667
+        1068    07/04/2021         6      05:21:49    321.816667
+        1075    07/04/2021         6      05:24:21    324.350000
+        1079    07/04/2021         6      05:28:13    328.216667
+        1111    07/04/2021         6      05:41:34    341.566667
+        
+        [76 rows x 4 columns]</code></pre>
+        
+        <p>We can use other methods for clustering, printing out the labels for the uly 4 dataset:</p>
+        
+        <pre><code class="blockcode">print(compute_gmm(df))
+        print(compute_agglom(df))  
+        </code></pre>
+        <pre><code class="datablock">[1 7 1 0 0 1 1 0 0 4 0 2 1 5 5 2 2 1 1 4 4 4 4 5 1 6 3 5 3 3 7 0 7 1 3 3 3
+        3 1 2 2 7 6 1 1 1 2 0 0 4 5 3 4 6 6 3 1 3 3 1 6 4 6 0 6 6 3 2 6 3 1 1 1 1
+        4 4 5 2 1 2 2 7 7 1 1 5 3 1 0 5 5 4 4 2 0 0 0 0 2 2 4 4 3 1 1 7 4 3 3 6 6
+        2 1 0 3 3 1 5 5 2 3 3 1 1 5 5 2 2 0 2 2 3 2 2 1 5 5 1 5 0 0 0 2 2 1 1 5 2
+        1 3 0 5 5 5 1 1 2 0 0 7 7 7 6 6 3 3 4 4 1 1 1 1 1 3 1 7 4 4 0 1 5 1 3 7 0
+        4 4 3 1 3 3 0 0 0 0 1 1 1 6 6 0 0 0 0 5 2 2 5 5 3 4 4 1 4 2 0 2 0 2 2 1 1
+        1 3 3 1 3 3 1 0 0 5 5 1 5 5 1 7 5 2 1 0 0 0 1 5 2 0 2 1 4 4 1 1 4 7 7 3 3
+        4 1 1 7 7 5 5 0 1 5 1 1 0 7 0 0 2 0 7 7 5 1 2 3 1 1 1 1 3 6 6 4 5 5 2 2 0
+        3 0 0 2 5 5 0 1 3 7 7 5 5 3 0 6 0 0 1 2 4 5 2 1 3 3 1 1 2 0 1 2 2 2 3 3 4
+        4 5 5 1 2 0 3 4 3 3 0 1 6 1 1 4 1 4 4 3 6 6 6 2 2 2 3 6 3 3 1 0 5 3 5 2 2
+        3 3 6 6 2 2 3 6 6 2 0 0 3 3 2 0 3 2 2 3 3 4 4 6 6 1 6 4 5 5 5 4 6 1 1 1 4
+        2 0 3 5 2 1 3 1 4 3 1 0 3 5 5 5 3 3 7 3 1 2 2 2 4 4 2 2 2 1 1 3 3 2 3 5 1
+        1 1 0 0 0 0 4 4 5 6 6 6 1 2 2]
+        [0 6 0 3 3 0 0 3 3 2 3 4 0 7 7 4 4 0 0 2 2 2 2 7 0 0 1 0 1 1 6 3 1 0 1 1 1
+        1 0 4 4 4 5 0 0 0 4 3 3 2 3 1 2 0 0 1 0 1 1 0 0 2 0 3 0 0 1 4 0 1 0 0 0 0
+        2 2 3 4 0 4 4 1 1 1 0 3 1 0 3 7 7 2 2 4 3 3 3 3 4 4 2 2 1 0 0 6 2 1 1 0 0
+        4 0 4 1 1 0 0 0 4 1 1 0 0 7 7 4 4 3 4 4 1 4 4 0 7 7 0 7 3 3 3 4 4 0 0 7 4
+        0 1 3 7 0 0 0 0 4 3 3 6 6 4 5 5 1 1 2 2 0 0 0 0 0 1 0 6 2 2 3 0 7 0 1 6 3
+        2 2 1 0 0 0 3 3 3 3 0 0 0 0 5 3 3 3 3 7 4 4 7 7 1 2 2 0 4 4 3 4 6 4 4 0 0
+        0 1 1 0 1 1 0 3 3 7 7 0 3 3 0 6 3 4 0 3 3 3 0 7 4 3 4 0 2 4 0 0 2 6 6 1 1
+        2 0 0 6 6 3 3 3 0 7 5 5 3 6 3 3 4 3 6 6 0 0 4 1 0 0 0 0 1 5 5 2 7 7 4 4 3
+        1 3 3 4 7 7 3 0 1 6 6 7 7 7 3 0 3 3 0 4 2 7 4 0 1 1 1 1 4 3 0 4 4 4 1 1 2
+        2 0 0 0 4 3 1 2 1 1 3 0 5 0 0 2 0 2 2 1 5 5 5 4 4 4 1 5 1 1 0 3 7 1 3 4 4
+        1 1 5 5 4 4 1 0 0 4 3 3 1 1 4 3 1 4 4 1 1 2 2 5 5 0 5 2 7 3 3 2 5 0 0 0 2
+        4 4 1 7 4 0 1 0 2 1 0 3 1 7 3 3 1 1 6 1 0 4 4 4 2 2 4 4 4 0 0 1 1 4 1 3 0
+        0 0 3 3 3 3 2 2 3 5 5 5 0 4 4]
+        </code></pre>
+
+
+      <br><br>
+      <h3>Evaluating Models</h3>  
+      
+  
+    <ul>
+     
+
+
+    <li> <code class = "inline">compute_explained_variance(df, k_vals = None, random_state = 1870)</code>:
+      This function takes three inputs:
+      <ul>
+        <li> <code class = "inline">df</code>: a DataFrame containing <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd">911 System Calls</a> from OpenData NYC.
+        <li> <code class = "inline">k_vals</code>:  a list of integers representing values for the number of clusters.  The no value is provided, the function uses <code class = "inline">k_vals = [1,2,3,4,5]</code>.
+        <li> <code class = "inline">random_state</code>: the random seed used for <a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html">KMeans</a>. The default value is <code class = "inline">55</code>.
+      </ul>
+      Returns a list of the sum of squared distances of samples to their closest cluster center for each value of <code class = "inline">K</code>.  This can be computed manually or via the <code class = "inline">inertia_</code> attribute of the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html">KMeans</a> model.
+</ul>
+
+<p>We can use the function <code class = "inline">compute_explained_variance</code> to assess the best number of clusters:
+
+  <pre><code class="blockcode">k_vals = list(range(1,20))
+ev = compute_explained_variance(df,K=k_vals)
+sns.lineplot(k_vals,ev)
+plt.title('Explained Variance for KMeans for Manhattan, 4 July 2021')
+plt.show()
+</code></pre>
+
+will display:
+
+<p><img src="july4_ev.png" height=400>
+
+<p>showing a sharp drop-off to <code class = "inline">K=5</code> that quickly flattens, showing that additional clusters, beyond 10, do not significantly improve the average distance to the assigned means.  This suggests that a reasonable number of clusters is around 8.</p>
+
+
+<br><br>
+<h3>Test Suites</h3>   
+
+<p>Each programming assignment includes functions that test that your code works (a "test suite").  In Programs 1 & 2, we wrote the test functions by hand.  For Programs 3-6, we will also use <a href="https://docs.pytest.org/en/7.4.x/">pytest</a>, a standard Python testing framework.  Before you start, make sure that your IDE has pytest installed:
+  <pre><code class="blockcode">pip install -U pytest</code></pre>
+      
+<p>Pytest is one of the most popular testing frameworks for Python.  For this program, we will introduce the core testing features (and will introduce more features, such as parametrizing, in future programs).  For more details, see Lecture 5, <a href="https://docs.pytest.org/en/7.4.x/">pytest docs</a> and <a href="https://runestone.academy/ns/books/published//thinkcspy/UnitTesting/toctree.html">Think CS: Chapter 20</a>.</p>
+  
+  
+
+
+<li> <code class = "inline">test_add_date_time_features()</code>:
+  This function takes no inputs.
+  Returns <code class = "inline">True</code> if the function <code class = "inline">add_date_time_features</code> performs correctly and <code class = "inline">False</code> otherwise.
+  <br><br>
+
+  <li> <code class = "inline">test_filter_by_time()</code>:
+  This function takes no inputs.
+  Returns <code class = "inline">True</code> if the function <code class = "inline">filter_by_time</code> performs correctly and <code class = "inline">False</code> otherwise.
+  <br><br>
+</ul>
+
+    <p>
+    Trying first on the correct function, assuming that your program is called <code class = "inline">p5.py</code>, we can invoke <code class = "inline">pytest</code> from the command-line:
+  <pre><code class="blockcode">pytest p5.py::test_add_date_time_features</code></pre>
+  gives the output:
+  <pre><code class="datablock">======================================= test session starts ========================================
+  platform darwin -- Python 3.11.5, pytest-7.4.2, pluggy-1.3.0
+  rootdir: /Users/stjohn/gitHub/dataScience/programs/fall23/program05
+  collected 1 item                                                                                   
+  
+  p5.py .                                                                                      [100%]
+  
+  ======================================== 1 passed in 1.63s =========================================
+  </code></pre>
+  <code class = "inline">pytest</code> looks for a function called:  <code class = "inline">test_add_date_time_features()</code> in the file <code class = "inline">p3.py</code>.  It then runs <code class = "inline">test_add_date_time_features</code>, which tests the correctness of the function <code class = "inline">add_date_time_features</code> and reports back the results.  
+    </p>
+  
+  
+
+
+
+</div>
+</body>
+</html>
