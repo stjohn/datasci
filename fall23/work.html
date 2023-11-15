@@ -570,70 +570,9 @@ print(f'Confusion matrix:\n{confuse_mx}')</code></pre>
       In the second part of Lecture 5, we will start <a href="#p5">Program 5</a>.  Having successfully started the third program to Gradescope (i.e. a positive score) by the end of break gives credit for this classwork.  You do not need to complete the thid program or submit anything extra, we will generate the scores directly by if you have submitted an attempt to Gradescope.  
   </li>   
 
-<!--  
+<br>
   <li><a name="cw12"><b>Week 12:</b></a>
     <p> <b>Classwork 12.1: </b> &emsp; <i>Due 1:45pm, Wednesday, 15 November.</i> &emsp;
-    <p> <b>Classwork 12.2: </b> &emsp; <i>Due 3pm, Wednesday, 15 November.</i> &emsp;      
-  </li>   
-  <li><a name="cw13"><b>Week 13:</b></a>
-    <p> <b>Classwork 13.1: </b> &emsp; <i>Due 1:45pm, Wednesday, 29 November.</i> &emsp;
-    <p> <b>Classwork 13.2: </b> &emsp; <i>Due 3pm, Wednesday, 29 November.</i> &emsp;      
-  </li>  
-  <li><a name="cw14"><b>Week 14:</b></a>
-    <p> <b>Classwork 14.1: </b> &emsp; <i>Due 1:45pm, Wednesday, 6 December.</i> &emsp;
-    <p> <b>Classwork 14.2: </b> &emsp; <i>Due 3pm, Wednesday, 6 December.</i> &emsp;      
-  </li>     
-  -->
-</ul>
-
-
-
-
-<!--
-
-   
-
-<p><a name="cw10"><b>Classwork 10: </b> &emsp; <i>Due 2:30pm, Wednesday, 29 March.</i> &emsp;
-  
-
-
-
-<p><a name="cw11"><b>Classwork 11: </b> &emsp; <i>Due 2:30pm, Wednesday, 19 April.</i> &emsp;
-
-    Available during Lecture 11 on Gradescope, this classwork reviews probability distributions and sampling.  To get the most out of this exercise, bring a device with you that can access Gradescope's online assignments.
-
-<p><a name="cw12"><b>Classwork 12: </b> &emsp; <i>Due 2:30pm, Wednesday, 26 April.</i> &emsp;
-
-  Available during Lecture 12 on Gradescope, this classwork focuses on empirical analysis of random variables.  To get the most out of this exercise, bring a laptop with you to lecture with a development environment (IDE) that has Python 3+ to work through in lecture.
-
-  <p>
-    Write a function:
-    <ul>
-        <li> <code class="inline">diceSim(D1,D2,trials)</code> that takes as input the number of sides on die 1 (<code class="inline">D1</code>) and
-        die2 (<code class="inline">D2</code>) and the number of trials.  Your function should repeatedly sum pairs of random numbers between 1 and <code class="inline">D1</code> and 1 and <code class="inline">D2</code> and keep track of how many times each sum occurs. The function returns a numpy array with the fraction each sum of rolls occured.
-      </ul>
-
-      <p>
-      Since the numbers are chosen at random, the fractions will differ some from run to run. One run of the function <code class="inline">print(p22.diceSim(6,6,10000))</code> resulted in:
-<pre><code class="datablock">
-  [0.     0.     0.0259 0.0615 0.0791 0.1086 0.139  0.1633 0.1385 0.114  0.0833 0.0587 0.0281]</code></pre>
-
-      or displayed using the code from <a href="http://www.textbook.ds100.org/ch/16/prob_random_vars.html">Section 16.1.1.</a>:
-      <p>
-      <img src="../fall21/dice_6_6.png" height=200>
-    </p>
-
-    <p>If you attended lecture, include the last line to the introductory comment:
-      <pre><code class="blockcode">"""
-Name:  YOUR_NAME
-Email: YOUR_EMAIL
-Resources:  RESOURCES USED
-I attended lecture today.
-Row:  YOUR_ROW
-Seat:  YOUR_SEAT
-"""</pre></code>
-
-      If you did not attend lecture, do not include the above lines.
 
 
     Write a program that asks the user for the name of an input HTML file and the name of an output CSV file.  Your program should use regular expressions (see <a href="http://www.textbook.ds100.org/ch/12/text_re.html">Chapter 12.4</a> for using the <code class="inline">re</code> package in Python) to find all links in the input file and store the link text and URL as columns:  <code class="inline">Title</code> and <code class="inline">URL</code> in the CSV file specified by the user.  For the URL, strip off the leading <code class="inline">https://</code> or <code class="inline">http://</code> and any trailing slashes (<code class="inline">/</code>):
@@ -664,6 +603,34 @@ CSci 39542,stjohn.github.io/teaching/data/fall21/index.html
 google,www.google.com</code></pre>
   </p>
 
+  <p>
+    Note:  you should submit a file with only the standard comments at the top that you attended lecture in the introductory comment (see <a href="work.html#cw2">Classwork 2</a> for details).  The grading scripts will run your program directly on several different test cases, supplying the names of the files.  If you do not ask for input in your program (e.g. ask for the input and output file names), the autograder will time-out waiting.</p>
+
+
+
+  <br>
+    <p> <b>Classwork 12.2: </b> &emsp; <i>Due 3pm, Wednesday, 15 November.</i> &emsp;  Available during Lecture 12 on Gradescope, this classwork focuses on SQL.  To get the most out of this exercise, bring a device with you that can access Gradescope's online assignments. 
+  </li>   
+
+<!--
+<br>  
+  <li><a name="cw13"><b>Week 13:</b></a>
+    <p> <b>Classwork 13.1: </b> &emsp; <i>Due 1:45pm, Wednesday, 29 November.</i> &emsp;
+    <p> <b>Classwork 13.2: </b> &emsp; <i>Due 3pm, Wednesday, 29 November.</i> &emsp;      
+  </li>  
+  <li><a name="cw14"><b>Week 14:</b></a>
+    <p> <b>Classwork 14.1: </b> &emsp; <i>Due 1:45pm, Wednesday, 6 December.</i> &emsp;
+    <p> <b>Classwork 14.2: </b> &emsp; <i>Due 3pm, Wednesday, 6 December.</i> &emsp;      
+  </li>     
+  -->
+</ul>
+
+
+
+
+<!--
+
+      
 
 
 <p><a name="cw13"><b>Classwork 13: </b> &emsp; <i>Due 2:30pm, Wednesday, 4 May.</i> &emsp;
@@ -706,8 +673,6 @@ google,www.google.com</code></pre>
 <p><a name="cw24"><b>Classwork 24: </b> &emsp; <i>Due midnight, Wednesday, 4 May.</i> &emsp;
     Available during Lecture 24 on Gradescope, this classwork asks your final examination plans (e.g. Do you need a laptop for the coding exam?  Would you prefer a left-handed desk for the exam? Do you have accommodations from the Office of Accessability? Do you need to take the exam(s) early?, etc.).  If no survey is submitted, the default is that you will take the exams during the regularly assigned times at a right-handed desk and will bring your own laptop to the coding exam.
 
-<p><a name="cw25"><b>Classwork 25: </b> &emsp; <i>Due 4pm, Thursday, 5 May.</i> &emsp;
-    Available during Lecture 25 on Gradescope, this classwork focuses on SQL.  To get the most out of this exercise, bring a device with you that can access Gradescope's online assignments.
 
 <p><a name="cw26"><b>Classwork 26: </b> &emsp; <i>Due 4pm, Monday, 9 May.</i> &emsp;
     Available during Lecture 26 on Gradescope, this classwork is a review for the final examinations.  To get the most out of this exercise, bring a device with you that can access Gradescope's online assignments.
