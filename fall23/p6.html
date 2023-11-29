@@ -1,0 +1,420 @@
+<!DOCTYPE doctype PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <title>Program 6, CSci 39542: Data Science, Hunter College</title>
+</head>
+<STYLE>A {text-decoration: none;}
+th, td { padding: 5px; }
+code {
+  background-color: #eeeeee;
+}
+.inline {
+  padding: 1px;
+}
+.blockcode {
+  border: 1px solid #999999;
+  display: block;
+  padding-left: 10px;
+  padding-top : 2px;
+  padding-bottom : 2px;
+  margin: 5px;
+}
+.datablock {
+  border: 1px solid #eeeeee;
+  display: block;
+  padding: 7px;
+  padding-top : 0px;
+  margin: 5px;
+}
+</STYLE>
+<body>
+
+
+<div style="margin: 15px;width:100%;">
+    <span style= "float: left;font-size:larger"><a href="index.html">CSci 39542</a></span>
+    <span style= "float: right">
+      <a href="syl.html">Syllabus</a>&nbsp;&nbsp;&nbsp;
+      <a href="resources.html">Resources</a>&nbsp;&nbsp;&nbsp;
+      <a href="work.html">Coursework</a><!--&nbsp;&nbsp;&nbsp;
+      <a href="faq.html">FAQ</a>-->
+    </span>
+</div>
+
+<br>
+<br>
+<hr>
+
+<div style="margin:50px">
+
+
+<h2>Program 6: EMS Queries
+  <br>CSci 39542: Introduction to Data Science<br>
+<a href="http://www.hunter.cuny.edu/csci">Department of Computer Science</a><br>
+<a href="https://hunter.cuny.edu">Hunter College</a>, <a href="https://www.cuny.edu">City University of New York</a><br>
+Fall 2023<br><br>
+</h2>
+
+
+<hr>
+<a href="work.html#cw">Classwork</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#quizzes">Quizzes</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#hw">Homework</a>&nbsp;&nbsp;&nbsp;
+<a href="work.html#project">Project</a>&nbsp;&nbsp;&nbsp;
+<hr>
+
+<object width=100% height=50% type="text/html" data="generalNotes.html" border="0"
+   style="overflow: hidden;">
+</object>
+<hr>
+
+<h2>Program Description</h2>
+
+<br>
+   <p><a name="p13"><b>Program 6: EMS Queries.</b></b> &emsp; <i>Due noon, Friday, 8 December.
+     <br>Learning Objective: To reinforce new SQL skills to query and aggregate data.
+     <br>Available Libraries: pandas, pandasql, and core Python 3.6+.
+     <br>Data Sources: <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd
+     ">911 System Calls (NYC OpenData)</a>
+     <br>Sample Datasets:
+      <ul>
+          <li> Small dataset (1 day of calls for 1 borough): <a href="NYPD_Calls_Manhattan_4Jul2021.csv">NYPD_Calls_Manhattan_4Jul2021.csv</a>,
+          <li> Midnight calls in January 2021 (all boroughs): <a href="NYPD_Calls_midnight_Jan2021.csv">NYPD_Calls_midnight_Jan2021.csv</a>,
+          <li> Larger dataset (1 month of calls for Queens): <a href="NYPD_Calls_Queens_Jan2021.csv">NYPD_Calls_Queens_Jan2021.csv</a>
+      </ul><br></i>
+
+<p>This program continues the analysis of the emergency services calls that was introduced in <a href="p5.html">Program 5</a>.  It follows standard strategy for data cleaning and model building, with the focus on using SQL for exploratory data analys.
+</p>
+
+<p>
+<iframe src="4_July_map.html" style="width: 60%; height: 550px" name="internal"></iframe>
+
+
+
+  
+
+  <p>To download test datasets, see <a href="p5.html">Program 5</a>.</p>
+
+  <br><br>
+  <h3>Preparing Data</h3>
+  
+  <p>Once you have downloaded some test data sets to your device, the next thing to do is format the data to be usable for analysis.  We will need to do some cleaning, and also filter by day of week and time.  Once we have the cleaned the data, we can split it into training and testing data sets.  Add the following functions to your Python program:</p>
+
+
+  <ul>
+    <li> <code class = "inline">make_df(file_name)</code>:
+      This function takes one input:
+      <ul>
+        <li> <code class = "inline">file_name</code>: the name of a CSV file containing <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd">911 System Calls</a> from OpenData NYC.
+      </ul>
+      The data is read into a DataFrame.  Rows that are have null values for the type description, incident date, incident time, borough name are dropped.
+      The resulting DataFrame is returned.
+      <br><i>Hint: this is slightly <b>different</b> than the function from <a href="p5.html">Program 5</a> in that different rows are dropped and it does not restrict to only ambulance calls.</i></li>
+      
+      
+
+
+      <br>
+      <li> <code class = "inline">compute_time_delta(start, stop)</code>:
+        This function takes two inputs:
+        <ul>
+          <li> <code class = "inline">start</code>: a string containing a date/time in the format:
+          <code class="inline">MM/DD/YYYY HH:MM:SS XM</code> with month, day, year, hour, minutes, and seconds as digits and XM either AM or PM.
+          <li> <code class = "inline">stop</code>: a string containing a date/time in the format:
+          <code class="inline">MM/DD/YYYY HH:MM:SS XM</code> with month, day, year, hour, minutes, and seconds as digits and XM either AM or PM. 
+        </ul>
+      The function converts the input strings into <code class="inline">datetime</code> objects and returns a whole number that is the difference in time in <b>seconds</b>.
+      <br>
+      Note:  instead of taking a Series or DataFrame as an argument, this function is applied to a DataFrame.  See the example below. 
+    </li>
+
+    
+    </ul>
+
+<br>
+<p>For example, if we use the dataset of midnight calls from January 2021:
+<pre><code class="blockcode">df = make_df('NYPD_Calls_midnight_Jan2021.csv')
+print(df[['BORO_NM','RADIO_CODE','TYP_DESC']])</code></pre>
+  would print:
+<pre><code class="datablock">        BORO_NM RADIO_CODE                                         TYP_DESC
+0      BROOKLYN       10S2  INVESTIGATE/POSSIBLE CRIME: SHOTS FIRED/OUTSIDE
+1        QUEENS       68Q1                    SEE COMPLAINANT: OTHER/INSIDE
+2         BRONX       54E1                       AMBULANCE CASE: EDP/INSIDE
+3         BRONX       54E1                       AMBULANCE CASE: EDP/INSIDE
+4      BROOKLYN       24Q6                     ASSAULT (PAST): OTHER/FAMILY
+...         ...        ...                                              ...
+5582  MANHATTAN       54E1                       AMBULANCE CASE: EDP/INSIDE
+5583  MANHATTAN       54E1                       AMBULANCE CASE: EDP/INSIDE
+5584  MANHATTAN        75D                      VISIBILITY PATROL: DIRECTED
+5585   BROOKLYN        75D                      VISIBILITY PATROL: DIRECTED
+5586     QUEENS        75D                      VISIBILITY PATROL: DIRECTED
+
+[5587 rows x 3 columns]</code></pre>
+
+
+<p>We can add a new column that has the time taken to dispatch services, by applying the <code class="inline">compute_time_delta</code> function to the DataFrame:</p>
+
+<pre><code class="blockcode">df['dispatch (in seconds)'] = df.apply(lambda row: compute_time_delta(row['ADD_TS'],row['DISP_TS']),axis='columns')
+print(df[['INCIDENT_DATE','BORO_NM','dispatch (in seconds)']])  </code></pre>
+
+which yields:
+
+<pre><code class="datablock">       INCIDENT_DATE    BORO_NM  dispatch (in seconds)
+  0       01/01/2021   BROOKLYN                     31
+  1       01/01/2021     QUEENS                      0
+  2       01/01/2021      BRONX                     32
+  3       01/01/2021      BRONX                     62
+  4       01/01/2021   BROOKLYN                    644
+  ...            ...        ...                    ...
+  5582    02/01/2021  MANHATTAN                     13
+  5583    02/01/2021  MANHATTAN                     10
+  5584    02/01/2021  MANHATTAN                      0
+  5585    02/01/2021   BROOKLYN                      0
+  5586    02/01/2021     QUEENS                      1
+  
+  [5587 rows x 3 columns]</code></pre>
+
+
+
+<br><br>
+<h3>Using SQL with Pandas</h3>
+
+
+
+<p>
+  We will be using Structured Query Language (SQL) to subset and aggregate data (see Lectures 25 & 26 and <a href="http://www.textbook.ds100.org/ch/07/sql_intro.html">DS 100: Chapter 7</a>).  For this program, we will use the <a href="https://pypi.org/project/pandasql/">pandasql</a> that provides an easy way to query pandas DataFrames using SQL syntax.  To use it, you may need to install it on your machine (e.g. <code class = "inline">pip install pandasql</code> or <code class = "inline">pip3q install pandasql</code>).  See <a href="https://pypi.org/project/pandasql/">pandasql</a> for installation details.
+  
+  
+  <p>
+  Once installed, you can run queries via the function  <code class="inline">sqldf(queryName)</code>.  For example, you could filter for all the neighborhood tabulation areas in the Bronx in the <a href="NYC_population_by_NTA.csv">NYC_population_by_NTA.csv</a> on the waitlist by:
+  
+  <pre><code class=blockcode>import pandas as pd
+import pandasql as psql
+pop = pd.read_csv('NYC_population_by_NTA.csv')
+q = 'SELECT * FROM pop WHERE Borough = "Bronx"'
+bronx = psql.sqldf(q)
+print(bronx.head())</code></pre>
+  which prints:
+  <pre><code class=datablock>  Borough  Year  ...                         NTA Name Population
+  0   Bronx  2000  ...               Claremont-Bathgate      28149
+  1   Bronx  2000  ...  Eastchester-Edenwald-Baychester      35422
+  2   Bronx  2000  ...       Bedford Park-Fordham North      55329
+  3   Bronx  2000  ...                          Belmont      25967
+  4   Bronx  2000  ...                        Bronxdale      34309
+  
+  [5 rows x 6 columns]</code></pre>
+
+  <p>Note that strings need to be surrounded by quotes in your query
+  (e.g. <code class = "inline">"Waitlist Student"</code>).  To set up your queries, you may find Formatted Literal Strings ("f-strings") useful (see the <a href="https://docs.python.org/3/tutorial/inputoutput.html">python tutorial</a> or Lecture 2 for more details).</p>
+
+  <p>Note that <code class="inline">pandasql</code> uses the DataFrames that are given in the query, without the DataFrames being passed in as arguments.  This causes issues with <code class="inline">pylint</code> since the DataFrame looks unused.  There are several ways to tell  <code class="inline">pylint</code> that a variable is necessary but not used explicitly.  In the functions below, we use leading underscores for the DataFrame names (e.g. <code class="inline">_df</code>) to signal that it is a necessary variable but used internally.
+  </p>
+  
+
+ 
+
+    
+    
+    <ul>
+    <li> <code class = "inline">select_boro_column(_df)</code>:
+      This function takes one input:
+      <ul>
+          <li> <code class = "inline">_df</code>: a DataFrame containing <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd">911 System Calls</a> from OpenData NYC created by <code class = "inline">make_df</code>.
+      </ul>
+      Selects, using SQL, the <code class = "inline">BORO_NM</code> column from <code class = "inline">_df</code>.
+      Returns the resulting DataFrame from the SQL query.
+      </li><br>
+      
+    <li> <code class = "inline">select_by_boro(df, boro_name)</code>:
+      This function takes two inputs:
+      <ul>
+          <li> <code class = "inline">_df</code>: a DataFrame containing <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd">911 System Calls</a> from OpenData NYC created by <code class = "inline">make_df</code>.
+          <li> <code class = "inline">boro_name</code>: a string containing the name of a borough.  Can be lower or upper case.
+      </ul>
+      Selects, using SQL,  all rows from the DataFrame, <code class = "inline">_df</code>, where the borough is <code class = "inline">boro_name</code>.
+      Returns the resulting DataFrame from the SQL query.
+      <br><i>Hint: Since the <code class = "inline">boro_name</code> can be upper or lower case, convert it to upper case to match the way the borough names are stored.</i>
+      </li><br>
+
+    <li> <code class = "inline">new_years_count(_df, boro_name)</code>:
+      This function takes two inputs:
+      <ul>
+          <li> <code class = "inline">_df</code>: a DataFrame containing <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd">911 System Calls</a> from OpenData NYC created by <code class = "inline">make_df</code>.
+          <li> <code class = "inline">boro_name</code>: a string containing the name of a borough.  Can be lower or upper case.
+      </ul>
+      Selects, using SQL, the number of incidents from <code class = "inline">_df</code>, called in on New Year's Day (Jan 1, 2021) in the specified borough, <code class = "inline">boro_name</code>.
+      Returns the resulting DataFrame from the SQL query.
+      <br><i>Hint: Since the <code class = "inline">boro_name</code> can be upper or lower case, convert it to upper case to match the way the borough names are stored.</i>
+      </li><br>
+
+    <li> <code class = "inline">incident_counts(_df)</code>:
+      This function takes one inputs:
+      <ul>
+          <li> <code class = "inline">_df</code>: a DataFrame containing <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd">911 System Calls</a> from OpenData NYC created by <code class = "inline">make_df</code>.
+      </ul>
+      Selects, using SQL, the incident counts per radio code (<code class = "inline">TYP_DESC</code>), sorted alphabetically by radio code (<code class = "inline">TYP_DESC</code>).  Returns the resulting DataFrame from the SQL query.
+      </li><br>
+
+    <li> <code class = "inline">top_10(_df, boro_name)</code>:
+      This function takes two inputs:
+      <ul>
+          <li> <code class = "inline">_df</code>: a DataFrame containing <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Calls-for-Service-Year-to-Date-/n2zq-pubd">911 System Calls</a> from OpenData NYC created by <code class = "inline">make_df</code>.
+          <li> <code class = "inline">boro_name</code>: a string containing the name of a borough.  Can be lower or upper case.
+      </ul>
+      Selects, using SQL, the top 10 most commonly occurring incidence by radio code, and the number of incident occurrences, in specified borough.  Returns the resulting DataFrame from the SQL query.
+      <br><i>Hint: Since the <code class = "inline">boro_name</code> can be upper or lower case, convert it to upper case to match the way the borough names are stored.</i>
+      </li><br>
+</ul>
+
+
+
+<p> The first function uses SQL to select the column containing the borough name:
+<pre><code class="blockcode">boros = select_boro_column(df)
+print(boros)</code></pre>
+would print:
+<pre><code class="datablock">        BORO_NM
+0      BROOKLYN
+1        QUEENS
+2         BRONX
+3         BRONX
+4      BROOKLYN
+...         ...
+5582  MANHATTAN
+5583  MANHATTAN
+5584  MANHATTAN
+5585   BROOKLYN
+5586     QUEENS
+
+[5587 rows x 1 columns]</code></pre>
+
+<p> The next function, takes the DataFrame and the name of a borough and uses SQL to select all rows with that borough name.  For example, we can select <code class="inline">Bronx</code>
+<pre><code class="blockcode">df_bx = select_by_boro(df, "Bronx")
+print(df_bx)</code></pre>
+would print:
+<pre><code class="datablock">      CAD_EVNT_ID CREATE_DATE  ...   Latitude  Longitude
+0        73973992  01/01/2021  ...  40.830860 -73.902887
+1        73973992  01/01/2021  ...  40.830860 -73.902887
+2        73974010  01/01/2021  ...  40.840868 -73.925150
+3        73974019  01/01/2021  ...  40.870439 -73.890847
+4        73974033  01/01/2021  ...  40.856654 -73.843872
+...           ...         ...  ...        ...        ...
+1007     74629410  02/01/2021  ...  40.859192 -73.900677
+1008     74629421  02/01/2021  ...  40.834562 -73.915443
+1009     74630917  02/01/2021  ...  40.825472 -73.892941
+1010     74642928  02/01/2021  ...  40.859640 -73.863235
+1011     74643746  02/01/2021  ...  40.870371 -73.851975
+
+[1012 rows x 18 columns]</code></pre>
+
+<p> We can use SQL to calculate how many incidents were called in on New Year's Day in Queens:
+<pre><code class="blockcode">df_nyd_q = new_years_count(df, "Queens")
+print(df_nyd_q)</code></pre>
+would print:
+<pre><code class="datablock">   COUNT(*)
+0        40</code></pre>
+
+<p> We can calculate summary counts for the DataFrame:
+<pre><code class="blockcode">df_inc = incident_counts(df)
+print(df_inc)</code></pre>
+would print:
+<pre><code class="datablock">                                              TYP_DESC  COUNT(*)
+0                               ALARMS: AUDIBLE/INSIDE         1
+1                              ALARMS: AUDIBLE/OUTSIDE         6
+2                              ALARMS: AUDIBLE/TRANSIT         5
+3                                ALARMS: BANK/BURGLARY         3
+4                          ALARMS: COMMERCIAL/BURGLARY       146
+..                                                 ...       ...
+181                        VISIBILITY PATROL: DIRECTED      1334
+182               VISIBILITY PATROL: FAMILY/HOME VISIT        44
+183                        VISIBILITY PATROL: INTERIOR        61
+184  VISIBILITY PATROL:PUBLIC/PRIVATE EDUCATIONAL F...         4
+185                                   YOUTH HOME VISIT         5
+
+[186 rows x 2 columns]</code></pre>
+
+<p> As well which are the 10 most common for Brooklyn and Staten Island:
+<pre><code class="blockcode">df_si = top_10(df, "Staten Island")
+print('Top 10 for Staten Island:')
+print(df_si)
+df_bk = top_10(df, "Brooklyn")
+print('\nTop 10 for Brooklyn:')
+print(df_bk)</code></pre>
+would print:
+<pre><code class="datablock">Top 10 for Staten Island:
+                                    TYP_DESC  COUNT(*)
+0                VISIBILITY PATROL: DIRECTED        97
+1                             COMMUNITY TIME        19
+2              SEE COMPLAINANT: OTHER/INSIDE        18
+3                 AMBULANCE CASE: EDP/INSIDE        10
+4  INVESTIGATE/POSSIBLE CRIME: SERIOUS/OTHER         8
+5                            DISPUTE: INSIDE         8
+6                          BUS INVESTIGATION         7
+7             AMBULANCE CASE: SERIOUS/INSIDE         7
+8                            DISPUTE: FAMILY         5
+9                  DISORDERLY: GROUP/OUTSIDE         5
+
+Top 10 for Brooklyn:
+                                            TYP_DESC  COUNT(*)
+0                        VISIBILITY PATROL: DIRECTED       503
+1     STATION INSPECTION BY TRANSIT BUREAU PERSONNEL       189
+2                      SEE COMPLAINANT: OTHER/INSIDE       189
+3           TRAIN RUN/MOBILE ORDER MAINTENANCE SWEEP        72
+4                         AMBULANCE CASE: EDP/INSIDE        60
+5   INVESTIGATE/POSSIBLE CRIME: SUSP VEHICLE/OUTSIDE        52
+6  INVESTIGATE/POSSIBLE CRIME: CALLS FOR HELP/INSIDE        48
+7                        ALARMS: COMMERCIAL/BURGLARY        44
+8                        VISIBILITY PATROL: INTERIOR        39
+9          INVESTIGATE/POSSIBLE CRIME: SERIOUS/OTHER        36</code></pre>
+
+
+
+<br><br>
+<h3>Building Models</h3>
+
+  <p>Let's use seaborn to visualize both the time taken to complete.  Since we have many similar data points, we will use the <code class="inline">sns.stripplot</code> which "jitters" the points to highlight the density:</p>
+
+  <pre><code class="blockcode">sns.stripplot(data=df,x="dispatch (in seconds)",y="BORO_NM")
+plt.title('Time to dispatch services')
+plt.tight_layout()  #for nicer margins
+plt.show()</code></pre>
+
+    which gives the plot:
+
+    <p><img height=300 src="dispatch_stripplot.png"></p>
+
+  <p>Many of the descriptions include if there are inside or outside the address.  Let's use seaborn's violin plot to see if the location makes a difference in how quickly emergency services are dispatched:</p>
+
+  <pre><code class="blockcode">def locate_fnc(desc):
+  if "INSIDE" in desc:
+      return 1
+  if "OUTSIDE" in desc:
+      return 0
+  return -1
+df["Located"] = df["TYP_DESC"]apply(locate_fnc)
+sns.violinplot(data=df, x="BORO_NM", y="dispatch (in seconds)",hue="Located")
+plt.title('Time to dispatch services')
+plt.tight_layout()  #for nicer margins
+plt.show()</code></pre>
+
+   which gives the plot:
+   <p><img height=300 src="dispatch_violin.png"></p>
+
+  <p>The SQL queries highlighted the most common calls for emergency services is "visibility patrol".  We can use seaborn's linear model visualization to show the differences in response time between boroughs:   </p>
+
+  <pre><code class="blockcode">sns.violinplot(data=df, x="BORO_NM", y="dispatch (in seconds)",hue="vis patrol")
+plt.title('Time to dispatch services: all calls vs. visibility patrol')
+plt.tight_layout()  #for nicer margins
+plt.show()
+
+df['closing'] = df.apply(lambda row: compute_time_delta(row['DISP_TS'],row['CLOSNG_TS']),axis='columns')
+ax=sns.lmplot(data=df[(df['dispatch (in seconds)'] <= 60*60*2) & (df['closing'] <= 60*60*12)], \
+  x="dispatch (in seconds)",y="closing",hue="BORO_NM")
+plt.title('Dispatch vs. Closing Time')
+plt.show()    </code></pre>
+
+  which gives the plots:
+  <p><img height=300 src="dispatch_vis_patrol.png"><img height=300 src="dispatch_v_closing.png"></p>
+</div>
+</body>
+</html>
